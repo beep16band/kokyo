@@ -17,18 +17,31 @@
       const doc = frame.contentDocument;
       if (!doc) return;
 
-      const updateGameButton = () => {
+      const patchPage = () => {
+        // 第2時：ダウンロードではなくGitHub Pages上でRPGを直接起動
         const gameLink = doc.querySelector('.game-link');
-        if (!gameLink) return false;
-        gameLink.href = './%E6%95%85%E9%83%B7_%E8%AA%9E%E5%8F%A5RPGs2.html';
-        gameLink.removeAttribute('download');
-        gameLink.textContent = '故郷語句RPGをプレイ';
-        gameLink.setAttribute('aria-label', '故郷語句RPGをプレイする');
-        return true;
+        if (gameLink && gameLink.dataset.patched !== '1') {
+          gameLink.href = './%E6%95%85%E9%83%B7_%E8%AA%9E%E5%8F%A5RPGs2.html';
+          gameLink.removeAttribute('download');
+          gameLink.textContent = '故郷語句RPGをプレイ';
+          gameLink.setAttribute('aria-label', '故郷語句RPGをプレイする');
+          gameLink.dataset.patched = '1';
+        }
+
+        // 第3時：フィルタリングされやすい動画・Wikipedia等を使わず、同一GitHub内の資料へ一本化
+        doc.querySelectorAll('.background-links').forEach(box => {
+          if (box.dataset.patched === '1') return;
+          box.innerHTML = `
+            <a class="background-link" href="./background.html" target="_blank" rel="noopener noreferrer">
+              <strong>『故郷』時代背景ミニ資料を開く</strong>
+              <span>辛亥革命・中華民国・軍閥時代・魯迅と『故郷』を約3分で確認</span>
+            </a>`;
+          box.dataset.patched = '1';
+        });
       };
 
-      updateGameButton();
-      const observer = new MutationObserver(updateGameButton);
+      patchPage();
+      const observer = new MutationObserver(patchPage);
       observer.observe(doc.body, { childList: true, subtree: true });
     });
   </script>
