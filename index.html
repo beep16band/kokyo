@@ -4,11 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>『故郷』学習ホーム</title>
-  <meta http-equiv="refresh" content="0; url=./%E6%95%85%E9%83%B7%E5%AD%A6%E7%BF%92%E3%83%9B%E3%83%BC%E3%83%A0v3.html">
-  <script>location.replace('./%E6%95%85%E9%83%B7%E5%AD%A6%E7%BF%92%E3%83%9B%E3%83%BC%E3%83%A0v3.html');</script>
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+    iframe { display: block; width: 100%; height: 100%; border: 0; }
+  </style>
 </head>
 <body>
-  <p>学習ホームへ移動します。</p>
-  <p><a href="./%E6%95%85%E9%83%B7%E5%AD%A6%E7%BF%92%E3%83%9B%E3%83%BC%E3%83%A0v3.html">表示されない場合はこちら</a></p>
+  <iframe id="kokyoHome" src="./%E6%95%85%E9%83%B7%E5%AD%A6%E7%BF%92%E3%83%9B%E3%83%BC%E3%83%A0v3.html" title="『故郷』学習ホーム"></iframe>
+  <script>
+    const frame = document.getElementById('kokyoHome');
+    frame.addEventListener('load', () => {
+      const doc = frame.contentDocument;
+      if (!doc) return;
+
+      const updateGameButton = () => {
+        const gameLink = doc.querySelector('.game-link');
+        if (!gameLink) return false;
+        gameLink.href = './%E6%95%85%E9%83%B7_%E8%AA%9E%E5%8F%A5RPGs2.html';
+        gameLink.removeAttribute('download');
+        gameLink.textContent = '故郷語句RPGをプレイ';
+        gameLink.setAttribute('aria-label', '故郷語句RPGをプレイする');
+        return true;
+      };
+
+      updateGameButton();
+      const observer = new MutationObserver(updateGameButton);
+      observer.observe(doc.body, { childList: true, subtree: true });
+    });
+  </script>
 </body>
 </html>
