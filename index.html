@@ -1,49 +1,13 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>『故郷』学習ホーム</title>
-  <style>
-    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
-    iframe { display: block; width: 100%; height: 100%; border: 0; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>『故郷』学習ホーム</title>
+<meta http-equiv="refresh" content="0; url=./故郷学習ホームv3.html">
+<script>location.replace("./故郷学習ホームv3.html");</script>
 </head>
 <body>
-  <iframe id="kokyoHome" src="./%E6%95%85%E9%83%B7%E5%AD%A6%E7%BF%92%E3%83%9B%E3%83%BC%E3%83%A0v3.html" title="『故郷』学習ホーム"></iframe>
-  <script>
-    const frame = document.getElementById('kokyoHome');
-    frame.addEventListener('load', () => {
-      const doc = frame.contentDocument;
-      if (!doc) return;
-
-      const patchPage = () => {
-        // 第2時：ダウンロードではなくGitHub Pages上でRPGを直接起動
-        const gameLink = doc.querySelector('.game-link');
-        if (gameLink && gameLink.dataset.patched !== '1') {
-          gameLink.href = './%E6%95%85%E9%83%B7_%E8%AA%9E%E5%8F%A5RPGs2.html';
-          gameLink.removeAttribute('download');
-          gameLink.textContent = '故郷語句RPGをプレイ';
-          gameLink.setAttribute('aria-label', '故郷語句RPGをプレイする');
-          gameLink.dataset.patched = '1';
-        }
-
-        // 第3時：フィルタリングされやすい動画・Wikipedia等を使わず、同一GitHub内の資料へ一本化
-        doc.querySelectorAll('.background-links').forEach(box => {
-          if (box.dataset.patched === '1') return;
-          box.innerHTML = `
-            <a class="background-link" href="./background.html" target="_blank" rel="noopener noreferrer">
-              <strong>『故郷』時代背景ミニ資料を開く</strong>
-              <span>辛亥革命・中華民国・軍閥時代・魯迅と『故郷』を約3分で確認</span>
-            </a>`;
-          box.dataset.patched = '1';
-        });
-      };
-
-      patchPage();
-      const observer = new MutationObserver(patchPage);
-      observer.observe(doc.body, { childList: true, subtree: true });
-    });
-  </script>
+<p><a href="./故郷学習ホームv3.html">『故郷』学習ホームを開く</a></p>
 </body>
 </html>

@@ -133,41 +133,23 @@
       font-weight:800;
     }
     .class-link:hover, .class-link:focus-visible { color:#fff; background:var(--blue); outline:none; }
-    .game-link {
+    .resource-stack { display:grid; gap:12px; }
+    .resource-label { margin:0!important; font-weight:800; }
+    .resource-button {
       display:block;
-      margin-top:10px;
-      padding:11px 12px;
-      border:1px solid #d5a642;
-      border-radius:9px;
-      color:#5c4100;
-      background:#fff5d8;
+      padding:13px 14px;
+      border-radius:10px;
+      color:#fff;
+      background:var(--blue);
       text-align:center;
       text-decoration:none;
-      font-weight:800;
+      font-weight:900;
+      line-height:1.45;
     }
-    .game-link:hover, .game-link:focus-visible { color:#fff; background:#9a6d0a; outline:none; }
-    .background-links { display:grid; gap:9px; }
-    .resource-subtitle { margin:16px 0 8px; color:var(--ink); font-weight:800; }
-    .always-resource {
-      margin-top:14px;
-      padding:12px;
-      border:2px solid var(--gold);
-      border-radius:10px;
-      background:#fff9e8;
-    }
-    .always-resource p { margin:0 0 8px; color:var(--ink); font-weight:800; }
-    .background-link {
-      display:block;
-      padding:11px 12px;
-      border:1px solid #c9d9e6;
-      border-radius:9px;
-      color:var(--blue);
-      background:#f8fbfd;
-      text-decoration:none;
-    }
-    .background-link strong { display:block; }
-    .background-link span { display:block; margin-top:2px; color:var(--muted); font-size:.84rem; font-weight:400; }
-    .background-link:hover, .background-link:focus-visible { border-color:var(--gold); background:#fff9e8; outline:none; }
+    .resource-button.game { background:#8a4b20; }
+    .resource-button.background { background:#376b52; }
+    .resource-button:hover, .resource-button:focus-visible { filter:brightness(1.1); outline:3px solid rgba(213,166,66,.55); }
+    .resource-note { display:block; margin-top:3px; font-size:.82rem; font-weight:500; opacity:.9; }
     .progress { height:7px; margin-top:26px; background:rgba(255,255,255,.18); border-radius:99px; overflow:hidden; }
     #progressBar { display:block; height:100%; width:20%; background:var(--gold); transition:width .3s ease; }
     section { margin-top:64px; }
@@ -263,9 +245,7 @@
         <h2 id="todayTitle">作品との出会い</h2>
         <p id="todayQuestion">二十年ぶりに帰った「私」は、故郷をどう感じたのだろう。</p>
         <div class="form-panel" id="formPanel">
-          <p id="todayResourceTitle">第1時のフォーム</p>
-          <div class="class-links" id="todayFormLinks"></div>
-          <div id="todayGameLink"></div>
+          <div id="todayResources"></div>
         </div>
         <div class="progress" aria-label="単元の進み具合"><span id="progressBar"></span></div>
       </aside>
@@ -316,12 +296,11 @@
       { className:"3組", url:"https://docs.google.com/spreadsheets/d/1CG0QjPCH16PIUbitHGjbXLPhwIgEcnRD/edit?usp=drive_link&ouid=107734067995524555577&rtpof=true&sd=true" },
       { className:"4組", url:"https://docs.google.com/spreadsheets/d/1f7NhTqqbA1n22wT6yX6xe_OZWt9LNgiU/edit?usp=drive_link&ouid=107734067995524555577&rtpof=true&sd=true" }
     ];
-    const gameDownloadUrl = "kokyo-rpg.html";
-    const backgroundResources = [
-      { title:"① 辛亥革命と中華民国の成立", note:"清朝が滅び、中華民国が成立するまでを文章と図で確認", url:"https://www.try-it.jp/chapters-11988/lessons-12003/" },
-      { title:"② 中華民国が抱えた苦悩", note:"袁世凱の独裁と、その後の政治の混乱を文章で確認", url:"https://www.try-it.jp/chapters-11988/lessons-12003/point-2/" },
-      { title:"③ 辛亥革命を詳しく調べる", note:"人物・出来事・その後の流れを詳しく確認したいときに使用", url:"https://ja.wikipedia.org/wiki/%E8%BE%9B%E4%BA%A5%E9%9D%A9%E5%91%BD" },
-      { title:"④ 軍閥時代を詳しく調べる", note:"中央の力が弱まり、各地の軍人が争った時代を確認", url:"https://ja.wikipedia.org/wiki/%E8%BB%8D%E9%96%A5%E6%99%82%E4%BB%A3" }
+    const lessonFourSheets = [
+      { className:"1組", url:"https://docs.google.com/spreadsheets/d/19trQg3y8Y5dlICjelv_qsNBiOWvSFUlyLF6zKcimKQ4/edit?usp=drivesdk" },
+      { className:"2組", url:"https://docs.google.com/spreadsheets/d/1ifZY0tQlzsKpMzxV6vsQI4Oodq9xp_yoKnSzV6gF2mw/edit?usp=drivesdk" },
+      { className:"3組", url:"https://docs.google.com/spreadsheets/d/1odeQDuHaKL319JajV_O4vIX0Xd8eYB8mViHfqKlD9T8/edit?usp=drivesdk" },
+      { className:"4組", url:"https://docs.google.com/spreadsheets/d/1_SWG2S4wpuHixQYu3SD88SKOAneFTADagtzFcrrUYQE/edit?usp=drivesdk" }
     ];
     const lessons = [
       { title:"作品との出会い", question:"二十年ぶりに帰った「私」は、故郷をどう感じたのだろう。", action:"音声を聞きながら前半を読み、気になる表現に線を引く。" },
@@ -335,24 +314,36 @@
     const saved = Number(localStorage.getItem("kokyo-current-lesson"));
     let current = Number.isInteger(saved) && saved >= 0 && saved < 5 ? saved : 0;
 
-    function formButtons() {
-      return lessonOneForms.map(form => `<a class="class-link" href="${form.url}" target="_blank" rel="noopener noreferrer" aria-label="${form.className}の第1時フォームを開く">${form.className}</a>`).join("");
+    function classButtons(items, label) {
+      return items.map(item => `<a class="class-link" href="${item.url}" target="_blank" rel="noopener noreferrer" aria-label="${item.className}の${label}を開く">${item.className}</a>`).join("");
     }
 
-    function sheetButtons() {
-      return lessonTwoSheets.map(sheet => `<a class="class-link" href="${sheet.url}" target="_blank" rel="noopener noreferrer" aria-label="${sheet.className}の第2時スプレッドシートを開く">${sheet.className}</a>`).join("");
-    }
-
-    function lessonThreeSheetButtons() {
-      return lessonThreeSheets.map(sheet => `<a class="class-link" href="${sheet.url}" target="_blank" rel="noopener noreferrer" aria-label="${sheet.className}の第3時スプレッドシートを開く">${sheet.className}</a>`).join("");
-    }
-
-    function gameButton() {
-      return `<a class="game-link" href="${gameDownloadUrl}" download="故郷_語句RPGs2.html" aria-label="故郷のゲームHTMLをダウンロードする">ゲームHTMLをダウンロード</a>`;
-    }
-
-    function backgroundButtons() {
-      return `<div class="background-links">${backgroundResources.map(resource => `<a class="background-link" href="${resource.url}" target="_blank" rel="noopener noreferrer"><strong>${resource.title}</strong><span>${resource.note}</span></a>`).join("")}</div>`;
+    function resourceMarkup(index) {
+      if (index === 0) {
+        return `<div class="resource-stack"><p class="resource-label">第1時のフォーム</p><div class="class-links">${classButtons(lessonOneForms, "第1時フォーム")}</div></div>`;
+      }
+      if (index === 1) {
+        return `<div class="resource-stack">
+          <a class="resource-button game" href="./故郷_語句RPGs2.html" target="_blank" rel="noopener noreferrer" aria-label="故郷語句RPGをプレイする">故郷語句RPGをプレイ<span class="resource-note">クリックすると、すぐにゲームが始まります</span></a>
+          <p class="resource-label">第2時の共同編集シート</p>
+          <div class="class-links">${classButtons(lessonTwoSheets, "第2時共同編集シート")}</div>
+        </div>`;
+      }
+      if (index === 2) {
+        return `<div class="resource-stack">
+          <a class="resource-button background" href="./background.html" target="_blank" rel="noopener noreferrer" aria-label="故郷の時代背景ミニ資料を開く">『故郷』時代背景ミニ資料を開く<span class="resource-note">辛亥革命・中華民国・農村の状況を約3分で確認</span></a>
+          <p class="resource-label">第3時の共同編集シート</p>
+          <div class="class-links">${classButtons(lessonThreeSheets, "第3時共同編集シート")}</div>
+        </div>`;
+      }
+      if (index === 3) {
+        return `<div class="resource-stack">
+          <a class="resource-button background" href="./background.html" target="_blank" rel="noopener noreferrer" aria-label="故郷の時代背景ミニ資料を開く">『故郷』時代背景ミニ資料を開く<span class="resource-note">「厚い壁」と「希望」を時代背景から考える手がかりに</span></a>
+          <p class="resource-label">第4時の共同編集シート</p>
+          <div class="class-links">${classButtons(lessonFourSheets, "第4時共同編集シート")}</div>
+        </div>`;
+      }
+      return "";
     }
 
     function renderCards() {
@@ -361,13 +352,10 @@
           <span class="lesson-no">第${index + 1}時</span>
           <h3>${lesson.title}</h3>
           <p>${lesson.question}</p>
-          ${index === 2 ? `<div class="always-resource"><p>第3時の共同編集シート｜自分のクラスを選ぶ</p><div class="class-links">${lessonThreeSheetButtons()}</div></div>` : ""}
           <button type="button" aria-expanded="false" data-index="${index}">学習内容を見る</button>
           <div class="lesson-detail">
             <p>${lesson.action}</p>
-            ${index === 0 ? `<div class="class-links" style="margin-top:12px">${formButtons()}</div>` : ""}
-            ${index === 1 ? `<div class="class-links" style="margin-top:12px">${sheetButtons()}</div>${gameButton()}` : ""}
-            ${index === 2 ? `<p class="resource-subtitle">時代背景資料</p>${backgroundButtons()}` : ""}
+            ${index <= 3 ? `<div style="margin-top:14px">${resourceMarkup(index)}</div>` : ""}
           </div>
         </article>`).join("");
       grid.querySelectorAll("button").forEach(button => {
@@ -387,10 +375,8 @@
       document.getElementById("todayTitle").textContent = lesson.title;
       document.getElementById("todayQuestion").textContent = lesson.question;
       const formPanel = document.getElementById("formPanel");
-      formPanel.hidden = index > 2;
-      document.getElementById("todayResourceTitle").textContent = index === 0 ? "第1時のフォーム" : index === 1 ? "第2時の共同編集シート" : "第3時の共同編集シート";
-      document.getElementById("todayFormLinks").innerHTML = index === 0 ? formButtons() : index === 1 ? sheetButtons() : index === 2 ? lessonThreeSheetButtons() : "";
-      document.getElementById("todayGameLink").innerHTML = index === 1 ? gameButton() : index === 2 ? `<p class="resource-subtitle">時代背景資料</p>${backgroundButtons()}` : "";
+      formPanel.hidden = index > 3;
+      document.getElementById("todayResources").innerHTML = resourceMarkup(index);
       document.getElementById("progressBar").style.width = `${(index + 1) * 20}%`;
       localStorage.setItem("kokyo-current-lesson", String(index));
       renderCards();
