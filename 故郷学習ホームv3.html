@@ -302,6 +302,12 @@
       { className:"3組", url:"https://docs.google.com/spreadsheets/d/1odeQDuHaKL319JajV_O4vIX0Xd8eYB8mViHfqKlD9T8/edit?usp=drivesdk" },
       { className:"4組", url:"https://docs.google.com/spreadsheets/d/1_SWG2S4wpuHixQYu3SD88SKOAneFTADagtzFcrrUYQE/edit?usp=drivesdk" }
     ];
+    const lessonFiveSheets = [
+      { className:"1組", url:"https://docs.google.com/spreadsheets/d/1QMTBLKaM4UIjaPjKhwYD5QxPApjHzE5O79-iM4FaWAY/edit?usp=drivesdk" },
+      { className:"2組", url:"https://docs.google.com/spreadsheets/d/1gTOdRzDv8lMPh_pUrEAff7IJ8bZSVJGQZBHAVDk0pE4/edit?usp=drivesdk" },
+      { className:"3組", url:"https://docs.google.com/spreadsheets/d/1fB5U7xNryJ0ZRszOoZYZ35DxYdZlhVhjbtoJNUS4vyM/edit?usp=drivesdk" },
+      { className:"4組", url:"https://docs.google.com/spreadsheets/d/1hW_QA_jIBC5C0LhOViCuKpF3jFlSNMO17qyDGNlNK3g/edit?usp=drivesdk" }
+    ];
     const lessons = [
       { title:"作品との出会い", question:"二十年ぶりに帰った「私」は、故郷をどう感じたのだろう。", action:"音声を聞きながら前半を読み、気になる表現に線を引く。" },
       { title:"物語の全体をつかむ", question:"期待していた再会は、どのような再会になったのだろう。", action:"最後まで読み、現在と二十年前の出来事を整理する。" },
@@ -343,6 +349,14 @@
           <div class="class-links">${classButtons(lessonFourSheets, "第4時共同編集シート")}</div>
         </div>`;
       }
+      if (index === 4) {
+        return `<div class="resource-stack">
+          <p class="resource-label">第4時の考えを振り返る</p>
+          <div class="class-links">${classButtons(lessonFourSheets, "第4時共同編集シート")}</div>
+          <p class="resource-label">第5時の共同編集・最終批評シート</p>
+          <div class="class-links">${classButtons(lessonFiveSheets, "第5時共同編集・最終批評シート")}</div>
+        </div>`;
+      }
       return "";
     }
 
@@ -355,7 +369,7 @@
           <button type="button" aria-expanded="false" data-index="${index}">学習内容を見る</button>
           <div class="lesson-detail">
             <p>${lesson.action}</p>
-            ${index <= 3 ? `<div style="margin-top:14px">${resourceMarkup(index)}</div>` : ""}
+            ${index <= 4 ? `<div style="margin-top:14px">${resourceMarkup(index)}</div>` : ""}
           </div>
         </article>`).join("");
       grid.querySelectorAll("button").forEach(button => {
@@ -375,7 +389,7 @@
       document.getElementById("todayTitle").textContent = lesson.title;
       document.getElementById("todayQuestion").textContent = lesson.question;
       const formPanel = document.getElementById("formPanel");
-      formPanel.hidden = index > 3;
+      formPanel.hidden = index > 4;
       document.getElementById("todayResources").innerHTML = resourceMarkup(index);
       document.getElementById("progressBar").style.width = `${(index + 1) * 20}%`;
       localStorage.setItem("kokyo-current-lesson", String(index));
