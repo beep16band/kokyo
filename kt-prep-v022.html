@@ -105,7 +105,7 @@
  function save(){localStorage.setItem(SAVE,JSON.stringify({name:p.name,story}))}
  function message(t){if(!dialogue.active)msg.textContent=t}
  function page(){return dialogue.pages[dialogue.index]}
- function renderDialogue(){msg.textContent=page().text.slice(0,dialogue.shown)}
+ function renderDialogue(){const current=page();msg.textContent=current.text.slice(0,dialogue.shown)+(dialogue.shown>=current.text.length?'\n▼':'')}
  function playDialogue(pages,onClose){dialogue={active:true,pages:pages.map(x=>typeof x==='string'?{text:x}:x),index:0,shown:0,nextAt:performance.now()+180,onClose:onClose||null};msg.textContent=''}
  function advanceDialogue(){if(!dialogue.active)return false;const current=page();if(dialogue.shown<current.text.length){dialogue.shown=current.text.length;renderDialogue();return true}if(current.after)current.after();dialogue.index++;if(dialogue.index<dialogue.pages.length){dialogue.shown=0;dialogue.nextAt=performance.now()+80;msg.textContent='';return true}const done=dialogue.onClose;dialogue={active:false,pages:[],index:0,shown:0,nextAt:0,onClose:null};if(done)done();return true}
  function tickDialogue(now){if(!dialogue.active||now<dialogue.nextAt)return;const current=page(),ch=current.text[dialogue.shown];if(ch===undefined)return;dialogue.shown++;renderDialogue();dialogue.nextAt=now+(/[。、…]/.test(ch)?95:22)}
@@ -155,9 +155,10 @@
  function begin(){if(starting)return;starting=true;p.name=document.querySelector('#name').value.trim()||'主人公';const button=document.querySelector('#start');button.disabled=true;button.textContent='読み込み中…';Promise.all([waitForImage(room),waitForImage(hall),waitForImage(stairs),waitForImage(floor1),waitForImage(library),waitForImage(rightHall),waitForImage(rightStairs),waitForImage(hero),waitForImage(boy),waitForImage(glasses),waitForImage(girlRight),waitForImage(girlLeft)]).then(result=>{if(result.every(Boolean))beginGame();else{starting=false;button.disabled=false;button.textContent='冒険を始める';message('画像を読み込めませんでした。通信状態を確認して、もう一度試してください。')}})}
  document.querySelector('#start').onclick=begin;
  function controlKey(e){return ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)?e.key:['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)?e.code:e.key}
- addEventListener('keydown',e=>{const k=controlKey(e);if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' ','z','Z'].includes(k))e.preventDefault();keys[k]=true;if(/^z$/i.test(k))keys.z=true;if(k===' ')inspect()});
+ addEventListener('keydown',e=>{const k=controlKey(e);if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' ','Spacebar','Enter','z','Z'].includes(k))e.preventDefault();keys[k]=true;if(/^z$/i.test(k))keys.z=true;if(k===' '||k==='Spacebar'||k==='Enter')inspect()});
  addEventListener('keyup',e=>{const k=controlKey(e);keys[k]=false;if(/^z$/i.test(k))keys.z=false});
  document.querySelectorAll('[data-key]').forEach(b=>{const k=b.dataset.key;b.addEventListener('pointerdown',e=>{e.preventDefault();if(k===' ')inspect();else keys[k]=true});['pointerup','pointercancel','pointerleave'].forEach(n=>b.addEventListener(n,()=>keys[k]=false))});
+ cv.addEventListener('pointerup',e=>{if(dialogue.active){e.preventDefault();inspect()}});
  restore();setInterval(move,16);draw();
 })();
 </script>
