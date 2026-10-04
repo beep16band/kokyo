@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>コトバの塔 ― 第1章 v0.22</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#060914;color:#f9f0d1;font-family:"Yu Gothic",system-ui,sans-serif}body{display:grid;place-items:center;overflow:hidden}#app{width:min(100vw,1060px);height:min(100vh,780px);display:grid;grid-template-rows:46px minmax(0,1fr) 82px;background:#07142b;border:4px solid #d7ba64;box-shadow:0 0 0 4px #26395e,0 18px 42px #000b}header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px;border-bottom:2px solid #d7ba64;background:linear-gradient(90deg,#101a3c,#203a62,#101a3c)}header b{color:#fff0a9;letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#hud{font-size:13px;white-space:nowrap}#field{display:block;width:100%;height:100%;min-height:0;background:#111827;image-rendering:pixelated;touch-action:none}#message{margin:8px 12px;padding:8px 13px;min-height:56px;border:3px solid #eee1bb;box-shadow:inset 0 0 0 2px #50617b;background:#071127;color:#fff;line-height:1.45;font-size:14px;overflow:auto}#title{position:absolute;inset:46px 0 82px;z-index:4;display:grid;place-items:center;background:#050c1dde}.panel{width:min(88%,620px);padding:23px 28px;text-align:center;border:4px solid #d7ba64;box-shadow:0 0 0 4px #314973,0 15px 36px #000a;background:linear-gradient(#172c58,#0c1838)}h1{margin:0;color:#fff0a9;font-size:30px;line-height:1.25;text-shadow:2px 2px #101327}.panel p{line-height:1.7}input,button{font:inherit;border-radius:0}input{width:min(100%,260px);padding:9px;background:#fcf4dc;color:#18223a;border:2px solid #c9a858}button{padding:9px 16px;color:#fff;background:#315a90;border:2px solid #f3d889;box-shadow:inset 0 0 0 1px #15294b;cursor:pointer}button:hover,button:focus{background:#4d7bb8}.hint{color:#cbd9ea;font-size:12px}.touch{display:none}@media(max-width:600px){body{display:block;overflow:hidden}#app{width:100vw;height:100dvh;border:0;box-shadow:none;grid-template-rows:42px minmax(0,1fr) 105px}header{padding:0 8px;font-size:12px}header b{max-width:62vw}#hud{font-size:10px}#message{margin:6px 7px;padding:7px 8px;font-size:12px}.panel{width:calc(100% - 26px);padding:18px 13px}.panel h1{font-size:23px}.panel p{font-size:14px;margin:8px 0}.touch{position:absolute;right:8px;bottom:112px;z-index:3;display:grid;grid-template-columns:36px 36px 36px;grid-template-rows:36px 36px 36px;opacity:.84}.touch button{padding:0;font-size:18px;background:#183d68cc}.touch .up{grid-column:2}.touch .left{grid-column:1;grid-row:2}.touch .ok{grid-column:2;grid-row:2;font-size:12px}.touch .right{grid-column:3;grid-row:2}.touch .down{grid-column:2;grid-row:3}#title{inset:42px 0 105px;overflow:auto}}
+</style>
+</head>
+<body>
+<main id="app">
+ <header><b>コトバの塔　― 第1章　言い回しの庭 ―</b><span id="hud">Lv 1　HP 30/30</span></header>
+ <canvas id="field" width="960" height="640" aria-label="3年教室"></canvas>
+ <div id="message">矢印キーで移動。Spaceで調べる。机や棚は通り抜けられない。</div>
+ <section id="title"><div class="panel"><h1>コトバの塔<br>― 入試国語 最終試練 ―</h1><p>入試前の冬。学校から少しずつ、<br>「言葉」が消え始めた。</p><input id="name" maxlength="12" placeholder="ニックネーム"><p><button id="start">冒険を始める</button></p><div class="hint">第1章・3年教室 完成品質版<br>ブラウザに自動保存／外部通信なし</div></div></section>
+ <div class="touch" aria-label="タッチ操作"><button class="up" data-key="ArrowUp">▲</button><button class="left" data-key="ArrowLeft">◀</button><button class="ok" data-key=" ">調べる</button><button class="right" data-key="ArrowRight">▶</button><button class="down" data-key="ArrowDown">▼</button></div>
+</main>
+<script>
+(()=>{
+ const cv=document.querySelector('#field'),g=cv.getContext('2d'),msg=document.querySelector('#message'),hud=document.querySelector('#hud'),title=document.querySelector('#title');
+ const room=new Image(),hero=new Image();room.src='assets/kotoba-tower/classroom-v3.webp';hero.src='assets/kotoba-tower/hero-v2-front.png';
+ const SAVE='kotobaTowerV022Classroom';let started=false,keys={},p={x:494,y:560,name:'',facing:'up',seenBook:false};
+ const solid=[
+  [0,0,960,168],[0,0,54,640],[906,0,54,640],[0,610,960,30],
+  [125,43,147,142],[430,183,116,112],[698,42,154,145],[324,211,117,84],[536,211,116,84],[746,211,116,84],
+  [322,317,120,98],[535,317,117,98],[746,317,117,98]
+ ];
+ const desks=[[324,211,117,84],[536,211,116,84],[746,211,116,84],[322,317,120,98],[535,317,117,98],[746,317,117,98]];
+ function restore(){try{let q=JSON.parse(localStorage.getItem(SAVE));if(q&&typeof q.x==='number')p={...p,...q};}catch(e){}document.querySelector('#name').value=p.name||''}
+ function save(){localStorage.setItem(SAVE,JSON.stringify(p))}
+ function text(t){msg.textContent=t}
+ function blocked(x,y){if(x<74||x>890||y<184||y>588)return true;return solid.some(r=>x>r[0]-13&&x<r[0]+r[2]+13&&y>r[1]-8&&y<r[1]+r[3]+12)}
+ function drawHero(){const w=39,h=60;g.save();g.globalAlpha=.3;g.fillStyle='#172033';g.beginPath();g.ellipse(p.x,p.y+2,14,5,0,0,Math.PI*2);g.fill();g.globalAlpha=1;g.drawImage(hero,0,0,hero.naturalWidth,hero.naturalHeight,p.x-w/2,p.y-h,w,h);g.restore()}
+ function occlude(){for(const r of desks){if(p.x>r[0]-26&&p.x<r[0]+r[2]+26&&p.y<r[1]+r[3]-6){let sx=r[0]*.5,sy=r[1]*.5,sw=r[2]*.5,sh=r[3]*.5;g.drawImage(room,sx,sy,sw,sh,r[0],r[1],r[2],r[3])}}}
+ function draw(){g.clearRect(0,0,960,640);if(room.complete&&room.naturalWidth){g.drawImage(room,0,0,room.naturalWidth,room.naturalHeight,0,0,960,640);drawHero();occlude()}else{g.fillStyle='#30251e';g.fillRect(0,0,960,640)}hud.textContent='Lv 1　HP 30/30　'+(p.seenBook?'記録帳 1':'');requestAnimationFrame(draw)}
+ function setFace(dx,dy){if(Math.abs(dx)>Math.abs(dy))p.facing=dx>0?'right':'left';else p.facing=dy>0?'down':'up'}
+ function move(){if(!started)return;let d=keys.z?5.2:2.65,dx=(keys.ArrowRight?d:0)-(keys.ArrowLeft?d:0),dy=(keys.ArrowDown?d:0)-(keys.ArrowUp?d:0);if(!dx&&!dy)return;setFace(dx,dy);let nx=p.x+dx,ny=p.y+dy;if(!blocked(nx,p.y))p.x=nx;if(!blocked(p.x,ny))p.y=ny}
+ function inspect(){if(!started)return;let book=Math.hypot(p.x-500,p.y-214);let westDoor=p.x<100&&p.y>235&&p.y<410;if(book<112){p.seenBook=true;save();text('古い本「言葉を失った者は、やがて考える力を失う。」\n本は淡く光り、ことばの記録帳へと姿を変えた。');return}if(westDoor){text('廊下の先から、言葉が消えたような静けさがする。図書室へ向かおう。');return}if(p.x<290&&p.y<215){text('本棚には、何度も読まれた国語辞典が並んでいる。');return}if(p.x>680&&p.y<215){text('窓の外には、入試前の澄んだ冬空が広がっている。');return}text('教室は静かだ。けれど、掲示物からいくつかの言葉が消えている。')}
+ function begin(){p.name=document.querySelector('#name').value.trim()||'ことば勇者';started=true;title.style.display='none';save();text('先生「一番怖いのは、知らないことではない。知っているつもりになることだ。」\n古い本を調べてみよう。')}
+ document.querySelector('#start').onclick=begin;
+ addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' ','z','Z'].includes(e.key))e.preventDefault();keys[e.key]=true;if(/z/i.test(e.key))keys.z=true;if(e.key===' ')inspect()});
+ addEventListener('keyup',e=>{keys[e.key]=false;if(/z/i.test(e.key))keys.z=false});
+ document.querySelectorAll('[data-key]').forEach(b=>{let k=b.dataset.key;b.addEventListener('pointerdown',e=>{e.preventDefault();if(k===' ')inspect();else keys[k]=true});['pointerup','pointercancel','pointerleave'].forEach(n=>b.addEventListener(n,()=>keys[k]=false))});
+ restore();setInterval(move,16);draw();
+})();
+</script>
+</body>
+</html>
