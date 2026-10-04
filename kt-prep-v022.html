@@ -18,9 +18,9 @@
 </main>
 <script>
 (()=>{
- const cv=document.querySelector('#field'),g=cv.getContext('2d'),msg=document.querySelector('#message'),hud=document.querySelector('#hud'),title=document.querySelector('#title');
- const room=new Image(),hero=new Image();room.src='assets/kotoba-tower/classroom-v3.webp';hero.src='assets/kotoba-tower/hero-v2-front.png';
- const SAVE='kotobaTowerV022Classroom';let started=false,keys={},p={x:494,y:560,name:'',facing:'up',seenBook:false};
+ const cv=document.querySelector('#field'),g=cv.getContext('2d'),msg=document.querySelector('#message'),hud=document.querySelector('#hud'),title=document.querySelector('#title');g.imageSmoothingEnabled=false;
+ const room=new Image(),hero=new Image();room.src='assets/kotoba-tower/classroom-v3.webp';hero.src='assets/kotoba-tower/hero-classroom-v3.webp';
+ const SAVE='kotobaTowerV022Classroom';let started=false,keys={},p={x:494,y:560,name:'',facing:'up',moving:false,seenBook:false};
  const solid=[
   [0,0,960,168],[0,0,54,640],[906,0,54,640],[0,610,960,30],
   [125,43,147,142],[430,183,116,112],[698,42,154,145],[324,211,117,84],[536,211,116,84],[746,211,116,84],
@@ -31,11 +31,11 @@
  function save(){localStorage.setItem(SAVE,JSON.stringify(p))}
  function text(t){msg.textContent=t}
  function blocked(x,y){if(x<74||x>890||y<184||y>588)return true;return solid.some(r=>x>r[0]-13&&x<r[0]+r[2]+13&&y>r[1]-8&&y<r[1]+r[3]+12)}
- function drawHero(){const w=39,h=60;g.save();g.globalAlpha=.3;g.fillStyle='#172033';g.beginPath();g.ellipse(p.x,p.y+2,14,5,0,0,Math.PI*2);g.fill();g.globalAlpha=1;g.drawImage(hero,0,0,hero.naturalWidth,hero.naturalHeight,p.x-w/2,p.y-h,w,h);g.restore()}
+ function drawHero(now){const running=keys.z&&p.moving,frame=p.moving?1+Math.floor(now/(running?78:145))%2:0,row={down:0,right:1,left:2,up:3}[p.facing]??0,cell=362,size=120,bob=p.moving?Math.abs(Math.sin(now/(running?78:145)))*(running?2.2:1.1):0;g.save();g.globalAlpha=.26;g.fillStyle='#172033';g.beginPath();g.ellipse(p.x,p.y+2,running?16:14,running?4:5,0,0,Math.PI*2);g.fill();g.globalAlpha=1;g.drawImage(hero,frame*cell,row*cell,cell,cell,p.x-size/2,p.y-size+4-bob,size,size);g.restore()}
  function occlude(){for(const r of desks){if(p.x>r[0]-26&&p.x<r[0]+r[2]+26&&p.y<r[1]+r[3]-6){let sx=r[0]*.5,sy=r[1]*.5,sw=r[2]*.5,sh=r[3]*.5;g.drawImage(room,sx,sy,sw,sh,r[0],r[1],r[2],r[3])}}}
- function draw(){g.clearRect(0,0,960,640);if(room.complete&&room.naturalWidth){g.drawImage(room,0,0,room.naturalWidth,room.naturalHeight,0,0,960,640);drawHero();occlude()}else{g.fillStyle='#30251e';g.fillRect(0,0,960,640)}hud.textContent='Lv 1　HP 30/30　'+(p.seenBook?'記録帳 1':'');requestAnimationFrame(draw)}
+ function draw(now){g.clearRect(0,0,960,640);if(room.complete&&room.naturalWidth&&hero.complete&&hero.naturalWidth){g.drawImage(room,0,0,room.naturalWidth,room.naturalHeight,0,0,960,640);drawHero(now);occlude()}else{g.fillStyle='#30251e';g.fillRect(0,0,960,640)}hud.textContent='Lv 1　HP 30/30　'+(p.seenBook?'記録帳 1':'');requestAnimationFrame(draw)}
  function setFace(dx,dy){if(Math.abs(dx)>Math.abs(dy))p.facing=dx>0?'right':'left';else p.facing=dy>0?'down':'up'}
- function move(){if(!started)return;let d=keys.z?5.2:2.65,dx=(keys.ArrowRight?d:0)-(keys.ArrowLeft?d:0),dy=(keys.ArrowDown?d:0)-(keys.ArrowUp?d:0);if(!dx&&!dy)return;setFace(dx,dy);let nx=p.x+dx,ny=p.y+dy;if(!blocked(nx,p.y))p.x=nx;if(!blocked(p.x,ny))p.y=ny}
+ function move(){p.moving=false;if(!started)return;let d=keys.z?5.2:2.65,dx=(keys.ArrowRight?d:0)-(keys.ArrowLeft?d:0),dy=(keys.ArrowDown?d:0)-(keys.ArrowUp?d:0);if(!dx&&!dy)return;setFace(dx,dy);let nx=p.x+dx,ny=p.y+dy,ox=p.x,oy=p.y;if(!blocked(nx,p.y))p.x=nx;if(!blocked(p.x,ny))p.y=ny;p.moving=p.x!==ox||p.y!==oy}
  function inspect(){if(!started)return;let book=Math.hypot(p.x-500,p.y-214);let westDoor=p.x<100&&p.y>235&&p.y<410;if(book<112){p.seenBook=true;save();text('古い本「言葉を失った者は、やがて考える力を失う。」\n本は淡く光り、ことばの記録帳へと姿を変えた。');return}if(westDoor){text('廊下の先から、言葉が消えたような静けさがする。図書室へ向かおう。');return}if(p.x<290&&p.y<215){text('本棚には、何度も読まれた国語辞典が並んでいる。');return}if(p.x>680&&p.y<215){text('窓の外には、入試前の澄んだ冬空が広がっている。');return}text('教室は静かだ。けれど、掲示物からいくつかの言葉が消えている。')}
  function begin(){p.name=document.querySelector('#name').value.trim()||'ことば勇者';started=true;title.style.display='none';save();text('先生「一番怖いのは、知らないことではない。知っているつもりになることだ。」\n古い本を調べてみよう。')}
  document.querySelector('#start').onclick=begin;
