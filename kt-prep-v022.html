@@ -19,8 +19,8 @@
 <script>
 (()=>{
  const cv=document.querySelector('#field'),g=cv.getContext('2d'),msg=document.querySelector('#message'),hud=document.querySelector('#hud'),title=document.querySelector('#title');g.imageSmoothingEnabled=false;
- const room=new Image(),hall=new Image(),hero=new Image();room.src='assets/kotoba-tower/classroom-v3.webp';hall.src='assets/kotoba-tower/hallway-v3.webp';hero.src='assets/kotoba-tower/hero-classroom-v3.webp';
- const SAVE='kotobaTowerV022Classroom';
+ const room=new Image(),hall=new Image(),hero=new Image();room.src='assets/kotoba-tower/classroom-v4.webp';hall.src='assets/kotoba-tower/hallway-v3.webp';hero.src='assets/kotoba-tower/hero-classroom-v4.webp';
+ const SAVE='kotobaTowerV023School';
  const DIRECTION_ANIMATIONS=Object.freeze({
   down:Object.freeze({row:0,frames:[0,1,0,2]}),
   left:Object.freeze({row:1,frames:[0,1,0,2]}),
@@ -41,18 +41,19 @@
  function restore(){try{let q=JSON.parse(localStorage.getItem(SAVE));if(q&&typeof q.x==='number'){p={...p,...q};p.scene=q.scene==='hall'?'hall':'class';p.facingDirection=q.facingDirection||q.facing||'up';}}catch(e){}if(!safePosition(p.x,p.y)){p.x=494;p.y=560;p.scene='class';p.moving=false;p.running=false;p.facingDirection='up';}document.querySelector('#name').value=p.name||''}
  function save(){localStorage.setItem(SAVE,JSON.stringify(p))}
  function text(t){msg.textContent=t}
- function outsideBounds(x,y){return p.scene==='hall'?x<70||x>884||y<206||y>466:x<104||x>856||y<184||y>588}
+ function classDoorZone(x,y){return x>56&&x<140&&y>190&&y<400}
+ function outsideBounds(x,y){if(p.scene==='hall')return x<70||x>884||y<206||y>466;return (x<104&&!classDoorZone(x,y))||x>776||y<184||y>588}
  function activeSolid(){return p.scene==='hall'?hallSolid:classSolid}
  function insideSolid(x,y){return activeSolid().some(r=>x>r[0]-10&&x<r[0]+r[2]+10&&y>r[1]-3&&y<r[1]+r[3]+6)}
  function safePosition(x,y){return !outsideBounds(x,y)&&!insideSolid(x,y)}
  function blocked(x,y){if(outsideBounds(x,y))return true;return !insideSolid(p.x,p.y)&&insideSolid(x,y)}
- function drawHero(now){const animation=DIRECTION_ANIMATIONS[p.facingDirection]||DIRECTION_ANIMATIONS.down,period=p.running?78:145,frame=p.moving?animation.frames[Math.floor(now/period)%animation.frames.length]:animation.frames[0],cell=362,size=120;g.save();g.globalAlpha=.31;g.fillStyle='#172033';g.beginPath();g.ellipse(p.x,p.y+2,p.running?16:14,p.running?4:5,0,0,Math.PI*2);g.fill();g.filter='brightness(.91) saturate(.82) contrast(.93)';g.globalAlpha=.97;g.drawImage(hero,frame*cell,animation.row*cell,cell,cell,p.x-size/2,p.y-size+35,size,size);g.restore()}
+ function drawHero(now){const animation=DIRECTION_ANIMATIONS[p.facingDirection]||DIRECTION_ANIMATIONS.down,period=p.running?78:145,frame=p.moving?animation.frames[Math.floor(now/period)%animation.frames.length]:animation.frames[0],cell=362,size=120,footOffset=size*315/362;g.save();g.globalAlpha=.31;g.fillStyle='#172033';g.beginPath();g.ellipse(p.x,p.y+2,p.running?16:14,p.running?4:5,0,0,Math.PI*2);g.fill();g.filter='brightness(.91) saturate(.82) contrast(.93)';g.globalAlpha=.97;g.drawImage(hero,frame*cell,animation.row*cell,cell,cell,p.x-size/2,p.y-footOffset,size,size);g.restore()}
  function occlude(){for(const r of frontDesks){if(p.x>r[0]-26&&p.x<r[0]+r[2]+26&&p.y<r[1]+r[3]-6){let sx=r[0]*.5,sy=r[1]*.5,sw=r[2]*.5,sh=r[3]*.5;g.drawImage(room,sx,sy,sw,sh,r[0],r[1],r[2],r[3])}}}
  function draw(now){const background=p.scene==='hall'?hall:room;g.clearRect(0,0,960,640);if(background.complete&&background.naturalWidth&&hero.complete&&hero.naturalWidth){g.drawImage(background,0,0,background.naturalWidth,background.naturalHeight,0,0,960,640);drawHero(now);if(p.scene==='class')occlude()}else{g.fillStyle='#30251e';g.fillRect(0,0,960,640)}cv.setAttribute('aria-label',p.scene==='hall'?'校舎1階・廊下':'3年教室');hud.textContent='Lv 1　HP 30/30　'+(p.seenBook?'記録帳 1':'');requestAnimationFrame(draw)}
  function readMovementInput(){const running=!!keys.z,speed=running?5.2:2.65,dx=(keys.ArrowRight?speed:0)-(keys.ArrowLeft?speed:0),dy=(keys.ArrowDown?speed:0)-(keys.ArrowUp?speed:0);let direction=null;if(dx||dy)direction=Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up');return {dx,dy,direction,running}}
  function move(){p.moving=false;p.running=false;if(!started)return;const input=readMovementInput();if(!input.direction)return;p.facingDirection=input.direction;const ox=p.x,oy=p.y;if(!blocked(p.x+input.dx,p.y))p.x+=input.dx;if(!blocked(p.x,p.y+input.dy))p.y+=input.dy;p.moving=p.x!==ox||p.y!==oy;p.running=p.moving&&input.running}
  function changeScene(scene,x,y,words){p.scene=scene;p.x=x;p.y=y;p.moving=false;p.running=false;save();text(words)}
- function inspect(){if(!started)return;if(p.scene==='hall'){let classDoor=p.x>824&&p.y>230&&p.y<418;if(classDoor){changeScene('class',150,320,'3年教室に戻った。古い本を調べてみよう。');return}if(p.x<118){text('廊下の先に、図書室へ続く静かな気配がある。');return}if(p.x>370&&p.x<620&&p.y<245){text('掲示板の文字が、ところどころ白く抜け落ちている。');return}text('冬の光が、誰もいない廊下を長く照らしている。');return}let book=Math.hypot(p.x-480,p.y-151);let westDoor=p.x<128&&p.y>235&&p.y<410;if(book<86){p.seenBook=true;save();text('古い本「言葉を失った者は、やがて考える力を失う。」\n本は淡く光り、ことばの記録帳へと姿を変えた。');return}if(westDoor){changeScene('hall',820,330,'廊下に出た。言葉が消えたような静けさがする。');return}if(p.x<300&&p.y<205){text('本棚には、何度も読まれた国語辞典が並んでいる。');return}if(p.x>690&&p.y<205){text('窓の外には、入試前の澄んだ冬空が広がっている。');return}text('教室は静かだ。けれど、掲示物からいくつかの言葉が消えている。')}
+ function inspect(){if(!started)return;if(p.scene==='hall'){let classDoor=p.x>810&&p.y>200&&p.y<300;if(classDoor){changeScene('class',150,290,'3年教室に戻った。古い本を調べてみよう。');return}if(p.x<118){text('廊下の先に、図書室へ続く静かな気配がある。');return}if(p.x>370&&p.x<620&&p.y<245){text('掲示板の文字が、ところどころ白く抜け落ちている。');return}text('冬の光が、誰もいない廊下を長く照らしている。');return}let book=Math.hypot(p.x-480,p.y-151);let westDoor=classDoorZone(p.x,p.y);if(book<86){p.seenBook=true;save();text('古い本「言葉を失った者は、やがて考える力を失う。」\n本は淡く光り、ことばの記録帳へと姿を変えた。');return}if(westDoor){changeScene('hall',820,235,'廊下に出た。言葉が消えたような静けさがする。');return}if(p.x<300&&p.y<205){text('本棚には、何度も読まれた国語辞典が並んでいる。');return}if(p.x>690&&p.y<205){text('窓の外には、入試前の澄んだ冬空が広がっている。');return}text('教室は静かだ。けれど、掲示物からいくつかの言葉が消えている。')}
  function begin(){p.name=document.querySelector('#name').value.trim()||'ことば勇者';started=true;title.style.display='none';save();text('先生「一番怖いのは、知らないことではない。知っているつもりになることだ。」\n古い本を調べてみよう。')}
  document.querySelector('#start').onclick=begin;
  function controlKey(e){return ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)?e.key:['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)?e.code:e.key}
