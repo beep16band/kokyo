@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>コトバの塔 ― 第1章 v0.22</title>
+<title>コトバの塔 ― 第1章 v0.23</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#060914;color:#f9f0d1;font-family:"Yu Gothic",system-ui,sans-serif}body{display:grid;place-items:center;overflow:hidden}#app{width:min(100vw,1060px);height:min(100vh,780px);display:grid;grid-template-rows:46px minmax(0,1fr) 82px;background:#07142b;border:4px solid #d7ba64;box-shadow:0 0 0 4px #26395e,0 18px 42px #000b}header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px;border-bottom:2px solid #d7ba64;background:linear-gradient(90deg,#101a3c,#203a62,#101a3c)}header b{color:#fff0a9;letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#hud{font-size:13px;white-space:nowrap}#field{display:block;width:100%;height:100%;min-height:0;background:#111827;image-rendering:pixelated;touch-action:none}#message{margin:8px 12px;padding:8px 13px;min-height:56px;border:3px solid #eee1bb;box-shadow:inset 0 0 0 2px #50617b;background:#071127;color:#fff;line-height:1.45;font-size:14px;overflow:auto}#title{position:absolute;inset:46px 0 82px;z-index:4;display:grid;place-items:center;background:#050c1dde}.panel{width:min(88%,620px);padding:23px 28px;text-align:center;border:4px solid #d7ba64;box-shadow:0 0 0 4px #314973,0 15px 36px #000a;background:linear-gradient(#172c58,#0c1838)}h1{margin:0;color:#fff0a9;font-size:30px;line-height:1.25;text-shadow:2px 2px #101327}.panel p{line-height:1.7}input,button{font:inherit;border-radius:0}input{width:min(100%,260px);padding:9px;background:#fcf4dc;color:#18223a;border:2px solid #c9a858}button{padding:9px 16px;color:#fff;background:#315a90;border:2px solid #f3d889;box-shadow:inset 0 0 0 1px #15294b;cursor:pointer}button:hover,button:focus{background:#4d7bb8}.hint{color:#cbd9ea;font-size:12px}.touch{display:none}@media(max-width:600px){body{display:block;overflow:hidden}#app{width:100vw;height:100dvh;border:0;box-shadow:none;grid-template-rows:42px minmax(0,1fr) 105px}header{padding:0 8px;font-size:12px}header b{max-width:62vw}#hud{font-size:10px}#message{margin:6px 7px;padding:7px 8px;font-size:12px}.panel{width:calc(100% - 26px);padding:18px 13px}.panel h1{font-size:23px}.panel p{font-size:14px;margin:8px 0}.touch{position:absolute;right:8px;bottom:112px;z-index:3;display:grid;grid-template-columns:36px 36px 36px;grid-template-rows:36px 36px 36px;opacity:.84}.touch button{padding:0;font-size:18px;background:#183d68cc}.touch .up{grid-column:2}.touch .left{grid-column:1;grid-row:2}.touch .ok{grid-column:2;grid-row:2;font-size:12px}.touch .right{grid-column:3;grid-row:2}.touch .down{grid-column:2;grid-row:3}#title{inset:42px 0 105px;overflow:auto}}
 </style>
@@ -13,13 +13,13 @@
  <header><b>コトバの塔　― 第1章　言い回しの庭 ―</b><span id="hud">Lv 1　HP 30/30</span></header>
  <canvas id="field" width="960" height="640" aria-label="3年教室"></canvas>
  <div id="message">矢印キーで移動。Spaceで調べる。机や棚は通り抜けられない。</div>
- <section id="title"><div class="panel"><h1>コトバの塔<br>― 入試国語 最終試練 ―</h1><p>入試前の冬。学校から少しずつ、<br>「言葉」が消え始めた。</p><input id="name" maxlength="12" placeholder="ニックネーム"><p><button id="start">冒険を始める</button></p><div class="hint">第1章・3年教室 完成品質版<br>ブラウザに自動保存／外部通信なし</div></div></section>
+ <section id="title"><div class="panel"><h1>コトバの塔<br>― 入試国語 最終試練 ―</h1><p>入試前の冬。学校から少しずつ、<br>「言葉」が消え始めた。</p><input id="name" maxlength="12" placeholder="ニックネーム"><p><button id="start">冒険を始める</button></p><div class="hint">第1章・3年教室／1階廊下<br>ブラウザに自動保存／外部通信なし</div></div></section>
  <div class="touch" aria-label="タッチ操作"><button class="up" data-key="ArrowUp">▲</button><button class="left" data-key="ArrowLeft">◀</button><button class="ok" data-key=" ">調べる</button><button class="right" data-key="ArrowRight">▶</button><button class="down" data-key="ArrowDown">▼</button></div>
 </main>
 <script>
 (()=>{
  const cv=document.querySelector('#field'),g=cv.getContext('2d'),msg=document.querySelector('#message'),hud=document.querySelector('#hud'),title=document.querySelector('#title');g.imageSmoothingEnabled=false;
- const room=new Image(),hero=new Image();room.src='assets/kotoba-tower/classroom-v3.webp';hero.src='assets/kotoba-tower/hero-classroom-v3.webp';
+ const room=new Image(),hall=new Image(),hero=new Image();room.src='assets/kotoba-tower/classroom-v3.webp';hall.src='assets/kotoba-tower/hallway-v3.webp';hero.src='assets/kotoba-tower/hero-classroom-v3.webp';
  const SAVE='kotobaTowerV022Classroom';
  const DIRECTION_ANIMATIONS=Object.freeze({
   down:Object.freeze({row:0,frames:[0,1,0,2]}),
@@ -27,25 +27,32 @@
   right:Object.freeze({row:2,frames:[0,1,0,2]}),
   up:Object.freeze({row:3,frames:[0,1,0,2]})
  });
- let started=false,keys={},p={x:494,y:560,name:'',facingDirection:'up',moving:false,running:false,seenBook:false};
- const desks=[[205,210,124,99],[425,210,120,99],[645,210,120,99],[202,317,125,101],[424,317,121,101],[644,317,121,101]];
- const solid=[
+ let started=false,keys={},p={x:494,y:560,name:'',scene:'class',facingDirection:'up',moving:false,running:false,seenBook:false};
+ const frontDesks=[[205,210,124,99],[425,210,120,99],[645,210,120,99],[202,317,125,101],[424,317,121,101],[644,317,121,101]];
+ const desks=[[208,210,112,95],[426,210,112,95],[646,210,112,95],[205,319,112,92],[426,319,112,92],[646,319,112,92]];
+ const classSolid=[
   [0,0,960,174],[0,0,55,640],[905,0,55,640],[0,608,960,32],
   [120,36,153,146],[425,130,110,69],[724,43,124,132],...desks
  ];
- function restore(){try{let q=JSON.parse(localStorage.getItem(SAVE));if(q&&typeof q.x==='number'){p={...p,...q};p.facingDirection=q.facingDirection||q.facing||'up';}}catch(e){}if(!safePosition(p.x,p.y)){p.x=494;p.y=560;p.moving=false;p.running=false;p.facingDirection='up';}document.querySelector('#name').value=p.name||''}
+ const hallSolid=[
+  [0,0,960,190],[0,482,960,158],[0,0,48,640],[920,0,40,640],
+  [270,194,102,120]
+ ];
+ function restore(){try{let q=JSON.parse(localStorage.getItem(SAVE));if(q&&typeof q.x==='number'){p={...p,...q};p.scene=q.scene==='hall'?'hall':'class';p.facingDirection=q.facingDirection||q.facing||'up';}}catch(e){}if(!safePosition(p.x,p.y)){p.x=494;p.y=560;p.scene='class';p.moving=false;p.running=false;p.facingDirection='up';}document.querySelector('#name').value=p.name||''}
  function save(){localStorage.setItem(SAVE,JSON.stringify(p))}
  function text(t){msg.textContent=t}
- function outsideBounds(x,y){return x<74||x>890||y<184||y>588}
- function insideSolid(x,y){return solid.some(r=>x>r[0]-18&&x<r[0]+r[2]+18&&y>r[1]-7&&y<r[1]+r[3]+11)}
+ function outsideBounds(x,y){return p.scene==='hall'?x<70||x>884||y<206||y>466:x<104||x>856||y<184||y>588}
+ function activeSolid(){return p.scene==='hall'?hallSolid:classSolid}
+ function insideSolid(x,y){return activeSolid().some(r=>x>r[0]-10&&x<r[0]+r[2]+10&&y>r[1]-3&&y<r[1]+r[3]+6)}
  function safePosition(x,y){return !outsideBounds(x,y)&&!insideSolid(x,y)}
  function blocked(x,y){if(outsideBounds(x,y))return true;return !insideSolid(p.x,p.y)&&insideSolid(x,y)}
- function drawHero(now){const animation=DIRECTION_ANIMATIONS[p.facingDirection]||DIRECTION_ANIMATIONS.down,period=p.running?78:145,frame=p.moving?animation.frames[Math.floor(now/period)%animation.frames.length]:animation.frames[0],cell=362,size=120,bob=p.moving?Math.abs(Math.sin(now/period))*(p.running?2.2:1.1):0;g.save();g.globalAlpha=.31;g.fillStyle='#172033';g.beginPath();g.ellipse(p.x,p.y+2,p.running?16:14,p.running?4:5,0,0,Math.PI*2);g.fill();g.filter='brightness(.91) saturate(.82) contrast(.93)';g.globalAlpha=.97;g.drawImage(hero,frame*cell,animation.row*cell,cell,cell,p.x-size/2,p.y-size+35-bob,size,size);g.restore()}
- function occlude(){for(const r of desks){if(p.x>r[0]-26&&p.x<r[0]+r[2]+26&&p.y<r[1]+r[3]-6){let sx=r[0]*.5,sy=r[1]*.5,sw=r[2]*.5,sh=r[3]*.5;g.drawImage(room,sx,sy,sw,sh,r[0],r[1],r[2],r[3])}}}
- function draw(now){g.clearRect(0,0,960,640);if(room.complete&&room.naturalWidth&&hero.complete&&hero.naturalWidth){g.drawImage(room,0,0,room.naturalWidth,room.naturalHeight,0,0,960,640);drawHero(now);occlude()}else{g.fillStyle='#30251e';g.fillRect(0,0,960,640)}hud.textContent='Lv 1　HP 30/30　'+(p.seenBook?'記録帳 1':'');requestAnimationFrame(draw)}
+ function drawHero(now){const animation=DIRECTION_ANIMATIONS[p.facingDirection]||DIRECTION_ANIMATIONS.down,period=p.running?78:145,frame=p.moving?animation.frames[Math.floor(now/period)%animation.frames.length]:animation.frames[0],cell=362,size=120;g.save();g.globalAlpha=.31;g.fillStyle='#172033';g.beginPath();g.ellipse(p.x,p.y+2,p.running?16:14,p.running?4:5,0,0,Math.PI*2);g.fill();g.filter='brightness(.91) saturate(.82) contrast(.93)';g.globalAlpha=.97;g.drawImage(hero,frame*cell,animation.row*cell,cell,cell,p.x-size/2,p.y-size+35,size,size);g.restore()}
+ function occlude(){for(const r of frontDesks){if(p.x>r[0]-26&&p.x<r[0]+r[2]+26&&p.y<r[1]+r[3]-6){let sx=r[0]*.5,sy=r[1]*.5,sw=r[2]*.5,sh=r[3]*.5;g.drawImage(room,sx,sy,sw,sh,r[0],r[1],r[2],r[3])}}}
+ function draw(now){const background=p.scene==='hall'?hall:room;g.clearRect(0,0,960,640);if(background.complete&&background.naturalWidth&&hero.complete&&hero.naturalWidth){g.drawImage(background,0,0,background.naturalWidth,background.naturalHeight,0,0,960,640);drawHero(now);if(p.scene==='class')occlude()}else{g.fillStyle='#30251e';g.fillRect(0,0,960,640)}cv.setAttribute('aria-label',p.scene==='hall'?'校舎1階・廊下':'3年教室');hud.textContent='Lv 1　HP 30/30　'+(p.seenBook?'記録帳 1':'');requestAnimationFrame(draw)}
  function readMovementInput(){const running=!!keys.z,speed=running?5.2:2.65,dx=(keys.ArrowRight?speed:0)-(keys.ArrowLeft?speed:0),dy=(keys.ArrowDown?speed:0)-(keys.ArrowUp?speed:0);let direction=null;if(dx||dy)direction=Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up');return {dx,dy,direction,running}}
  function move(){p.moving=false;p.running=false;if(!started)return;const input=readMovementInput();if(!input.direction)return;p.facingDirection=input.direction;const ox=p.x,oy=p.y;if(!blocked(p.x+input.dx,p.y))p.x+=input.dx;if(!blocked(p.x,p.y+input.dy))p.y+=input.dy;p.moving=p.x!==ox||p.y!==oy;p.running=p.moving&&input.running}
- function inspect(){if(!started)return;let book=Math.hypot(p.x-480,p.y-151);let westDoor=p.x<100&&p.y>235&&p.y<410;if(book<86){p.seenBook=true;save();text('古い本「言葉を失った者は、やがて考える力を失う。」\n本は淡く光り、ことばの記録帳へと姿を変えた。');return}if(westDoor){text('廊下の先から、言葉が消えたような静けさがする。図書室へ向かおう。');return}if(p.x<300&&p.y<205){text('本棚には、何度も読まれた国語辞典が並んでいる。');return}if(p.x>690&&p.y<205){text('窓の外には、入試前の澄んだ冬空が広がっている。');return}text('教室は静かだ。けれど、掲示物からいくつかの言葉が消えている。')}
+ function changeScene(scene,x,y,words){p.scene=scene;p.x=x;p.y=y;p.moving=false;p.running=false;save();text(words)}
+ function inspect(){if(!started)return;if(p.scene==='hall'){let classDoor=p.x>824&&p.y>230&&p.y<418;if(classDoor){changeScene('class',150,320,'3年教室に戻った。古い本を調べてみよう。');return}if(p.x<118){text('廊下の先に、図書室へ続く静かな気配がある。');return}if(p.x>370&&p.x<620&&p.y<245){text('掲示板の文字が、ところどころ白く抜け落ちている。');return}text('冬の光が、誰もいない廊下を長く照らしている。');return}let book=Math.hypot(p.x-480,p.y-151);let westDoor=p.x<128&&p.y>235&&p.y<410;if(book<86){p.seenBook=true;save();text('古い本「言葉を失った者は、やがて考える力を失う。」\n本は淡く光り、ことばの記録帳へと姿を変えた。');return}if(westDoor){changeScene('hall',820,330,'廊下に出た。言葉が消えたような静けさがする。');return}if(p.x<300&&p.y<205){text('本棚には、何度も読まれた国語辞典が並んでいる。');return}if(p.x>690&&p.y<205){text('窓の外には、入試前の澄んだ冬空が広がっている。');return}text('教室は静かだ。けれど、掲示物からいくつかの言葉が消えている。')}
  function begin(){p.name=document.querySelector('#name').value.trim()||'ことば勇者';started=true;title.style.display='none';save();text('先生「一番怖いのは、知らないことではない。知っているつもりになることだ。」\n古い本を調べてみよう。')}
  document.querySelector('#start').onclick=begin;
  function controlKey(e){return ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)?e.key:['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)?e.code:e.key}
