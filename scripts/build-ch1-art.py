@@ -2,6 +2,7 @@
 from pathlib import Path
 from PIL import Image, ImageEnhance, ImageDraw
 import numpy as np
+from io import BytesIO
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / 'assets/kotoba-tower'
@@ -9,7 +10,16 @@ SOURCE = ROOT.parent / 'generated_images'
 NEAREST = Image.Resampling.NEAREST
 
 def write(im, name):
-    im.save(ASSETS / (name + '.webp'), 'WEBP', lossless=True)
+    buffer = BytesIO()
+    im.save(buffer, 'WEBP', lossless=True)
+    data = buffer.getvalue()
+    if len(data) < 32:
+        raise ValueError('Empty encoded image: ' + name)
+    Image.open(BytesIO(data)).verify()
+    target = ASSETS / (name + '.webp')
+    temporary = target.with_suffix('.webp.tmp')
+    temporary.write_bytes(data)
+    temporary.replace(target)
 
 def cut(im, box, width=None, height=None):
     part = im.crop(box).convert('RGBA')
