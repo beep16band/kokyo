@@ -1,6 +1,6 @@
 // Additive chapter 1 scenes. All coordinates are feet, in the school's 960x640 space.
 const adventureImages={};
-function adventureImage(name){if(!adventureImages[name]){const im=new Image();im.src='assets/kotoba-tower/'+name+'.webp';adventureImages[name]=im}return adventureImages[name]}
+function adventureImage(name){if(!adventureImages[name]){const im=new Image();im.src='assets/kotoba-tower/'+name+'.webp?v=027-2';adventureImages[name]=im}return adventureImages[name]}
 const maps={
  descent:{image:'ch1-descent',name:'古い下り階段'},
  entry:{image:'ch1-entry',name:'地下入口'},
