@@ -66,6 +66,11 @@ for row in range(4):
         ren.alpha_composite(part, (col*100+(100-part.width)//2, row*110+103-part.height))
 write(ren, 'ren-sheet')
 write(ren.crop((0,0,100,110)), 'ren-front')
+write(Image.open(ASSETS / 'hero-classroom-v4.webp').crop((0,0,362,362)), 'hero-current-battle')
+for name, original in [('normal-enemy-field','kanyoku-slime-field-v2.png'),('normal-enemy-battle','kanyoku-slime-battle-v2.png')]:
+    original_image = Image.open(ASSETS / original)
+    write(cut(original_image, (0,0,original_image.width,original_image.height)), name)
+
 
 outdoor = Image.open(ASSETS / 'tiles_outdoor.png').convert('RGBA')
 for name, box, size in [
