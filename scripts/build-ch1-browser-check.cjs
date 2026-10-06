@@ -8,6 +8,6 @@ html=html.replaceAll("assets/kotoba-tower/","../assets/kotoba-tower/");
 html=html.replace("kotobaTowerV026Opening","kotobaTowerV027BrowserCheck");
 fs.writeFileSync(path.join(root,'tests/ch1-fixture.html'),html);
 
-fs.writeFileSync(path.join(root,'tests/ch1-fixture-v027d.html'),html);
-const check=fs.readFileSync(path.join(root,'tests/ch1-browser-check.html'),'utf8').replaceAll('ch1-fixture.html','ch1-fixture-v027d.html');
-fs.writeFileSync(path.join(root,'tests/ch1-browser-v027d.html'),check);
+fs.writeFileSync(path.join(root,'tests/ch1-fixture-v027e.html'),html);
+const check=fs.readFileSync(path.join(root,'tests/ch1-browser-check.html'),'utf8').replaceAll('ch1-fixture.html','ch1-fixture-v027e.html').replace('../scripts/ch1-check-flow.js','../scripts/ch1-check-flow.js?v=027e');
+fs.writeFileSync(path.join(root,'tests/ch1-browser-v027e.html'),check);
