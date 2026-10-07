@@ -1,0 +1,71 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function teacher(c) {
+      return request.auth != null && exists(/databases/$(database)/documents/classes/$(c)/teachers/$(request.auth.uid));
+    }
+    function member(c) {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/classes/$(c)/bindings/$(request.auth.uid))
+        && get(/databases/$(database)/documents/classes/$(c)/students/$(get(/databases/$(database)/documents/classes/$(c)/bindings/$(request.auth.uid)).data.studentId)).data.active == true
+        && get(/databases/$(database)/documents/classes/$(c)/students/$(get(/databases/$(database)/documents/classes/$(c)/bindings/$(request.auth.uid)).data.studentId)).data.token == get(/databases/$(database)/documents/classes/$(c)/bindings/$(request.auth.uid)).data.token;
+    }
+    function studentId(c) {
+      return get(/databases/$(database)/documents/classes/$(c)/bindings/$(request.auth.uid)).data.studentId;
+    }
+    match /classes/{c}/teachers/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+      // Teacher permissions must be granted in the Firebase console, never by a client.
+      allow list, write: if false;
+    }
+    match /classes/{c}/students/{id} {
+      allow read, delete: if teacher(c);
+      allow create, update: if teacher(c)
+        && id.matches('K[A-F0-9]{8}')
+        && request.resource.data.keys().hasOnly(['token', 'active'])
+        && request.resource.data.token is string
+        && request.resource.data.token.matches('[a-f0-9]{32}')
+        && request.resource.data.active is bool;
+    }
+    match /classes/{c}/bindings/{uid} {
+      allow read: if teacher(c) || (request.auth != null && request.auth.uid == uid);
+      allow create, update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['studentId', 'token'])
+        && request.resource.data.studentId is string
+        && request.resource.data.studentId.matches('K[A-F0-9]{8}')
+        && request.resource.data.token is string
+        && get(/databases/$(database)/documents/classes/$(c)/students/$(request.resource.data.studentId)).data.active == true
+        && get(/databases/$(database)/documents/classes/$(c)/students/$(request.resource.data.studentId)).data.token == request.resource.data.token;
+      allow delete: if teacher(c);
+    }
+    match /classes/{c}/boards/{board} {
+      allow read: if member(c) || teacher(c);
+      allow create, update: if teacher(c)
+        && board.matches('c-[a-f0-9]{8}')
+        && request.resource.data.keys().hasOnly(['total', 'version', 'label'])
+        && request.resource.data.total is int
+        && request.resource.data.total >= 1 && request.resource.data.total <= 20
+        && request.resource.data.version == 'scope-20261007-v1'
+        && request.resource.data.label is string && request.resource.data.label.size() <= 100;
+      allow delete: if teacher(c);
+      match /entries/{id} {
+        allow read: if member(c) || teacher(c);
+        function validScore() {
+          let d = request.resource.data;
+          let b = get(/databases/$(database)/documents/classes/$(c)/boards/$(board)).data;
+          return member(c) && studentId(c) == id
+            && d.keys().hasOnly(['studentId', 'nickname', 'correct', 'total', 'version'])
+            && d.studentId == id
+            && d.nickname is string && d.nickname.size() >= 1 && d.nickname.size() <= 12
+            && d.correct is int && d.total is int
+            && d.correct >= 0 && d.correct <= d.total
+            && d.total == b.total && d.version == b.version;
+        }
+        allow create: if validScore();
+        allow update: if validScore() && request.resource.data.correct >= resource.data.correct;
+        allow delete: if teacher(c);
+      }
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "0.7.1",
+  "firebaseConnection": "not-configured",
+  "questionBankSHA256": "7e98f5e1b5d7b4b0702510b259f4451b488c66164b3019820261eb400132f9bf",
+  "htmlSHA256": "ad0a9de76a34a60943536987353bdd99a122b67b0800d61dd1241daaae44c750",
+  "checks": {
+    "ranking-test-results.json": 9,
+    "ranking-dom-results.json": 5,
+    "ranking-teacher-dom-results.json": 4,
+    "ranking-rules-results.json": 7
+  },
+  "existingCoreChecks": 166,
+  "existingPracticeRecoveryDOMChecks": 8,
+  "chapter5DOMChecks": 10,
+  "realFirebaseAndChromebook": "not-verified"
+}
