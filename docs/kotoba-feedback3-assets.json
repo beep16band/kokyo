@@ -1,0 +1,30 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "path": "assets/inn_house_v2.png",
+      "nativeSize": [
+        128,
+        128
+      ],
+      "prompt": "Use case: stylized-concept. Production asset for a late-SNES/GBA top-down 2D JRPG at native 32x32 tiles. One COMPLETE small town inn building, including large slate-blue tiled roof, warm grey-brown stone walls, chimney, two warmly lit windows and one clearly centered wooden entrance at bottom. Straight top-down RPG orthographic perspective, front door faces viewer. Draw on a 128x128 logical pixel grid uniformly enlarged 8x, crisp aligned square pixels, limited muted palette matching an ancient stone JRPG. Full building fits square transparent canvas, no background ground, no text, no characters, no shadows outside sprite bounds. Bottom 32px logical row: center doorway occupies x48..80; sides form solid wall. Genuine transparent background."
+    },
+    {
+      "path": "assets/stone_tablet_v2.png",
+      "nativeSize": [
+        64,
+        64
+      ],
+      "prompt": "Use case: stylized-concept. Production sprite asset for a late-SNES/GBA top-down 2D JRPG at native 32x32 tiles. One ancient INSCRIBED STONE TABLET on low stone plinth, a squat solid object with visible top, thick sides and light grey-brown front face carrying several small faded gold incised abstract runic marks. Clearly a standing stone monument, NOT a door, arch, gateway or building. Straight top-down RPG orthographic perspective, no isometric diamond. Draw on a 64x64 logical pixel grid uniformly enlarged 16x, crisp aligned square pixels, muted grey-brown stone matching ancient dungeon walls. Entire sprite centered on genuine transparent square canvas, fills almost all height but some transparent margin, no floor/background, no text, no characters."
+    },
+    {
+      "path": "assets/emblem_wall_v2.png",
+      "nativeSize": [
+        128,
+        128
+      ],
+      "prompt": "Use case: stylized-concept. Production sprite asset for a late-SNES/GBA top-down 2D JRPG at native 32x32 tiles. A square section of ancient solid grey-brown STONE BRICK WALL with a clearly visible large circular carved GOLD EMBLEM in its center: an open book surrounded by a ring, subtly pale turquoise inlay. WALL is completely solid, has visible masonry joints and slightly visible top edge. Absolutely no opening, door, passage, arch or handle. Orthographic top-down JRPG perspective, muted ancient dungeon palette. Draw on a 128x128 logical pixel grid uniformly enlarged 8x, crisp aligned square pixels, no blur or smooth painting. Entire square wall section fills square transparent canvas with small transparent margin, no environment, no characters, no lettering."
+    }
+  ],
+  "preparation": "Uniform nearest-neighbor resize; preserve alpha, originals and aspect ratio."
+}
