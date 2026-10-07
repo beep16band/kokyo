@@ -1,0 +1,24 @@
+{
+  "version": "0.10.0",
+  "unitChecks": 203,
+  "unitSuites": 23,
+  "domSuites": 18,
+  "simulationBattles": 30800,
+  "mapRouteCheck": "61 maps / 190 walks, repeated doors/stairs included",
+  "legacyLevels": 99,
+  "pcDomWidth": 1100,
+  "mobileDomWidth": 380,
+  "jsdomErrors": 0,
+  "rawStoryMapsAndQuestionsUnchanged": true,
+  "chrome": {
+    "publicVersion": "0.10.0",
+    "verified": true,
+    "record": "balance-publication.json",
+    "gameJavaScriptErrors": 0
+  },
+  "limitations": [
+    "Chromebook実機未検証",
+    "実Android/iPhone未検証",
+    "敗北率は仮定した正答率・解答時間に基づく"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "version": "0.10.0",
+  "url": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+  "codeCommit": "a6a7301590740be89cbf6d005205082fa0e34734",
+  "pagesRun": 37692163131,
+  "pagesConclusion": "success",
+  "htmlSha256": "09d41ad7522fdb87183347c18c6c061ed840fffa3b7813ec89cb238e24a9d11f",
+  "browser": "Chrome cloud browser",
+  "checks": {
+    "titleVersion": true,
+    "newStart": true,
+    "movementAndEnemyContact": true,
+    "battle": true,
+    "enemyHpObserved": [
+      44,
+      35,
+      26,
+      17,
+      8,
+      0
+    ],
+    "correctDamage": 9,
+    "explanationGaugeStopped": true,
+    "nextQuestionGaugeSeconds": [
+      13,
+      12,
+      11
+    ],
+    "victoryExp": 16,
+    "victoryGold": 18,
+    "saveLoadAfterBattle": true,
+    "restoredPlayer": "Lv1 HP48/48 G18 EXP16/31",
+    "gameJavaScriptErrors": 0
+  },
+  "limitations": [
+    "PC公開Chromeで手動確認。幅380pxはDOM/canvas自動検査。実Chromebook・実スマートフォンは未検証。",
+    "公開画面で正解・勝利を確認。不正解・連続時間切れ・ボス・全章移動は自動検査で確認。"
+  ],
+  "screenshot": "kotoba-balance-live-0100.jpg"
+}

@@ -1,0 +1,1169 @@
+{
+  "assumptions": {
+    "trialsPerCase": 400,
+    "accuracy": 0.9,
+    "answerSeconds": "6–10秒、平均8秒",
+    "potions": 2,
+    "slowCase": "正答率85%、9–15秒、薬3個",
+    "variance": "±6%",
+    "explanation": "paused",
+    "lowGear": "旧段階（第1章は初期武器W001）",
+    "strongGear": "Lv+2で次段階の解禁装備（章7は同段階）",
+    "note": "敗北率は仮定した解答時間・正答率での結果。実際の生徒成績ではない。"
+  },
+  "rows": [
+    {
+      "chapter": 1,
+      "case": "適正",
+      "level": 3,
+      "gear": [
+        "W002",
+        "A001"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 11.05,
+      "remainingHP": 51.57,
+      "maxHP": 62,
+      "potions": 1.04,
+      "secondsOnWin": 99.1,
+      "perfectCorrect": 11
+    },
+    {
+      "chapter": 1,
+      "case": "Lv-2/旧装備",
+      "level": 1,
+      "gear": [
+        "W001",
+        "A001"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.5349999999999999,
+      "correctOnWin": 20.07,
+      "remainingHP": 3.94,
+      "maxHP": 48,
+      "potions": 2,
+      "secondsOnWin": 169.6,
+      "perfectCorrect": 21
+    },
+    {
+      "chapter": 1,
+      "case": "Lv+2/同装備",
+      "level": 5,
+      "gear": [
+        "W002",
+        "A001"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 9,
+      "remainingHP": 54.77,
+      "maxHP": 80,
+      "potions": 0.1,
+      "secondsOnWin": 80.94,
+      "perfectCorrect": 9
+    },
+    {
+      "chapter": 1,
+      "case": "同Lv/弱装備",
+      "level": 3,
+      "gear": [
+        "W001",
+        "A001"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 13.41,
+      "remainingHP": 46.73,
+      "maxHP": 62,
+      "potions": 1.24,
+      "secondsOnWin": 120.85,
+      "perfectCorrect": 14
+    },
+    {
+      "chapter": 1,
+      "case": "Lv+2/強装備",
+      "level": 5,
+      "gear": [
+        "W003",
+        "A002"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 7.66,
+      "remainingHP": 72.42,
+      "maxHP": 85,
+      "potions": 0,
+      "secondsOnWin": 69.1,
+      "perfectCorrect": 8
+    },
+    {
+      "chapter": 1,
+      "case": "適正/熟考",
+      "level": 3,
+      "gear": [
+        "W002",
+        "A001"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 11.06,
+      "remainingHP": 47.52,
+      "maxHP": 62,
+      "potions": 1.79,
+      "secondsOnWin": 158.71,
+      "perfectCorrect": 11
+    },
+    {
+      "chapter": 2,
+      "case": "適正",
+      "level": 5,
+      "gear": [
+        "W003",
+        "A002"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 12.07,
+      "remainingHP": 64.31,
+      "maxHP": 85,
+      "potions": 1.11,
+      "secondsOnWin": 108.61,
+      "perfectCorrect": 13
+    },
+    {
+      "chapter": 2,
+      "case": "Lv-2/旧装備",
+      "level": 3,
+      "gear": [
+        "W002",
+        "A001"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.9,
+      "correctOnWin": 19,
+      "remainingHP": 0.53,
+      "maxHP": 62,
+      "potions": 2,
+      "secondsOnWin": 153.55,
+      "perfectCorrect": 19
+    },
+    {
+      "chapter": 2,
+      "case": "Lv+2/同装備",
+      "level": 7,
+      "gear": [
+        "W003",
+        "A002"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 10,
+      "remainingHP": 73.62,
+      "maxHP": 107,
+      "potions": 0.27,
+      "secondsOnWin": 89.95,
+      "perfectCorrect": 10
+    },
+    {
+      "chapter": 2,
+      "case": "同Lv/弱装備",
+      "level": 5,
+      "gear": [
+        "W002",
+        "A001"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.015000000000000013,
+      "correctOnWin": 14.94,
+      "remainingHP": 54.84,
+      "maxHP": 80,
+      "potions": 1.94,
+      "secondsOnWin": 133.97,
+      "perfectCorrect": 15
+    },
+    {
+      "chapter": 2,
+      "case": "Lv+2/強装備",
+      "level": 7,
+      "gear": [
+        "W004",
+        "A003"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 8.63,
+      "remainingHP": 91.22,
+      "maxHP": 110,
+      "potions": 0,
+      "secondsOnWin": 77.89,
+      "perfectCorrect": 9
+    },
+    {
+      "chapter": 2,
+      "case": "適正/熟考",
+      "level": 5,
+      "gear": [
+        "W003",
+        "A002"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 12.12,
+      "remainingHP": 63.58,
+      "maxHP": 85,
+      "potions": 2.05,
+      "secondsOnWin": 174.71,
+      "perfectCorrect": 13
+    },
+    {
+      "chapter": 3,
+      "case": "適正",
+      "level": 7,
+      "gear": [
+        "W004",
+        "A003"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 12.08,
+      "remainingHP": 79.4,
+      "maxHP": 110,
+      "potions": 1.23,
+      "secondsOnWin": 108.62,
+      "perfectCorrect": 13
+    },
+    {
+      "chapter": 3,
+      "case": "Lv-2/旧装備",
+      "level": 5,
+      "gear": [
+        "W003",
+        "A002"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.8525,
+      "correctOnWin": 18,
+      "remainingHP": 2.02,
+      "maxHP": 85,
+      "potions": 2,
+      "secondsOnWin": 145.55,
+      "perfectCorrect": 18
+    },
+    {
+      "chapter": 3,
+      "case": "Lv+2/同装備",
+      "level": 9,
+      "gear": [
+        "W004",
+        "A003"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 10.02,
+      "remainingHP": 90.68,
+      "maxHP": 136,
+      "potions": 0.35,
+      "secondsOnWin": 90.1,
+      "perfectCorrect": 10
+    },
+    {
+      "chapter": 3,
+      "case": "同Lv/弱装備",
+      "level": 7,
+      "gear": [
+        "W003",
+        "A002"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.03500000000000003,
+      "correctOnWin": 14.49,
+      "remainingHP": 61.66,
+      "maxHP": 107,
+      "potions": 2,
+      "secondsOnWin": 129.64,
+      "perfectCorrect": 15
+    },
+    {
+      "chapter": 3,
+      "case": "Lv+2/強装備",
+      "level": 9,
+      "gear": [
+        "W005",
+        "A004"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 9,
+      "remainingHP": 110.07,
+      "maxHP": 140,
+      "potions": 0,
+      "secondsOnWin": 81.1,
+      "perfectCorrect": 9
+    },
+    {
+      "chapter": 3,
+      "case": "適正/熟考",
+      "level": 7,
+      "gear": [
+        "W004",
+        "A003"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 12.13,
+      "remainingHP": 80.66,
+      "maxHP": 110,
+      "potions": 2.35,
+      "secondsOnWin": 174.71,
+      "perfectCorrect": 13
+    },
+    {
+      "chapter": 4,
+      "case": "適正",
+      "level": 9,
+      "gear": [
+        "W005",
+        "A004"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 14.12,
+      "remainingHP": 95.87,
+      "maxHP": 140,
+      "potions": 1.25,
+      "secondsOnWin": 126.73,
+      "perfectCorrect": 14
+    },
+    {
+      "chapter": 4,
+      "case": "Lv-2/旧装備",
+      "level": 7,
+      "gear": [
+        "W004",
+        "A003"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.835,
+      "correctOnWin": 20,
+      "remainingHP": 0.87,
+      "maxHP": 110,
+      "potions": 2,
+      "secondsOnWin": 163.94,
+      "perfectCorrect": 20
+    },
+    {
+      "chapter": 4,
+      "case": "Lv+2/同装備",
+      "level": 11,
+      "gear": [
+        "W005",
+        "A004"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 12.53,
+      "remainingHP": 111.72,
+      "maxHP": 170,
+      "potions": 0.45,
+      "secondsOnWin": 112.46,
+      "perfectCorrect": 13
+    },
+    {
+      "chapter": 4,
+      "case": "同Lv/弱装備",
+      "level": 9,
+      "gear": [
+        "W004",
+        "A003"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.04249999999999998,
+      "correctOnWin": 16.73,
+      "remainingHP": 63.73,
+      "maxHP": 136,
+      "potions": 2,
+      "secondsOnWin": 148.26,
+      "perfectCorrect": 17
+    },
+    {
+      "chapter": 4,
+      "case": "Lv+2/強装備",
+      "level": 11,
+      "gear": [
+        "W007",
+        "A006"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 11,
+      "remainingHP": 137.06,
+      "maxHP": 174,
+      "potions": 0,
+      "secondsOnWin": 98.34,
+      "perfectCorrect": 11
+    },
+    {
+      "chapter": 4,
+      "case": "適正/熟考",
+      "level": 9,
+      "gear": [
+        "W005",
+        "A004"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 14.11,
+      "remainingHP": 96.52,
+      "maxHP": 140,
+      "potions": 2.48,
+      "secondsOnWin": 201.95,
+      "perfectCorrect": 14
+    },
+    {
+      "chapter": 5,
+      "case": "適正",
+      "level": 11,
+      "gear": [
+        "W007",
+        "A006"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 14.12,
+      "remainingHP": 115.48,
+      "maxHP": 174,
+      "potions": 1.38,
+      "secondsOnWin": 126.78,
+      "perfectCorrect": 14
+    },
+    {
+      "chapter": 5,
+      "case": "Lv-2/旧装備",
+      "level": 9,
+      "gear": [
+        "W005",
+        "A004"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.795,
+      "correctOnWin": 18.99,
+      "remainingHP": 3.32,
+      "maxHP": 140,
+      "potions": 2,
+      "secondsOnWin": 155.86,
+      "perfectCorrect": 19
+    },
+    {
+      "chapter": 5,
+      "case": "Lv+2/同装備",
+      "level": 13,
+      "gear": [
+        "W007",
+        "A006"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 12.87,
+      "remainingHP": 135.09,
+      "maxHP": 208,
+      "potions": 0.53,
+      "secondsOnWin": 115.36,
+      "perfectCorrect": 13
+    },
+    {
+      "chapter": 5,
+      "case": "同Lv/弱装備",
+      "level": 11,
+      "gear": [
+        "W005",
+        "A004"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.057499999999999996,
+      "correctOnWin": 16.2,
+      "remainingHP": 70.48,
+      "maxHP": 170,
+      "potions": 2,
+      "secondsOnWin": 143.16,
+      "perfectCorrect": 16
+    },
+    {
+      "chapter": 5,
+      "case": "Lv+2/強装備",
+      "level": 13,
+      "gear": [
+        "W009",
+        "A007"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 11,
+      "remainingHP": 162.53,
+      "maxHP": 212,
+      "potions": 0,
+      "secondsOnWin": 98.34,
+      "perfectCorrect": 11
+    },
+    {
+      "chapter": 5,
+      "case": "適正/熟考",
+      "level": 11,
+      "gear": [
+        "W007",
+        "A006"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.0024999999999999467,
+      "correctOnWin": 14.11,
+      "remainingHP": 109.53,
+      "maxHP": 174,
+      "potions": 2.69,
+      "secondsOnWin": 201.77,
+      "perfectCorrect": 14
+    },
+    {
+      "chapter": 6,
+      "case": "適正",
+      "level": 13,
+      "gear": [
+        "W009",
+        "A007"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 14.12,
+      "remainingHP": 135.95,
+      "maxHP": 212,
+      "potions": 1.56,
+      "secondsOnWin": 126.81,
+      "perfectCorrect": 14
+    },
+    {
+      "chapter": 6,
+      "case": "Lv-2/旧装備",
+      "level": 11,
+      "gear": [
+        "W007",
+        "A006"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.8674999999999999,
+      "correctOnWin": 18.79,
+      "remainingHP": 2.1,
+      "maxHP": 174,
+      "potions": 2,
+      "secondsOnWin": 151.91,
+      "perfectCorrect": 19
+    },
+    {
+      "chapter": 6,
+      "case": "Lv+2/同装備",
+      "level": 15,
+      "gear": [
+        "W009",
+        "A007"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 13,
+      "remainingHP": 163.22,
+      "maxHP": 250,
+      "potions": 0.76,
+      "secondsOnWin": 116.56,
+      "perfectCorrect": 13
+    },
+    {
+      "chapter": 6,
+      "case": "同Lv/弱装備",
+      "level": 13,
+      "gear": [
+        "W007",
+        "A006"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.10999999999999999,
+      "correctOnWin": 16.32,
+      "remainingHP": 68.19,
+      "maxHP": 208,
+      "potions": 2,
+      "secondsOnWin": 143.1,
+      "perfectCorrect": 17
+    },
+    {
+      "chapter": 6,
+      "case": "Lv+2/強装備",
+      "level": 15,
+      "gear": [
+        "W010",
+        "A008"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 11.99,
+      "remainingHP": 175.27,
+      "maxHP": 255,
+      "potions": 0.01,
+      "secondsOnWin": 107.48,
+      "perfectCorrect": 12
+    },
+    {
+      "chapter": 6,
+      "case": "適正/熟考",
+      "level": 13,
+      "gear": [
+        "W009",
+        "A007"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.015000000000000013,
+      "correctOnWin": 14.1,
+      "remainingHP": 114.13,
+      "maxHP": 212,
+      "potions": 2.87,
+      "secondsOnWin": 200.82,
+      "perfectCorrect": 14
+    },
+    {
+      "chapter": 7,
+      "case": "適正",
+      "level": 15,
+      "gear": [
+        "W010",
+        "A008"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 14.13,
+      "remainingHP": 159.38,
+      "maxHP": 255,
+      "potions": 1.67,
+      "secondsOnWin": 126.84,
+      "perfectCorrect": 14
+    },
+    {
+      "chapter": 7,
+      "case": "Lv-2/旧装備",
+      "level": 13,
+      "gear": [
+        "W009",
+        "A007"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.7,
+      "correctOnWin": 17.57,
+      "remainingHP": 6.57,
+      "maxHP": 212,
+      "potions": 2,
+      "secondsOnWin": 144.47,
+      "perfectCorrect": 18
+    },
+    {
+      "chapter": 7,
+      "case": "Lv+2/同装備",
+      "level": 17,
+      "gear": [
+        "W010",
+        "A008"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 13,
+      "remainingHP": 185.36,
+      "maxHP": 297,
+      "potions": 0.82,
+      "secondsOnWin": 116.56,
+      "perfectCorrect": 13
+    },
+    {
+      "chapter": 7,
+      "case": "同Lv/弱装備",
+      "level": 15,
+      "gear": [
+        "W009",
+        "A007"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.13249999999999995,
+      "correctOnWin": 16,
+      "remainingHP": 73.03,
+      "maxHP": 250,
+      "potions": 2,
+      "secondsOnWin": 140.01,
+      "perfectCorrect": 16
+    },
+    {
+      "chapter": 7,
+      "case": "Lv+2/強装備",
+      "level": 17,
+      "gear": [
+        "W010",
+        "A008"
+      ],
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 13,
+      "remainingHP": 185.36,
+      "maxHP": 297,
+      "potions": 0.82,
+      "secondsOnWin": 116.56,
+      "perfectCorrect": 13
+    },
+    {
+      "chapter": 7,
+      "case": "適正/熟考",
+      "level": 15,
+      "gear": [
+        "W010",
+        "A008"
+      ],
+      "attempts": 400,
+      "defeatRate": 0.02749999999999997,
+      "correctOnWin": 14.1,
+      "remainingHP": 120.67,
+      "maxHP": 255,
+      "potions": 2.95,
+      "secondsOnWin": 200.39,
+      "perfectCorrect": 14
+    }
+  ],
+  "normalRows": [
+    {
+      "chapter": 1,
+      "case": "適正",
+      "level": 2,
+      "attempts": 400,
+      "defeatRate": 0.02749999999999997,
+      "correctOnWin": 3,
+      "remainingHP": 29.61,
+      "maxHP": 54
+    },
+    {
+      "chapter": 1,
+      "case": "Lv-2/旧装備",
+      "level": 1,
+      "attempts": 400,
+      "defeatRate": 0.4525,
+      "correctOnWin": 5,
+      "remainingHP": 6.43,
+      "maxHP": 48
+    },
+    {
+      "chapter": 1,
+      "case": "Lv+2/同装備",
+      "level": 4,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 2.6,
+      "remainingHP": 52.9,
+      "maxHP": 70
+    },
+    {
+      "chapter": 1,
+      "case": "同Lv/弱装備",
+      "level": 2,
+      "attempts": 400,
+      "defeatRate": 0.06499999999999995,
+      "correctOnWin": 4,
+      "remainingHP": 20.61,
+      "maxHP": 54
+    },
+    {
+      "chapter": 1,
+      "case": "Lv+2/強装備",
+      "level": 4,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 2,
+      "remainingHP": 67.72,
+      "maxHP": 75
+    },
+    {
+      "chapter": 2,
+      "case": "適正",
+      "level": 5,
+      "attempts": 400,
+      "defeatRate": 0.0050000000000000044,
+      "correctOnWin": 3,
+      "remainingHP": 55.07,
+      "maxHP": 85
+    },
+    {
+      "chapter": 2,
+      "case": "Lv-2/旧装備",
+      "level": 3,
+      "attempts": 400,
+      "defeatRate": 0.5525,
+      "correctOnWin": 5,
+      "remainingHP": 3.79,
+      "maxHP": 62
+    },
+    {
+      "chapter": 2,
+      "case": "Lv+2/同装備",
+      "level": 7,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 3,
+      "remainingHP": 81.67,
+      "maxHP": 107
+    },
+    {
+      "chapter": 2,
+      "case": "同Lv/弱装備",
+      "level": 5,
+      "attempts": 400,
+      "defeatRate": 0.07250000000000001,
+      "correctOnWin": 4,
+      "remainingHP": 31.58,
+      "maxHP": 80
+    },
+    {
+      "chapter": 2,
+      "case": "Lv+2/強装備",
+      "level": 7,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 2,
+      "remainingHP": 100.39,
+      "maxHP": 110
+    },
+    {
+      "chapter": 3,
+      "case": "適正",
+      "level": 7,
+      "attempts": 400,
+      "defeatRate": 0.020000000000000018,
+      "correctOnWin": 3,
+      "remainingHP": 61.69,
+      "maxHP": 110
+    },
+    {
+      "chapter": 3,
+      "case": "Lv-2/旧装備",
+      "level": 5,
+      "attempts": 400,
+      "defeatRate": 0.9425,
+      "correctOnWin": 4.09,
+      "remainingHP": 0.95,
+      "maxHP": 85
+    },
+    {
+      "chapter": 3,
+      "case": "Lv+2/同装備",
+      "level": 9,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 3,
+      "remainingHP": 94.64,
+      "maxHP": 136
+    },
+    {
+      "chapter": 3,
+      "case": "同Lv/弱装備",
+      "level": 7,
+      "attempts": 400,
+      "defeatRate": 0.1725,
+      "correctOnWin": 4,
+      "remainingHP": 26.2,
+      "maxHP": 107
+    },
+    {
+      "chapter": 3,
+      "case": "Lv+2/強装備",
+      "level": 9,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 2.2,
+      "remainingHP": 123.17,
+      "maxHP": 140
+    },
+    {
+      "chapter": 4,
+      "case": "適正",
+      "level": 9,
+      "attempts": 400,
+      "defeatRate": 0.0050000000000000044,
+      "correctOnWin": 3,
+      "remainingHP": 91.17,
+      "maxHP": 140
+    },
+    {
+      "chapter": 4,
+      "case": "Lv-2/旧装備",
+      "level": 7,
+      "attempts": 400,
+      "defeatRate": 0.3375,
+      "correctOnWin": 4.04,
+      "remainingHP": 27.95,
+      "maxHP": 110
+    },
+    {
+      "chapter": 4,
+      "case": "Lv+2/同装備",
+      "level": 11,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 3,
+      "remainingHP": 127.2,
+      "maxHP": 170
+    },
+    {
+      "chapter": 4,
+      "case": "同Lv/弱装備",
+      "level": 9,
+      "attempts": 400,
+      "defeatRate": 0.04749999999999999,
+      "correctOnWin": 4,
+      "remainingHP": 57.14,
+      "maxHP": 136
+    },
+    {
+      "chapter": 4,
+      "case": "Lv+2/強装備",
+      "level": 11,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 2.94,
+      "remainingHP": 146.14,
+      "maxHP": 174
+    },
+    {
+      "chapter": 5,
+      "case": "適正",
+      "level": 11,
+      "attempts": 400,
+      "defeatRate": 0.0050000000000000044,
+      "correctOnWin": 3,
+      "remainingHP": 112.97,
+      "maxHP": 174
+    },
+    {
+      "chapter": 5,
+      "case": "Lv-2/旧装備",
+      "level": 9,
+      "attempts": 400,
+      "defeatRate": 0.18000000000000005,
+      "correctOnWin": 4,
+      "remainingHP": 39.32,
+      "maxHP": 140
+    },
+    {
+      "chapter": 5,
+      "case": "Lv+2/同装備",
+      "level": 13,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 3,
+      "remainingHP": 153.91,
+      "maxHP": 208
+    },
+    {
+      "chapter": 5,
+      "case": "同Lv/弱装備",
+      "level": 11,
+      "attempts": 400,
+      "defeatRate": 0.04749999999999999,
+      "correctOnWin": 4,
+      "remainingHP": 72.08,
+      "maxHP": 170
+    },
+    {
+      "chapter": 5,
+      "case": "Lv+2/強装備",
+      "level": 13,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 2.98,
+      "remainingHP": 174.82,
+      "maxHP": 212
+    },
+    {
+      "chapter": 6,
+      "case": "適正",
+      "level": 13,
+      "attempts": 400,
+      "defeatRate": 0.020000000000000018,
+      "correctOnWin": 3,
+      "remainingHP": 119.72,
+      "maxHP": 212
+    },
+    {
+      "chapter": 6,
+      "case": "Lv-2/旧装備",
+      "level": 11,
+      "attempts": 400,
+      "defeatRate": 0.3375,
+      "correctOnWin": 4,
+      "remainingHP": 23.68,
+      "maxHP": 174
+    },
+    {
+      "chapter": 6,
+      "case": "Lv+2/同装備",
+      "level": 15,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 3,
+      "remainingHP": 165.97,
+      "maxHP": 250
+    },
+    {
+      "chapter": 6,
+      "case": "同Lv/弱装備",
+      "level": 13,
+      "attempts": 400,
+      "defeatRate": 0.16249999999999998,
+      "correctOnWin": 4,
+      "remainingHP": 55.17,
+      "maxHP": 208
+    },
+    {
+      "chapter": 6,
+      "case": "Lv+2/強装備",
+      "level": 15,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 3,
+      "remainingHP": 194.24,
+      "maxHP": 255
+    },
+    {
+      "chapter": 7,
+      "case": "適正",
+      "level": 15,
+      "attempts": 400,
+      "defeatRate": 0.0050000000000000044,
+      "correctOnWin": 3,
+      "remainingHP": 163.63,
+      "maxHP": 255
+    },
+    {
+      "chapter": 7,
+      "case": "Lv-2/旧装備",
+      "level": 13,
+      "attempts": 400,
+      "defeatRate": 0.14500000000000002,
+      "correctOnWin": 4,
+      "remainingHP": 65.14,
+      "maxHP": 212
+    },
+    {
+      "chapter": 7,
+      "case": "Lv+2/同装備",
+      "level": 17,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 3,
+      "remainingHP": 212.6,
+      "maxHP": 297
+    },
+    {
+      "chapter": 7,
+      "case": "同Lv/弱装備",
+      "level": 15,
+      "attempts": 400,
+      "defeatRate": 0.040000000000000036,
+      "correctOnWin": 3.82,
+      "remainingHP": 112.98,
+      "maxHP": 250
+    },
+    {
+      "chapter": 7,
+      "case": "Lv+2/強装備",
+      "level": 17,
+      "attempts": 400,
+      "defeatRate": 0,
+      "correctOnWin": 3,
+      "remainingHP": 212.6,
+      "maxHP": 297
+    }
+  ],
+  "regular": [
+    {
+      "id": "E001",
+      "role": "balanced",
+      "correct": 2
+    },
+    {
+      "id": "S1_BAT",
+      "role": "swift",
+      "correct": 2
+    },
+    {
+      "id": "S1_HOUND",
+      "role": "striker",
+      "correct": 3
+    },
+    {
+      "id": "S1_GOBLIN",
+      "role": "armored",
+      "correct": 4
+    },
+    {
+      "id": "S1_BAKRO",
+      "role": "miniboss",
+      "correct": 6
+    },
+    {
+      "id": "S2_SHADOW",
+      "role": "balanced",
+      "correct": 3
+    },
+    {
+      "id": "S3_WISP",
+      "role": "swift",
+      "correct": 3
+    },
+    {
+      "id": "S4_WISP",
+      "role": "balanced",
+      "correct": 3
+    },
+    {
+      "id": "S5_LETTER",
+      "role": "balanced",
+      "correct": 3
+    },
+    {
+      "id": "S6_WISP",
+      "role": "swift",
+      "correct": 3
+    },
+    {
+      "id": "S7_FRAGMENT",
+      "role": "balanced",
+      "correct": 3
+    },
+    {
+      "id": "S4_SHADOW",
+      "role": "elite",
+      "correct": 6
+    },
+    {
+      "id": "S2_SWIFT",
+      "role": "swift",
+      "correct": 2
+    },
+    {
+      "id": "S3_COIN",
+      "role": "gold",
+      "correct": 3
+    },
+    {
+      "id": "S5_ARMORED",
+      "role": "armored",
+      "correct": 4
+    },
+    {
+      "id": "S6_TANK",
+      "role": "tank",
+      "correct": 4
+    },
+    {
+      "id": "S7_ELITE",
+      "role": "elite",
+      "correct": 6
+    }
+  ]
+}
