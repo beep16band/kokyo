@@ -7,7 +7,7 @@
     67,
     68
   ],
-  "stateChecks": 240,
+  "stateChecks": 241,
   "domSuites": 22,
   "statePass": true,
   "domPass": true,
@@ -32,5 +32,6 @@
     "chapter9Clear": true,
     "saveLoadClear": true,
     "verificationUsesCheckpointJSON": true
-  }
+  },
+  "fusionDefeatRecoveryAndRetry": true
 }
