@@ -1,0 +1,144 @@
+{
+  "version": "0.11.0",
+  "stateChecks": 212,
+  "stateSuites": 24,
+  "domSuites": 19,
+  "simulatedBattles": 35200,
+  "chapter8Checks": [
+    {
+      "name": "旧C7Eセーブの入口から第8章開始・学校/既存マップ/問題は保存",
+      "ok": true
+    },
+    {
+      "name": "最後の休憩室・装備購入・薬・扉のロード後3往復",
+      "ok": true
+    },
+    {
+      "name": "最後の階段SCENE47は自動歩行・再入場時に重複しない",
+      "ok": true
+    },
+    {
+      "name": "ロゴス戦・連続時間切れ・誤答・解説停止・正解残量継続",
+      "ok": true
+    },
+    {
+      "name": "HP半分のSCENE49で時間完全停止、会話後もゲージ残量を維持",
+      "ok": true
+    },
+    {
+      "name": "ロゴス撃破・一度だけEXP/G、全エンディングは会話送りのみで自動完走",
+      "ok": true
+    },
+    {
+      "name": "学校エンディング途中の旧セーブ移行が地下へ戻さず、自動でENDまで再開",
+      "ok": true
+    },
+    {
+      "name": "SCENE47–60の台詞は話者・原文・順序を全保持、重要台詞に間",
+      "ok": true
+    },
+    {
+      "name": "C8/C8E救済と第1部END記録の完全再読込・不正演出記録を拒否",
+      "ok": true
+    }
+  ],
+  "domChecks": [
+    {
+      "name": "公開HTML内の旧C7Eロード→第8章ボタン→新マップ・薬・休憩室",
+      "ok": true
+    },
+    {
+      "name": "ロゴスの戦闘画像・狭い画面・フェーズ会話・解説停止",
+      "ok": true
+    },
+    {
+      "name": "撃破エフェクトから最後のENDまで会話クリックだけ・途中自動保存",
+      "ok": true
+    },
+    {
+      "name": "END保存→再開、学校へ正しく復帰し第1部ENDを再表示",
+      "ok": true
+    }
+  ],
+  "domRegression": [
+    {
+      "suite": "dom-check",
+      "ok": true
+    },
+    {
+      "suite": "prologue-dom",
+      "ok": true
+    },
+    {
+      "suite": "keyboard-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter1-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter2-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter3-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter4-dom",
+      "ok": true
+    },
+    {
+      "suite": "enemy-roaming-dom",
+      "ok": true
+    },
+    {
+      "suite": "attack-effects-dom",
+      "ok": true
+    },
+    {
+      "suite": "npc-tower-dom",
+      "ok": true
+    },
+    {
+      "suite": "opening-dom",
+      "ok": true
+    },
+    {
+      "suite": "title-logo-dom",
+      "ok": true
+    },
+    {
+      "suite": "feedback2-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter5-dom",
+      "ok": true
+    },
+    {
+      "suite": "scan-review-dom",
+      "ok": true
+    },
+    {
+      "suite": "feedback3-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter6-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter7-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter8-dom",
+      "ok": true
+    }
+  ],
+  "canonicalDialogue": "SCENE47–60 exact speaker, wording, order",
+  "realChromebookVerified": false,
+  "mobile": "380px Canvas and DOM tested; actual mobile device unverified"
+}

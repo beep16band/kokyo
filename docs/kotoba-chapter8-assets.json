@@ -1,0 +1,27 @@
+{
+  "version": "0.11.0",
+  "existingArt": "学校タイル・机・棚・靴箱・制服・石造塔・攻撃エフェクトは既存素材を再利用。既存ライセンスはdocs/licenses.jsonを維持。",
+  "created": [
+    {
+      "path": "assets/logos_final.png",
+      "origin": "OpenAI image generation",
+      "usage": "最終管理層・ロゴス戦・撃破時の分解演出",
+      "prompt": "Transparent pixel-art final boss, impersonal ivory and bronze mechanical archivist, navy stone robe, faceless mask, floating rings, illuminated book in chest, cyan and gold, logical 128x128 displayed as 8x nearest-neighbor enlargement. Preserve aspect ratio."
+    },
+    {
+      "path": "assets/notebook_final.png",
+      "origin": "OpenAI image generation",
+      "usage": "アオイへ返す国語ノート・手渡し演出",
+      "prompt": "Transparent pixel-art closed Japanese school notebook, cream cover, blue spine, small blue flower and scratch, no readable text, logical 32px prop."
+    },
+    {
+      "path": "assets/school_clock_final.png",
+      "origin": "Original programmatic pixel drawing",
+      "usage": "終章の教室・図書室",
+      "reproduction": "python3 tools/finale_assets.py; data/finale-clock.json",
+      "dimensions": "32x32 RGBA; 16:10"
+    }
+  ],
+  "rightsNote": "今回の新規生成素材。既存ダウンロード素材の利用条件は変更していません。",
+  "rendering": "アスペクト比を保持・最近傍補間・pixelated。学校背景は既存画像。CDN不要。"
+}
