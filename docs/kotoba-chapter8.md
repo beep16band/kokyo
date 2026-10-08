@@ -24,3 +24,8 @@
 assets/logos_final.png、notebook_final.pngを生成、school_clock_final.pngを32×32で作成。生成指示・用途はchapter8-assets.json。既存制服・校舎・机・本棚・靴箱・塔タイル・戦闘エフェクトを再利用。
 
 主な変更：src/core.js、src/app.js、src/finale.js、src/student-tools.js、tools/chapter8_data.py、data/chapter8-events.json、game-data.json、maps.json、balance.json、build.py、index.html。追加検査：tests/chapter8.cjs、chapter8-dom.cjs。ソースZIPからpython3 build.pyで通信不要のHTMLを再構築可能。
+
+
+## 公開版Chrome確認
+
+GitHub Pagesの反映成功を確認。公開版で新規開始、ロゴス戦、正解ダメージ204、解説中のATTACK停止を確認。終章の検証用チェックポイントを読み込み、最後の会話から主人公・アオイの自動退場→END→記録→ページ再読込→END再開を確認。新版の安全な自動保存処理が公開HTMLにも反映。ゲーム由来のJSエラーは検出なし（拡張機能のメタデータエラーを除外）。全エンディングの通し検証はEngineおよびDOM/Canvasで実施。Chromebook・スマホ実機は未検証。

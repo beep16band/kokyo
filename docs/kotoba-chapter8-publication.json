@@ -1,0 +1,29 @@
+{
+  "version": "0.11.0",
+  "gameCommit": "6c5ddab5be25c824ad334803db493b1dc573f68f",
+  "pagesRun": 37728054387,
+  "pagesResult": "success",
+  "url": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+  "chrome": {
+    "title": "コトバの塔 — 第8章 0.11.0",
+    "newStart": true,
+    "finalBossStart": true,
+    "correctDamage": 204,
+    "bossHPAfterAnswer": 2446,
+    "explanationAttackPaused": true,
+    "logosBreakRendered": true,
+    "endingCheckpointImported": "SCENE60 final dialogue; legitimate engine save record",
+    "endingOnlyDialogueToAutomaticExitAndEND": true,
+    "endSaveReloadResume": true,
+    "safeAutosaveFixPresentInLiveHTML": true,
+    "gameJavaScriptErrorsObserved": 0,
+    "extensionMetadataErrors": "Excluded Chrome extension errors; not game errors"
+  },
+  "fullEndingValidation": "Entire SCENE50–60 tested in Engine and compiled HTML DOM/Canvas; real Chrome checked defeat effect and final segment using saved checkpoints",
+  "sourceArchive": "assets/kotoba-tower/kotoba-tower-source-0.11.0.zip",
+  "sourceRebuild": "All code/data/assets identical. Asset JSON key order may differ with filesystem enumeration.",
+  "htmlSHA256": "94e25ef107decdd71252993c07005688492d39ba6952721713cc503f32e8efbd",
+  "realChromebookVerified": false,
+  "realMobileDeviceVerified": false,
+  "screenshot": "docs/kotoba-chapter8-live.jpg"
+}
