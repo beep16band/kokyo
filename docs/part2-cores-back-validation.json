@@ -1,0 +1,16 @@
+{
+  "version": "0.16.0",
+  "stateTests": 278,
+  "newDOMCases": 4,
+  "regressionDOMCases": 16,
+  "simulatedBattles": 4000,
+  "scenes": [
+    71,
+    72
+  ],
+  "maps": 8,
+  "normalEncounters": 20,
+  "saveFormat": 1,
+  "chromebookPhysical": false,
+  "publicChrome": "verified_with_imported_checkpoints"
+}

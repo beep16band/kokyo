@@ -1,0 +1,18 @@
+{
+  "version": "0.16.0",
+  "gameCommit": "1d8c2feffda10325015e4b4a214341f9b07c651c",
+  "pagesRun": "37858288804",
+  "pagesConclusion": "success",
+  "url": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+  "publicChromeChecks": [
+    "stage5 JSON import and continue into memory road",
+    "memory canonical boss introduction and correct answer explanation",
+    "tomorrow canonical boss introduction",
+    "time acceleration changes from x1.00 to x1.15",
+    "explanation pauses ATTACK gauge",
+    "four-core first-town checkpoint shows chapter10 CLEAR",
+    "save to title and resume restores chapter10 CLEAR"
+  ],
+  "method": "Imported test checkpoints; full route covered by engine and DOM tests, not a manual full-story playthrough.",
+  "physicalChromebookVerified": false
+}
