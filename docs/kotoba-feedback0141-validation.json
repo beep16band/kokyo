@@ -1,0 +1,48 @@
+{
+  "version": "0.14.1",
+  "baseCommit": "f00e0cca26228e8c0c568cf7ced15ecde63a1aa3",
+  "stateTests": 254,
+  "domSuites": 23,
+  "streamVocabulary": 435,
+  "easterEggProbability": 0.03,
+  "easterEggNames": [
+    "釜渕",
+    "阪口",
+    "岸",
+    "柿本",
+    "小川",
+    "西村",
+    "森本"
+  ],
+  "chestsAudited": 22,
+  "chestFixes": [
+    {
+      "map": "ch2_trail",
+      "id": "ch2-trail-cache",
+      "from": [
+        9,
+        9
+      ],
+      "to": [
+        9,
+        10
+      ]
+    },
+    {
+      "map": "ch3_approach",
+      "id": "ch3-road-cache",
+      "from": [
+        9,
+        9
+      ],
+      "to": [
+        9,
+        10
+      ]
+    }
+  ],
+  "saveFormat": 1,
+  "nextStage": "工程⑤（SCENE69～70）",
+  "physicalChromebookTest": false,
+  "layoutRevision": 3
+}
