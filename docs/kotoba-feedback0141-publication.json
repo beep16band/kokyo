@@ -1,0 +1,44 @@
+{
+  "html": {
+    "bytes": 10616886,
+    "sha256": "b1a01ef3019714dcc11771362c62b6cb5ac1c02f688397f87841c9f66458ea8c",
+    "blobSha": "c9592e7538798a36efca4a8d23b097bfdd8a3cc0",
+    "chars": 9505325
+  },
+  "zip": {
+    "bytes": 11218437,
+    "sha256": "3ea71caef83ffd3c41088eda23edcf760058d6f69e36db3f4cf1746499de18f6",
+    "blobSha": "a8233cab828e0e085be59b13ff404488b0ced6ff",
+    "chars": 14957916
+  },
+  "commit": "e0b9cdb4b35d69c5e85347033429a3acaa5dfb21",
+  "publicURL": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+  "pagesRun": 37758440354,
+  "pagesConclusion": "success",
+  "chromeTitle": "コトバの塔 — 第2部 第9章 0.14.1",
+  "chromeVerified": [
+    "title",
+    "old-json-import",
+    "two-kanji-stream",
+    "Sakaguchi-easter-egg-observed",
+    "both-empty-chests-investigated",
+    "battle-start",
+    "timeout-same-question",
+    "wrong-counterattack",
+    "immediate-answer-display",
+    "answer-pause-unchanged-on-screen",
+    "next-question-and-potion-clock-running",
+    "correct-hit-preserves-remaining-gauge"
+  ],
+  "gameConsoleErrors": 0,
+  "stateTests": 254,
+  "domSuites": 23,
+  "observations": {
+    "timeoutPlayerHP": "232/319",
+    "wrongPlayerHP": "145/319",
+    "pausedGauge": "scaleX(0.16374)",
+    "sameGaugeAfterReading": true,
+    "correctEnemyHP": "1081/1280",
+    "correctGauge": "scaleX(0.519275)"
+  }
+}
