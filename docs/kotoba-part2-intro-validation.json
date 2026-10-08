@@ -1,0 +1,36 @@
+{
+  "version": "0.14.0",
+  "stage": 4,
+  "scenes": [
+    65,
+    66,
+    67,
+    68
+  ],
+  "stateChecks": 240,
+  "domSuites": 22,
+  "statePass": true,
+  "domPass": true,
+  "realChrome": true,
+  "physicalChromebook": false,
+  "physicalPhone": false,
+  "mobileDOMWidth": 380,
+  "sharedStatsInherited": true,
+  "canonicalExact": true,
+  "chapter10Unlocked": false,
+  "existingPart1DataPreserved": true,
+  "teacherShortcutPreserved": true,
+  "gameConsoleErrors": 0,
+  "live": {
+    "fusionCorrectAnswers": 7,
+    "enemyHP": 1280,
+    "firstDamage": 205,
+    "attackPausedScale": 0.883335,
+    "attackNextSeconds": 18,
+    "rewardEXP": 500,
+    "rewardG": 850,
+    "chapter9Clear": true,
+    "saveLoadClear": true,
+    "verificationUsesCheckpointJSON": true
+  }
+}
