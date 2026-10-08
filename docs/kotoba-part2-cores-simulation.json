@@ -1,0 +1,197 @@
+{
+  "battles": 4000,
+  "accuracy": 0.88,
+  "thinkingSeconds": 7,
+  "potions": 3,
+  "rows": [
+    {
+      "enemy": "P2_NOMEN",
+      "case": "適正",
+      "level": 20,
+      "gear": [
+        "W027",
+        "A016"
+      ],
+      "trials": 400,
+      "defeatRate": 0.17500000000000004,
+      "correctOnWin": 10.99,
+      "remainingHP": 110.29,
+      "maxHP": 372,
+      "potions": 2.77,
+      "attacks": 5.08,
+      "perfectCorrect": 11
+    },
+    {
+      "enemy": "P2_NOMEN",
+      "case": "Lv-2/同装備",
+      "level": 18,
+      "gear": [
+        "W027",
+        "A016"
+      ],
+      "trials": 400,
+      "defeatRate": 0.495,
+      "correctOnWin": 11.95,
+      "remainingHP": 55.9,
+      "maxHP": 324,
+      "potions": 2.98,
+      "attacks": 5.28,
+      "perfectCorrect": 12
+    },
+    {
+      "enemy": "P2_NOMEN",
+      "case": "Lv+2/同装備",
+      "level": 22,
+      "gear": [
+        "W027",
+        "A016"
+      ],
+      "trials": 400,
+      "defeatRate": 0.030000000000000027,
+      "correctOnWin": 10,
+      "remainingHP": 251.84,
+      "maxHP": 424,
+      "potions": 2.7,
+      "attacks": 4.53,
+      "perfectCorrect": 10
+    },
+    {
+      "enemy": "P2_NOMEN",
+      "case": "弱装備",
+      "level": 20,
+      "gear": [
+        "W010",
+        "A008"
+      ],
+      "trials": 400,
+      "defeatRate": 0.4625,
+      "correctOnWin": 12,
+      "remainingHP": 74.15,
+      "maxHP": 367,
+      "potions": 2.97,
+      "attacks": 5.36,
+      "perfectCorrect": 12
+    },
+    {
+      "enemy": "P2_NOMEN",
+      "case": "強装備",
+      "level": 23,
+      "gear": [
+        "W028",
+        "A017"
+      ],
+      "trials": 400,
+      "defeatRate": 0,
+      "correctOnWin": 8.92,
+      "remainingHP": 296.25,
+      "maxHP": 457,
+      "potions": 1.82,
+      "attacks": 4.19,
+      "perfectCorrect": 9
+    },
+    {
+      "enemy": "P2_VOW",
+      "case": "適正",
+      "level": 22,
+      "gear": [
+        "W028",
+        "A016"
+      ],
+      "trials": 400,
+      "defeatRate": 0.24250000000000005,
+      "correctOnWin": 11,
+      "remainingHP": 115.82,
+      "maxHP": 424,
+      "potions": 2.99,
+      "attacks": 4.95,
+      "perfectCorrect": 11
+    },
+    {
+      "enemy": "P2_VOW",
+      "case": "Lv-2/同装備",
+      "level": 20,
+      "gear": [
+        "W028",
+        "A016"
+      ],
+      "trials": 400,
+      "defeatRate": 0.485,
+      "correctOnWin": 11.97,
+      "remainingHP": 36.12,
+      "maxHP": 372,
+      "potions": 2.92,
+      "attacks": 5.04,
+      "perfectCorrect": 12
+    },
+    {
+      "enemy": "P2_VOW",
+      "case": "Lv+2/同装備",
+      "level": 24,
+      "gear": [
+        "W028",
+        "A016"
+      ],
+      "trials": 400,
+      "defeatRate": 0.0625,
+      "correctOnWin": 10,
+      "remainingHP": 232.71,
+      "maxHP": 480,
+      "potions": 2.66,
+      "attacks": 4.44,
+      "perfectCorrect": 10
+    },
+    {
+      "enemy": "P2_VOW",
+      "case": "弱装備",
+      "level": 22,
+      "gear": [
+        "W010",
+        "A008"
+      ],
+      "trials": 400,
+      "defeatRate": 0.6025,
+      "correctOnWin": 13.04,
+      "remainingHP": 44.78,
+      "maxHP": 419,
+      "potions": 2.93,
+      "attacks": 5.32,
+      "perfectCorrect": 13
+    },
+    {
+      "enemy": "P2_VOW",
+      "case": "強装備",
+      "level": 23,
+      "gear": [
+        "W028",
+        "A017"
+      ],
+      "trials": 400,
+      "defeatRate": 0.03500000000000003,
+      "correctOnWin": 10.2,
+      "remainingHP": 227.65,
+      "maxHP": 457,
+      "potions": 2.67,
+      "attacks": 4.58,
+      "perfectCorrect": 10
+    }
+  ],
+  "normals": [
+    {
+      "enemy": "P2_NAMETHIEF",
+      "correct": 3
+    },
+    {
+      "enemy": "P2_IRONGUARD",
+      "correct": 3
+    },
+    {
+      "enemy": "P2_QUICKWORD",
+      "correct": 2
+    },
+    {
+      "enemy": "P2_COINWORD",
+      "correct": 3
+    }
+  ],
+  "underLevelGearCases": "Isolated stat comparison; shop still enforces minimum Lv."
+}

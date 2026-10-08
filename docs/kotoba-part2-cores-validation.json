@@ -1,0 +1,41 @@
+{
+  "version": "0.15.0",
+  "baseCommit": "10948da76f6b2d1642efcea316691804dedada92",
+  "stateTests": 267,
+  "domSuites": 24,
+  "simulationBattles": 4000,
+  "implementedScenes": [
+    69,
+    70
+  ],
+  "addedMaps": 8,
+  "normalEncounters": 22,
+  "cores": [
+    "name",
+    "promise"
+  ],
+  "activatedGear": [
+    "W027",
+    "A016",
+    "W028",
+    "A017"
+  ],
+  "bossPerfectCorrect": {
+    "P2_NOMEN": 11,
+    "P2_VOW": 11
+  },
+  "bossDefeatRateAt88Percent7Seconds3Herbs": {
+    "P2_NOMEN": 0.175,
+    "P2_VOW": 0.2425
+  },
+  "recommendedLevels": {
+    "name": 20,
+    "promise": 22,
+    "halfEnd": 24
+  },
+  "fullChapter10Completed": false,
+  "nextStage": "工程⑥ SCENE71～72",
+  "saveFormat": 1,
+  "physicalChromebookTest": false,
+  "realChrome": "pending publication verification"
+}
