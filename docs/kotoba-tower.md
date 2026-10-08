@@ -1,6 +1,6 @@
 # コトバの塔 ― 入試国語 最終試練 ―
 
-公開版0.13.1：プロローグ＋第1～8章と第1部エンディング。第7章CLEARから「第8章へ進む」で続行できます。ロゴス撃破後は、会話を進めるだけでキャラクター移動と場面転換が自動で進みます。旧JSON記録を引き継げます。
+公開版0.14.0：プロローグ＋第1～8章と第1部エンディング。第7章CLEARから「第8章へ進む」で続行できます。ロゴス撃破後は、会話を進めるだけでキャラクター移動と場面転換が自動で進みます。旧JSON記録を引き継げます。
 
 [ゲームを開く](https://beep16band.github.io/kokyo/kotoba-tower.html)
 
@@ -18,7 +18,7 @@
 
 画像・コード・問題はHTML内蔵。CDN・外部通信は不要。素材利用条件と検証用データはソースに保持。
 
-[第7章の変更と検証](kotoba-chapter7.md) ／ [改善点③の記録](kotoba-feedback3.md) ／ [継続開発用ソース0.13.1](../assets/kotoba-tower/kotoba-tower-source-0.13.1.zip)
+[第7章の変更と検証](kotoba-chapter7.md) ／ [改善点③の記録](kotoba-feedback3.md) ／ [継続開発用ソース0.14.0](../assets/kotoba-tower/kotoba-tower-source-0.14.0.zip)
 
 [戦闘・成長・価格調整の詳細と検証](kotoba-balance.md)。旧記録のLvと進行を保持し、HP割合・EXP進捗を新版へ移行。正解後のATTACK残量継続・解説中停止を維持。
 
@@ -29,3 +29,7 @@
 [工程② 第2部の準備・引継検証](kotoba-part2-preparation.md)。第1部ENDの「第2部への引き継ぎを確認」で現在の記録を確認できます。レンのAFTER STORYは工程③です。
 
 [レンのAFTER STORY・タイトルJSON読込・先生用生成画面の変更](kotoba-afterstory.md)。SCENE61～64を実装。第2部本編は次工程です。
+
+工程④：SCENE65～68（再出発＋第9章）を実装。AFTER STORY完了JSONをタイトルで読み込み「第2部へ進む」。学校からアオイと紫の町へ戻り、町外れの融合獣を倒して「母」の言葉を取り戻します。第10章は次工程。
+
+[工程④の変更・検証](kotoba-part2-intro.md)

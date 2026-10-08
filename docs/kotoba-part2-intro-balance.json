@@ -1,0 +1,62 @@
+[
+  {
+    "level": 16,
+    "weak": false,
+    "hits": {
+      "P2_BAT": 2,
+      "P2_GUARD": 3,
+      "P2_WORD": 3,
+      "P2_FUSION": 8
+    }
+  },
+  {
+    "level": 16,
+    "weak": true,
+    "hits": {
+      "P2_BAT": 4,
+      "P2_GUARD": 6,
+      "P2_WORD": 5,
+      "P2_FUSION": 15
+    }
+  },
+  {
+    "level": 18,
+    "weak": false,
+    "hits": {
+      "P2_BAT": 2,
+      "P2_GUARD": 3,
+      "P2_WORD": 3,
+      "P2_FUSION": 7
+    }
+  },
+  {
+    "level": 18,
+    "weak": true,
+    "hits": {
+      "P2_BAT": 4,
+      "P2_GUARD": 5,
+      "P2_WORD": 4,
+      "P2_FUSION": 12
+    }
+  },
+  {
+    "level": 20,
+    "weak": false,
+    "hits": {
+      "P2_BAT": 2,
+      "P2_GUARD": 3,
+      "P2_WORD": 2,
+      "P2_FUSION": 6
+    }
+  },
+  {
+    "level": 20,
+    "weak": true,
+    "hits": {
+      "P2_BAT": 3,
+      "P2_GUARD": 4,
+      "P2_WORD": 4,
+      "P2_FUSION": 10
+    }
+  }
+]

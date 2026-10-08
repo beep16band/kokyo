@@ -1,0 +1,107 @@
+[
+  {
+    "suite": "test:dom",
+    "ok": true,
+    "log": "tmp/test-dom-0140.log"
+  },
+  {
+    "suite": "test:prologue-dom",
+    "ok": true,
+    "log": "tmp/test-prologue-dom-0140.log"
+  },
+  {
+    "suite": "test:keyboard-dom",
+    "ok": true,
+    "log": "tmp/test-keyboard-dom-0140.log"
+  },
+  {
+    "suite": "test:chapter1-dom",
+    "ok": true,
+    "log": "tmp/test-chapter1-dom-0140.log"
+  },
+  {
+    "suite": "test:chapter2-dom",
+    "ok": true,
+    "log": "tmp/test-chapter2-dom-0140.log"
+  },
+  {
+    "suite": "test:chapter3-dom",
+    "ok": true,
+    "log": "tmp/test-chapter3-dom-0140.log"
+  },
+  {
+    "suite": "test:chapter4-dom",
+    "ok": true,
+    "log": "tmp/test-chapter4-dom-0140.log"
+  },
+  {
+    "suite": "test:enemy-dom",
+    "ok": true,
+    "log": "tmp/test-enemy-dom-0140.log"
+  },
+  {
+    "suite": "test:effects-dom",
+    "ok": true,
+    "log": "tmp/test-effects-dom-0140.log"
+  },
+  {
+    "suite": "test:npc-tower-dom",
+    "ok": true,
+    "log": "tmp/test-npc-tower-dom-0140.log"
+  },
+  {
+    "suite": "test:opening-dom",
+    "ok": true,
+    "log": "tmp/test-opening-dom-0140.log"
+  },
+  {
+    "suite": "test:title-logo-dom",
+    "ok": true,
+    "log": "tmp/test-title-logo-dom-0140.log"
+  },
+  {
+    "suite": "test:feedback2-dom",
+    "ok": true,
+    "log": "tmp/test-feedback2-dom-0140.log"
+  },
+  {
+    "suite": "test:chapter5-dom",
+    "ok": true,
+    "log": "tmp/test-chapter5-dom-0140.log"
+  },
+  {
+    "suite": "test:scan-review-dom",
+    "ok": true,
+    "log": "tmp/test-scan-review-dom-0140.log"
+  },
+  {
+    "suite": "test:feedback3-dom",
+    "ok": true,
+    "log": "tmp/test-feedback3-dom-0140.log"
+  },
+  {
+    "suite": "test:chapter6-dom",
+    "ok": true,
+    "log": "tmp/test-chapter6-dom-0140.log"
+  },
+  {
+    "suite": "test:chapter7-dom",
+    "ok": true,
+    "log": "tmp/test-chapter7-dom-0140.log"
+  },
+  {
+    "suite": "test:chapter8-dom",
+    "ok": true,
+    "log": "tmp/test-chapter8-dom-0140.log"
+  },
+  {
+    "suite": "test:part2-preparation-dom",
+    "ok": true,
+    "log": "tmp/test-part2-preparation-dom-0140.log"
+  },
+  {
+    "suite": "test:afterstory-dom",
+    "ok": true,
+    "log": "tmp/test-afterstory-dom-0140.log"
+  }
+]
