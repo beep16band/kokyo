@@ -50,3 +50,7 @@
 src/core.js、src/app.js、index.html、src/style.css、build.py、data/continuation.json、data/part2-equipment-plan.json、data/part2-canonical-scenes.json、tools/part2_prepare.py、tests/part2-preparation.cjs、tests/part2-preparation-dom.cjs。変更前はreference/before_part2に保存。
 
 次工程③：レンのAFTER STORY SCENE61～64（平和な町・最初の吸収・数日後・宿屋の決断）。
+
+## 公開Chromeでの確認
+
+GitHub Pages更新成功。0.11.0の旧END記録から0.12.0で再開し、Lv17・EXP620・4900G・薬20・図鑑14語・問題履歴14問を保持。引継表示→記録→再開でも同じ内容。ゲーム由来のエラーログなし。実機Chromebookは未確認。

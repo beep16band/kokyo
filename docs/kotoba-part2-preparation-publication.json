@@ -1,0 +1,29 @@
+{
+  "version": "0.12.0",
+  "gameCommit": "be9de73f3faa8dd08e8ef30d371625f31020cc2a",
+  "pagesRun": 37729192097,
+  "pagesResult": "success",
+  "url": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+  "chrome": {
+    "old011EndSaveLoaded": true,
+    "transferSummaryShown": true,
+    "levelPreserved": 17,
+    "expPreserved": 620,
+    "goldPreserved": 4900,
+    "herbsPreserved": 20,
+    "lexiconPreserved": 14,
+    "questionHistoryPreserved": 14,
+    "examHistoryPreserved": 14,
+    "saveAndResumeSameSummary": true,
+    "title": "コトバの塔 — 第8章 0.12.0",
+    "gameErrorLogs": 0
+  },
+  "stateTests": 222,
+  "domSuites": 20,
+  "realChromebookVerified": false,
+  "realMobileVerified": false,
+  "part2Playable": false,
+  "afterStoryPlayable": false,
+  "nextStage": "③ SCENE61～64 AFTER STORY",
+  "htmlSHA256": "6230a84f010d18c10108d36ad4247db545f5a18391f200c9cb54174c08bcb4c7"
+}

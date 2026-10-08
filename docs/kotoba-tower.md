@@ -1,6 +1,6 @@
 # コトバの塔 ― 入試国語 最終試練 ―
 
-公開版0.11.0：プロローグ＋第1～8章と第1部エンディング。第7章CLEARから「第8章へ進む」で続行できます。ロゴス撃破後は、会話を進めるだけでキャラクター移動と場面転換が自動で進みます。旧JSON記録を引き継げます。
+公開版0.12.0：プロローグ＋第1～8章と第1部エンディング。第7章CLEARから「第8章へ進む」で続行できます。ロゴス撃破後は、会話を進めるだけでキャラクター移動と場面転換が自動で進みます。旧JSON記録を引き継げます。
 
 [ゲームを開く](https://beep16band.github.io/kokyo/kotoba-tower.html)
 
@@ -18,9 +18,12 @@
 
 画像・コード・問題はHTML内蔵。CDN・外部通信は不要。素材利用条件と検証用データはソースに保持。
 
-[第7章の変更と検証](kotoba-chapter7.md) ／ [改善点③の記録](kotoba-feedback3.md) ／ [継続開発用ソース0.11.0](../assets/kotoba-tower/kotoba-tower-source-0.11.0.zip)
+[第7章の変更と検証](kotoba-chapter7.md) ／ [改善点③の記録](kotoba-feedback3.md) ／ [継続開発用ソース0.12.0](../assets/kotoba-tower/kotoba-tower-source-0.12.0.zip)
 
 [戦闘・成長・価格調整の詳細と検証](kotoba-balance.md)。旧記録のLvと進行を保持し、HP割合・EXP進捗を新版へ移行。正解後のATTACK残量継続・解説中停止を維持。
 
 
 [第8章・自動エンディングの変更と検証](kotoba-chapter8.md)。第2部本編は次工程です。
+
+
+[工程② 第2部の準備・引継検証](kotoba-part2-preparation.md)。第1部ENDの「第2部への引き継ぎを確認」で現在の記録を確認できます。レンのAFTER STORYは工程③です。

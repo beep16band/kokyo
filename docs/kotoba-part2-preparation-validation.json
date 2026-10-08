@@ -1,0 +1,187 @@
+{
+  "version": "0.12.0",
+  "stateTests": 222,
+  "domSuites": 20,
+  "checks": [
+    {
+      "name": "0.11.0旧END記録の全共有項目を一切変更せず補完",
+      "ok": true
+    },
+    {
+      "name": "Lv1～35で旧記録のLv・EXP・HP・装備・Gが継承され35補正なし",
+      "ok": true
+    },
+    {
+      "name": "第1部通常記録・新規開始は既定値、第2部誤解禁なし",
+      "ok": true
+    },
+    {
+      "name": "未実装AFTER STORY・第9章を開始せず共有記録を保護",
+      "ok": true
+    },
+    {
+      "name": "部分的な新進行データは補完、不正値・未来版・不正操作人物は拒否",
+      "ok": true
+    },
+    {
+      "name": "新記録の保存・再読込は完全一致、引継表示は読取専用",
+      "ok": true
+    },
+    {
+      "name": "第1部マップ・敵・問題・装備・店・成長・台詞は0.11.0のまま",
+      "ok": true
+    },
+    {
+      "name": "正本SCENE61～92を保存し現在の台詞には混入しない",
+      "ok": true
+    },
+    {
+      "name": "Lv35成長曲線と各章EXP予算は実際の成長表と一致",
+      "ok": true
+    },
+    {
+      "name": "未使用の既存装備だけ計画し逆転を修正する値は未適用",
+      "ok": true
+    }
+  ],
+  "domChecks": [
+    {
+      "name": "旧0.11 ENDを読込し引継ボタン表示、記録のLv等は保持",
+      "ok": true
+    },
+    {
+      "name": "引継内容確認は読取専用、ENDから移動も誤解禁もしない",
+      "ok": true
+    },
+    {
+      "name": "引継確認後の記録と再開、旧書式とセーブキーを維持",
+      "ok": true
+    },
+    {
+      "name": "380px狭い画面でも引継表示とENDが描画できる",
+      "ok": true
+    }
+  ],
+  "regression": [
+    {
+      "suite": "dom-check",
+      "ok": true
+    },
+    {
+      "suite": "prologue-dom",
+      "ok": true
+    },
+    {
+      "suite": "keyboard-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter1-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter2-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter3-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter4-dom",
+      "ok": true
+    },
+    {
+      "suite": "enemy-roaming-dom",
+      "ok": true
+    },
+    {
+      "suite": "attack-effects-dom",
+      "ok": true
+    },
+    {
+      "suite": "npc-tower-dom",
+      "ok": true
+    },
+    {
+      "suite": "opening-dom",
+      "ok": true
+    },
+    {
+      "suite": "title-logo-dom",
+      "ok": true
+    },
+    {
+      "suite": "feedback2-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter5-dom",
+      "ok": true
+    },
+    {
+      "suite": "scan-review-dom",
+      "ok": true
+    },
+    {
+      "suite": "feedback3-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter6-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter7-dom",
+      "ok": true
+    },
+    {
+      "suite": "chapter8-dom",
+      "ok": true
+    },
+    {
+      "suite": "part2-preparation-dom",
+      "ok": true
+    }
+  ],
+  "legacyLevelsChecked": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "part1RuntimeDataUnchanged": true,
+  "newPlayableChapters": false,
+  "realChromebookVerified": false
+}
