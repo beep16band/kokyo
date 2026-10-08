@@ -1,0 +1,111 @@
+{
+  "version": "0.13.1",
+  "stateSuites": 26,
+  "stateChecksPassed": 232,
+  "stateFailures": 0,
+  "domSuites": 21,
+  "domSuitesPassed": 21,
+  "afterstoryChecks": [
+    {
+      "name": "第1部完結後のみレンを開始、主人公の名前・見た目・Lv・所持品を保管",
+      "ok": true
+    },
+    {
+      "name": "町の3会話、子どもの自動移動、途中の全自動保存が復元可能",
+      "ok": true
+    },
+    {
+      "name": "石門移動・誤答・連続時間切れ・解説停止・正解ゲージ残量継続・最初の吸収",
+      "ok": true
+    },
+    {
+      "name": "町へ戻ると数日後、再入場後は字幕と会話が重複しない",
+      "ok": true
+    },
+    {
+      "name": "街道の3体はどの順でも最後に任務達成、吸収が二重加算されない",
+      "ok": true
+    },
+    {
+      "name": "再訪する石門と宿屋扉、SCENE64自動歩行・波紋・タイトル帰還・主人公復元",
+      "ok": true
+    },
+    {
+      "name": "正本SCENE61～64の全発話は完全一致、第65以降は未実装",
+      "ok": true
+    },
+    {
+      "name": "旧データは補完、不正なレン・主人公帰還位置・未来章を拒否",
+      "ok": true
+    },
+    {
+      "name": "先生メニューの隠しキーはタイトル限定・リピート無効・入力間違い/時間超過でリセット",
+      "ok": true
+    }
+  ],
+  "afterstoryDom": [
+    {
+      "name": "通常の救済画面に生成欄なし、タイトルの正しい↑↑↓↓←→←→BNだけで先生画面",
+      "ok": true
+    },
+    {
+      "name": "タイトルにJSON読込、選択取消・壊れたJSON・巨大ファイルでも新規開始しない",
+      "ok": true
+    },
+    {
+      "name": "新規ゲームを始めず旧ENDのJSONから再開しレンへのボタンを表示",
+      "ok": true
+    },
+    {
+      "name": "町の3会話と子どもの走行、入口から街道の戦闘へ移動",
+      "ok": true
+    },
+    {
+      "name": "町への帰還・数日後・3体討伐・宿屋SCENE64まで会話送りで完走",
+      "ok": true
+    },
+    {
+      "name": "AFTER STORY途中のJSONはレンで再開、スマホ幅380pxで描画",
+      "ok": true
+    },
+    {
+      "name": "完了JSONをタイトルで読み込むと副題を表示し、未実装第9章は始めない",
+      "ok": true
+    }
+  ],
+  "chromeLive": {
+    "titleJsonImport": true,
+    "renAssetFacingEnemy": true,
+    "normalBattleWin": true,
+    "correctDamage": true,
+    "explanationStopped": true,
+    "correctResidualAttackGauge": true,
+    "firstAbsorptionHP82": true,
+    "innDoorTraversed": true,
+    "innAutonomousWalking": true,
+    "scene64Decision": true,
+    "titleSubtitle": true,
+    "completedRecordDownload": true,
+    "restoredHeroHP": 143,
+    "restoredHeroEXP": 417,
+    "restoredHeroGold": 3141,
+    "gameErrors": 0,
+    "teacherShortcut": {
+      "normalRescueGeneratorHidden": true,
+      "correctTitleSequenceOpens": true,
+      "generated": "KT1-C8E-L18-G3141-P7",
+      "titleJsonImport0131": true,
+      "gameErrors": 0
+    }
+  },
+  "publicUrl": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+  "codeCommit": "36dab74be14e509851e4db4dedc95e351e373be7",
+  "implementedScenes": [
+    61,
+    62,
+    63,
+    64
+  ],
+  "part2MainImplemented": false,
+  "sourceRebuild": "code/data/assets/style/UI match; asset key ordering excluded"
+}

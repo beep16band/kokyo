@@ -1,0 +1,45 @@
+{
+  "newOriginalAssets": [
+    {
+      "file": "afterstory_cup_table.png",
+      "size": [
+        32,
+        32
+      ],
+      "tileSize": 32,
+      "purpose": "宿屋の机と水のコップ",
+      "source": "original pixel drawing / tools/create-afterstory-props.py"
+    },
+    {
+      "file": "afterstory_window.png",
+      "size": [
+        64,
+        64
+      ],
+      "tileSize": 32,
+      "purpose": "夜の窓、町の明かり",
+      "source": "original pixel drawing / tools/create-afterstory-props.py"
+    }
+  ],
+  "reusedAssets": [
+    "ren_pipoya_student",
+    "npc",
+    "villager",
+    "elderwoman",
+    "stone_house",
+    "grass",
+    "path",
+    "tree",
+    "stone_arch",
+    "gate_door",
+    "floor",
+    "wall",
+    "bench",
+    "slime",
+    "bat",
+    "goblin",
+    "hound"
+  ],
+  "originalFilesPreserved": true,
+  "palette": "normal town, localized purple-white fragments, faint edge light and one water ripple; no skin tint"
+}

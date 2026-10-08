@@ -1,0 +1,39 @@
+{
+  "version": "0.13.1",
+  "gameCommit": "36dab74be14e509851e4db4dedc95e351e373be7",
+  "initialAfterstoryCommit": "426c2e817fadc5928bd9169ae263d19e2b87b86d",
+  "pagesRun": 37731979193,
+  "pagesResult": "success",
+  "url": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+  "sourceArchive": {
+    "path": "assets/kotoba-tower/kotoba-tower-source-0.13.1.zip",
+    "bytes": 8886598,
+    "entries": 298,
+    "sha256": "a135fa8767c69c78acb471ded38d05a62dfab62d427169d6f4bc32303389cac4"
+  },
+  "chrome": {
+    "titleJsonImport": true,
+    "renAssetFacingEnemy": true,
+    "normalBattleWin": true,
+    "correctDamage": true,
+    "explanationStopped": true,
+    "correctResidualAttackGauge": true,
+    "firstAbsorptionHP82": true,
+    "innDoorTraversed": true,
+    "innAutonomousWalking": true,
+    "scene64Decision": true,
+    "titleSubtitle": true,
+    "completedRecordDownload": true,
+    "restoredHeroHP": 143,
+    "restoredHeroEXP": 417,
+    "restoredHeroGold": 3141,
+    "gameErrors": 0,
+    "teacherShortcut": {
+      "normalRescueGeneratorHidden": true,
+      "correctTitleSequenceOpens": true,
+      "generated": "KT1-C8E-L18-G3141-P7",
+      "titleJsonImport0131": true,
+      "gameErrors": 0
+    }
+  }
+}
