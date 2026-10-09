@@ -1,0 +1,190 @@
+{
+  "version": "0.19.0",
+  "stage": 9,
+  "scenes": [
+    80,
+    81,
+    82
+  ],
+  "stateTests": 319,
+  "stateExit": 0,
+  "domTests": 20,
+  "chapter13Tests": [
+    {
+      "name": "第12章の旧記録から第13章へ。Lv・装備・金・正答履歴・四核を完全継承",
+      "ok": true
+    },
+    {
+      "name": "第12章未完・四核不足の記録は章ボタンを直接呼んでも進めない",
+      "ok": true
+    },
+    {
+      "name": "前室の宝箱は既存紅蓮の短剣と薬草。一度だけ取得しLv33未満は装備不可",
+      "ok": true
+    },
+    {
+      "name": "SCENE80/81再会と告白は順に進み、戦闘前は自由に戻れる",
+      "ok": true
+    },
+    {
+      "name": "HP75/50/25/0％で4体が一度ずつ分離。大ダメージでも閾値を取りこぼさない",
+      "ok": true
+    },
+    {
+      "name": "敗北は前室ではなく中央入口へ。レンは未救出のまま再挑戦可能",
+      "ok": true
+    },
+    {
+      "name": "実際の正答ダメージで4影分離→SCENE82後半→完了。核は消費せず報酬一度だけ",
+      "ok": true
+    },
+    {
+      "name": "各演出ステップの保存・復元が有効。会話再開でも発話を飛ばさない",
+      "ok": true
+    },
+    {
+      "name": "完了後の往復・第12章旧境界演出の途中記録も有効",
+      "ok": true
+    },
+    {
+      "name": "SCENE80〜82の話者・発話・順序が正本と一致。SCENE83以降は予約",
+      "ok": true
+    },
+    {
+      "name": "Lv32→33は8断片＋ボス3352EXP。成長補正や新ボスの復活はなし",
+      "ok": true
+    }
+  ],
+  "chapter13DOM": [
+    {
+      "name": "第12章の終了記録→第13章ボタン→前室、Lv継承と宝箱",
+      "ok": true
+    },
+    {
+      "name": "SCENE80〜81→レンの姿と紫文字→ボス戦・HPによる影分離",
+      "ok": true
+    },
+    {
+      "name": "完了保存→再開→町への戻り道。章13セーブ書式1と核4個を維持",
+      "ok": true
+    }
+  ],
+  "restrictionTests": [
+    {
+      "name": "JST boundaries 20:54/20:55/20:59/21:00/7:59/8:00 independent of browser timezone",
+      "ok": true
+    },
+    {
+      "name": "tower allowed title, new/load, equipment and ordinary save unaffected",
+      "ok": true
+    },
+    {
+      "name": "tower 20:55 warning once/day with confirm and reload persistence",
+      "ok": true
+    },
+    {
+      "name": "tower warning defers battle/dialogue/movement; 21:00 stops and verified saves",
+      "ok": true
+    },
+    {
+      "name": "tower 7:59 block, 8:00 unlock (tower permission still required)",
+      "ok": true
+    },
+    {
+      "name": "tower failed save retains previous data, remains stopped, retry succeeds",
+      "ok": true
+    },
+    {
+      "name": "quest allowed title, new/load, equipment and ordinary save unaffected",
+      "ok": true
+    },
+    {
+      "name": "quest 20:55 warning once/day with confirm and reload persistence",
+      "ok": true
+    },
+    {
+      "name": "quest warning defers battle/dialogue/movement; 21:00 stops and verified saves",
+      "ok": true
+    },
+    {
+      "name": "quest 7:59 block, 8:00 unlock (tower permission still required)",
+      "ok": true
+    },
+    {
+      "name": "quest failed save retains previous data, remains stopped, retry succeeds",
+      "ok": true
+    },
+    {
+      "name": "tower forbidden start, teacher deny midplay, communication fail and reload fail closed",
+      "ok": true
+    },
+    {
+      "name": "tower story event dialogue can reload without losing pending story effects",
+      "ok": true
+    },
+    {
+      "name": "tower sequence/transition current step and moving tile produce valid unchanged-format save",
+      "ok": true
+    },
+    {
+      "name": "quest dialogue freeze preserves callback in-page and load uses existing story resume",
+      "ok": true
+    },
+    {
+      "name": "server clock rejects device backwards/forwards in-session; floor survives refresh",
+      "ok": true
+    },
+    {
+      "name": "quest offline clock fallback still enforces night; tower stale permission cannot continue",
+      "ok": true
+    },
+    {
+      "name": "quest real battle UI, attacks, victory and reward; stopped gauge remains unchanged",
+      "ok": true
+    },
+    {
+      "name": "quest new game through hero/name/difficulty title controls",
+      "ok": true
+    },
+    {
+      "name": "quest at defeat uses existing checkpoint recovery without losing items or money",
+      "ok": true
+    },
+    {
+      "name": "dialogue and map movement defer warning until safe; title at 21 does not overwrite old save",
+      "ok": true
+    },
+    {
+      "name": "tower held direction released during stop cannot leave movement stuck on resume",
+      "ok": true
+    },
+    {
+      "name": "storage access denied: both games still load, stop on schedule, and export recovery JSON",
+      "ok": true
+    },
+    {
+      "name": "fresh server time overrides an untrusted future device/floor at startup, including night",
+      "ok": true
+    },
+    {
+      "name": "chapter13 battle stop saves safe retry location and keeps all four cores",
+      "ok": true
+    },
+    {
+      "name": "chapter13 reunion dialogue stop restores the same sequence step",
+      "ok": true
+    }
+  ],
+  "simulatedBattles": 1600,
+  "physicalDeviceTested": false,
+  "publicTeacherPermission": "preserve current remote setting; latest observed false",
+  "oldSaveFormat": 1,
+  "saveKey": "kotoba-tower-complete-stage6-v1",
+  "publicURL": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+  "limitations": [
+    "第14章以降は未実装",
+    "公開サイトの先生禁止を変更せず、許可・日中の進行検証はテストfixtureを使用",
+    "スマートフォン実機・Chromebook実機未検証、375px/1366pxの画面サイズで描画確認"
+  ],
+  "htmlSHA256": "b5cd0c658401861f4eb61af6dc1659fa9c8639b18852a16e61a5a8fab8bed4c9"
+}
