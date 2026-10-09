@@ -492,7 +492,8 @@ const MINUTE=60000,JST=9*60*MINUTE;
 function schedule(ms){const d=new Date(ms+JST),h=d.getUTCHours(),m=d.getUTCMinutes();return{date:d.toISOString().slice(0,10),night:h>=21||h<8,warning:h===20&&m>=55};}
 function verifiedWrite(storage,key,text){const before=storage.getItem(key);storage.setItem(key,text);if(storage.getItem(key)!==text){try{if(before===null)storage.removeItem(key);else storage.setItem(key,before);}catch(_){}throw Error('保存内容を確認できませんでした。');}}
 function create(o){
- const doc=o.document||root.document,storage=o.storage||root.localStorage,wall=o.wall||(()=>Date.now()),mono=o.mono||(()=>performance.now()),fetcher=o.fetch||(root.fetch?root.fetch.bind(root):async()=>{throw Error('通信機能が使えません');});
+ const doc=o.document||root.document,wall=o.wall||(()=>Date.now()),mono=o.mono||(()=>performance.now()),fetcher=o.fetch||(root.fetch?root.fetch.bind(root):async()=>{throw Error('通信機能が使えません');});
+ let storage=o.storage;if(!storage){try{storage=root.localStorage;}catch(_){} }storage||={getItem:()=>null,setItem:()=>{},removeItem:()=>{}};
  let floor=0;try{floor=Number(storage.getItem('kotoba-play-clock-floor'))||0;}catch(_){}
  let anchor=Math.max(wall(),floor),anchorMono=mono(),server=false,allowed=!o.teacher,checked=-Infinity,polling=false,blocked=true,warning=false,saveError=false,saved=false,reason='checking',lastPersist=0,lastWarning='',disposed=false;
  const host=doc.createElement('section');host.id='playRestriction';host.setAttribute('aria-label','冒険の利用時間');host.innerHTML='<div class="play-limit-card" role="dialog" aria-modal="true" aria-labelledby="playLimitTitle"><div class="play-limit-art" aria-hidden="true"></div><h1 id="playLimitTitle"></h1><div id="playLimitWords"></div><p id="playLimitStatus" role="status" aria-live="polite"></p><div class="play-limit-actions"></div></div>';doc.body.append(host);
@@ -543,8 +544,8 @@ function restrictionSave(){
  try{E.mode='explore';E.motion=null;record=E.snapshot();}finally{E.mode=mode;E.motion=motion;}
  // The usual save format is untouched; the sidecar only replays an unfinished story event.
  const meta={event:E.dialog?.eventId||null,cinematic:E.cinematic||null};
- const raw=JSON.stringify(record),old=localStorage.getItem(KEY),metaKey=KEY+'-restriction-resume',oldMeta=localStorage.getItem(metaKey);
  restrictionRecord=record;
+ const raw=JSON.stringify(record),old=localStorage.getItem(KEY),metaKey=KEY+'-restriction-resume',oldMeta=localStorage.getItem(metaKey);
  try{KotobaPlayRestrictions.verifiedWrite(localStorage,metaKey,JSON.stringify({raw,meta}));KotobaPlayRestrictions.verifiedWrite(localStorage,KEY,raw);}
  catch(e){try{if(old===null)localStorage.removeItem(KEY);else localStorage.setItem(KEY,old);if(oldMeta===null)localStorage.removeItem(metaKey);else localStorage.setItem(metaKey,oldMeta);}catch(_){}storageStatus(false);throw e;}
  storageStatus(true);return true;

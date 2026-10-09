@@ -88,8 +88,86 @@
     {
       "name": "dialogue and map movement defer warning until safe; title at 21 does not overwrite old save",
       "ok": true
+    },
+    {
+      "name": "tower held direction released during stop cannot leave movement stuck on resume",
+      "ok": true
+    },
+    {
+      "name": "storage access denied: both games still load, stop on schedule, and export recovery JSON",
+      "ok": true
     }
   ],
   "physicalDevicesTested": false,
-  "publicVerification": "pending"
+  "publicVerification": {
+    "tower": {
+      "url": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+      "defaultForbidden": true,
+      "warningTextDisplayed": true,
+      "gameUIInert": true,
+      "initialVerifiedCodeCommit": "0a281856daf30cd508908c3b1fd7ae444983bdd3",
+      "initialSuccessfulPagesRun": 37881588639
+    },
+    "quest": {
+      "url": "https://beep16band.github.io/kotoba-quest/",
+      "newGame": true,
+      "autosave": true,
+      "reloadAndContinue": true,
+      "continuedName": "公開確認",
+      "continuedLevel": 1,
+      "continuedHP": "30/30",
+      "initialVerifiedCodeCommit": "49b0f9be0d3b239264276f2da234b4cd061e05ac",
+      "initialSuccessfulPagesRun": 37881590241
+    },
+    "responsive": {
+      "sizes": [
+        [
+          375,
+          812
+        ],
+        [
+          1366,
+          768
+        ]
+      ],
+      "method": "Chrome nested browsing context; same published game URLs; physical devices not used",
+      "quest": true,
+      "tower": true,
+      "towerMetrics": [
+        {
+          "viewport": [
+            375,
+            812
+          ],
+          "card": [
+            359,
+            497.3125
+          ],
+          "horizontalOverflow": "hidden"
+        },
+        {
+          "viewport": [
+            1366,
+            768
+          ],
+          "card": [
+            680,
+            545.265625
+          ]
+        }
+      ]
+    }
+  },
+  "unchangedEngineAndMapDataVerified": true,
+  "permissionOnlyUpdateVerified": {
+    "commit": "53355f9725112db434219b2cc3a399423992bd50",
+    "playAllowed": false,
+    "pagesRun": 37882392212,
+    "result": "success"
+  },
+  "storageDeniedExportVerified": true,
+  "publishedCodeBlobs": {
+    "tower": "135836dab7fec939df866e4e235ba22f25117c6a",
+    "quest": "9df86ebfd7fff058db90ff6f837f8545254d2c47"
+  }
 }
