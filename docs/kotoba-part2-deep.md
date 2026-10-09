@@ -28,3 +28,5 @@ SCENE75～79の全発話を正本通りに追加。庭・書庫・手紙・無�
 ビルド `npm run build`、状態 `npm test`、操作 `npm run test:part2-deep-dom`、戦闘試算 `npm run test:part2-deep-balance`。
 
 セーブ形式version1・保存キー `kotoba-tower-complete-stage6-v1` を維持しています。正本はSCENE79まで実装、SCENE80～92は予約。
+
+公開版Chromeでも倉庫の外観・入場、休憩室の本の判定、旧完了記録からSCENE75/76と庭への到着、無音の街の歩行による名前消失、第12章CLEARの保存・再開を確認しました。開発チェックポイントを利用したUI確認です。

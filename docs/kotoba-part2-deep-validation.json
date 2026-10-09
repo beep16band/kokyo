@@ -1,0 +1,39 @@
+{
+  "version": "0.18.0",
+  "stateTests": 308,
+  "newDOMCases": 4,
+  "regressionDOMCases": 22,
+  "simulatedBattles": 2000,
+  "scenes": [
+    75,
+    76,
+    77,
+    78,
+    79
+  ],
+  "maps": 4,
+  "normalEncounters": 16,
+  "strongEncounters": 1,
+  "treasureChests": 4,
+  "saveFormat": 1,
+  "physicalChromebook": false,
+  "publicChrome": {
+    "version": "0.18.0",
+    "verifiedDate": "2026-10-09",
+    "url": "https://beep16band.github.io/kokyo/kotoba-tower.html",
+    "commit": "491a21c5d0151bb60b40cf308878123114b8f70b",
+    "pagesRun": 37866112397,
+    "pagesConclusion": "success",
+    "method": "Public Chrome UI with development checkpoint JSON; not a full manual playthrough",
+    "checks": [
+      "warehouse_facade_visible",
+      "warehouse_entry",
+      "refuge_book_blocks_upward_step",
+      "old_chapter11_save_start_chapter12",
+      "scene75_76_garden_arrival",
+      "silent_city_name_disappears_on_walking",
+      "chapter12_clear_save_and_resume"
+    ],
+    "physicalChromebook": false
+  }
+}
