@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-09",
+  "towerVersion": "0.18.1",
+  "initialPermission": false,
+  "legacyStateTests": 308,
+  "legacyDOMTests": 17,
+  "restrictionTests": [
+    {
+      "name": "JST boundaries 20:54/20:55/20:59/21:00/7:59/8:00 independent of browser timezone",
+      "ok": true
+    },
+    {
+      "name": "tower allowed title, new/load, equipment and ordinary save unaffected",
+      "ok": true
+    },
+    {
+      "name": "tower 20:55 warning once/day with confirm and reload persistence",
+      "ok": true
+    },
+    {
+      "name": "tower warning defers battle/dialogue/movement; 21:00 stops and verified saves",
+      "ok": true
+    },
+    {
+      "name": "tower 7:59 block, 8:00 unlock (tower permission still required)",
+      "ok": true
+    },
+    {
+      "name": "tower failed save retains previous data, remains stopped, retry succeeds",
+      "ok": true
+    },
+    {
+      "name": "quest allowed title, new/load, equipment and ordinary save unaffected",
+      "ok": true
+    },
+    {
+      "name": "quest 20:55 warning once/day with confirm and reload persistence",
+      "ok": true
+    },
+    {
+      "name": "quest warning defers battle/dialogue/movement; 21:00 stops and verified saves",
+      "ok": true
+    },
+    {
+      "name": "quest 7:59 block, 8:00 unlock (tower permission still required)",
+      "ok": true
+    },
+    {
+      "name": "quest failed save retains previous data, remains stopped, retry succeeds",
+      "ok": true
+    },
+    {
+      "name": "tower forbidden start, teacher deny midplay, communication fail and reload fail closed",
+      "ok": true
+    },
+    {
+      "name": "tower story event dialogue can reload without losing pending story effects",
+      "ok": true
+    },
+    {
+      "name": "tower sequence/transition current step and moving tile produce valid unchanged-format save",
+      "ok": true
+    },
+    {
+      "name": "quest dialogue freeze preserves callback in-page and load uses existing story resume",
+      "ok": true
+    },
+    {
+      "name": "server clock rejects device backwards/forwards in-session; floor survives refresh",
+      "ok": true
+    },
+    {
+      "name": "quest offline clock fallback still enforces night; tower stale permission cannot continue",
+      "ok": true
+    },
+    {
+      "name": "quest real battle UI, attacks, victory and reward; stopped gauge remains unchanged",
+      "ok": true
+    },
+    {
+      "name": "quest new game through hero/name/difficulty title controls",
+      "ok": true
+    },
+    {
+      "name": "quest at defeat uses existing checkpoint recovery without losing items or money",
+      "ok": true
+    },
+    {
+      "name": "dialogue and map movement defer warning until safe; title at 21 does not overwrite old save",
+      "ok": true
+    }
+  ],
+  "physicalDevicesTested": false,
+  "publicVerification": "pending"
+}
