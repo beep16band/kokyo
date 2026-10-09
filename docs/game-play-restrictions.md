@@ -48,12 +48,12 @@ GitHubのファイル編集またはChatGPT WorkのGitHub接続で更新して�
 
 - 塔の既存状態検証：308項目成功。
 - 塔の既存DOM＋ネイティブCanvas検証：基本操作13項目、第12章4項目成功（許可・昼の通信を模擬）。
-- 両ゲームの追加制限検証：21項目成功。20:54・20:55・20:59・21:00・7:59・8:00、許可・禁止、プレイ中の禁止、通信エラー、旧記録、保存失敗と再試行、戦闘中、会話中、移動、タイトル、再読み込み、予告の日付記録、端末時計変更、実戦の報酬、通常装備と新規開始を含みます。
+- 両ゲームの追加制限検証：22項目成功。20:54・20:55・20:59・21:00・7:59・8:00、許可・禁止、プレイ中の禁止、通信エラー、旧記録、保存失敗と再試行、戦闘中、会話中、移動、タイトル、再読み込み、予告の日付記録、停止中に離した方向キーの解放、端末時計変更、実戦の報酬、通常装備と新規開始を含みます。
 - 公開後のChrome画面・375×812／1366×768相当の確認結果は公開検証JSONに記録します。Chromebookやスマートフォンの実機を使った検証ではありません。
 
 ## 変更ファイル
 
-kokyo：kotoba-tower.html、play-permission.json、assets/kotoba-tower/kotoba-tower-access-patch-0.18.1.zip、docs/game-play-restrictions.md、docs/game-play-restrictions-validation.json、docs/game-access-responsive-check.html。
+kokyo：kotoba-tower.html、play-permission.json、assets/kotoba-tower/kotoba-tower-access-patch-0.18.1.zip、docs/game-play-restrictions.md、docs/game-play-restrictions-validation.json、docs/game-access-responsive-check.html、docs/game-play-restrictions-tower.jpg。
 
 kotoba-quest：index.html、docs/game-play-restrictions.md、docs/game-play-restrictions-validation.json。
 
