@@ -1,0 +1,30 @@
+{
+  "version": "0.17.0",
+  "stateTests": 294,
+  "newDOMCases": 4,
+  "regressionDOMCases": 18,
+  "simulatedBattles": 2000,
+  "scenes": [
+    73,
+    74
+  ],
+  "maps": 3,
+  "normalEncounters": 12,
+  "optionalStrongEncounters": 1,
+  "equipmentEffectEntries": 14,
+  "saveFormat": 1,
+  "physicalChromebook": false,
+  "publicChrome": {
+    "version": "0.17.0",
+    "verifiedDate": "2026-10-09",
+    "checks": [
+      "stage6_save_import_and_scene73",
+      "scene74_warehouse_unlock_and_entry",
+      "battle_support_controls_and_used_state",
+      "delay_and_shield_wrong_answer_no_damage",
+      "equipment_gauge_slow_visible",
+      "chapter11_complete_save_and_resume"
+    ],
+    "method": "UI with development checkpoint JSON files; not a full manual playthrough"
+  }
+}
