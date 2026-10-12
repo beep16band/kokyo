@@ -40,6 +40,12 @@
  .cast.portraitShot .actor{width:46%;height:96%}
 }
 @media(max-width:600px) and (orientation:portrait){.cast.portraitShot .actor{width:58%;flex-shrink:0;height:min(100%,68vw);margin:0 -5%}.cast.portraitShot .actor.isSpeaking{z-index:1}}
+
+/* Keep bodies opaque; only the lighting of the speaker changes. */
+#cast .actor{opacity:1!important;transform:none!important;filter:brightness(.94) drop-shadow(0 3px 8px #00000020);transition:filter 180ms ease}
+#cast .actor.isSpeaking{opacity:1!important;filter:brightness(1) drop-shadow(0 3px 8px #00000020)}
+.noEffects #cast .actor{transition:none}
+@media(prefers-reduced-motion:reduce){#cast .actor{transition:none}}
 </style></head>
 <body>
 <div id="saveNotice" role="status" hidden></div>
@@ -47,7 +53,7 @@
  <header class="sitehead"><a href="https://beep16band.github.io/kokyo/heian-portal/">← 平安学びポータル</a><div><button data-open="room">資料室</button><button data-open="results">学習記録</button><button data-open="settings">設定</button></div></header>
  <section class="landing"><div class="landingShade"></div><div class="landingCast" id="landingCast" aria-label="湊・橘 茜・ことは"></div>
  <div class="titleCopy"><p class="eyebrow">恋の悩みは、千年前も今も。</p><h1>平安恋愛相談所<span>千年越しの恋文</span></h1><p class="titleLine">その気持ちに、どんな言葉を返そう。</p><div class="titleActions"><button id="newGame" class="primary">物語をはじめる <span aria-hidden="true">→</span></button><button id="continueGame">続きから</button><button id="chooseEpisode">話を選ぶ</button></div><small>全8話 · 42問 · 相談の選択には点数を付けません</small></div>
- </section><footer><button data-open="guide">遊び方・授業で使う</button><span>Heian Letters · 1.2</span></footer>
+ </section><footer><button data-open="guide">遊び方・授業で使う</button><span>Heian Letters · 1.3</span></footer>
 </main>
 <section id="episodeSelect" class="screen" hidden><header class="sitehead"><button class="backHome">← タイトルへ</button><h1>相談の記録</h1><button data-open="results">学習記録</button></header><p class="pageLead">どの話からでも読めます。初めてなら「はじまり」から。</p><div id="episodeGrid" class="episodeGrid"></div></section>
 <section id="play" class="screen" hidden aria-label="物語の画面">
@@ -98,7 +104,7 @@ function stageCast(n){
  return client?[client,'kotoha']:['minato','akane'];
 }
 function render(){clearTimers();const n=node();if(!n)return show('home');const ep=episodes[n.episode];$('play').dataset.node=n.id;$('play').dataset.episode=n.episode;$('play').dataset.kind=n.type;$('play').classList.toggle('interactive',['choice','quiz','end','credits'].includes(n.type));$('play').classList.toggle('moon',n.scene==='moon');$('chapterNo').textContent=n.episode?'第'+n.episode+'話':'はじまり';$('chapterTitle').textContent=ep.title;$('sceneBackdrop').style.backgroundImage='url("'+assets[n.scene].src+'")';$('sceneLabel').textContent=n.label;$('sceneLabel').hidden=n.type!=='scene';$('choices').replaceChildren();$('feedback').hidden=true;$('feedback').replaceChildren();$('poemOpen').hidden=true;$('nextButton').hidden=false;$('nextButton').disabled=false;$('nextButton').textContent='続きを読む ▸';$('instantButton').hidden=!['say','scene'].includes(n.type);$('nodeType').textContent=n.type==='quiz'?'古典の問い':n.type==='choice'?'相談の選択':'';$('readHint').textContent=store.read[n.id]?'既読 · タップ／Enterで進む':'タップ／Enterで全文表示・次へ';
-const cast=stageCast(n);$('cast').classList.toggle('three',cast.length===3);$('cast').classList.toggle('wideShot',n.type==='scene');$('cast').classList.toggle('portraitShot',n.type!=='scene');$('cast').replaceChildren(...cast.map(k=>actor(k,n.moods?.[k]||0,n.who===k,n.type!=='scene')));$('speakerName').textContent=castNames[n.who]||'';$('speakerFace').replaceChildren(...(n.who?[face(n.who,n.mood??n.moods?.[n.who]??0)]:[]));$('stage').dataset.scene=n.scene;audio.setMood(n.scene==='moon'?'dream':n.type==='end'?'resolve':n.episode===4||n.episode===6?'quiet':'warm');if(n.type==='scene')specialLetters();
+const cast=stageCast(n);$('cast').classList.toggle('three',cast.length===3);$('cast').classList.toggle('wideShot',n.type==='scene');$('cast').classList.toggle('portraitShot',n.type!=='scene');const castRoot=$('cast'),remaining=new Map([...castRoot.children].map(a=>[a.dataset.actor,a]));for(const [i,k] of cast.entries()){const mood=n.moods?.[k]||0,close=n.type!=='scene',asset=close&&assets[k+'Close']?k+'Close':k;let a=remaining.get(k);if(!a){a=actor(k,mood,n.who===k,close);a.dataset.asset=asset}else{if(a.dataset.expression!==String(mood)||a.dataset.asset!==asset){a.replaceChildren(sprite(asset,mood));a.dataset.expression=mood;a.dataset.asset=asset}a.classList.toggle('isSpeaking',n.who===k);a.setAttribute('aria-label',castNames[k]+'の立ち絵・表情'+(mood+1))}remaining.delete(k);if(castRoot.children[i]!==a)castRoot.insertBefore(a,castRoot.children[i]||null)}for(const a of remaining.values())a.remove();$('speakerName').textContent=castNames[n.who]||'';$('speakerFace').replaceChildren(...(n.who?[face(n.who,n.mood??n.moods?.[n.who]??0)]:[]));$('stage').dataset.scene=n.scene;audio.setMood(n.scene==='moon'?'dream':n.type==='end'?'resolve':n.episode===4||n.episode===6?'quiet':'warm');if(n.type==='scene')specialLetters();
 if(n.type==='say'||n.type==='scene'){textWrite(shownText(n));if(skip&&store.read[n.id]){finishTyping();skipTimer=setTimeout(()=>advance(),240);}return;}
 $('dialogueText').textContent='';
 if(n.type==='choice'){skip=false;$('skipButton').setAttribute('aria-pressed','false');$('speakerName').textContent='湊と茜の相談';$('dialogueText').textContent=n.prompt;$('nextButton').hidden=true;for(const [i,o]of n.options.entries()){const b=btn('',()=>choose(n,i));b.dataset.option=i;b.append(el('span',String.fromCharCode(65+i)),el('div',o.text));$('choices').append(b);}return;}
