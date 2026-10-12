@@ -23,6 +23,23 @@
 
 @media(max-width:600px) and (orientation:portrait){#play:not(.interactive) .gameShell{grid-template-rows:48px minmax(140px,1fr) minmax(210px,auto)}.cast.portraitShot .actor{height:105%}}
 @media(max-width:600px) and (orientation:portrait){.cast.portraitShot .actor{height:100%;align-items:flex-end}.cast.portraitShot .actor svg{height:min(100%,110vw);align-self:flex-end}}
+
+/* Balanced portrait composition: keep the complete head and shoulders visible. */
+.cast.portraitShot{inset:4% 7% 0;align-items:flex-end;gap:3%;justify-content:center}
+.cast.portraitShot .actor{width:46%;height:100%;max-width:570px;align-items:flex-end}
+.cast.portraitShot .actor svg{width:100%;height:100%;align-self:flex-end}
+@media(max-width:600px) and (orientation:portrait){
+ .cast.portraitShot{inset:6% 3% 0;gap:0;align-items:flex-end}
+ .cast.portraitShot .actor{width:48%;height:min(100%,62vw);max-width:245px}
+ .cast.portraitShot .actor svg{width:100%;height:100%;align-self:flex-end}
+ #play:not(.interactive) .gameShell{grid-template-rows:48px minmax(140px,1fr) minmax(235px,auto)}
+ .stage{background-position:center 42%}
+}
+@media(max-height:480px) and (orientation:landscape){
+ .cast.portraitShot{inset:6% 4% 0;gap:2%}
+ .cast.portraitShot .actor{width:46%;height:96%}
+}
+@media(max-width:600px) and (orientation:portrait){.cast.portraitShot .actor{width:58%;flex-shrink:0;height:min(100%,68vw);margin:0 -5%}.cast.portraitShot .actor.isSpeaking{z-index:1}}
 </style></head>
 <body>
 <div id="saveNotice" role="status" hidden></div>
@@ -30,7 +47,7 @@
  <header class="sitehead"><a href="https://beep16band.github.io/kokyo/heian-portal/">← 平安学びポータル</a><div><button data-open="room">資料室</button><button data-open="results">学習記録</button><button data-open="settings">設定</button></div></header>
  <section class="landing"><div class="landingShade"></div><div class="landingCast" id="landingCast" aria-label="湊・橘 茜・ことは"></div>
  <div class="titleCopy"><p class="eyebrow">恋の悩みは、千年前も今も。</p><h1>平安恋愛相談所<span>千年越しの恋文</span></h1><p class="titleLine">その気持ちに、どんな言葉を返そう。</p><div class="titleActions"><button id="newGame" class="primary">物語をはじめる <span aria-hidden="true">→</span></button><button id="continueGame">続きから</button><button id="chooseEpisode">話を選ぶ</button></div><small>全8話 · 42問 · 相談の選択には点数を付けません</small></div>
- </section><footer><button data-open="guide">遊び方・授業で使う</button><span>Heian Letters · 1.1</span></footer>
+ </section><footer><button data-open="guide">遊び方・授業で使う</button><span>Heian Letters · 1.2</span></footer>
 </main>
 <section id="episodeSelect" class="screen" hidden><header class="sitehead"><button class="backHome">← タイトルへ</button><h1>相談の記録</h1><button data-open="results">学習記録</button></header><p class="pageLead">どの話からでも読めます。初めてなら「はじまり」から。</p><div id="episodeGrid" class="episodeGrid"></div></section>
 <section id="play" class="screen" hidden aria-label="物語の画面">
@@ -55,7 +72,7 @@ function save(){try{localStorage.setItem(KEY,JSON.stringify(store));storageOK=tr
 function appearance(){document.body.classList.toggle('noEffects',!store.settings.effects);document.body.classList.toggle('largeText',store.settings.large);}
 appearance();for(const key of ['consult','moon','classroom','shore'])document.documentElement.style.setProperty('--'+key,'url("'+assets[key].src+'")');
 let spriteId=0;
-function sprite(key,mood=0,face=false){const a=assets[key];if(!a)throw Error('Unknown actor '+key);const cols=a.cols,rows=a.rows,index=Math.max(0,Math.min(cols*rows-1,mood)),frame=a.frames?.[index]||{x:(index%cols)*a.width/cols,y:Math.floor(index/cols)*a.height/rows,width:a.width/cols,height:a.height/rows},cw=frame.width,ch=frame.height;const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');svg.setAttribute('preserveAspectRatio',face?'xMidYMid slice':key.endsWith('Close')?'xMidYMin slice':'xMidYMax meet');const cropY=['harunari','akito'].includes(key)?.14:.015,box=a.faceBoxes?.[index];svg.setAttribute('viewBox',face?(box?`${box.x} ${box.y} ${box.width} ${box.height}`:`${cw*.25} ${ch*cropY} ${cw*.5} ${ch*.28}`):`0 0 ${cw} ${ch}`);const defs=document.createElementNS(ns,'defs'),clip=document.createElementNS(ns,'clipPath'),rect=document.createElementNS(ns,'rect'),clipId='actorClip'+(++spriteId);clip.id=clipId;clip.setAttribute('clipPathUnits','userSpaceOnUse');rect.setAttribute('width',cw);rect.setAttribute('height',ch);clip.append(rect);defs.append(clip);const group=document.createElementNS(ns,'g');group.setAttribute('clip-path','url(#'+clipId+')');const image=document.createElementNS(ns,'image');image.setAttribute('href',a.src);image.setAttribute('x',-frame.x);image.setAttribute('y',-frame.y);image.setAttribute('width',a.width);image.setAttribute('height',a.height);group.append(image);svg.append(defs,group);return svg;}
+function sprite(key,mood=0,face=false){const a=assets[key];if(!a)throw Error('Unknown actor '+key);const cols=a.cols,rows=a.rows,index=Math.max(0,Math.min(cols*rows-1,mood)),frame=a.frames?.[index]||{x:(index%cols)*a.width/cols,y:Math.floor(index/cols)*a.height/rows,width:a.width/cols,height:a.height/rows},cw=frame.width,ch=frame.height;const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');svg.setAttribute('preserveAspectRatio',face?'xMidYMid slice':key.endsWith('Close')?'xMidYMax meet':'xMidYMax meet');const cropY=['harunari','akito'].includes(key)?.14:.015,box=a.faceBoxes?.[index];svg.setAttribute('viewBox',face?(box?`${box.x} ${box.y} ${box.width} ${box.height}`:`${cw*.25} ${ch*cropY} ${cw*.5} ${ch*.28}`):`0 0 ${cw} ${ch}`);const defs=document.createElementNS(ns,'defs'),clip=document.createElementNS(ns,'clipPath'),rect=document.createElementNS(ns,'rect'),clipId='actorClip'+(++spriteId);clip.id=clipId;clip.setAttribute('clipPathUnits','userSpaceOnUse');rect.setAttribute('width',cw);rect.setAttribute('height',ch);clip.append(rect);defs.append(clip);const group=document.createElementNS(ns,'g');group.setAttribute('clip-path','url(#'+clipId+')');const image=document.createElementNS(ns,'image');image.setAttribute('href',a.src);image.setAttribute('x',-frame.x);image.setAttribute('y',-frame.y);image.setAttribute('width',a.width);image.setAttribute('height',a.height);group.append(image);svg.append(defs,group);return svg;}
 function face(key,mood=0){const f=el('span',undefined,'faceIcon');f.append(sprite(assets[key+'Close']?key+'Close':key,mood,true));f.setAttribute('role','img');f.setAttribute('aria-label',castNames[key]+'の顔');return f;}
 function actor(key,mood=0,speaking=false,close=false){const a=el('div',undefined,'actor'+(speaking?' isSpeaking':''));a.dataset.actor=key;a.dataset.expression=mood;a.setAttribute('role','img');a.setAttribute('aria-label',castNames[key]+'の立ち絵・表情'+(mood+1));a.append(sprite(close&&assets[key+'Close']?key+'Close':key,mood));return a;}
 $('landingCast').replaceChildren(actor('minato',0),actor('kotoha',1),actor('akane',1));
