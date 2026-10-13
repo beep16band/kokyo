@@ -304,6 +304,9 @@ body{position:relative;overflow-x:hidden}
 #portalOpening66 .opClass66{background-image:var(--op-class,var(--op-bg));background-size:cover;background-position:center}
 #portalOpening66 .opPortraits66{inset-inline:6%}
 @media(max-width:700px){#portalOpening66 .opPortraits66{inset-inline:-8%;bottom:27%}#portalOpening66 .opKotoha66{inset-inline:0;bottom:12%}}
+
+#portalOpening66 .opDialogue66{bottom:5%}
+@media(max-width:700px){#portalOpening66 .opDialogue66{bottom:7%}}
 </style></head><body><section id="portalOpening66" role="dialog" aria-modal="true" aria-label="平安学びポータルのオープニング" hidden>
 <div class="opScene66"><div class="opBackdrop66 opClass66"></div><div class="opShade66"></div><div class="opEyebrow66">放課後、一冊の本を開く。</div><div class="opPortraits66"><img data-character66="湊" alt="湊"/><img data-character66="茜" alt="橘 茜"/></div><div class="opDialogue66"><p class="opDialogLine66"><b>湊</b>この歌を書いた人は、<br/>どんな気持ちだったんだろう。</p><p class="opDialogLine66"><b>茜</b>千年前の「会いたい」って、<br/>今と同じなのかな。</p></div></div>
 <div class="opScene66"><div class="opBackdrop66"></div><div class="opShade66"></div><div class="opEyebrow66">風が吹く。和歌の文字が、光になる。</div><div class="opPortraits66 opKotoha66"><img data-character66="ことは" alt="ことは"/></div><div class="opSymbols66" aria-hidden="true"><i style="--x:8%;--delay:0.0s">心</i><i style="--x:19%;--delay:-1.3s">夢</i><i style="--x:30%;--delay:-2.6s">花</i><i style="--x:41%;--delay:-3.9000000000000004s">月</i><i style="--x:52%;--delay:-5.2s">言葉</i><i style="--x:63%;--delay:-6.5s">風</i><i style="--x:74%;--delay:-7.800000000000001s">恋</i><i style="--x:85%;--delay:-9.1s">和歌</i></div><div class="opDialogue66"><b>ことは</b>その心、言葉をたどって<br/>会いに行きませんか。</div></div>
@@ -3086,9 +3089,10 @@ function seen(){try{return sessionStorage.getItem(seenKey)==='1'}catch{return fa
 function markSeen(){try{sessionStorage.setItem(seenKey,'1')}catch{}}
 function render(){let remain=elapsed,which=0;while(which<3&&remain>=durations[which])remain-=durations[which++];scenes.forEach((s,i)=>s.classList.toggle('active66',i===which));root.querySelectorAll('.opDialogLine66').forEach((s,i)=>s.classList.toggle('current66',i===(remain<3300?0:1)));root.querySelectorAll('.opPoem66 p').forEach((s,i)=>s.classList.toggle('revealed66',which===2&&remain>=i*640));fill.style.width=Math.min(100,elapsed/total*100)+'%';}
 function finish(){if(!open)return;open=false;cancelAnimationFrame(frame);root.hidden=true;root.classList.remove('paused66');document.body.style.overflow=scrollBack;for(const [e,value]of locked)e.inert=value;locked=[];markSeen();const target=focusBack&&document.contains(focusBack)?focusBack:document.querySelector('#portalMenuToggle');target?.focus({preventScroll:true});}
-function tick(now){if(!open)return;const delta=last?Math.min(now-last,100):0;last=now;if(!paused&&!document.hidden){elapsed+=delta;if(elapsed>=total){finish();return}render()}frame=requestAnimationFrame(tick)}
+function tick(now){if(!open)return;const delta=last?now-last:0;last=now;if(!paused&&!document.hidden){elapsed+=delta;if(elapsed>=total){finish();return}render()}frame=requestAnimationFrame(tick)}
 function setPause(value){paused=value;root.classList.toggle('paused66',paused);pause.textContent=paused?'▶ 再生':'Ⅱ 一時停止';pause.setAttribute('aria-pressed',String(paused));last=0;}
 function start(manual=false){if(open)return;focusBack=manual?document.activeElement:null;open=true;elapsed=0;last=0;scrollBack=document.body.style.overflow;document.body.style.overflow='hidden';locked=[...document.querySelectorAll('body>header,body>main,body>footer,body>.sakura-layer')].map(e=>[e,e.inert]);locked.forEach(([e])=>e.inert=true);root.hidden=false;root.classList.toggle('static66',reduced.matches);setPause(reduced.matches);if(reduced.matches){elapsed=durations.slice(0,3).reduce((a,b)=>a+b,0);pause.hidden=true;skip.textContent='学びの世界へ →'}else{pause.hidden=false;skip.textContent='スキップ →'}render();skip.focus({preventScroll:true});frame=requestAnimationFrame(tick)}
+document.addEventListener('visibilitychange',()=>{last=0});
 pause.onclick=()=>setPause(!paused);skip.onclick=finish;
 document.addEventListener('keydown',e=>{if(!open)return;
  if(e.key==='Escape'){e.preventDefault();finish()}
