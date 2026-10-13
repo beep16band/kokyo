@@ -3284,7 +3284,7 @@ scenes.forEach(scene=>scene.style.setProperty('--shot-bg',backgrounds[scene.data
 root.querySelectorAll('[data-character66]').forEach(img=>{const original=[...document.querySelectorAll('#intro56 .bust57')].find(x=>x.alt.startsWith(img.dataset.character66));if(original)img.src=original.src;});
 const reduced=matchMedia('(prefers-reduced-motion:reduce)'),durations=[3800, 2400, 2000, 3800, 3800, 3800, 4400, 3400, 1350, 1350, 1350, 2100, 3200, 3200, 4500],total=durations.reduce((a,b)=>a+b,0);let elapsed=0,last=0,frame=0,open=false,paused=false,focusBack=null,scrollBack='',locked=[];
 const seekPanel=document.getElementById('opSeekPanel68'),previousCut=document.getElementById('opPrev68'),nextCut=document.getElementById('opNext68'),cutLabel=document.getElementById('opCut68');
-function moveCut(direction){const current=Number(root.dataset.phase67||0),wanted=Math.max(0,Math.min(scenes.length-1,current+direction));elapsed=durations.slice(0,wanted).reduce((a,b)=>a+b,0);last=0;render();}
+function moveCut(direction){const current=Number(root.dataset.phase67||0),wanted=Math.max(0,Math.min(scenes.length-1,current+direction));elapsed=durations.slice(0,wanted).reduce((a,b)=>a+b,0);last=0;render();const button=direction<0?previousCut:nextCut;(button.disabled?skip:button).focus({preventScroll:true});}
 previousCut.onclick=()=>moveCut(-1);nextCut.onclick=()=>moveCut(1);
 const soundButton=document.getElementById('opSound67');let soundOn=false,ctx=null,master=null,lastBeat=-1;
 function silence(){if(master&&ctx)master.gain.setTargetAtTime(0,ctx.currentTime,.035);lastBeat=-1;}
@@ -3296,7 +3296,7 @@ soundButton.onclick=()=>{soundOn=!soundOn;soundButton.textContent=soundOn?'音�
 const seenKey='heian-opening-v68-seen';
 function seen(){try{return sessionStorage.getItem(seenKey)==='1'}catch{return false}}
 function markSeen(){try{sessionStorage.setItem(seenKey,'1')}catch{}}
-function render(){let remain=elapsed,which=0;while(which<scenes.length-1&&remain>=durations[which])remain-=durations[which++];scenes.forEach((s,i)=>s.classList.toggle('active66',i===which));root.dataset.phase67=String(which);cutLabel.textContent=(which+1)+' / '+scenes.length;previousCut.disabled=which===0;nextCut.disabled=which===scenes.length-1;fill.style.width=Math.min(100,elapsed/total*100)+'%';if(soundOn&&!paused)music(elapsed);}
+function render(){let remain=elapsed,which=0;while(which<scenes.length-1&&remain>=durations[which])remain-=durations[which++];scenes.forEach((s,i)=>s.classList.toggle('active66',i===which));root.dataset.phase67=String(which);const counter=(which+1)+' / '+scenes.length;if(cutLabel.textContent!==counter)cutLabel.textContent=counter;previousCut.disabled=which===0;nextCut.disabled=which===scenes.length-1;fill.style.width=Math.min(100,elapsed/total*100)+'%';if(soundOn&&!paused)music(elapsed);}
 function finish(){if(!open)return;open=false;silence();cancelAnimationFrame(frame);root.hidden=true;root.classList.remove('paused66');document.body.style.overflow=scrollBack;for(const [e,value]of locked)e.inert=value;locked=[];markSeen();const target=focusBack&&document.contains(focusBack)?focusBack:document.querySelector('#portalMenuToggle');target?.focus({preventScroll:true});}
 function tick(now){if(!open)return;const delta=last?now-last:0;last=now;if(!paused&&!document.hidden){elapsed+=delta;if(elapsed>=total){finish();return}render()}frame=requestAnimationFrame(tick)}
 function setPause(value){paused=value;seekPanel.hidden=previousCut.hidden=nextCut.hidden=!(paused&&!reduced.matches);if(paused)silence();else if(soundOn)enableSound();root.classList.toggle('paused66',paused);pause.textContent=paused?'▶ 再生':'Ⅱ 一時停止';pause.setAttribute('aria-pressed',String(paused));last=0;}
@@ -3305,7 +3305,7 @@ document.addEventListener('visibilitychange',()=>{last=0;if(document.hidden)sile
 pause.onclick=()=>setPause(!paused);skip.onclick=finish;
 document.addEventListener('keydown',e=>{if(!open)return;
  if(e.key==='Escape'){e.preventDefault();finish()}
- if(e.key==='Tab'){const a=[...root.querySelectorAll('button')].filter(x=>!x.hidden);if(e.shiftKey&&document.activeElement===a[0]){e.preventDefault();a[a.length-1].focus()}else if(!e.shiftKey&&document.activeElement===a[a.length-1]){e.preventDefault();a[0].focus()}}
+ if(e.key==='Tab'){const a=[...root.querySelectorAll('button')].filter(x=>!x.hidden&&!x.disabled);if(e.shiftKey&&document.activeElement===a[0]){e.preventDefault();a[a.length-1].focus()}else if(!e.shiftKey&&document.activeElement===a[a.length-1]){e.preventDefault();a[0].focus()}}
  e.stopImmediatePropagation();
 },true);
 reduced.addEventListener('change',()=>{if(open&&reduced.matches){root.classList.add('static66');elapsed=durations.slice(0,-1).reduce((a,b)=>a+b,0);setPause(true);pause.hidden=true;soundButton.hidden=true;skip.textContent='学びの世界へ →';render()}});
