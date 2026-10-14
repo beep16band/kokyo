@@ -18,7 +18,7 @@ inamaro-normal,characters,characters/inamaro-normal.webp,560,1080,102790,3d7727a
 inamaro-smile,characters,characters/inamaro-smile.webp,560,1080,103148,f722169a25528f853e311e6e3a6ce2eb7ee39f00b88646dacdcea68d92cc2808,imagegen:inamaroFixed
 inamaro-surprise,characters,characters/inamaro-surprise.webp,560,1080,102128,d68982a53f100efea1ce58e94b6b4f3ec69670b1131029876a91de2ea54086ac,imagegen:inamaroFixed
 inamaro-hollow,characters,characters/inamaro-hollow.webp,560,1080,93524,10b28e9ceb9e37f5a953d46e563789be76d8615522bd2fa860c4701e351dc6bc,imagegen:inamaroFixed
-nukata-hollow,characters,characters/nukata-hollow.webp,560,1080,230214,881b392bd88355ed1a6d974596e9c3e72ce839dcf7d8027015300213449c42c0,imagegen:nukataHollow
+nukata-hollow,characters,characters/nukata-hollow.webp,560,1080,95436,eb8974f8a974766c941f3b57d3cb06cd41d46137e17a3cfce56ac652188cbbd7,imagegen:nukataHollow
 minato-normal,characters,characters/minato-normal.webp,560,1080,56132,ab9f2431df6050b3b4297a9f4d209b6ab9b580d1e7edfbf5ce90e421d97a15b4,opening75/assets/eb51d6a61b887af0ec96.webp
 minato-smile,characters,characters/minato-smile.webp,560,1080,59380,38beca63d9c25187468ebcbdcf7399f06472707a30ba84bd6108f5ef1b767f97,opening75/assets/eb51d6a61b887af0ec96.webp
 minato-surprise,characters,characters/minato-surprise.webp,560,1080,60672,c5128c0759b7fddce7e492437982a2dc855d1d13e8cebb563168a94af3848557,opening75/assets/eb51d6a61b887af0ec96.webp
@@ -47,7 +47,7 @@ gate,backgrounds,backgrounds/gate.webp,1600,900,267126,7c8d29120249b6ffd015e3602
 archive,backgrounds,backgrounds/archive.webp,1600,900,202072,a95999547f4189ad762c261cc2919ef5de9d20f9b5ce534406128f312831aebb,imagegen:archive
 ink-edge,effects,effects/ink-edge.webp,1599,900,338582,56b9b22c44b51d6b80d45ae5ec8ce87cbf12ffa5588113140f967de5b35d51de,imagegen:ink
 recovery-light,effects,effects/recovery-light.webp,1599,900,313736,06bbb5d4a39b18b2307d81c349f1369987d7ad522e8bd9a6a2d0935711c1a7f4,imagegen:light
-nukata-hollow-source,masters,masters/nukata-hollow-source.png,887,1774,3008132,286b38e6e14958a86fc2e40ff34d13741bab9a3acabf549ab19ebeb79a2205e2,original-generated-master
+nukata-hollow-source,masters,masters/nukata-hollow-source.png,1024,1536,2054007,37603af943b218453edc23e66577153c1f2c907c5ad1f470ccbfc8e66f574bd5,original-generated-master
 library-source,masters,masters/library-source.png,1672,941,2015542,948dbf4d1c6a3ccdda0f617b65a89e82b804b0fe7d1b1d355ee4c7ee2aff0368,original-generated-master
 gate-source,masters,masters/gate-source.png,1672,941,2921425,be50065596d83e6c5705d6c6a74bba8b20bc31125727b26a89aaf442eb16c5fd,original-generated-master
 village-source,masters,masters/village-source.png,1672,940,2778654,f27f5c366ec9462db6d2cca7cba5d88b85bc616ed215e8abfdfeb5b1c1c843bb,original-generated-master

@@ -285,18 +285,18 @@
           "file": "characters/nukata-hollow.webp",
           "width": 560,
           "height": 1080,
-          "bytes": 230214,
-          "sha256": "881b392bd88355ed1a6d974596e9c3e72ce839dcf7d8027015300213449c42c0",
+          "bytes": 95436,
+          "sha256": "eb8974f8a974766c941f3b57d3cb06cd41d46137e17a3cfce56ac652188cbbd7",
           "source": "imagegen:nukataHollow",
           "alpha": true,
-          "nativeFrameHeight": 1760,
+          "nativeFrameHeight": 1421,
           "master": {
             "file": "masters/nukata-hollow-source.png",
-            "width": 887,
-            "height": 1774,
+            "width": 1024,
+            "height": 1536,
             "upscaled": false
           },
-          "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+          "qa": "single-figure-margin-correction"
         }
       }
     },
@@ -1139,8 +1139,8 @@
     },
     "nukataHollow": {
       "file": "masters/nukata-hollow-source.png",
-      "width": 887,
-      "height": 1774,
+      "width": 1024,
+      "height": 1536,
       "upscaled": false
     },
     "minato": {
@@ -1614,8 +1614,8 @@
       "file": "characters/nukata-hollow.webp",
       "width": 560,
       "height": 1080,
-      "bytes": 230214,
-      "sha256": "881b392bd88355ed1a6d974596e9c3e72ce839dcf7d8027015300213449c42c0",
+      "bytes": 95436,
+      "sha256": "eb8974f8a974766c941f3b57d3cb06cd41d46137e17a3cfce56ac652188cbbd7",
       "source": "imagegen:nukataHollow",
       "alpha": true,
       "nativeFrameHeight": 1760,
@@ -2027,10 +2027,10 @@
       "id": "nukata-hollow-source",
       "kind": "masters",
       "file": "masters/nukata-hollow-source.png",
-      "width": 887,
-      "height": 1774,
-      "bytes": 3008132,
-      "sha256": "286b38e6e14958a86fc2e40ff34d13741bab9a3acabf549ab19ebeb79a2205e2",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2054007,
+      "sha256": "37603af943b218453edc23e66577153c1f2c907c5ad1f470ccbfc8e66f574bd5",
       "source": "original-generated-master"
     },
     {
