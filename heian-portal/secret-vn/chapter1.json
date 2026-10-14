@@ -998,7 +998,13 @@
             "alpha": true,
             "nativeFrameHeight": 852,
             "master": null,
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              172,
+              190,
+              230,
+              230
+            ]
           },
           "smile": {
             "id": "akane-smile",
@@ -1012,7 +1018,13 @@
             "alpha": true,
             "nativeFrameHeight": 850,
             "master": null,
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              170,
+              193,
+              230,
+              230
+            ]
           },
           "surprise": {
             "id": "akane-surprise",
@@ -1026,7 +1038,13 @@
             "alpha": true,
             "nativeFrameHeight": 855,
             "master": null,
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              152,
+              188,
+              230,
+              230
+            ]
           },
           "fear": {
             "id": "akane-fear",
@@ -1045,7 +1063,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              174,
+              124,
+              230,
+              230
+            ]
           },
           "sad": {
             "id": "akane-sad",
@@ -1064,7 +1088,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              175,
+              117,
+              230,
+              230
+            ]
           },
           "resolve": {
             "id": "akane-resolve",
@@ -1083,7 +1113,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              140,
+              117,
+              230,
+              230
+            ]
           }
         }
       },
@@ -1102,7 +1138,13 @@
             "alpha": true,
             "nativeFrameHeight": 853,
             "master": null,
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              170,
+              190,
+              210,
+              210
+            ]
           },
           "smile": {
             "id": "minato-smile",
@@ -1116,7 +1158,13 @@
             "alpha": true,
             "nativeFrameHeight": 855,
             "master": null,
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              177,
+              189,
+              210,
+              210
+            ]
           },
           "surprise": {
             "id": "minato-surprise",
@@ -1130,7 +1178,13 @@
             "alpha": true,
             "nativeFrameHeight": 846,
             "master": null,
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              133,
+              199,
+              210,
+              210
+            ]
           },
           "fear": {
             "id": "minato-fear",
@@ -1149,7 +1203,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              162,
+              184,
+              210,
+              210
+            ]
           },
           "sad": {
             "id": "minato-sad",
@@ -1168,7 +1228,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              191,
+              193,
+              210,
+              210
+            ]
           },
           "resolve": {
             "id": "minato-resolve",
@@ -1187,7 +1253,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              168,
+              184,
+              210,
+              210
+            ]
           }
         }
       },
@@ -1211,7 +1283,13 @@
               "width": 1024,
               "height": 1536,
               "upscaled": false
-            }
+            },
+            "faceCrop": [
+              289,
+              22,
+              230,
+              230
+            ]
           },
           "sad": {
             "id": "kotoha-sad",
@@ -1230,7 +1308,13 @@
               "width": 1024,
               "height": 1536,
               "upscaled": false
-            }
+            },
+            "faceCrop": [
+              296,
+              22,
+              230,
+              230
+            ]
           },
           "resolve": {
             "id": "kotoha-resolve",
@@ -1249,7 +1333,13 @@
               "width": 1024,
               "height": 1536,
               "upscaled": false
-            }
+            },
+            "faceCrop": [
+              304,
+              21,
+              230,
+              230
+            ]
           },
           "sealed": {
             "id": "kotoha-sealed",
@@ -1268,7 +1358,13 @@
               "width": 1024,
               "height": 1536,
               "upscaled": false
-            }
+            },
+            "faceCrop": [
+              310,
+              22,
+              230,
+              230
+            ]
           },
           "smile": {
             "id": "kotoha-smile",
@@ -1279,7 +1375,13 @@
             "bytes": 128820,
             "sha256": "400da96f466e97fbff6221b4a728ae4976dcd9e58061d694e6158df32f0d829d",
             "source": "imagegen:single-kotoha",
-            "alpha": true
+            "alpha": true,
+            "faceCrop": [
+              312,
+              44,
+              230,
+              230
+            ]
           },
           "confused": {
             "id": "kotoha-confused",
@@ -1290,7 +1392,13 @@
             "bytes": 126170,
             "sha256": "3d1b9fa1cb2abe10eb5d2b435e5fb16c071d7a59c10804d7709737eba96db1a4",
             "source": "imagegen:single-kotoha",
-            "alpha": true
+            "alpha": true,
+            "faceCrop": [
+              282,
+              43,
+              230,
+              230
+            ]
           },
           "fear": {
             "id": "kotoha-fear",
@@ -1301,7 +1409,13 @@
             "bytes": 126280,
             "sha256": "68e9751533e74324f9111a48073b3405ad8bb9274f9f07d33dddee5c33f01704",
             "source": "imagegen:single-kotoha",
-            "alpha": true
+            "alpha": true,
+            "faceCrop": [
+              300,
+              42,
+              230,
+              230
+            ]
           }
         }
       },
@@ -1325,7 +1439,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              202,
+              125,
+              230,
+              230
+            ]
           },
           "smile": {
             "id": "nukata-smile",
@@ -1344,7 +1464,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              188,
+              125,
+              230,
+              230
+            ]
           },
           "surprise": {
             "id": "nukata-surprise",
@@ -1363,7 +1489,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              186,
+              125,
+              230,
+              230
+            ]
           },
           "hollow": {
             "id": "nukata-hollow",
@@ -1382,7 +1514,13 @@
               "height": 1536,
               "upscaled": false
             },
-            "qa": "single-figure-margin-correction"
+            "qa": "single-figure-margin-correction",
+            "faceCrop": [
+              170,
+              261,
+              230,
+              230
+            ]
           }
         }
       },
@@ -1406,7 +1544,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              216,
+              34,
+              230,
+              230
+            ]
           },
           "smile": {
             "id": "komachi-smile",
@@ -1425,7 +1569,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              164,
+              42,
+              230,
+              230
+            ]
           },
           "surprise": {
             "id": "komachi-surprise",
@@ -1444,7 +1594,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              153,
+              33,
+              230,
+              230
+            ]
           },
           "hollow": {
             "id": "komachi-hollow",
@@ -1463,7 +1619,13 @@
               "height": 1024,
               "upscaled": false
             },
-            "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              182,
+              54,
+              230,
+              230
+            ]
           }
         }
       }
