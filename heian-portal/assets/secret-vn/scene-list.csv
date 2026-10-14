@@ -1,0 +1,19 @@
+﻿ID,用途,章,共通背景,filter,layers,status
+BG00,現代の放課後の教室,0,backgrounds/classroom.webp,none,[],prepared-composite-recipe
+BG01,現代の学校図書室,0,backgrounds/library.webp,none,[],prepared-composite-recipe
+BG02,平安の庭園,0,backgrounds/moon-garden.webp,none,[],prepared-composite-recipe
+BG03,平安の庭園・異変,0,backgrounds/moon-garden.webp,saturate(.12) brightness(.38) contrast(1.1),"[{""file"": ""effects/ink-edge.webp"", ""opacity"": 0.65}]",prepared-composite-recipe
+BG04,墨に侵食される回廊,0,backgrounds/corridor.webp,saturate(.15) brightness(.45),"[{""file"": ""effects/ink-edge.webp"", ""opacity"": 0.65}]",prepared-composite-recipe
+BG05,額田王の宮廷,1,backgrounds/palace.webp,saturate(.12) brightness(.38) contrast(1.1),"[{""file"": ""effects/ink-edge.webp"", ""opacity"": 0.65}]",prepared-composite-recipe
+BG06,額田王の宮廷・回復後,1,backgrounds/palace.webp,none,[],prepared-composite-recipe
+BG07,小野小町の夢の庭,1,backgrounds/dream-garden.webp,saturate(.12) brightness(.38) contrast(1.1),"[{""file"": ""effects/ink-edge.webp"", ""opacity"": 0.65}]",prepared-composite-recipe
+BG08,小野小町の庭・回復後,1,backgrounds/dream-garden.webp,none,"[{""file"": ""effects/recovery-light.webp"", ""opacity"": 0.22}]",prepared-composite-recipe
+BG09,五つの扉が並ぶ回廊,1,backgrounds/corridor.webp,none,[],prepared-composite-recipe
+BG10,紀貫之の梅の屋敷,2,backgrounds/plum-house.webp,saturate(.12) brightness(.38) contrast(1.1),"[{""file"": ""effects/ink-edge.webp"", ""opacity"": 0.65}]",prepared-composite-recipe
+BG11,紀貫之の梅の屋敷・回復後,2,backgrounds/plum-house.webp,none,"[{""file"": ""effects/recovery-light.webp"", ""opacity"": 0.22}]",prepared-composite-recipe
+BG12,帰る場所を忘れた村,2,backgrounds/village.webp,saturate(.12) brightness(.38) contrast(1.1),"[{""file"": ""effects/ink-edge.webp"", ""opacity"": 0.65}]",prepared-composite-recipe
+BG13,村・回復後,2,backgrounds/village.webp,none,[],prepared-composite-recipe
+BG14,防人の旅立ちの門,2,backgrounds/gate.webp,saturate(.12) brightness(.38) contrast(1.1),"[{""file"": ""effects/ink-edge.webp"", ""opacity"": 0.65}]",prepared-composite-recipe
+BG15,防人の旅立ちの門・回復後,2,backgrounds/gate.webp,none,[],prepared-composite-recipe
+BG16,千年前の橘家の庭,2,backgrounds/tachibana-garden.webp,none,[],prepared-composite-recipe
+BG17,古い書庫,2,backgrounds/archive.webp,saturate(.15) brightness(.45),"[{""file"": ""effects/ink-edge.webp"", ""opacity"": 0.65}]",prepared-composite-recipe

@@ -1,0 +1,54 @@
+{
+  "持統天皇": {
+    "file": "references/poet-01.webp",
+    "source": "heian-portal/assets/e61510bc922c2b70dae6.webp"
+  },
+  "柿本人麻呂": {
+    "file": "references/poet-02.webp",
+    "source": "heian-portal/assets/8a1966dddd3b812f083c.webp"
+  },
+  "額田王": {
+    "file": "references/poet-03.webp",
+    "source": "heian-portal/assets/d3d04df674213dc32bac.webp"
+  },
+  "山部赤人": {
+    "file": "references/poet-04.webp",
+    "source": "heian-portal/assets/ec3920656b2b74df4658.webp"
+  },
+  "山上憶良": {
+    "file": "references/poet-05.webp",
+    "source": "heian-portal/assets/c4822bcf50b4039fbb9a.webp"
+  },
+  "丈部稲麻呂（防人歌）": {
+    "file": "references/poet-06.webp",
+    "source": "heian-portal/assets/27da9f11736925b519d4.webp"
+  },
+  "大伴家持": {
+    "file": "references/poet-07.webp",
+    "source": "heian-portal/assets/d6c2590b5f6c04dee28b.webp"
+  },
+  "紀貫之": {
+    "file": "references/poet-08.webp",
+    "source": "heian-portal/assets/03fb5b647f97b5743d1c.webp"
+  },
+  "在原業平": {
+    "file": "references/poet-09.webp",
+    "source": "heian-portal/assets/f18c31be08f478057e79.webp"
+  },
+  "小野小町": {
+    "file": "references/poet-10.webp",
+    "source": "heian-portal/assets/b270c82b5315f564ac2e.webp"
+  },
+  "西行法師": {
+    "file": "references/poet-11.webp",
+    "source": "heian-portal/assets/0fa6732be113646f203f.webp"
+  },
+  "藤原定家": {
+    "file": "references/poet-12.webp",
+    "source": "heian-portal/assets/7bdebeda32483c2d0f29.webp"
+  },
+  "式子内親王": {
+    "file": "references/poet-13.webp",
+    "source": "heian-portal/assets/1e2857cce5b9bfeb8991.webp"
+  }
+}
