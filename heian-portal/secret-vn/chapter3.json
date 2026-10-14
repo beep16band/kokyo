@@ -1,0 +1,1684 @@
+{
+  "version": "1.2-c03-staging",
+  "chapterId": "C03",
+  "chapterTitle": "第三章　時を失った庭",
+  "endText": "取り戻した夏と、名のない人の恋。書庫に残る約束を胸に、二人は紅葉の川へ向かう。",
+  "scriptStatus": "添付統合稿の試験実装。最終台本・教師校閲は未完了。",
+  "scenes": [
+    {
+      "scene_id": "C03-S01",
+      "chapter_id": "C03",
+      "title": "春が終わらない山",
+      "background_ids": [
+        "BG18"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "持統天皇"
+      ],
+      "event_tags": [
+        "season-frozen"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "桜が舞う春の山と、白い衣が干された夏の山が、一つの景色に重なる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "春なのに、夏の景色もある。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "季節が止まっているのか？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "持統天皇",
+          "text": "春は過ぎたはずなのに、夏が見えない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "香具山を見てください。歌に手掛かりがあります。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "歌集に「春過ぎて夏来るらし」が現れる。"
+        }
+      ],
+      "visual_stage": "background:BG18; characters:茜,湊,持統天皇; events:season-frozen",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C03-S02",
+      "chapter_id": "C03",
+      "title": "持統天皇の試練",
+      "background_ids": [
+        "BG18"
+      ],
+      "characters": [
+        "持統天皇"
+      ],
+      "event_tags": [
+        "quiz:w01"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C03-W01-Q01",
+        "C03-W01-Q02",
+        "C03-W01-Q03",
+        "C03-W01-Q04"
+      ],
+      "quiz_gate": "all_four_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「持統天皇」。推定「らし」、枕詞と季節の情景を問う。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "白い衣が干されているのが、夏の訪れの手掛かりだ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "歌の本文から、一つずつ確かめよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "四問正解で、止まった風が山を越える。"
+        }
+      ],
+      "visual_stage": "background:BG18; characters:持統天皇; events:quiz:w01",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      },
+      "quizBeforeLine": 3,
+      "controlLines": [
+        0,
+        3
+      ]
+    },
+    {
+      "scene_id": "C03-S03",
+      "chapter_id": "C03",
+      "title": "止まった季節が動き出す",
+      "background_ids": [
+        "BG19"
+      ],
+      "characters": [
+        "持統天皇",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "season-recovery"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "香具山の衣が揺れ、春の桜が散って季節が進む。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "持統天皇",
+          "text": "夏が来たらしい。そう感じたのですね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "見た景色から、季節が変わったことを知ったんです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "持統天皇",
+          "text": "この庭では、異なる時代の歌も同じ場所に集まります。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "平安なのに、違う時代の歌人がいる理由……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "持統天皇",
+          "text": "川の向こうに、書庫があります。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "「夏」の札が光り、川への道が開く。"
+        }
+      ],
+      "visual_stage": "background:BG19; characters:持統天皇,茜,湊; events:season-recovery",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C03-S04",
+      "chapter_id": "C03",
+      "title": "多摩川の失われた暮らし",
+      "background_ids": [
+        "BG20"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "東歌の若者"
+      ],
+      "event_tags": [
+        "river-frozen"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "多摩川のほとり。布をさらす場所に人はなく、水音も鈍い。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "若者",
+          "text": "さら……さら……。誰が、いとしかったのだろう。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "「多摩川に」の東歌……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "この歌は、作者の名前が分からないんだよな。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "うん。でも、歌は残ってる。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "若者の影から歌の文字が立ち上る。"
+        }
+      ],
+      "visual_stage": "background:BG20; characters:茜,湊,東歌の若者; events:river-frozen",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C03-S05",
+      "chapter_id": "C03",
+      "title": "多摩川の記憶",
+      "background_ids": [
+        "BG20",
+        "BG21"
+      ],
+      "characters": [
+        "東歌の若者"
+      ],
+      "event_tags": [
+        "quiz:w07"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C03-W07-Q01",
+        "C03-W07-Q02",
+        "C03-W07-Q03",
+        "C03-W07-Q04"
+      ],
+      "quiz_gate": "all_four_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「東歌」。ここだ、愛しき、序詞、歌の内容を問う。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "この歌の「愛しき（かなしき）」は、悲しいではなく、いとしいという意味。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "「さら」の音のつながりも大切だ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "四問正解で多摩川の流れと人々の暮らしが戻る。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "若者",
+          "text": "誰かをいとしいと思った気持ちは、名前が残らずとも歌に残ったのですね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "はい。ずっと後の私たちにも届きました。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "「恋」の札が光る。"
+        }
+      ],
+      "visual_stage": "background:BG20,BG21; characters:東歌の若者; events:quiz:w07",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      },
+      "quizBeforeLine": 3,
+      "controlLines": [
+        0,
+        3
+      ]
+    },
+    {
+      "scene_id": "C03-S06",
+      "chapter_id": "C03",
+      "title": "富士の山に残る歌（任意）",
+      "background_ids": [
+        "BG23"
+      ],
+      "characters": [
+        "山部赤人",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "optional:w04",
+        "w05"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "quiz_gate": "optional",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "【任意】雪をいただく富士。山部赤人の記憶が長歌と反歌の巻物を示す。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "山部赤人",
+          "text": "山をたたえる長い歌と、それに添える短い歌があります。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "同じ富士でも、言葉の重ね方が違うんですね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "短い方は「田子の浦ゆ」の歌だ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "山部赤人",
+          "text": "二つを比べてもよいし、先へ進んでも構いません。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "OPTIONAL QUIZ 2問。正否・未実施にかかわらず本編は解放される。"
+        }
+      ],
+      "visual_stage": "background:BG23; characters:山部赤人,茜,湊; events:optional:w04,w05",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      },
+      "controlLines": [
+        5
+      ],
+      "optionalQuizIds": [
+        "C03-W05-OPTIONAL-Q01",
+        "C03-W04-OPTIONAL-Q02"
+      ]
+    },
+    {
+      "scene_id": "C03-S07",
+      "chapter_id": "C03",
+      "title": "時代の異なる歌人たち",
+      "background_ids": [
+        "BG22"
+      ],
+      "characters": [
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "era-paradox"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "回廊の壁に、額田王から藤原定家まで異なる時代の歌人が描かれている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "おかしい。飛鳥時代の歌人と、鎌倉時代の歌人が同じ場所にいる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "ここは平安京そのものじゃないのかな。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "番人の声",
+          "text": "そのとおり。ここは歌に残された心が集まる場所。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "誰だ！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "番人の声",
+          "text": "先へ進めば、記録が答えるでしょう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "書庫の扉が開く。"
+        }
+      ],
+      "visual_stage": "background:BG22; characters:茜,湊; events:era-paradox",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C03-S08",
+      "chapter_id": "C03",
+      "title": "言の葉の書庫",
+      "background_ids": [
+        "BG22"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "記憶の番人"
+      ],
+      "event_tags": [
+        "memory-archive"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "無数の巻物が浮く巨大な書庫。白い装束の記憶の番人が現れる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "番人",
+          "text": "言の葉の庭は、歌が読み継がれるたびに記憶を集めてきました。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "だから、未来の歌人の記憶もここにあるんだね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "番人",
+          "text": "歌人本人が生きているのではありません。歌に託された記憶の姿です。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "ことはは？　あの子も……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "番人",
+          "text": "あの少女は、すでに役目を終えたはずの記録。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "なのに、今も私たちを助けてくれた。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "番人",
+          "text": "真相は、最奥の巻物にあります。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "橘の花の紋がある巻物が開かれる。"
+        }
+      ],
+      "visual_stage": "background:BG22; characters:茜,湊,記憶の番人; events:memory-archive",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C03-S09",
+      "chapter_id": "C03",
+      "title": "千年前の約束の始まり",
+      "background_ids": [
+        "BG16",
+        "BG22"
+      ],
+      "characters": [
+        "幼いことは",
+        "幼い真尋",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "flashback",
+        "chapter-transition"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "過去の書庫。幼いことはと真尋が古い和歌を読む。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "遠い昔の人の気持ちを、今でも読めるってすごいよね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "難しい字ばかりだけどな。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私は歌を集めて、誰にも忘れられないようにしたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "じゃあ、俺も手伝う。約束だ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "二人は小指を絡めて笑う。巻物の文字が突然黒くにじむ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "守るためには、忘れねばならぬ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "さっきの幸せそうな二人が、どうして……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "あの黒い墨に、何か奪われたんだ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "赤い紅葉が墨の中から流れ出し、龍田川への道になる。"
+        }
+      ],
+      "visual_stage": "background:BG16,BG22; characters:幼いことは,幼い真尋,茜,湊; events:flashback,chapter-transition",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "C03-W01-Q01",
+      "chapter_id": "C03",
+      "waka_id": "w01",
+      "prompt": "持統天皇の歌「春過ぎて夏来るらし」の「夏来るらし」は、どんな意味？",
+      "options": [
+        "夏が来たらしい",
+        "春が来るだろう",
+        "夏が来ない",
+        "夏が終わった"
+      ],
+      "correct_index": 0,
+      "explanation": "「来る」はここでは「きたる」。白い衣が干された景色を根拠に、「夏が来たらしい」と推定している。「らし」を単なる未来の予想と取り違えない。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "夏が来たらしい",
+      "correct_option_id": "correct",
+      "choices": [
+        {
+          "id": "C03-W01-Q01-option-0",
+          "text": "夏が来たらしい"
+        },
+        {
+          "id": "C03-W01-Q01-option-1",
+          "text": "春が来るだろう"
+        },
+        {
+          "id": "C03-W01-Q01-option-2",
+          "text": "夏が来ない"
+        },
+        {
+          "id": "C03-W01-Q01-option-3",
+          "text": "夏が終わった"
+        }
+      ],
+      "answerId": "C03-W01-Q01-option-0",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    },
+    {
+      "id": "C03-W01-Q02",
+      "chapter_id": "C03",
+      "waka_id": "w01",
+      "prompt": "持統天皇は、歌のどの景色から夏の訪れを感じ取った？",
+      "options": [
+        "桜が咲く",
+        "香具山に白い衣が干されている",
+        "夜に月が昇る",
+        "山に雪がある"
+      ],
+      "correct_index": 1,
+      "explanation": "歌に「白たへの衣干したり」とある。白い衣が干されている景色を見て、夏がやって来たらしいと感じ取っている。桜・月・雪は、この歌の本文にはない。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "香具山に白い衣が干されている",
+      "correct_option_id": "correct",
+      "choices": [
+        {
+          "id": "C03-W01-Q02-option-0",
+          "text": "桜が咲く"
+        },
+        {
+          "id": "C03-W01-Q02-option-1",
+          "text": "香具山に白い衣が干されている"
+        },
+        {
+          "id": "C03-W01-Q02-option-2",
+          "text": "夜に月が昇る"
+        },
+        {
+          "id": "C03-W01-Q02-option-3",
+          "text": "山に雪がある"
+        }
+      ],
+      "answerId": "C03-W01-Q02-option-1",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    },
+    {
+      "id": "C03-W01-Q03",
+      "chapter_id": "C03",
+      "waka_id": "w01",
+      "prompt": "「白たへの」が「衣」にかかる、決まった言葉としての表現技法は？",
+      "options": [
+        "倒置法",
+        "体言止め",
+        "枕詞",
+        "反復法"
+      ],
+      "correct_index": 2,
+      "explanation": "「白たへの」は「衣」などにかかる枕詞。五音ほどの決まった言葉を添え、言葉の調子やイメージを整える。語順の入れ替えや繰り返しとは異なる。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "枕詞",
+      "correct_option_id": "correct",
+      "choices": [
+        {
+          "id": "C03-W01-Q03-option-0",
+          "text": "倒置法"
+        },
+        {
+          "id": "C03-W01-Q03-option-1",
+          "text": "体言止め"
+        },
+        {
+          "id": "C03-W01-Q03-option-2",
+          "text": "枕詞"
+        },
+        {
+          "id": "C03-W01-Q03-option-3",
+          "text": "反復法"
+        }
+      ],
+      "answerId": "C03-W01-Q03-option-2",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    },
+    {
+      "id": "C03-W01-Q04",
+      "chapter_id": "C03",
+      "waka_id": "w01",
+      "prompt": "「春過ぎて夏来るらし白たへの衣干したり天の香具山」の内容に合うものは？",
+      "options": [
+        "春を惜しみ夏を拒む",
+        "夏の終わり",
+        "山の雪に冬を喜ぶ",
+        "白い衣を見て夏の到来を感じる"
+      ],
+      "correct_index": 3,
+      "explanation": "前半の「春過ぎて夏来るらし」を、後半の白い衣を干した景色が支える。季節の変化を、目にした具体的なものから感じ取った歌である。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "白い衣を見て夏の到来を感じる",
+      "correct_option_id": "correct",
+      "choices": [
+        {
+          "id": "C03-W01-Q04-option-0",
+          "text": "春を惜しみ夏を拒む"
+        },
+        {
+          "id": "C03-W01-Q04-option-1",
+          "text": "夏の終わり"
+        },
+        {
+          "id": "C03-W01-Q04-option-2",
+          "text": "山の雪に冬を喜ぶ"
+        },
+        {
+          "id": "C03-W01-Q04-option-3",
+          "text": "白い衣を見て夏の到来を感じる"
+        }
+      ],
+      "answerId": "C03-W01-Q04-option-3",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    },
+    {
+      "id": "C03-W07-Q01",
+      "chapter_id": "C03",
+      "waka_id": "w07",
+      "prompt": "東歌「なにそこの児のここだかなしき」の「ここだ」は、どんな意味？",
+      "options": [
+        "この場所で",
+        "これほど",
+        "ここだけ",
+        "ここから"
+      ],
+      "correct_index": 1,
+      "explanation": "「ここだ」は程度を表す「これほど・こんなにも」。「ここ」という場所を指す現代語として読まない。後の「かなしき」が、いとしい気持ちを示す。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "これほど",
+      "correct_option_id": "correct",
+      "choices": [
+        {
+          "id": "C03-W07-Q01-option-0",
+          "text": "この場所で"
+        },
+        {
+          "id": "C03-W07-Q01-option-1",
+          "text": "これほど"
+        },
+        {
+          "id": "C03-W07-Q01-option-2",
+          "text": "ここだけ"
+        },
+        {
+          "id": "C03-W07-Q01-option-3",
+          "text": "ここから"
+        }
+      ],
+      "answerId": "C03-W07-Q01-option-1",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    },
+    {
+      "id": "C03-W07-Q02",
+      "chapter_id": "C03",
+      "waka_id": "w07",
+      "prompt": "東歌「なにそこの児のここだかなしき」で、「かなしき」はどんな気持ち？",
+      "options": [
+        "悲しい",
+        "恐ろしい",
+        "いとしい",
+        "腹立たしい"
+      ],
+      "correct_index": 2,
+      "explanation": "古語「かなし」は文脈で意味が変わる。この相聞歌の「かなしき」は、相手をいとしく大切に思う気持ち。「悲しい」だけで読むと、歌全体の思いを捉え損ねる。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "いとしい",
+      "correct_option_id": "correct",
+      "choices": [
+        {
+          "id": "C03-W07-Q02-option-0",
+          "text": "悲しい"
+        },
+        {
+          "id": "C03-W07-Q02-option-1",
+          "text": "恐ろしい"
+        },
+        {
+          "id": "C03-W07-Q02-option-2",
+          "text": "いとしい"
+        },
+        {
+          "id": "C03-W07-Q02-option-3",
+          "text": "腹立たしい"
+        }
+      ],
+      "answerId": "C03-W07-Q02-option-2",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    },
+    {
+      "id": "C03-W07-Q03",
+      "chapter_id": "C03",
+      "waka_id": "w07",
+      "prompt": "「多摩川にさらす手作り」が、音のつながりで「さらさらに」を導く表現技法は？",
+      "options": [
+        "体言止め",
+        "倒置法",
+        "擬人法",
+        "序詞"
+      ],
+      "correct_index": 3,
+      "explanation": "「多摩川にさらす手作り」が、「さらす」と「さらさらに」の音のつながりによって後の語を導く序詞。「手作り」は手織りの布を指す。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "序詞",
+      "correct_option_id": "correct",
+      "choices": [
+        {
+          "id": "C03-W07-Q03-option-0",
+          "text": "体言止め"
+        },
+        {
+          "id": "C03-W07-Q03-option-1",
+          "text": "倒置法"
+        },
+        {
+          "id": "C03-W07-Q03-option-2",
+          "text": "擬人法"
+        },
+        {
+          "id": "C03-W07-Q03-option-3",
+          "text": "序詞"
+        }
+      ],
+      "answerId": "C03-W07-Q03-option-3",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    },
+    {
+      "id": "C03-W07-Q04",
+      "chapter_id": "C03",
+      "waka_id": "w07",
+      "prompt": "「多摩川にさらす手作りさらさらになにそこの児のここだかなしき」の中心にある思いは？",
+      "options": [
+        "あの子がこれほどいとしいという思い",
+        "布をなくした悲しみ",
+        "故郷に帰れない苦しみ",
+        "冷たい水への驚き"
+      ],
+      "correct_index": 0,
+      "explanation": "「なにそ」はどうして、「ここだ」はこれほど、「かなしき」はいとしい。布をさらす情景から、相手をこんなにもいとしく思う心へ歌が進む。相手との具体的な関係は本文だけでは定まらない。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "あの子がこれほどいとしいという思い",
+      "correct_option_id": "correct",
+      "choices": [
+        {
+          "id": "C03-W07-Q04-option-0",
+          "text": "あの子がこれほどいとしいという思い"
+        },
+        {
+          "id": "C03-W07-Q04-option-1",
+          "text": "布をなくした悲しみ"
+        },
+        {
+          "id": "C03-W07-Q04-option-2",
+          "text": "故郷に帰れない苦しみ"
+        },
+        {
+          "id": "C03-W07-Q04-option-3",
+          "text": "冷たい水への驚き"
+        }
+      ],
+      "answerId": "C03-W07-Q04-option-0",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    }
+  ],
+  "optionalQuestions": [
+    {
+      "id": "C03-W05-OPTIONAL-Q01",
+      "waka_id": "w05",
+      "prompt": "「田子の浦ゆ」の「ゆ」の意味は？",
+      "options": [
+        "まで",
+        "から",
+        "だけ",
+        "よりも"
+      ],
+      "correct_index": 1,
+      "correct_option_text": "から",
+      "explanation": "「ゆ」は出発点・経路などを表す上代の助詞。ここでは田子の浦を起点・経路として、そこから出て見たことを表す。「まで」は到着点、「だけ」は限定、「よりも」は比較なので、この文脈とは異なる。",
+      "choices": [
+        {
+          "id": "C03-W05-OPTIONAL-Q01-option-0",
+          "text": "まで"
+        },
+        {
+          "id": "C03-W05-OPTIONAL-Q01-option-1",
+          "text": "から"
+        },
+        {
+          "id": "C03-W05-OPTIONAL-Q01-option-2",
+          "text": "だけ"
+        },
+        {
+          "id": "C03-W05-OPTIONAL-Q01-option-3",
+          "text": "よりも"
+        }
+      ],
+      "answerId": "C03-W05-OPTIONAL-Q01-option-1",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    },
+    {
+      "id": "C03-W04-OPTIONAL-Q02",
+      "waka_id": "w04",
+      "prompt": "長歌のあとに添えられる短歌は？",
+      "options": [
+        "旋頭歌",
+        "短連歌",
+        "反歌",
+        "俳句"
+      ],
+      "correct_index": 2,
+      "correct_option_text": "反歌",
+      "explanation": "長歌に添え、内容をまとめたり補ったりする短歌を反歌という。「田子の浦ゆ」は「天地の」で始まる長歌に添えられた反歌。旋頭歌・短連歌・俳句とは形式も位置づけも異なる。",
+      "choices": [
+        {
+          "id": "C03-W04-OPTIONAL-Q02-option-0",
+          "text": "旋頭歌"
+        },
+        {
+          "id": "C03-W04-OPTIONAL-Q02-option-1",
+          "text": "短連歌"
+        },
+        {
+          "id": "C03-W04-OPTIONAL-Q02-option-2",
+          "text": "反歌"
+        },
+        {
+          "id": "C03-W04-OPTIONAL-Q02-option-3",
+          "text": "俳句"
+        }
+      ],
+      "answerId": "C03-W04-OPTIONAL-Q02-option-2",
+      "reviewStatus": "奈良県立万葉文化館「万葉百科」の本文に照合。最終教師校閲待ち。"
+    }
+  ],
+  "poems": {
+    "w01": {
+      "author": "持統天皇（じとうてんのう）",
+      "collection": "万葉集 巻1・28",
+      "text": "春過ぎて 夏来るらし 白たへの 衣干したり 天の香具山",
+      "reading": "はるすぎて なつきたるらし しろたえの ころもほしたり あまのかぐやま",
+      "meaning": "春が過ぎ、どうやら夏が訪れたようだ。天の香具山には、白い衣が干してある。",
+      "note": "「来る」は「きたる」。百人一首に収められた「夏来にけらし」「衣ほすてふ」とは本文が異なる。ここでは万葉集の「夏来るらし」「衣干したり」を読む。「白たへの」は「衣」にかかる枕詞。持統天皇は飛鳥時代の人物。",
+      "firstScene": "C03-S01",
+      "sourceName": "奈良県立万葉文化館・万葉百科",
+      "source": "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=28"
+    },
+    "w07": {
+      "author": "作者未詳（さくしゃみしょう）・東歌（あずまうた）",
+      "collection": "万葉集 巻14・3373",
+      "text": "多摩川に さらす手作り さらさらに なにそこの児の ここだかなしき",
+      "reading": "たまがわに さらすてづくり さらさらに なにそこのこの ここだかなしき",
+      "meaning": "多摩川でさらす手織りの布。その「さらす」ではないが、ますます、どうしてこの人をこれほどいとしく思うのだろう。",
+      "note": "「手作り」は手織りの布。「多摩川にさらす手作り」が「さらさらに」を導く序詞。「ここだ」は程度を表し、「かなしき」はここではいとしい。「なにそ―かなしき」の結びにも注目。若者の姿や会話は、名の残らない人々を象徴する創作であり、実際の作者を特定したものではない。",
+      "firstScene": "C03-S04",
+      "sourceName": "奈良県立万葉文化館・万葉百科",
+      "source": "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=3373"
+    },
+    "w04": {
+      "author": "山部赤人（やまべのあかひと）",
+      "collection": "万葉集 巻3・317",
+      "text": "天地の 分れし時ゆ 神さびて 高く貴き 駿河なる 富士の高嶺を 天の原 ふりさけ見れば 渡る日の 影も隠らひ 照る月の 光も見えず 白雲も い行きはばかり 時じくそ 雪は降りける 語り継ぎ 言ひ継ぎ行かむ 富士の高嶺は",
+      "reading": "あめつちの わかれしときゆ かむさびて たかくとうとき するがなる ふじのたかねを あまのはら ふりさけみれば わたるひの かげもかくらい てるつきの ひかりもみえず しらくもも いゆきはばかり ときじくそ ゆきはふりける かたりつぎ いいつぎゆかん ふじのたかねは",
+      "meaning": "天地が分かれた昔から、神々しくそびえる富士。仰ぎ見ると、その高みが日の光も月の光も遮り、雲さえ進めない。季節を限らず雪をまとう、この山の姿を、これからも語り伝えてゆこう。",
+      "note": "長歌は五音・七音を繰り返し、末尾を七音・七音で結ぶのが基本。太陽・月・雲を順に挙げ、山の高さと神々しさを重ねて表す。地形の測量記録ではなく、山をたたえる表現として読む。後に反歌「田子の浦ゆ」が続く。任意鑑賞であり、本編の解放条件には含めない。",
+      "firstScene": "C03-S06",
+      "sourceName": "奈良県立万葉文化館・万葉百科",
+      "source": "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=317"
+    },
+    "w05": {
+      "author": "山部赤人（やまべのあかひと）",
+      "collection": "万葉集 巻3・318（反歌）",
+      "text": "田子の浦ゆ うち出でて見れば 真白にそ 富士の高嶺に 雪は降りける",
+      "reading": "たごのうらゆ うちいでてみれば ましろにそ ふじのたかねに ゆきはふりける",
+      "meaning": "田子の浦を通って視界の開ける所へ出てみると、富士の高い峰には、ひときわ白く雪が降っていることだ。",
+      "note": "「ゆ」は上代の助詞で、出発点や経路を示す。底本の訓読に従って「真白にそ」と表示する。百人一首の「田子の浦に」「白妙の」「雪は降りつつ」とは異なる本文。長歌の大きな時空から、目の前の白い雪へ視点が絞られる。任意鑑賞。",
+      "firstScene": "C03-S06",
+      "sourceName": "奈良県立万葉文化館・万葉百科",
+      "source": "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=318"
+    }
+  },
+  "manifest": {
+    "characters": {
+      "minato": {
+        "label": "湊",
+        "states": {
+          "normal": {
+            "id": "minato-normal",
+            "kind": "characters",
+            "file": "characters/minato-normal.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 56132,
+            "sha256": "ab9f2431df6050b3b4297a9f4d209b6ab9b580d1e7edfbf5ce90e421d97a15b4",
+            "source": "opening75/assets/eb51d6a61b887af0ec96.webp",
+            "alpha": true,
+            "nativeFrameHeight": 853,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              170,
+              190,
+              210,
+              210
+            ]
+          },
+          "smile": {
+            "id": "minato-smile",
+            "kind": "characters",
+            "file": "characters/minato-smile.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 59380,
+            "sha256": "38beca63d9c25187468ebcbdcf7399f06472707a30ba84bd6108f5ef1b767f97",
+            "source": "opening75/assets/eb51d6a61b887af0ec96.webp",
+            "alpha": true,
+            "nativeFrameHeight": 855,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              177,
+              189,
+              210,
+              210
+            ]
+          },
+          "surprise": {
+            "id": "minato-surprise",
+            "kind": "characters",
+            "file": "characters/minato-surprise.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 60672,
+            "sha256": "c5128c0759b7fddce7e492437982a2dc855d1d13e8cebb563168a94af3848557",
+            "source": "opening75/assets/eb51d6a61b887af0ec96.webp",
+            "alpha": true,
+            "nativeFrameHeight": 846,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              133,
+              199,
+              210,
+              210
+            ]
+          },
+          "fear": {
+            "id": "minato-fear",
+            "kind": "characters",
+            "file": "characters/minato-fear.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 48906,
+            "sha256": "7938b158499a2286e4c740e6a5feaaf5fa1efa1f689e1df893511f475a36a902",
+            "source": "imagegen:minato",
+            "alpha": true,
+            "nativeFrameHeight": 859,
+            "master": {
+              "file": "masters/minato-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              162,
+              184,
+              210,
+              210
+            ]
+          },
+          "sad": {
+            "id": "minato-sad",
+            "kind": "characters",
+            "file": "characters/minato-sad.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 45896,
+            "sha256": "046180700269f2a5a8fc4a817e2ae681de7cf53b4a647489d403609de0eee258",
+            "source": "imagegen:minato",
+            "alpha": true,
+            "nativeFrameHeight": 850,
+            "master": {
+              "file": "masters/minato-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              191,
+              193,
+              210,
+              210
+            ]
+          },
+          "resolve": {
+            "id": "minato-resolve",
+            "kind": "characters",
+            "file": "characters/minato-resolve.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 51380,
+            "sha256": "5d1699504ce2e34761b2c0719c86e05230ac4d783a1ecad0db32d6cd7776c543",
+            "source": "imagegen:minato",
+            "alpha": true,
+            "nativeFrameHeight": 859,
+            "master": {
+              "file": "masters/minato-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              168,
+              184,
+              210,
+              210
+            ]
+          }
+        }
+      },
+      "akane": {
+        "label": "橘 茜",
+        "states": {
+          "normal": {
+            "id": "akane-normal",
+            "kind": "characters",
+            "file": "characters/akane-normal.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 56840,
+            "sha256": "1a47284fff089df748a6c3de5616e74fcb34f7676ca51413ecb70b3b313ca29c",
+            "source": "opening75/assets/fa9c94fd4f2d7c3d5da6.webp",
+            "alpha": true,
+            "nativeFrameHeight": 852,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              172,
+              190,
+              230,
+              230
+            ]
+          },
+          "smile": {
+            "id": "akane-smile",
+            "kind": "characters",
+            "file": "characters/akane-smile.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 55336,
+            "sha256": "afa1e988433c42184235967116bcd7dc21f728628f4ae37d5607231397a922a4",
+            "source": "opening75/assets/fa9c94fd4f2d7c3d5da6.webp",
+            "alpha": true,
+            "nativeFrameHeight": 850,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              170,
+              193,
+              230,
+              230
+            ]
+          },
+          "surprise": {
+            "id": "akane-surprise",
+            "kind": "characters",
+            "file": "characters/akane-surprise.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 57780,
+            "sha256": "ac06be0c8043b8f1a80a93b68959203b9b9337ce4c0bf7012ea52fdd3fb0dbea",
+            "source": "opening75/assets/fa9c94fd4f2d7c3d5da6.webp",
+            "alpha": true,
+            "nativeFrameHeight": 855,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              152,
+              188,
+              230,
+              230
+            ]
+          },
+          "fear": {
+            "id": "akane-fear",
+            "kind": "characters",
+            "file": "characters/akane-fear.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 59092,
+            "sha256": "4ba02a1491e4170b33bab4fb527adcf0594a59803a3ff3f027331f1020ae2dd2",
+            "source": "imagegen:akane",
+            "alpha": true,
+            "nativeFrameHeight": 920,
+            "master": {
+              "file": "masters/akane-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              174,
+              124,
+              230,
+              230
+            ]
+          },
+          "sad": {
+            "id": "akane-sad",
+            "kind": "characters",
+            "file": "characters/akane-sad.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 56524,
+            "sha256": "b51cd52e4a4232e97aee05f272a76ef47819114c1d28d2b0916caff9891454df",
+            "source": "imagegen:akane",
+            "alpha": true,
+            "nativeFrameHeight": 929,
+            "master": {
+              "file": "masters/akane-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              175,
+              117,
+              230,
+              230
+            ]
+          },
+          "resolve": {
+            "id": "akane-resolve",
+            "kind": "characters",
+            "file": "characters/akane-resolve.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 64728,
+            "sha256": "a0f7025ff8a6337198e0f652f3d4449d0c6666919b3f5d30163f44ea8bcf4c9d",
+            "source": "imagegen:akane",
+            "alpha": true,
+            "nativeFrameHeight": 927,
+            "master": {
+              "file": "masters/akane-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              140,
+              117,
+              230,
+              230
+            ]
+          }
+        }
+      },
+      "kotoha-child": {
+        "label": "幼いことは",
+        "states": {
+          "normal": {
+            "file": "characters/kotoha-child-normal-v1.webp",
+            "width": 840,
+            "height": 1080,
+            "bytes": 112090,
+            "sha256": "dbce1d6b6fe7e4f443d1bd76db6e866500e97689c08a8dd312160bb85b5e094a",
+            "alpha": true,
+            "faceCrop": [
+              298,
+              53,
+              230,
+              230
+            ],
+            "master": {
+              "file": "masters/kotoha-child-v1-source.png",
+              "width": 1106,
+              "height": 1422,
+              "bytes": 1095298,
+              "sha256": "2d023334fc6e1f1c737848bdf73bf86641d49ce8d20a468ded1e7bbfa61a9378",
+              "alpha": true
+            }
+          }
+        },
+        "note": "既存デザインを参考に新規生成した幼少期。回想専用、通常1表情。"
+      },
+      "mahiro-child": {
+        "label": "幼い真尋",
+        "states": {
+          "normal": {
+            "file": "characters/mahiro-child-normal-v1.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 61104,
+            "sha256": "6ec04d490898bd96f8b6c6ec2f1303d5853e5091962d8ac7c0e7b635e74926de",
+            "alpha": true,
+            "faceCrop": [
+              170,
+              47,
+              230,
+              230
+            ],
+            "master": {
+              "file": "masters/mahiro-child-v1-source.png",
+              "width": 903,
+              "height": 1742,
+              "bytes": 962193,
+              "sha256": "539a69022641fb9494cac7e5cafe35a04ebc1ab9daea89dee1942b2bcc1bb0a9",
+              "alpha": true
+            }
+          }
+        },
+        "note": "既存デザインを参考に新規生成した幼少期。回想専用、通常1表情。"
+      },
+      "jito": {
+        "label": "持統天皇",
+        "states": {
+          "normal": {
+            "file": "characters/jito-normal-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 195810,
+            "sha256": "25bf1c16e56ac8abaaebf0a967a5e1149922de44c9c5a96c2ca6557e1b0f48c9",
+            "alpha": true,
+            "faceCrop": [
+              244,
+              19,
+              230,
+              230
+            ],
+            "master": {
+              "file": "masters/c03-jito-normal-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2648595,
+              "sha256": "753f3516a8e5aaac39e3cc6d3ffc9ebd0ddd59923109094bc300a1252a3295ae",
+              "alpha": true
+            }
+          },
+          "hollow": {
+            "file": "characters/jito-hollow-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 167180,
+            "sha256": "ae42a79f145738575db2ee2acd1969f796f9f4eba5aab11b10d99be12d4b595c",
+            "alpha": true,
+            "faceCrop": [
+              244,
+              19,
+              230,
+              230
+            ],
+            "master": {
+              "file": "masters/c03-jito-hollow-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2500159,
+              "sha256": "6945a918ef360a184b16ebf37d2ac3b3568889bb81be2f99f0d9dc6d697ecf9c",
+              "alpha": true
+            }
+          }
+        }
+      },
+      "azuma": {
+        "label": "東歌の若者（創作）",
+        "states": {
+          "normal": {
+            "file": "characters/azuma-normal-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 80272,
+            "sha256": "82dd9da74cf3b140cf3481b71f6b786c93b76c88b9f31a5b481c0a64aaa6d548",
+            "alpha": true,
+            "faceCrop": [
+              250,
+              0,
+              230,
+              230
+            ],
+            "master": {
+              "file": "masters/c03-azuma-normal-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 1692904,
+              "sha256": "64f1838b0c8c9c2c266d405fe77cba8e60f773af615c355bbb0eae656382edad",
+              "alpha": true
+            }
+          },
+          "hollow": {
+            "file": "characters/azuma-hollow-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 79160,
+            "sha256": "e251e7bacf36474f1dcf609951d13d7052b2ab4f9aecfec2554cba00384bdcf4",
+            "alpha": true,
+            "faceCrop": [
+              250,
+              0,
+              230,
+              230
+            ],
+            "master": {
+              "file": "masters/c03-azuma-hollow-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 1729017,
+              "sha256": "5074057d6ee2e76c9f223188201b14f4d3974ec2ac23db07c738f5633488bae4",
+              "alpha": true
+            }
+          }
+        }
+      },
+      "akahito": {
+        "label": "山部赤人",
+        "states": {
+          "normal": {
+            "file": "characters/akahito-normal-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 109806,
+            "sha256": "e0178d1a677946eadfc8aecac92ccea93eb94301520cd11785c78cda73db8e7c",
+            "alpha": true,
+            "faceCrop": [
+              250,
+              5,
+              230,
+              230
+            ],
+            "master": {
+              "file": "masters/c03-akahito-normal-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2162397,
+              "sha256": "dc909fcf73473b3a81906a06fb24aba52946e7fd59f383a3ea52728ba377c1a5",
+              "alpha": true
+            }
+          }
+        }
+      },
+      "keeper": {
+        "label": "記憶の番人（創作）",
+        "states": {
+          "normal": {
+            "file": "characters/keeper-normal-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 130868,
+            "sha256": "03a93a87cea677c2384871cc794081ec56dab4f7f84b1660745b6f76fcad292e",
+            "alpha": true,
+            "faceCrop": [
+              265,
+              0,
+              230,
+              230
+            ],
+            "master": {
+              "file": "masters/c03-keeper-normal-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2088897,
+              "sha256": "a2c986b43e7e9f1b8495b7128ad25d5a22d1583dc5cc3a7db60e09a0e124a039",
+              "alpha": true
+            }
+          }
+        }
+      }
+    },
+    "backgrounds": {
+      "BG16": {
+        "label": "千年前の橘家の庭",
+        "chapter": 2,
+        "file": "backgrounds/tachibana-garden.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "prepared-composite-recipe",
+        "motionHint": "本編実装時に風・花びら演出を追加可"
+      },
+      "BG18": {
+        "label": "香具山・止まった季節",
+        "chapter": "C03",
+        "file": "backgrounds/c03-kaguyama-v1.webp",
+        "filter": "saturate(.12) brightness(.5) hue-rotate(12deg)",
+        "layers": [
+          {
+            "file": "effects/ink-edge.webp",
+            "opacity": 0.35
+          }
+        ],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+        "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+      },
+      "BG19": {
+        "label": "香具山・回復後",
+        "chapter": "C03",
+        "file": "backgrounds/c03-kaguyama-v1.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+        "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+      },
+      "BG20": {
+        "label": "多摩川・失われた暮らし",
+        "chapter": "C03",
+        "file": "backgrounds/c03-tama-v1.webp",
+        "filter": "saturate(.08) brightness(.43)",
+        "layers": [
+          {
+            "file": "effects/ink-edge.webp",
+            "opacity": 0.35
+          }
+        ],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+        "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+      },
+      "BG21": {
+        "label": "多摩川・回復後",
+        "chapter": "C03",
+        "file": "backgrounds/c03-tama-v1.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+        "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+      },
+      "BG22": {
+        "label": "歌人の記憶の書庫",
+        "chapter": "C03",
+        "file": "backgrounds/c03-memory-archive-v1.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+        "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+      },
+      "BG23": {
+        "label": "富士の長歌と反歌",
+        "chapter": "C03",
+        "file": "backgrounds/c03-fuji-v1.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+        "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+      }
+    },
+    "effects": {
+      "ink-edge": {
+        "id": "ink-edge",
+        "kind": "effects",
+        "file": "effects/ink-edge.webp",
+        "width": 1599,
+        "height": 900,
+        "bytes": 338582,
+        "sha256": "56b9b22c44b51d6b80d45ae5ec8ce87cbf12ffa5588113140f967de5b35d51de",
+        "source": "imagegen:ink",
+        "alpha": true
+      },
+      "recovery-light": {
+        "id": "recovery-light",
+        "kind": "effects",
+        "file": "effects/recovery-light.webp",
+        "width": 1599,
+        "height": 900,
+        "bytes": 313736,
+        "sha256": "06bbb5d4a39b18b2307d81c349f1369987d7ad522e8bd9a6a2d0935711c1a7f4",
+        "source": "imagegen:light",
+        "alpha": true
+      }
+    }
+  },
+  "normalSaveSchema": {
+    "storyKey": "heian-portal-v44",
+    "gameKey": "heian-portal-games-v50",
+    "gameLengths": [
+      60,
+      30,
+      86,
+      30,
+      60,
+      24
+    ]
+  },
+  "sources": [
+    "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=28",
+    "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=3373",
+    "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=317",
+    "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=318"
+  ],
+  "sourceBase": "西本願寺本を底本とする万葉百科の訓読本文に照合。現代語の説明は本作独自。"
+}

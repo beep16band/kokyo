@@ -216,6 +216,76 @@
       ],
       "status": "prepared-composite-recipe",
       "motionHint": "本編実装時に風・花びら演出を追加可"
+    },
+    "BG18": {
+      "label": "香具山・止まった季節",
+      "chapter": "C03",
+      "file": "backgrounds/c03-kaguyama-v1.webp",
+      "filter": "saturate(.12) brightness(.5) hue-rotate(12deg)",
+      "layers": [
+        {
+          "file": "effects/ink-edge.webp",
+          "opacity": 0.35
+        }
+      ],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+      "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+    },
+    "BG19": {
+      "label": "香具山・回復後",
+      "chapter": "C03",
+      "file": "backgrounds/c03-kaguyama-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+      "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+    },
+    "BG20": {
+      "label": "多摩川・失われた暮らし",
+      "chapter": "C03",
+      "file": "backgrounds/c03-tama-v1.webp",
+      "filter": "saturate(.08) brightness(.43)",
+      "layers": [
+        {
+          "file": "effects/ink-edge.webp",
+          "opacity": 0.35
+        }
+      ],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+      "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+    },
+    "BG21": {
+      "label": "多摩川・回復後",
+      "chapter": "C03",
+      "file": "backgrounds/c03-tama-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+      "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+    },
+    "BG22": {
+      "label": "歌人の記憶の書庫",
+      "chapter": "C03",
+      "file": "backgrounds/c03-memory-archive-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+      "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+    },
+    "BG23": {
+      "label": "富士の長歌と反歌",
+      "chapter": "C03",
+      "file": "backgrounds/c03-fuji-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
+      "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
     }
   },
   "characters": {
@@ -1082,6 +1152,158 @@
         }
       },
       "note": "既存デザインを参考に新規生成した幼少期。回想専用、通常1表情。"
+    },
+    "jito": {
+      "label": "持統天皇",
+      "states": {
+        "normal": {
+          "file": "characters/jito-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 195810,
+          "sha256": "25bf1c16e56ac8abaaebf0a967a5e1149922de44c9c5a96c2ca6557e1b0f48c9",
+          "alpha": true,
+          "faceCrop": [
+            244,
+            19,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/c03-jito-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2648595,
+            "sha256": "753f3516a8e5aaac39e3cc6d3ffc9ebd0ddd59923109094bc300a1252a3295ae",
+            "alpha": true
+          }
+        },
+        "hollow": {
+          "file": "characters/jito-hollow-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 167180,
+          "sha256": "ae42a79f145738575db2ee2acd1969f796f9f4eba5aab11b10d99be12d4b595c",
+          "alpha": true,
+          "faceCrop": [
+            244,
+            19,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/c03-jito-hollow-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2500159,
+            "sha256": "6945a918ef360a184b16ebf37d2ac3b3568889bb81be2f99f0d9dc6d697ecf9c",
+            "alpha": true
+          }
+        }
+      }
+    },
+    "akahito": {
+      "label": "山部赤人",
+      "states": {
+        "normal": {
+          "file": "characters/akahito-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 109806,
+          "sha256": "e0178d1a677946eadfc8aecac92ccea93eb94301520cd11785c78cda73db8e7c",
+          "alpha": true,
+          "faceCrop": [
+            250,
+            5,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/c03-akahito-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2162397,
+            "sha256": "dc909fcf73473b3a81906a06fb24aba52946e7fd59f383a3ea52728ba377c1a5",
+            "alpha": true
+          }
+        }
+      }
+    },
+    "azuma": {
+      "label": "東歌の若者（創作）",
+      "states": {
+        "normal": {
+          "file": "characters/azuma-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 80272,
+          "sha256": "82dd9da74cf3b140cf3481b71f6b786c93b76c88b9f31a5b481c0a64aaa6d548",
+          "alpha": true,
+          "faceCrop": [
+            250,
+            0,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/c03-azuma-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 1692904,
+            "sha256": "64f1838b0c8c9c2c266d405fe77cba8e60f773af615c355bbb0eae656382edad",
+            "alpha": true
+          }
+        },
+        "hollow": {
+          "file": "characters/azuma-hollow-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 79160,
+          "sha256": "e251e7bacf36474f1dcf609951d13d7052b2ab4f9aecfec2554cba00384bdcf4",
+          "alpha": true,
+          "faceCrop": [
+            250,
+            0,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/c03-azuma-hollow-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 1729017,
+            "sha256": "5074057d6ee2e76c9f223188201b14f4d3974ec2ac23db07c738f5633488bae4",
+            "alpha": true
+          }
+        }
+      }
+    },
+    "keeper": {
+      "label": "記憶の番人（創作）",
+      "states": {
+        "normal": {
+          "file": "characters/keeper-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 130868,
+          "sha256": "03a93a87cea677c2384871cc794081ec56dab4f7f84b1660745b6f76fcad292e",
+          "alpha": true,
+          "faceCrop": [
+            265,
+            0,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/c03-keeper-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2088897,
+            "sha256": "a2c986b43e7e9f1b8495b7128ad25d5a22d1583dc5cc3a7db60e09a0e124a039",
+            "alpha": true
+          }
+        }
+      }
     }
   },
   "effects": {
@@ -2596,39 +2818,169 @@
       "bytes": 962193,
       "sha256": "539a69022641fb9494cac7e5cafe35a04ebc1ab9daea89dee1942b2bcc1bb0a9",
       "alpha": true
+    },
+    {
+      "file": "masters/c03-kaguyama-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3713855,
+      "sha256": "08a9d30baa72772a59a4906821e8b1924574eac7b8c278abcf29fcbbb7ad6941",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c03-kaguyama-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 322956,
+      "sha256": "c3c0ad3fd3e9f67719c2e567815aa40029ad44adaff8856c121e32603318cd8e",
+      "alpha": false
+    },
+    {
+      "file": "masters/c03-tama-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3438277,
+      "sha256": "3548073b55d9a0be1c12b4d4784d3d7d27a178684790158271f6cc0c851b6198",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c03-tama-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 312002,
+      "sha256": "44314393373bbb8504a55c55273ccb11cace40b10e70d170d6fad4918aaa5c96",
+      "alpha": false
+    },
+    {
+      "file": "masters/c03-memory-archive-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2781849,
+      "sha256": "c77289dd995f164e4658665fe06989db97dfd0f910f88a022ae69fd044dda103",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c03-memory-archive-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 205750,
+      "sha256": "bcdcd24ed9c90d8899701354d2a4713449c263b1e7fad5be5baa0d31dac7fd0c",
+      "alpha": false
+    },
+    {
+      "file": "masters/c03-fuji-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3333044,
+      "sha256": "6abcfc159f7e540187522d97adc40d8949d763677e4f1672cff7d01c135ea916",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c03-fuji-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 288194,
+      "sha256": "0d6b082d555c7ebd2014806c62ccc5924c37906c5f87e99182cc343e35985f5a",
+      "alpha": false
+    },
+    {
+      "file": "masters/c03-jito-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2648595,
+      "sha256": "753f3516a8e5aaac39e3cc6d3ffc9ebd0ddd59923109094bc300a1252a3295ae",
+      "alpha": true
+    },
+    {
+      "file": "characters/jito-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 195810,
+      "sha256": "25bf1c16e56ac8abaaebf0a967a5e1149922de44c9c5a96c2ca6557e1b0f48c9",
+      "alpha": true
+    },
+    {
+      "file": "masters/c03-jito-hollow-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2500159,
+      "sha256": "6945a918ef360a184b16ebf37d2ac3b3568889bb81be2f99f0d9dc6d697ecf9c",
+      "alpha": true
+    },
+    {
+      "file": "characters/jito-hollow-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 167180,
+      "sha256": "ae42a79f145738575db2ee2acd1969f796f9f4eba5aab11b10d99be12d4b595c",
+      "alpha": true
+    },
+    {
+      "file": "masters/c03-akahito-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2162397,
+      "sha256": "dc909fcf73473b3a81906a06fb24aba52946e7fd59f383a3ea52728ba377c1a5",
+      "alpha": true
+    },
+    {
+      "file": "characters/akahito-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 109806,
+      "sha256": "e0178d1a677946eadfc8aecac92ccea93eb94301520cd11785c78cda73db8e7c",
+      "alpha": true
+    },
+    {
+      "file": "masters/c03-azuma-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1692904,
+      "sha256": "64f1838b0c8c9c2c266d405fe77cba8e60f773af615c355bbb0eae656382edad",
+      "alpha": true
+    },
+    {
+      "file": "characters/azuma-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 80272,
+      "sha256": "82dd9da74cf3b140cf3481b71f6b786c93b76c88b9f31a5b481c0a64aaa6d548",
+      "alpha": true
+    },
+    {
+      "file": "masters/c03-azuma-hollow-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1729017,
+      "sha256": "5074057d6ee2e76c9f223188201b14f4d3974ec2ac23db07c738f5633488bae4",
+      "alpha": true
+    },
+    {
+      "file": "characters/azuma-hollow-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 79160,
+      "sha256": "e251e7bacf36474f1dcf609951d13d7052b2ab4f9aecfec2554cba00384bdcf4",
+      "alpha": true
+    },
+    {
+      "file": "masters/c03-keeper-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2088897,
+      "sha256": "a2c986b43e7e9f1b8495b7128ad25d5a22d1583dc5cc3a7db60e09a0e124a039",
+      "alpha": true
+    },
+    {
+      "file": "characters/keeper-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 130868,
+      "sha256": "03a93a87cea677c2384871cc794081ec56dab4f7f84b1660745b6f76fcad292e",
+      "alpha": true
     }
   ],
   "backlog": [
-    {
-      "id": "BG18",
-      "label": "香具山と夏の景色",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG19",
-      "label": "香具山・回復後",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG20",
-      "label": "多摩川のほとり",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG21",
-      "label": "多摩川・回復後",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG22",
-      "label": "歌人の記憶の書庫",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG23",
-      "label": "山部赤人の富士の景色",
-      "status": "not-produced"
-    },
     {
       "id": "BG24",
       "label": "色を失った龍田川",
@@ -2745,10 +3097,6 @@
       "status": "not-produced"
     },
     {
-      "label": "持統天皇",
-      "status": "not-produced"
-    },
-    {
       "label": "在原業平",
       "status": "not-produced"
     },
@@ -2773,22 +3121,23 @@
       "status": "not-produced"
     },
     {
-      "label": "山部赤人",
-      "status": "not-produced"
-    },
-    {
-      "label": "東歌のオリジナル群像",
-      "status": "not-produced"
-    },
-    {
       "label": "忘れの主（立ち絵・大型対決画像）",
+      "status": "not-produced"
+    },
+    {
+      "label": "持統天皇・山部赤人の追加表情（微笑・驚き）",
+      "status": "not-produced"
+    },
+    {
+      "label": "東歌の人々の群像（若者一人の象徴立ち絵は制作済み）",
       "status": "not-produced"
     }
   ],
   "limitations": [
-    "原寸マスターは生成された実解像度を保持。高さ1600〜2000pxの人物マスターは未達のものがある。水増しアップスケールで達成扱いしない。",
-    "建築・衣装は資料を参考にした創作。忠実な歴史復元ではない。",
-    "背景差分は共通画像+CSSフィルター+独立エフェクト。実時間の風・花びらは本編実装時の作業。",
-    "顔の墨が剝がれる専用マスク、個別粒子シート、追加の幼少期表情差分は未制作。幼いことは・真尋の通常立ち絵は第2章用に追加済み。"
+    "第1〜3章で使用する素材を制作。BG24〜46、残りの歌人、忘れの主の専用立ち絵は未制作。",
+    "回復前後の背景は基本画像と実行時の色調・墨レイヤーを共用する。",
+    "第3章の新規人物は通常のみ。持統天皇・東歌の若者に記憶喪失差分。追加表情は未制作。",
+    "第3章の人物マスターは1024×1536。要求の高さ1600〜2000pxには未達。拡大して高解像度扱いにはしない。",
+    "背景は創作イメージであり、史実・地形の忠実な復元ではない。"
   ]
 }

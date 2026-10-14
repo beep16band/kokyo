@@ -8,3 +8,6 @@
 .stage.quiz .actor,.stage.quiz.poet-scene .actor.center{height:85%;top:145px;transform:translateY(calc(-100% * var(--face-y,.2)));animation:none}
 @media(max-width:700px){.stage.quiz .actor,.stage.quiz.poet-scene .actor.center{height:75%;top:clamp(110px,15svh,130px)}}
 @media(max-height:550px) and (min-width:701px){.stage.quiz .actor,.stage.quiz.poet-scene .actor.center{height:75%;top:110px}}
+
+/* The new hollow portraits retain silhouette while the face stays unreadable. */
+.actor[data-character="jito"][data-state="hollow"],.actor[data-character="azuma"][data-state="hollow"],.face[data-character="jito"][data-state="hollow"] svg,.face[data-character="azuma"][data-state="hollow"] svg{filter:brightness(.5) saturate(.35)}
