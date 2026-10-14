@@ -1111,7 +1111,11 @@
       "file": "masters/nukata-fixed-source.png",
       "width": 1536,
       "height": 1024,
-      "upscaled": false
+      "upscaled": false,
+      "unusedFrames": [
+        3
+      ],
+      "notes": "Only frames 0–2 approved. Hollow uses a separate single-figure master."
     },
     "komachi": {
       "file": "masters/komachi-source.png",
