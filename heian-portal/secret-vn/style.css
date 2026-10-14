@@ -11,3 +11,14 @@
 
 /* The new hollow portraits retain silhouette while the face stays unreadable. */
 .actor[data-character="jito"][data-state="hollow"],.actor[data-character="azuma"][data-state="hollow"],.face[data-character="jito"][data-state="hollow"] svg,.face[data-character="azuma"][data-state="hollow"] svg{filter:brightness(.5) saturate(.35)}
+
+/* C04: independent environmental layers. These never make speaking actors translucent. */
+.chapter-effects{position:absolute;inset:0;z-index:-3;pointer-events:none;overflow:hidden}
+.river-color{position:absolute;inset:-3%;background-size:cover;background-position:center;transition:mask-image 2s ease;animation:colorBreath 3.6s ease both}
+.river-ripple{position:absolute;left:49%;top:65%;width:16px;height:8px;border:1px solid #f5c2a999;border-radius:50%;box-shadow:0 0 22px #db79646b;animation:riverRipple 3.6s ease-out both}
+.ink-mirror{position:absolute;inset:0;background:radial-gradient(ellipse at 52% 77%,#080713dd,transparent 66%),linear-gradient(165deg,transparent 35%,#120e19bb);animation:inkMirror 3s ease-in-out both}
+.chapter-effects[data-direction="dawn"]:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#ffcb7729,transparent 60%);animation:colorBreath 4s ease both}
+.actor[data-character="narihira"][data-state="hollow"],.actor[data-character="hitomaro"][data-state="hollow"],.face[data-character="narihira"][data-state="hollow"] svg,.face[data-character="hitomaro"][data-state="hollow"] svg{filter:brightness(.48) saturate(.3)}
+@keyframes colorBreath{from{opacity:.35}to{opacity:1}}
+@keyframes riverRipple{from{transform:translate(-50%,-50%) scale(1);opacity:.9}to{transform:translate(-50%,-50%) scale(35);opacity:0}}
+@keyframes inkMirror{from{opacity:0;transform:translateY(8%)}to{opacity:1;transform:translateY(0)}}

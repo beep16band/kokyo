@@ -39,3 +39,6 @@ node test-chapter2.mjs
 
 
 第3章を追加：`chapter3.html`。実装・未完了事項は[CHAPTER3.md](CHAPTER3.md)、新規素材は[ASSETS-C03.md](ASSETS-C03.md)。通常ポータル本体は変更しない。
+
+
+第4章を追加：`chapter4.html`。実装・修正・未完了事項は[CHAPTER4.md](CHAPTER4.md)、素材は[ASSETS-C04.md](ASSETS-C04.md)。共通エンジンと第1〜3章の台本・セーブ位置は変更なし。

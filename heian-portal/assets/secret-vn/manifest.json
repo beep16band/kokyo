@@ -286,6 +286,71 @@
       "status": "produced-base-with-runtime-variant",
       "motionHint": "穏やかなカメラ移動。回復時は色彩を戻す。桜・点滅なし。",
       "note": "創作イメージ。1600×900実装用、元画像1672×941。建築・地形・衣の位置を厳密に復元したものではない。"
+    },
+    "BG24": {
+      "label": "墨色の龍田川",
+      "chapter": "C04",
+      "file": "backgrounds/c04-tatsuta-v1.webp",
+      "filter": "saturate(0) brightness(.44)",
+      "layers": [
+        {
+          "file": "effects/ink-edge.webp",
+          "opacity": 0.25
+        }
+      ],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "カメラ移動、川の色彩回復・波紋・墨。桜の降下・強い点滅なし。",
+      "note": "創作イメージ。東の光と西の月は一画面に配置した演出であり、実際の方角図・天体図ではない。"
+    },
+    "BG25": {
+      "label": "紅葉の龍田川・回復後",
+      "chapter": "C04",
+      "file": "backgrounds/c04-tatsuta-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "カメラ移動、川の色彩回復・波紋・墨。桜の降下・強い点滅なし。",
+      "note": "創作イメージ。東の光と西の月は一画面に配置した演出であり、実際の方角図・天体図ではない。"
+    },
+    "BG26": {
+      "label": "千年前の火災跡・夜",
+      "chapter": "C04",
+      "file": "backgrounds/c04-ashes-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "カメラ移動、川の色彩回復・波紋・墨。桜の降下・強い点滅なし。",
+      "note": "創作イメージ。東の光と西の月は一画面に配置した演出であり、実際の方角図・天体図ではない。"
+    },
+    "BG27": {
+      "label": "明けない東の野",
+      "chapter": "C04",
+      "file": "backgrounds/c04-dawn-v1.webp",
+      "filter": "saturate(.35) brightness(.58)",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "カメラ移動、川の色彩回復・波紋・墨。桜の降下・強い点滅なし。",
+      "note": "創作イメージ。東の光と西の月は一画面に配置した演出であり、実際の方角図・天体図ではない。"
+    },
+    "BG28": {
+      "label": "東の野・夜明けの回復",
+      "chapter": "C04",
+      "file": "backgrounds/c04-dawn-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "カメラ移動、川の色彩回復・波紋・墨。桜の降下・強い点滅なし。",
+      "note": "創作イメージ。東の光と西の月は一画面に配置した演出であり、実際の方角図・天体図ではない。"
+    },
+    "BG29": {
+      "label": "榊の葉の紋と読めない名",
+      "chapter": "C04",
+      "file": "backgrounds/c04-crest-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "カメラ移動、川の色彩回復・波紋・墨。桜の降下・強い点滅なし。",
+      "note": "創作イメージ。東の光と西の月は一画面に配置した演出であり、実際の方角図・天体図ではない。"
     }
   },
   "characters": {
@@ -1300,6 +1365,148 @@
             "height": 1536,
             "bytes": 2088897,
             "sha256": "a2c986b43e7e9f1b8495b7128ad25d5a22d1583dc5cc3a7db60e09a0e124a039",
+            "alpha": true
+          }
+        }
+      }
+    },
+    "narihira": {
+      "label": "在原業平",
+      "states": {
+        "normal": {
+          "file": "characters/narihira-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 137776,
+          "sha256": "3e347dad9f33c9a76a6f7b4430c7c697270013ac31238179fa66aa017ed7f260",
+          "alpha": true,
+          "faceCrop": [
+            290,
+            78,
+            160,
+            160
+          ],
+          "master": {
+            "file": "masters/c04-narihira-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2306254,
+            "sha256": "f41380b051b34c4fc66e393f19cc1b3e7baab4a5caa6fdd8bca35897736a12a7",
+            "alpha": true
+          }
+        },
+        "hollow": {
+          "file": "characters/narihira-hollow-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 113886,
+          "sha256": "586bad4e6d12e9bdba6a2b8b6025d730975df1b2d5b4e3700a40c5d1c13240b3",
+          "alpha": true,
+          "faceCrop": [
+            290,
+            78,
+            160,
+            160
+          ],
+          "master": {
+            "file": "masters/c04-narihira-hollow-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2259906,
+            "sha256": "05b424c46f8b5d8b5525c5819d6b22a6c69279756f0eb9bc185413972de53463",
+            "alpha": true
+          }
+        },
+        "smile": {
+          "file": "characters/narihira-smile-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 124540,
+          "sha256": "0a03953f0d689f6bca84bf53d011f82f3f2bf736cdb32769e314e731d5c7e751",
+          "alpha": true,
+          "faceCrop": [
+            290,
+            78,
+            160,
+            160
+          ],
+          "master": {
+            "file": "masters/c04-narihira-smile-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2261385,
+            "sha256": "5fbd64b9d1525f1e26cc7ebfe02eea424b0ffb90979e36e3c7f88ecd6959e169",
+            "alpha": true
+          }
+        }
+      }
+    },
+    "hitomaro": {
+      "label": "柿本人麻呂",
+      "states": {
+        "normal": {
+          "file": "characters/hitomaro-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 109000,
+          "sha256": "b98f1f44334dcb076133fbc126a6d878a0aba311e8eda0ef84e785f7d4949a8f",
+          "alpha": true,
+          "faceCrop": [
+            257,
+            8,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/c04-hitomaro-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2126849,
+            "sha256": "bd71da197519ef373698e48a8b2428545fdb550b157d69c30f7567aaf3e10f55",
+            "alpha": true
+          }
+        },
+        "smile": {
+          "file": "characters/hitomaro-smile-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 101724,
+          "sha256": "91dacf38d2726bb3387f647f64b267ab82c0b36c92a100bd3c17a0f4af336524",
+          "alpha": true,
+          "faceCrop": [
+            257,
+            8,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/c04-hitomaro-smile-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2077656,
+            "sha256": "9c95c0f60fc36edbea7f1ddaf0dfb476d2d6e83e6a53daae545a26408580712f",
+            "alpha": true
+          }
+        },
+        "hollow": {
+          "file": "characters/hitomaro-hollow-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 89038,
+          "sha256": "8aa3f7dc43823e197589c8a95502f9b24f9ff1cda8fa7bedf6ca55e7117965e8",
+          "alpha": true,
+          "faceCrop": [
+            257,
+            8,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/c04-hitomaro-hollow-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 1989870,
+            "sha256": "2def025c503d82ad9c5c2c678ac04afa498608a1275a1e1dd17eaeb0fd618225",
             "alpha": true
           }
         }
@@ -2978,39 +3185,169 @@
       "bytes": 130868,
       "sha256": "03a93a87cea677c2384871cc794081ec56dab4f7f84b1660745b6f76fcad292e",
       "alpha": true
+    },
+    {
+      "file": "masters/c04-tatsuta-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3845005,
+      "sha256": "b9f8fe1c4d1dff8301440be039e7f4a53c3a2c64bef8324ae76c1ea733564a37",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c04-tatsuta-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 346452,
+      "sha256": "297628912092938ef689a7e696d4cb4f08ba8652c40f4c15502b0aab7d9b2816",
+      "alpha": false
+    },
+    {
+      "file": "masters/c04-ashes-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3321267,
+      "sha256": "30dbe0dddf0c71de2cd6da4598c40ef945c87d912993f1e7c89905d85921c756",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c04-ashes-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 258956,
+      "sha256": "563adcb82d344dafd21777262b04ae7bb5c26b84e92415f690fae0e6e8d777ba",
+      "alpha": false
+    },
+    {
+      "file": "masters/c04-dawn-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2876861,
+      "sha256": "d3d1f58aa65ce5e525a18e896062b777823f0e8272786f3e38d08722d2ea67ec",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c04-dawn-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 199734,
+      "sha256": "012fe77030d40cec4033b59844dca13b441b2df8aed42f2cfaa98520eefac0d8",
+      "alpha": false
+    },
+    {
+      "file": "masters/c04-crest-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2871213,
+      "sha256": "bc11347837cce08923a4e7c51238b92fc35a337b79869cf4c269e844a32e385b",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c04-crest-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 213270,
+      "sha256": "35a841faf059e257fefa34a48c31d1362f94263afa3ce2273c9040f50714e724",
+      "alpha": false
+    },
+    {
+      "file": "masters/c04-narihira-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2306254,
+      "sha256": "f41380b051b34c4fc66e393f19cc1b3e7baab4a5caa6fdd8bca35897736a12a7",
+      "alpha": true
+    },
+    {
+      "file": "characters/narihira-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 137776,
+      "sha256": "3e347dad9f33c9a76a6f7b4430c7c697270013ac31238179fa66aa017ed7f260",
+      "alpha": true
+    },
+    {
+      "file": "masters/c04-narihira-hollow-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2259906,
+      "sha256": "05b424c46f8b5d8b5525c5819d6b22a6c69279756f0eb9bc185413972de53463",
+      "alpha": true
+    },
+    {
+      "file": "characters/narihira-hollow-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 113886,
+      "sha256": "586bad4e6d12e9bdba6a2b8b6025d730975df1b2d5b4e3700a40c5d1c13240b3",
+      "alpha": true
+    },
+    {
+      "file": "masters/c04-narihira-smile-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2261385,
+      "sha256": "5fbd64b9d1525f1e26cc7ebfe02eea424b0ffb90979e36e3c7f88ecd6959e169",
+      "alpha": true
+    },
+    {
+      "file": "characters/narihira-smile-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 124540,
+      "sha256": "0a03953f0d689f6bca84bf53d011f82f3f2bf736cdb32769e314e731d5c7e751",
+      "alpha": true
+    },
+    {
+      "file": "masters/c04-hitomaro-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2126849,
+      "sha256": "bd71da197519ef373698e48a8b2428545fdb550b157d69c30f7567aaf3e10f55",
+      "alpha": true
+    },
+    {
+      "file": "characters/hitomaro-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 109000,
+      "sha256": "b98f1f44334dcb076133fbc126a6d878a0aba311e8eda0ef84e785f7d4949a8f",
+      "alpha": true
+    },
+    {
+      "file": "masters/c04-hitomaro-smile-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2077656,
+      "sha256": "9c95c0f60fc36edbea7f1ddaf0dfb476d2d6e83e6a53daae545a26408580712f",
+      "alpha": true
+    },
+    {
+      "file": "characters/hitomaro-smile-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 101724,
+      "sha256": "91dacf38d2726bb3387f647f64b267ab82c0b36c92a100bd3c17a0f4af336524",
+      "alpha": true
+    },
+    {
+      "file": "masters/c04-hitomaro-hollow-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1989870,
+      "sha256": "2def025c503d82ad9c5c2c678ac04afa498608a1275a1e1dd17eaeb0fd618225",
+      "alpha": true
+    },
+    {
+      "file": "characters/hitomaro-hollow-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 89038,
+      "sha256": "8aa3f7dc43823e197589c8a95502f9b24f9ff1cda8fa7bedf6ca55e7117965e8",
+      "alpha": true
     }
   ],
   "backlog": [
-    {
-      "id": "BG24",
-      "label": "色を失った龍田川",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG25",
-      "label": "龍田川・回復後",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG26",
-      "label": "千年前の庭・夜",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG27",
-      "label": "明けない夜の東の野",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG28",
-      "label": "東の野・回復後",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG29",
-      "label": "榊の紋が残る記憶の間",
-      "status": "not-produced"
-    },
     {
       "id": "BG30",
       "label": "西行の道端",
@@ -3097,14 +3434,6 @@
       "status": "not-produced"
     },
     {
-      "label": "在原業平",
-      "status": "not-produced"
-    },
-    {
-      "label": "柿本人麻呂",
-      "status": "not-produced"
-    },
-    {
       "label": "西行法師",
       "status": "not-produced"
     },
@@ -3131,13 +3460,17 @@
     {
       "label": "東歌の人々の群像（若者一人の象徴立ち絵は制作済み）",
       "status": "not-produced"
+    },
+    {
+      "label": "在原業平・柿本人麻呂の驚き差分",
+      "status": "not-produced"
     }
   ],
   "limitations": [
-    "第1〜3章で使用する素材を制作。BG24〜46、残りの歌人、忘れの主の専用立ち絵は未制作。",
     "回復前後の背景は基本画像と実行時の色調・墨レイヤーを共用する。",
     "第3章の新規人物は通常のみ。持統天皇・東歌の若者に記憶喪失差分。追加表情は未制作。",
     "第3章の人物マスターは1024×1536。要求の高さ1600〜2000pxには未達。拡大して高解像度扱いにはしない。",
-    "背景は創作イメージであり、史実・地形の忠実な復元ではない。"
+    "背景は創作イメージであり、史実・地形の忠実な復元ではない。",
+    "第1〜4章の必要素材を制作。BG30〜46、残る歌人、忘れの主の本立ち絵は未制作。第4章の歌人は通常・微笑・記憶喪失の3状態。驚きは未制作。人物PNGマスターは1024×1536で、1600〜2000pxの高さには未達。"
   ]
 }
