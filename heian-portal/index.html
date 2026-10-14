@@ -3314,7 +3314,7 @@ $('loveTheme63').addEventListener('change',catalogue);$('loveQuery63').addEventL
 </style><script id="opening66-script">(()=>{'use strict';
 const root=document.getElementById('portalOpening66'),scenes=[...root.querySelectorAll('.opScene66')],pause=document.getElementById('opPause66'),skip=document.getElementById('opSkip66'),fill=root.querySelector('.opProgressFill66');
 root.style.setProperty("--youth-cg68","url(\"assets/818db042b774f1d1e537.webp\")");
-const svgSrc=document.querySelector('.heroPicture65 img').src.split(',')[1];const svgDoc=new DOMParser().parseFromString(new TextDecoder().decode(Uint8Array.from(atob(svgSrc),c=>c.charCodeAt(0))),'image/svg+xml');root.style.setProperty('--op-bg','url("'+svgDoc.querySelector('image').getAttribute('href')+'")');
+root.style.setProperty('--op-bg','url("assets/08aec337f9e227690b63.webp")');
 const view=document.querySelector('#vnAll .vn-view');if(view)root.style.setProperty('--op-class',getComputedStyle(view).backgroundImage);
 for(const sheet of document.styleSheets){try{for(const rule of sheet.cssRules){if(rule.selectorText?.includes('[data-bg="dream"]')&&rule.style.backgroundImage)root.style.setProperty('--op-night',rule.style.backgroundImage)}}catch{}}
 const backgrounds={hero:root.style.getPropertyValue('--op-bg'),classroom:root.style.getPropertyValue('--op-class'),dream:root.style.getPropertyValue('--op-night')};
