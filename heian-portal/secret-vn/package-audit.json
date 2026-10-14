@@ -1,0 +1,12 @@
+{
+  "sceneCount": 64,
+  "requiredQuestions": 62,
+  "optionalQuestions": 2,
+  "uniqueReferences": 64,
+  "missingReferences": [],
+  "chapter1": {
+    "scenes": 7,
+    "questions": 8
+  },
+  "contentReview": "構造検証のみ。第2章以降の教材・台本は未校閲。"
+}
