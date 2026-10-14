@@ -3,3 +3,8 @@
 @media(max-height:550px) and (min-width:701px){.dialogue{bottom:2%;min-height:0;padding:10px 20px}.speaker-row{min-height:28px}.face{width:30px;height:30px}#text{min-height:2.8em;font-size:15px;margin:3px 0 8px}.dialogue-nav button{min-height:30px;padding:4px 8px}.choices{margin:4px 0}.choices button{padding:6px 10px;min-height:35px;font-size:.78rem}.poem-ribbon{top:48px;font-size:14px;padding:8px}.stage.quiz .dialogue{left:18%;right:18%}.stage.quiz .speaker-row{display:none}.stage.quiz #text{min-height:0}.feedback{padding:4px 8px;font-size:.73rem;margin:4px 0}}
 
 .chapter-links{display:flex;gap:20px;flex-wrap:wrap;margin:18px 0;font-size:.8rem}.chapter-links a{min-height:44px;display:inline-flex;align-items:center;text-decoration:none;border-bottom:1px solid #b6c2d34d}.chapter-next{display:inline-flex;align-items:center;padding:8px 15px;min-height:44px;border:1px solid var(--gold);border-radius:5px;text-decoration:none;background:#394132}.flashback .background{animation-duration:28s}.flashback #vignette{background:linear-gradient(0deg,#0b1429cc,transparent 75%),radial-gradient(ellipse,transparent 25%,#5d4d7266)}#endActions{flex-wrap:wrap}
+
+/* Keep each source image's face above the quiz panel, independent of transparent margins. */
+.stage.quiz .actor{height:85%;top:145px;transform:translateY(calc(-100% * var(--face-y,.2)));animation:none}
+@media(max-width:700px){.stage.quiz .actor{height:75%;top:clamp(110px,15svh,130px)}}
+@media(max-height:550px) and (min-width:701px){.stage.quiz .actor{height:75%;top:110px}}
