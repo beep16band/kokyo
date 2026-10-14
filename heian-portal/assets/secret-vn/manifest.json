@@ -1026,6 +1026,62 @@
           "qa": "alpha-and-padding-verified;contact-sheet-reviewed"
         }
       }
+    },
+    "kotoha-child": {
+      "label": "幼いことは",
+      "states": {
+        "normal": {
+          "file": "characters/kotoha-child-normal-v1.webp",
+          "width": 840,
+          "height": 1080,
+          "bytes": 112090,
+          "sha256": "dbce1d6b6fe7e4f443d1bd76db6e866500e97689c08a8dd312160bb85b5e094a",
+          "alpha": true,
+          "faceCrop": [
+            298,
+            53,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/kotoha-child-v1-source.png",
+            "width": 1106,
+            "height": 1422,
+            "bytes": 1095298,
+            "sha256": "2d023334fc6e1f1c737848bdf73bf86641d49ce8d20a468ded1e7bbfa61a9378",
+            "alpha": true
+          }
+        }
+      },
+      "note": "既存デザインを参考に新規生成した幼少期。回想専用、通常1表情。"
+    },
+    "mahiro-child": {
+      "label": "幼い真尋",
+      "states": {
+        "normal": {
+          "file": "characters/mahiro-child-normal-v1.webp",
+          "width": 560,
+          "height": 1080,
+          "bytes": 61104,
+          "sha256": "6ec04d490898bd96f8b6c6ec2f1303d5853e5091962d8ac7c0e7b635e74926de",
+          "alpha": true,
+          "faceCrop": [
+            170,
+            47,
+            230,
+            230
+          ],
+          "master": {
+            "file": "masters/mahiro-child-v1-source.png",
+            "width": 903,
+            "height": 1742,
+            "bytes": 962193,
+            "sha256": "539a69022641fb9494cac7e5cafe35a04ebc1ab9daea89dee1942b2bcc1bb0a9",
+            "alpha": true
+          }
+        }
+      },
+      "note": "既存デザインを参考に新規生成した幼少期。回想専用、通常1表情。"
     }
   },
   "effects": {
@@ -2508,6 +2564,38 @@
       "bytes": 287936,
       "sha256": "3068d24431ddebc8df3903bdfd39e9d0b64e466e96fc16050d9a3bb8263f6648",
       "source": "existing-portal:assets/cb9e636033c6e0ba029e.webp"
+    },
+    {
+      "file": "characters/kotoha-child-normal-v1.webp",
+      "width": 840,
+      "height": 1080,
+      "bytes": 112090,
+      "sha256": "dbce1d6b6fe7e4f443d1bd76db6e866500e97689c08a8dd312160bb85b5e094a",
+      "alpha": true
+    },
+    {
+      "file": "masters/kotoha-child-v1-source.png",
+      "width": 1106,
+      "height": 1422,
+      "bytes": 1095298,
+      "sha256": "2d023334fc6e1f1c737848bdf73bf86641d49ce8d20a468ded1e7bbfa61a9378",
+      "alpha": true
+    },
+    {
+      "file": "characters/mahiro-child-normal-v1.webp",
+      "width": 560,
+      "height": 1080,
+      "bytes": 61104,
+      "sha256": "6ec04d490898bd96f8b6c6ec2f1303d5853e5091962d8ac7c0e7b635e74926de",
+      "alpha": true
+    },
+    {
+      "file": "masters/mahiro-child-v1-source.png",
+      "width": 903,
+      "height": 1742,
+      "bytes": 962193,
+      "sha256": "539a69022641fb9494cac7e5cafe35a04ebc1ab9daea89dee1942b2bcc1bb0a9",
+      "alpha": true
     }
   ],
   "backlog": [
