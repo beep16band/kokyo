@@ -5,6 +5,6 @@
 .chapter-links{display:flex;gap:20px;flex-wrap:wrap;margin:18px 0;font-size:.8rem}.chapter-links a{min-height:44px;display:inline-flex;align-items:center;text-decoration:none;border-bottom:1px solid #b6c2d34d}.chapter-next{display:inline-flex;align-items:center;padding:8px 15px;min-height:44px;border:1px solid var(--gold);border-radius:5px;text-decoration:none;background:#394132}.flashback .background{animation-duration:28s}.flashback #vignette{background:linear-gradient(0deg,#0b1429cc,transparent 75%),radial-gradient(ellipse,transparent 25%,#5d4d7266)}#endActions{flex-wrap:wrap}
 
 /* Keep each source image's face above the quiz panel, independent of transparent margins. */
-.stage.quiz .actor{height:85%;top:145px;transform:translateY(calc(-100% * var(--face-y,.2)));animation:none}
-@media(max-width:700px){.stage.quiz .actor{height:75%;top:clamp(110px,15svh,130px)}}
-@media(max-height:550px) and (min-width:701px){.stage.quiz .actor{height:75%;top:110px}}
+.stage.quiz .actor,.stage.quiz.poet-scene .actor.center{height:85%;top:145px;transform:translateY(calc(-100% * var(--face-y,.2)));animation:none}
+@media(max-width:700px){.stage.quiz .actor,.stage.quiz.poet-scene .actor.center{height:75%;top:clamp(110px,15svh,130px)}}
+@media(max-height:550px) and (min-width:701px){.stage.quiz .actor,.stage.quiz.poet-scene .actor.center{height:75%;top:110px}}
