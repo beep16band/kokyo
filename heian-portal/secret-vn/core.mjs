@@ -9,7 +9,7 @@ export function normalProgress(storage,schema){
  return {episodes,perfect,unlocked:episodes.every(Boolean)&&perfect.length===6&&perfect.every(Boolean)};
 }
 export function makeSteps(data){return data.scenes.flatMap(scene=>[
- ...scene.script.map((line,n)=>({id:`${scene.scene_id}-L${n}`,kind:'line',sceneId:scene.scene_id,line:n,...line})).filter(x=>!x.text.startsWith('QUIZ')&&!x.text.startsWith('読解試練「')),
+ ...scene.script.map((line,n)=>({...line,id:`${scene.scene_id}-L${n}`,kind:'line',scriptKind:line.kind,sceneId:scene.scene_id,line:n})).filter(x=>!x.text.startsWith('QUIZ')&&!x.text.startsWith('読解試練「')),
  ...scene.quiz_ids.map(q=>({id:q,kind:'quiz',sceneId:scene.scene_id,questionId:q}))
 ]).concat([{id:'C01-END',kind:'end',sceneId:'C01-S07'}])}
 export class StoryEngine{
