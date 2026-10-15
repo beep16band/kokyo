@@ -1,4 +1,4 @@
-import{normalProgress}from './core.mjs?v=3';
+import{normalProgress}from './core.mjs?v=4';
 import{ArrivalController,readArrival,writeArrival,hiddenStoryStarted}from './arrival-state.mjs?v=2';
 export const ARRIVAL_SCHEMA={storyKey:'heian-portal-v44',gameKey:'heian-portal-games-v50',gameLengths:[60,30,86,30,60,24]};
 export function playArrival({document:doc=document,window:win=window,quiet=false,onFinish=()=>{}}={}){

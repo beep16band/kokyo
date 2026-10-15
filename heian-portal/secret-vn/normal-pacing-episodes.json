@@ -1,0 +1,1641 @@
+[
+  {
+    "n": 1,
+    "title": "秋風が運んだ手紙",
+    "wid": "w03",
+    "hook": "平安の宮廷に迷い込んだ二人。帰り道は、消えかけた五首の中に。",
+    "focus": "期待と、実際に起こったことを分ける。風の情景から、待つ心を読む。",
+    "keyWords": "君待つと／恋ひ居れば／すだれ動かし／秋の風吹く",
+    "steps": [
+      {
+        "who": "語り",
+        "text": "放課後。茜は転校した友達への手紙を書きかけていた。湊も、何か言いたそうにしている。",
+        "bg": "classroom",
+        "mood": "calm",
+        "emotions": {
+          "akane": "calm",
+          "minato": "calm"
+        },
+        "sid": "e1-base0"
+      },
+      {
+        "who": "茜",
+        "text": "湊。さっきから、何か言おうとしてない？",
+        "bg": "classroom",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "calm"
+        },
+        "sid": "e1-base1"
+      },
+      {
+        "who": "湊",
+        "text": "……あとで。その手紙、先に仕上げよう。",
+        "bg": "classroom",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e1-base2"
+      },
+      {
+        "who": "語り",
+        "text": "古い歌集がひとりでに開いた。花びらが止まり、チャイムが途切れた。",
+        "bg": "classroom",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "sid": "e1-base4"
+      },
+      {
+        "who": "語り",
+        "text": "床に墨が広がり、教室がほどける。白いカーテンは、すだれに変わった。",
+        "bg": "court",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "sid": "e1-base6"
+      },
+      {
+        "who": "語り",
+        "text": "月夜の宮廷。戸を開けても、教室へは戻れない。",
+        "bg": "court",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "sid": "e1-base8"
+      },
+      {
+        "who": "ことは",
+        "text": "私はことは。言葉を預かる者。あなたたちは時を越えて来てしまったの。",
+        "bg": "court",
+        "mood": "serious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "sid": "e1-base12"
+      },
+      {
+        "who": "ことは",
+        "text": "帰る戸は五首の歌につながっている。霧に消される前に、歌の心を読んで。",
+        "bg": "court",
+        "mood": "serious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "sid": "e1-base14"
+      },
+      {
+        "who": "ことは",
+        "text": "書かれた言葉から心を考えるの。二人の読みは、同じでなくてもいい。",
+        "bg": "court",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e1-extra14-1"
+      },
+      {
+        "who": "茜",
+        "text": "一緒に帰る。湊が先に戸を見つけても、私を置いていかないで。",
+        "bg": "court",
+        "mood": "hopeful",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "thoughtful"
+        },
+        "sid": "e1-extra14-11"
+      },
+      {
+        "who": "湊",
+        "text": "置いていかない。一緒に帰ろう。",
+        "bg": "court",
+        "mood": "serious",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "serious"
+        },
+        "sid": "e1-extra14-12"
+      },
+      {
+        "who": "語り",
+        "text": "茜の封筒に「君待つと」が浮かぶ。二人は、すだれの部屋へ向かった。",
+        "bg": "wind",
+        "mood": "serious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "sid": "e1-base17"
+      },
+      {
+        "who": "ことは",
+        "text": "最初は額田王。平安ではなく、飛鳥時代の人よ。歌を通して、違う時代にも出会える。",
+        "bg": "wind",
+        "mood": "serious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "sid": "e1-base19"
+      },
+      {
+        "who": "語り",
+        "text": "君待つと我が恋ひ居れば我が屋戸のすだれ動かし秋の風吹く\n――額田王『万葉集』",
+        "bg": "wind",
+        "mood": "serious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "poem": true,
+        "sid": "e1-base20"
+      },
+      {
+        "who": "湊",
+        "text": "「君待つと」「恋ひ居れば」。恋しい相手を待っているんだ。",
+        "bg": "wind",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e1-base21"
+      },
+      {
+        "who": "語り",
+        "text": "すだれが大きく揺れた。茜は息を止め、戸へ駆け寄った。",
+        "bg": "wind",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e1-base22"
+      },
+      {
+        "who": "湊",
+        "text": "待って。揺らしたのは誰だろう。最後の言葉まで戻ろう。",
+        "bg": "wind",
+        "mood": "serious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "choices": [
+          [
+            "秋の風。「秋の風吹く」が根拠",
+            "原文は「すだれ動かし秋の風吹く」。風がすだれを動かしています。「君」が来たという出来事は書かれていません。"
+          ],
+          [
+            "相手が来たと期待してしまう。でも出来事は風",
+            "待つ心から来訪を期待する読みはできます。ただし原文が示す出来事は秋の風。期待と、書かれたことを分けるのがこの歌の鍵です。"
+          ]
+        ],
+        "sid": "e1-base24"
+      },
+      {
+        "who": "茜",
+        "text": "返信の通知だと思って、画面を見たときみたい。ただの別の通知だったのに。",
+        "bg": "wind",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e1-base26"
+      },
+      {
+        "who": "湊",
+        "text": "「切ない」とは書いてない。でも、待つ心と通り過ぎる風から、そう感じられる。",
+        "bg": "wind",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e1-base27"
+      },
+      {
+        "who": "茜",
+        "text": "この風を、帰り道の言葉にするなら？",
+        "bg": "wind",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "choices": [
+          [
+            "期待がほどける、少し切ない風",
+            "「君待つと」「恋ひ居れば」と「秋の風」の組み合わせを根拠にした解釈です。切なさは、情景から読み取った心情で、原文に直接ある語ではありません。"
+          ],
+          [
+            "それでも待ち続けたい、希望の残る風",
+            "待つ気持ちに重心を置く読みです。相手の来訪や、この後どうなったかは原文だけでは決められません。切なさの読みと比べ、根拠を説明しましょう。"
+          ]
+        ],
+        "sid": "e1-base28"
+      },
+      {
+        "who": "語り",
+        "text": "封筒に「待つ」が灯り、すだれの向こうに道が開いた。",
+        "bg": "wind",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e1-base29"
+      },
+      {
+        "who": "ことは",
+        "text": "一つ目の戸が戻ったわ。待つ心と、実際に吹いた風を読めたから。",
+        "bg": "wind",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e1-base30"
+      },
+      {
+        "who": "語り",
+        "text": "道の向こうで桜が舞い、湊の姿が消え始めた。",
+        "bg": "wind",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "sid": "e1-base33"
+      },
+      {
+        "who": "茜",
+        "text": "湊？　待って、一緒に――！",
+        "bg": "wind",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "sid": "e1-base34"
+      },
+      {
+        "who": "語り",
+        "text": "感じたことは鑑賞ノートへ。書かずに結末へ進んでも大丈夫。",
+        "bg": "wind",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "note": true,
+        "sid": "e1-base35"
+      },
+      {
+        "who": "ことは",
+        "text": "二つ目の戸は、夢の中。名前を呼ぶだけでは、届かないことがある。",
+        "bg": "wind",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "end": true,
+        "sid": "e1-base36"
+      }
+    ]
+  },
+  {
+    "n": 2,
+    "title": "桜に託した想い",
+    "wid": "w12",
+    "hook": "桜の夢に引き離された二人。会いたい心は、相手の心まで証明できる？",
+    "focus": "夢だと知っていたなら覚めなかったのに、という反実仮想から、会い続けたい願いを読む。",
+    "keyWords": "思ひつつ／寝ればや／夢と知りせば／覚めざらましを",
+    "steps": [
+      {
+        "who": "語り",
+        "text": "桜の道に、茜だけが立っていた。湊の姿はない。",
+        "bg": "dream",
+        "mood": "calm",
+        "emotions": {
+          "akane": "calm",
+          "minato": "calm"
+        },
+        "sid": "e2-base0"
+      },
+      {
+        "who": "語り",
+        "text": "遠くで、転校した友達が手を振った。茜は駆け寄る。",
+        "bg": "dream",
+        "mood": "calm",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "calm"
+        },
+        "sid": "e2-base2"
+      },
+      {
+        "who": "友の声",
+        "text": "ずっと、君を待ってた。もう、戻らなくていいよ。",
+        "bg": "dream",
+        "mood": "calm",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "calm"
+        },
+        "sid": "e2-base4"
+      },
+      {
+        "who": "語り",
+        "text": "懐かしい声。でも、その人には影がない。花びらも地面に届く前に消えていた。",
+        "bg": "dream",
+        "mood": "calm",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "calm"
+        },
+        "sid": "e2-base5"
+      },
+      {
+        "who": "湊",
+        "text": "茜、そこで止まって！",
+        "bg": "dream",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "surprised"
+        },
+        "sid": "e2-base7"
+      },
+      {
+        "who": "語り",
+        "text": "湊が駆けてきた。友達の姿が、白い霧にほどける。",
+        "bg": "dream",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "surprised"
+        },
+        "sid": "e2-base8"
+      },
+      {
+        "who": "ことは",
+        "text": "この夢は願いを映すの。相手の本当の心とは限らないわ。",
+        "bg": "dream",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e2-base11"
+      },
+      {
+        "who": "茜",
+        "text": "別れるとき、寂しいって言えなかった。ここなら、やり直せると思ったの。",
+        "bg": "dream",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e2-extra11-1"
+      },
+      {
+        "who": "ことは",
+        "text": "自分の言葉は探せる。でも、相手の返事まで作ることはできない。",
+        "bg": "dream",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e2-extra11-4"
+      },
+      {
+        "who": "茜",
+        "text": "会いたいのは、思い出通りの姿じゃない。私の知らない今日を過ごしている、その人なんだ。",
+        "bg": "dream",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "curious"
+        },
+        "sid": "e2-extra11-9"
+      },
+      {
+        "who": "ことは",
+        "text": "小野小町の歌を読んで。夢から覚めたあとの願いが、この道をほどくわ。",
+        "bg": "dream",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e2-base13"
+      },
+      {
+        "who": "語り",
+        "text": "思ひつつ寝ればや人の見えつらむ夢と知りせば覚めざらましを\n――小野小町『古今和歌集』",
+        "bg": "dream",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "poem": true,
+        "sid": "e2-base14"
+      },
+      {
+        "who": "湊",
+        "text": "「寝れば」は「ぬれば」。思いながら眠ったので、あの人が見えたのだろうか、という歌だね。",
+        "bg": "dream",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e2-base15"
+      },
+      {
+        "who": "茜",
+        "text": "思い続けているのは、私。相手も私を思っているとは書いてない。",
+        "bg": "dream",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e2-base16"
+      },
+      {
+        "who": "茜",
+        "text": "でも、夢でいいから、もう少し会っていたかった。",
+        "bg": "dream",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e2-base18"
+      },
+      {
+        "who": "湊",
+        "text": "「夢と知りせば」。その続きを、どうつなぐ？",
+        "bg": "dream",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "choices": [
+          [
+            "夢と分かっていたなら、目覚めなかっただろうに",
+            "「知りせば…まし」は、実際と異なることを仮定する表現。夢だと知っていたなら覚めなかったのに、という願いが、会い続けたい心を強く表します。"
+          ],
+          [
+            "今度は夢と分かって、また眠るという約束",
+            "未来の具体的な約束とは書かれていません。「せば…まし」を現実と異なる仮定として戻って読むと、目覚めた後の惜しむ心が見えます。"
+          ]
+        ],
+        "sid": "e2-base19"
+      },
+      {
+        "who": "茜",
+        "text": "この夢から、確かに言えることと、願いを分けたい。",
+        "bg": "dream",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "choices": [
+          [
+            "相手の心は決められない。でも会いたい私の心は残る",
+            "原文は夢に人が現れ、目覚めたことを惜しむ心を示します。相手の現実の心情や、夢が生じた原因を一つに確定することはできません。"
+          ],
+          [
+            "相手が会いたいと思った証拠として、夢を信じたい",
+            "そう願う気持ちは理解できます。ただし、原文には相手の現実の心を証明する記述がありません。願いと証拠を分けて読む必要があります。"
+          ]
+        ],
+        "sid": "e2-base23"
+      },
+      {
+        "who": "茜",
+        "text": "会いたいのは、私。だったら、その気持ちは私の言葉で送る。",
+        "bg": "dream",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "sid": "e2-base24"
+      },
+      {
+        "who": "語り",
+        "text": "封筒に「願う」が灯る。茜は、消えていく友達を見送った。",
+        "bg": "dream",
+        "mood": "serious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "sid": "e2-base25"
+      },
+      {
+        "who": "茜",
+        "text": "ことはにも、会いたい人がいる？",
+        "bg": "dream",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e2-extra26-7"
+      },
+      {
+        "who": "ことは",
+        "text": "……いる。けれど、会えない理由を、私はうまく言葉にできない。",
+        "bg": "dream",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e2-extra26-8"
+      },
+      {
+        "who": "語り",
+        "text": "道が軋み、梅の香りが流れてきた。湊は封筒を押さえる。その手が震えていた。",
+        "bg": "dream",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e2-base29"
+      },
+      {
+        "who": "語り",
+        "text": "感じたことは鑑賞ノートへ。書かずに結末へ進んでも大丈夫。",
+        "bg": "dream",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "note": true,
+        "sid": "e2-base31"
+      },
+      {
+        "who": "茜",
+        "text": "今度は手を離さない。夢じゃなく、湊と一緒に歩く。",
+        "bg": "plum",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "end": true,
+        "sid": "e2-base32"
+      }
+    ]
+  },
+  {
+    "n": 3,
+    "title": "変わらない花、変わる心",
+    "wid": "w10",
+    "hook": "梅の古い家で明かされる、湊の「あとで」。昔と同じでいたい二人がぶつかる。",
+    "focus": "人の心の不確かさと、昔と変わらない花の香りを対比して読む。",
+    "keyWords": "人はいさ／心も知らず／花ぞ昔の香ににほひける",
+    "steps": [
+      {
+        "who": "語り",
+        "text": "梅の咲く古い家で、湊が口を開いた。",
+        "bg": "plum",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "calm",
+          "minato": "thoughtful"
+        },
+        "sid": "e3-base0"
+      },
+      {
+        "who": "湊",
+        "text": "来月、僕も引っ越す。言ったら、全部変わる気がして……。",
+        "bg": "plum",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "calm",
+          "minato": "thoughtful"
+        },
+        "sid": "e3-base1"
+      },
+      {
+        "who": "茜",
+        "text": "私は変わらないのに。どうして、先に決めるの。",
+        "bg": "plum",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e3-base4"
+      },
+      {
+        "who": "湊",
+        "text": "傷つけたくないと言いながら、僕が困る返事を聞きたくなかったんだ。",
+        "bg": "plum",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e3-extra6-7"
+      },
+      {
+        "who": "茜",
+        "text": "話してほしかった。でも、今すぐ「よかった」とは言えない。",
+        "bg": "plum",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e3-extra6-8"
+      },
+      {
+        "who": "湊",
+        "text": "うん。うれしくなくても、聞く。",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e3-extra6-9"
+      },
+      {
+        "who": "語り",
+        "text": "家の奥に「昔と同じに戻せ」の文字が浮かぶ。庭の梅が白くなった。",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "sid": "e3-base8"
+      },
+      {
+        "who": "ことは",
+        "text": "霧は変わるものを消し、同じ形に閉じ込めようとしているの。",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "sid": "e3-base9"
+      },
+      {
+        "who": "ことは",
+        "text": "人と花を、いっしょに読んで。紀貫之の歌よ。",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "sid": "e3-base11"
+      },
+      {
+        "who": "語り",
+        "text": "人はいさ心も知らずふるさとは花ぞ昔の香ににほひける\n――紀貫之『古今和歌集』",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "poem": true,
+        "sid": "e3-base12"
+      },
+      {
+        "who": "湊",
+        "text": "「人はいさ心も知らず」。人の心は、さあ、分からない。冷たくなったと決めてはいないんだ。",
+        "bg": "plum",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e3-base13"
+      },
+      {
+        "who": "ことは",
+        "text": "「ふるさと」は、ここではなじみの場所。「花」は詞書を踏まえて梅と読むわ。",
+        "bg": "plum",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e3-base15"
+      },
+      {
+        "who": "茜",
+        "text": "でも、花の香りは昔のままなんだね。",
+        "bg": "plum",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e3-base16"
+      },
+      {
+        "who": "湊",
+        "text": "人の心と花の香り。この二つを並べると？",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "choices": [
+          [
+            "分からない人の心と、昔のままの香りが対照になる",
+            "「心も知らず」と「昔の香」が根拠。人の心の不確かさを、花の変わらぬ香りが際立たせます。詞書や贈答の場面も踏まえて読みを広げられます。"
+          ],
+          [
+            "花が同じだから、人の心も絶対に同じ",
+            "同じと明示されるのは花の香り。人の心については「知らず」としています。対比をなくすと、歌が残す問いが見えなくなります。"
+          ]
+        ],
+        "sid": "e3-base18"
+      },
+      {
+        "who": "茜",
+        "text": "変わらない私でいるって、不安も聞かずに約束してた。",
+        "bg": "plum",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e3-base19"
+      },
+      {
+        "who": "湊",
+        "text": "僕も、離れたら終わるって、君の心まで決めつけてた。",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e3-base20"
+      },
+      {
+        "who": "茜",
+        "text": "この対比から、私たちなら何を感じる？",
+        "bg": "plum",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "choices": [
+          [
+            "変わらない香りが、変わる人の時間を際立たせる",
+            "人の心と花の香りの対照を、時間の流れへ広げる解釈です。「昔の香」を根拠にできる一方、二人の友情はこの物語で付け加えた場面です。"
+          ],
+          [
+            "人の心を確かめたい、少し皮肉な問いかけにも感じる",
+            "「人はいさ」「知らず」を手がかりにした読み。詞書の相手とのやりとりを含め、親しさや皮肉などの響きを検討できます。一つの感情に固定せず比べましょう。"
+          ]
+        ],
+        "sid": "e3-base22"
+      },
+      {
+        "who": "湊",
+        "text": "同じかどうかを試すんじゃなくて、向こうの生活を、聞いてほしい。",
+        "bg": "plum",
+        "mood": "hopeful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "hopeful"
+        },
+        "sid": "e3-base23"
+      },
+      {
+        "who": "茜",
+        "text": "昔の湊だけじゃなくて、これから何を見るのかも聞きたい。",
+        "bg": "plum",
+        "mood": "hopeful",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "hopeful"
+        },
+        "sid": "e3-base24"
+      },
+      {
+        "who": "語り",
+        "text": "茜は便箋に「今、どんな景色？」と書いた。返事の決まっていない問いだった。",
+        "bg": "plum",
+        "mood": "calm",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "calm"
+        },
+        "sid": "e3-extra24-7"
+      },
+      {
+        "who": "語り",
+        "text": "封筒に「変わる」が灯る。戸は開いたが、ことはの巻物は白いままだ。",
+        "bg": "plum",
+        "mood": "hopeful",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "hopeful"
+        },
+        "sid": "e3-base25"
+      },
+      {
+        "who": "茜",
+        "text": "ことはの名前が……消えかけてる。",
+        "bg": "plum",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "hopeful"
+        },
+        "sid": "e3-base26"
+      },
+      {
+        "who": "ことは",
+        "text": "私にも、帰りを待った人がいた。その人の言葉を、まだ読めないままなの。",
+        "bg": "plum",
+        "mood": "hopeful",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "hopeful"
+        },
+        "sid": "e3-base27"
+      },
+      {
+        "who": "湊",
+        "text": "それなら、僕らが読む。一緒に帰ろう。",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "sid": "e3-base28"
+      },
+      {
+        "who": "語り",
+        "text": "ことはは答えなかった。戸の向こうで川が轟き、紅い光が差し込んだ。",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "sid": "e3-base29"
+      },
+      {
+        "who": "語り",
+        "text": "感じたことは鑑賞ノートへ。書かずに結末へ進んでも大丈夫。",
+        "bg": "plum",
+        "mood": "serious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "note": true,
+        "sid": "e3-base30"
+      },
+      {
+        "who": "茜",
+        "text": "待つ、願う、変わる。三つの言葉を持って、次へ。",
+        "bg": "river",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "end": true,
+        "sid": "e3-base31"
+      }
+    ]
+  },
+  {
+    "n": 4,
+    "title": "紅葉に染まる川",
+    "wid": "w11",
+    "hook": "霧に消される竜田川。心の動く大きさを、どう言葉に残すか。",
+    "focus": "紅葉の川を染め物に見立て、神代にも聞かないと言う驚きの大きさを味わう。",
+    "keyWords": "ちはやぶる／神代も聞かず／からくれなゐ／水くくる",
+    "steps": [
+      {
+        "who": "語り",
+        "text": "紅葉が川いっぱいに流れる。水音と紅い色が、三人を包んだ。",
+        "bg": "river",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "calm",
+          "minato": "surprised"
+        },
+        "sid": "e4-base0"
+      },
+      {
+        "who": "茜",
+        "text": "川まで燃えてるみたい！",
+        "bg": "river",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "sid": "e4-base1"
+      },
+      {
+        "who": "語り",
+        "text": "ことはの巻物から文字が消えた。川の橋も、白い霧にほどけ始める。",
+        "bg": "river",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "thoughtful"
+        },
+        "sid": "e4-base3"
+      },
+      {
+        "who": "ことは",
+        "text": "橋の先に、あの人の手紙がある。届く前に戻れれば……。",
+        "bg": "river",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e4-extra3-3"
+      },
+      {
+        "who": "語り",
+        "text": "橋の板が消えた。湊と茜がことはの手をつかみ、岸へ引き戻した。",
+        "bg": "river",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "sid": "e4-extra3-4"
+      },
+      {
+        "who": "ことは",
+        "text": "あの人が去る前に、手紙を書くのをやめてもらう。あの言葉が残らないように。",
+        "bg": "river",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e4-extra3-6"
+      },
+      {
+        "who": "湊",
+        "text": "残る言葉まで消したら、その人が何を思ったか、聞けなくなる。",
+        "bg": "river",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e4-extra3-7"
+      },
+      {
+        "who": "茜",
+        "text": "湊の引っ越しも、聞かなくても決まってた。でも聞いたから、一緒にできることを考えられた。",
+        "bg": "river",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e4-extra3-9"
+      },
+      {
+        "who": "ことは",
+        "text": "在原業平の歌を。この歌は屏風の絵に添えた歌よ。目の前の写生だけが、歌の始まりではないの。",
+        "bg": "river",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e4-base8"
+      },
+      {
+        "who": "語り",
+        "text": "ちはやぶる神世もきかず龍田川からくれなゐに水くくるとは\n――在原業平『古今和歌集』",
+        "bg": "river",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "poem": true,
+        "sid": "e4-base9"
+      },
+      {
+        "who": "湊",
+        "text": "「ちはやぶる」は神に関わる語に添える枕詞。「神世もきかず」と言うんだね。",
+        "bg": "river",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "curious"
+        },
+        "sid": "e4-base10"
+      },
+      {
+        "who": "茜",
+        "text": "神々の時代にも聞いたことがないなんて！　大きく言うことで、驚きが伝わるね。",
+        "bg": "river",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "curious"
+        },
+        "sid": "e4-base11"
+      },
+      {
+        "who": "語り",
+        "text": "紅葉が渦を作り、赤い布の模様のように流れていく。",
+        "bg": "river",
+        "mood": "curious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "curious"
+        },
+        "sid": "e4-base13"
+      },
+      {
+        "who": "茜",
+        "text": "「からくれなゐに水くくる」。どの景色へ戻る？",
+        "bg": "river",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "curious"
+        },
+        "choices": [
+          [
+            "川の水を、鮮やかな紅のくくり染めに見立てる",
+            "「からくれなゐ」は鮮やかな紅色。「水くくる」をくくり染めと結び付け、紅葉の川を染め物に見立てるのがここで採用する読みです。絵や想像から原文へ戻りましょう。"
+          ],
+          [
+            "神々が本当に川へ染料を入れた出来事",
+            "神々の実際の行動や染料は書かれていません。神代にも聞かないという誇張と、染め物の見立てを働かせた情景として読みます。"
+          ]
+        ],
+        "sid": "e4-base14"
+      },
+      {
+        "who": "湊",
+        "text": "「紅葉が多い」より、川の水そのものが染まったように感じる。",
+        "bg": "river",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "curious"
+        },
+        "sid": "e4-base15"
+      },
+      {
+        "who": "湊",
+        "text": "景色を残すとき、二つの言い方をどう使おう？",
+        "bg": "river",
+        "mood": "serious",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "serious"
+        },
+        "choices": [
+          [
+            "写実は出来事を、見立ては感じた驚きを強く届ける",
+            "「紅葉が川を流れる」は出来事を捉えます。歌の「水くくる」は染め物を重ね、色の鮮やかさや驚きを印象づけます。片方を無価値にせず、効果を比べましょう。"
+          ],
+          [
+            "大胆な表現だから、本文にないことも出来事として足す",
+            "想像を広げるのと、出来事を増やして確定するのは違います。「神代も聞かず」「水くくる」を根拠に効果を考え、想像した部分は想像として伝えましょう。"
+          ]
+        ],
+        "sid": "e4-base18"
+      },
+      {
+        "who": "ことは",
+        "text": "あの人の手紙には、「川が赤い衣を着た」とあった。私は、そんなはずはないと笑った。",
+        "bg": "river",
+        "mood": "serious",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "serious"
+        },
+        "sid": "e4-base19"
+      },
+      {
+        "who": "茜",
+        "text": "景色の説明だけじゃなかったんだね。ことはに見せたかった、驚きだった。",
+        "bg": "river",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e4-base20"
+      },
+      {
+        "who": "語り",
+        "text": "巻物に紅い文字が戻る。封筒にも「見立てる」が灯った。",
+        "bg": "river",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e4-base21"
+      },
+      {
+        "who": "語り",
+        "text": "川の先に、花も紅葉も満月もそろった教室が現れた。",
+        "bg": "river",
+        "mood": "hopeful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "hopeful"
+        },
+        "sid": "e4-base23"
+      },
+      {
+        "who": "ことは",
+        "text": "待って。その戸には、風の音がない。",
+        "bg": "river",
+        "mood": "hopeful",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "hopeful"
+        },
+        "sid": "e4-base25"
+      },
+      {
+        "who": "語り",
+        "text": "戸の中の茜は、何を話しかけても同じ笑顔のままだった。",
+        "bg": "river",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "thoughtful"
+        },
+        "sid": "e4-base26"
+      },
+      {
+        "who": "湊",
+        "text": "変わらない僕ら……帰りたい僕が作った夢だ。",
+        "bg": "river",
+        "mood": "serious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "serious"
+        },
+        "sid": "e4-base27"
+      },
+      {
+        "who": "語り",
+        "text": "二人は偽の戸を離れた。暗い海辺へ続く道が残った。",
+        "bg": "river",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e4-base29"
+      },
+      {
+        "who": "語り",
+        "text": "感じたことは鑑賞ノートへ。書かずに結末へ進んでも大丈夫。",
+        "bg": "river",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "note": true,
+        "sid": "e4-base30"
+      },
+      {
+        "who": "湊",
+        "text": "きれいなものを全部集めれば帰れると思ってた。最後の戸には、何があるんだろう。",
+        "bg": "shore",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "end": true,
+        "sid": "e4-base31"
+      }
+    ]
+  },
+  {
+    "n": 5,
+    "title": "秋の夕暮れの向こう",
+    "wid": "w14",
+    "hook": "花も紅葉もない海辺。最後の戸を開くのは、何かを足すことなのか。",
+    "focus": "花も紅葉もないと示すことで、華やかな景色を心に呼び起こし、苫屋と秋の夕暮れの静けさを際立たせる。",
+    "keyWords": "見わたせば／花も紅葉もなかりけり／浦の苫屋／秋の夕暮",
+    "steps": [
+      {
+        "who": "語り",
+        "text": "海辺に、粗末な苫屋が一軒。花も紅葉もない。ことはは戸の前で立ち止まった。",
+        "bg": "shore",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "calm",
+          "minato": "thoughtful"
+        },
+        "sid": "e5-base0"
+      },
+      {
+        "who": "茜",
+        "text": "ここが最後？　何もないみたい。",
+        "bg": "shore",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e5-base1"
+      },
+      {
+        "who": "ことは",
+        "text": "最後は藤原定家。平安末期から鎌倉初期の歌人よ。『新古今和歌集』は鎌倉初期に編まれたの。",
+        "bg": "shore",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "sid": "e5-base4"
+      },
+      {
+        "who": "語り",
+        "text": "見わたせば花も紅葉もなかりけり浦の苫屋の秋の夕暮\n――藤原定家『新古今和歌集』",
+        "bg": "shore",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "poem": true,
+        "sid": "e5-base5"
+      },
+      {
+        "who": "湊",
+        "text": "「なかりけり」は、ないのだなあという気づき。「ない」のは花と紅葉だね。",
+        "bg": "shore",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e5-base7"
+      },
+      {
+        "who": "ことは",
+        "text": "何もないのではないわ。苫屋と秋の夕暮れは、ここにある。",
+        "bg": "shore",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e5-base8"
+      },
+      {
+        "who": "茜",
+        "text": "この歌の「ない」は、何を見えるようにしている？",
+        "bg": "shore",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "choices": [
+          [
+            "花と紅葉の華やかさを思い起こさせ、苫屋と夕暮れを際立たせる",
+            "「花も紅葉も」と名を挙げて否定するため、読者の心には華やかな景色も浮かびます。その上で「浦の苫屋」「秋の夕暮」が残り、静けさや余情を感じる読みにつながります。"
+          ],
+          [
+            "全てが消えて、何の景色も価値も残らない",
+            "「浦の苫屋」「秋の夕暮」は原文に残っています。「ない」の対象を花と紅葉に確かめ、残る景色とどう対照になるか読みましょう。"
+          ]
+        ],
+        "sid": "e5-base10"
+      },
+      {
+        "who": "湊",
+        "text": "業平は色を広げた。定家は、華やかなものを描かないことで景色を感じさせるんだ。",
+        "bg": "shore",
+        "mood": "curious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "curious"
+        },
+        "sid": "e5-base11"
+      },
+      {
+        "who": "語り",
+        "text": "戸に、ことは宛ての手紙が挟まっていた。まだ封が切られていない。",
+        "bg": "shore",
+        "mood": "curious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "curious"
+        },
+        "sid": "e5-base14"
+      },
+      {
+        "who": "ことは",
+        "text": "あの人は、もう来ない。読んだら、本当の別れになると思って……。",
+        "bg": "shore",
+        "mood": "curious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "curious"
+        },
+        "sid": "e5-base15"
+      },
+      {
+        "who": "ことは",
+        "text": "誰も去らない世界なら、失わずに済むと思った。霧は、私が読まずにいた言葉から生まれたの。",
+        "bg": "shore",
+        "mood": "curious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "curious"
+        },
+        "sid": "e5-base17"
+      },
+      {
+        "who": "語り",
+        "text": "ことはが封を切った。「花のない日も、あなたと見た庭を、私は覚えています」。短い一行だった。",
+        "bg": "shore",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e5-base21"
+      },
+      {
+        "who": "語り",
+        "text": "ことはは静かに泣いた。茜も言葉を足さず、三人で波の音を聞いた。",
+        "bg": "shore",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e5-base23"
+      },
+      {
+        "who": "茜",
+        "text": "華やかでなくても、残るものを大切にする。わびやさびにも、つながる気がする。",
+        "bg": "shore",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "sid": "e5-base24"
+      },
+      {
+        "who": "ことは",
+        "text": "後世、この歌にはわび茶の心も重ねられたわ。でも、それだけで決めず、苫屋と夕暮れの言葉へ戻ってね。",
+        "bg": "shore",
+        "mood": "serious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "serious"
+        },
+        "sid": "e5-base25"
+      },
+      {
+        "who": "語り",
+        "text": "細い月が雲に隠れ、また現れた。歌の本文にはない、この旅の空だった。",
+        "bg": "shore",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "curious",
+          "minato": "thoughtful"
+        },
+        "sid": "e5-base28"
+      },
+      {
+        "who": "ことは",
+        "text": "満月だけでなく、十六夜や立待月にも名前がある。欠けていく月も、待ち望まれていたのね。",
+        "bg": "shore",
+        "mood": "thoughtful",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "thoughtful"
+        },
+        "sid": "e5-base30"
+      },
+      {
+        "who": "ことは",
+        "text": "後の『徒然草』にも、盛りの花や曇りのない月だけがよいのか、と問う言葉があるわ。時代や人によって、美の見方も違うの。",
+        "bg": "shore",
+        "mood": "curious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "curious"
+        },
+        "sid": "e5-base32"
+      },
+      {
+        "who": "茜",
+        "text": "帰ったら、この歌をどう伝えたい？",
+        "bg": "shore",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "curious"
+        },
+        "choices": [
+          [
+            "「ない」を根拠に、残る景色と心に浮かぶ華やかさを読む",
+            "本文に戻った鑑賞です。余情、わび・さびとのつながりは読みを深める視点。ただし後世のわび茶や『徒然草』と、定家の作歌時代を同一視しないことも大切です。"
+          ],
+          [
+            "わび・さびの歌だから、本文は読まなくてよい",
+            "美の用語だけでは何が美しいのか説明できません。「花も紅葉も」の否定と「浦の苫屋」「秋の夕暮」の取り合わせを根拠に、自分の感じた美しさを語りましょう。"
+          ]
+        ],
+        "sid": "e5-base33"
+      },
+      {
+        "who": "語り",
+        "text": "「待つ」「願う」「変わる」「見立てる」に、「残る」が加わった。戸の隙間で白いカーテンが揺れる。",
+        "bg": "shore",
+        "mood": "curious",
+        "emotions": {
+          "akane": "curious",
+          "minato": "curious"
+        },
+        "sid": "e5-base34"
+      },
+      {
+        "who": "茜",
+        "text": "ことはも、一緒に。",
+        "bg": "shore",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "curious"
+        },
+        "sid": "e5-base36"
+      },
+      {
+        "who": "ことは",
+        "text": "私はここで続きを書く。もう、読まずに待つのはやめる。二人とも、ありがとう。",
+        "bg": "shore",
+        "mood": "curious",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "curious"
+        },
+        "sid": "e5-base37"
+      },
+      {
+        "who": "語り",
+        "text": "途切れたチャイムが鳴り、二人は教室へ戻った。机の上に、白い便箋がある。",
+        "bg": "classroom",
+        "mood": "surprised",
+        "emotions": {
+          "akane": "surprised",
+          "minato": "surprised"
+        },
+        "sid": "e5-base40"
+      },
+      {
+        "who": "湊",
+        "text": "あとで、じゃなくて今話す。引っ越すのは寂しい。でも、向こうで見た景色も君に送りたい。",
+        "bg": "classroom",
+        "mood": "serious",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "serious"
+        },
+        "sid": "e5-base42"
+      },
+      {
+        "who": "茜",
+        "text": "同じ毎日じゃなくなっても、湊の言葉は読めるね。",
+        "bg": "classroom",
+        "mood": "hopeful",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "serious"
+        },
+        "sid": "e5-base43"
+      },
+      {
+        "who": "語り",
+        "text": "茜は友達への手紙に「会いたいです」と書いた。もう消さなかった。",
+        "bg": "classroom",
+        "mood": "serious",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "serious"
+        },
+        "sid": "e5-base44"
+      },
+      {
+        "who": "語り",
+        "text": "数週間後。引っ越した湊から、曇った空と窓辺の写真が届いた。",
+        "bg": "classroom",
+        "mood": "calm",
+        "emotions": {
+          "akane": "thoughtful",
+          "minato": "calm"
+        },
+        "sid": "e5-extra44-7"
+      },
+      {
+        "who": "湊の手紙",
+        "text": "新しい教室の窓です。まだ寂しい。でも、隣の人が町の話をしてくれました。次に会ったら、一緒に歩こう。",
+        "bg": "classroom",
+        "mood": "calm",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "calm"
+        },
+        "sid": "e5-extra44-8"
+      },
+      {
+        "who": "語り",
+        "text": "茜は古い歌集を開いた。五首は消えていない。余白に、二人が残した言葉があった。",
+        "bg": "classroom",
+        "mood": "calm",
+        "emotions": {
+          "akane": "calm",
+          "minato": "calm"
+        },
+        "sid": "e5-extra44-10"
+      },
+      {
+        "who": "語り",
+        "text": "感じたことは鑑賞ノートへ。書かずに結末へ進んでも大丈夫。",
+        "bg": "classroom",
+        "mood": "serious",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "serious"
+        },
+        "note": true,
+        "sid": "e5-base45"
+      },
+      {
+        "who": "茜",
+        "text": "同じ景色も、読む前とは違って見える。今度は、あなたの言葉を残してね。",
+        "bg": "classroom",
+        "mood": "hopeful",
+        "emotions": {
+          "akane": "hopeful",
+          "minato": "serious"
+        },
+        "end": true,
+        "sid": "e5-base46"
+      }
+    ]
+  }
+]

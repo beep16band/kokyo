@@ -5,7 +5,7 @@
     {
       "scene_id": "C01-S01",
       "chapter_id": "C01",
-      "title": "最後の満点",
+      "title": "最後の一首",
       "background_ids": [
         "BG00",
         "BG01"
@@ -32,17 +32,17 @@
         {
           "kind": "dialogue",
           "speaker": "茜",
-          "text": "これで全部満点。湊にも知らせよう。"
+          "text": "五つの物語、全部読めた。湊にも知らせよう。"
         },
         {
           "kind": "dialogue",
           "speaker": "茜",
-          "text": "和歌のミニゲーム、全部終わったよ！"
+          "text": "和歌の物語、最後まで読んだよ！"
         },
         {
           "kind": "dialogue",
           "speaker": "湊",
-          "text": "すごいな。俺も前に終わった。今度会ったとき、どの歌が好きか話そう。"
+          "text": "すごいな。俺も読んだ。今度会ったとき、どの歌が好きか話そう。"
         },
         {
           "kind": "dialogue",

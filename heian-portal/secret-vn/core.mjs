@@ -6,7 +6,7 @@ export function normalProgress(storage,schema){
  const story=read(schema.storyKey),games=read(schema.gameKey);
  const episodes=Array.from({length:5},(_,i)=>story.storyVersion===53&&story.episodes?.[i+1]?.complete===true);
  const perfect=schema.gameLengths.map((max,i)=>[8,16,max].some(len=>{const r=games[len===8?String(i):`${i}:${len}`];return r&&Number.isInteger(r.best)&&r.best===len&&Number.isInteger(r.plays)&&r.plays>0}));
- return {episodes,perfect,unlocked:episodes.every(Boolean)&&perfect.length===6&&perfect.every(Boolean)};
+ return {episodes,perfect,unlocked:episodes.every(Boolean)};
 }
 export function chapterSaveKey(id){return id==='C01'?SAVE_KEY:SAVE_KEY+'-'+id.toLowerCase()}
 export function makeSteps(data){
