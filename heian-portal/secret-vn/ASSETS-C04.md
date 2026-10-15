@@ -5,7 +5,7 @@
 | ファイル（assets/secret-vn/以下） | 用途 | 解像度 | バイト数 |
 |---|---|---|---|
 | `backgrounds/c04-tatsuta-v1.webp` | BG24・25 龍田川 | 1600×900 | 346,452 |
-| `backgrounds/c04-ashes-v1.webp` | BG26 千年前の火災跡 | 1600×900 | 258,956 |
+| `backgrounds/c04-ashes-v2.webp` | BG26 千年前の火災跡 | 1600×900 | 258,956 |
 | `backgrounds/c04-dawn-v1.webp` | BG27・28 東の野 | 1600×900 | 199,734 |
 | `backgrounds/c04-crest-v1.webp` | BG29 読めない家名の間 | 1600×900 | 213,270 |
 | `characters/narihira-normal-v1.webp` | 在原業平・通常 | 720×1080 | 137,776 |
