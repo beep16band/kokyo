@@ -71,3 +71,7 @@ html[data-chapter="C06"] .actor.trio-center.active,html[data-chapter="C06"] .act
 html[data-chapter="C06"] .stage.flashback .background{filter:sepia(.22) saturate(.78) brightness(.82)!important}
 .memory-seal{transform:translate(-50%,-50%) scale(7)}
 .actor[data-character="shikishi"][data-state="hollow"],.actor[data-character="yakamochi"][data-state="hollow"],.face[data-character="shikishi"][data-state="hollow"] svg,.face[data-character="yakamochi"][data-state="hollow"] svg{filter:brightness(.5) saturate(.35)}
+/* Face-based framing for C06's reused sprites, whose transparent head margins differ. */
+html[data-chapter="C06"] #actors .actor:is([data-character="kotoha"],[data-character="akane"],[data-character="minato"],[data-character="mahiro"]){--face-size:clamp(160px,15vw,210px);--sprite-height:calc(var(--face-size) * var(--face-ratio,4.7));height:var(--sprite-height);top:calc(110px - var(--sprite-height) * var(--face-y,.1))}
+.c06-effects .memory-time{top:max(64px,10%)}
+@media(max-width:700px){html[data-chapter="C06"] #actors .actor:is([data-character="kotoha"],[data-character="akane"],[data-character="minato"],[data-character="mahiro"]){--face-size:160px;top:calc(125px - var(--sprite-height) * var(--face-y,.1))}.c06-effects .memory-time{top:10%}}
