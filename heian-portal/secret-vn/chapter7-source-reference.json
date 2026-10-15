@@ -1,0 +1,1400 @@
+{
+  "scenes": [
+    {
+      "scene_id": "C07-S01",
+      "chapter_id": "C07",
+      "title": "言の葉の檻",
+      "background_ids": [
+        "BG40"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "ことは",
+        "忘れの主"
+      ],
+      "event_tags": [
+        "boss-intro"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "墨に覆われた広間。宙に浮く巻物の文字が次々消えていく。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "橘の名を継ぐ者、榊の名を継ぐ者。そして、私を生んだ少女。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "ことはと、みんなの記憶を返せ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "思い出せば悲しみも戻る。それを望むのか。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "それでも、忘れたくないことがある。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "ならば、言葉を証明してみせよ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "十の巻物が二列になって浮かぶ。"
+        }
+      ],
+      "visual_stage": "background:BG40; characters:茜,湊,ことは,忘れの主; events:boss-intro",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S02",
+      "chapter_id": "C07",
+      "title": "忘れの主の提案",
+      "background_ids": [
+        "BG40",
+        "BG00"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "ことは",
+        "忘れの主"
+      ],
+      "event_tags": [
+        "false-classroom"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "忘れの主が、湊の引っ越す前の教室の幻を見せる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "あの日に戻せば、別れはなかったことになる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "戻れたらうれしい。でも、今の湊が出会った人まで消したくない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "新しい学校での毎日だって、俺の時間だ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "苦しみを抱えたまま生きると？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "誰かの気持ちを、私が代わりに決めることはもうしません。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "最終の総合読解試練が始まる。"
+        }
+      ],
+      "visual_stage": "background:BG40,BG00; characters:茜,湊,ことは,忘れの主; events:false-classroom",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S03",
+      "chapter_id": "C07",
+      "title": "十の言の葉・前半",
+      "background_ids": [
+        "BG40"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "ことは"
+      ],
+      "event_tags": [
+        "quiz:final1-5"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C07-FINAL-Q01",
+        "C07-FINAL-Q02",
+        "C07-FINAL-Q03",
+        "C07-FINAL-Q04",
+        "C07-FINAL-Q05"
+      ],
+      "quiz_gate": "all_five_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「最終総合試練・前半」。Q01〜Q05、歌人の記憶を取り戻す。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "どれも、ここまで学んできたことだね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "覚えてる。歌を一首ずつ確かめよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "五問正解で、額田王・小野小町・紀貫之・丈部稲麻呂・持統天皇の巻物が光る。"
+        }
+      ],
+      "visual_stage": "background:BG40; characters:茜,湊,ことは; events:quiz:final1-5",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S04",
+      "chapter_id": "C07",
+      "title": "奪われた記憶の反撃",
+      "background_ids": [
+        "BG40",
+        "BG00"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "ことは",
+        "忘れの主"
+      ],
+      "event_tags": [
+        "memory-attack"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "忘れの主が巻物を墨で引き戻し、昔の教室の幻を作る。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "苦しいなら、最初から出会わなかったことにすればよい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "やめて……！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "茜、俺はここにいる。出会えてよかった。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "私も。楽しかったことも、寂しかったことも、なくしたくない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私の過ちも覚えています。だからこそ、今度は奪わない。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "墨が裂け、残りの五つの巻物が現れる。"
+        }
+      ],
+      "visual_stage": "background:BG40,BG00; characters:茜,湊,ことは,忘れの主; events:memory-attack",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S05",
+      "chapter_id": "C07",
+      "title": "十の言の葉・後半",
+      "background_ids": [
+        "BG40"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "ことは"
+      ],
+      "event_tags": [
+        "quiz:final6-10"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C07-FINAL-Q06",
+        "C07-FINAL-Q07",
+        "C07-FINAL-Q08",
+        "C07-FINAL-Q09",
+        "C07-FINAL-Q10"
+      ],
+      "quiz_gate": "all_five_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「最終総合試練・後半」。Q06〜Q10を出題する。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "序詞、見立て、東西の情景、係り結び……全部復習だ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "最後の定家の歌まで、正確に読もう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "五問正解で十の巻物が一斉に開く。"
+        }
+      ],
+      "visual_stage": "background:BG40; characters:茜,湊,ことは; events:quiz:final6-10",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S06",
+      "chapter_id": "C07",
+      "title": "歌人たちの帰還",
+      "background_ids": [
+        "BG41"
+      ],
+      "characters": [
+        "歌人の記憶群",
+        "茜",
+        "湊",
+        "ことは"
+      ],
+      "event_tags": [
+        "poet-chorus"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "歌人たちの回復後の姿が、光の中へ次々と現れる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "額田王",
+          "text": "待つ心を。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "小野小町",
+          "text": "夢に託した思いを。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "紀貫之",
+          "text": "変わらぬ花の香りを。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "山上憶良",
+          "text": "家族を思う心を。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "丈部稲麻呂",
+          "text": "忘れられない言葉を。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "持統天皇",
+          "text": "季節の訪れを。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "若者",
+          "text": "名前が残らずとも、いとおしい気持ちを。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "在原業平",
+          "text": "水を紅く見立てる驚きを。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "柿本人麻呂",
+          "text": "夜明けの一瞬を。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "西行法師",
+          "text": "道端に立ち止まったひとときを。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "藤原定家",
+          "text": "静かな秋の夕暮の趣を。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "式子内親王",
+          "text": "秘めてきた思いを。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "大伴家持",
+          "text": "明日への願いを。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "これが、守りたかった言葉です。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "忘れの主の胸に榊の紋が浮かぶ。"
+        }
+      ],
+      "visual_stage": "background:BG41; characters:歌人の記憶群,茜,湊,ことは; events:poet-chorus",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S07",
+      "chapter_id": "C07",
+      "title": "真尋の最後の記憶",
+      "background_ids": [
+        "BG42"
+      ],
+      "characters": [
+        "真尋",
+        "ことは",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "mahiro-echo"
+      ],
+      "dialogue_status": "expanded-v1.1-staging-approved-candidate",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "忘れの主の胸から榊の木札が現れ、淡い光の輪郭が少年の姿になる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "真尋……？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……真尋！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "ことは。久しぶりだな。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……ごめんなさい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "禁術を使ったことまで、よかったとは言わない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "俺の言葉を聞いてほしかった。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……はい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "でも、あの夜だけが俺たちの全部じゃない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "俺たちは、あのあとも生きたんだろ？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "はい。歌を集めて、後の世へ残しました。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "それなら、約束を守ってくれたんだな。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……ずっと、覚えていました。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "ありがとう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "ことはの立ち絵は泣き顔へ。真尋は湊に目を向ける。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "俺は、榊守湊です。あなたの遠い子孫です。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "……そうか。榊守の名が未来まで続いたのか。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "先祖の代わりとしてじゃなく、自分で決めてここに来ました。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "それでいい。俺は誰かを縛る誓いを残したかったわけじゃない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "私も、橘の名を受け継いでいます。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "そうか。ことはの歌が、未来へ届いたんだな。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "木札から金色の粒子が流れ、真尋の輪郭が薄くなる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……もう、行くの？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "記憶は消えるんじゃない。歌の中へ戻るんだ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……さようなら、真尋。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "またな、ことは。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "真尋の姿が光となり、木札は白い紙へ変わる。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "紙面に「忘れずにいてくれて、ありがとう。」と浮かぶ。"
+        }
+      ],
+      "visual_stage": "background:BG42; characters:真尋,ことは,茜,湊; events:mahiro-echo",
+      "screenplay_version": "v1.1",
+      "script_previous_v1_length": 12,
+      "shot_cues": [
+        {
+          "after_line_index": 0,
+          "background_id": "BG41",
+          "cue_type": "fade",
+          "effect": "mahiro-silhouette",
+          "sfx_id": "sfx-soft-wind",
+          "bgm_id": "music-mahiro",
+          "duration_ms": 1800
+        },
+        {
+          "after_line_index": 12,
+          "background_id": "BG41",
+          "cue_type": "camera",
+          "effect": "portrait-two-shot",
+          "sfx_id": "sfx-none",
+          "bgm_id": "music-mahiro",
+          "duration_ms": 800
+        },
+        {
+          "after_line_index": 20,
+          "background_id": "BG42",
+          "cue_type": "effect",
+          "effect": "mahiro-particles",
+          "sfx_id": "sfx-bell",
+          "bgm_id": "music-farewell",
+          "duration_ms": 2900
+        }
+      ],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S08",
+      "chapter_id": "C07",
+      "title": "忘れの主の終わり",
+      "background_ids": [
+        "BG41",
+        "BG42"
+      ],
+      "characters": [
+        "忘れの主",
+        "ことは",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "ink-dissolve"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "忘れの主の輪郭が小さくなる。影から落ちる墨はもう広がらない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "苦しみは、消えぬのか。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "忘れてしまうことはあっても、誰かの記憶を勝手に消していいわけじゃない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "悲しいときに、言葉を聞いてくれる人がいることもある。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私は真尋の気持ちを代わりに決めてしまった。その過ちは覚えていたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "奪わずに支えることも、できたのか。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "黒い影は淡い光になり、歌の記憶へほどけていく。庭に残るのは歌そのものだった。"
+        }
+      ],
+      "visual_stage": "background:BG41,BG42; characters:忘れの主,ことは,茜,湊; events:ink-dissolve",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S09",
+      "chapter_id": "C07",
+      "title": "ことはの選択",
+      "background_ids": [
+        "BG43"
+      ],
+      "characters": [
+        "ことは",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "kotoha-agency"
+      ],
+      "dialogue_status": "expanded-v1.1-staging-approved-candidate",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "言の葉の庭に朝が訪れ、橘の花が風に揺れる。現代へ続く光の道が開く。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "帰れる！　ことはも行こう！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……私は、この庭に残ります。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "……どうして？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私は千年前の記憶から生まれた存在です。現代であなたたちと同じように暮らすことはできません。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……そんな。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "でも、それだけが理由ではありません。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私は、この庭に残りたいのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "……自分で決めたのか？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "はい。千年前と同じように、歌を残し、伝える場所を守りたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……寂しいよ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私もです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "また会えるって、約束はできない？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "同じ形では約束できません。でも、歌を読んで私たちの時間を思い出してくれたら、うれしいです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "だったら、俺たちも歌を忘れない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……応援する。ことはが自分で選んだことなら。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "ありがとうございます。今度は、私自身の願いです。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "茜がことはを抱きしめる。湊は少し離れて見守る。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……いってらっしゃい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……いってきます。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "またな、ことは。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "橘の花びらが三人の間を横切り、帰還の光が強くなる。"
+        }
+      ],
+      "visual_stage": "background:BG43; characters:ことは,茜,湊; events:kotoha-agency",
+      "screenplay_version": "v1.1",
+      "script_previous_v1_length": 8,
+      "shot_cues": [
+        {
+          "after_line_index": 0,
+          "background_id": "BG43",
+          "cue_type": "fade",
+          "effect": "garden-sunrise",
+          "sfx_id": "sfx-birds",
+          "bgm_id": "music-ending",
+          "duration_ms": 1800
+        },
+        {
+          "after_line_index": 13,
+          "background_id": "BG43",
+          "cue_type": "camera",
+          "effect": "kotoha-portrait-close",
+          "sfx_id": "sfx-none",
+          "bgm_id": "music-farewell",
+          "duration_ms": 1300
+        },
+        {
+          "after_line_index": 16,
+          "background_id": "BG43",
+          "cue_type": "effect",
+          "effect": "flower-petals",
+          "sfx_id": "sfx-wind",
+          "bgm_id": "music-ending-main",
+          "duration_ms": 2300
+        }
+      ],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S10",
+      "chapter_id": "C07",
+      "title": "三人の約束",
+      "background_ids": [
+        "BG43"
+      ],
+      "characters": [
+        "ことは",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "farewell"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "夜明けの庭に帰還の道が現れる。ことはは小さな紙片を二人に渡す。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "言葉を残すことは、誰かの明日へ手紙を送ること。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "また会える？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "同じ形で会えるとは約束できません。でも、歌を読むとき思い出してくれたら。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "真尋との約束も忘れない。でも、俺は俺の人生を生きる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "はい。それが真尋の願いでした。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "ありがとう、ことは。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "いってらっしゃい。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "二人は白い光の中へ歩き出す。"
+        }
+      ],
+      "visual_stage": "background:BG43; characters:ことは,茜,湊; events:farewell",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S11",
+      "chapter_id": "C07",
+      "title": "それぞれの教室",
+      "background_ids": [
+        "BG44",
+        "BG45"
+      ],
+      "characters": [
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "return",
+        "phone"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "茜は元の教室、湊は新しい学校の図書室で目を覚ます。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……戻った。湊は？"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "茜はスマートフォンで湊にメッセージを送る。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜（メッセージ）",
+          "text": "湊、戻れた？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊（メッセージ）",
+          "text": "戻れた。図書室にいる。ことはのことも覚えてる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜（メッセージ）",
+          "text": "よかった。今、話せる？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊（メッセージ）",
+          "text": "もちろん。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "電話の向こうで湊の声がする。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "今度こっちに来たら、新しい町を案内したい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "うん。湊が見ている景色を見たい。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "二人の暮らしは違っても、言葉は届き続ける。"
+        }
+      ],
+      "visual_stage": "background:BG44,BG45; characters:茜,湊; events:return,phone",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C07-S12",
+      "chapter_id": "C07",
+      "title": "余白に残る言葉",
+      "background_ids": [
+        "BG46"
+      ],
+      "characters": [
+        "茜"
+      ],
+      "event_tags": [
+        "true-ending"
+      ],
+      "dialogue_status": "expanded-v1.1-staging-approved-candidate",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "数日後。茜は放課後の教室で古い歌集を開いている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……こんなところに、何か挟まってる。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "歌集の余白から、橘の花が描かれた小さな紙片が落ちる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……ことはの字？"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "画面が紙片へ寄り、文字が順に現れる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことはの手紙",
+          "text": "言葉は、いつか誰かに届きます。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことはの手紙",
+          "text": "遠く離れていても、時が流れても。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことはの手紙",
+          "text": "あなたが残した言葉が、誰かの明日を照らすことがありますように。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことはの手紙",
+          "text": "――橘ことは"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "茜が紙を指先で押さえる。窓から秋の風。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……届いたよ、ことは。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "スマートフォンに、湊から新しい町の何でもない通学路の写真が届く。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊のメッセージ",
+          "text": "この前話した道。今度、一緒に歩こう。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……うん。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "茜はノートを開き、白紙の一行目にペンを置く。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "私も、残そう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "カメラはペン先から窓の外へゆっくり引く。橘の花びらが一枚舞う。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "画面白転。『TRUE ENDING 千年の約束』を表示。"
+        }
+      ],
+      "visual_stage": "background:BG46; characters:茜; events:true-ending",
+      "screenplay_version": "v1.1",
+      "script_previous_v1_length": 8,
+      "shot_cues": [
+        {
+          "after_line_index": 0,
+          "background_id": "BG44",
+          "cue_type": "fade",
+          "effect": "classroom-afternoon",
+          "sfx_id": "sfx-soft-wind",
+          "bgm_id": "music-epilogue",
+          "duration_ms": 1700
+        },
+        {
+          "after_line_index": 3,
+          "background_id": "BG46",
+          "cue_type": "camera",
+          "effect": "letter-closeup",
+          "sfx_id": "sfx-paper",
+          "bgm_id": "music-epilogue",
+          "duration_ms": 1600
+        },
+        {
+          "after_line_index": 13,
+          "background_id": "BG44",
+          "cue_type": "camera",
+          "effect": "window-pullback",
+          "sfx_id": "sfx-wind",
+          "bgm_id": "music-epilogue-climax",
+          "duration_ms": 2600
+        },
+        {
+          "after_line_index": 14,
+          "background_id": "BG44",
+          "cue_type": "title",
+          "effect": "true-ending",
+          "sfx_id": "sfx-none",
+          "bgm_id": "music-credits",
+          "duration_ms": 3600
+        }
+      ],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "C07-FINAL-Q01",
+      "chapter_id": "C07",
+      "waka_id": "w03",
+      "prompt": "「我が恋ひ居れば」に表れる心情は？",
+      "options": [
+        "相手への怒り",
+        "相手を恋しく思い待つ",
+        "秋風への恐怖",
+        "別れの喜び"
+      ],
+      "correct_index": 1,
+      "explanation": "恋しい人を待つ思い。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "相手を恋しく思い待つ",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C07-FINAL-Q02",
+      "chapter_id": "C07",
+      "waka_id": "w12",
+      "prompt": "「夢と知りせば覚めざらましを」の意味は？",
+      "options": [
+        "夢と知っていたら目覚めずにいたのに",
+        "夢と知ってすぐ目覚めた",
+        "夢を見なくなれば忘れる",
+        "夢から覚めれば会える"
+      ],
+      "correct_index": 0,
+      "explanation": "反実仮想により目覚めた残念さを表す。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "夢と知っていたら目覚めずにいたのに",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C07-FINAL-Q03",
+      "chapter_id": "C07",
+      "waka_id": "w10",
+      "prompt": "対比されるものは？",
+      "options": [
+        "春と秋",
+        "家と海",
+        "人の心と梅",
+        "故郷と旅先"
+      ],
+      "correct_index": 2,
+      "explanation": "人心の不確かさと梅の変わらなさ。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "人の心と梅",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C07-FINAL-Q04",
+      "chapter_id": "C07",
+      "waka_id": "w08",
+      "prompt": "「幸くあれ」の意味は？",
+      "options": [
+        "早く帰れ",
+        "強く戦え",
+        "父母を忘れよ",
+        "無事でいなさい"
+      ],
+      "correct_index": 3,
+      "explanation": "無事を願う言葉。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "無事でいなさい",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C07-FINAL-Q05",
+      "chapter_id": "C07",
+      "waka_id": "w01",
+      "prompt": "「白たへの」の技法は？",
+      "options": [
+        "枕詞",
+        "倒置法",
+        "体言止め",
+        "擬人法"
+      ],
+      "correct_index": 0,
+      "explanation": "衣にかかる枕詞。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "枕詞",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C07-FINAL-Q06",
+      "chapter_id": "C07",
+      "waka_id": "w07",
+      "prompt": "「多摩川にさらす手作りさらさらに」の技法は？",
+      "options": [
+        "体言止め",
+        "倒置法",
+        "序詞",
+        "擬人法"
+      ],
+      "correct_index": 2,
+      "explanation": "「さら」の音のつながりで導く序詞。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "序詞",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C07-FINAL-Q07",
+      "chapter_id": "C07",
+      "waka_id": "w11",
+      "prompt": "「水くくるとは」の見立ては？",
+      "options": [
+        "水をくくり染めにしたようだ",
+        "地下水が流れる",
+        "雪が川に積もる",
+        "川が凍る"
+      ],
+      "correct_index": 0,
+      "explanation": "紅葉の赤をくくり染めになぞらえる。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "水をくくり染めにしたようだ",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C07-FINAL-Q08",
+      "chapter_id": "C07",
+      "waka_id": "w02",
+      "prompt": "歌の情景は？",
+      "options": [
+        "夕方東に月が出る",
+        "昼間の火事",
+        "真夜中の暗闇",
+        "東に夜明けの光、西に傾く月"
+      ],
+      "correct_index": 3,
+      "explanation": "夜明けの光と月の対比。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "東に夜明けの光、西に傾く月",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C07-FINAL-Q09",
+      "chapter_id": "C07",
+      "waka_id": "w13",
+      "prompt": "係り結びは？",
+      "options": [
+        "しばし―とて",
+        "こそ―つれ",
+        "立ち―どまり",
+        "清水―流るる"
+      ],
+      "correct_index": 1,
+      "explanation": "「こそ」が「つれ」を結ぶ。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "こそ―つれ",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C07-FINAL-Q10",
+      "chapter_id": "C07",
+      "waka_id": "w14",
+      "prompt": "歌の内容は？",
+      "options": [
+        "花と紅葉が咲き乱れる",
+        "春に花がないことを嘆く",
+        "苫屋のある秋の夕暮の趣",
+        "故郷に帰れぬ悲しみ"
+      ],
+      "correct_index": 2,
+      "explanation": "華やかさとは異なる秋の夕暮の情景。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "苫屋のある秋の夕暮の趣",
+      "correct_option_id": "correct"
+    }
+  ]
+}

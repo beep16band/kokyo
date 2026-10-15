@@ -75,3 +75,19 @@ html[data-chapter="C06"] .stage.flashback .background{filter:sepia(.22) saturate
 html[data-chapter="C06"] #actors .actor:is([data-character="kotoha"],[data-character="akane"],[data-character="minato"],[data-character="mahiro"]){--face-size:clamp(160px,15vw,210px);--sprite-height:calc(var(--face-size) * var(--face-ratio,4.7));height:var(--sprite-height);top:calc(110px - var(--sprite-height) * var(--face-y,.1))}
 .c06-effects .memory-time{top:max(64px,10%)}
 @media(max-width:700px){html[data-chapter="C06"] #actors .actor:is([data-character="kotoha"],[data-character="akane"],[data-character="minato"],[data-character="mahiro"]){--face-size:160px;top:calc(125px - var(--sprite-height) * var(--face-y,.1))}.c06-effects .memory-time{top:10%}}
+/* C07: the garden opens into daylight. Portraits remain opaque and face-aligned. */
+html[data-chapter="C07"] .stage{overflow:clip}
+html[data-chapter="C07"] #actors .actor{--face-size:clamp(160px,15vw,210px);--sprite-height:calc(var(--face-size) * var(--face-ratio,4.7));height:var(--sprite-height);top:calc(110px - var(--sprite-height) * var(--face-y,.1))}
+html[data-chapter="C07"] #actors .actor[data-character="lord"]{height:132%;top:8%;max-width:95%;object-fit:contain;filter:drop-shadow(0 0 30px #77869c25)}
+.c07-effects:after{content:"";position:absolute;inset:0;pointer-events:none}
+.c07-effects[data-dawn="true"]:after{background:linear-gradient(120deg,#ffe9b32c,transparent 65%);animation:endingDawn 7s ease both}
+.c07-effects[data-chorus="true"]:after,.c07-effects[data-dissolve="true"]:after{background:radial-gradient(ellipse at 50% 45%,#ffdfa843,transparent 67%);animation:endingDawn 3s ease both}
+.c07-effects[data-threshold="true"]:after{background:linear-gradient(90deg,transparent,#fff8dd63,transparent);animation:endingDawn 4s ease both}
+.c07-effects[data-letter="true"]:after{background:radial-gradient(ellipse at 65% 35%,#fff7dd19,transparent 65%)}
+html[data-chapter="C07"] .stage.true-ending .dialogue{background:linear-gradient(180deg,#101c27eb,#101c27fa)}
+html[data-chapter="C07"] .stage.true-ending .scene-title{display:none}
+.ending-title{position:absolute;inset:15% 8% auto;display:grid;gap:22px;text-align:center;color:#fff4d6;text-shadow:0 2px 20px #15243b,0 0 45px #172a3d;animation:endingArrival 5s ease both}
+.ending-title small{font-size:12px;letter-spacing:.5em}.ending-title strong{font:500 clamp(32px,5vw,72px) "Yu Mincho","Hiragino Mincho ProN",serif;letter-spacing:.22em}.ending-title span{font-size:clamp(12px,1.5vw,17px);letter-spacing:.15em}
+@keyframes endingArrival{from{opacity:0;transform:translateY(10px);filter:blur(5px)}35%,to{opacity:1;transform:none;filter:none}}
+@keyframes endingDawn{from{opacity:0}to{opacity:1}}
+@media(max-width:700px){html[data-chapter="C07"] #actors .actor{--face-size:160px;top:calc(125px - var(--sprite-height) * var(--face-y,.1));left:50%;right:auto;translate:-50% 0}html[data-chapter="C07"] #actors .actor.secondary{display:none}html[data-chapter="C07"] #actors .actor[data-character="lord"]{height:100%;top:13%}.ending-title{inset:20% 5% auto;gap:18px}.ending-title strong{letter-spacing:.12em}}

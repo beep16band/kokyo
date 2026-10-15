@@ -476,6 +476,79 @@
       "status": "produced-base-with-runtime-variant",
       "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
       "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+    },
+    "BG40": {
+      "label": "墨に覆われた大広間",
+      "chapter": "C07",
+      "file": "backgrounds/c07-hall-v1.webp",
+      "filter": "saturate(.08) brightness(.32)",
+      "layers": [
+        {
+          "file": "effects/ink-edge.webp",
+          "opacity": 0.85
+        }
+      ],
+      "status": "produced-or-reused-runtime-variant",
+      "note": "創作イメージ。史実の復元図ではない。墨・光の差分は同じ広間を共有。文字はHTMLで表示。桜降下なし。"
+    },
+    "BG41": {
+      "label": "大広間・回復途中",
+      "chapter": "C07",
+      "file": "backgrounds/c07-hall-v1.webp",
+      "filter": "saturate(.6) brightness(.75)",
+      "layers": [
+        {
+          "file": "effects/ink-edge.webp",
+          "opacity": 0.23
+        }
+      ],
+      "status": "produced-or-reused-runtime-variant",
+      "note": "創作イメージ。史実の復元図ではない。墨・光の差分は同じ広間を共有。文字はHTMLで表示。桜降下なし。"
+    },
+    "BG42": {
+      "label": "大広間・回復後",
+      "chapter": "C07",
+      "file": "backgrounds/c07-hall-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-or-reused-runtime-variant",
+      "note": "創作イメージ。史実の復元図ではない。墨・光の差分は同じ広間を共有。文字はHTMLで表示。桜降下なし。"
+    },
+    "BG43": {
+      "label": "言の葉の庭・夜明け",
+      "chapter": "C07",
+      "file": "backgrounds/c07-dawn-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-or-reused-runtime-variant",
+      "note": "創作イメージ。史実の復元図ではない。墨・光の差分は同じ広間を共有。文字はHTMLで表示。桜降下なし。"
+    },
+    "BG44": {
+      "label": "現代の教室",
+      "chapter": "C07",
+      "file": "backgrounds/classroom.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-or-reused-runtime-variant",
+      "note": "創作イメージ。史実の復元図ではない。墨・光の差分は同じ広間を共有。文字はHTMLで表示。桜降下なし。"
+    },
+    "BG45": {
+      "label": "現代の図書室",
+      "chapter": "C07",
+      "file": "backgrounds/library.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-or-reused-runtime-variant",
+      "note": "創作イメージ。史実の復元図ではない。墨・光の差分は同じ広間を共有。文字はHTMLで表示。桜降下なし。"
+    },
+    "BG46": {
+      "label": "歌集と最後の手紙",
+      "chapter": "C07",
+      "file": "backgrounds/c07-desk-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-or-reused-runtime-variant",
+      "note": "創作イメージ。史実の復元図ではない。墨・光の差分は同じ広間を共有。文字はHTMLで表示。桜降下なし。"
     }
   },
   "characters": {
@@ -1918,6 +1991,33 @@
             "sha256": "073a90f08b04e9ac61e53ccfe6de6213fa119df39455179f9a0f935c2e3093d6",
             "alpha": true
           }
+        }
+      }
+    },
+    "lord": {
+      "label": "忘れの主",
+      "states": {
+        "normal": {
+          "file": "characters/forgotten-lord-v1.webp",
+          "bytes": 167790,
+          "sha256": "311e91d0fd09abca8614d6700167a2bb66a7f44e629e0a038c9c21e4a14a135f",
+          "width": 720,
+          "height": 1080,
+          "alpha": true,
+          "master": {
+            "file": "masters/c07-lord-v1-source.png",
+            "bytes": 2260226,
+            "sha256": "38b62a7e853f9f5ce9d3dbd7c871882ae906202e29df759b0966cefcea6fdd46",
+            "width": 1024,
+            "height": 1536,
+            "alpha": true
+          },
+          "faceCrop": [
+            260,
+            0,
+            200,
+            200
+          ]
         }
       }
     }
@@ -4034,44 +4134,82 @@
       "bytes": 148372,
       "sha256": "d65b97c4976d1be9239a64c90c386731c64d110db6d3247bfb95420319741e6f",
       "alpha": true
+    },
+    {
+      "file": "masters/c07-hall-v1-source.png",
+      "bytes": 2429094,
+      "sha256": "70ddb640b7d1b3cf20b0e681125b580977bb6e9f716cbc3097521a6ed2f3cc03",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c07-hall-v1.webp",
+      "bytes": 157748,
+      "sha256": "a7c989fc8ad4301564aad2ecb2c9402b50164127fb67a0a6b9a08ec09c886369",
+      "width": 1600,
+      "height": 900,
+      "alpha": false
+    },
+    {
+      "file": "masters/c07-dawn-v1-source.png",
+      "bytes": 2838837,
+      "sha256": "47f34da0bf6e39a2af9edf16f2782183386abf497e1f99a838d62a87da525a44",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c07-dawn-v1.webp",
+      "bytes": 226924,
+      "sha256": "1c6bfc16a9f9717e8e1690951c9d328ac1b64f0f6a1594be5ad2145addfa1ae4",
+      "width": 1600,
+      "height": 900,
+      "alpha": false
+    },
+    {
+      "file": "masters/c07-desk-v1-source.png",
+      "bytes": 2214197,
+      "sha256": "d607b299c3bd068ae9c7c7a03a1dc8f690a186f54a75278a597a78426c83bdf6",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c07-desk-v1.webp",
+      "bytes": 136056,
+      "sha256": "cf880c468d00ea67052908193c1819403c4129d4e216fa2b9c81154b8bd0b4c6",
+      "width": 1600,
+      "height": 900,
+      "alpha": false
+    },
+    {
+      "file": "masters/c07-lord-v1-source.png",
+      "bytes": 2260226,
+      "sha256": "38b62a7e853f9f5ce9d3dbd7c871882ae906202e29df759b0966cefcea6fdd46",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true
+    },
+    {
+      "file": "characters/forgotten-lord-v1.webp",
+      "bytes": 167790,
+      "sha256": "311e91d0fd09abca8614d6700167a2bb66a7f44e629e0a038c9c21e4a14a135f",
+      "width": 720,
+      "height": 1080,
+      "alpha": true
+    },
+    {
+      "file": "audio/ending-naranda-mamade-v1.mp3",
+      "bytes": 2280525,
+      "sha256": "09316cafc4377db4ea758872f8d3774e769497a303ec909142347e92b53e4035",
+      "duration": 131.112,
+      "credit": "並んだままで（ユーザー提供音源）",
+      "usage": "本プロジェクトのエンディング用として提供。第三者向け再配布ライセンスを断定しない。",
+      "fadeOutSeconds": 8
     }
   ],
   "backlog": [
-    {
-      "id": "BG40",
-      "label": "墨に覆われた大広間",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG41",
-      "label": "大広間・回復途中",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG42",
-      "label": "大広間・回復後",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG43",
-      "label": "言の葉の庭・夜明け",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG44",
-      "label": "現代の教室",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG45",
-      "label": "現代の図書室",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG46",
-      "label": "古い歌集のある机",
-      "status": "not-produced"
-    },
     {
       "label": "忘れの主（立ち絵・大型対決画像）",
       "status": "not-produced"
@@ -4102,6 +4240,17 @@
     "第3章の新規人物は通常のみ。持統天皇・東歌の若者に記憶喪失差分。追加表情は未制作。",
     "第3章の人物マスターは1024×1536。要求の高さ1600〜2000pxには未達。拡大して高解像度扱いにはしない。",
     "背景は創作イメージであり、史実・地形の忠実な復元ではない。",
-    "第1〜6章の使用素材を制作。BG40〜46、忘れの主の本立ち絵は未制作。第6章の歌人は通常・微笑・記憶喪失の3状態。驚きは未制作。人物PNGマスターは1024×1536。"
-  ]
+    "全七章の使用素材を制作。歌人の一部の驚き差分、大型対決専用別画像は未制作。BG40〜42は共通背景＋独立した墨の合成。歴史場面は創作イメージ。"
+  ],
+  "audio": {
+    "ending": {
+      "file": "audio/ending-naranda-mamade-v1.mp3",
+      "bytes": 2280525,
+      "sha256": "09316cafc4377db4ea758872f8d3774e769497a303ec909142347e92b53e4035",
+      "duration": 131.112,
+      "credit": "並んだままで（ユーザー提供音源）",
+      "usage": "本プロジェクトのエンディング用として提供。第三者向け再配布ライセンスを断定しない。",
+      "fadeOutSeconds": 8
+    }
+  }
 }
