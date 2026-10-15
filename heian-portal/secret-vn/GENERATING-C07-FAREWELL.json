@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen built-in",
+  "prompt": "Use case: identity-preserve / compositing. Asset: cinematic 16:9 Japanese anime visual-novel farewell CG. Reference image 1 is Akane, image 2 Kotoha, image 3 Minato: preserve their exact faces, ages, hair, accessories and uniforms/robes, no redesign. Reference image 4 is the established dawn garden: preserve its atmosphere, veranda, pond, tachibana citrus tree and dawn mountains. Scene: Akane, the modern schoolgirl with brown bob and navy blazer/red bow, gently embraces Kotoha, the long dark-haired girl in pale lilac/pink Heian robes with floral ornament; mutual platonic friendship goodbye, bittersweet relieved tears, warm empathy. Both girls' faces visible in three-quarter profile, central tightly grouped heads around x43–57 percent y25–38 percent, waist-up framing. Akane's hands naturally wrap around Kotoha's upper back, Kotoha returns the embrace; anatomically correct hands, restrained expressions. Minato, short brown hair navy blazer/blue tie, stands farther behind to the right, quietly watching, small supporting figure not romantic resolution. Warm dawn rim light, cool lavender shadows, refined delicate anime paint matching references, not exaggerated crying. This is a still illustration not cutout sprites. Both main faces fit in central 30 percent so mobile center crop works. Lower 30 percent calm simple shapes reserved for dark dialogue UI. No text, names, UI, logo, floating sakura or particle effects. Keep characters age-appropriate and fully clothed.",
+  "references": [
+    "characters/akane-sad.webp",
+    "characters/kotoha-sad.webp",
+    "characters/minato-sad.webp",
+    "backgrounds/c07-dawn-v1.webp"
+  ]
+}

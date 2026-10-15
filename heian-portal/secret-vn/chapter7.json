@@ -734,7 +734,8 @@
       "chapter_id": "C07",
       "title": "ことはの選択",
       "background_ids": [
-        "BG43"
+        "BG43",
+        "BG43H"
       ],
       "characters": [
         "ことは",
@@ -3563,6 +3564,15 @@
         "layers": [],
         "status": "produced-or-reused-runtime-variant",
         "note": "創作イメージ。史実の復元図ではない。墨・光の差分は同じ広間を共有。文字はHTMLで表示。桜降下なし。"
+      },
+      "BG43H": {
+        "label": "三人の別れ・抱擁の一枚絵",
+        "chapter": "C07",
+        "file": "backgrounds/c07-farewell-v1.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "produced-farewell-cg",
+        "note": "既存3人と夜明けの庭を参照した創作一枚絵。C07-S09-L17から21。人物を二重に重ねない。"
       }
     },
     "effects": {

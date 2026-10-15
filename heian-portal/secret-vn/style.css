@@ -91,3 +91,6 @@ html[data-chapter="C07"] .stage.true-ending .scene-title{display:none}
 @keyframes endingArrival{from{opacity:0;transform:translateY(10px);filter:blur(5px)}35%,to{opacity:1;transform:none;filter:none}}
 @keyframes endingDawn{from{opacity:0}to{opacity:1}}
 @media(max-width:700px){html[data-chapter="C07"] #actors .actor{--face-size:160px;top:calc(125px - var(--sprite-height) * var(--face-y,.1));left:50%;right:auto;translate:-50% 0}html[data-chapter="C07"] #actors .actor.secondary{display:none}html[data-chapter="C07"] #actors .actor[data-character="lord"]{height:100%;top:13%}.ending-title{inset:20% 5% auto;gap:18px}.ending-title strong{letter-spacing:.12em}}
+
+html[data-chapter="C07"] .stage.ending-cg .background{background-position:46% 35%;animation:farewellCamera 20s ease-out both}
+@keyframes farewellCamera{from{transform:scale(1.015)}to{transform:scale(1.035)}}

@@ -3,7 +3,7 @@
   "title": "言の葉の檻 ― 千年の約束 ―",
   "scope": "第1・2章優先素材。全章完成ではない。",
   "sourceHtmlBlob": "b262d566c888b1f35cb91f69524190c8e1b31247",
-  "integration": "既存ゲーム未組み込み。URLはmanifest.jsonの所在を基準とする。章のbackgrounds.fileとlayers、必要なcharacters.statesのみ読み込む。",
+  "integration": "全七章の専用ゲーム heian-portal/secret-vn/ で使用。通常ポータルは条件達成時に入口を表示。URLはmanifest.jsonの所在を基準にし、章の背景・人物だけ必要時に読む。マスター画像をゲーム開始時に読み込まない。",
   "backgrounds": {
     "BG00": {
       "label": "現代の放課後の教室",
@@ -549,6 +549,15 @@
       "layers": [],
       "status": "produced-or-reused-runtime-variant",
       "note": "創作イメージ。史実の復元図ではない。墨・光の差分は同じ広間を共有。文字はHTMLで表示。桜降下なし。"
+    },
+    "BG43H": {
+      "label": "三人の別れ・抱擁の一枚絵",
+      "chapter": "C07",
+      "file": "backgrounds/c07-farewell-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-farewell-cg",
+      "note": "既存3人と夜明けの庭を参照した創作一枚絵。C07-S09-L17から21。人物を二重に重ねない。"
     }
   },
   "characters": {
@@ -4207,6 +4216,22 @@
       "credit": "並んだままで（ユーザー提供音源）",
       "usage": "本プロジェクトのエンディング用として提供。第三者向け再配布ライセンスを断定しない。",
       "fadeOutSeconds": 8
+    },
+    {
+      "file": "backgrounds/c07-farewell-v1.webp",
+      "bytes": 238222,
+      "width": 1600,
+      "height": 900,
+      "alpha": false,
+      "sha256": "6d4da581c1d94e14aed4118d59bc453f4899886f14f75113874898f35a62fea8"
+    },
+    {
+      "file": "masters/c07-farewell-v1-source.png",
+      "bytes": 2740238,
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "sha256": "3c93eae47537db7d00305cb4b6f25fd217050521eefa530976de0e2ae10b917a"
     }
   ],
   "backlog": [
