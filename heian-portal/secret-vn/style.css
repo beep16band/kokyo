@@ -47,3 +47,5 @@ html[data-chapter="C05"] .stage.quiz .actor.center{height:85%;top:145px}
 @keyframes crestArrival{0%{opacity:0;scale:.7}25%,85%{opacity:1;scale:1}100%{opacity:0;scale:1.1}}
 @media(max-width:700px){html[data-chapter="C05"] .actor[data-character="saigyo"],html[data-chapter="C05"] .actor[data-character="teika"]{height:120%;top:8%}html[data-chapter="C05"] .stage.quiz .actor.center{height:75%;top:clamp(110px,15svh,130px)}#nameReveal strong{font-size:clamp(34px,9vw,56px);letter-spacing:.17em}#nameReveal .name-crest{width:60px;height:60px}}
 @media(max-height:550px) and (min-width:701px){html[data-chapter="C05"] .stage.quiz .actor.center{height:75%;top:110px}}
+/* Tall sprites must not create an internally scrollable stage when a choice receives focus. */
+html[data-chapter="C05"] .stage{overflow:clip}

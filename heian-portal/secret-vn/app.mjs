@@ -1,4 +1,4 @@
-import {visual5,emotion5,paintDirection5,NameReveal5} from './chapter5-visuals.mjs?v=1';
+import {visual5,emotion5,paintDirection5,NameReveal5} from './chapter5-visuals.mjs?v=2';
 import {visual4,emotion4,character4,paintDirection4} from './chapter4-visuals.mjs?v=1';
 import {createPortrait} from './portraits.mjs';
 import {StoryEngine,normalProgress,shuffle,SAVE_KEY,MANUAL_KEY,chapterSaveKey} from './core.mjs?v=3';

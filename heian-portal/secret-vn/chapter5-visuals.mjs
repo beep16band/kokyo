@@ -16,7 +16,7 @@ export function emotion5(id,scene,n){
   if(scene==='C05-S01')return n>=3?'surprise':'fear';
  }
  if(id==='minato'){
-  if(scene==='C05-S09')return n>=22?'smile':n>=7?'resolve':'fear';
+  if(scene==='C05-S09')return n>=26?'surprise':n>=22?'smile':n>=7?'resolve':'fear';
   if(scene==='C05-S08')return n>=7?'resolve':'sad';
   if(scene==='C05-S07')return n>=11?'smile':'resolve';
  }
