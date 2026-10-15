@@ -1,0 +1,115 @@
+test-core.mjs
+PASS package structural audit checkpoint
+PASS first chapter four choices, stable answer IDs, no future-name spoiler
+PASS script narration/dialogue convert to playable line steps in exact order
+PASS empty / corrupt normal storage stays locked
+PASS all normal 5 read + all six 8-question perfect unlock; never writes
+PASS 16-question and full-bank perfect records accepted at exact lengths
+PASS missing sixth game / incomplete episode / impossible scores stay locked
+PASS all lines to chapter end, every wrong branch retries, eight correct gates
+PASS reload restores exact line and question; wrong answers do not open gates
+PASS back and chapter replay retain prior learning and safe question barriers
+PASS invalid / forged import cannot bypass quizzes or contaminate answer IDs
+PASS option shuffle keeps unique IDs attached to text over 100 rounds
+PASS normal storage keys never written; no OS motion preference binding
+RESULT 13 checks passed; actual browser / device QA is separate.
+
+test-chapter2.mjs
+PASS chapter 2 has eight scenes / twelve unique four-choice questions
+PASS all 36 wrong routes retry; all twelve correct gates lead to C02 end
+PASS recovery dialogue follows all four questions, never precedes the quiz
+PASS save and reload at every step preserves state and gates
+PASS first chapter key and records stay separate
+PASS no future family name or technical QUIZ instruction appears in playable lines
+PASS all face crops remain within their original transparent image dimensions
+RESULT 7 chapter 2 checks passed
+
+test-chapter3.mjs
+PASS nine scenes, eight required and two optional questions, unique stable four-choice IDs
+PASS all 24 wrong routes retry, all eight gates reach end without optional activity
+PASS recovery narration and dialogue appear only beyond all four correct gates
+ reload positions: 66
+PASS saved position reloads correctly at every line, quiz, and chapter end
+PASS chapter key isolation and imported cursor cannot bypass required gates
+PASS both long poem and tanka retained in optional scene without technical narration or early surname reveal
+PASS Man’yoshu variants are not silently replaced by Hyakunin Isshu variants
+PASS every used background and actor face crop resolves
+RESULT 8 chapter 3 checks passed
+
+test-chapter4.mjs
+PASS nine scenes/eight unique stable four-choice questions
+ playable lines: 77
+PASS all wrong routes retry; eight gates lead to chapter end
+ save positions: 86
+PASS recovery follows required four-correct gates, and all saves reload safely
+PASS script preserves expanded river scene, conceals surname and excludes stage directions
+PASS river progress grows only with answers; facial recovery is synchronized with shadow removal
+PASS child/adult flashbacks and dawn state use the proper images
+PASS chapter key isolation and fabricated imports do not bypass quiz gates
+PASS all backgrounds and actor states have valid face coordinates
+RESULT 8 chapter 4 checks passed; browser QA is separate.
+
+test-chapter5.mjs
+PASS nine scenes/eight unique stable four-choice questions
+PASS all 24 wrong routes retry; eight correct gates lead to chapter end
+PASS four-correct gates precede recovery; every position resumes correctly
+PASS essential source dialogue is preserved; controls do not leak into narration
+PASS surname is concealed until the exact reveal line, including scene headings
+PASS recovery changes portraits and environments together; restored shore has no new flowers
+PASS chapter saves are isolated and forged completion cannot bypass questions
+PASS asset inventory and individual face crops are valid
+PASS name reveal holds silence 1600ms, releases at 4800ms, and cancels stale timers
+RESULT 9 chapter 5 checks passed; browser QA is separate.
+
+test-chapter6.mjs
+PASS ten scenes/eight unique stable four-choice questions
+PASS 97 playable lines, 24 wrong retries and eight gates reach the end
+PASS recoveries follow four-correct gates and all 106 positions resume
+PASS every source dialogue is retained and Mahiro explicitly survives
+PASS identity is revealed by the dialogue, not the preceding scene heading
+PASS archive, garden and present cut precisely at narrated scene changes
+PASS portraits and layers track recovery and the memory seal without early effects
+PASS chapter key isolation and fake completion cannot bypass the gates
+PASS every background and runtime face crop resolves
+RESULT 9 chapter six checks passed; browser QA is separate.
+
+test-chapter7.mjs
+PASS twelve scenes and ten unique four-choice gates
+PASS 137 lines, all 30 wrong choices, all saves resume and the true ending completes
+PASS ten questions must precede the return of the poets
+PASS every source dialogue is retained, including agency and surviving Mahiro
+PASS all thirteen returning poets use restored portraits
+PASS separate returns and the last letter resolve without falsely reuniting the schools
+PASS all runtime face crops/backgrounds resolve; no cherry petal layer
+RESULT 7 final chapter checks passed; browser QA remains separate
+
+test-ui-chapter2.mjs
+Application integration PASS: 55 lines 12 quizzes 36 wrong retries; C01 and normal saves unchanged
+
+test-ui-chapter3.mjs
+Application integration PASS: 57 lines 8 quizzes 24 wrong retries; C01/C02 and normal saves unchanged
+
+test-ui-chapter4.mjs
+Application integration PASS: 77 lines 8 quizzes 24 wrong retries; C01/C02/C03 and normal saves unchanged
+
+test-ui-chapter5.mjs
+Application integration PASS: 82 lines 8 quizzes 24 wrong retries; C01/C02/C03/C04 and normal saves unchanged
+Application reveal PASS: held text/advance/back/auto/skip; settings safely cancels silence without stale timers
+Audio output gate PASS: silence and mute block both sound outputs, restored audio is released
+
+test-ui-chapter6.mjs
+Application integration PASS: 97 lines 8 quizzes 24 wrong retries; C01–C05 and normal saves unchanged
+
+test-ui-chapter7.mjs
+Application integration PASS: 137 lines 10 quizzes 30 wrong retries; C01–C06 and normal saves unchanged
+
+test-ending-audio.mjs
+PASS ending audio: exact cue, six-second fade, quiet ceiling, no per-line restart, mute, visibility pause, exit reset, late play cancellation and blocked-play feedback
+
+test-arrival.mjs
+PASS automatic arrival: last story / last game, persistence before effect, one navigation, OP deferral, interrupted recovery, existing-progress protection, no repeat and storage failure fallback
+
+test-ui-arrival.mjs
+PASS target automatic boot: conversation opens without title click; normal saves retained
+
+PASS target automatic boot: URL cannot bypass learning conditions

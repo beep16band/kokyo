@@ -1,0 +1,13 @@
+#secretSignal81{position:fixed;inset:0;z-index:2147483000;overflow:hidden;background:transparent;outline:none;cursor:wait;isolation:isolate;touch-action:none}
+#secretSignal81 canvas,#secretSignal81 .arrival-scan,#secretSignal81 .arrival-veil{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#secretSignal81 canvas{image-rendering:pixelated;opacity:.14;filter:contrast(1.1);transition:opacity .55s}
+#secretSignal81 .arrival-scan{opacity:.25;background:repeating-linear-gradient(0deg,#0a0f18 0 2px,transparent 2px 6px);animation:arrivalScan 1s steps(5) both}
+#secretSignal81 .arrival-veil{background:#000;opacity:.04;transition:opacity .65s ease}
+#secretSignal81[data-phase=blackout] .arrival-veil{opacity:1}
+#secretSignal81[data-phase=blackout] canvas,#secretSignal81[data-phase=blackout] .arrival-scan{opacity:0;animation:none}
+#secretSignal81.quiet-arrival canvas,#secretSignal81.quiet-arrival .arrival-scan{display:none}
+.secret-break81 body>main{animation:arrivalDislocate 1s steps(5) both;pointer-events:none}
+.arrival-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@keyframes arrivalScan{0%,100%{translate:0 0}25%{translate:0 2px}60%{translate:0 -3px}80%{translate:0 1px}}
+@keyframes arrivalDislocate{0%,100%{transform:none}20%{transform:translateX(2px);filter:saturate(.6)}45%{transform:translateX(-3px);filter:saturate(.3)}70%{transform:translateX(1px);filter:saturate(.5)}}
+@media(prefers-reduced-motion:reduce){.secret-break81 body>main{animation:none}#secretSignal81 canvas,#secretSignal81 .arrival-scan{display:none}}
