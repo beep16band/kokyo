@@ -1,4 +1,4 @@
-import {writeArrival} from './arrival-state.mjs?v=1';
+import {writeArrival} from './arrival-state.mjs?v=2';
 import {visual7,emotion7,paintDirection7} from './chapter7-visuals.mjs?v=2';
 import {EndingTrack,isEndingCue} from './ending-audio.mjs?v=2';
 import {visual6,emotion6,paintDirection6} from './chapter6-visuals.mjs?v=1';

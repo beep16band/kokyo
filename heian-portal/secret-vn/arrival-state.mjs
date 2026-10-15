@@ -5,5 +5,6 @@ export function hiddenStoryStarted(storage){try{const s=JSON.parse(storage.getIt
 export class ArrivalController{
  constructor({unlocked,marker,started,ready,write,present,navigate}){Object.assign(this,{unlocked,marker,started,ready,write,present,navigate});this.phase='idle'}
  check(){if(this.phase!=='idle'||!this.unlocked())return false;if(this.marker()?.status==='entered')return false;if(this.started()){this.write('entered');return false}if(!this.ready())return false;this.phase='signal';this.write('pending');this.present(()=>this.go());return true}
+ reset(){this.phase='idle'}
  go(){if(this.phase!=='signal')return;this.phase='leaving';this.navigate()}
 }
