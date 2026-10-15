@@ -1,0 +1,538 @@
+{
+  "docs/ch1-dialogue-stairs-fix.md": {
+    "sha": "b1d2dcde6b4712248c672a7841c1e79737d5afac",
+    "matches": 0
+  },
+  "assets/kotoba-tower/question-bank.json": {
+    "sha": "4b659c58351082b8a6ee296f94f5564f67e40a47",
+    "matches": 0
+  },
+  "background.html": {
+    "sha": "e67b0dfe29d5f0ec883f8ef0c8d5dd28c3445a73",
+    "matches": 0
+  },
+  "docs/ch1-library-underground-fix.md": {
+    "sha": "7e0c295c5125eaa6d6d9f42fa015f9abc54d3af8",
+    "matches": 0
+  },
+  "docs/ch1-v027.md": {
+    "sha": "083f83d4ae482a785b39d3cf29ad3f0bcfb71376",
+    "matches": 0
+  },
+  "docs/game-access-responsive-check.html": {
+    "sha": "b2d173fd573c057b9382f72b109058d220a96cfe",
+    "matches": 0
+  },
+  "docs/game-play-restrictions-validation.json": {
+    "sha": "070b3f6ba23501d6d7a4b57eb5510bfec3445781",
+    "matches": 0
+  },
+  "docs/game-play-restrictions.md": {
+    "sha": "1c3396b901624b7d5b6bd179507bb0623d274ccf",
+    "matches": 0
+  },
+  "docs/kotoba-afterstory-assets.json": {
+    "sha": "250fb3dfd8b2e21af655c450c62689de310b26cd",
+    "matches": 0
+  },
+  "docs/kotoba-afterstory-publication.json": {
+    "sha": "a9ace12021c4e57318a5be48e09a20b84b553782",
+    "matches": 0
+  },
+  "docs/kotoba-afterstory-validation.json": {
+    "sha": "9f9612314c8fd21c4f502d7d2808899a190ec148",
+    "matches": 0
+  },
+  "docs/kotoba-afterstory.md": {
+    "sha": "0dabbce1aec012efa7ccd1d797ca9fe3c39d062a",
+    "matches": 0
+  },
+  "docs/kotoba-balance-current-audit.json": {
+    "sha": "198c46ae3c18e392351d701d3b08f422617a1011",
+    "matches": 0
+  },
+  "docs/kotoba-balance-economy.json": {
+    "sha": "f41c5b4ccba75d9f66ab1aa9d98dd0b67e6ddd7c",
+    "matches": 0
+  },
+  "docs/kotoba-balance-publication.json": {
+    "sha": "bf971165de71808478c50c56eaa10490770726b3",
+    "matches": 0
+  },
+  "docs/kotoba-balance-simulation.json": {
+    "sha": "6d73201e03b81f564b7eb681a59e8036775659d5",
+    "matches": 0
+  },
+  "docs/kotoba-balance-validation.json": {
+    "sha": "3c01dcb1c6fe879196c38fcab535da1eec2408e2",
+    "matches": 0
+  },
+  "docs/kotoba-balance.md": {
+    "sha": "06119f686b9d0f7e1b4c394dd7b36242132e9814",
+    "matches": 0
+  },
+  "docs/kotoba-chapter7.md": {
+    "sha": "84b87f21f8b574a53280f34989b564819d0046f9",
+    "matches": 0
+  },
+  "docs/kotoba-chapter8-assets.json": {
+    "sha": "6771cf92fcfb065dd5480a0c821ff2b683d34faa",
+    "matches": 0
+  },
+  "docs/kotoba-chapter8-simulation.json": {
+    "sha": "266f139a469d4cc64f28d863ca7612caf1b7c18f",
+    "matches": 0
+  },
+  "docs/kotoba-chapter8-publication.json": {
+    "sha": "ab2525499a93ac1cc045b93362c58fe28d130e23",
+    "matches": 0
+  },
+  "docs/kotoba-chapter8-validation.json": {
+    "sha": "7d0ec997060bf49c01af7817f1036a092b0b38fb",
+    "matches": 0
+  },
+  "docs/kotoba-chapter8-economy.json": {
+    "sha": "bba95dea25a4fe5f4e68dfe017e585df24f3e68f",
+    "matches": 0
+  },
+  "docs/kotoba-chapter8.md": {
+    "sha": "2ef6b9a68ce9a38d0bf7f504c1aa9d12b30fdcb6",
+    "matches": 0
+  },
+  "docs/kotoba-feedback0141-publication.json": {
+    "sha": "e564389143c607f857b7f852434323c2e61d4451",
+    "matches": 0
+  },
+  "docs/kotoba-feedback0141-dom.json": {
+    "sha": "6d39147783dee254b5fb6e9099e1a4a3b3947640",
+    "matches": 0
+  },
+  "docs/kotoba-feedback0141-tests.json": {
+    "sha": "043e59c817dabf028d3cba7a1a6964b0ad4a3883",
+    "matches": 0
+  },
+  "docs/kotoba-feedback0141-validation.json": {
+    "sha": "9bb33e560216bc28578382b80c7bb401259d1ee4",
+    "matches": 0
+  },
+  "docs/kotoba-feedback3-assets.json": {
+    "sha": "7bb237432edd975d0ae55d018745238dda6474e7",
+    "matches": 0
+  },
+  "docs/kotoba-feedback3.md": {
+    "sha": "b07214add4044030ae1fa5b8b5557f7a81208654",
+    "matches": 0
+  },
+  "docs/kotoba-part2-cores-back.md": {
+    "sha": "cf65c1bd1f6b6a7bd0fc3346da3e24b9bb23b76b",
+    "matches": 0
+  },
+  "docs/kotoba-part2-cores-simulation.json": {
+    "sha": "cf96fd99b0b4d2c96e96c05cffcd814219b994a2",
+    "matches": 0
+  },
+  "docs/kotoba-part2-cores-validation.json": {
+    "sha": "c02d120f6e14843adcc2e93801d3f0691b70d894",
+    "matches": 0
+  },
+  "docs/kotoba-part2-cores.md": {
+    "sha": "232baa203a476ed229226b0f020377a0d4ce4db2",
+    "matches": 0
+  },
+  "docs/kotoba-part2-deep-validation.json": {
+    "sha": "a94eb21866690abe9f34ed092e2c729c6ec86460",
+    "matches": 0
+  },
+  "docs/kotoba-feedback0141.md": {
+    "sha": "70afefd4e9f1844fad70fa5b18c15e901e08015d",
+    "matches": 0
+  },
+  "docs/kotoba-part2-deep.md": {
+    "sha": "69a1409db95b28af0df126f55076e2b76f400ab0",
+    "matches": 0
+  },
+  "docs/kotoba-part2-equipment-audit.json": {
+    "sha": "0e485c8aaa8cd821c836953ccee693e3ddc397c3",
+    "matches": 0
+  },
+  "docs/kotoba-part2-intro-balance.json": {
+    "sha": "c89c1a0da5d71509bc87d57ba47a2c67819f29d8",
+    "matches": 0
+  },
+  "docs/kotoba-part2-intro-dom-regression.json": {
+    "sha": "f28569def9d5d83060c736f874c70b00489df226",
+    "matches": 0
+  },
+  "docs/kotoba-part2-intro-dom-results.json": {
+    "sha": "8f0bf3df9896ea56a5b5432e3866c2a0da7bcfc6",
+    "matches": 0
+  },
+  "docs/kotoba-part2-intro-publication.json": {
+    "sha": "1e9d7d462f55f3bf8fda858a9299cc14536ed15a",
+    "matches": 0
+  },
+  "docs/kotoba-part2-intro-source-validation.json": {
+    "sha": "08017fac2e6b90a639b9b56884cfe1b15da7a65c",
+    "matches": 0
+  },
+  "docs/kotoba-part2-intro-test-results.json": {
+    "sha": "57faac6eb9beecc8aaef3cf6895216cf35a83a31",
+    "matches": 0
+  },
+  "docs/kotoba-part2-intro.md": {
+    "sha": "d10c1b86f88ceeb80865cd7bd2b8ab67f39dd64f",
+    "matches": 0
+  },
+  "docs/kotoba-part2-intro-validation.json": {
+    "sha": "f0ba7878aadaf9fafd079c1c97011f4088dc6941",
+    "matches": 0
+  },
+  "docs/kotoba-part2-preparation-publication.json": {
+    "sha": "e90a1ef58c61af9407d1ec052765a953704e81db",
+    "matches": 0
+  },
+  "docs/kotoba-part2-preparation.md": {
+    "sha": "6d5ab24b8d8e7308d7eac8eafc4684d9e69f080c",
+    "matches": 0
+  },
+  "docs/kotoba-part2-preparation-validation.json": {
+    "sha": "1ddc4e5e0b47adf31c736f5a49dcb8491c198b70",
+    "matches": 0
+  },
+  "docs/kotoba-part2-support-validation.json": {
+    "sha": "38f95b22de57695a53247acc199a25551608e6bc",
+    "matches": 0
+  },
+  "docs/kotoba-ranking-verification.json": {
+    "sha": "32e840bae7e04b85f5aa1f7f5a780396c88b1720",
+    "matches": 0
+  },
+  "docs/kotoba-part2-support.md": {
+    "sha": "bfaf640b597cc43ced2ebb6b02516526cc735157",
+    "matches": 0
+  },
+  "docs/kotoba-ranking.md": {
+    "sha": "c63a965ed88ec5571df69f516ebcfc8cd4267597",
+    "matches": 0
+  },
+  "docs/kotoba-scan-review.md": {
+    "sha": "9c99a80185b810b5631fb5364f5cdab778bc2c66",
+    "matches": 0
+  },
+  "docs/part2-cores-back-publication.json": {
+    "sha": "c19c7ee339f511db92df520dc84135832044ff6f",
+    "matches": 0
+  },
+  "docs/kotoba-tower.md": {
+    "sha": "aba84a411d19dd4e3cfcd8d842f5871d2aaabeac",
+    "matches": 0
+  },
+  "docs/part2-reunion-validation.json": {
+    "sha": "52fe2cc3cdb057e4d34b402838e07c583630ec02",
+    "matches": 0
+  },
+  "docs/part2-reunion-release.md": {
+    "sha": "56a8e25eae38315d2f98b00e24b103238e9df2f0",
+    "matches": 0
+  },
+  "docs/part2-cores-back-validation.json": {
+    "sha": "d384a431377e848f2c852aa5985689aa27fb7807",
+    "matches": 0
+  },
+  "heian-love/index.html": {
+    "sha": "946f2bbafc7f84f5811cfdb1308bc372a9e9dff7",
+    "matches": 0
+  },
+  "docs/progress.json": {
+    "sha": "69cd8f0a005388005c97cad96ad8773631af0e74",
+    "matches": 0
+  },
+  "heian-portal/assets/secret-vn/PROMPTS.md": {
+    "sha": "4cbc8fe3123845590103e25f8ad76fe3e04e4421",
+    "matches": 0
+  },
+  "heian-portal/assets/secret-vn/README.md": {
+    "sha": "66ad27a91b95ea16c2d8d6dbd393d153f25c2a39",
+    "matches": 0
+  },
+  "heian-portal/assets/secret-vn/manifest.json": {
+    "sha": "d3b9b50dddc29ae4d77b7f3da5e52cc3ae9e208a",
+    "matches": 0
+  },
+  "heian-portal/assets/secret-vn/preview.html": {
+    "sha": "4fa05e78e755b4bcd84c01a3c03480fbfaded94d",
+    "matches": 0
+  },
+  "heian-portal/assets/secret-vn/references/poet-reference-map.json": {
+    "sha": "1909afac3ca959515f8ebca5122294ebc4917f93",
+    "matches": 0
+  },
+  "heian-portal/index.html": {
+    "sha": "b262d566c888b1f35cb91f69524190c8e1b31247",
+    "matches": 1
+  },
+  "heian-portal/secret-vn/ASSETS-C03.md": {
+    "sha": "f4bd90252f6a315abb2b7631f61bb328da618edf",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/ASSETS-C04.md": {
+    "sha": "f97c9eadc673825da3e05927f9d9d548f9b4b33a",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/CHAPTER2.md": {
+    "sha": "5b9fd88067fe745833823b0ccf088315a96e22bc",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/CHAPTER3.md": {
+    "sha": "5648355f43875ba4c976e1a6cb2dcd4683dc014f",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/CHAPTER4.md": {
+    "sha": "9e9a9266b3af315b3128f697aa8052a6dd05070d",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/QA-C04.md": {
+    "sha": "cc0fff51a8c6a59750ca56e018d3e308f49c6150",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/README.md": {
+    "sha": "a59817fbeb93f7166db93361bf9ccf2d2422ef4d",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/app.mjs": {
+    "sha": "3e2ebc34b094b89ae8835121bc088892abf4c065",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter1.json": {
+    "sha": "f4befbef64bcf52a33bc655c58ac3a01f4612f02",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter2-art-frame.html": {
+    "sha": "48960100ffe9705cc6a2ffb5e3c9260bf19c2b31",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter2-art.html": {
+    "sha": "c4d7a38004063998be08feea9b419694d4641fbc",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter2.html": {
+    "sha": "c0c0f7c7a2e3801f75b12aeda35a5b1b2d17e213",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter2.json": {
+    "sha": "e5b678062feb016c898dab0f491a1fed09ccc361",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter3-art-frame.html": {
+    "sha": "c21634640fb621f5c7e2084f31b90517285de6b5",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter3-art.html": {
+    "sha": "6775e34a9205d7b886b57b6756f497ac00ef35c3",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter3.html": {
+    "sha": "be5669c824b1bb5afaf3a8aafa664f87510ce4e2",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter3.json": {
+    "sha": "537c8dc875bafb8c5acd8bb140500ca5662eab85",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter4-art-frame.html": {
+    "sha": "8348d2c8e03e02c6c335e3fdb3e396be66730fc2",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter4-art.html": {
+    "sha": "14afe2cf810e39fa240ddfa3fd1b1da58059fab7",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter4-visuals.mjs": {
+    "sha": "94ffca88e495ae8dc278dc0b94442b383468981b",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter4.html": {
+    "sha": "2e0cec11192d0ea0a66e91e9e923d1af156785ba",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/chapter4.json": {
+    "sha": "11cfb78a60624075d4cf972404f542fec20a0738",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/core.mjs": {
+    "sha": "d7d06763432d6bcada4681411a17c0cb23e7a108",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/index.html": {
+    "sha": "11b2f6f1f9b424713cf2945b6d4eb21efe9b868a",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/package-audit.json": {
+    "sha": "7ee71bee5ee5e8c83789901c199d3dfe80ddbe37",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/portrait-check.html": {
+    "sha": "39155e0147b1e9a5cedce287360cc340b0a54960",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/portraits.mjs": {
+    "sha": "89a8e0f429f107dc5b8d78dc973add4a5668d686",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/style.css": {
+    "sha": "5553f53d454e17b6368e289665fa6385badbcc1b",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/test-chapter2.mjs": {
+    "sha": "d340407718caa2c8d09c6f3d07df8547232742ff",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/test-chapter3.mjs": {
+    "sha": "840d405833d5d501107e6012d6a524a2a1de5a5b",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/test-chapter4.mjs": {
+    "sha": "69042dafa628b586b6e372dc127b03a288435081",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/test-core.mjs": {
+    "sha": "e8b07ecde34c8059b608ade1a69def9abea0ab20",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/test-ui-chapter2.mjs": {
+    "sha": "06ed2d7c67e439ea358094eee0ce2a61f315a83f",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/test-ui-chapter3.mjs": {
+    "sha": "84fd2c07b99703ca1d2faa01aef6c3bf50cd5cf3",
+    "matches": 0
+  },
+  "heian-portal/secret-vn/test-ui-chapter4.mjs": {
+    "sha": "dc24b4e42944a207b3ecee507c96c625216ad47f",
+    "matches": 0
+  },
+  "heian-portal/assets/cc64d396fb804c86eb40.svg": {
+    "sha": "a71ba57c3360c7b08901cca76341e4c1c6b25b63",
+    "matches": 0
+  },
+  "heian-portal/assets/d19966aa7cc855d65280.svg": {
+    "sha": "fda67c9afbe48db993497e2d051ea9a4f9cc8a13",
+    "matches": 0
+  },
+  "index.html": {
+    "sha": "ca9cacb5e1480eb5dcc87da3ad2a90b69c53520b",
+    "matches": 0
+  },
+  "kotoba-ranking/challenges.json": {
+    "sha": "0fe1c6f7d614570658eda969f415a5fecfaa48cb",
+    "matches": 0
+  },
+  "kotoba-ranking/firebase.json": {
+    "sha": "6de04d747aa5179b18472a061ec6fa126cd4a08b",
+    "matches": 0
+  },
+  "kotoba-ranking/firebase-config.json": {
+    "sha": "81206eeb34cb1a1b738bf6efdf9ef385aaef36b2",
+    "matches": 0
+  },
+  "kotoba-ranking/teacher.js": {
+    "sha": "be920e9cead48a64a36732271fc47bbf4aab3340",
+    "matches": 0
+  },
+  "kotoba-ranking/teacher.html": {
+    "sha": "64ae3ee295cb2a2ef238873444b395171a5d389d",
+    "matches": 0
+  },
+  "kotoba-tower.html": {
+    "sha": "711f98ec9cd6a5671d50c9a61b1c65ac96eb61ea",
+    "matches": 0
+  },
+  "kt-prep-7q4m2.html": {
+    "sha": "441476c399a9feadf0b7b8c03c79ffcfc5111f80",
+    "matches": 0
+  },
+  "kt-prep-v021.html": {
+    "sha": "e492ec35de352b31df60586f7b681342b5f28556",
+    "matches": 0
+  },
+  "kt-prep-v022.html": {
+    "sha": "4b119c85292551b960f5434c3be50ea0b39caabc",
+    "matches": 0
+  },
+  "play-permission.json": {
+    "sha": "361d20a3b6aada61c8bebc0b034a97cb29a39ae6",
+    "matches": 0
+  },
+  "kotoba-ranking/ranking.js": {
+    "sha": "600ebc73a590130cfac9b1366a4c06e5e8ee0f25",
+    "matches": 0
+  },
+  "scripts/ch1-adventure.inc.js": {
+    "sha": "f0df302b6c35b17b2ab07844e68e69defa6eeae9",
+    "matches": 0
+  },
+  "scripts/ch1-check-flow.js": {
+    "sha": "bee1efe0db6e03aafeb542cc735f784ecc10747c",
+    "matches": 0
+  },
+  "scripts/ch1-test-bridge.inc.js": {
+    "sha": "d7688031fbc45290be9a0968efea933374c7bdcc",
+    "matches": 0
+  },
+  "tests/ch1-browser-check.html": {
+    "sha": "416d48b0aeb50f08b69285e6f715f3eaeaf53147",
+    "matches": 0
+  },
+  "tests/ch1-browser-v027b.html": {
+    "sha": "0dfc7d21a944c6557bc8057379ca3f5cd7f62292",
+    "matches": 0
+  },
+  "tests/ch1-browser-v027a.html": {
+    "sha": "8bc64abaef87aef982d3da93f121b500cac3e24a",
+    "matches": 0
+  },
+  "tests/ch1-browser-v027d.html": {
+    "sha": "120cbf5ec3707c1dd436cffc073e354d92567fd6",
+    "matches": 0
+  },
+  "tests/ch1-browser-v027e.html": {
+    "sha": "d4f66cfa43bbbd070835229ee371eb960e99cd87",
+    "matches": 0
+  },
+  "tests/ch1-fixture-v027a.html": {
+    "sha": "6072ba2dc260e9f7d9d388e14eb3389ee78a16a5",
+    "matches": 0
+  },
+  "tests/ch1-fixture-v027b.html": {
+    "sha": "21c379a6ac4586233b376116c227319cf67a590a",
+    "matches": 0
+  },
+  "tests/ch1-browser-v027c.html": {
+    "sha": "aa4943552144552c8c4dbd656d2cae1ac530367c",
+    "matches": 0
+  },
+  "tests/ch1-fixture-v027d.html": {
+    "sha": "90ca7741dd143a17983f8a73b2f6e4de0e907e1a",
+    "matches": 0
+  },
+  "tests/ch1-fixture-v027c.html": {
+    "sha": "2a027945f24bf5f4b005966b3d24985ecd6aef01",
+    "matches": 0
+  },
+  "tests/ch1-fixture-v027e.html": {
+    "sha": "0de4c85714b51e880ee63e616c770a741ddb3d87",
+    "matches": 0
+  },
+  "故郷_語句RPGs2.html": {
+    "sha": "c0e82834d3ac80b2c407f6938d8266363f110e44",
+    "matches": 0
+  },
+  "tests/ch1-fixture.html": {
+    "sha": "21c379a6ac4586233b376116c227319cf67a590a",
+    "matches": 0
+  },
+  "故郷学習ホームv3.html": {
+    "sha": "aece10b21e57cca7d78bf3d5a3b79e65066d71aa",
+    "matches": 0
+  }
+}
