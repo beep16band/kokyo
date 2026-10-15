@@ -1,0 +1,2040 @@
+{
+  "version": "1.2-c06-staging",
+  "chapterId": "C06",
+  "chapterTitle": "第六章　橘の名、榊の誓い",
+  "endText": "今度は、一人で決めない。三人は忘れの主が待つ、記憶の終わる場所へ。第七章へ続く。",
+  "scriptStatus": "v1.2統合稿の試験実装。台詞の骨格を継承。最終台本・教師校閲は未完了。",
+  "scenes": [
+    {
+      "scene_id": "C06-S01",
+      "chapter_id": "C06",
+      "title": "封じられた宮殿",
+      "background_ids": [
+        "BG35"
+      ],
+      "characters": [
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "palace-horror"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "墨に侵食された宮殿。灯は揺れ、廊下の障子に影が走る。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "ことはの声は、ここから聞こえた。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "直接、何があったのか聞こう。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "影の声",
+          "text": "言ってはならない。思いを知られてはならない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "また歌人の記憶だ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "閉ざされた御簾の部屋が現れる。"
+        }
+      ],
+      "visual_stage": "background:BG35; characters:茜,湊; events:palace-horror",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S02",
+      "chapter_id": "C06",
+      "title": "言えなかった思い",
+      "background_ids": [
+        "BG36"
+      ],
+      "characters": [
+        "式子内親王",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "poet-shadow"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "薄暗い御簾の部屋に、式子内親王の姿がある。顔の色も表情も読めない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "式子内親王",
+          "text": "隠しておかねばならない……何を、隠していたのか。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "大切な思いがあったんですね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "式子内親王",
+          "text": "苦しかったことしか、覚えていない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "「玉の緒よ」の歌を読んでみよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "和歌の文字が御簾に浮かぶ。"
+        }
+      ],
+      "visual_stage": "background:BG36; characters:式子内親王,茜,湊; events:poet-shadow",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S03",
+      "chapter_id": "C06",
+      "title": "式子内親王の試練",
+      "background_ids": [
+        "BG36"
+      ],
+      "characters": [
+        "式子内親王"
+      ],
+      "event_tags": [
+        "quiz:w15"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C06-W15-Q01",
+        "C06-W15-Q02",
+        "C06-W15-Q03",
+        "C06-W15-Q04"
+      ],
+      "quiz_gate": "all_four_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「式子内親王」。玉の緒、ながらへば、忍ぶる、内容を問う。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "命に呼びかける強い言葉だね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "隠した恋心の切迫感を、歌の言葉から確かめよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "四問正解で御簾から光が差す。"
+        }
+      ],
+      "visual_stage": "background:BG36; characters:式子内親王; events:quiz:w15",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      },
+      "quizBeforeLine": 3,
+      "controlLines": [
+        0,
+        3
+      ]
+    },
+    {
+      "scene_id": "C06-S04",
+      "chapter_id": "C06",
+      "title": "命を懸けた言葉",
+      "background_ids": [
+        "BG36"
+      ],
+      "characters": [
+        "式子内親王",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "poet-recovery"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "式子内親王の顔を覆う影が消える。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "式子内親王",
+          "text": "秘めた思いを、隠し続けられなくなることが恐ろしかったのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "歌に強い気持ちが表れていたんですね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "式子内親王",
+          "text": "思いを隠すか、伝えるか。誰かが代わりに決めることではありません。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "……俺たちも、自分で決めたい。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "「忍」の札が現れ、雪の庭への道が開く。"
+        }
+      ],
+      "visual_stage": "background:BG36; characters:式子内親王,茜,湊; events:poet-recovery",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S05",
+      "chapter_id": "C06",
+      "title": "雪の降る新年",
+      "background_ids": [
+        "BG37"
+      ],
+      "characters": [
+        "大伴家持",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "gray-snow"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "灰色の雪が静かに降る庭。大伴家持が動かず立っている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "大伴家持",
+          "text": "新しき年……。その先を思い出せぬ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "雪が降っているのに、何も祝っていないみたいだ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "「新しき年の初めの初春の」。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "大伴家持",
+          "text": "私は、何を願っていたのだろう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "四つの問いが雪片に変わる。"
+        }
+      ],
+      "visual_stage": "background:BG37; characters:大伴家持,茜,湊; events:gray-snow",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S06",
+      "chapter_id": "C06",
+      "title": "大伴家持の試練",
+      "background_ids": [
+        "BG37"
+      ],
+      "characters": [
+        "大伴家持"
+      ],
+      "event_tags": [
+        "quiz:w09"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C06-W09-Q01",
+        "C06-W09-Q02",
+        "C06-W09-Q03",
+        "C06-W09-Q04"
+      ],
+      "quiz_gate": "all_four_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「大伴家持」。けふ、いやしけ、吉事、内容を問う。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "雪が積もることに、よいことが重なる願いを託している。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "「いやしけ」の意味を忘れずに。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "四問正解で雪が白く輝き始める。"
+        }
+      ],
+      "visual_stage": "background:BG37; characters:大伴家持; events:quiz:w09",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      },
+      "quizBeforeLine": 3,
+      "controlLines": [
+        0,
+        3
+      ]
+    },
+    {
+      "scene_id": "C06-S07",
+      "chapter_id": "C06",
+      "title": "未来へ降る雪",
+      "background_ids": [
+        "BG37"
+      ],
+      "characters": [
+        "大伴家持",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "snow-recovery"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "雪が本来の白さを取り戻し、庭を朝日が照らす。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "大伴家持",
+          "text": "新年の雪のように、よいことが重なれと願ったのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "私たちも、元の世界に帰りたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "それと、ことはを助けたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "大伴家持",
+          "text": "過ぎた日を戻すことはできずとも、新しい日は迎えられます。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "「願」の札が光り、奥の書庫へ続く。"
+        }
+      ],
+      "visual_stage": "background:BG37; characters:大伴家持,茜,湊; events:snow-recovery",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S08",
+      "chapter_id": "C06",
+      "title": "封印の書庫",
+      "background_ids": [
+        "BG38"
+      ],
+      "characters": [
+        "ことは",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "identity-reveal"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "封印の書庫で、ことはが二人を待っている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "ことは！　やっと会えた。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私の名は橘ことは。茜さん、あなたは遠い子孫です。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "橘……やっぱり、同じ家だったんだね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "そして私は、千年前の本人ではありません。封印に残された記憶の姿です。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "でも、今俺たちと話しているのは、ここにいることはだ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "通常編の最後、名前が歌集から消えたのは……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "二人の帰還を助けるために力を使ったからです。その後、封印の奥で眠っていました。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "あなたたちの学びが記憶を呼び覚まし、私もまた姿を取れたのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "じゃあ、また会えたのは……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "はい。でも、私には話さなければならない過ちがあります。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "ことはが千年前の巻物を開く。"
+        }
+      ],
+      "visual_stage": "background:BG38; characters:ことは,茜,湊; events:identity-reveal",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S09",
+      "chapter_id": "C06",
+      "title": "封印の夜",
+      "background_ids": [
+        "BG38",
+        "BG39"
+      ],
+      "characters": [
+        "ことは",
+        "真尋",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "flashback",
+        "seal-event"
+      ],
+      "dialogue_status": "expanded-v1.1-staging-approved-candidate",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "千年前の橘家の書庫。燭台の火が揺れ、ことはは禁術の巻物を開く。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "これで、悲しい記憶だけを取り除けるなら……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "望みを、言え。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋の苦しみを、消してください。楽しかった思い出は残して。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "記憶は、ひとつながりだ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……どういうこと？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "失う痛みを消せば、失った者への思いも薄れる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "そんなの、望んでいません。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "それでも、忘れさせたいか。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "ことはの脳裏を、真尋が母を失って泣く姿がよぎる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……少しだけでいいの。少しだけ……。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "巻物から墨が噴き出し、棚の歌集の文字を奪い始める。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "いや……！　止まって！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "悲しみも、喜びも、すべてなくせば苦しみはない。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "扉が開き、真尋が駆け込んでくる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "ことは！　巻物から離れろ！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋！　ごめんなさい、こんなはずじゃ……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "封じる方法はあるのか！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "記憶を守るには、誰かが大切な記憶の一部を封印の中心へ預けなければならないの。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "……俺がやる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "だめ！　戻らなくなるかもしれないのよ！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "俺の母上のことは、忘れたくない。だからこそ、これ以上誰かの記憶が消えるのを止めたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私が始めたことなのに……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "お前が全部背負うことじゃない。ここからどうするか、俺にも決めさせてくれ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "二人は封印の庭へ走る。中央の大巻物に黒い渦が巻いている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "この木札を残してくれ。榊の紋が、ここにいた証になる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……真尋。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "未来の俺の子孫に、俺の代わりに生きろなんて言わないでくれ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "ただ、歌を守ろうとしたことを忘れないでほしい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……約束する。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "真尋が巻物に手を置く。胸元から柔らかな光が流れ出し、墨の渦を押し戻す。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋！"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "光が収束し、真尋は膝をつく。ことはが支える。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "……全部は覚えていない。でも、お前がここにいるのは分かる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……ごめんなさい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "生きているんだから、これからどうするか考えよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "記録映像が止まる。現在のことはが語りを引き継ぐ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋も私も、現実の世界へ帰りました。でも、封印に預けた記憶の一部は戻らなかった。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "そして封じた墨は、真尋の記憶に入り込み、悲しみを忘れたいという願いを集め続けたのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "それが……忘れの主。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "はい。私が間違ったのは、真尋のためと思いながら、真尋の言葉を聞かなかったことです。"
+        }
+      ],
+      "visual_stage": "background:BG39; characters:ことは,真尋,茜,湊; events:flashback,seal-event",
+      "screenplay_version": "v1.1",
+      "script_previous_v1_length": 16,
+      "shot_cues": [
+        {
+          "after_line_index": 0,
+          "background_id": "BG38",
+          "cue_type": "fade",
+          "effect": "memory-sepia",
+          "sfx_id": "sfx-lantern",
+          "bgm_id": "music-memory",
+          "duration_ms": 1200
+        },
+        {
+          "after_line_index": 11,
+          "background_id": "BG38",
+          "cue_type": "overlay",
+          "effect": "ink-spread-scroll",
+          "sfx_id": "sfx-ink-impact",
+          "bgm_id": "music-danger",
+          "duration_ms": 2000
+        },
+        {
+          "after_line_index": 22,
+          "background_id": "BG39",
+          "cue_type": "cut",
+          "effect": "memory-garden",
+          "sfx_id": "sfx-footsteps",
+          "bgm_id": "music-seal",
+          "duration_ms": 1000
+        },
+        {
+          "after_line_index": 28,
+          "background_id": "BG39",
+          "cue_type": "effect",
+          "effect": "memory-seal-light",
+          "sfx_id": "sfx-chime",
+          "bgm_id": "music-seal-climax",
+          "duration_ms": 3200
+        }
+      ],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S10",
+      "chapter_id": "C06",
+      "title": "千年の誓い",
+      "background_ids": [
+        "BG38",
+        "BG35"
+      ],
+      "characters": [
+        "ことは",
+        "茜",
+        "湊",
+        "忘れの主"
+      ],
+      "event_tags": [
+        "three-person-choice"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "現在の書庫。ことはは二人に頭を下げる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋の意思に反して禁術を使い、あなたたちまで巻き込んだ。簡単に許さないでください。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "怖かったし、怒っていないわけじゃない。でも俺も自分で決めたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "間違いだったと思う。だけど、今ここにいることはは、どうしたいの？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……歌を守りたい。これ以上、記憶を奪わせたくありません。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "だったら三人で行こう。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "今度は、一人で決めません。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "書庫の奥の巨大な扉が開き、忘れの主の声が響く。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "記憶の終わる場所へ来るがよい。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "三人は最終章へ進む。"
+        }
+      ],
+      "visual_stage": "background:BG39,BG40; characters:ことは,茜,湊,忘れの主; events:three-person-choice",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "C06-W15-Q01",
+      "chapter_id": "C06",
+      "waka_id": "w15",
+      "prompt": "式子内親王の歌「玉の緒よ絶えなば絶えね」の「玉の緒」は何のたとえ？",
+      "options": [
+        "飾り",
+        "命",
+        "琴の弦",
+        "約束"
+      ],
+      "correct_index": 1,
+      "explanation": "「玉の緒」は、もとは玉を貫く糸。この歌では命のたとえとして呼びかける。装飾品の説明や、琴の弦・約束についての歌ではない。「絶え」という言葉が、糸と命の両方を思い浮かべさせる。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "命",
+      "correct_option_id": "correct",
+      "reviewStatus": "既存教材本文と機関資料で歌句・作者・巻歌番号を照合。最終教師校閲待ち。",
+      "choices": [
+        {
+          "id": "C06-W15-Q01-option-0",
+          "text": "飾り"
+        },
+        {
+          "id": "C06-W15-Q01-option-1",
+          "text": "命"
+        },
+        {
+          "id": "C06-W15-Q01-option-2",
+          "text": "琴の弦"
+        },
+        {
+          "id": "C06-W15-Q01-option-3",
+          "text": "約束"
+        }
+      ],
+      "answerId": "C06-W15-Q01-option-1"
+    },
+    {
+      "id": "C06-W15-Q02",
+      "chapter_id": "C06",
+      "waka_id": "w15",
+      "prompt": "「玉の緒よ」の歌の「ながらへば」を、現代仮名遣いに直すと？",
+      "options": [
+        "ながらえば",
+        "ながらわば",
+        "ながらいば",
+        "ながらへば"
+      ],
+      "correct_index": 0,
+      "explanation": "語中の「へ」を「え」と書き、「ながらえば」になる。「ば」はそのまま残す。意味を現代語に訳す問題ではなく、仮名遣いを直す問題。「ながらわば」「ながらいば」ではない。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "ながらえば",
+      "correct_option_id": "correct",
+      "reviewStatus": "既存教材本文と機関資料で歌句・作者・巻歌番号を照合。最終教師校閲待ち。",
+      "choices": [
+        {
+          "id": "C06-W15-Q02-option-0",
+          "text": "ながらえば"
+        },
+        {
+          "id": "C06-W15-Q02-option-1",
+          "text": "ながらわば"
+        },
+        {
+          "id": "C06-W15-Q02-option-2",
+          "text": "ながらいば"
+        },
+        {
+          "id": "C06-W15-Q02-option-3",
+          "text": "ながらへば"
+        }
+      ],
+      "answerId": "C06-W15-Q02-option-0"
+    },
+    {
+      "id": "C06-W15-Q03",
+      "chapter_id": "C06",
+      "waka_id": "w15",
+      "prompt": "「忍ぶることの弱りもぞする」の「忍ぶること」は、ここでは何をすること？",
+      "options": [
+        "訪問を待つ",
+        "旅立つ",
+        "思いを隠す",
+        "悲しみを忘れる"
+      ],
+      "correct_index": 2,
+      "explanation": "「忍ぶ」はここでは、恋する思いを人に知られないようにこらえ隠すこと。「もぞ」は、そうなると困るという心配を表す。隠す力が弱まり、恋心が外へ現れることを恐れている。訪問・旅・忘却という意味ではない。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "思いを隠す",
+      "correct_option_id": "correct",
+      "reviewStatus": "既存教材本文と機関資料で歌句・作者・巻歌番号を照合。最終教師校閲待ち。",
+      "choices": [
+        {
+          "id": "C06-W15-Q03-option-0",
+          "text": "訪問を待つ"
+        },
+        {
+          "id": "C06-W15-Q03-option-1",
+          "text": "旅立つ"
+        },
+        {
+          "id": "C06-W15-Q03-option-2",
+          "text": "思いを隠す"
+        },
+        {
+          "id": "C06-W15-Q03-option-3",
+          "text": "悲しみを忘れる"
+        }
+      ],
+      "answerId": "C06-W15-Q03-option-2"
+    },
+    {
+      "id": "C06-W15-Q04",
+      "chapter_id": "C06",
+      "waka_id": "w15",
+      "prompt": "「玉の緒よ絶えなば絶えねながらへば忍ぶることの弱りもぞする」に表れた心情に合う読みは？",
+      "options": [
+        "会えた喜び",
+        "長生きの願い",
+        "恋心が消えた",
+        "生き長らえると思いを隠せなくなりそうで命が絶えてほしいと詠む"
+      ],
+      "correct_index": 3,
+      "explanation": "「命よ、絶えるなら絶えてしまえ」と呼びかけ、生き続ければ恋心を隠し通せなくなるのでは、という切迫した心を強く表す。会えた喜びや長寿への願い、恋の消滅とは逆。現実に命が絶えたという出来事や、恋の相手の実名は本文にはない。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "生き長らえると思いを隠せなくなりそうで命が絶えてほしいと詠む",
+      "correct_option_id": "correct",
+      "reviewStatus": "既存教材本文と機関資料で歌句・作者・巻歌番号を照合。最終教師校閲待ち。",
+      "choices": [
+        {
+          "id": "C06-W15-Q04-option-0",
+          "text": "会えた喜び"
+        },
+        {
+          "id": "C06-W15-Q04-option-1",
+          "text": "長生きの願い"
+        },
+        {
+          "id": "C06-W15-Q04-option-2",
+          "text": "恋心が消えた"
+        },
+        {
+          "id": "C06-W15-Q04-option-3",
+          "text": "生き長らえると思いを隠せなくなりそうで命が絶えてほしいと詠む"
+        }
+      ],
+      "answerId": "C06-W15-Q04-option-3"
+    },
+    {
+      "id": "C06-W09-Q01",
+      "chapter_id": "C06",
+      "waka_id": "w09",
+      "prompt": "大伴家持の歌「新しき年の初めの初春の今日降る雪のいやしけ吉事」の「今日（きょう）」を、歴史的仮名遣いで書くと？",
+      "options": [
+        "けふ",
+        "きう",
+        "きょふ",
+        "けう"
+      ],
+      "correct_index": 0,
+      "explanation": "「今日」は歴史的仮名遣いで「けふ」、現代仮名遣いで「きょう」。「けう」「きょふ」「きう」ではない。原資料の漢字本文にも「家布」とあり、この語の古い表記に対応する。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "けふ",
+      "correct_option_id": "correct",
+      "reviewStatus": "既存教材本文と機関資料で歌句・作者・巻歌番号を照合。最終教師校閲待ち。",
+      "choices": [
+        {
+          "id": "C06-W09-Q01-option-0",
+          "text": "けふ"
+        },
+        {
+          "id": "C06-W09-Q01-option-1",
+          "text": "きう"
+        },
+        {
+          "id": "C06-W09-Q01-option-2",
+          "text": "きょふ"
+        },
+        {
+          "id": "C06-W09-Q01-option-3",
+          "text": "けう"
+        }
+      ],
+      "answerId": "C06-W09-Q01-option-0"
+    },
+    {
+      "id": "C06-W09-Q02",
+      "chapter_id": "C06",
+      "waka_id": "w09",
+      "prompt": "大伴家持の歌「今日降る雪のいやしけ吉事」で、「いやしけ」の意味は？",
+      "options": [
+        "静かに消えよ",
+        "減っていけ",
+        "ますます重なれ",
+        "流れ去れ"
+      ],
+      "correct_index": 2,
+      "explanation": "「いや」は、ますます。「しけ」は、重なれという呼びかけ。続く「吉事」に向けて、よいことがいっそう重なるように願う。消える・減る・流れ去る、という意味ではない。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "ますます重なれ",
+      "correct_option_id": "correct",
+      "reviewStatus": "既存教材本文と機関資料で歌句・作者・巻歌番号を照合。最終教師校閲待ち。",
+      "choices": [
+        {
+          "id": "C06-W09-Q02-option-0",
+          "text": "静かに消えよ"
+        },
+        {
+          "id": "C06-W09-Q02-option-1",
+          "text": "減っていけ"
+        },
+        {
+          "id": "C06-W09-Q02-option-2",
+          "text": "ますます重なれ"
+        },
+        {
+          "id": "C06-W09-Q02-option-3",
+          "text": "流れ去れ"
+        }
+      ],
+      "answerId": "C06-W09-Q02-option-2"
+    },
+    {
+      "id": "C06-W09-Q03",
+      "chapter_id": "C06",
+      "waka_id": "w09",
+      "prompt": "「新しき年の初めの初春の今日降る雪のいやしけ吉事」の「吉事」は何を指す言葉？",
+      "options": [
+        "雪の結晶",
+        "悲しいこと",
+        "旅の苦労",
+        "よい出来事"
+      ],
+      "correct_index": 3,
+      "explanation": "「吉事（よごと）」は、よい出来事・めでたいこと。雪の結晶そのものではなく、雪が降り重なる姿に託して願うものを指す。悲しみや旅の苦労ではない。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "よい出来事",
+      "correct_option_id": "correct",
+      "reviewStatus": "既存教材本文と機関資料で歌句・作者・巻歌番号を照合。最終教師校閲待ち。",
+      "choices": [
+        {
+          "id": "C06-W09-Q03-option-0",
+          "text": "雪の結晶"
+        },
+        {
+          "id": "C06-W09-Q03-option-1",
+          "text": "悲しいこと"
+        },
+        {
+          "id": "C06-W09-Q03-option-2",
+          "text": "旅の苦労"
+        },
+        {
+          "id": "C06-W09-Q03-option-3",
+          "text": "よい出来事"
+        }
+      ],
+      "answerId": "C06-W09-Q03-option-3"
+    },
+    {
+      "id": "C06-W09-Q04",
+      "chapter_id": "C06",
+      "waka_id": "w09",
+      "prompt": "「新しき年の初めの初春の今日降る雪のいやしけ吉事」に込められた願いは？",
+      "options": [
+        "雪が積もるようによいことが重なれ",
+        "雪で外出できず悲しい",
+        "去年を忘れたい",
+        "雪を不吉と感じる"
+      ],
+      "correct_index": 0,
+      "explanation": "新年に降る雪へ、よいことがますます重なってほしいという願いを託す。「新しき年の初めの初春の」という重なりも、年の始まりの祝意を響かせる。雪を不吉として嘆く歌でも、過去の記憶を消す歌でもない。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "雪が積もるようによいことが重なれ",
+      "correct_option_id": "correct",
+      "reviewStatus": "既存教材本文と機関資料で歌句・作者・巻歌番号を照合。最終教師校閲待ち。",
+      "choices": [
+        {
+          "id": "C06-W09-Q04-option-0",
+          "text": "雪が積もるようによいことが重なれ"
+        },
+        {
+          "id": "C06-W09-Q04-option-1",
+          "text": "雪で外出できず悲しい"
+        },
+        {
+          "id": "C06-W09-Q04-option-2",
+          "text": "去年を忘れたい"
+        },
+        {
+          "id": "C06-W09-Q04-option-3",
+          "text": "雪を不吉と感じる"
+        }
+      ],
+      "answerId": "C06-W09-Q04-option-0"
+    }
+  ],
+  "poems": {
+    "w15": {
+      "author": "式子内親王（しょくしないしんのう）",
+      "collection": "新古今和歌集 巻11・恋歌一・1034",
+      "text": "玉の緒よ 絶えなば絶えね ながらへば 忍ぶることの 弱りもぞする",
+      "reading": "たまのおよ たえなばたえね ながらえば しのぶることの よわりもぞする",
+      "meaning": "命よ、絶えるなら絶えてしまえ。このまま生き続けると、恋する思いをこらえ隠す力が弱まり、表に出てしまいそうで心配なのだから。",
+      "note": "「玉の緒」は命の比喩。「よ」は呼びかけ。「ながらへば」は生き長らえたなら。「忍ぶる」はここでは人に知られぬようこらえ隠すこと。「もぞ」は、そうなると困るという懸念。命へ強く呼びかける表現から、秘めた恋の切迫感を読む。作者の体験をそのまま記した日記とは決めず、相手を特定の人物と断定しない。平安末期の歌人と、鎌倉初期に撰進された新古今集を区別する。ゲーム中の発言は創作。",
+      "source": "https://lapis.nichibun.ac.jp/waka/waka_i010.html",
+      "sourceName": "国際日本文化研究センター・和歌データベース（新古今集1034）",
+      "textPolicy": "既存ポータルの教科書掲載確認済み本文を維持。日文研の無濁点仮名本文で歌句・作者・収録番号を照合。教材は漢字・濁点を補った学習用表記。説明は独自。",
+      "firstScene": "C06-S02"
+    },
+    "w09": {
+      "author": "大伴家持（おおとものやかもち）",
+      "collection": "万葉集 巻20・4516",
+      "text": "新しき 年の初めの 初春の 今日降る雪の いやしけ吉事",
+      "reading": "あらたしき としのはじめの はつはるの きょうふるゆきの いやしけよごと",
+      "meaning": "新しい年の始まり、新春の今日降る雪のように、よい出来事がいっそう重なっておくれ。",
+      "note": "「今日」は歴史的仮名遣いで「けふ」。「いや」はますます、「しけ」は重なれ、「吉事」はよい出来事。「新しき年」「初め」「初春」と始まりを重ね、新年の祝意を強める。正月は旧暦によるので、「初春」でも雪の降る景色と矛盾しない。題詞は因幡国の庁での正月一日の宴を示すが、ゲームの庭や会話は創作。万葉集は奈良時代までの歌を収める歌集で、古今集・新古今集と成立時期を区別する。",
+      "source": "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=4516",
+      "sourceName": "奈良県立万葉文化館・万葉百科（巻20・4516）",
+      "textPolicy": "西本願寺本を底本とする万葉百科の漢字本文・訓読・作者・巻歌番号に照合。教材の漢字・仮名表記を維持。現代語の意味と解説は独自。",
+      "firstScene": "C06-S05"
+    }
+  },
+  "manifest": {
+    "characters": {
+      "minato": {
+        "label": "湊",
+        "states": {
+          "normal": {
+            "id": "minato-normal",
+            "kind": "characters",
+            "file": "characters/minato-normal.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 56132,
+            "sha256": "ab9f2431df6050b3b4297a9f4d209b6ab9b580d1e7edfbf5ce90e421d97a15b4",
+            "source": "opening75/assets/eb51d6a61b887af0ec96.webp",
+            "alpha": true,
+            "nativeFrameHeight": 853,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              170,
+              190,
+              210,
+              210
+            ]
+          },
+          "smile": {
+            "id": "minato-smile",
+            "kind": "characters",
+            "file": "characters/minato-smile.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 59380,
+            "sha256": "38beca63d9c25187468ebcbdcf7399f06472707a30ba84bd6108f5ef1b767f97",
+            "source": "opening75/assets/eb51d6a61b887af0ec96.webp",
+            "alpha": true,
+            "nativeFrameHeight": 855,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              177,
+              189,
+              210,
+              210
+            ]
+          },
+          "surprise": {
+            "id": "minato-surprise",
+            "kind": "characters",
+            "file": "characters/minato-surprise.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 60672,
+            "sha256": "c5128c0759b7fddce7e492437982a2dc855d1d13e8cebb563168a94af3848557",
+            "source": "opening75/assets/eb51d6a61b887af0ec96.webp",
+            "alpha": true,
+            "nativeFrameHeight": 846,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              133,
+              199,
+              210,
+              210
+            ]
+          },
+          "fear": {
+            "id": "minato-fear",
+            "kind": "characters",
+            "file": "characters/minato-fear.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 48906,
+            "sha256": "7938b158499a2286e4c740e6a5feaaf5fa1efa1f689e1df893511f475a36a902",
+            "source": "imagegen:minato",
+            "alpha": true,
+            "nativeFrameHeight": 859,
+            "master": {
+              "file": "masters/minato-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              162,
+              184,
+              210,
+              210
+            ]
+          },
+          "sad": {
+            "id": "minato-sad",
+            "kind": "characters",
+            "file": "characters/minato-sad.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 45896,
+            "sha256": "046180700269f2a5a8fc4a817e2ae681de7cf53b4a647489d403609de0eee258",
+            "source": "imagegen:minato",
+            "alpha": true,
+            "nativeFrameHeight": 850,
+            "master": {
+              "file": "masters/minato-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              191,
+              193,
+              210,
+              210
+            ]
+          },
+          "resolve": {
+            "id": "minato-resolve",
+            "kind": "characters",
+            "file": "characters/minato-resolve.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 51380,
+            "sha256": "5d1699504ce2e34761b2c0719c86e05230ac4d783a1ecad0db32d6cd7776c543",
+            "source": "imagegen:minato",
+            "alpha": true,
+            "nativeFrameHeight": 859,
+            "master": {
+              "file": "masters/minato-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              168,
+              184,
+              210,
+              210
+            ]
+          }
+        }
+      },
+      "akane": {
+        "label": "橘 茜",
+        "states": {
+          "normal": {
+            "id": "akane-normal",
+            "kind": "characters",
+            "file": "characters/akane-normal.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 56840,
+            "sha256": "1a47284fff089df748a6c3de5616e74fcb34f7676ca51413ecb70b3b313ca29c",
+            "source": "opening75/assets/fa9c94fd4f2d7c3d5da6.webp",
+            "alpha": true,
+            "nativeFrameHeight": 852,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              172,
+              190,
+              230,
+              230
+            ]
+          },
+          "smile": {
+            "id": "akane-smile",
+            "kind": "characters",
+            "file": "characters/akane-smile.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 55336,
+            "sha256": "afa1e988433c42184235967116bcd7dc21f728628f4ae37d5607231397a922a4",
+            "source": "opening75/assets/fa9c94fd4f2d7c3d5da6.webp",
+            "alpha": true,
+            "nativeFrameHeight": 850,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              170,
+              193,
+              230,
+              230
+            ]
+          },
+          "surprise": {
+            "id": "akane-surprise",
+            "kind": "characters",
+            "file": "characters/akane-surprise.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 57780,
+            "sha256": "ac06be0c8043b8f1a80a93b68959203b9b9337ce4c0bf7012ea52fdd3fb0dbea",
+            "source": "opening75/assets/fa9c94fd4f2d7c3d5da6.webp",
+            "alpha": true,
+            "nativeFrameHeight": 855,
+            "master": null,
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              152,
+              188,
+              230,
+              230
+            ]
+          },
+          "fear": {
+            "id": "akane-fear",
+            "kind": "characters",
+            "file": "characters/akane-fear.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 59092,
+            "sha256": "4ba02a1491e4170b33bab4fb527adcf0594a59803a3ff3f027331f1020ae2dd2",
+            "source": "imagegen:akane",
+            "alpha": true,
+            "nativeFrameHeight": 920,
+            "master": {
+              "file": "masters/akane-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              174,
+              124,
+              230,
+              230
+            ]
+          },
+          "sad": {
+            "id": "akane-sad",
+            "kind": "characters",
+            "file": "characters/akane-sad.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 56524,
+            "sha256": "b51cd52e4a4232e97aee05f272a76ef47819114c1d28d2b0916caff9891454df",
+            "source": "imagegen:akane",
+            "alpha": true,
+            "nativeFrameHeight": 929,
+            "master": {
+              "file": "masters/akane-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              175,
+              117,
+              230,
+              230
+            ]
+          },
+          "resolve": {
+            "id": "akane-resolve",
+            "kind": "characters",
+            "file": "characters/akane-resolve.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 64728,
+            "sha256": "a0f7025ff8a6337198e0f652f3d4449d0c6666919b3f5d30163f44ea8bcf4c9d",
+            "source": "imagegen:akane",
+            "alpha": true,
+            "nativeFrameHeight": 927,
+            "master": {
+              "file": "masters/akane-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              140,
+              117,
+              230,
+              230
+            ]
+          }
+        }
+      },
+      "kotoha": {
+        "label": "ことは",
+        "states": {
+          "normal": {
+            "id": "kotoha-normal",
+            "kind": "characters",
+            "file": "characters/kotoha-normal.webp",
+            "width": 840,
+            "height": 1080,
+            "bytes": 155052,
+            "sha256": "95cab49e329a13b269e6ca1e122d089642c78880eca6ffcf71dd9f20f93e0bb2",
+            "source": "imagegen:single-kotoha",
+            "alpha": true,
+            "nativeFrameHeight": 1445,
+            "qa": "single-figure-alpha-export",
+            "master": {
+              "file": "masters/kotoha-normal-source.png",
+              "width": 1024,
+              "height": 1536,
+              "upscaled": false
+            },
+            "faceCrop": [
+              289,
+              22,
+              230,
+              230
+            ]
+          },
+          "sad": {
+            "id": "kotoha-sad",
+            "kind": "characters",
+            "file": "characters/kotoha-sad.webp",
+            "width": 840,
+            "height": 1080,
+            "bytes": 187542,
+            "sha256": "7fd7a9c718cf54fa6d1f9ec71566bcaeea036d9781dbbdaf02047090236ec79b",
+            "source": "imagegen:single-kotoha",
+            "alpha": true,
+            "nativeFrameHeight": 1403,
+            "qa": "single-figure-alpha-export",
+            "master": {
+              "file": "masters/kotoha-sad-source.png",
+              "width": 1024,
+              "height": 1536,
+              "upscaled": false
+            },
+            "faceCrop": [
+              296,
+              22,
+              230,
+              230
+            ]
+          },
+          "resolve": {
+            "id": "kotoha-resolve",
+            "kind": "characters",
+            "file": "characters/kotoha-resolve.webp",
+            "width": 840,
+            "height": 1080,
+            "bytes": 198410,
+            "sha256": "b01a80e8219e0a4b8d83b2ed151dad0d733ef511aac22a50630c21d049abf3c4",
+            "source": "imagegen:single-kotoha",
+            "alpha": true,
+            "nativeFrameHeight": 1444,
+            "qa": "single-figure-alpha-export",
+            "master": {
+              "file": "masters/kotoha-resolve-source.png",
+              "width": 1024,
+              "height": 1536,
+              "upscaled": false
+            },
+            "faceCrop": [
+              304,
+              21,
+              230,
+              230
+            ]
+          },
+          "sealed": {
+            "id": "kotoha-sealed",
+            "kind": "characters",
+            "file": "characters/kotoha-sealed.webp",
+            "width": 840,
+            "height": 1080,
+            "bytes": 188796,
+            "sha256": "35ef7b9584833d361e98188be1f111ef17f61e32a31a321722794042bf1423c8",
+            "source": "imagegen:single-kotoha",
+            "alpha": true,
+            "nativeFrameHeight": 1422,
+            "qa": "single-figure-alpha-export",
+            "master": {
+              "file": "masters/kotoha-sealed-source.png",
+              "width": 1024,
+              "height": 1536,
+              "upscaled": false
+            },
+            "faceCrop": [
+              310,
+              22,
+              230,
+              230
+            ]
+          },
+          "smile": {
+            "id": "kotoha-smile",
+            "kind": "characters",
+            "file": "characters/kotoha-smile.webp",
+            "width": 840,
+            "height": 1080,
+            "bytes": 128820,
+            "sha256": "400da96f466e97fbff6221b4a728ae4976dcd9e58061d694e6158df32f0d829d",
+            "source": "imagegen:single-kotoha",
+            "alpha": true,
+            "faceCrop": [
+              312,
+              44,
+              230,
+              230
+            ]
+          },
+          "confused": {
+            "id": "kotoha-confused",
+            "kind": "characters",
+            "file": "characters/kotoha-confused.webp",
+            "width": 840,
+            "height": 1080,
+            "bytes": 126170,
+            "sha256": "3d1b9fa1cb2abe10eb5d2b435e5fb16c071d7a59c10804d7709737eba96db1a4",
+            "source": "imagegen:single-kotoha",
+            "alpha": true,
+            "faceCrop": [
+              282,
+              43,
+              230,
+              230
+            ]
+          },
+          "fear": {
+            "id": "kotoha-fear",
+            "kind": "characters",
+            "file": "characters/kotoha-fear.webp",
+            "width": 840,
+            "height": 1080,
+            "bytes": 126280,
+            "sha256": "68e9751533e74324f9111a48073b3405ad8bb9274f9f07d33dddee5c33f01704",
+            "source": "imagegen:single-kotoha",
+            "alpha": true,
+            "faceCrop": [
+              300,
+              42,
+              230,
+              230
+            ]
+          }
+        }
+      },
+      "mahiro": {
+        "label": "真尋",
+        "states": {
+          "normal": {
+            "id": "mahiro-normal",
+            "kind": "characters",
+            "file": "characters/mahiro-normal.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 65208,
+            "sha256": "3fb75478872ea10c55c1f8dfc6ba77fde7761c7125ba1ea672311bcad534c444",
+            "source": "imagegen:mahiro",
+            "alpha": true,
+            "nativeFrameHeight": 1002,
+            "master": {
+              "file": "masters/mahiro-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              168,
+              40,
+              230,
+              230
+            ]
+          },
+          "sad": {
+            "id": "mahiro-sad",
+            "kind": "characters",
+            "file": "characters/mahiro-sad.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 62272,
+            "sha256": "3c99f2f9a33ff67b15bfebd2427b30da70f6afc845f5cf5068305dfff10b42d2",
+            "source": "imagegen:mahiro",
+            "alpha": true,
+            "nativeFrameHeight": 992,
+            "master": {
+              "file": "masters/mahiro-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              180,
+              50,
+              230,
+              230
+            ]
+          },
+          "smile": {
+            "id": "mahiro-smile",
+            "kind": "characters",
+            "file": "characters/mahiro-smile.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 64524,
+            "sha256": "d7624f9a29f587bb2992a3eb2fa059e71db5cda794e2a86c05f6d4b1f9d9a4a7",
+            "source": "imagegen:mahiro",
+            "alpha": true,
+            "nativeFrameHeight": 997,
+            "master": {
+              "file": "masters/mahiro-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              186,
+              45,
+              230,
+              230
+            ]
+          },
+          "resolve": {
+            "id": "mahiro-resolve",
+            "kind": "characters",
+            "file": "characters/mahiro-resolve.webp",
+            "width": 560,
+            "height": 1080,
+            "bytes": 63202,
+            "sha256": "bb8d278e0d45024cba5133cb9c793531442ff5ed5bb12a865a82101ad95d7052",
+            "source": "imagegen:mahiro",
+            "alpha": true,
+            "nativeFrameHeight": 998,
+            "master": {
+              "file": "masters/mahiro-source.png",
+              "width": 1536,
+              "height": 1024,
+              "upscaled": false
+            },
+            "qa": "alpha-and-padding-verified;contact-sheet-reviewed",
+            "faceCrop": [
+              162,
+              45,
+              230,
+              230
+            ]
+          }
+        }
+      },
+      "shikishi": {
+        "label": "式子内親王",
+        "states": {
+          "normal": {
+            "file": "characters/shikishi-normal-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 237370,
+            "sha256": "642f6e2e7f85bd0317a10923e3929b53bfa14e636b910970be0bbe1bbe07c391",
+            "alpha": true,
+            "faceCrop": [
+              270,
+              20,
+              220,
+              220
+            ],
+            "master": {
+              "file": "masters/c06-shikishi-normal-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2874469,
+              "sha256": "77df922fc1e8c7e3e5222683bdd2003fd8e0ef102750eade475d85f6fc7c5e16",
+              "alpha": true
+            }
+          },
+          "hollow": {
+            "file": "characters/shikishi-hollow-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 165250,
+            "sha256": "efccad3dc8d64cd4b42cef9b1d0351803ef08376e6dc9b052b3095229fe0b358",
+            "alpha": true,
+            "faceCrop": [
+              270,
+              20,
+              220,
+              220
+            ],
+            "master": {
+              "file": "masters/c06-shikishi-hollow-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2512563,
+              "sha256": "9229d34702bd1fc4bf8753b7be3f04d9ce50ded784d699a67f19d1e0b8f3db61",
+              "alpha": true
+            }
+          },
+          "smile": {
+            "file": "characters/shikishi-smile-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 182572,
+            "sha256": "4cb07efecdf12aeaa8121e8553805a01afe1f69570ba395169a63669d25d59ff",
+            "alpha": true,
+            "faceCrop": [
+              270,
+              20,
+              220,
+              220
+            ],
+            "master": {
+              "file": "masters/c06-shikishi-smile-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2667661,
+              "sha256": "0afcf5c837e5c83d8d22437c33fb7412dd251b2ca551fe8d1d5b762ee984c6b3",
+              "alpha": true
+            }
+          }
+        }
+      },
+      "yakamochi": {
+        "label": "大伴家持",
+        "states": {
+          "normal": {
+            "file": "characters/yakamochi-normal-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 163700,
+            "sha256": "a58d6c09fd47d7876d3c12480a930c4d7ee1578264b98e6628212b234d13d9c0",
+            "alpha": true,
+            "faceCrop": [
+              285,
+              75,
+              180,
+              180
+            ],
+            "master": {
+              "file": "masters/c06-yakamochi-normal-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2497979,
+              "sha256": "a0a559d8b42e429d60d0ae5eebc99393ae14f4802eb2b82429e310899ce6ed9b",
+              "alpha": true
+            }
+          },
+          "hollow": {
+            "file": "characters/yakamochi-hollow-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 138368,
+            "sha256": "68d9360f06286fe2e4f6e0257682ffa35752987abbe70d0d3f68c04f981775b3",
+            "alpha": true,
+            "faceCrop": [
+              285,
+              75,
+              180,
+              180
+            ],
+            "master": {
+              "file": "masters/c06-yakamochi-hollow-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2324709,
+              "sha256": "36eddda1295074824d7a09aeb84e28e727b0c3ecf99d47782ee0550d883b0c7d",
+              "alpha": true
+            }
+          },
+          "smile": {
+            "file": "characters/yakamochi-smile-v1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 148372,
+            "sha256": "d65b97c4976d1be9239a64c90c386731c64d110db6d3247bfb95420319741e6f",
+            "alpha": true,
+            "faceCrop": [
+              285,
+              75,
+              180,
+              180
+            ],
+            "master": {
+              "file": "masters/c06-yakamochi-smile-v1-source.png",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 2403432,
+              "sha256": "073a90f08b04e9ac61e53ccfe6de6213fa119df39455179f9a0f935c2e3093d6",
+              "alpha": true
+            }
+          }
+        }
+      }
+    },
+    "backgrounds": {
+      "BG35": {
+        "label": "封じられた宮殿",
+        "chapter": "C06",
+        "file": "backgrounds/corridor.webp",
+        "filter": "saturate(.15) brightness(.45)",
+        "layers": [
+          {
+            "file": "effects/ink-edge.webp",
+            "opacity": 0.65
+          }
+        ],
+        "status": "reused-existing-base",
+        "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+        "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+      },
+      "BG36": {
+        "label": "式子内親王の御簾の部屋",
+        "chapter": "C06",
+        "file": "backgrounds/c06-misu-room-v1.webp",
+        "filter": "saturate(.25) brightness(.48)",
+        "layers": [],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+        "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+      },
+      "BG36R": {
+        "label": "御簾の部屋・回復後",
+        "chapter": "C06",
+        "file": "backgrounds/c06-misu-room-v1.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+        "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+      },
+      "BG37": {
+        "label": "色を失った新年の雪",
+        "chapter": "C06",
+        "file": "backgrounds/c06-newyear-snow-v1.webp",
+        "filter": "saturate(0) brightness(.57)",
+        "layers": [],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+        "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+      },
+      "BG37R": {
+        "label": "新年の雪・回復後",
+        "chapter": "C06",
+        "file": "backgrounds/c06-newyear-snow-v1.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+        "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+      },
+      "BG38": {
+        "label": "橘家の書庫",
+        "chapter": "C06",
+        "file": "backgrounds/archive.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "reused-existing-base",
+        "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+        "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+      },
+      "BG39": {
+        "label": "千年前の封印の庭",
+        "chapter": "C06",
+        "file": "backgrounds/c06-sealing-garden-v1.webp",
+        "filter": "none",
+        "layers": [],
+        "status": "produced-base-with-runtime-variant",
+        "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+        "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+      }
+    },
+    "effects": {
+      "ink-edge": {
+        "id": "ink-edge",
+        "kind": "effects",
+        "file": "effects/ink-edge.webp",
+        "width": 1599,
+        "height": 900,
+        "bytes": 338582,
+        "sha256": "56b9b22c44b51d6b80d45ae5ec8ce87cbf12ffa5588113140f967de5b35d51de",
+        "source": "imagegen:ink",
+        "alpha": true
+      },
+      "recovery-light": {
+        "id": "recovery-light",
+        "kind": "effects",
+        "file": "effects/recovery-light.webp",
+        "width": 1599,
+        "height": 900,
+        "bytes": 313736,
+        "sha256": "06bbb5d4a39b18b2307d81c349f1369987d7ad522e8bd9a6a2d0935711c1a7f4",
+        "source": "imagegen:light",
+        "alpha": true
+      }
+    }
+  },
+  "normalSaveSchema": {
+    "storyKey": "heian-portal-v44",
+    "gameKey": "heian-portal-games-v50",
+    "gameLengths": [
+      60,
+      30,
+      86,
+      30,
+      60,
+      24
+    ]
+  },
+  "sources": [
+    "https://lapis.nichibun.ac.jp/waka/waka_i010.html",
+    "https://manyo-hyakka.pref.nara.jp/db/detail?cls=db_manyo&pkey=4516"
+  ]
+}

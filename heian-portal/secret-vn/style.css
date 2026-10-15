@@ -49,3 +49,25 @@ html[data-chapter="C05"] .stage.quiz .actor.center{height:85%;top:145px}
 @media(max-height:550px) and (min-width:701px){html[data-chapter="C05"] .stage.quiz .actor.center{height:75%;top:110px}}
 /* Tall sprites must not create an internally scrollable stage when a choice receives focus. */
 html[data-chapter="C05"] .stage{overflow:clip}
+
+/* C06: current and remembered time remain distinct; actors stay opaque. */
+html[data-chapter="C06"] .stage{overflow:clip}
+.actor.trio-center{left:50%;translate:-50% 0}.actor.trio-left{left:0}.actor.trio-right{right:0}
+html[data-chapter="C06"] .actor.trio-center,html[data-chapter="C06"] .actor.trio-left,html[data-chapter="C06"] .actor.trio-right{height:143%;top:5%}
+html[data-chapter="C06"] .actor.trio-center.active,html[data-chapter="C06"] .actor.trio-left.active,html[data-chapter="C06"] .actor.trio-right.active{height:150%;top:4%}
+.c06-effects:before,.c06-effects:after{content:"";position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 1.4s}
+.c06-effects[data-identity="true"]:after{opacity:1;background:radial-gradient(ellipse at 50% 35%,#f2dcad27,transparent 52%);animation:colorBreath 2.4s both}
+.c06-effects[data-ink="true"]:before{opacity:.9;background:radial-gradient(ellipse at 55% 73%,#080610f2 0 11%,#181224b0 28%,transparent 62%),linear-gradient(20deg,#0a0514c4,transparent 65%);animation:memoryInk 5s ease-in-out infinite alternate}
+.c06-effects[data-door="true"]:before{opacity:.9;background:linear-gradient(90deg,transparent 20%,#05020bdc 48%,#05020bf0 58%,transparent 85%);animation:colorBreath 2s both}
+.c06-effects[data-seal="true"]:after{opacity:1;background:radial-gradient(ellipse at 50% 67%,#fff0bf4d,transparent 60%);animation:colorBreath 3.2s both}
+.memory-seal{position:absolute;left:50%;top:67%;width:130px;height:60px;border:1px solid #f6dfaca8;border-radius:50%;box-shadow:0 0 60px #eed6a94d,inset 0 0 45px #efce9652;animation:sealOpen 4s ease-out both}
+.memory-time{position:absolute;left:5%;top:13%;font-size:12px;letter-spacing:.16em;padding:7px 13px;border:1px solid #d5bc8d77;background:#121724c9;color:#f3dfb9;z-index:1}
+.snow-field{position:absolute;inset:0;opacity:.25}.c06-effects[data-snow-recovered="true"] .snow-field{opacity:.65}
+.snow-field i{position:absolute;left:var(--x);top:-5%;width:3px;height:3px;border-radius:50%;background:#f4f8ff;animation:quietSnow var(--duration) var(--delay) linear infinite}
+@keyframes quietSnow{to{transform:translate(18px,850px)}}
+@keyframes memoryInk{to{transform:scale(1.06) translateY(-1%)}}
+@keyframes sealOpen{from{opacity:0;transform:translate(-50%,-50%) scale(.15)}35%{opacity:1}to{opacity:.8;transform:translate(-50%,-50%) scale(7)}}
+@media(max-width:700px){html[data-chapter="C06"] .actor.trio-center,html[data-chapter="C06"] .actor.trio-left,html[data-chapter="C06"] .actor.trio-right,html[data-chapter="C06"] .actor.trio-center.active,html[data-chapter="C06"] .actor.trio-left.active,html[data-chapter="C06"] .actor.trio-right.active{height:125%;top:8%;left:50%;right:auto;translate:-50% 0}.memory-time{top:10%;font-size:10px;left:3%}}
+html[data-chapter="C06"] .stage.flashback .background{filter:sepia(.22) saturate(.78) brightness(.82)!important}
+.memory-seal{transform:translate(-50%,-50%) scale(7)}
+.actor[data-character="shikishi"][data-state="hollow"],.actor[data-character="yakamochi"][data-state="hollow"],.face[data-character="shikishi"][data-state="hollow"] svg,.face[data-character="yakamochi"][data-state="hollow"] svg{filter:brightness(.5) saturate(.35)}

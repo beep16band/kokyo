@@ -1,0 +1,56 @@
+{
+  "misu-room": {
+    "prompt": "Use case: historical-scene. Asset: wide 16:9 background for the established Japanese anime visual novel, cinematic detailed painterly animation background, subtle natural textures and spatial depth. No people, no text, lettering, UI, logos or watermarks. Creative historical fantasy, not a precise archaeological reconstruction. No falling cherry petals. Leave an uncluttered central foreground for separately layered character sprites. Scene: a quiet late-Heian Japanese noblewoman's wooden room viewed from its outer veranda at night. A half-raised finely woven bamboo misu blind crosses the upper third, understated purple cloth edging, pale floor mats, low wooden writing stand, an unlit inkstone, sliding wood-lattice partitions with simple paper backing in the distance, one restrained warm oil-lamp glow, cool blue moonlight at the side. The central screen must remain open enough to show a separate standing figure below the blind. Intimate, enclosed, wistful atmosphere, tasteful restrained wooden architecture, no Chinese palace lantern forest, no throne, no vase collection. Full scene, polished visual-novel backdrop.",
+    "transparent_background": false
+  },
+  "newyear-snow": {
+    "prompt": "Use case: historical-scene. Asset: wide 16:9 background for the established Japanese anime visual novel, cinematic detailed painterly animation background, subtle natural textures and spatial depth. No people, no text, lettering, UI, logos or watermarks. Creative historical fantasy, not a precise archaeological reconstruction. No falling cherry petals. Leave an uncluttered central foreground for separately layered character sprites. Scene: Japanese Nara-period-inspired provincial administrative residence courtyard in the first morning light of the lunar New Year, a wooden veranda framing one side, low timber buildings and distant hills, a fresh thin blanket of white snow on the path and pine branches, softly lit pale peach sky with cold blue shadows. No modern concrete, electric lights, torii gates, Chinese red lanterns or cherry blossoms. The courtyard is calm and hopeful, no characters or footprints leading offscreen. Show clean open foreground for character portraits, strong but gentle sunrise depth. The phrase early spring refers to the old lunar calendar; depict cold snowy weather, not blooming spring.",
+    "transparent_background": false
+  },
+  "sealing-garden": {
+    "prompt": "Use case: historical-scene. Asset: wide 16:9 background for the established Japanese anime visual novel, cinematic detailed painterly animation background, subtle natural textures and spatial depth. No people, no text, lettering, UI, logos or watermarks. Creative historical fantasy, not a precise archaeological reconstruction. No falling cherry petals. Leave an uncluttered central foreground for separately layered character sprites. Scene: a thousand years ago, moonlit inner courtyard of a Japanese Heian-inspired wooden estate. One enormous open blank calligraphic scroll lies on a low central timber platform, its paper containing abstract black ink currents but NO readable characters or symbols, with a faint pale-gold glow along its edges. Simple wooden corridors surround a quiet garden, restrained bamboo and a broadleaf evergreen sapling, dim oil-lamp light and cool moonlight, poignant supernatural mystery. Ink is an independent visual-novel overlay later, so keep this base mostly clean with no giant black monster. View from slightly below veranda level, rich foreground/midground/background depth, space for two young characters standing separately on either side of the scroll. No pentagrams, skulls, blood, weapons or bright flashes.",
+    "transparent_background": false
+  },
+  "shikishi-normal": {
+    "prompt": "Use case: historical-scene. Asset: full-body transparent visual-novel sprite. Reference image 1 establishes this project’s Shikishi Naishinno character identity. Reconstruct her as the SAME adult woman, not a new character: same oval face, gentle violet dark eyes, very long straight black hair, small gold and violet floral hair ornaments, layered purple court robes with subdued gold floral brocade, white/pale-green/red collars. Maintain dignified adult presence, subtle thoughtful expression, no sexualization. Late Heian Japanese court-inspired attire, refined anime illustration matching the reference, softly shaded detailed fabric. Entire figure including head, sleeves, hem and footwear inside generous transparent margins, standing quietly with hands nested in sleeves, front three-quarter view. No room, scenery, floor, text, UI, labels, watermark, cast shadow backdrop or white matte. Genuine transparent background. Keep face and costume recognizable from reference.",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/secret-vn/delivery/references/poet-13.webp"
+    ],
+    "transparent_background": true
+  },
+  "shikishi-smile": {
+    "prompt": "Use case: identity-preserve. Edit target is the exact transparent full-body sprite. Keep every part of face identity, hair, ornaments/headgear, costume, pattern, tablet if present, pose, hands, full-body framing and genuine alpha unchanged. Change only the expression to a very small, dignified and relieved warm smile with eyes still open, returning inner calm. Natural soft skin color, not comic, not exaggerated or flirtatious. No background, floor, shadow matte, lettering or UI. Same exact image composition and clear transparent outside.",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/generated_images/exec-aa678199-24bd-47c5-8d12-39cfdd26bf36.png"
+    ],
+    "transparent_background": true
+  },
+  "shikishi-hollow-v2": {
+    "prompt": "Use case: identity-preserve. Edit only the face lighting of this exact transparent full-body Shikishi sprite. Preserve every pixel of costume design, hair, jewelry, pose and framing as closely as possible. The previous face mask is too bright below the nose. Make the ENTIRE facial skin region from hairline through cheeks, nose, lips and chin almost pitch-black indigo; NO white or pale chin, no readable mouth expression, no readable eye, no healthy skin color anywhere on face. Subtle silhouette of nose only. Face must appear as though all light has been swallowed, dark Japanese fantasy mystery, not a simple band across eyes. Keep black shadow confined to her face; clothing remains recognizable but slightly desaturated. No blood, wounds, red eyes, scenery, matte, background, lettering or UI. Retain actual alpha transparency outside the figure.",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/generated_images/exec-f1fd4303-2c2a-431f-86a3-306ebccee1b9.png"
+    ],
+    "transparent_background": true
+  },
+  "yakamochi-normal": {
+    "prompt": "Use case: historical-scene. Asset: full-body transparent visual-novel sprite. Reference image 1 is the established portrait of Otomo no Yakamochi in this project; preserve his same face, expressive strong eyebrows, wavy dark hair, composed brown eyes, dark court headgear and green-and-gold floral-patterned robe, white and russet inner collars. Show an adult court poet with mature composure, not a teenager, no exaggerated handsome-idol redesign. Reconstruct a dignified Nara-period-inspired full figure, modest folds and a simple narrow writing tablet held at waist, period-appropriate simple dark shoes. Same high-quality Japanese anime illustration and soft natural shading as the reference. Entire head-to-foot figure within transparent margins, relaxed front three-quarter stance. No background, snow, scenery, floor, text, labels, UI or white matte. Actual transparent background. Preserve original character design.",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/secret-vn/delivery/references/poet-07.webp"
+    ],
+    "transparent_background": true
+  },
+  "yakamochi-smile": {
+    "prompt": "Use case: identity-preserve. Edit target is the exact transparent full-body sprite. Keep every part of face identity, hair, ornaments/headgear, costume, pattern, tablet if present, pose, hands, full-body framing and genuine alpha unchanged. Change only the expression to a very small, dignified and relieved warm smile with eyes still open, returning inner calm. Natural soft skin color, not comic, not exaggerated or flirtatious. No background, floor, shadow matte, lettering or UI. Same exact image composition and clear transparent outside.",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/generated_images/exec-520ef7d3-1123-4291-9b1b-9cc544e71f2e.png"
+    ],
+    "transparent_background": true
+  },
+  "yakamochi-hollow": {
+    "prompt": "Use case: identity-preserve. Edit target is this exact transparent full-body character sprite. Preserve the exact same character, face shape, hair, ornaments/headgear, robe patterns, sleeves, hands, tablet if present, full silhouette, proportions, framing and genuine alpha transparency. Change only the memory-lost state: ENTIRE face from brow to jaw is buried in near-black indigo ink shadow; eyes and eye whites must be unreadable, no visible healthy facial skin color. Emotionless, head very slightly lowered, robe a little less saturated. No red glowing eyes, blood, disfigurement, skull, scenery, ground, text, UI or opaque backdrop. Keep figure and garment edges crisp. Deep shadow is localized to the character's face; outside stays truly transparent. Clearly the identical person, with all the vitality lost.",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/generated_images/exec-520ef7d3-1123-4291-9b1b-9cc544e71f2e.png"
+    ],
+    "transparent_background": true
+  }
+}

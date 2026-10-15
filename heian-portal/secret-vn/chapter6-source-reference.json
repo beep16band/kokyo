@@ -1,0 +1,1034 @@
+{
+  "scenes": [
+    {
+      "scene_id": "C06-S01",
+      "chapter_id": "C06",
+      "title": "封じられた宮殿",
+      "background_ids": [
+        "BG35"
+      ],
+      "characters": [
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "palace-horror"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "墨に侵食された宮殿。灯は揺れ、廊下の障子に影が走る。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "ことはの声は、ここから聞こえた。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "直接、何があったのか聞こう。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "影の声",
+          "text": "言ってはならない。思いを知られてはならない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "また歌人の記憶だ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "閉ざされた御簾の部屋が現れる。"
+        }
+      ],
+      "visual_stage": "background:BG35; characters:茜,湊; events:palace-horror",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S02",
+      "chapter_id": "C06",
+      "title": "言えなかった思い",
+      "background_ids": [
+        "BG36"
+      ],
+      "characters": [
+        "式子内親王",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "poet-shadow"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "式子内親王が薄暗い御簾の向こうに座る。顔の色も表情も読めない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "式子内親王",
+          "text": "隠しておかねばならない……何を、隠していたのか。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "大切な思いがあったんですね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "式子内親王",
+          "text": "苦しかったことしか、覚えていない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "「玉の緒よ」の歌を読んでみよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "和歌の文字が御簾に浮かぶ。"
+        }
+      ],
+      "visual_stage": "background:BG36; characters:式子内親王,茜,湊; events:poet-shadow",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S03",
+      "chapter_id": "C06",
+      "title": "式子内親王の試練",
+      "background_ids": [
+        "BG36"
+      ],
+      "characters": [
+        "式子内親王"
+      ],
+      "event_tags": [
+        "quiz:w15"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C06-W15-Q01",
+        "C06-W15-Q02",
+        "C06-W15-Q03",
+        "C06-W15-Q04"
+      ],
+      "quiz_gate": "all_four_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「式子内親王」。玉の緒、ながらへば、忍ぶる、内容を問う。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "命に呼びかける強い言葉だね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "隠した恋心の切迫感を、歌の言葉から確かめよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "四問正解で御簾から光が差す。"
+        }
+      ],
+      "visual_stage": "background:BG36; characters:式子内親王; events:quiz:w15",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S04",
+      "chapter_id": "C06",
+      "title": "命を懸けた言葉",
+      "background_ids": [
+        "BG36"
+      ],
+      "characters": [
+        "式子内親王",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "poet-recovery"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "式子内親王の顔を覆う影が消える。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "式子内親王",
+          "text": "秘めた思いを、隠し続けられなくなることが恐ろしかったのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "歌に強い気持ちが表れていたんですね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "式子内親王",
+          "text": "思いを隠すか、伝えるか。誰かが代わりに決めることではありません。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "……俺たちも、自分で決めたい。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "「忍」の札が現れ、雪の庭への道が開く。"
+        }
+      ],
+      "visual_stage": "background:BG36; characters:式子内親王,茜,湊; events:poet-recovery",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S05",
+      "chapter_id": "C06",
+      "title": "雪の降る新年",
+      "background_ids": [
+        "BG37"
+      ],
+      "characters": [
+        "大伴家持",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "gray-snow"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "灰色の雪が静かに降る庭。大伴家持が動かず立っている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "大伴家持",
+          "text": "新しき年……。その先を思い出せぬ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "雪が降っているのに、何も祝っていないみたいだ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "「新しき年の初めの初春の」。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "大伴家持",
+          "text": "私は、何を願っていたのだろう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "四つの問いが雪片に変わる。"
+        }
+      ],
+      "visual_stage": "background:BG37; characters:大伴家持,茜,湊; events:gray-snow",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S06",
+      "chapter_id": "C06",
+      "title": "大伴家持の試練",
+      "background_ids": [
+        "BG37"
+      ],
+      "characters": [
+        "大伴家持"
+      ],
+      "event_tags": [
+        "quiz:w09"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C06-W09-Q01",
+        "C06-W09-Q02",
+        "C06-W09-Q03",
+        "C06-W09-Q04"
+      ],
+      "quiz_gate": "all_four_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「大伴家持」。けふ、いやしけ、吉事、内容を問う。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "雪が積もることに、よいことが重なる願いを託している。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "「いやしけ」の意味を忘れずに。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "四問正解で雪が白く輝き始める。"
+        }
+      ],
+      "visual_stage": "background:BG37; characters:大伴家持; events:quiz:w09",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S07",
+      "chapter_id": "C06",
+      "title": "未来へ降る雪",
+      "background_ids": [
+        "BG37"
+      ],
+      "characters": [
+        "大伴家持",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "snow-recovery"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "雪が本来の白さを取り戻し、庭を朝日が照らす。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "大伴家持",
+          "text": "新年の雪のように、よいことが重なれと願ったのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "私たちも、元の世界に帰りたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "それと、ことはを助けたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "大伴家持",
+          "text": "過ぎた日を戻すことはできずとも、新しい日は迎えられます。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "「願」の札が光り、奥の書庫へ続く。"
+        }
+      ],
+      "visual_stage": "background:BG37; characters:大伴家持,茜,湊; events:snow-recovery",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S08",
+      "chapter_id": "C06",
+      "title": "橘ことは・正体",
+      "background_ids": [
+        "BG38"
+      ],
+      "characters": [
+        "ことは",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "identity-reveal"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "封印の書庫で、ことはが二人を待っている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "ことは！　やっと会えた。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私の名は橘ことは。茜さん、あなたは遠い子孫です。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "橘……やっぱり、同じ家だったんだね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "そして私は、千年前の本人ではありません。封印に残された記憶の姿です。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "でも、今俺たちと話しているのは、ここにいることはだ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "通常編の最後、名前が歌集から消えたのは……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "二人の帰還を助けるために力を使ったからです。その後、封印の奥で眠っていました。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "あなたたちの学びが記憶を呼び覚まし、私もまた姿を取れたのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "じゃあ、また会えたのは……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "はい。でも、私には話さなければならない過ちがあります。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "ことはが千年前の巻物を開く。"
+        }
+      ],
+      "visual_stage": "background:BG38; characters:ことは,茜,湊; events:identity-reveal",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S09",
+      "chapter_id": "C06",
+      "title": "封印の夜",
+      "background_ids": [
+        "BG39"
+      ],
+      "characters": [
+        "ことは",
+        "真尋",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "flashback",
+        "seal-event"
+      ],
+      "dialogue_status": "expanded-v1.1-staging-approved-candidate",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "千年前の橘家の書庫。燭台の火が揺れ、ことはは禁術の巻物を開く。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "これで、悲しい記憶だけを取り除けるなら……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "望みを、言え。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋の苦しみを、消してください。楽しかった思い出は残して。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "記憶は、ひとつながりだ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……どういうこと？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "失う痛みを消せば、失った者への思いも薄れる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "そんなの、望んでいません。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "それでも、忘れさせたいか。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "ことはの脳裏を、真尋が母を失って泣く姿がよぎる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……少しだけでいいの。少しだけ……。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "巻物から墨が噴き出し、棚の歌集の文字を奪い始める。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "いや……！　止まって！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "禁術の声",
+          "text": "悲しみも、喜びも、すべてなくせば苦しみはない。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "扉が開き、真尋が駆け込んでくる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "ことは！　巻物から離れろ！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋！　ごめんなさい、こんなはずじゃ……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "封じる方法はあるのか！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "記憶を守るには、誰かが大切な記憶の一部を封印の中心へ預けなければならないの。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "……俺がやる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "だめ！　戻らなくなるかもしれないのよ！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "俺の母上のことは、忘れたくない。だからこそ、これ以上誰かの記憶が消えるのを止めたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "私が始めたことなのに……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "お前が全部背負うことじゃない。ここからどうするか、俺にも決めさせてくれ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "二人は封印の庭へ走る。中央の大巻物に黒い渦が巻いている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "この木札を残してくれ。榊の紋が、ここにいた証になる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……真尋。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "未来の俺の子孫に、俺の代わりに生きろなんて言わないでくれ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "ただ、歌を守ろうとしたことを忘れないでほしい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……約束する。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "真尋が巻物に手を置く。胸元から柔らかな光が流れ出し、墨の渦を押し戻す。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋！"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "光が収束し、真尋は膝をつく。ことはが支える。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "……全部は覚えていない。でも、お前がここにいるのは分かる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……ごめんなさい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "真尋",
+          "text": "生きているんだから、これからどうするか考えよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "記録映像が止まる。現在のことはが語りを引き継ぐ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋も私も、現実の世界へ帰りました。でも、封印に預けた記憶の一部は戻らなかった。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "そして封じた墨は、真尋の記憶に入り込み、悲しみを忘れたいという願いを集め続けたのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "それが……忘れの主。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "はい。私が間違ったのは、真尋のためと思いながら、真尋の言葉を聞かなかったことです。"
+        }
+      ],
+      "visual_stage": "background:BG39; characters:ことは,真尋,茜,湊; events:flashback,seal-event",
+      "screenplay_version": "v1.1",
+      "script_previous_v1_length": 16,
+      "shot_cues": [
+        {
+          "after_line_index": 0,
+          "background_id": "BG38",
+          "cue_type": "fade",
+          "effect": "memory-sepia",
+          "sfx_id": "sfx-lantern",
+          "bgm_id": "music-memory",
+          "duration_ms": 1200
+        },
+        {
+          "after_line_index": 11,
+          "background_id": "BG38",
+          "cue_type": "overlay",
+          "effect": "ink-spread-scroll",
+          "sfx_id": "sfx-ink-impact",
+          "bgm_id": "music-danger",
+          "duration_ms": 2000
+        },
+        {
+          "after_line_index": 22,
+          "background_id": "BG39",
+          "cue_type": "cut",
+          "effect": "memory-garden",
+          "sfx_id": "sfx-footsteps",
+          "bgm_id": "music-seal",
+          "duration_ms": 1000
+        },
+        {
+          "after_line_index": 28,
+          "background_id": "BG39",
+          "cue_type": "effect",
+          "effect": "memory-seal-light",
+          "sfx_id": "sfx-chime",
+          "bgm_id": "music-seal-climax",
+          "duration_ms": 3200
+        }
+      ],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C06-S10",
+      "chapter_id": "C06",
+      "title": "千年の誓い",
+      "background_ids": [
+        "BG39",
+        "BG40"
+      ],
+      "characters": [
+        "ことは",
+        "茜",
+        "湊",
+        "忘れの主"
+      ],
+      "event_tags": [
+        "three-person-choice"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "現在の書庫。ことはは二人に頭を下げる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "真尋の意思に反して禁術を使い、あなたたちまで巻き込んだ。簡単に許さないでください。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "怖かったし、怒っていないわけじゃない。でも俺も自分で決めたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "間違いだったと思う。だけど、今ここにいることはは、どうしたいの？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "……歌を守りたい。これ以上、記憶を奪わせたくありません。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "だったら三人で行こう。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことは",
+          "text": "今度は、一人で決めません。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "書庫の奥の巨大な扉が開き、忘れの主の声が響く。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "記憶の終わる場所へ来るがよい。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "三人は最終章へ進む。"
+        }
+      ],
+      "visual_stage": "background:BG39,BG40; characters:ことは,茜,湊,忘れの主; events:three-person-choice",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "C06-W15-Q01",
+      "chapter_id": "C06",
+      "waka_id": "w15",
+      "prompt": "「玉の緒」が表すのは？",
+      "options": [
+        "飾り",
+        "命",
+        "琴の弦",
+        "約束"
+      ],
+      "correct_index": 1,
+      "explanation": "命のたとえ。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "命",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C06-W15-Q02",
+      "chapter_id": "C06",
+      "waka_id": "w15",
+      "prompt": "「ながらへば」の現代仮名遣いは？",
+      "options": [
+        "ながらえば",
+        "ながらわば",
+        "ながらいば",
+        "ながらへば"
+      ],
+      "correct_index": 0,
+      "explanation": "「へ」を「え」に。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "ながらえば",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C06-W15-Q03",
+      "chapter_id": "C06",
+      "waka_id": "w15",
+      "prompt": "「忍ぶること」の意味は？",
+      "options": [
+        "訪問を待つ",
+        "旅立つ",
+        "思いを隠す",
+        "悲しみを忘れる"
+      ],
+      "correct_index": 2,
+      "explanation": "恋心を人に知られぬよう隠すこと。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "思いを隠す",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C06-W15-Q04",
+      "chapter_id": "C06",
+      "waka_id": "w15",
+      "prompt": "歌の内容は？",
+      "options": [
+        "会えた喜び",
+        "長生きの願い",
+        "恋心が消えた",
+        "生き長らえると思いを隠せなくなりそうで命が絶えてほしいと詠む"
+      ],
+      "correct_index": 3,
+      "explanation": "秘めた恋心の切迫感を誇張して表す。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "生き長らえると思いを隠せなくなりそうで命が絶えてほしいと詠む",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C06-W09-Q01",
+      "chapter_id": "C06",
+      "waka_id": "w09",
+      "prompt": "「今日」の歴史的仮名遣いは？",
+      "options": [
+        "けふ",
+        "きう",
+        "きょふ",
+        "けう"
+      ],
+      "correct_index": 0,
+      "explanation": "「けふ」と表記する。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "けふ",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C06-W09-Q02",
+      "chapter_id": "C06",
+      "waka_id": "w09",
+      "prompt": "「いやしけ」の意味は？",
+      "options": [
+        "静かに消えよ",
+        "減っていけ",
+        "ますます重なれ",
+        "流れ去れ"
+      ],
+      "correct_index": 2,
+      "explanation": "よい出来事が重なるようにとの願い。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "ますます重なれ",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C06-W09-Q03",
+      "chapter_id": "C06",
+      "waka_id": "w09",
+      "prompt": "「吉事」の意味は？",
+      "options": [
+        "雪の結晶",
+        "悲しいこと",
+        "旅の苦労",
+        "よい出来事"
+      ],
+      "correct_index": 3,
+      "explanation": "吉事＝よいこと。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "よい出来事",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C06-W09-Q04",
+      "chapter_id": "C06",
+      "waka_id": "w09",
+      "prompt": "歌の内容は？",
+      "options": [
+        "雪が積もるようによいことが重なれ",
+        "雪で外出できず悲しい",
+        "去年を忘れたい",
+        "雪を不吉と感じる"
+      ],
+      "correct_index": 0,
+      "explanation": "雪の降り積もる様子に吉事を重ねる。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "雪が積もるようによいことが重なれ",
+      "correct_option_id": "correct"
+    }
+  ]
+}

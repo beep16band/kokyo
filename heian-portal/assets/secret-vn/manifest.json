@@ -401,6 +401,81 @@
       "status": "produced-base-with-runtime-variant",
       "motionHint": "水面の光、色彩の回復、墨、名前の演出。花びらの降下なし。",
       "note": "創作イメージ。特定の史跡・建物を再現したものではない。海辺は通常編の既存画像を再利用し、回復後も花や紅葉を加えない。"
+    },
+    "BG35": {
+      "label": "封じられた宮殿",
+      "chapter": "C06",
+      "file": "backgrounds/corridor.webp",
+      "filter": "saturate(.15) brightness(.45)",
+      "layers": [
+        {
+          "file": "effects/ink-edge.webp",
+          "opacity": 0.65
+        }
+      ],
+      "status": "reused-existing-base",
+      "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+      "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+    },
+    "BG36": {
+      "label": "式子内親王の御簾の部屋",
+      "chapter": "C06",
+      "file": "backgrounds/c06-misu-room-v1.webp",
+      "filter": "saturate(.25) brightness(.48)",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+      "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+    },
+    "BG36R": {
+      "label": "御簾の部屋・回復後",
+      "chapter": "C06",
+      "file": "backgrounds/c06-misu-room-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+      "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+    },
+    "BG37": {
+      "label": "色を失った新年の雪",
+      "chapter": "C06",
+      "file": "backgrounds/c06-newyear-snow-v1.webp",
+      "filter": "saturate(0) brightness(.57)",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+      "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+    },
+    "BG37R": {
+      "label": "新年の雪・回復後",
+      "chapter": "C06",
+      "file": "backgrounds/c06-newyear-snow-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+      "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+    },
+    "BG38": {
+      "label": "橘家の書庫",
+      "chapter": "C06",
+      "file": "backgrounds/archive.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "reused-existing-base",
+      "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+      "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
+    },
+    "BG39": {
+      "label": "千年前の封印の庭",
+      "chapter": "C06",
+      "file": "backgrounds/c06-sealing-garden-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "雪、墨、封印の光を独立レイヤーで描画。現在・千年前の表示。桜の降下なし。",
+      "note": "創作イメージ。建築・衣装・庭を史実の厳密な復元図として使わない。旧暦の新年の雪を描く。BG36R・37Rは同じ画像による回復状態。"
     }
   },
   "characters": {
@@ -1699,6 +1774,148 @@
             "height": 1536,
             "bytes": 2222717,
             "sha256": "bdc7c46541a45a2232e6b1d0ebffbdc9a2c071b5062b345fdcda2cd25a532653",
+            "alpha": true
+          }
+        }
+      }
+    },
+    "shikishi": {
+      "label": "式子内親王",
+      "states": {
+        "normal": {
+          "file": "characters/shikishi-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 237370,
+          "sha256": "642f6e2e7f85bd0317a10923e3929b53bfa14e636b910970be0bbe1bbe07c391",
+          "alpha": true,
+          "faceCrop": [
+            270,
+            20,
+            220,
+            220
+          ],
+          "master": {
+            "file": "masters/c06-shikishi-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2874469,
+            "sha256": "77df922fc1e8c7e3e5222683bdd2003fd8e0ef102750eade475d85f6fc7c5e16",
+            "alpha": true
+          }
+        },
+        "hollow": {
+          "file": "characters/shikishi-hollow-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 165250,
+          "sha256": "efccad3dc8d64cd4b42cef9b1d0351803ef08376e6dc9b052b3095229fe0b358",
+          "alpha": true,
+          "faceCrop": [
+            270,
+            20,
+            220,
+            220
+          ],
+          "master": {
+            "file": "masters/c06-shikishi-hollow-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2512563,
+            "sha256": "9229d34702bd1fc4bf8753b7be3f04d9ce50ded784d699a67f19d1e0b8f3db61",
+            "alpha": true
+          }
+        },
+        "smile": {
+          "file": "characters/shikishi-smile-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 182572,
+          "sha256": "4cb07efecdf12aeaa8121e8553805a01afe1f69570ba395169a63669d25d59ff",
+          "alpha": true,
+          "faceCrop": [
+            270,
+            20,
+            220,
+            220
+          ],
+          "master": {
+            "file": "masters/c06-shikishi-smile-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2667661,
+            "sha256": "0afcf5c837e5c83d8d22437c33fb7412dd251b2ca551fe8d1d5b762ee984c6b3",
+            "alpha": true
+          }
+        }
+      }
+    },
+    "yakamochi": {
+      "label": "大伴家持",
+      "states": {
+        "normal": {
+          "file": "characters/yakamochi-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 163700,
+          "sha256": "a58d6c09fd47d7876d3c12480a930c4d7ee1578264b98e6628212b234d13d9c0",
+          "alpha": true,
+          "faceCrop": [
+            285,
+            75,
+            180,
+            180
+          ],
+          "master": {
+            "file": "masters/c06-yakamochi-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2497979,
+            "sha256": "a0a559d8b42e429d60d0ae5eebc99393ae14f4802eb2b82429e310899ce6ed9b",
+            "alpha": true
+          }
+        },
+        "hollow": {
+          "file": "characters/yakamochi-hollow-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 138368,
+          "sha256": "68d9360f06286fe2e4f6e0257682ffa35752987abbe70d0d3f68c04f981775b3",
+          "alpha": true,
+          "faceCrop": [
+            285,
+            75,
+            180,
+            180
+          ],
+          "master": {
+            "file": "masters/c06-yakamochi-hollow-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2324709,
+            "sha256": "36eddda1295074824d7a09aeb84e28e727b0c3ecf99d47782ee0550d883b0c7d",
+            "alpha": true
+          }
+        },
+        "smile": {
+          "file": "characters/yakamochi-smile-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 148372,
+          "sha256": "d65b97c4976d1be9239a64c90c386731c64d110db6d3247bfb95420319741e6f",
+          "alpha": true,
+          "faceCrop": [
+            285,
+            75,
+            180,
+            180
+          ],
+          "master": {
+            "file": "masters/c06-yakamochi-smile-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2403432,
+            "sha256": "073a90f08b04e9ac61e53ccfe6de6213fa119df39455179f9a0f935c2e3093d6",
             "alpha": true
           }
         }
@@ -3673,34 +3890,153 @@
       "bytes": 114638,
       "sha256": "52a7954857e117c76b7bc74e5f549a3ed485329b25e8350ffb15e95b449f5bd4",
       "alpha": true
+    },
+    {
+      "file": "masters/c06-misu-room-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2183864,
+      "sha256": "762c8f431347b7745916914766d6be5f87c18efa94762b08ae42d3fced0e773a",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c06-misu-room-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 115550,
+      "sha256": "e7c40746d5f8661ddbe9e311fb6b971d3492865db6dbcfe74a56c2f5a1783c59",
+      "alpha": false
+    },
+    {
+      "file": "masters/c06-newyear-snow-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2787930,
+      "sha256": "59c823bfad62f804f3c7a1e0d77b444be0dc4076902d471d36e147dd34dfb068",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c06-newyear-snow-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 208582,
+      "sha256": "79d0db2a520e05cd6000a73ea19ae6a2d50df17a95f4d89e5da535955b667031",
+      "alpha": false
+    },
+    {
+      "file": "masters/c06-sealing-garden-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2452135,
+      "sha256": "5b44415e8ef0802359fc9389ce1309e140438db0b77a6239ea3b9631325634fd",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c06-sealing-garden-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 162446,
+      "sha256": "559f7fa60088f74334fd3132c7c2bef4b5f07d6f5ac05869f63b866804efaaee",
+      "alpha": false
+    },
+    {
+      "file": "masters/c06-shikishi-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2874469,
+      "sha256": "77df922fc1e8c7e3e5222683bdd2003fd8e0ef102750eade475d85f6fc7c5e16",
+      "alpha": true
+    },
+    {
+      "file": "characters/shikishi-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 237370,
+      "sha256": "642f6e2e7f85bd0317a10923e3929b53bfa14e636b910970be0bbe1bbe07c391",
+      "alpha": true
+    },
+    {
+      "file": "masters/c06-shikishi-hollow-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2512563,
+      "sha256": "9229d34702bd1fc4bf8753b7be3f04d9ce50ded784d699a67f19d1e0b8f3db61",
+      "alpha": true
+    },
+    {
+      "file": "characters/shikishi-hollow-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 165250,
+      "sha256": "efccad3dc8d64cd4b42cef9b1d0351803ef08376e6dc9b052b3095229fe0b358",
+      "alpha": true
+    },
+    {
+      "file": "masters/c06-shikishi-smile-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2667661,
+      "sha256": "0afcf5c837e5c83d8d22437c33fb7412dd251b2ca551fe8d1d5b762ee984c6b3",
+      "alpha": true
+    },
+    {
+      "file": "characters/shikishi-smile-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 182572,
+      "sha256": "4cb07efecdf12aeaa8121e8553805a01afe1f69570ba395169a63669d25d59ff",
+      "alpha": true
+    },
+    {
+      "file": "masters/c06-yakamochi-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2497979,
+      "sha256": "a0a559d8b42e429d60d0ae5eebc99393ae14f4802eb2b82429e310899ce6ed9b",
+      "alpha": true
+    },
+    {
+      "file": "characters/yakamochi-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 163700,
+      "sha256": "a58d6c09fd47d7876d3c12480a930c4d7ee1578264b98e6628212b234d13d9c0",
+      "alpha": true
+    },
+    {
+      "file": "masters/c06-yakamochi-hollow-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2324709,
+      "sha256": "36eddda1295074824d7a09aeb84e28e727b0c3ecf99d47782ee0550d883b0c7d",
+      "alpha": true
+    },
+    {
+      "file": "characters/yakamochi-hollow-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 138368,
+      "sha256": "68d9360f06286fe2e4f6e0257682ffa35752987abbe70d0d3f68c04f981775b3",
+      "alpha": true
+    },
+    {
+      "file": "masters/c06-yakamochi-smile-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2403432,
+      "sha256": "073a90f08b04e9ac61e53ccfe6de6213fa119df39455179f9a0f935c2e3093d6",
+      "alpha": true
+    },
+    {
+      "file": "characters/yakamochi-smile-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 148372,
+      "sha256": "d65b97c4976d1be9239a64c90c386731c64d110db6d3247bfb95420319741e6f",
+      "alpha": true
     }
   ],
   "backlog": [
-    {
-      "id": "BG35",
-      "label": "封じられた宮殿",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG36",
-      "label": "式子内親王の部屋",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG37",
-      "label": "新年の雪景色",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG38",
-      "label": "橘家の書庫",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG39",
-      "label": "千年前の封印の庭",
-      "status": "not-produced"
-    },
     {
       "id": "BG40",
       "label": "墨に覆われた大広間",
@@ -3737,14 +4073,6 @@
       "status": "not-produced"
     },
     {
-      "label": "式子内親王",
-      "status": "not-produced"
-    },
-    {
-      "label": "大伴家持",
-      "status": "not-produced"
-    },
-    {
       "label": "忘れの主（立ち絵・大型対決画像）",
       "status": "not-produced"
     },
@@ -3763,6 +4091,10 @@
     {
       "label": "西行法師・藤原定家の驚き差分",
       "status": "not-produced"
+    },
+    {
+      "label": "式子内親王・大伴家持の驚き差分",
+      "status": "not-produced"
     }
   ],
   "limitations": [
@@ -3770,6 +4102,6 @@
     "第3章の新規人物は通常のみ。持統天皇・東歌の若者に記憶喪失差分。追加表情は未制作。",
     "第3章の人物マスターは1024×1536。要求の高さ1600〜2000pxには未達。拡大して高解像度扱いにはしない。",
     "背景は創作イメージであり、史実・地形の忠実な復元ではない。",
-    "第1〜5章の使用素材を制作。BG35〜46、残る歌人、忘れの主の本立ち絵は未制作。第5章の歌人は通常・微笑・記憶喪失の3状態。驚きは未制作。人物PNGマスターは1024×1536。"
+    "第1〜6章の使用素材を制作。BG40〜46、忘れの主の本立ち絵は未制作。第6章の歌人は通常・微笑・記憶喪失の3状態。驚きは未制作。人物PNGマスターは1024×1536。"
   ]
 }
