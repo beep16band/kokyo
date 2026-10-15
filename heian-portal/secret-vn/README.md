@@ -1,6 +1,6 @@
 # 言の葉の檻 ― 千年の約束 ―
 
-第1・2章の段階実装。添付v1.2統合稿を使用。最終台本・教師校閲、全7章の完成ではない。
+第1〜5章の段階実装。添付v1.2統合稿を使用。最終台本・教師校閲、全7章の完成ではない。
 
 - [第1章「帰れない二人」](https://beep16band.github.io/kokyo/heian-portal/secret-vn/)：7シーン・8問。
 - [第2章「消えた故郷」](https://beep16band.github.io/kokyo/heian-portal/secret-vn/chapter2.html)：8シーン・12問。
@@ -26,7 +26,7 @@ GitHub Pagesを生徒用配信先とする。Sitesは生徒用として使用し
 
 `core.mjs`が章別のデータ・問題数・問題挿入位置を読み取る。`app.mjs`・`style.css`・`portraits.mjs`を共用し、台本は`chapter1.json`・`chapter2.json`。ワイプは各画像の顔座標をSVG viewBoxへ渡す。降下する桜なし。OSの動きを減らす設定には連動させず、画面内の演出設定を使用。
 
-音響はオリジナルWeb Audio環境音・効果音。専用録音BGMは未制作。忘れの主の本立ち絵も未制作で、第1章は墨と声の試験演出。第3〜7章、記憶図鑑、総合演習は後続工程。通常ポータル本体への入口追加はまだ行っていない。
+音響はオリジナルWeb Audio環境音・効果音。専用録音BGMは未制作。忘れの主の本立ち絵も未制作で、第1章は墨と声の試験演出。第6〜7章、記憶図鑑、総合演習は後続工程。通常ポータル本体への入口追加はまだ行っていない。
 
 ## 検査
 
@@ -42,3 +42,6 @@ node test-chapter2.mjs
 
 
 第4章を追加：`chapter4.html`。実装・修正・未完了事項は[CHAPTER4.md](CHAPTER4.md)、素材は[ASSETS-C04.md](ASSETS-C04.md)。共通エンジンと第1〜3章の台本・セーブ位置は変更なし。
+
+
+第5章を追加：`chapter5.html`。9シーン・82行・8問。実装・出典は[CHAPTER5.md](CHAPTER5.md)、素材は[ASSETS-C05.md](ASSETS-C05.md)、公開画面の確認は[QA-C05.md](QA-C05.md)。第4章末から続けて入章できる。通常ポータルと82秒OPには変更なし。

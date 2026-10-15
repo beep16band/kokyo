@@ -1,0 +1,910 @@
+{
+  "scenes": [
+    {
+      "scene_id": "C05-S01",
+      "chapter_id": "C05",
+      "title": "何も感じない道",
+      "background_ids": [
+        "BG30"
+      ],
+      "characters": [
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "muted-stream"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "清水の流れる柳の道。水は濁り、柳は一葉も揺れない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "静かすぎる。水が流れてるはずなのに。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "音も、涼しさも感じないな。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "僧の姿が道を通り過ぎる。顔は深い影に隠れている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "西行法師さん！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "西行法師",
+          "text": "この道の何が、私の足を止めたのでしょう。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "歌を思い出せば、きっと分かります。"
+        }
+      ],
+      "visual_stage": "background:BG30; characters:茜,湊; events:muted-stream",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C05-S02",
+      "chapter_id": "C05",
+      "title": "西行法師との出会い",
+      "background_ids": [
+        "BG30"
+      ],
+      "characters": [
+        "西行法師",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "poet-shadow"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "柳の木陰で西行は足を止める。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "西行法師",
+          "text": "ただの木と濁った水。ここに憩う理由が思い出せない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "「道の辺に清水流るる柳かげ」。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "西行法師",
+          "text": "清水……柳かげ……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "そうです。言葉を一緒に確かめましょう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "西行の歌が浮かび、四つの試練が始まる。"
+        }
+      ],
+      "visual_stage": "background:BG30; characters:西行法師,茜,湊; events:poet-shadow",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C05-S03",
+      "chapter_id": "C05",
+      "title": "西行法師の読解試練",
+      "background_ids": [
+        "BG30"
+      ],
+      "characters": [
+        "西行法師"
+      ],
+      "event_tags": [
+        "quiz:w13"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C05-W13-Q01",
+        "C05-W13-Q02",
+        "C05-W13-Q03",
+        "C05-W13-Q04"
+      ],
+      "quiz_gate": "all_four_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「西行法師」。清水、しばし、こそ―つれ、歌の内容を問う。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "ここは特に係り結びがテストに出やすいね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "「こそ」と已然形の「つれ」だ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "全問正解で水の濁りが消え始める。"
+        }
+      ],
+      "visual_stage": "background:BG30; characters:西行法師; events:quiz:w13",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C05-S04",
+      "chapter_id": "C05",
+      "title": "清水が流れ柳が揺れる",
+      "background_ids": [
+        "BG31"
+      ],
+      "characters": [
+        "西行法師",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "water-recovery"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "清らかな水音が戻り、柳が風に揺れる。西行の顔に光が差す。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "西行法師",
+          "text": "少しのつもりで立ち止まった。清水と柳の木陰が、心地よかったのです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "道の途中に、こんな場所があったんですね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "西行法師",
+          "text": "急ぐときほど、見過ごすものもあります。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "俺たちも、少し立ち止まって考えよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "「憩」の札が現れ、海辺への道が開く。"
+        }
+      ],
+      "visual_stage": "background:BG31; characters:西行法師,茜,湊; events:water-recovery",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C05-S05",
+      "chapter_id": "C05",
+      "title": "花も紅葉もない海辺",
+      "background_ids": [
+        "BG32"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "藤原定家"
+      ],
+      "event_tags": [
+        "desaturation"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "苫屋のある秋の海辺。空と海は色を失っている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "通常編の最後に来た場所だ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "前は、静かな夕暮れだと思えたのに……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "藤原定家",
+          "text": "花も紅葉もない。美しさなどどこにもない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "でも、その情景を歌に詠んだんですよね。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "藤原定家",
+          "text": "なぜ、この景色を選んだのか思い出せぬ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "海面に和歌が浮かび上がる。"
+        }
+      ],
+      "visual_stage": "background:BG32; characters:茜,湊,藤原定家; events:desaturation",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C05-S06",
+      "chapter_id": "C05",
+      "title": "藤原定家の読解試練",
+      "background_ids": [
+        "BG32"
+      ],
+      "characters": [
+        "藤原定家"
+      ],
+      "event_tags": [
+        "quiz:w14"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [
+        "C05-W14-Q01",
+        "C05-W14-Q02",
+        "C05-W14-Q03",
+        "C05-W14-Q04"
+      ],
+      "quiz_gate": "all_four_correct",
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "QUIZ「藤原定家」。苫屋、なかりけり、三句切れ、内容を問う。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "派手な花や紅葉がないこと自体が、情景を際立てている。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "三句切れも確認しよう。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "四問正解すると、秋の夕暮れの色が戻る。"
+        }
+      ],
+      "visual_stage": "background:BG32; characters:藤原定家; events:quiz:w14",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C05-S07",
+      "chapter_id": "C05",
+      "title": "夕暮れの向こうに残されたもの",
+      "background_ids": [
+        "BG33"
+      ],
+      "characters": [
+        "藤原定家",
+        "茜",
+        "湊"
+      ],
+      "event_tags": [
+        "sunset-recovery"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "海に淡い色が戻り、苫屋が夕暮れに照らされる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "藤原定家",
+          "text": "花も紅葉もない。それでも心を引く趣が、ここにはある。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "前にも、ここで学びました。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "引っ越したら全部変わると思ってた。でも、新しい毎日も始まってる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "離れても、言葉でつながっていられる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "藤原定家",
+          "text": "書かれなかった名前にも、それを呼ぶ人がいたはずです。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "藤原定家",
+          "text": "奥の記録の間へお進みなさい。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "苫屋の奥に扉が現れる。"
+        }
+      ],
+      "visual_stage": "background:BG33; characters:藤原定家,茜,湊; events:sunset-recovery",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C05-S08",
+      "chapter_id": "C05",
+      "title": "消された名前の間",
+      "background_ids": [
+        "BG34"
+      ],
+      "characters": [
+        "茜",
+        "湊",
+        "忘れの主"
+      ],
+      "event_tags": [
+        "dynamic-lineage"
+      ],
+      "dialogue_status": "全シーン新規統合稿収録済み・第2稿逐語転記ではない（教師の台本確認待ち）",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "名前の記録の間。橘と榊の紋が浮く。文字は過去の系譜から現在へ伸びる光で描き足される。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "「橘ことは」……同じ橘の名前。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "こっちには榊の紋と、消された名前がある。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "あなたの家のこと……？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "そうだと思う。でもここでは、声に出せない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "名を呼べば、約束に縛られる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "無理しなくていいよ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "ありがとう。でも、自分の名から逃げたくない。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "墨が湊の腕へと這い上がる。"
+        }
+      ],
+      "visual_stage": "background:BG34; characters:茜,湊,忘れの主; events:dynamic-lineage",
+      "screenplay_version": "v1.1",
+      "shot_cues": [],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    },
+    {
+      "scene_id": "C05-S09",
+      "chapter_id": "C05",
+      "title": "榊守湊・氏の復元",
+      "background_ids": [
+        "BG34"
+      ],
+      "characters": [
+        "湊",
+        "茜"
+      ],
+      "event_tags": [
+        "surname-reveal"
+      ],
+      "dialogue_status": "expanded-v1.1-staging-approved-candidate",
+      "screenplay_source": "本チャットの第1〜第7章本文",
+      "complete_when": "会話・演出を最後まで再生し、必須試練がある場合は全問正解",
+      "quiz_ids": [],
+      "script": [
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "記録帳に伸びた墨が湊の腕を取り巻く。音が途切れ、心臓の鼓動だけになる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "お前は橘を守るために生まれた。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "……違う。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "名を呼べば、お前は千年前の誓いに縛られる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "湊、無理に言わなくていい！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "ありがとう、茜。でも……。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "湊は黒い墨に覆われた記録帳を見つめる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "俺は、自分の名前から逃げたくない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "榊の者は橘のために失われる。それが約束だ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "誰かの代わりに全部背負うことが、守ることなのか？"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "俺は、そう思わない。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "先祖が約束したから守るんじゃない。俺自身が大切だと思うからだ。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……うん。一緒に考えて、一緒に進もう。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "俺が何をするかは、俺が決める。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "カメラが湊の手から顔へ上がる。墨の流れが逆転する。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "忘れの主",
+          "text": "その名を、口にするな！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "俺の名前は……。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "完全暗転。風もBGMも止まる。二拍の無音。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "榊守、湊だ。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "黒い画面に白文字で「榊守 湊」。次いで榊の葉の紋が金色に光る。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "記録帳を覆う墨が砕け、現在の湊の氏名が系譜の末尾へ書き加えられる。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "……言えた！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "ああ。ずっと知っていた名前を、ここでも言えた。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "知ってるはずの名前なのに、初めて聞いたみたい。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "湊",
+          "text": "不思議だな。俺も、そんな感じがする。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "記録帳の中央に橘の花の紋が現れる。封印の奥からことはの声。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことはの声",
+          "text": "茜さん……湊さん……。"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "茜",
+          "text": "ことは！"
+        },
+        {
+          "kind": "dialogue",
+          "speaker": "ことはの声",
+          "text": "……私のことを、許さないでください。"
+        },
+        {
+          "kind": "narration",
+          "speaker": "地の文",
+          "text": "橘の光が扉へ流れ込み、次章への道が現れる。"
+        }
+      ],
+      "visual_stage": "background:BG34; characters:湊,茜; events:surname-reveal",
+      "screenplay_version": "v1.1",
+      "script_previous_v1_length": 11,
+      "shot_cues": [
+        {
+          "after_line_index": 0,
+          "background_id": "BG34",
+          "cue_type": "camera",
+          "effect": "tight-hands-ink",
+          "sfx_id": "sfx-heartbeat",
+          "bgm_id": "music-none",
+          "duration_ms": 1000
+        },
+        {
+          "after_line_index": 14,
+          "background_id": "BG34",
+          "cue_type": "camera",
+          "effect": "slow-push-face",
+          "sfx_id": "sfx-ink-reverse",
+          "bgm_id": "music-rising",
+          "duration_ms": 1600
+        },
+        {
+          "after_line_index": 17,
+          "background_id": "BG34",
+          "cue_type": "cut",
+          "effect": "blackout-hold",
+          "sfx_id": "silence",
+          "bgm_id": "music-none",
+          "duration_ms": 1600
+        },
+        {
+          "after_line_index": 19,
+          "background_id": "BG34",
+          "cue_type": "title",
+          "effect": "surname-title-reveal",
+          "sfx_id": "sfx-seal-break",
+          "bgm_id": "music-name-theme",
+          "duration_ms": 3200
+        },
+        {
+          "after_line_index": 20,
+          "background_id": "BG34",
+          "cue_type": "overlay",
+          "effect": "family-tree-writing",
+          "sfx_id": "sfx-paper",
+          "bgm_id": "music-name-theme",
+          "duration_ms": 2200
+        }
+      ],
+      "staging_defaults": {
+        "portrait_source": "existing-poet-atlas-image",
+        "memory_lost_portrait": "face-obscured-with-inky-shadow",
+        "camera": "static-medium",
+        "text_advance": "manual",
+        "skip_behavior": "skip-text-only-do-not-skip-quizzes",
+        "scene_transition_ms": 600
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "C05-W13-Q01",
+      "chapter_id": "C05",
+      "waka_id": "w13",
+      "prompt": "「清水」の意味は？",
+      "options": [
+        "澄んだ水",
+        "凍った水",
+        "泥水",
+        "潮水"
+      ],
+      "correct_index": 0,
+      "explanation": "澄んだ水のこと。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "澄んだ水",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C05-W13-Q02",
+      "chapter_id": "C05",
+      "waka_id": "w13",
+      "prompt": "「しばしとて」の意味は？",
+      "options": [
+        "長い間のつもりで",
+        "もう少し歩こうと",
+        "少しの間のつもりで",
+        "何度も来ようと"
+      ],
+      "correct_index": 2,
+      "explanation": "しばし＝少しの間。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "少しの間のつもりで",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C05-W13-Q03",
+      "chapter_id": "C05",
+      "waka_id": "w13",
+      "prompt": "係り結びは？",
+      "options": [
+        "しばし―とて",
+        "こそ―つれ",
+        "立ち―どまり",
+        "清水―流るる"
+      ],
+      "correct_index": 1,
+      "explanation": "「こそ」に已然形「つれ」が結ぶ。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "こそ―つれ",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C05-W13-Q04",
+      "chapter_id": "C05",
+      "waka_id": "w13",
+      "prompt": "歌の内容は？",
+      "options": [
+        "清水と柳の木陰に引かれて立ち止まった",
+        "迷って一夜を過ごした",
+        "激しい雨を避けた",
+        "川を渡れず長く待った"
+      ],
+      "correct_index": 0,
+      "explanation": "道端の清水と木陰に心を引かれた。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "清水と柳の木陰に引かれて立ち止まった",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C05-W14-Q01",
+      "chapter_id": "C05",
+      "waka_id": "w14",
+      "prompt": "「苫屋」とは？",
+      "options": [
+        "高い塔",
+        "苫で葺いた粗末な小屋",
+        "豪華な屋敷",
+        "石造りの倉庫"
+      ],
+      "correct_index": 1,
+      "explanation": "苫で屋根を葺いた小屋。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "苫で葺いた粗末な小屋",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C05-W14-Q02",
+      "chapter_id": "C05",
+      "waka_id": "w14",
+      "prompt": "「なかりけり」の意味は？",
+      "options": [
+        "やがて咲くだろう",
+        "花はあるが紅葉なし",
+        "ないのだなあ",
+        "昔は美しかった"
+      ],
+      "correct_index": 2,
+      "explanation": "「ないのだなあ」の詠嘆。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "ないのだなあ",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C05-W14-Q03",
+      "chapter_id": "C05",
+      "waka_id": "w14",
+      "prompt": "この歌の句切れは？",
+      "options": [
+        "初句切れ",
+        "二句切れ",
+        "三句切れ",
+        "四句切れ"
+      ],
+      "correct_index": 2,
+      "explanation": "三句「なかりけり」で切れる。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "三句切れ",
+      "correct_option_id": "correct"
+    },
+    {
+      "id": "C05-W14-Q04",
+      "chapter_id": "C05",
+      "waka_id": "w14",
+      "prompt": "歌の内容は？",
+      "options": [
+        "花や紅葉が咲き乱れる",
+        "紅葉が散っただけを嘆く",
+        "豪華な屋敷から見る",
+        "花も紅葉もない海辺の夕暮の趣"
+      ],
+      "correct_index": 3,
+      "explanation": "花も紅葉もない秋の夕暮を詠む。",
+      "required": true,
+      "status": "既存v0.1問題。逐語校閲待ち。採点はcorrect_option_textへ紐づけ",
+      "correct_option_text": "花も紅葉もない海辺の夕暮の趣",
+      "correct_option_id": "correct"
+    }
+  ]
+}

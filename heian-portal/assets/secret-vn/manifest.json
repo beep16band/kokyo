@@ -351,6 +351,56 @@
       "status": "produced-base-with-runtime-variant",
       "motionHint": "カメラ移動、川の色彩回復・波紋・墨。桜の降下・強い点滅なし。",
       "note": "創作イメージ。東の光と西の月は一画面に配置した演出であり、実際の方角図・天体図ではない。"
+    },
+    "BG30": {
+      "label": "止まった清水と柳の道",
+      "chapter": "C05",
+      "file": "backgrounds/c05-willow-v1.webp",
+      "filter": "saturate(0) brightness(.45)",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "水面の光、色彩の回復、墨、名前の演出。花びらの降下なし。",
+      "note": "創作イメージ。特定の史跡・建物を再現したものではない。海辺は通常編の既存画像を再利用し、回復後も花や紅葉を加えない。"
+    },
+    "BG31": {
+      "label": "清水と柳の道・回復後",
+      "chapter": "C05",
+      "file": "backgrounds/c05-willow-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "水面の光、色彩の回復、墨、名前の演出。花びらの降下なし。",
+      "note": "創作イメージ。特定の史跡・建物を再現したものではない。海辺は通常編の既存画像を再利用し、回復後も花や紅葉を加えない。"
+    },
+    "BG32": {
+      "label": "色を失った秋の海辺",
+      "chapter": "C05",
+      "file": "backgrounds/c05-shore-v1.webp",
+      "filter": "saturate(0) brightness(.54)",
+      "layers": [],
+      "status": "reused-existing-art-with-runtime-variant",
+      "motionHint": "水面の光、色彩の回復、墨、名前の演出。花びらの降下なし。",
+      "note": "創作イメージ。特定の史跡・建物を再現したものではない。海辺は通常編の既存画像を再利用し、回復後も花や紅葉を加えない。"
+    },
+    "BG33": {
+      "label": "苫屋と秋の夕暮・回復後",
+      "chapter": "C05",
+      "file": "backgrounds/c05-shore-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "reused-existing-art-with-runtime-variant",
+      "motionHint": "水面の光、色彩の回復、墨、名前の演出。花びらの降下なし。",
+      "note": "創作イメージ。特定の史跡・建物を再現したものではない。海辺は通常編の既存画像を再利用し、回復後も花や紅葉を加えない。"
+    },
+    "BG34": {
+      "label": "名前の消えた巻物の間",
+      "chapter": "C05",
+      "file": "backgrounds/c05-name-archive-v1.webp",
+      "filter": "none",
+      "layers": [],
+      "status": "produced-base-with-runtime-variant",
+      "motionHint": "水面の光、色彩の回復、墨、名前の演出。花びらの降下なし。",
+      "note": "創作イメージ。特定の史跡・建物を再現したものではない。海辺は通常編の既存画像を再利用し、回復後も花や紅葉を加えない。"
     }
   },
   "characters": {
@@ -1507,6 +1557,148 @@
             "height": 1536,
             "bytes": 1989870,
             "sha256": "2def025c503d82ad9c5c2c678ac04afa498608a1275a1e1dd17eaeb0fd618225",
+            "alpha": true
+          }
+        }
+      }
+    },
+    "saigyo": {
+      "label": "西行法師",
+      "states": {
+        "normal": {
+          "file": "characters/saigyo-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 78936,
+          "sha256": "f27948cd00e7776b344a43b33a47740854883d87140a43aa4a5b08ae0e3bc933",
+          "alpha": true,
+          "faceCrop": [
+            265,
+            20,
+            200,
+            200
+          ],
+          "master": {
+            "file": "masters/c05-saigyo-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 1928701,
+            "sha256": "e2fdcd92542f977f2ed936333c606286e3ca54f11469be561ff0d8d0b27cc0ec",
+            "alpha": true
+          }
+        },
+        "smile": {
+          "file": "characters/saigyo-smile-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 76050,
+          "sha256": "721ed842aa571023147e6f51a6b516b6f2cf1c0d059267ca6cbee215b1e70d5d",
+          "alpha": true,
+          "faceCrop": [
+            265,
+            20,
+            200,
+            200
+          ],
+          "master": {
+            "file": "masters/c05-saigyo-smile-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 1825960,
+            "sha256": "69ee46f38597585a6b0e3d59a57b0566d26ddca63e7ceac95d39e06943b37d92",
+            "alpha": true
+          }
+        },
+        "hollow": {
+          "file": "characters/saigyo-hollow-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 71282,
+          "sha256": "4e853ca42d7f4d1351f05af3fa638c05a196e63fc0c3637ee1b890f15bfe89ef",
+          "alpha": true,
+          "faceCrop": [
+            265,
+            20,
+            200,
+            200
+          ],
+          "master": {
+            "file": "masters/c05-saigyo-hollow-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 1784292,
+            "sha256": "cf63ea9e38cf4ed426f91d47bee7cbb6f1cd37c0bf928237ac18662cb3614075",
+            "alpha": true
+          }
+        }
+      }
+    },
+    "teika": {
+      "label": "藤原定家",
+      "states": {
+        "normal": {
+          "file": "characters/teika-normal-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 151156,
+          "sha256": "53b55f427467b697a0dbd90fe37d5a77ce9b760cb18994fc562fc7070f9d04bb",
+          "alpha": true,
+          "faceCrop": [
+            255,
+            80,
+            190,
+            190
+          ],
+          "master": {
+            "file": "masters/c05-teika-normal-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2515896,
+            "sha256": "39cc01c514f02005d2976a924199d6520685c210baed3fd05ca37f5494c9b40c",
+            "alpha": true
+          }
+        },
+        "smile": {
+          "file": "characters/teika-smile-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 139864,
+          "sha256": "0174d91f3cd5860a8e6e6d7425a64ca5bdcd7d6abe0b2c7ce58fa247805f4415",
+          "alpha": true,
+          "faceCrop": [
+            255,
+            80,
+            190,
+            190
+          ],
+          "master": {
+            "file": "masters/c05-teika-smile-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2398134,
+            "sha256": "a54a304c0aacce453443c32ff28793b4dbf67801b0370057f860bdc936a432bc",
+            "alpha": true
+          }
+        },
+        "hollow": {
+          "file": "characters/teika-hollow-v1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 114638,
+          "sha256": "52a7954857e117c76b7bc74e5f549a3ed485329b25e8350ffb15e95b449f5bd4",
+          "alpha": true,
+          "faceCrop": [
+            255,
+            80,
+            190,
+            190
+          ],
+          "master": {
+            "file": "masters/c05-teika-hollow-v1-source.png",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 2222717,
+            "sha256": "bdc7c46541a45a2232e6b1d0ebffbdc9a2c071b5062b345fdcda2cd25a532653",
             "alpha": true
           }
         }
@@ -3345,34 +3537,145 @@
       "bytes": 89038,
       "sha256": "8aa3f7dc43823e197589c8a95502f9b24f9ff1cda8fa7bedf6ca55e7117965e8",
       "alpha": true
+    },
+    {
+      "file": "masters/c05-willow-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3444417,
+      "sha256": "84f31c6758c0b90f177ab0c86887c184d1634e1a5633518ebfcf1e39f07b85d2",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c05-willow-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 337972,
+      "sha256": "a63cd0fbe42fcd37e095dd325b2676525eaedbba2a7b395c073c28a93d6b422f",
+      "alpha": false
+    },
+    {
+      "file": "masters/c05-name-archive-v1-source.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2178169,
+      "sha256": "12d17926c6b39789615f72e9715da27f47055abab789b99d1ce0695b5b3313b5",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c05-name-archive-v1.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 136024,
+      "sha256": "b79f7321ee1bf27a7b9d43f2b05b56a9579a82e5e996bb37fb37fa74d80a9b6b",
+      "alpha": false
+    },
+    {
+      "file": "backgrounds/c05-shore-v1.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 179616,
+      "sha256": "b6891ee73a2b6e50383b551070141dcec3fb769f518f3b9e028385a2571549c3",
+      "alpha": false
+    },
+    {
+      "file": "masters/c05-saigyo-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1928701,
+      "sha256": "e2fdcd92542f977f2ed936333c606286e3ca54f11469be561ff0d8d0b27cc0ec",
+      "alpha": true
+    },
+    {
+      "file": "characters/saigyo-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 78936,
+      "sha256": "f27948cd00e7776b344a43b33a47740854883d87140a43aa4a5b08ae0e3bc933",
+      "alpha": true
+    },
+    {
+      "file": "masters/c05-saigyo-smile-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1825960,
+      "sha256": "69ee46f38597585a6b0e3d59a57b0566d26ddca63e7ceac95d39e06943b37d92",
+      "alpha": true
+    },
+    {
+      "file": "characters/saigyo-smile-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 76050,
+      "sha256": "721ed842aa571023147e6f51a6b516b6f2cf1c0d059267ca6cbee215b1e70d5d",
+      "alpha": true
+    },
+    {
+      "file": "masters/c05-saigyo-hollow-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1784292,
+      "sha256": "cf63ea9e38cf4ed426f91d47bee7cbb6f1cd37c0bf928237ac18662cb3614075",
+      "alpha": true
+    },
+    {
+      "file": "characters/saigyo-hollow-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 71282,
+      "sha256": "4e853ca42d7f4d1351f05af3fa638c05a196e63fc0c3637ee1b890f15bfe89ef",
+      "alpha": true
+    },
+    {
+      "file": "masters/c05-teika-normal-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2515896,
+      "sha256": "39cc01c514f02005d2976a924199d6520685c210baed3fd05ca37f5494c9b40c",
+      "alpha": true
+    },
+    {
+      "file": "characters/teika-normal-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 151156,
+      "sha256": "53b55f427467b697a0dbd90fe37d5a77ce9b760cb18994fc562fc7070f9d04bb",
+      "alpha": true
+    },
+    {
+      "file": "masters/c05-teika-smile-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2398134,
+      "sha256": "a54a304c0aacce453443c32ff28793b4dbf67801b0370057f860bdc936a432bc",
+      "alpha": true
+    },
+    {
+      "file": "characters/teika-smile-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 139864,
+      "sha256": "0174d91f3cd5860a8e6e6d7425a64ca5bdcd7d6abe0b2c7ce58fa247805f4415",
+      "alpha": true
+    },
+    {
+      "file": "masters/c05-teika-hollow-v1-source.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2222717,
+      "sha256": "bdc7c46541a45a2232e6b1d0ebffbdc9a2c071b5062b345fdcda2cd25a532653",
+      "alpha": true
+    },
+    {
+      "file": "characters/teika-hollow-v1.webp",
+      "width": 720,
+      "height": 1080,
+      "bytes": 114638,
+      "sha256": "52a7954857e117c76b7bc74e5f549a3ed485329b25e8350ffb15e95b449f5bd4",
+      "alpha": true
     }
   ],
   "backlog": [
-    {
-      "id": "BG30",
-      "label": "西行の道端",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG31",
-      "label": "西行の道端・回復後",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG32",
-      "label": "藤原定家の秋の海辺",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG33",
-      "label": "藤原定家の海辺・回復後",
-      "status": "not-produced"
-    },
-    {
-      "id": "BG34",
-      "label": "名前の消えた巻物の間",
-      "status": "not-produced"
-    },
     {
       "id": "BG35",
       "label": "封じられた宮殿",
@@ -3434,14 +3737,6 @@
       "status": "not-produced"
     },
     {
-      "label": "西行法師",
-      "status": "not-produced"
-    },
-    {
-      "label": "藤原定家",
-      "status": "not-produced"
-    },
-    {
       "label": "式子内親王",
       "status": "not-produced"
     },
@@ -3464,6 +3759,10 @@
     {
       "label": "在原業平・柿本人麻呂の驚き差分",
       "status": "not-produced"
+    },
+    {
+      "label": "西行法師・藤原定家の驚き差分",
+      "status": "not-produced"
     }
   ],
   "limitations": [
@@ -3471,6 +3770,6 @@
     "第3章の新規人物は通常のみ。持統天皇・東歌の若者に記憶喪失差分。追加表情は未制作。",
     "第3章の人物マスターは1024×1536。要求の高さ1600〜2000pxには未達。拡大して高解像度扱いにはしない。",
     "背景は創作イメージであり、史実・地形の忠実な復元ではない。",
-    "第1〜4章の必要素材を制作。BG30〜46、残る歌人、忘れの主の本立ち絵は未制作。第4章の歌人は通常・微笑・記憶喪失の3状態。驚きは未制作。人物PNGマスターは1024×1536で、1600〜2000pxの高さには未達。"
+    "第1〜5章の使用素材を制作。BG35〜46、残る歌人、忘れの主の本立ち絵は未制作。第5章の歌人は通常・微笑・記憶喪失の3状態。驚きは未制作。人物PNGマスターは1024×1536。"
   ]
 }

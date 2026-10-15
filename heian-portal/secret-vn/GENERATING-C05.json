@@ -1,0 +1,60 @@
+{
+  "willow": {
+    "key": "willow",
+    "transparent_background": false,
+    "prompt": "Use case: historical-scene. Asset: 16:9 cinematic Japanese anime visual novel background, no people. A quiet medieval Japanese country footpath curves from lower right toward distant green hills. On left a large old willow extends long slender fresh green leaves overhead, casting a cool shade over a narrow clear spring-fed stream along the path. The stream and rocks occupy lower left and center, tiny reflections, a grassy bank, early summer soft light, secluded place for a traveler to pause. Accurate modest natural rural setting without modern roads or houses. Beautiful high-detail anime background painting, refined brushwork, deep spatial composition, cool green shade with warm distant sunlight. Leave central/right midground open for character sprites, strongest visual features in upper and side regions, lower quarter can be covered by dialogue. No cherry trees or petals, no flower display, no autumn leaves, no written labels, no text, no symbols, no people. Single clean recovered-state base, later grayscale and ink overlays will be separate code layers. Fictional imagery, not a literal archaeological reconstruction."
+  },
+  "name-archive": {
+    "key": "name-archive",
+    "transparent_background": false,
+    "prompt": "Use case: historical-scene. Asset: 16:9 high-quality Japanese anime fantasy visual novel interior background with cinematic depth. An ancient Japanese wooden archive room, low dark timber beams, shelves of rolled scrolls at sides, faint dust, moonlight through wooden lattice rear windows. An open long genealogy scroll lies across a low writing desk in the lower middle extending toward background. Thick matte black ink obscures every place where names would appear: NO readable characters or invented glyphs anywhere. On back left a subtle carved mandarin blossom ornament, on right a subtle simple evergreen leafy branch ornament, both fictional unlettered motifs. Mystery, restrained Japanese psychological horror, no blood, no gore, no faces, no human figures, no modern furniture. Palette blue-black ink, warm amber tiny lantern, muted wood, thin gold light on ornaments. Composition leaves center/right space for two standing character sprites and lower quarter for dialogue overlay. Detailed refined anime background, not photorealistic. NO text, names, labels, logos, UI."
+  },
+  "saigyo-normal": {
+    "key": "saigyo-normal",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/secret-vn/delivery/references/poet-11.webp"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: identity-preserve. Project asset: Japanese anime visual novel transparent full-body standing sprite of Saigyo, the elderly Japanese Buddhist monk in the reference. Preserve exactly this reference man's bald head, deeply lined dignified face, strong dark eyebrows, narrow warm brown eyes, large ears, gray-brown layered monk robes, pale inner collar and shoulder cord. Mature elderly appearance, not a handsome youth. Reconstruct a natural full-body pose, sandals and robe hem fully inside frame, upright but relaxed, hands loosely clasped in front, calm reflective neutral expression. Clean high-quality detailed anime linework, restrained watercolor textures matching reference, no paper background. Front three-quarter facing slightly toward viewer's right, whole body centered with clear space above head and below feet. Portrait 2:3 composition. Soft neutral light, natural complexion. Actual transparent alpha background, no ground, no shadow rectangle, no scenery, no names, no text, no UI. This is a fictional visual interpretation consistent with existing educational character design."
+  },
+  "saigyo-smile": {
+    "key": "saigyo-smile",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/generated_images/exec-35ec8e9b-5667-4b7f-85a4-44b42a17191e.png"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: identity-preserve. Edit this full-body elderly Saigyo monk sprite. Keep the same bald head, deeply lined mature face, brown eyes, eyebrows, age, gray-brown robe, pale collar, cord, hands, sandals, body proportions and exact full-body framing. Change ONLY his expression to a small warm gentle relieved smile, eyes open, natural healthy skin light. Calm and dignified, never comical. Preserve clean detailed anime linework and textures. Strict transparent alpha outside silhouette: no brown glow, no black gradient, no floor, no scenery, no cast-shadow rectangle, no text or UI. All cap/head and feet within image."
+  },
+  "saigyo-hollow-v2": {
+    "key": "saigyo-hollow-v2",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/generated_images/exec-35ec8e9b-5667-4b7f-85a4-44b42a17191e.png"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: identity-preserve. Same elderly bald Saigyo monk full-body sprite, exact gray-brown robes, cord, hands, sandals, proportions and framing. Make the face radically dark for memory-loss horror: ENTIRE face from brow to jaw in almost black indigo-gray shadow, eyes completely unreadable, no pale skin or bright sclera showing. The face is a dark silhouette with only faint lower nose and mouth shape; retain bald head silhouette and old man identity. Do not merely add a small gray shadow around eyes. Robes muted and shoulders slightly slumped. No red eyes, wounds or gore. Transparent alpha outside the silhouette, no glow or background or ground shadow. No text/UI. Preserve all clothing, pose and full-body margins."
+  },
+  "teika-normal": {
+    "key": "teika-normal",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/secret-vn/delivery/references/poet-12.webp"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: identity-preserve. Japanese anime visual novel full-body transparent character sprite. Reconstruct the SAME mature older Japanese man Fujiwara no Teika from the reference, including long thoughtful face, narrow brown eyes, heavy silver-gray eyebrows, gray side hair, short gray moustache and pointed chin beard, high black eboshi court cap with black trailing band, elegant deep navy robe with restrained muted gold floral brocade, purple ties and white inner collar with thin red layer. Do not rejuvenate him, do not turn him into an attractive teenage boy. Calm contemplative neutral face. Whole body from tall cap tip to feet inside portrait 2:3 frame, centered with margin, three-quarter frontal pose, hands resting naturally inside sleeves at waist. Period-inspired late Heian/early Kamakura clothing, dignity over glamour. Refined detailed anime linework and watercolor texture matching the reference. Soft warm natural face light. Strict transparent alpha outside the body: no scenery, no paper, no brown glow, no black gradient, no floor, no cast shadow, no text, no UI. Preserve character identity, hairstyle, age, robe palette and cap."
+  },
+  "teika-smile": {
+    "key": "teika-smile",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/generated_images/exec-2b5204c6-52b7-4271-b734-bc1815448705.png"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: identity-preserve. Edit this same full-body older Fujiwara no Teika character sprite. Keep exactly the older mature lined face, silver gray hair, brows, short moustache and pointed beard, high black eboshi, navy robe with muted gold flowers, purple ties, white and red inner collar, whole-body pose, feet and framing. Change only expression to a restrained small reassuring smile, open thoughtful eyes, naturally lit healthy complexion. Not young, not exaggerated. Detailed anime linework consistent with reference. Transparent alpha background without any glow, gradient, floor, scenery, rectangle or text."
+  },
+  "teika-hollow": {
+    "key": "teika-hollow",
+    "referenced_image_paths": [
+      "/workspace/scratch/18dc965d666f/generated_images/exec-2b5204c6-52b7-4271-b734-bc1815448705.png"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: identity-preserve. Edit ONLY the emotional state and lighting of the same full-body older Fujiwara no Teika sprite. Keep identical cap silhouette, older gray-haired bearded man, navy and gold robe, purple cords, body pose, folds, framing and feet. Memory-lost horror state: the ENTIRE face, especially eyes and upper cheeks, is buried in extremely deep matte blue-black ink shadow, almost silhouette-dark. Do NOT show clear pale skin, do NOT show bright white eyes. No eye details should be legible at normal game scale. No glowing eyes. His head is slightly lowered, blank expression, robe desaturated. Low warm outline light on robe ONLY; face stays unlit. No blood or gore. Actual transparent alpha outside the body; no glow, no rectangular background, no floor or scenery. Preserve same character, whole body inside frame, no text/UI."
+  }
+}
