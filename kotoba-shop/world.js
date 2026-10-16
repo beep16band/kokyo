@@ -31,6 +31,8 @@ function buildArea(key){const a=AREAS[key],m={key,w:MAP_W,h:MAP_H,tiles:Array.fr
  if(key==='river'){rect(29,0,5,32,3);rect(28,15,7,3,5);rect(28,25,7,2,5);path(24,20,26,20,2);poi(26,20,'fish','川の釣り場');poi(13,10,'sign','川の観察メモ',{text:'橋の上は歩けます。釣り場の前で決定すると、川にすむ魚を探せます。東の橋を渡ると湖畔です。'});}
  if(key==='lake'){rect(28,5,17,22,3);rect(27,17,9,3,5);path(24,3,46,3,1);path(46,3,46,28,1);path(46,28,24,28,1);path(24,20,26,20,2);poi(27,20,'lakeFish','湖の桟橋');poi(18,8,'view','夕暮れのベンチ');poi(14,24,'sign','湖の案内',{text:'この湖では、川とは違う魚にも出会えます。西はせせらぎ川、北は住宅街です。'});}
  if(key==='ruins'){rect(26,5,10,8,6);path(24,16,30,12,2,2);poi(30,12,'riddle','ことばの石碑');poi(15,23,'cache','古い石の箱',{id:'ruins-journal',text:'古い日記。「道に迷ったら、書かれたことばを読み直す。」'});poi(36,23,'riddle','つなぐ石碑',{second:true});}
+ // 裏道の両端を歩いて見つけると、遠回りを省ける。
+ const trails={forest:[7,7,'森と農園の裏道','forest-farm-a'],farm:[9,24,'森と農園の裏道','forest-farm-b'],hill:[36,24,'丘と湖の裏道','hill-lake-a'],lake:[18,9,'丘と湖の裏道','hill-lake-b'],ruins:[16,23,'町と遺跡の裏道','town-ruins-a'],town:[27,14,'町と遺跡の裏道','town-ruins-b']};if(trails[key]){const [x,y,name,id]=trails[key];poi(x,y,'shortcut',name,{id})}
  // 地区ごとに、読み物と収集物の寄り道を用意。
  const coords={town:[15,25],market:[5,18],homes:[40,26],hill:[39,8],forest:[14,7],farm:[9,23],river:[38,25],lake:[45,28],ruins:[12,10]};const [cx,cy]=coords[key];poi(cx,cy,'discover','小さな発見',{id:key+'-memory',text:a.name+'で、風景のしおりを見つけました。'});
  for(let y=0;y<MAP_H;y++)for(let x=0;x<MAP_W;x++){
