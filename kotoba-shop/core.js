@@ -224,9 +224,9 @@ function tree(x,y){const px=x*T,py=y*T;
 }
 
 // Phase 6: day-based gardening; saves under existing save object.
-const FARM_CROPS={carrot:{name:'にんじん',seed:25,days:2,sell:65},tomato:{name:'トマト',seed:40,days:3,sell:100},flower:{name:'お花',seed:20,days:2,sell:55}};
+const FARM_CROPS={carrot:{name:'にんじん',seed:25,days:2,sell:65},tomato:{name:'トマト',seed:40,days:3,sell:100},flower:{name:'お花',seed:20,days:2,sell:55},...Object.fromEntries(Object.entries(TOWN_DATA.crops).map(([k,v])=>[k,{name:v.name,seed:TOWN_DATA.prices[v.seed].buy,days:k==='carrot'?2:3,sell:TOWN_DATA.prices[k].shop}]))};
 const FARM_PLOTS=Array.from({length:6},(_,i)=>({x:13+i%3,y:8+Math.floor(i/3)}));
-state.farm=Array.isArray(state.farm)&&state.farm.length===6?state.farm:Array(6).fill(null);
+state.farm=Array.isArray(state.farm)&&state.farm.length>=6&&state.farm.length<=24?state.farm:Array(6).fill(null);
 state.farmBag=state.farmBag&&typeof state.farmBag==='object'?state.farmBag:{carrot:0,tomato:0,flower:0};
 state.farmHarvest=state.farmHarvest&&typeof state.farmHarvest==='object'?state.farmHarvest:{carrot:0,tomato:0,flower:0};
 state.farmSales=Number(state.farmSales)||0;state.produceShelf=state.produceShelf&&typeof state.produceShelf==='object'?state.produceShelf:{carrot:0,tomato:0,flower:0};
@@ -253,7 +253,7 @@ ctx.fillStyle='#b17c50';ctx.fillRect(shopCounter.x*T,shopCounter.y*T,shopCounter
 for(const k of PRODUCT_KEYS){state.ledger.units=state.ledger.units||{};state.ledger.units[k]=Math.max(0,Number(state.ledger.units[k])||0)}
 for(const k of ['revenue','purchases','orders'])state.ledger[k]=Math.max(0,Number(state.ledger[k])||0);
 for(const k of Object.keys(FARM_CROPS))for(const field of ['farmBag','farmHarvest','produceShelf'])state[field][k]=Math.max(0,Math.floor(Number(state[field][k])||0));
-state.farm=state.farm.map(p=>p&&['carrot','tomato','flower','pumpkin','turnip'].includes(p.kind)?{...p,planted:Math.min(state.day,Math.max(1,Number(p.planted)||1)),watered:Math.max(0,Number(p.watered)||0),lastWater:Math.min(state.day,Math.max(0,Number(p.lastWater)||0))}:null);
+state.farm=state.farm.map(p=>p&&Object.hasOwn(FARM_CROPS,p.kind)?{...p,planted:Math.min(state.day,Math.max(1,Number(p.planted)||1)),watered:Math.max(0,Number(p.watered)||0),lastWater:Math.min(state.day,Math.max(0,Number(p.lastWater)||0))}:null);
 state.furniturePlaced=state.furniturePlaced.filter((f,i,a)=>f.x>=2&&f.x<=17&&f.y>=2&&f.y<=9&&!(f.x===10&&f.y>=8)&&!within(homeBed,f.x,f.y)&&!homeFurniture.some(r=>within(r,f.x,f.y))&&a.findIndex(g=>g.x===f.x&&g.y===f.y)===i);
 // 畑や主通路の上に重なっていた背景の木を除く。
 for(let i=treePositions.length-1;i>=0;i--){const [x,y]=treePositions[i];if(x===9||x===10||y===6||FARM_PLOTS.some(p=>p.x===x&&p.y===y)){treePositions.splice(i,1);treeBlocks.delete(x+','+y)}}
@@ -269,7 +269,7 @@ const closeChoices=()=>{renderChoices([]);tell('矢印で移動、決定で話�
 
 
 // 工程②：四季・成長段階・花の色。既存の作物データは保持。
-const SEASONS=['春','夏','秋','冬'];const season=()=>SEASONS[Math.floor((state.day-1)/7)%4];
+const SEASONS=['春','夏','秋','冬'];let season=()=>SEASONS[Math.floor((state.day-1)/7)%4];
 Object.assign(FARM_CROPS,{carrot:{...FARM_CROPS.carrot,seasons:['春','秋','冬']},tomato:{...FARM_CROPS.tomato,seasons:['春','夏']},flower:{...FARM_CROPS.flower,seasons:SEASONS},pumpkin:{name:'かぼちゃ',seed:55,days:3,sell:135,seasons:['夏','秋']},turnip:{name:'かぶ',seed:20,days:2,sell:60,seasons:['秋','冬','春']}});
 const FLOWER_COLORS={pink:{name:'桃色',color:'#f49eb4'},yellow:{name:'黄色',color:'#f4d66e'},blue:{name:'青色',color:'#96bff5'}};
 state.flowerColors=state.flowerColors||{};for(const k in FARM_CROPS)for(const f of ['farmBag','farmHarvest','produceShelf'])state[f][k]=Math.max(0,Math.floor(Number(state[f][k])||0));

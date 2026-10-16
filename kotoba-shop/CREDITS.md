@@ -30,3 +30,9 @@ CC0: https://creativecommons.org/publicdomain/zero/1.0/
 ## v2.2 オリジナル描画
 
 `cozy.js` の建物・地形・木・住民・小物・虫は本作向けに作成したCanvas描画です。特定の既存ゲームの画像・キャラクターは使用していません。既存の素材クレジットは、室内や補助描画で引き続き使用する素材のため残しています。
+
+## v3.0
+
+- Three.js 0.160.1（MIT）：`vendor/THREE-LICENSE.txt`。公式パッケージをローカル同梱。
+- `scene3d.js`のモデル・アニメーション・軽量版キャラクターは本作用に制作したオリジナル形状。
+- Noto Sans CJK JP RegularからUI文字を抽出し、内部名をTown Paper Sansへ改名したフォント：`assets/town-jp.woff`。SIL OFL 1.1、`assets/TOWN_FONT_LICENSE.txt`。上流：[notofonts/noto-cjk](https://github.com/notofonts/noto-cjk)。著作権表示・ライセンスはフォント内と同梱文書に保持。

@@ -1,0 +1,64 @@
+// Deterministic integration gates. Synthetic isolated saves only; no real player data.
+const {chromium}=require('playwright'),{spawn}=require('node:child_process');
+const assert=require('node:assert/strict'),path=require('node:path');
+async function main(){
+ const server=spawn('python',['-m','http.server','8782'],{cwd:path.resolve(__dirname,'..'),stdio:'ignore'});
+ await new Promise(r=>setTimeout(r,350));let browser;const results=[],errors=[];
+ async function check(name,fn){try{await fn();results.push({name,pass:true})}catch(e){results.push({name,pass:false,error:e.message.slice(0,300)})}}
+ try{
+  browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+  const page=await browser.newPage({viewport:{width:1200,height:900}});
+  page.on('pageerror',e=>errors.push(e.message));
+  // Feature gates use Canvas fallback to isolate game logic from the separate WebGL gate.
+  await page.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){if(/^webgl|experimental-webgl/.test(type))return null;return get.call(this,type,...args)}});
+  await page.goto('http://127.0.0.1:8782/');
+  await page.evaluate(()=>{chooseLearningLevel('normal');tutorial.status='skipped';closeChoices();busy=false});
+  await check('migration: fresh 500G, schema4, key unchanged',async()=>{assert.deepEqual(await page.evaluate(()=>[state.coins,state.saveSchema,!!localStorage.getItem('kotoba_shop_v1')]),[500,4,true])});
+  await check('Phase4: all new facilities have a reachable entrance',async()=>{assert(await page.evaluate(()=>TOWN_DATA.facilities.every(f=>{const b=maps[f.area].buildings.find(b=>b.type===f.id);return b&&mapFloorFree(f.area,b.door.x,b.door.y+1)&&findWorldPath(AREAS[f.area].spawn,[b.door.x,b.door.y+1],(x,y)=>mapFloorFree(f.area,x,y))}))) });
+  await check('Phase4: old nine plus sea, mountain and cave; connected portals',async()=>{assert.equal(await page.evaluate(()=>Object.keys(maps).length),12);assert(await page.evaluate(()=>Object.values(maps).every(m=>m.portals.every(p=>maps[p.to].portals.some(t=>t.to===m.key))))) });
+  await check('Phase5: buying, insufficient money, price data',async()=>{assert(await page.evaluate(()=>{const before=state.coins;const ok=townBuy('carrotSeed');const bad=townBuy('rod',99);return ok&&!bad&&state.coins===before-20&&townCount('carrotSeed')===1&&TOWN_DATA.prices.medaka.direct===35&&TOWN_DATA.prices.medaka.shop===50}))});
+  await check('Phase5: listing transfers one item; sale pays once',async()=>{assert(await page.evaluate(()=>{enter('shop',10,9);closeChoices();townChange('medaka',1);const before=state.coins;if(!townListItem('medaka',50))return false;const id=X.listings.at(-1).id;const sold=townMakeSale(id,Date.now()+100000);const twice=townMakeSale(id,Date.now()+100000);return sold&&!twice&&state.coins===before+50&&townCount('medaka')===0}))});
+  await check('Phase5: kitchen uses ingredients once',async()=>{assert(await page.evaluate(()=>{townChange('carrot',1);townChange('salt',1);const ok=townCook('soup'),repeat=townCook('soup');return ok&&!repeat&&townCount('soup')===1&&townCount('carrot')===0&&townCount('salt')===0}))});
+  await check('Phase5: exactly three distinct model parts, no timer',async()=>{assert(await page.evaluate(()=>townModelPart(0)&&!townModelPart(0)&&townModelPart(2)&&townModelPart(1)&&X.model.parts.length===3&&X.metrics.model===1))});
+  await check('Phase5: real-time crop matures without watering',async()=>{assert(await page.evaluate(()=>{state.farm[0]={kind:'carrot',planted:state.day,watered:0,lastWater:0,plantedAt:Date.now()-181000};return plotReady(state.farm[0])}))});
+  await check('Phase5: farm expands to 12/24 and persists',async()=>{await page.evaluate(()=>{state.coins=10000;townFarmExpand();townFarmExpand();save(false)});await page.reload();await page.waitForFunction(()=>typeof X==='object');assert.deepEqual(await page.evaluate(()=>[state.farm.length,FARM_PLOTS.length,state.farm[0].kind]),[24,24,'carrot'])});
+  await check('Phase5: house rooms, storage and furniture rotation persist',async()=>{assert(await page.evaluate(()=>{enter('home',10,9);closeChoices();state.coins=10000;townHomeUpgrade();state.furniturePlaced.push({kind:'chair',x:5,y:5});const ok=townRotate(0);townRoom(1);const empty=state.furniturePlaced.length===0;townRoom(0);return ok&&empty&&state.furniturePlaced[0].rotation===1&&X.homeLevel===2}))});
+  await check('Phase5: clay completion, repeat reward, cancel safety',async()=>{assert(await page.evaluate(()=>{closeChoices();closeWorldMenu();const before=state.coins;startClay('初心者練習');for(let i=0;i<10;i++){updateClay(TownLife.clay.start+i*2500+1000);const t=TownLife.clay.target;shootClay(t.x,t.y)}updateClay(TownLife.clay.start+25001);const result=X.clayRecords['初心者練習'];startClay('初心者練習');finishClay(true);return result.best===10&&result.plays===1&&state.coins===before+40&&!TownLife.clay&&!busy}))});
+  await check('Phase6: eleven new NPCs, old NPCs retained, teacher identities distinct',async()=>{assert(await page.evaluate(()=>TOWN_DATA.residents.length===11&&npcs.some(n=>n.name==='モク')&&npcs.find(n=>n.name==='阪本先生').design==='sakamoto'&&npcs.find(n=>n.name==='阪口先生').design==='sakaguchi'&&npcs.find(n=>n.name==='ギャラクシー先生').design==='galaxy'))});
+  await check('Phase6: starter items granted once, talk and affection saved',async()=>{assert(await page.evaluate(()=>{const coins=state.coins;townTalk('阪本先生');const rods=townCount('rod');townTalk('阪本先生');return townCount('rod')===rods&&rods===1&&state.coins===coins&&state.customerAffinity['阪本先生']>=1}))});
+  await check('Phase7: exactly three levels, separate learning points, hint retry',async()=>{assert(await page.evaluate(()=>{const coins=state.coins;townStudy('auditStudy');if(choices.children.length!==4)return false;choices.firstElementChild.click();const t=learningTask;answerLearningTask(t,false,'違う','もう一度');const retry=learningTask===t&&!t.settled;guideLearningTask(t);choices.firstElementChild.click();return retry&&Object.keys(LEVELS).join(',')==='easy,normal,hard'&&X.learningPoints>=2&&state.coins===coins&&X.metrics.auditStudy===1}))});
+  await check('Phase9: all calendar seasons; seasonal/story rewards are independent',async()=>{assert(await page.evaluate(()=>{const keys=[0,3,6,9].map(m=>calendarSeason(new Date(2026,m,15)));return keys.join(',')==='winter,spring,summer,autumn'&&TOWN_DATA.seasons.autumn.event==='町の文化祭'}))});
+  await check('shared engine: seasonal report pays once without starting story festival',async()=>{assert(await page.evaluate(()=>{const before=state.coins,festival=X.metrics.festival;seasonalMenu();choices.firstElementChild.click();choices.firstElementChild.click();guideLearningTask(learningTask);choices.firstElementChild.click();const d=new Date(),key='season-'+d.getFullYear()+'-'+(d.getMonth()+1);townQuestRefresh();const first=townQuestReport(key),again=townQuestReport(key);return first&&!again&&state.coins===before+60&&X.metrics.festival===festival}))});
+  await check('migration: new districts, crops and enlarged farm survive reload',async()=>{await page.evaluate(()=>{changeArea('sea',24,10,false);state.farm[1]={kind:'potato',planted:state.day,watered:0,lastWater:0,plantedAt:Date.now()};save(false)});await page.reload();await page.waitForFunction(()=>typeof TownQuest==='object');assert.deepEqual(await page.evaluate(()=>[state.area,state.farm.length,state.farm[1].kind]),['sea',24,'potato'])});
+  await check('legacy expert migrates to hard without losing money/history',async()=>{const p=await browser.newPage();p.on('pageerror',e=>errors.push(e.message));await p.addInitScript(()=>{localStorage.setItem('kotoba_shop_v1',JSON.stringify({scene:'town',x:8,y:9,day:9,coins:9876,shopInitialized:true,stock:{bread:7},customerAffinity:{'モク':12},learning:{level:'expert',selected:true,seq:1,events:[{id:1,result:'correct',level:'expert'}]}}));const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(t,...a){return /^webgl|experimental-webgl/.test(t)?null:get.call(this,t,...a)}});await p.goto('http://127.0.0.1:8782/');assert.deepEqual(await p.evaluate(()=>[state.coins,state.stock.bread,state.customerAffinity['モク'],L.level,L.events[0].level,X.previousLearningLevel]),[9876,7,12,'hard','expert','expert']);await p.close()});
+  await check('Phase8: all eight chapters via real quest predicates; no repeated rewards; post-ending free life',async()=>{
+   const p=await browser.newPage();p.on('pageerror',e=>errors.push(e.message));
+   await p.addInitScript(()=>{const get=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(t,...a){return /^webgl|experimental-webgl/.test(t)?null:get.call(this,t,...a)}});
+   await p.goto('http://127.0.0.1:8782/');
+   const journey=await p.evaluate(()=>{
+    chooseLearningLevel('normal');tutorial.status='skipped';closeChoices();busy=false;
+    const done=[];function begin(i){const q=TOWN_DATA.quests[i];if(!townQuestActivate(q.id))throw Error('cannot activate '+q.id);}
+    function report(i){townQuestRefresh();const q=TOWN_DATA.quests[i];if(!townQuestReport(q.id))throw Error('unmet '+q.id+': '+JSON.stringify(q.requires)+' / '+JSON.stringify(X.metrics));const money=state.coins;if(townQuestReport(q.id)||money!==state.coins)throw Error('double reward');done.push(q.chapter);}
+    function guided(){for(let i=0;i<10;i++){if(!learningTask)break;guideLearningTask(learningTask);choices.firstElementChild.click();}}
+    function study(key){townStudy(key);choices.firstElementChild.click();guided();}
+    function sale(){closeChoices();busy=false;enter('shop',10,7);const o=orders[state.ordersDone];if(!o)throw Error('out of orders');for(const z of o.items){const need=Math.max(0,z.qty-state.shelfStock[z.item]);if(state.stock[z.item]<need){const buy=need-state.stock[z.item];state.coins-=goods[z.item].cost*buy;state.stock[z.item]+=buy;}state.stock[z.item]-=need;state.shelfStock[z.item]+=need;}shopTask(o);choices.firstElementChild.click();guided();}
+    begin(0);townTalk('あかり');townTalk('阪本先生');sale();report(0);
+    begin(1);townTalk('みお');townTalk('たくみ');study('introStudy');sale();sale();report(1);
+    begin(2);townTalk('たくみ');townTalk('ふみ');closeChoices();changeArea('river',28,20,false);busy=false;startFishing();updateFishing(mini.phaseAt+451);updateFishing(mini.phaseAt+mini.waitMs+1);finishCatch();stopMini();
+    changeArea('forest',24,20,false);closeChoices();busy=false;ensureBugs();fieldWorld.bugs=[{id:'audit-bug',key:'ladybug',x:visualX+1,y:visualY,homeX:visualX+1,homeY:visualY,phase:0,age:0}];facing='right';swingNet();resolveNet(netSwing.start+400);townGather('forest');report(2);
+    begin(3);townTalk('はるか');closeChoices();changeArea('farm',24,20,false);farmPlot(0);choices.firstElementChild.click();
+    // Tick the actual planting observer once; no crop growth waiting is needed for this chapter.
+    townObserveFarm();townBuy('salt');if(!townCook('soup'))throw Error('soup unavailable');townTalk('はるか');choices.firstElementChild.click();report(3);
+    begin(4);townTalk('けん');townModelPart(0);townModelPart(1);townModelPart(2);enter('home',10,9);closeChoices();modelMenu();choices.firstElementChild.click();townTalk('ギャラクシー先生');report(4);
+    begin(5);townTalk('阪口先生');study('requestStudy');residentRequestMenu('けん');choices.firstElementChild.click();residentRequestMenu('まさる');choices.firstElementChild.click();report(5);
+    begin(6);study('preparationStudy');if(!townPrepare('model')||!townPrepare('shopping')||!townPrepare('language'))throw Error('preparation failed');if(townPrepare('model'))throw Error('duplicate preparation');report(6);
+    begin(7);festivalPreparationMenu();[...choices.children].find(b=>b.dataset.plain==='交流まつりを開く').click();townTalk('みお');townTalk('あかり');townTalk('はるか');sale();festivalPreparationMenu();[...choices.children].find(b=>b.dataset.plain==='広場で感謝を受け取る').click();report(7);
+    if(!TownQuest.ending)throw Error('ending not shown');choices.firstElementChild.click();if(TownQuest.ending||!X.story.ending||state.scene!=='town')throw Error('free life unavailable');save(false);return {done,points:X.learningPoints,main:TOWN_DATA.quests.map(q=>X.quests[q.id].status)};
+   });assert.equal(journey.done.length,8);assert(journey.main.every(s=>s==='completed'));await p.reload();assert(await p.evaluate(()=>X.story.ending&&!TownQuest.ending));await p.close();
+  });
+  await check('runtime errors',async()=>assert.deepEqual(errors,[]));
+  console.log(JSON.stringify({results,errors,passed:results.filter(r=>r.pass).length,total:results.length},null,2));
+  if(results.some(r=>!r.pass))process.exitCode=1;
+ }finally{if(browser)await browser.close();server.kill()}
+}
+main().catch(e=>{console.error(e);process.exitCode=1});

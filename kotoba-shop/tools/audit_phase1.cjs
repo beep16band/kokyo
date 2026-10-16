@@ -35,14 +35,14 @@ async function main() {
   const origin = `http://127.0.0.1:${server.address().port}`;
   let browser;
   try {
-    browser = await chromium.launch({ headless: true, args: ['--no-sandbox'],
+    browser = await chromium.launch({ headless: true, args: ['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader'],
       ...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH } : {}) });
     const page = await browser.newPage();
     page.on('pageerror', e => errors.push(e.message));
     await page.goto(origin); await ready(page);
     await check('fresh start: save key and current release', async () => {
-      assert.equal(await page.evaluate(() => state.release), '2.2');
-      assert.equal(await page.evaluate(() => state.coins), 300);
+      assert(await page.evaluate(() => state.release.startsWith('3.0')));
+      assert.equal(await page.evaluate(() => state.coins), 500);
       assert(await page.evaluate(() => !!localStorage.getItem('kotoba_shop_v1')));
     });
     for (const area of ['town', 'market', 'homes', 'forest', 'hill', 'farm', 'river', 'lake', 'ruins']) {
@@ -63,11 +63,23 @@ async function main() {
         updateWalk(walkStep.start + walkStep.duration); dashHeld = false; return [normal, dash];
       }); assert.deepEqual(durations, [155, 95]);
     });
+    await check('Phase 2: orthographic 3D and a matching Canvas viewport', async () => {
+      assert(await page.evaluate(() => Town3D.ready && !Town3D.failed && Town3D.camera.isOrthographicCamera));
+      const bounds = await page.evaluate(() => [c.getBoundingClientRect().height, Town3D.renderer.domElement.getBoundingClientRect().height]);
+      assert(Math.abs(bounds[0]-bounds[1])<2);
+    });
+    await check('Phase 3: avatar choice, WASD and persistent selection', async () => {
+      await page.evaluate(() => { selectAvatar('girl'); closeChoices(); changeArea('town',24,18,false); });
+      await page.keyboard.press('s'); await page.waitForFunction(() => state.y===19);
+      assert.equal(await page.evaluate(() => state.y),19);
+      await page.evaluate(() => save(false)); await page.reload(); await ready(page);
+      assert.equal(await page.evaluate(() => state.avatar.kind),'girl');
+    });
     await check('door: shop entry and national-language question', async () => {
       assert(await page.evaluate(() => {
         changeArea('town', 13, 12, false); attemptStep(0, -1);
         if (state.scene !== 'shop') return false;
-        shopTask(orders[state.ordersDone]); const ok = !!learningTask;
+        shopTask(orders[state.ordersDone]); choices.firstElementChild.click(); const ok = !!learningTask;
         closeChoices(); busy = false; enter('town'); return ok;
       }));
     });

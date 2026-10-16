@@ -1,0 +1,50 @@
+// All new content is local data, not fetched over the network. IDs are stable save identifiers.
+const TOWN_DATA={
+ version:1,
+ prices:{
+  bread:{name:'パン',buy:30,direct:25,shop:80,demand:1},juice:{name:'ジュース',buy:55,direct:45,shop:120,demand:1},apple:{name:'りんご',buy:20,direct:18,shop:50,demand:1},tea:{name:'ハーブティー',buy:65,direct:50,shop:150,demand:.9},cookie:{name:'クッキー',buy:75,direct:60,shop:160,demand:.9},jam:{name:'ジャム',buy:90,direct:70,shop:190,demand:.8},
+  medaka:{name:'小さな川魚',direct:35,shop:50,demand:1},ladybug:{name:'一般的な虫',direct:25,shop:40,demand:1},
+  koi:{name:'コイ',direct:80,shop:115,demand:.8},ayu:{name:'アユ',direct:65,shop:95,demand:.9},wakasagi:{name:'ワカサギ',direct:40,shop:60,demand:1},bluegill:{name:'ブルーギル',direct:100,shop:145,demand:.7},aji:{name:'アジ',direct:45,shop:65,demand:1},dragonfly:{name:'トンボ',direct:45,shop:65,demand:.8},beetle:{name:'カブトムシ',direct:110,shop:160,demand:.7},
+  butterfly:{name:'チョウ',direct:25,shop:40,demand:1},moth:{name:'ガ',direct:25,shop:40,demand:1},
+  carrotSeed:{name:'にんじんの種',buy:20},tomatoSeed:{name:'トマトの種',buy:30},potatoSeed:{name:'じゃがいもの種',buy:25},cabbageSeed:{name:'キャベツの種',buy:25},cornSeed:{name:'とうもろこしの種',buy:35},pumpkinSeed:{name:'かぼちゃの種',buy:35},
+  rod:{name:'釣り竿',buy:150},net:{name:'虫取り網',buy:120},chair:{name:'木の椅子',buy:200},table:{name:'木の机',buy:350},
+  carrot:{name:'にんじん',buy:30,direct:25,shop:45,demand:1},tomato:{name:'トマト',buy:45,direct:30,shop:55,demand:1},potato:{name:'じゃがいも',buy:35,direct:28,shop:50,demand:1},cabbage:{name:'キャベツ',buy:35,direct:28,shop:50,demand:1},corn:{name:'とうもろこし',buy:45,direct:35,shop:60,demand:1},pumpkin:{name:'かぼちゃ',buy:50,direct:40,shop:65,demand:1},
+  herb:{name:'森のハーブ',direct:10,shop:20,demand:.8},shell:{name:'浜辺の貝',direct:15,shop:25,demand:.8},flour:{name:'小麦粉',buy:25},salt:{name:'塩',buy:10},
+  soup:{name:'野菜スープ',direct:55,shop:90,demand:1.2},grilledFish:{name:'香草焼き',direct:65,shop:105,demand:1},salad:{name:'彩りサラダ',direct:60,shop:100,demand:1.1}
+ },
+ crops:{carrot:{name:'にんじん',seed:'carrotSeed',minutes:3},tomato:{name:'トマト',seed:'tomatoSeed',minutes:4},potato:{name:'じゃがいも',seed:'potatoSeed',minutes:4},cabbage:{name:'キャベツ',seed:'cabbageSeed',minutes:5},corn:{name:'とうもろこし',seed:'cornSeed',minutes:5},pumpkin:{name:'かぼちゃ',seed:'pumpkinSeed',minutes:6}},
+ recipes:{soup:{name:'野菜スープ',ingredients:{carrot:1,salt:1}},grilledFish:{name:'香草焼き',ingredients:{medaka:1,herb:1}},salad:{name:'彩りサラダ',ingredients:{tomato:1,cabbage:1}}},
+ residents:[
+  {id:'akari',name:'あかり',area:'town',color:'#d6a179',design:'girl',job:'町の案内役',spots:{'朝':[22,18],'昼':[27,19],'夕方':[24,20]},lines:['はじめまして。小さなお店の鍵を預かっているんだ。','町は、みんなの好きなことが集まる場所だよ。','一緒におまつりの準備をしよう。']},
+  {id:'mio',name:'みお',area:'town',color:'#d8a8b5',design:'girl',job:'品物の紹介が好き',spots:{'朝':[18,16],'昼':[20,20],'夕方':[17,21]},lines:['紹介札には、どんなよさを書くと伝わるかな。','必要な人に届く言葉を探すのが好き。','今日のお店、とてもすてきだったよ。']},
+  {id:'takumi',name:'たくみ',area:'river',color:'#82a8b4',design:'boy',job:'川の観察が好き',spots:{'朝':[26,19],'昼':[25,22],'夕方':[26,24]},lines:['釣り場でF。浮きが沈んだら決定だよ。','魚を待つ間にも、川はいろんな顔を見せるね。','捕まえられなくても、また試せばいいんだ。']},
+  {id:'fumi',name:'ふみ',area:'forest',color:'#a7bb91',design:'girl',job:'森の探検が好き',spots:{'朝':[19,18],'昼':[25,22],'夕方':[18,24]},lines:['虫はBキーで網を振って捕まえられるよ。','森の採集ポイントにはハーブもあるの。','小さな発見を、言葉で残しておきたいな。']},
+  {id:'haruka',name:'はるか',area:'farm',color:'#d7b691',design:'girl',job:'料理が好き',spots:{'朝':[24,19],'昼':[25,21],'夕方':[23,23]},lines:['最初のスープ、一緒に作ろう。野菜は私が分けるね。','料理は、食べる人を考えるところから始まるんだ。','届けてくれてありがとう。温かいうちに食べよう。']},
+  {id:'ken',name:'けん',area:'market',color:'#9ba9c0',design:'boy',job:'模型づくりが好き',spots:{'朝':[14,23],'昼':[16,25],'夕方':[13,24]},lines:['この模型は3パーツ。好きな順にタップしていいよ。','失敗も時間制限もないから、ゆっくり作ろう。','完成したら家に飾ってみて。']},
+  {id:'sota',name:'そうた',area:'hill',color:'#b0b78b',design:'boy',job:'運動が好き',spots:{'朝':[26,18],'昼':[29,24],'夕方':[26,25]},lines:['的が光ったらタップ！ クレーのゲームは楽しいよ。','記録は少しずつ伸ばせばいいんだ。','おまつりの旗を運ぶの、手伝うよ。']},
+  {id:'masaru',name:'まさる',area:'homes',color:'#b3a48d',design:'boy',job:'庭仕事が好き',spots:{'朝':[24,20],'昼':[30,18],'夕方':[20,24]},lines:['畑の水やりを忘れても、枯れないから安心してね。','庭に置くものを考えると、帰るのが楽しみになるよ。','今度、できた料理を交換しない？']},
+  {id:'galaxy',name:'ギャラクシー先生',area:'hill',color:'#d2ae76',design:'galaxy',job:'クレー射撃場の管理人',spots:{'朝':[30,23],'昼':[30,23],'夕方':[30,23]},lines:['よっしゃ、練習や！ 光る的をタップしてみよう！','記録も大会も任せといて！ 無理せず楽しもうな！','いい笑顔や！ まずは一回、やってみよう！']},
+  {id:'sakamoto',name:'阪本先生',area:'town',color:'#b4a7bc',design:'sakamoto',job:'よろづ処久庵の店主',spots:{'朝':[33,26],'昼':[34,26],'夕方':[33,26]},lines:['よろづ処久庵へようこそ。暮らしの道具をそろえています。','種も食材も、必要な分からどうぞ。','小さなお店、応援していますよ。']},
+  {id:'sakaguchi',name:'阪口先生',area:'town',color:'#a99d83',design:'sakaguchi',job:'山口中学校の国語の先生',spots:{'朝':[13,26],'昼':[15,25],'夕方':[14,26]},lines:['焦らんでええよ。まず、相手が何を頼んでるか読んでみよか。','間違っても大丈夫や。根拠を一つずつ探したらええねん。','ことばが届くと、うれしいなあ。よう頑張ったな。']}
+ ],
+ facilities:[
+  {id:'school',name:'山口中学校',area:'town',x:5,y:20,w:6,h:5,color:'blue'},
+  {id:'kuan',name:'よろづ処久庵',area:'town',x:34,y:20,w:6,h:5,color:'red'},
+  {id:'hobby',name:'ホビープラモデル屋',area:'market',x:5,y:21,w:5,h:5,color:'blue'},
+  {id:'cafe',name:'こもれびカフェ',area:'market',x:17,y:21,w:5,h:5,color:'red'},
+  {id:'fishShop',name:'せせらぎ魚屋',area:'river',x:6,y:6,w:5,h:5,color:'blue'},
+  {id:'clay',name:'クレー射撃場',area:'hill',x:32,y:18,w:7,h:5,color:'blue'}
+ ],
+ quests:[
+  {id:'main0',type:'main',chapter:'序章',title:'小さなお店の鍵',npc:'あかり',text:'あかりから鍵を受け取り、阪本先生に開店セットをもらおう。お店で最初の販売をしよう。',requires:{key:1,starter:1,sold:1},reward:0,next:'main1'},
+  {id:'main1',type:'main',chapter:'第1章',title:'はじめてのお客さん',npc:'みお',text:'みおと商品を紹介する学習をしよう。住民3人と話し、商品を3個販売しよう。',requires:{introStudy:1,uniqueTalk:3,sold:3},reward:60,next:'main2'},
+  {id:'main2',type:'main',chapter:'第2章',title:'森と川からの贈り物',npc:'たくみ',text:'たくみとふみに話を聞いて、魚1匹、虫1匹、採集品1個を入手しよう。',requires:{takumi:1,fumi:1,fish:1,bug:1,gather:1},reward:60,next:'main3'},
+  {id:'main3',type:'main',chapter:'第3章',title:'畑と台所の小さな幸せ',npc:'はるか',text:'はるかから初回野菜を受け取り、畑で植えよう。久庵で買い物をし、料理を作ってはるかに届けよう。',requires:{plant:1,kuanBuy:1,cook:1,deliver:1},reward:70,next:'main4'},
+  {id:'main4',type:'main',chapter:'第4章',title:'好きなことを見つけよう',npc:'けん',text:'けんと3パーツの模型を完成させ、家に飾ろう。ギャラクシー先生にあいさつしよう。競技への参加は自由です。',requires:{model:1,displayModel:1,galaxy:1},reward:70,next:'main5'},
+  {id:'main5',type:'main',chapter:'第5章',title:'ことばで伝える気持ち',npc:'阪口先生',text:'阪口先生と依頼文を読み、住民の依頼を2件達成しよう。ヒントや解答例を使っても進めます。',requires:{requestStudy:1,requests:2},reward:80,next:'main6'},
+  {id:'main6',type:'main',chapter:'第6章',title:'町のみんなで準備しよう',npc:'あかり',text:'あかりに話しかけ、料理・花・模型・国語・スポーツ・買い物から好きな準備を3件しよう。',requires:{preparations:3},reward:90,next:'main7'},
+  {id:'main7',type:'main',chapter:'最終章',title:'ことばのまちの新しい一日',npc:'あかり',text:'交流まつりを開き、住民3人と話し、お店で記念接客をしよう。最後に中央広場であかりに話しかけよう。',requires:{festival:1,festivalTalk:3,memorialSale:1,farewell:1},reward:0}
+ ],
+ homeCosts:{2:3000,3:8000,4:18000},farmCosts:{12:1000,24:2500},
+ seasons:{spring:{name:'春',event:'花まつり'},summer:{name:'夏',event:'夏祭り'},autumn:{name:'秋',event:'町の文化祭'},winter:{name:'冬',event:'灯りまつり'}}
+};
