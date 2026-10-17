@@ -103,9 +103,11 @@ function town3DRebuild() {
     if(!['discover','flowers'].includes(p.type))V.labels.push({text:p.name,x:p.x+.5,y:1.7,z:p.y+.5,near:true});
   }
   const player=town3DCharacter(state.avatar.kind,state.avatar.kind==='girl'?'#dc9d8e':'#7fa6b5');V.world.add(player);V.player=player;
-  for(const n of npcs){if(worldNpcConfig[n.name]?.area!==state.area)continue;const k=n.design||'animal',actor=town3DCharacter(k,n.color);V.world.add(actor);V.actors.set(n.name,actor);}
+  for(const n of npcs){if(worldNpcConfig[n.name]?.area!==state.area)continue;const k=n.design||'animal',actor=town3DCharacter(k,n.color,n.name);V.world.add(actor);V.actors.set(n.name,actor);}
   V.bugs=[];for(let i=0;i<8;i++){const group=new THREE.Group();town3DMesh(group,'sphere','#c99a75',0,0,0,.1,.13,.12);for(const x of [-.1,.1])town3DMesh(group,'sphere','#f0dba0',x,0,0,.15,.04,.15);V.world.add(group);V.bugs.push(group);}
-  V.tool=new THREE.Group();town3DMesh(V.tool,'cylinder','#a68a68',0,.5,0,.025,1,.025);const ring=new THREE.Mesh(new THREE.TorusGeometry(.25,.025,4,16),town3DMaterial('#eee4c7'));ring.position.y=1;V.tool.add(ring);V.world.add(V.tool);
+  V.tool=new THREE.Group();town3DMesh(V.tool,'cylinder','#a68a68',0,.5,0,.025,1,.025);const ring=new THREE.Mesh(new THREE.TorusGeometry(.25,.025,4,16),town3DMaterial('#eee4c7'));ring.position.y=1;V.tool.add(ring);V.netRing=ring;V.world.add(V.tool);
+  if(!V.materials.has('fishing-line'))V.materials.set('fishing-line',new THREE.LineBasicMaterial({color:'#fff2ce'}));
+  V.fishingLine=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]),V.materials.get('fishing-line'));V.fishingLine.frustumCulled=false;V.world.add(V.fishingLine);
   V.bobber=town3DMesh(V.world,'sphere','#ebad8b',0,0,0,.08,.08,.08);
   V.crops=[];if(state.area==='farm')for(let i=0;i<FARM_PLOTS.length;i++){const p=FARM_PLOTS[i];town3DMesh(V.world,'box','#aa8b64',p.x+.5,.1,p.y+.5,.9,.1,.9);const plant=town3DMesh(V.world,'sphere','#7f9e63',p.x+.5,.35,p.y+.5,.25,.3,.25);V.crops.push(plant);}
   if(state.area==='mountain'||state.area==='cave')for(let i=0;i<4;i++)town3DMesh(V.world,'cone',i%2?'#a1ae99':'#b8c0a9',9+i*10,1.5,-2,5,6,4);
@@ -140,9 +142,12 @@ function town3DDraw(now,dt) {
   for(const n of npcs){const actor=V.actors.get(n.name);if(!actor)continue;town3DAnimate(actor,n.vx,n.vy,n.face,!!worldNpcState[n.name]?.step,now);}
   if(V.leaves)V.leaves.position.x=state.settings.reducedMotion?0:Math.sin(now/3000)*.025;if(V.ripples)V.ripples.position.y=state.settings.reducedMotion?0:Math.sin(now/1100)*.012;
   for(let i=0;i<V.bugs.length;i++){const bug=fieldWorld.bugs[i],obj=V.bugs[i];obj.visible=!!bug;if(bug){obj.position.set(bug.x+.5,.5+(state.settings.reducedMotion?0:Math.sin(now/150+bug.phase)*.08),bug.y+.5);obj.rotation.y=state.settings.reducedMotion?0:now/700;}}
-  V.tool.visible=!!netSwing||!!mini?.action;
+  V.tool.visible=!!netSwing||!!mini?.action&&mini.phase!=='land';
+  V.netRing.visible=!!netSwing;
   if(V.tool.visible){const a={right:Math.PI/2,left:-Math.PI/2,up:Math.PI,down:0}[facing];V.tool.position.set(visualX+.5+Math.sin(a)*.35,1,visualY+.5+Math.cos(a)*.35);V.tool.rotation.set(.8,a,netSwing?Math.sin((now-netSwing.start)/100)*.6:0);}
-  V.bobber.visible=!!mini?.action;if(V.bobber.visible)V.bobber.position.set(mini.target.x+.5,mini.phase==='bite'?-.05:.1,mini.target.y+.5);
+  V.bobber.visible=!!mini?.action&&mini.phase!=='land';if(V.bobber.visible)V.bobber.position.set(mini.target.x+.5,mini.phase==='bite'?-.05:.1,mini.target.y+.5);
+  V.fishingLine.visible=!!mini?.action&&mini.phase!=='land';
+  if(V.fishingLine.visible){V.tool.updateMatrixWorld(true);const tip=V.tool.localToWorld(new THREE.Vector3(0,1,0)),positions=V.fishingLine.geometry.attributes.position;positions.setXYZ(0,tip.x,tip.y,tip.z);positions.setXYZ(1,V.bobber.position.x,V.bobber.position.y,V.bobber.position.z);positions.needsUpdate=true;}
   if(V.width!==c.width||V.height!==c.height){V.width=c.width;V.height=c.height;V.renderer.setSize(c.width,c.height,false);const h=innerWidth<500?15:18,w=h*c.width/c.height;Object.assign(V.camera,{left:-w/2,right:w/2,top:h/2,bottom:-h/2});V.camera.updateProjectionMatrix();}
   if(!(V.frameArea===V.area&&(menuOpen||setupOpen||choices.children.length))){
     V.world.updateMatrixWorld(true);

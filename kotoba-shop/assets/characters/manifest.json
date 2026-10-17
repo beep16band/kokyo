@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "license": "Original artwork for kotoba-shop",
+  "cell": {
+    "width": 64,
+    "height": 80
+  },
+  "sheet": {
+    "columns": 16,
+    "rows": 8
+  },
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "actions": [
+    "idle",
+    "walk",
+    "dash",
+    "fish",
+    "net",
+    "tool",
+    "joy",
+    "surprise"
+  ],
+  "framesPerDirection": 4,
+  "characters": [
+    {
+      "id": "boy",
+      "name": "男の子",
+      "file": "boy.png"
+    },
+    {
+      "id": "girl",
+      "name": "女の子",
+      "file": "girl.png"
+    },
+    {
+      "id": "akari",
+      "name": "あかり",
+      "file": "akari.png"
+    },
+    {
+      "id": "mio",
+      "name": "みお",
+      "file": "mio.png"
+    },
+    {
+      "id": "takumi",
+      "name": "たくみ",
+      "file": "takumi.png"
+    },
+    {
+      "id": "fumi",
+      "name": "ふみ",
+      "file": "fumi.png"
+    },
+    {
+      "id": "haruka",
+      "name": "はるか",
+      "file": "haruka.png"
+    },
+    {
+      "id": "ken",
+      "name": "けん",
+      "file": "ken.png"
+    },
+    {
+      "id": "sota",
+      "name": "そうた",
+      "file": "sota.png"
+    },
+    {
+      "id": "masaru",
+      "name": "まさる",
+      "file": "masaru.png"
+    },
+    {
+      "id": "galaxy",
+      "name": "ギャラクシー先生",
+      "file": "galaxy.png"
+    },
+    {
+      "id": "sakamoto",
+      "name": "阪本先生",
+      "file": "sakamoto.png"
+    },
+    {
+      "id": "sakaguchi",
+      "name": "阪口先生",
+      "file": "sakaguchi.png"
+    }
+  ]
+}
