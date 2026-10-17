@@ -7,7 +7,7 @@ function townInteriorRelease(){
  I.root.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry&&!shared.has(o.geometry))unique.add(o.geometry)});
  unique.forEach(g=>g.dispose());I.scene.remove(I.root);I.root=null;I.key='';I.frame='';I.furniture.clear();I.products=[];I.batches=[];I.player=null;I.customer=null;I.labels=[];
 }
-function townInteriorSignature(){return JSON.stringify([state.scene,state.avatar.kind,state.scene==='home'?[state.wallpaper,state.flooring,X.room,state.furniturePlaced.map(f=>[f.kind,f.x,f.y,f.rotation||0]),!!X.model.displayed,Object.values(X.clayRecords).map(r=>r.trophy||'')]:[orders[state.ordersDone]?.customer||'モク']])}
+function townInteriorSignature(){return JSON.stringify([state.scene,state.avatar.kind,state.scene==='home'?[state.wallpaper,state.flooring,X.room,state.furniturePlaced.map(f=>[f.kind,f.x,f.y,f.rotation||0]),!!X.model.displayed,Object.values(X.clayRecords).map(r=>r.trophy||'')]:state.scene==='facility'?[state.facilityVisit.id]:[orders[state.ordersDone]?.customer||'モク']])}
 function townInteriorBox(g,col,x,y,z,w,h,d){return town3DMesh(g,'box',col,x,y,z,w,h,d)}
 function townInteriorFurniture(parent,kind,x,z,rotation=0){
  const g=new THREE.Group();g.position.set(x+.5,0,z+.5);g.rotation.y=rotation*Math.PI/2;g.userData.furnitureKind=kind;parent.add(g);
@@ -98,7 +98,7 @@ function townInteriorBuild(){
  const I=TownInterior;townInteriorRelease();
  if(!I.scene){I.scene=new THREE.Scene();I.scene.background=new THREE.Color('#e3dbc9');I.scene.add(new THREE.HemisphereLight('#fff9e1','#a99d83',1.8));I.sun=new THREE.DirectionalLight('#fff1d3',1.45);I.sun.position.set(-5,14,12);I.scene.add(I.sun);I.camera=new THREE.OrthographicCamera(-12,12,7.2,-7.2,.1,80);I.camera.position.set(10,17,21);I.camera.lookAt(10,.55,6);I.camera.updateMatrixWorld(true);}
  I.root=new THREE.Group();I.scene.add(I.root);I.labels=[];I.furniture.clear();I.products=[];I.customer=null;
- const floor=state.scene==='home'?FLOORS[state.flooring].color:'#d9c5a2',wall=state.scene==='home'&&state.wallpaper!=='cream'?WALLPAPERS[state.wallpaper].color:'#f3dfb7';
+ const floor=state.scene==='home'?FLOORS[state.flooring].color:'#d9c5a2',wall=state.scene==='home'&&state.wallpaper!=='cream'?WALLPAPERS[state.wallpaper].color:state.scene==='facility'&&state.facilityVisit.id==='school'?'#d8e3ce':'#f3dfb7';
  const tones=[floor,'#'+new THREE.Color(floor).offsetHSL(0,0,.025).getHexString()],boards=[[],[]];
  for(let y=1;y<=10;y++)for(let x=1;x<=18;x++)boards[(x+y)%2].push([x+.5,.02,y+.5,.98,.08,.98]);
  boards.forEach((tr,i)=>town3DInstances('box',tones[i],tr,I.root));
@@ -108,13 +108,13 @@ function townInteriorBuild(){
  townInteriorBox(I.root,'#826d57',10,.04,11.2,19.2,.16,.28);
  townInteriorWindows(I.root);
  townInteriorBox(I.root,'#c99aab',10.5,.08,10.5,.92,.04,.75);
- if(state.scene==='home')townInteriorHome(I.root);else townInteriorShop(I.root);
+ if(state.scene==='home')townInteriorHome(I.root);else if(state.scene==='facility')townFacilityBuild3D(I.root);else townInteriorShop(I.root);
  I.player=town3DCharacter(state.avatar.kind,state.avatar.kind==='girl'?'#dc9d8e':'#7fa6b5');I.player.userData.playerAvatar=true;I.root.add(I.player);
  I.labels.push({text:()=> '出口 ↓',x:10.5,y:.25,z:10.7});
  I.batches=town3DBatch(I.root,true);I.key=townInteriorSignature();I.frame='';I.builds++;
 }
 function townInteriorDraw(now){
- const I=TownInterior,V=Town3D;if(I.failed||V.failed||!V.ready||editorOpen||!['home','shop'].includes(state.scene))return false;
+ const I=TownInterior,V=Town3D;if(I.failed||V.failed||!V.ready||editorOpen||!['home','shop','facility'].includes(state.scene))return false;
  try{
   const signature=townInteriorSignature();if(signature!==I.key)townInteriorBuild();
   const aspect=c.width/c.height,h=Math.max(14.4,21/aspect),w=h*aspect;
@@ -122,7 +122,7 @@ function townInteriorDraw(now){
   if(!I.size)I.size=new THREE.Vector2();V.renderer.getSize(I.size);if(I.size.x!==c.width||I.size.y!==c.height)V.renderer.setSize(c.width,c.height,false);V.renderer.domElement.hidden=false;
   const evening=timePhase()==='夕方';I.scene.background.set(evening?'#d8c6b1':'#e3dbc9');I.sun.color.set(evening?'#ffdbac':'#fff1d3');townSceneryTime3D(evening);
   town3DAnimate(I.player,visualX,visualY,facing,!!walkStep,now);
-  if(I.customer)town3DAnimate(I.customer,shopCustomer.x,shopCustomer.y,'down',false,now);
+  if(I.customer){const p=I.customer.userData.indoorSpot||shopCustomer;town3DAnimate(I.customer,p.x,p.y,'down',false,now);}
   for(const p of I.products)p.mesh.visible=p.slot<Math.min(8,townInteriorShelfCount(p.shelf));
   const stamp=signature+'|'+timePhase()+'|'+c.width+'x'+c.height+'|'+(state.scene==='shop'?JSON.stringify([state.shelfStock,X.listings.length,state.ordersDone]):'');
   if(I.frame!==stamp||!(menuOpen||setupOpen||choices.children.length)){
