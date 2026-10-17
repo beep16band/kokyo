@@ -7,7 +7,7 @@ function townInteriorRelease(){
  I.root.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry&&!shared.has(o.geometry))unique.add(o.geometry)});
  unique.forEach(g=>g.dispose());I.scene.remove(I.root);I.root=null;I.key='';I.frame='';I.furniture.clear();I.products=[];I.batches=[];I.player=null;I.customer=null;I.labels=[];
 }
-function townInteriorSignature(){return JSON.stringify([state.scene,state.avatar.kind,state.scene==='home'?[state.wallpaper,state.flooring,X.room,state.furniturePlaced.map(f=>[f.kind,f.x,f.y,f.rotation||0]),!!X.model.displayed,Object.values(X.clayRecords).map(r=>r.trophy||'')]:state.scene==='facility'?[state.facilityVisit.id]:[orders[state.ordersDone]?.customer||'モク']])}
+function townInteriorSignature(){return JSON.stringify([state.scene,state.avatar.kind,state.scene==='home'?[state.wallpaper,state.flooring,X.room,state.furniturePlaced.map(f=>[f.kind,f.x,f.y,f.rotation||0]),!!X.model.displayed,Object.values(X.clayRecords).map(r=>r.trophy||'')]:state.scene==='facility'?[state.facilityVisit.id,state.facilityVisit.id==='hobby'?X.model.parts.join(','):'']:[orders[state.ordersDone]?.customer||'モク']])}
 function townInteriorBox(g,col,x,y,z,w,h,d){return town3DMesh(g,'box',col,x,y,z,w,h,d)}
 function townInteriorFurniture(parent,kind,x,z,rotation=0){
  const g=new THREE.Group();g.position.set(x+.5,0,z+.5);g.rotation.y=rotation*Math.PI/2;g.userData.furnitureKind=kind;parent.add(g);

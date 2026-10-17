@@ -8,10 +8,10 @@ root = Path(__file__).resolve().parents[1]
 
 def embed_assets(text):
     def replace(match):
-        path = root / match.group(0)
+        path = root / match.group(1)
         mime = mimetypes.guess_type(path)[0] or 'application/octet-stream'
         return 'data:' + mime + ';base64,' + base64.b64encode(path.read_bytes()).decode()
-    return re.sub(r'assets/[A-Za-z0-9_.-]+', replace, text)
+    return re.sub(r'(assets/[A-Za-z0-9_.-]+)(?:\?[A-Za-z0-9_.=-]+)?', replace, text)
 
 html = (root / 'index.html').read_text()
 html = re.sub(r'<link rel="stylesheet" href="\./([^"?]+)(?:\?[^"]*)?">',
