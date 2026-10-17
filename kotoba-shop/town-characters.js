@@ -92,7 +92,7 @@ town3DCharacter=function(kind,color,name){
 const animateBeforeProfiles=town3DAnimate;
 town3DAnimate=function(actor,x,z,dir,moving,now,mode='idle'){
  const u=actor.userData;if(!u.profile){animateBeforeProfiles(actor,x,z,dir,moving,now,mode);return;}
- const player=actor===Town3D.player,pose=player?townCharacterPose(now):moving?'walk':'idle';
+ const player=actor===Town3D.player||actor.userData.playerAvatar===true,pose=player?townCharacterPose(now):moving?'walk':'idle';
  const duration=player?(dashHeld||state.settings.dashMode?DASH_MS:WALK_MS):NPC_WALK_MS;
  const walk=moving&&!state.settings.reducedMotion?Math.sin(now/duration*Math.PI)*(pose==='dash'?.55:.42):0;
  const jump=pose==='joy'&&!state.settings.reducedMotion?Math.abs(Math.sin(now/170))*.12:0;
