@@ -46,6 +46,7 @@ function town3DBuilding(b,parent) {
   for(const xx of [.8,w-.8]){town3DMesh(group,'box','#a2c6c3',xx,1.5,h+.018,.75,.85,.045);town3DMesh(group,'box','#fff2ce',xx,1.5,h+.05,.045,.85,.05);town3DMesh(group,'box','#fff2ce',xx,1.5,h+.05,.75,.045,.05);town3DMesh(group,'box','#bf9973',xx,.95,h+.12,.95,.22,.3);for(const dx of [-.22,0,.22])town3DMesh(group,'sphere','#e9b1a0',xx+dx,1.14,h+.12,.13,.12,.13);}
   const doorX=Math.floor(w/2)+.5;town3DMesh(group,'box','#ae987a',doorX,.95,h+.03,.86,1.9,.06);town3DMesh(group,'box',blue?'#6c9690':'#ba8c69',doorX,.94,h+.07,.68,1.7,.05);town3DMesh(group,'sphere','#eed394',doorX+.24,.9,h+.13,.045,.045,.025);
   if(['ownShop','kuan','cafe','fishShop','hobby'].includes(b.type)){for(let i=0;i<6;i++)town3DMesh(group,'box',i%2?'#fff1ca':blue?'#89b3a5':'#d7a189',doorX-.85+i*.34,2.05,h+.3,.34,.16,.7);}
+  if(typeof townSceneryBuilding3D==='function')townSceneryBuilding3D(b,group);
   Town3D.labels.push({text:b.name,x:b.x+w/2,y:3.8,z:b.y+h/2});
 }
 function town3DInstances(type,color,transforms,parent) {
@@ -94,7 +95,8 @@ function town3DRebuild() {
   for(const b of m.buildings)town3DBuilding(b,V.world);
   for(const f of m.fences||[]){town3DMesh(V.world,'box','#d2b28b',f.x+.5,.55,f.y+.5,f.vertical?.12:1,.12,f.vertical?1:.12);town3DMesh(V.world,'box','#ead1a1',f.x+.5,.35,f.y+.5,.13,.8,.13);}
   for(const p of m.pois){if(p.type==='discover'&&state.explore.found[p.id])continue;
-    if(['fish','lakeFish'].includes(p.type))town3DMesh(V.world,'cylinder','#eeddb0',p.x+.5,.15,p.y+.5,.32,.2,.32);
+    if(typeof townSceneryPoi3D==='function'&&townSceneryPoi3D(p,V.world)){}
+    else if(['fish','lakeFish'].includes(p.type))town3DMesh(V.world,'cylinder','#eeddb0',p.x+.5,.15,p.y+.5,.32,.2,.32);
     else if(p.type==='flowers'){for(let i=0;i<5;i++)town3DMesh(V.world,'sphere',i%2?'#edb3ae':'#f1dfab',p.x+.2+i*.16,.22,p.y+.4+(i%2)*.25,.12,.12,.12);}
     else if(p.type==='discover')town3DMesh(V.world,'box','#ffedba',p.x+.5,.3,p.y+.5,.45,.22,.35);
     else{town3DMesh(V.world,'box','#b3946d',p.x+.5,.45,p.y+.5,.12,.9,.12);town3DMesh(V.world,'box','#eddbb5',p.x+.5,.95,p.y+.5,.75,.5,.14);}
@@ -108,6 +110,7 @@ function town3DRebuild() {
   V.crops=[];if(state.area==='farm')for(let i=0;i<FARM_PLOTS.length;i++){const p=FARM_PLOTS[i];town3DMesh(V.world,'box','#aa8b64',p.x+.5,.1,p.y+.5,.9,.1,.9);const plant=town3DMesh(V.world,'sphere','#7f9e63',p.x+.5,.35,p.y+.5,.25,.3,.25);V.crops.push(plant);}
   if(state.area==='mountain'||state.area==='cave')for(let i=0;i<4;i++)town3DMesh(V.world,'cone',i%2?'#a1ae99':'#b8c0a9',9+i*10,1.5,-2,5,6,4);
   if(state.area==='town'){const decorations=Object.keys(state.expansion?.preparations||{}),colors={cooking:'#d7a98b',flowers:'#e6b0c5',model:'#9fbcc8',language:'#ddc284',sports:'#98b089',shopping:'#b7a5c2'};decorations.forEach((key,i)=>{const x=20+i*1.5,z=18;town3DMesh(V.world,'cylinder','#b49c75',x,.8,z,.035,1.6,.035);town3DMesh(V.world,key==='flowers'?'sphere':'box',colors[key],x+.18,1.4,z,key==='model'?.55:.42,key==='language'?.6:.3,key==='flowers'?.24:.04);});}
+  if(typeof townSceneryGround3D==='function')townSceneryGround3D(m,V.world,seasonName);
   V.batches=town3DBatch(V.world,true);
   V.area=state.area+'|'+seasonName+'|'+state.avatar.kind;V.target=null;
 }
@@ -131,6 +134,7 @@ function town3DDraw(now,dt) {
   if(!V.target)V.target=new THREE.Vector3(tx,0,tz);else V.target.lerp(new THREE.Vector3(tx,0,tz),state.settings.reducedMotion?1:1-Math.exp(-dt*8));
   V.camera.position.set(V.target.x,19,V.target.z+15);V.camera.lookAt(V.target.x,0,V.target.z);
   const evening=timePhase()==='夕方';V.scene.background.set(evening?'#e7cfb2':'#dfebdd');V.sun.color.set(evening?'#ffdbac':'#fff3d6');
+  if(typeof townSceneryTime3D==='function')townSceneryTime3D(evening);
   town3DAnimate(V.player,visualX,visualY,facing,!!walkStep,now,mini?.action?(mini.phase==='land'?'joy':mini.phase==='bite'?'surprise':'fish'):netSwing?'tool':'idle');
   for(let i=0;i<(V.crops||[]).length;i++){const plant=V.crops[i],p=state.farm[i];plant.visible=!!p;if(p){const size=plotReady(p)?.34:.18;plant.scale.set(size,size*1.25,size);}}
   for(const n of npcs){const actor=V.actors.get(n.name);if(!actor)continue;town3DAnimate(actor,n.vx,n.vy,n.face,!!worldNpcState[n.name]?.step,now);}
