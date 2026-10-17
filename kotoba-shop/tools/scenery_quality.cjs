@@ -20,18 +20,18 @@ async function main(){
   await page.waitForFunction(()=>Town3D.frameArea===Town3D.area&&Town3D.area.startsWith('town|'));
   const scenery=await page.evaluate(()=>{
    town3DDraw(performance.now(),.016);
-   const props=[];Town3D.world.traverse(o=>{if(o.userData.sceneryType)props.push(o.userData.sceneryType)});
+   const props=[],lamps=[];Town3D.world.traverse(o=>{if(o.userData.sceneryType)props.push(o.userData.sceneryType);if(o.userData.sceneryLantern)lamps.push(o.position.y>2&&o.position.z>o.userData.wallFront)});
    const positions=JSON.stringify(townSceneryFlowers(maps.town));
    const palettes=['春','夏','秋','冬'].map(s=>townSceneryPalette(s).join(','));
    const flowers=townSceneryFlowers(maps.town);
    const safe=flowers.every(p=>{const x=Math.floor(p.x),y=Math.floor(p.z);return maps.town.tiles[y][x]===0&&!maps.town.blocked.has(x+','+y)});
    townSceneryTime3D(false);const day=townSceneryLanternMaterial().emissiveIntensity;
    townSceneryTime3D(true);const evening=townSceneryLanternMaterial().emissiveIntensity;
-   return {props,stable:positions===JSON.stringify(townSceneryFlowers(maps.town)),flowerCount:flowers.length,safe,palettes,day,evening,calls:Town3D.renderer.info.render.calls};
+   return {props,lamps,stable:positions===JSON.stringify(townSceneryFlowers(maps.town)),flowerCount:flowers.length,safe,palettes,day,evening,calls:Town3D.renderer.info.render.calls};
   });
   assert(['well','board','festival'].every(x=>scenery.props.includes(x)));
   assert(scenery.stable&&scenery.safe&&scenery.flowerCount>0&&scenery.flowerCount<=36);
-  assert.equal(new Set(scenery.palettes).size,4);assert(scenery.evening>scenery.day);
+  assert.equal(new Set(scenery.palettes).size,4);assert(scenery.evening>scenery.day);assert(scenery.lamps.length>0&&scenery.lamps.every(Boolean));
   const areas=await page.evaluate(()=>Object.keys(maps));
   for(const key of areas){const result=await page.evaluate(key=>{changeArea(key,24,20,false);closeChoices();town3DDraw(performance.now(),.016);return {ready:!Town3D.failed,calls:Town3D.renderer.info.render.calls}},key);assert(result.ready&&result.calls<100,key+' exceeds render budget')}
   await page.evaluate(()=>{changeArea('town',24,15,false);closeChoices();town3DDraw(performance.now(),.016)});

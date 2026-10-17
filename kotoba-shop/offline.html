@@ -1453,15 +1453,15 @@ function townSceneryBuilding3D(b,g){
     town3DMesh(g,'box','#d8c8a3',x,1.4,h-.04,.13,2.5,.13);
     town3DMesh(g,'sphere','#8db183',x,.4,h-.3,.27,.3,.24);
   }
-  // A flat doorstep is walkable; the lamp itself sits in an already blocked corner.
+  // A flat doorstep is walkable. Wall lamps hang above head height, with no new posts.
   const door=Math.floor(w/2)+.5;
   town3DMesh(g,'box','#dfd0b0',door,.09,h+.23,1.05,.08,.48);
   if(['ownShop','ownHome','kuan','cafe'].includes(b.type)){
-    const x=w-.35,z=h-.35;
-    town3DMesh(g,'cylinder','#826d57',x,1.05,z,.045,2.1,.045);
-    town3DMesh(g,'box','#826d57',x,2.12,z,.38,.09,.38);
-    const lamp=town3DMesh(g,'box','#ffe3a0',x,1.92,z,.24,.3,.24);lamp.material=townSceneryLanternMaterial();
-    town3DMesh(g,'cone','#826d57',x,2.28,z,.28,.25,.28);
+    const x=w-.35,z=h+.24;
+    town3DMesh(g,'box','#826d57',x,2.65,h+.1,.06,.06,.36);
+    town3DMesh(g,'box','#826d57',x,2.57,z,.34,.07,.34);
+    const lamp=town3DMesh(g,'box','#ffe3a0',x,2.37,z,.22,.3,.22);lamp.material=townSceneryLanternMaterial();lamp.userData={sceneryLantern:true,wallFront:h};
+    town3DMesh(g,'box','#826d57',x,2.19,z,.3,.06,.3);
   }
 }
 function townSceneryPoi3D(p,parent){
@@ -1527,12 +1527,12 @@ worldGround=function(m,now){
 const buildingBeforeScenery=drawWorldBuilding;
 drawWorldBuilding=function(b){
   buildingBeforeScenery(b);if(!['ownShop','ownHome','kuan','cafe'].includes(b.type))return;
-  const evening=timePhase()==='夕方',stamp=cozyStamp('scenery-lamp-'+evening,24,70,g=>{
+  const evening=timePhase()==='夕方',stamp=cozyStamp('scenery-wall-lamp-'+evening,24,34,g=>{
     if(evening)cozyOval(g,12,17,12,15,'#ffe3a02b');
-    cozyRound(g,10,18,3,49,1,'#826d57');cozyRound(g,5,9,14,19,3,'#826d57');
+    cozyRound(g,10,18,3,11,1,'#826d57');cozyRound(g,5,9,14,19,3,'#826d57');
     cozyRound(g,7,12,10,12,2,evening?'#ffe3a0':'#dfd0b0');
     cozyPoly(g,[[3,10],[12,3],[21,10]],'#826d57');
-  });ctx.drawImage(stamp,(b.x+b.w-.35)*T-12,(b.y+b.h-.35)*T-64);
+  });ctx.drawImage(stamp,(b.x+b.w-.35)*T-12,(b.y+b.h)*T-73);
 };
 const poiBeforeScenery=drawPoi;
 drawPoi=function(p,now){
