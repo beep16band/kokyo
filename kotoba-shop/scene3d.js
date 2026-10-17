@@ -53,8 +53,33 @@ function town3DInstances(type,color,transforms,parent) {
   const inst=new THREE.InstancedMesh(town3DShape(type),town3DMaterial(color),transforms.length),o=new THREE.Object3D();
   transforms.forEach((t,i)=>{o.position.set(t[0],t[1],t[2]);o.scale.set(t[3],t[4],t[5]);o.updateMatrix();inst.setMatrixAt(i,o.matrix)});parent.add(inst);return inst;
 }
+// Keep the original object hierarchy for animation, but draw repeated shapes together.
+function town3DBatch(root,dynamic=false) {
+  const groups=new Map(),shared=new Set(Town3D.shapes.values());root.updateMatrixWorld(true);
+  root.traverse(mesh=>{
+    if(!mesh.isMesh||mesh.isInstancedMesh||!mesh.visible||!shared.has(mesh.geometry))return;
+    const key=mesh.geometry.uuid+'|'+mesh.material.uuid;
+    if(!groups.has(key))groups.set(key,[]);groups.get(key).push(mesh);
+  });
+  const batches=[];
+  for(const meshes of groups.values()){
+    if(meshes.length<2)continue;
+    const first=meshes[0],batch=new THREE.InstancedMesh(first.geometry,first.material,meshes.length);
+    meshes.forEach((mesh,i)=>{batch.setMatrixAt(i,mesh.matrixWorld);mesh.layers.set(1)});
+    if(dynamic){batch.instanceMatrix.setUsage(THREE.DynamicDrawUsage);batch.frustumCulled=false;}
+    else batch.computeBoundingSphere();
+    root.add(batch);batches.push({batch,meshes});
+  }
+  return dynamic?batches:[];
+}
+function town3DReleaseWorld() {
+  const V=Town3D;if(!V.world)return;
+  const shared=new Set(V.shapes.values()),unique=new Set();
+  V.world.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry&&!shared.has(o.geometry))unique.add(o.geometry)});
+  unique.forEach(g=>g.dispose());V.scene.remove(V.world);
+}
 function town3DRebuild() {
-  const V=Town3D,m=maps[state.area]; if(V.world)V.scene.remove(V.world);
+  const V=Town3D,m=maps[state.area];town3DReleaseWorld();
   V.world=new THREE.Group();V.scene.add(V.world);V.labels=[];V.actors.clear();
   const groups=Array.from({length:7},()=>[]),seasonName=season();
   const colors=[seasonName==='冬'?'#dde4d2':seasonName==='秋'?'#bac58a':seasonName==='夏'?'#90b47f':'#aac68a','#e6cfa8','#e2ddc0','#83bfca','#a78960','#c9a675','#b1baa9'];
@@ -83,6 +108,7 @@ function town3DRebuild() {
   V.crops=[];if(state.area==='farm')for(let i=0;i<FARM_PLOTS.length;i++){const p=FARM_PLOTS[i];town3DMesh(V.world,'box','#aa8b64',p.x+.5,.1,p.y+.5,.9,.1,.9);const plant=town3DMesh(V.world,'sphere','#7f9e63',p.x+.5,.35,p.y+.5,.25,.3,.25);V.crops.push(plant);}
   if(state.area==='mountain'||state.area==='cave')for(let i=0;i<4;i++)town3DMesh(V.world,'cone',i%2?'#a1ae99':'#b8c0a9',9+i*10,1.5,-2,5,6,4);
   if(state.area==='town'){const decorations=Object.keys(state.expansion?.preparations||{}),colors={cooking:'#d7a98b',flowers:'#e6b0c5',model:'#9fbcc8',language:'#ddc284',sports:'#98b089',shopping:'#b7a5c2'};decorations.forEach((key,i)=>{const x=20+i*1.5,z=18;town3DMesh(V.world,'cylinder','#b49c75',x,.8,z,.035,1.6,.035);town3DMesh(V.world,key==='flowers'?'sphere':'box',colors[key],x+.18,1.4,z,key==='model'?.55:.42,key==='language'?.6:.3,key==='flowers'?.24:.04);});}
+  V.batches=town3DBatch(V.world,true);
   V.area=state.area+'|'+seasonName+'|'+state.avatar.kind;V.target=null;
 }
 function town3DAnimate(actor,x,z,dir,moving,now,mode='idle') {
@@ -114,7 +140,15 @@ function town3DDraw(now,dt) {
   if(V.tool.visible){const a={right:Math.PI/2,left:-Math.PI/2,up:Math.PI,down:0}[facing];V.tool.position.set(visualX+.5+Math.sin(a)*.35,1,visualY+.5+Math.cos(a)*.35);V.tool.rotation.set(.8,a,netSwing?Math.sin((now-netSwing.start)/100)*.6:0);}
   V.bobber.visible=!!mini?.action;if(V.bobber.visible)V.bobber.position.set(mini.target.x+.5,mini.phase==='bite'?-.05:.1,mini.target.y+.5);
   if(V.width!==c.width||V.height!==c.height){V.width=c.width;V.height=c.height;V.renderer.setSize(c.width,c.height,false);const h=innerWidth<500?15:18,w=h*c.width/c.height;Object.assign(V.camera,{left:-w/2,right:w/2,top:h/2,bottom:-h/2});V.camera.updateProjectionMatrix();}
-  if(!(V.frameArea===V.area&&(menuOpen||setupOpen||choices.children.length))){V.renderer.render(V.scene,V.camera);V.frameArea=V.area;}
+  if(!(V.frameArea===V.area&&(menuOpen||setupOpen||choices.children.length))){
+    V.world.updateMatrixWorld(true);
+    for(const {batch,meshes} of V.batches){meshes.forEach((mesh,i)=>{
+      // Hidden plants/bugs/tools retain their animation hierarchy; hide the corresponding instance too.
+      let visible=true;for(let p=mesh.parent;p&&p!==V.world;p=p.parent)if(!p.visible)visible=false;
+      if(visible&&mesh.visible)batch.setMatrixAt(i,mesh.matrixWorld);else batch.setMatrixAt(i,V.hiddenMatrix);
+    });batch.instanceMatrix.needsUpdate=true;}
+    V.renderer.render(V.scene,V.camera);V.frameArea=V.area;
+  }
   ctx.save();ctx.font='bold 12px KotobaSans,sans-serif';ctx.textAlign='center';
   const labels=[...V.labels,...npcs.filter(n=>V.actors.has(n.name)).map(n=>({text:n.name,x:n.vx+.5,y:2.1,z:n.vy+.5,near:true}))];
   for(const l of labels){if(l.near&&Math.hypot(l.x-visualX,l.z-visualY)>5)continue;const p=new THREE.Vector3(l.x,l.y,l.z).project(V.camera);if(Math.abs(p.x)>1||Math.abs(p.y)>1)continue;const x=(p.x+1)*c.width/2,y=(1-p.y)*c.height/2;ctx.lineWidth=3;ctx.strokeStyle='#fff3d5';ctx.strokeText(l.text,x,y);ctx.fillStyle='#546b58';ctx.fillText(l.text,x,y);}
@@ -123,7 +157,7 @@ function town3DDraw(now,dt) {
 function initTown3D() {
   try {
     if(typeof THREE==='undefined')throw Error('3D library unavailable');
-    const V=Town3D;V.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});V.renderer.setPixelRatio(1);V.renderer.outputColorSpace=THREE.SRGBColorSpace;V.renderer.setClearColor('#e3ebd7');
+    const V=Town3D;V.hiddenMatrix=new THREE.Matrix4().makeScale(0,0,0);V.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});V.renderer.setPixelRatio(1);V.renderer.outputColorSpace=THREE.SRGBColorSpace;V.renderer.setClearColor('#e3ebd7');
     const el=V.renderer.domElement;el.id='town3D';el.setAttribute('aria-hidden','true');c.before(el);
     V.scene=new THREE.Scene();V.scene.background=new THREE.Color('#e3ebd7');V.camera=new THREE.OrthographicCamera(-15,15,9,-9,.1,100);
     V.scene.add(new THREE.HemisphereLight('#fff9e1','#9aa890',1.7));V.sun=new THREE.DirectionalLight('#fff1d3',1.6);V.sun.position.set(-12,25,12);V.scene.add(V.sun);
