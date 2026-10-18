@@ -1,0 +1,20 @@
+/* Cream stationery, berry name tags and soft leaf-green choices. */
+#worldFrame #panel{background:#fffaf0;color:#564d47;border:3px solid #efcbd2;border-radius:26px 26px 22px 22px;padding:13px 20px 15px;box-shadow:0 5px 0 #c89caa35,0 8px 24px #45684d24;scrollbar-color:#dcb9c4 #fffaf0}
+#worldFrame #panel::before{content:'';position:absolute;pointer-events:none;inset:5px;border:1px dashed #e9d6c1;border-radius:19px}
+.dialogueHead{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:3px}
+#dialogueName{display:inline-block;padding:3px 17px;border-radius:18px 18px 18px 6px;background:#dcebdd;color:#496c59;font-size:12px;font-weight:700;letter-spacing:.06em}
+.hasSpeaker #dialogueName{background:#f5dce3;color:#87546a}
+.dialogueLeaf{color:#cf9dae;font-size:26px;line-height:1;padding-right:8px}
+#worldFrame #dialog{position:relative;color:#564d47;line-height:2.05;font-size:16px;margin:5px 0 9px;overflow-wrap:anywhere;cursor:pointer}
+#worldFrame #dialog rt{color:#86756c}
+#worldFrame #choices{position:relative;gap:7px}
+#worldFrame #choices button{background:#edf3e5;color:#48654f;border:1px solid #c2d2b5;border-radius:15px;padding:7px 15px;box-shadow:0 2px 0 #c9d5bc70}
+#worldFrame #choices button:hover{background:#e0ecd5}
+#worldFrame #choices button:focus-visible,#dialogueReveal:focus-visible{outline:3px solid #b085a6;outline-offset:2px}
+#worldFrame #dialogueReveal{position:relative;display:block;margin:0 0 7px auto;padding:3px 12px;min-height:32px;background:#f8e7ec;color:#88556b;border:1px solid #edccd6;border-radius:14px;font-size:12px}
+#worldFrame #dialogueReveal[hidden]{display:none}
+.dialogueSr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+#worldFrame #panel textarea{color:#564d47;background:#fffdf8;border:1px solid #decbbf}
+#worldFrame .large #dialog,body.large #worldFrame #dialog{font-size:20px}
+@media(max-width:800px),(pointer:coarse){#worldFrame #panel{border-width:2px;border-radius:21px;padding:10px 13px 12px;max-height:65%}#worldFrame #dialog{font-size:14px;line-height:2}#worldFrame #choices button{font-size:13px;padding:6px 11px}.dialogueLeaf{font-size:23px}#dialogueName{font-size:11px;padding:3px 12px}body.townLearningFocus #worldFrame #panel{max-height:none}}
+@media print{#worldFrame #panel::before,.dialogueHead,#dialogueReveal{display:none!important}#dialog span,#dialog ruby{visibility:visible!important}}
