@@ -1,0 +1,80 @@
+{
+  "url": "https://beep16band.github.io/kokyo/kotoba-shop/?v=30-field-grip16",
+  "startedAt": "2026-10-18T21:11:18.901Z",
+  "checks": [
+    {
+      "name": "public entry and tested script blob",
+      "pass": true,
+      "details": {
+        "sha": "e45ad0731cfca97bb578a033bd1269b5c45a3ad4"
+      }
+    },
+    {
+      "name": "public sprite renderer and direction-aware field tools",
+      "pass": true,
+      "details": {
+        "characters": 13
+      }
+    },
+    {
+      "name": "public assets equal tested local release",
+      "pass": true,
+      "details": {
+        "files": 8
+      }
+    },
+    {
+      "name": "actual hillside door enters active 3D venue",
+      "pass": true,
+      "details": {
+        "webgl": true,
+        "teacher": "galaxy",
+        "calls": 14,
+        "coins": 500
+      }
+    },
+    {
+      "name": "reception modes and real Space hit",
+      "pass": true,
+      "details": {
+        "hits": 1
+      }
+    },
+    {
+      "name": "cancel preserves money and records and restores controls",
+      "pass": true
+    },
+    {
+      "name": "3D indoor save reload and real exit",
+      "pass": true
+    },
+    {
+      "name": "390px actual touch movement and mobile 2D fallback",
+      "pass": true,
+      "details": {
+        "width": 390
+      }
+    },
+    {
+      "name": "390px real tap hits and cancel button fits viewport",
+      "pass": true
+    },
+    {
+      "name": "390px save reload stays in facility",
+      "pass": true
+    },
+    {
+      "name": "runtime and asset errors",
+      "pass": true
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "responses": [],
+  "environment": {
+    "executablePath": "/workspace/scratch/6d9a288d2ea7/audit-runtime/chromium"
+  },
+  "finishedAt": "2026-10-18T21:12:45.566Z",
+  "passed": 11,
+  "total": 11
+}
