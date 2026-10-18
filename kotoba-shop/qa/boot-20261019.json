@@ -1,6 +1,6 @@
 {
-  "passed": 8,
-  "total": 8,
+  "passed": 9,
+  "total": 9,
   "checks": [
     {
       "name": "desktop hides legacy UI while scripts load",
@@ -24,6 +24,10 @@
     },
     {
       "name": "mobile shows current art only then continues without touching saved progress",
+      "pass": true
+    },
+    {
+      "name": "confirmed new-game reload renders current world behind cover before revealing it",
       "pass": true
     },
     {
