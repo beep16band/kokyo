@@ -1,0 +1,183 @@
+{
+  "passed": 8,
+  "total": 8,
+  "checks": [
+    {
+      "name": "resume chapter 1 checkpoint and start chapter 2",
+      "pass": true
+    },
+    {
+      "name": "talk to takumi through current story destination",
+      "pass": true
+    },
+    {
+      "name": "natural river fishing through cast bite and reel input",
+      "pass": true,
+      "details": {
+        "key": "medaka"
+      }
+    },
+    {
+      "name": "travel to forest and walk to fumi for conversation",
+      "pass": true
+    },
+    {
+      "name": "catch naturally spawned forest insect using movement and net",
+      "pass": true,
+      "details": {
+        "caught": 1
+      }
+    },
+    {
+      "name": "gather forest herb at actual point and verify cooldown",
+      "pass": true
+    },
+    {
+      "name": "chapter 2 report pays 60G once and saves chapter 3 checkpoint",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "trace": [
+    {
+      "scene": "town",
+      "x": 25,
+      "y": 18,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 26,
+      "y": 18,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 18,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 23,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 22,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 21,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 20,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 19,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 20,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 21,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 22,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 23,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 17,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 18,
+      "step": 6
+    },
+    {
+      "netAttempt": 1,
+      "bug": 1
+    },
+    {
+      "scene": "town",
+      "x": 25,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 25,
+      "y": 20,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 20,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 23,
+      "y": 20,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 22,
+      "y": 20,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 21,
+      "y": 20,
+      "step": 6
+    }
+  ]
+}
