@@ -7,7 +7,7 @@ function townInteriorRelease(){
  I.root.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry&&!shared.has(o.geometry))unique.add(o.geometry)});
  unique.forEach(g=>g.dispose());I.scene.remove(I.root);I.root=null;I.key='';I.frame='';I.furniture.clear();I.products=[];I.batches=[];I.player=null;I.customer=null;I.labels=[];
 }
-function townInteriorSignature(){return JSON.stringify([state.scene,state.avatar.kind,state.scene==='home'?[state.wallpaper,state.flooring,X.room,state.furniturePlaced.map(f=>[f.kind,f.x,f.y,f.rotation||0]),!!X.model.displayed,Object.values(X.clayRecords).map(r=>r.trophy||'')]:state.scene==='facility'?[state.facilityVisit.id,state.facilityVisit.id==='hobby'?X.model.parts.join(','):'']:[orders[state.ordersDone]?.customer||'モク']])}
+function townInteriorSignature(){return JSON.stringify([state.scene,state.avatar.kind,state.scene==='home'?[state.wallpaper,state.flooring,X.room,state.furniturePlaced.map(f=>[f.kind,f.x,f.y,f.rotation||0]),!!X.model.displayed,Object.values(X.clayRecords).map(r=>r.trophy||'')]:state.scene==='facility'?[state.facilityVisit.id,state.facilityVisit.id==='hobby'?X.model.parts.join(','):state.facilityVisit.id==='clay'?JSON.stringify(X.clayRecords):'']:[orders[state.ordersDone]?.customer||'モク']])}
 function townInteriorBox(g,col,x,y,z,w,h,d){return town3DMesh(g,'box',col,x,y,z,w,h,d)}
 function townInteriorFurniture(parent,kind,x,z,rotation=0){
  const g=new THREE.Group();g.position.set(x+.5,0,z+.5);g.rotation.y=rotation*Math.PI/2;g.userData.furnitureKind=kind;parent.add(g);
@@ -98,15 +98,16 @@ function townInteriorBuild(){
  const I=TownInterior;townInteriorRelease();
  if(!I.scene){I.scene=new THREE.Scene();I.scene.background=new THREE.Color('#e3dbc9');I.scene.add(new THREE.HemisphereLight('#fff9e1','#a99d83',1.8));I.sun=new THREE.DirectionalLight('#fff1d3',1.45);I.sun.position.set(-5,14,12);I.scene.add(I.sun);I.camera=new THREE.OrthographicCamera(-12,12,7.2,-7.2,.1,80);I.camera.position.set(10,17,21);I.camera.lookAt(10,.55,6);I.camera.updateMatrixWorld(true);}
  I.root=new THREE.Group();I.scene.add(I.root);I.labels=[];I.furniture.clear();I.products=[];I.customer=null;
- const floor=state.scene==='home'?FLOORS[state.flooring].color:'#d9c5a2',wall=state.scene==='home'&&state.wallpaper!=='cream'?WALLPAPERS[state.wallpaper].color:state.scene==='facility'&&state.facilityVisit.id==='school'?'#d8e3ce':'#f3dfb7';
+ const clay=state.scene==='facility'&&state.facilityVisit.id==='clay';
+ const floor=clay?'#a7bb91':state.scene==='home'?FLOORS[state.flooring].color:'#d9c5a2',wall=state.scene==='home'&&state.wallpaper!=='cream'?WALLPAPERS[state.wallpaper].color:state.scene==='facility'&&state.facilityVisit.id==='school'?'#d8e3ce':'#f3dfb7';
  const tones=[floor,'#'+new THREE.Color(floor).offsetHSL(0,0,.025).getHexString()],boards=[[],[]];
  for(let y=1;y<=10;y++)for(let x=1;x<=18;x++)boards[(x+y)%2].push([x+.5,.02,y+.5,.98,.08,.98]);
  boards.forEach((tr,i)=>town3DInstances('box',tones[i],tr,I.root));
- townInteriorBox(I.root,wall,10,1.35,.5,19,2.7,.2);
+ if(!clay)townInteriorBox(I.root,wall,10,1.35,.5,19,2.7,.2);
  for(const x of [.5,19.5])townInteriorBox(I.root,wall,x,.45,6,.2,.8,11.2);
  townInteriorBox(I.root,'#b3946d',10,.2,.65,19,.24,.12);
  townInteriorBox(I.root,'#826d57',10,.04,11.2,19.2,.16,.28);
- townInteriorWindows(I.root);
+ if(!clay)townInteriorWindows(I.root);
  townInteriorBox(I.root,'#c99aab',10.5,.08,10.5,.92,.04,.75);
  if(state.scene==='home')townInteriorHome(I.root);else if(state.scene==='facility')townFacilityBuild3D(I.root);else townInteriorShop(I.root);
  I.player=town3DCharacter(state.avatar.kind,state.avatar.kind==='girl'?'#dc9d8e':'#7fa6b5');I.player.userData.playerAvatar=true;I.root.add(I.player);

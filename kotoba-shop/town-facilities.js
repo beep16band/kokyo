@@ -24,6 +24,12 @@ const TOWN_FACILITY_ROOMS={
   ...[3,13].map(x=>({x,y:2,w:4,h:2,kind:'tank',name:'魚の売却案内',use:()=>townSellMenu()})),
   {x:8,y:5,w:4,h:1,kind:'counter',name:'売却カウンター',use:()=>townSellMenu()}
  ]},
+ clay:{name:'クレー射撃場・受付広場',teacher:'ギャラクシー先生',spot:{x:10,y:5},main:{name:'練習・大会の受付',use:()=>clayMenu()},stations:[
+  {x:3,y:2,w:14,h:2,kind:'clayRange',name:'練習・大会',use:()=>clayMenu()},
+  {x:8,y:6,w:4,h:1,kind:'counter',name:'ギャラクシー先生・受付',use:()=>townTalk('ギャラクシー先生')},
+  {x:3,y:6,w:3,h:2,kind:'clayRecords',name:'記録・トロフィー',use:()=>townClayRecords()},
+  {x:14,y:7,w:3,h:2,kind:'clayBench',name:'練習の案内',use:()=>clayMenu()}
+ ]},
  hobby:{name:'ホビープラモデル屋',teacher:'けん',spot:{x:10,y:3},main:{name:'3パーツの模型を作る',use:()=>modelMenu()},stations:[
   {x:7,y:4,w:6,h:2,kind:'workbench',name:'模型の作業台',use:()=>modelMenu()},
   {x:3,y:2,w:2,h:2,kind:'modelCase',name:'完成見本',use:()=>modelMenu()},
@@ -95,7 +101,7 @@ function townFacilityDraw2D(now){
  const r=townFacilityRoom();if(!r)return;ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle='#e3dbc9';ctx.fillRect(0,0,c.width,c.height);
  const hudHeight=(document.getElementById('worldHud').getBoundingClientRect().height+8)*c.width/c.getBoundingClientRect().width;
  const scale=Math.min(c.width/640,(c.height-hudHeight)/384);ctx.save();ctx.translate((c.width-640*scale)/2,hudHeight+(c.height-hudHeight-384*scale)/2);ctx.scale(scale,scale);
- for(let y=1;y<=10;y++)for(let x=1;x<=18;x++){ctx.fillStyle=(x+y)%2?'#e5d3af':'#dfcba4';ctx.fillRect(x*T,y*T,T-1,T-1);}
+ for(let y=1;y<=10;y++)for(let x=1;x<=18;x++){ctx.fillStyle=state.facilityVisit.id==='clay'?((x+y)%2?'#a7bb91':'#b2c49c'):((x+y)%2?'#e5d3af':'#dfcba4');ctx.fillRect(x*T,y*T,T-1,T-1);}
  cozyRound(ctx,20,24,600,35,4,state.facilityVisit.id==='school'?'#a7bb91':'#f3dfb7');
  const objects=r.stations.map(s=>({z:s.y+s.h,draw:()=>{const x=s.x*T,y=s.y*T,w=s.w*T,h=s.h*T;cozyRound(ctx,x+2,y,w-4,h-2,3,s.kind==='board'?'#6e947e':s.kind==='desk'?'#dfd0b0':'#b3946d');if(['shelf','books'].includes(s.kind)){for(let i=0;i<8;i++)cozyRound(ctx,x+7+(i%4)*(w-15)/4,y+8+Math.floor(i/4)*26,8,17,2,['#82a8b4','#d8a8b5','#a7bb91','#e5c785'][i%4]);}if(s.kind==='desk'){cozyRound(ctx,x+21,y+5,20,12,2,'#fff2ce');cozyRound(ctx,x+23,y+36,18,23,3,'#b3946d');}townLifeStation2D(s);if(s.kind!=='desk'||s.y===8)label(s.name,x+w/2,y-5,'#fff2ce');}}));
  const n=TOWN_DATA.residents.find(n=>n.name===r.teacher);if(n)objects.push({z:r.spot.y+1,draw:()=>{character(r.spot.x,r.spot.y,n.color,false,'animal',now,'down');label(r.teacher,r.spot.x*T+16,r.spot.y*T-20,'#fff2ce');}});objects.push({z:visualY+1.01,draw:()=>character(visualX,visualY,'#477db0',false,'human',now,facing)});objects.sort((a,b)=>a.z-b.z).forEach(o=>o.draw());cozyRound(ctx,10*T,10*T,32,28,3,'#c99aab');label('出口 ↓',10*T+16,10*T-5,'#fff2ce');ctx.restore();
@@ -108,6 +114,7 @@ function townLifeModel3D(parent,x,y,z,parts,tag=false){
  }
 }
 function townLifeStation3D(parent,s){
+ if(s.kind.startsWith('clay'))return townClayStation3D(parent,s);
  const x=s.x+s.w/2,z=s.y+s.h/2,box=(col,a,b,c,w,h,d)=>townInteriorBox(parent,col,a,b,c,w,h,d),wood='#b3946d';
  if(s.kind==='kitchen'){
   box(wood,x,.52,z,s.w-.1,.94,s.h-.1);box('#dfd0b0',x,1.05,z,s.w,.12,s.h);
@@ -130,6 +137,7 @@ function townLifeStation3D(parent,s){
  return false;
 }
 function townLifeStation2D(s){
+ if(s.kind.startsWith('clay')){townClayStation2D(s);return;}
  const x=s.x*T,y=s.y*T,w=s.w*T,h=s.h*T;
  if(s.kind==='kitchen'){cozyRound(ctx,x+4,y+4,w-8,h-8,3,'#dfd0b0');for(const dx of [22,66]){cozyOval(ctx,x+dx,y+29,16,16,'#637c85');cozyOval(ctx,x+dx,y+25,12,12,'#c78f78');cozyOval(ctx,x+dx,y+23,10,8,'#dfd0b0');}cozyRound(ctx,x+w-39,y+12,28,35,2,'#82a8b4');}
  if(s.kind==='tank'){cozyRound(ctx,x+4,y+4,w-8,h-8,4,'#a2c6c3');for(let i=0;i<3;i++){const a=x+21+i*31,b=y+22+i%2*17;cozyPoly(ctx,[[a-12,b],[a-22,b-7],[a-22,b+7]],'#82a8b4');cozyOval(ctx,a,b,12,5,i%2?'#e5c785':'#83bfca');cozyOval(ctx,a+7,b-1,1,1,'#364a46');}}
