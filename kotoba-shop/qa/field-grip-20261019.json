@@ -1,0 +1,31 @@
+{
+  "passed": 5,
+  "total": 5,
+  "checks": [
+    {
+      "name": "touch device uses lightweight 2D without horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "painted hand and actual net rod and fishing line agree in all directions",
+      "pass": true,
+      "details": {
+        "cases": 320,
+        "note": "Controlled drawing states; does not force catches or change inventory."
+      }
+    },
+    {
+      "name": "real F key fishing in 2D catches one fish and returns control",
+      "pass": true
+    },
+    {
+      "name": "real net input finishes and reduced motion holds the swing direction",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions or offline network requests",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

@@ -118,6 +118,14 @@ function townCharacterHands(p,dir,frame,pose){
  const mirrored=dir==='left'||dir==='up';
  return {left:{x:32-width/2-2,y:arms[mirrored?1:0]},right:{x:32+width/2+2,y:arms[mirrored?0:1]},tool:{x:32+(mirrored?-1:1)*(width/2+2),y:arms[1]}};
 }
+// Convert the same painted hand into the lightweight field canvas coordinates.
+function townCharacterFieldGrip(x,y,dir,pose,now){
+ const p=TOWN_CHARACTER_PROFILES[state.avatar.kind]||TOWN_CHARACTER_PROFILES.boy;
+ const duration=dashHeld||state.settings.dashMode?DASH_MS:WALK_MS;
+ const frame=state.settings.reducedMotion?0:Math.floor(now/(pose==='idle'?450:pose==='joy'?170:duration/2))%4;
+ const hand=townCharacterHands(p,dir,frame,pose).tool;
+ return {x:x*T-16+hand.x,y:y*T-45+hand.y};
+}
 function townCharacterStamp(id,dir='down',frame=0,pose='idle',topPadding=0){
  const p=TOWN_CHARACTER_PROFILES[id],back=dir==='up',side=dir==='left'?-1:dir==='right'?1:0;
  return cozyStamp('town-portrait-v2-'+id+'-'+dir+'-'+frame+'-'+pose+'-pad'+topPadding,64,80+topPadding,g=>{

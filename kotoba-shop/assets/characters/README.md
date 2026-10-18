@@ -26,5 +26,5 @@ Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` when Chromium is installed separately.
 
 2026-10-19 revision: direction-aware tool hands and side-view foot stride.
 Character identity, palette, sheet dimensions and frame layout are preserved.
-The 3D sprite renderer shares hand coordinates with the artwork; the lightweight
-2D field tool overlay still uses its original grip and is a separate follow-up.
+The 3D sprite renderer and lightweight 2D field tool overlay share hand
+coordinates with the artwork. The fishing line starts at the direction-aware rod tip.
