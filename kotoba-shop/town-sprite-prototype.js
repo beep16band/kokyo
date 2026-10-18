@@ -1,6 +1,6 @@
-// First-scene prototype: existing 3D town, existing 2D artwork, existing game logic.
+// Outdoor prototype: existing 3D town, existing 2D artwork, existing game logic.
 // This module is loaded only by sprite-prototype.html, not the production entry point.
-const TownSpritePrototype={version:2,enabled:true,area:'town',height:2.037,width:1.552,topPadding:4,footY:.07,actors:new Set()};
+const TownSpritePrototype={version:3,enabled:true,height:2.037,width:1.552,topPadding:4,footY:.07,actors:new Set()};
 // Render existing animal artwork with explicit frames; do not draw into the game
 // canvas or borrow/mutate the live NPC step while warming a texture.
 function townSpriteLegacyStamp(name,dir,frame,moving){
@@ -37,7 +37,7 @@ function townSpriteWateringCan(g,hand){
 }
 const townCharacterBeforeSpritePrototype=town3DCharacter;
 town3DCharacter=function(kind,color,name){
- if(!TownSpritePrototype.enabled||state.scene!=='town'||state.area!==TownSpritePrototype.area)return townCharacterBeforeSpritePrototype(kind,color,name);
+ if(!TownSpritePrototype.enabled||state.scene!=='town')return townCharacterBeforeSpritePrototype(kind,color,name);
  const profile=townCharacterProfile(kind,color,name),canvas=document.createElement('canvas');canvas.width=64;canvas.height=84;
  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;texture.generateMipmaps=false;texture.minFilter=THREE.LinearFilter;texture.magFilter=THREE.LinearFilter;
  const material=new THREE.SpriteMaterial({map:texture,transparent:true,alphaTest:.12,depthTest:true,depthWrite:true,toneMapped:false});
@@ -66,7 +66,7 @@ town3DAnimate=function(actor,x,z,dir,moving,now,mode='idle'){
 const releaseBeforeSpritePrototype=town3DReleaseWorld;
 town3DReleaseWorld=function(){for(const actor of TownSpritePrototype.actors){actor.userData.texture.dispose();actor.userData.material.dispose();}TownSpritePrototype.actors.clear();releaseBeforeSpritePrototype();};
 function setTownSpritePrototype(enabled){TownSpritePrototype.enabled=!!enabled;Town3D.area='';Town3D.frameArea='';spriteCompare.textContent='キャラ：'+(enabled?'2D':'3D')+'（比較）';}
-const spriteNotice=document.createElement('div');spriteNotice.id='spritePrototypeNotice';spriteNotice.textContent='表示試作：3Dの町＋2Dキャラ ／ 本編のセーブとは別です。';
+const spriteNotice=document.createElement('div');spriteNotice.id='spritePrototypeNotice';spriteNotice.textContent='表示試作：3Dの屋外12地区＋2Dキャラ ／ 本編のセーブとは別です。';
 const spriteCompare=document.createElement('button');spriteCompare.id='spriteCompare';spriteCompare.textContent='キャラ：2D（比較）';spriteCompare.onclick=()=>setTownSpritePrototype(!TownSpritePrototype.enabled);spriteNotice.append(spriteCompare);document.body.prepend(spriteNotice);
 const spriteStyle=document.createElement('style');spriteStyle.textContent='#spritePrototypeNotice{width:min(1180px,100%);padding:8px 12px;margin:0 0 6px;background:#f3dfb7;color:#364a46;border-radius:12px;font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:8px}#spritePrototypeNotice button{min-height:40px;white-space:nowrap}#worldFrame{width:min(1180px,100%,calc((100vh - 180px)*1.6667))}@media(max-width:800px),(pointer:coarse){#spritePrototypeNotice{font-size:11px;padding:5px}#spritePrototypeNotice button{font-size:11px;min-height:40px;padding:4px}#worldFrame{width:min(1180px,100%,calc((100vh - 210px)*1.3333))}}';document.head.append(spriteStyle);
 Town3D.area='';Town3D.frameArea='';
