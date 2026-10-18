@@ -46,3 +46,5 @@ F5-a: 屋外12地区へ適用済み。tools/sprite_outdoor_quality.cjsで再検�
 F5-b: 室内8か所にも適用。tools/sprite_indoor_quality.cjsの13項目で表示・比較・施設内セーブ再開・root単位の画像解放を確認。全サービスと家具編集・タッチ3Dの回帰は未完了。
 
 F4/F7-a: tools/sprite_touch_quality.cjsでタッチ・描画設定切替・WebGL喪失時の復帰を再検証できる。結果はqa/sprite-touch-20261018.json（10/10）。390px幅のエミュレーションであり実機性能は未確認。
+
+F9-a: tools/sprite_services_quality.cjsで室内生活・家具編集・川と湖での釣り上げを検証（11/11）。結果はqa/sprite-services-20261018.json。実行には既存ゲーム一式・Node/Playwright・Python3・Chromiumが必要。新描画のオフライン統合は次工程。
