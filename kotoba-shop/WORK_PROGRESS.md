@@ -717,3 +717,14 @@ node kotoba-shop/tools/life_rooms_quality.cjs
 変更: assets/characters/drawn/、town-atlases.js、town-sprites.js、entry2種類、offline.html、build_offline.py、field_grip_quality.cjs、新規パック/品質スクリプト、素材説明・manifest、本進捗。
 公開手順: 開発ブランチへ保存後、既承認のmainへ反映し、公開版のPC・スマホ・全画像・オフラインを再確認する。承認待ちなし。
 残課題: 独立したダッシュ・各道具・表情の専用作画拡張、Chromebook実機、全遮蔽物・全章の実操作通し。今回の入替と区別する。
+
+
+## F6-e キャラ実画像差し替えの公開確認完了（2026-10-19）
+
+- 本番ゲーム・素材コミット: 5c1aac68ace64abe0edd117187378501fd5ab5d6。ローカルの保存treeとGitHub tree f159c1e340f20c9305adcae5e372eb3283368ba5の一致を確認。
+- GitHub Pages run 39170144473のbuild/deploy成功後、公開サイトを実際に検証。
+- 公開URL: https://beep16band.github.io/kokyo/kotoba-shop/?v=30-drawn-atlas17
+- 公開版drawn_atlas_quality.cjs 9/9合格。PCの3D、390pxスマホの軽量2D、13枚の実PNG読み込み、208コマの余白・足元、方向別表示、握り、実際のキーボード/タッチ移動、セーブ再開、公開offline.htmlで全画像読み込み・HTTP通信0を確認。実行時/素材HTTPエラー0。
+- 公開テストのoffline取得時にURLオブジェクトを渡していた検証スクリプトを.hrefへ修正。ゲーム不具合とは区別し、修正版で公開9項目を再実行して全合格。
+- 結果: qa/drawn-public-20261019.json。素材・参照情報・プロンプトはassets/characters/drawn/README.mdとPROMPTS.mdに記録。
+- 本件の画像確認・改善・入替・PC/スマホ公開確認は完了。ユーザーの承認待ちなし。独立した各アクションの専用作画拡張等は前節の継続課題として保持。

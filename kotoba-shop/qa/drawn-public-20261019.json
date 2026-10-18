@@ -1,0 +1,55 @@
+{
+  "passed": 9,
+  "total": 9,
+  "checks": [
+    {
+      "name": "all thirteen actual PNG atlases load without fallback",
+      "pass": true,
+      "details": {
+        "atlases": 13,
+        "frames": 208
+      }
+    },
+    {
+      "name": "208 frames transparent padding aligned soles and changing walk drawings",
+      "pass": true,
+      "details": {
+        "frames": 208
+      }
+    },
+    {
+      "name": "real-image stamps replace geometric fallback for every resident and direction",
+      "pass": true
+    },
+    {
+      "name": "3D town and home render drawn avatars after actual keyboard movement",
+      "pass": true
+    },
+    {
+      "name": "drawn hand anchors sit on visible body pixels in all action states",
+      "pass": true,
+      "details": {
+        "cases": 256
+      }
+    },
+    {
+      "name": "smartphone uses the same PNG art with real touch movement and save reload",
+      "pass": true
+    },
+    {
+      "name": "thirteen character direction contact sheet",
+      "pass": true
+    },
+    {
+      "name": "all PNG art available offline with zero network requests",
+      "pass": true
+    },
+    {
+      "name": "no runtime or asset errors",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "scope": "public PC/mobile and offline"
+}
