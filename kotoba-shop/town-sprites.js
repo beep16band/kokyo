@@ -40,7 +40,7 @@ town3DCharacter=function(kind,color,name){
  const profile=townCharacterProfile(kind,color,name),canvas=document.createElement('canvas');canvas.width=64;canvas.height=84;
  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;texture.generateMipmaps=false;texture.minFilter=THREE.LinearFilter;texture.magFilter=THREE.LinearFilter;
  const material=new THREE.SpriteMaterial({map:texture,transparent:true,alphaTest:.12,depthTest:true,depthWrite:true,toneMapped:false});
- const sprite=new THREE.Sprite(material);sprite.center.set(.5,4/84);sprite.scale.set(TownSprites.width,TownSprites.height,1);
+ const sprite=new THREE.Sprite(material);sprite.center.set(.5,profile?6/84:4/84);sprite.scale.set(TownSprites.width,TownSprites.height,1);
  // Sprite geometry is shared by Three.js; preserve it during the existing world cleanup.
  Town3D.shapes.set('prototype-sprite-geometry',sprite.geometry);
  const group=new THREE.Group();group.add(sprite);town3DMesh(group,'cylinder','#8ba582',0,.005,0,.32,.005,.22);
@@ -52,7 +52,7 @@ town3DAnimate=function(actor,x,z,dir,moving,now,mode='idle'){
  const player=actor===Town3D.player||u.playerAvatar===true,pose=player?townCharacterPose(now):moving?'walk':'idle';
  const frame=townSpriteMotionFrame(actor,x,z,moving,pose,now);
  const legacyFrame=state.settings.reducedMotion?0:Math.floor((u.stride||0)*4+1e-6)%8;
- const key=dir+'|'+pose+'|'+(u.profile?frame:legacyFrame);
+ const key=(typeof TownAtlas==='undefined'?0:TownAtlas.revision)+'|'+dir+'|'+pose+'|'+(u.profile?frame:legacyFrame);
  if(u.frameKey!==key){const g=u.canvas.getContext('2d');g.clearRect(0,0,64,84);
   const stamp=u.profile?townCharacterStamp(u.profile.id,dir,frame,pose,TownSprites.topPadding):townSpriteLegacyStamp(u.legacyName,dir,legacyFrame,moving&&!state.settings.reducedMotion);
   if(stamp){if(u.profile)g.drawImage(stamp,0,0);else g.drawImage(stamp,4,18);}

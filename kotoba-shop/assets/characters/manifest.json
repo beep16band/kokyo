@@ -93,5 +93,8 @@
       "file": "sakaguchi.png"
     }
   ],
-  "artRevision": 2
+  "artRevision": 2,
+  "activeArtwork": "drawn/manifest.json",
+  "activeRuntime": "town-atlases.js",
+  "legacyAtlasesOptional": true
 }

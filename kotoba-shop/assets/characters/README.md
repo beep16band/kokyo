@@ -1,4 +1,8 @@
-# Original character atlases
+# Active artwork
+
+The game now loads the supplied-reference drawn PNG atlases through `town-atlases.js` in both lightweight 2D and 3D. See [drawn/README.md](drawn/README.md) for the active layout, animation scope, packing and hand anchors.
+
+# Earlier geometric atlases (retained as fallback/history)
 
 13 original transparent PNG atlases for 『ことばのまちと小さなお店』.
 The source of truth is `town-characters.js`; no external character artwork is used.

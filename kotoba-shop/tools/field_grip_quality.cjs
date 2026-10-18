@@ -14,6 +14,7 @@ const fs=require('node:fs/promises'),path=require('node:path'),assert=require('n
   const requests=[];if(offline){p.on('request',r=>{if(/^https?:/.test(r.url()))requests.push(r.url());});await p.route(/^https?:/,route=>route.abort());}
   await p.goto(offline?'file://'+path.join(root,'offline.html'):'http://127.0.0.1:8811/index.html');
   await p.evaluate(()=>{chooseLearningLevel('normal');tutorial.status='skipped';closeChoices();busy=false;changeArea('river',26,20,false);closeChoices();});
+  await p.waitForFunction(()=>typeof TownAtlas!=='undefined'&&TownAtlas.loaded===13);
   await record('touch device uses lightweight 2D without horizontal overflow',async()=>assert(await p.evaluate(()=>state.settings.force2D&&document.documentElement.scrollWidth<=innerWidth)));
   await record('painted hand and actual net rod and fishing line agree in all directions',async()=>{
    const result=await p.evaluate(()=>{
@@ -29,18 +30,18 @@ const fs=require('node:fs/promises'),path=require('node:path'),assert=require('n
       state.avatar.kind=avatar;state.settings.reducedMotion=reduced;facing=dir;
       const now=frame*WALK_MS/2+1,left=dir==='left'||dir==='up',x=26*T+(left?1:31),f=reduced?0:frame,offset=[0,3,6,3][f];
       paths=[];mini=null;netSwing={x:26,y:20,face:dir,start:now-100,checked:true};drawOutdoor(now,.016);
-      const net=paths.find(p=>p.color==='#be915b');
-      check(net?.path[0][1]===x&&net.path[0][2]===20*T-15+offset,'net grip '+avatar+dir+frame);
-      const body=townCharacterStamp(avatar,dir,f,'net'),skin=body.getContext('2d').getImageData(left?17:47,30+offset,1,1).data;
-      check(skin[3]>0,'grip on painted hand');if(reduced){const angle={right:0,down:Math.PI/2,left:Math.PI,up:-Math.PI/2}[dir];check(Math.abs(net.path[1][1]-x-Math.cos(angle)*43)<1e-8&&Math.abs(net.path[1][2]-(20*T-15)-Math.sin(angle)*43)<1e-8,'reduced motion holds net angle');}cases++;
+      const net=paths.find(p=>p.color==='#be915b'),netHand=townCharacterFieldGrip(26,20,dir,'net',now);
+      check(net?.path[0][1]===netHand.x&&net.path[0][2]===netHand.y,'net grip '+avatar+dir+frame);
+      const body=townCharacterStamp(avatar,dir,f,'net'),skin=body.getContext('2d').getImageData(Math.round(netHand.x-26*T+16),Math.round(netHand.y-20*T+45),1,1).data;
+      check(skin[3]>0,'grip on painted hand');if(reduced){const angle={right:0,down:Math.PI/2,left:Math.PI,up:-Math.PI/2}[dir];check(Math.abs(net.path[1][1]-netHand.x-Math.cos(angle)*43)<1e-8&&Math.abs(net.path[1][2]-netHand.y-Math.sin(angle)*43)<1e-8,'reduced motion holds net angle');}cases++;
       for(const phase of ['cast','wait','bite','land']){
        netSwing=null;mini={type:'fish',action:true,key:'medaka',phase,phaseAt:now-200,origin:{x:26,y:20},target:{x:27,y:20}};
        paths=[];drawOutdoor(now,.016);
-       const rod=paths.find(p=>p.color==='#9d7147'),line=paths.find(p=>p.color==='#f9e9c7');
+       const rod=paths.find(p=>p.color==='#9d7147'),line=paths.find(p=>p.color==='#f9e9c7'),rodHand=townCharacterFieldGrip(26,20,dir,phase==='bite'?'surprise':'fish',now);
        if(phase==='land'){check(!rod&&!line,'no abandoned rod at landing');}
        else{
-        check(rod?.path[0][1]===x&&rod.path[0][2]===20*T-10,'rod grip '+dir+phase);
-        check(rod.path[1][1]===x+(left?-19:19)&&rod.path[1][2]===20*T-50,'rod direction');
+        check(rod?.path[0][1]===rodHand.x&&rod.path[0][2]===rodHand.y,'rod grip '+dir+phase);
+        check(rod.path[1][1]===rodHand.x+(left?-19:19)&&rod.path[1][2]===rodHand.y-40,'rod direction');
         check(line?.path[0][1]===rod.path[1][1]&&line.path[0][2]===rod.path[1][2],'line starts at rod tip');
        }
        cases++;
