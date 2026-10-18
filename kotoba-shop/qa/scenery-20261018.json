@@ -1,4 +1,6 @@
 {
+  "passed": 8,
+  "total": 8,
   "checks": [
     {
       "name": "representative outdoor town",
