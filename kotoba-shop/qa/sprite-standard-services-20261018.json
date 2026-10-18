@@ -1,0 +1,56 @@
+{
+  "passed": 11,
+  "total": 11,
+  "calls": {
+    "cafe": 26,
+    "fishShop": 18,
+    "hobby": 18
+  },
+  "results": [
+    {
+      "name": "three real doors: correct area, 3D room and original resident profiles",
+      "pass": true
+    },
+    {
+      "name": "cafe: actual kitchen UI consumes ingredients once; missing ingredients spend nothing",
+      "pass": true
+    },
+    {
+      "name": "fish shop: real counter sells one fish for 35G and prevents selling it twice",
+      "pass": true
+    },
+    {
+      "name": "hobby: three actual part buttons update the workbench, reward once, no time limit",
+      "pass": true
+    },
+    {
+      "name": "finished model: existing home display and saved story metric still work",
+      "pass": true
+    },
+    {
+      "name": "cross-area saves: each visit reloads indoors and exits to its original door",
+      "pass": true
+    },
+    {
+      "name": "menus and revisits: cache unchanged frame; release old GPU buffers",
+      "pass": true
+    },
+    {
+      "name": "furniture buttons: place, undo, cancel, save and reload",
+      "pass": true
+    },
+    {
+      "name": "natural fishing catch, once-only inventory and reload river",
+      "pass": true
+    },
+    {
+      "name": "natural fishing catch, once-only inventory and reload lake",
+      "pass": true
+    },
+    {
+      "name": "runtime errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

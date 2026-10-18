@@ -1,50 +1,26 @@
-# 3D背景＋2Dキャラ：屋外の表示試作
+# 3D背景＋2Dキャラの統合状況
 
-対象は屋外12地区と室内8か所。既存の機能・3D背景・2D素材を引き継ぐ。公開版には未反映。
+開発ブランチの通常index.htmlとoffline.htmlへ統合済み。本番mainには未反映。
+屋外12地区と、自宅・お店・久庵・学校・カフェ・魚屋・射撃場・模型店の室内8か所が対象。
 
-## 確認方法
-既存のkotoba-shop一式を同じフォルダに置き、HTTPサーバーでsprite-prototype.htmlを開く。
-例: リポジトリのルートで python3 -m http.server 8000
-URL: http://localhost:8000/kotoba-shop/sprite-prototype.html
+- town-sprites.js: 共通の2Dキャラ描画。既存3D背景・既存2D絵・既存ゲーム処理を継承。
+- index.html: 通常セーブを使う開発版。試作の比較UIを表示しない。
+- offline.html: 通常entryから生成。新描画、素材、フォントを埋込。
+- sprite-prototype.html: 比較用。sprite-prototype-storage.jsで通常セーブと分離し、town-sprite-prototype.jsで比較UIを追加。TownSpritePrototypeは検証互換のためTownSpritesを参照する。
 
-PCで開始し、町の中央へ移動する。「キャラ：2D／3D（比較）」で既存表示と比較できる。
-試作セーブは通常セーブとは別。自宅・お店・久庵・学校・カフェ・魚屋・射撃場・模型店にも適用済み。
+既存正投影カメラを維持。キャラ画像64×84は元の64×80へ上余白4pxを追加。幅1.552・高さ2.037、中心(0.5,4/84)、配置高さ0.07で縮尺と接地を維持。4方向の絵を切替え、歩行フレームは移動距離に同期。深度・透過判定、手元への竿・網接続、じょうろ表示、root別の画像解放を行う。
 
-## 仮の制作基準
-- 既存の正投影カメラを継承。注視点から高さ19・奥行15（地面から約51.7度）。
-- 背景は既存3D、キャラはカメラへ向くThree.js Sprite。全身を3Dモデルへ作り替えない。
-- 既存64×80の絵の上に4pxの余白を追加し、試作では64×84を使用。ワールド寸法は幅1.552・高さ2.037、中心は(0.5,4/84)、配置高さ0.07。足元と絵の縮尺を維持。
-- 向きは下・左・右・上の絵で変更し、身体を3D回転させない。
-- 影は地面の既存円柱形状。深度テスト・深度書込み・alphaTest=0.12で前後を判定。
-- プロフィール付きキャラは既存の待機・歩行等のスタンプに接続。動物住民も既存の4方向×8歩行フレームを使用。フレームは移動距離に合わせて切替。
-- 釣り竿・網のグリップを2Dの手元へ接続し、水やり時はじょうろを表示。通常entryでは追加フックは作動しない。
-- 当面の仮基準。全方向・全動作・全地区・道具・景観・実機の仕上げは後続F2〜F7で行う。
-
-## 構成
-- sprite-prototype.html: 試作用エントリ。
-- sprite-prototype-storage.js: 通常セーブから分離。
-- town-sprite-prototype.js: 試作キャラ表示と比較ボタン。既存モジュールを後段で拡張。
-- tools/sprite_prototype_quality.cjs: ブラウザ検証。
-- qa/sprite-prototype-20261018.json: 今回の結果。
-- qa/sprite-prototype-town-20261018.png: 実際のゲーム画面。生成イメージではない。
-
-## 再検証
-Node.js・Python3・Playwright・利用可能なChromiumを準備する。検証環境の準備はWORK_PROGRESS.mdのV2参照。
+## 検証
+Node.js、Python3、Playwright、Chromiumが必要。WORK_PROGRESS.mdの検証環境準備を参照。
 
 ```bash
+python3 kotoba-shop/tools/build_offline.py
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/path/to/chromium node kotoba-shop/tools/sprite_integration_quality.cjs
+KOTOBA_ENTRY=index.html PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/path/to/chromium node kotoba-shop/tools/sprite_services_quality.cjs
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/path/to/chromium node kotoba-shop/tools/sprite_prototype_quality.cjs
-PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/path/to/chromium node kotoba-shop/tools/sprite_motion_quality.cjs
 ```
 
-出力先はsprite-prototype-audit/。KOTOBA_AUDIT_OUTPUTで変更できる。
+統合7・通常版の生活機能11・表示回帰8の計26項目合格。結果はqa/sprite-integration-20261018.json、sprite-standard-services-20261018.json、sprite-integrated-regression-20261018.json。
+旧entryのfixtureと共通ゲーム機能で3難易度・3場面の代表セーブを生成して検証。すべての過去セーブを網羅したものではない。
 
-
-動作工程の結果と目視用一覧はqa/sprite-motion-*を参照。方向一覧・動作一覧の行ラベルはプロフィールID。新規動作8項目と前工程の回帰8項目を確認した。釣りの表示状態検査と、川・湖での一連の釣りの実操作は区別する。
-
-F5-a: 屋外12地区へ適用済み。tools/sprite_outdoor_quality.cjsで再検証できる。川・湖の釣り開始・中断と地区切替時のテクスチャ解放を含む16項目が合格。釣り上げ・報酬、室内、タッチ3Dは次工程。
-
-F5-b: 室内8か所にも適用。tools/sprite_indoor_quality.cjsの13項目で表示・比較・施設内セーブ再開・root単位の画像解放を確認。全サービスと家具編集・タッチ3Dの回帰は未完了。
-
-F4/F7-a: tools/sprite_touch_quality.cjsでタッチ・描画設定切替・WebGL喪失時の復帰を再検証できる。結果はqa/sprite-touch-20261018.json（10/10）。390px幅のエミュレーションであり実機性能は未確認。
-
-F9-a: tools/sprite_services_quality.cjsで室内生活・家具編集・川と湖での釣り上げを検証（11/11）。結果はqa/sprite-services-20261018.json。実行には既存ゲーム一式・Node/Playwright・Python3・Chromiumが必要。新描画のオフライン統合は次工程。
+景観・遮蔽物の目視、導入と通しプレイ、全機能・実機・公開確認は残工程。詳しくはWORK_PROGRESS.md。
