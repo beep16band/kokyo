@@ -1,0 +1,35 @@
+{
+  "passed": 7,
+  "total": 7,
+  "checks": [
+    {
+      "name": "animated opening uses real character images and reaches title automatically",
+      "pass": true
+    },
+    {
+      "name": "keyboard selection girl name and normal learning level start a new game",
+      "pass": true
+    },
+    {
+      "name": "saved title freezes movement autosave and avatar changes until continue",
+      "pass": true
+    },
+    {
+      "name": "restart cancellation preserves save then confirmation backs up and starts selected girl",
+      "pass": true
+    },
+    {
+      "name": "390px reduced motion title fits and traps keyboard focus",
+      "pass": true
+    },
+    {
+      "name": "offline title selection and start work without network",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
