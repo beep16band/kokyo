@@ -743,3 +743,13 @@ node kotoba-shop/tools/life_rooms_quality.cjs
 結果: qa/title-20261019.json、qa/title-art-regression-20261019.json。
 既知の範囲: 音楽なしのブラウザアニメーション。Chromebook/スマホ実機は未確認。今回のテストはPC/390pxタッチ相当のChromium。
 次の作業: GitHubへ保存・main反映し、公開版で同じ開始/再開/スマホ/オフライン確認を実施。承認待ちなし。
+
+
+## F8-d OP・タイトル画面の公開確認完了（2026-10-19）
+
+- 本番コミット50327a6b641fe054285d083f9b99c01caa6b3c28。GitHub Pages run 39171173544のbuild/deploy成功を確認。
+- 公開URL: https://beep16band.github.io/kokyo/kotoba-shop/?v=30-title18
+- 公開版title_quality.cjs 7/7合格、実行時例外0。OP自動遷移、キャラ実画像、キーボードの男女選択、名前、難易度への開始、セーブ再開、表示中の入力・保存抑止、再開始のキャンセル/控え/選択反映、390pxタッチ、減らす動作、フォーカス、公開offline.htmlの通信なし開始を確認。
+- 公開結果: qa/title-public-20261019.json。PC・スマホ画面をローカルで目視確認し、公開版でも実際のボタン操作を確認。
+- 本件の実装・公開・公開動作確認は完了。保存データは「つづきから」で保持。承認待ちなし。
+- 以後のゲーム開発は第5章実操作など従来の継続課題へ戻る。実機確認・全章通し・専用アクション作画の残課題を消さない。
