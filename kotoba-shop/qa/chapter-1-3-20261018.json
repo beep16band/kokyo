@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "name": "chapter 1 each missing requirement blocks report and reward",
+      "pass": true,
+      "details": {
+        "missingCases": [
+          "introStudy",
+          "uniqueTalk",
+          "sold"
+        ]
+      }
+    },
+    {
+      "name": "chapter 1 actual report button pays exactly once and unlocks next chapter",
+      "pass": true,
+      "details": {
+        "reward": 60,
+        "next": "main2"
+      }
+    },
+    {
+      "name": "chapter 1 reload retains completion reward token and next state",
+      "pass": true
+    },
+    {
+      "name": "chapter 2 each missing requirement blocks report and reward",
+      "pass": true,
+      "details": {
+        "missingCases": [
+          "takumi",
+          "fumi",
+          "fish",
+          "bug",
+          "gather"
+        ]
+      }
+    },
+    {
+      "name": "chapter 2 actual report button pays exactly once and unlocks next chapter",
+      "pass": true,
+      "details": {
+        "reward": 60,
+        "next": "main3"
+      }
+    },
+    {
+      "name": "chapter 2 reload retains completion reward token and next state",
+      "pass": true
+    },
+    {
+      "name": "chapter 3 each missing requirement blocks report and reward",
+      "pass": true,
+      "details": {
+        "missingCases": [
+          "plant",
+          "kuanBuy",
+          "cook",
+          "deliver"
+        ]
+      }
+    },
+    {
+      "name": "chapter 3 actual report button pays exactly once and unlocks next chapter",
+      "pass": true,
+      "details": {
+        "reward": 70,
+        "next": "main4"
+      }
+    },
+    {
+      "name": "chapter 3 reload retains completion reward token and next state",
+      "pass": true
+    },
+    {
+      "name": "unique resident count excludes repeat talks and teachers",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
