@@ -767,3 +767,5 @@ node kotoba-shop/tools/life_rooms_quality.cjs
 検証: dialogue_clay_quality.cjs 11/11、title_quality.cjs 7/7合格。四方向・移動中停止・屋内3D/2D・徐々に表示・全文表示・次キー・ルビ・新文への切替・減らす動作・枠の両外/境界/的外・全入力・1射制限・集計・スマホタッチ・通信なし起動・例外0を確認。drawn_atlas_quality.cjs 9/9合格。合計27/27、構文・git diff --check合格。
 結果: qa/dialogue-clay-20261019.json、qa/dialogue-title-regression-20261019.json。
 次: GitHubへ保存・mainへ反映し、公開版を再検証。実機スマホ/Chromebookは未確認。
+
+- 見出し付きの思い出会話でも、見出しを名前に混ぜず話し手を抽出。11項目を再実行して全合格。初回Pages run 39173510710成功、補正を含む版へ更新して公開確認を続行。
