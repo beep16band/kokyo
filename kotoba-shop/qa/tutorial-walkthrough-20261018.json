@@ -1,0 +1,467 @@
+{
+  "passed": 11,
+  "total": 11,
+  "checks": [
+    {
+      "name": "start normal tutorial with actual buttons",
+      "pass": true
+    },
+    {
+      "name": "lesson 1 walk three actual tiles",
+      "pass": true
+    },
+    {
+      "name": "lesson 2 choose real store map marker",
+      "pass": true
+    },
+    {
+      "name": "lesson 3 walk to store and enter door",
+      "pass": true
+    },
+    {
+      "name": "lesson 4 use real shop inventory menu",
+      "pass": true
+    },
+    {
+      "name": "lesson 5 move actual warehouse stock onto shelf",
+      "pass": true
+    },
+    {
+      "name": "lesson 6 walk to register and satisfy displayed order",
+      "pass": true
+    },
+    {
+      "name": "lesson 7 walk home and rest using bed action",
+      "pass": true
+    },
+    {
+      "name": "completed guide opens current story and survives reload",
+      "pass": true
+    },
+    {
+      "name": "prologue: key, starter set and report using actual menus and walking",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "trace": [
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 17,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 16,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 15,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 14,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 13,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 23,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 22,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 21,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 20,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 19,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 18,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 17,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 16,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 15,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 14,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "town",
+      "x": 13,
+      "y": 12,
+      "step": 2
+    },
+    {
+      "scene": "shop",
+      "x": 10,
+      "y": 8,
+      "step": 5
+    },
+    {
+      "scene": "shop",
+      "x": 10,
+      "y": 7,
+      "step": 5
+    },
+    {
+      "scene": "shop",
+      "x": 10,
+      "y": 8,
+      "step": 6
+    },
+    {
+      "scene": "shop",
+      "x": 10,
+      "y": 9,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 14,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 15,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 16,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 17,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 18,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 19,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 20,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 21,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 22,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 23,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 25,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 26,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 27,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 28,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 29,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 30,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 31,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 32,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 33,
+      "y": 12,
+      "step": 6
+    },
+    {
+      "scene": "home",
+      "x": 10,
+      "y": 8,
+      "step": 6
+    },
+    {
+      "scene": "home",
+      "x": 10,
+      "y": 7,
+      "step": 6
+    },
+    {
+      "scene": "home",
+      "x": 10,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "home",
+      "x": 10,
+      "y": 5,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 23,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 24,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 25,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 26,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 27,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 28,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 29,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 30,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 31,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 32,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 33,
+      "y": 19,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 33,
+      "y": 20,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 33,
+      "y": 21,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 33,
+      "y": 22,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 33,
+      "y": 23,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 33,
+      "y": 24,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 33,
+      "y": 25,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 34,
+      "y": 25,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 35,
+      "y": 25,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 36,
+      "y": 25,
+      "step": 6
+    },
+    {
+      "scene": "town",
+      "x": 37,
+      "y": 25,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 8,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 7,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 6,
+      "step": 6
+    }
+  ]
+}

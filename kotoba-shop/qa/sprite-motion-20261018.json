@@ -1,0 +1,79 @@
+{
+  "passed": 8,
+  "total": 8,
+  "checks": [
+    {
+      "name": "13 profiles, four directions, eight actions, four frames have visible uncropped art",
+      "pass": true,
+      "details": {
+        "count": 1664,
+        "missing": 0,
+        "topEdge": 0
+      }
+    },
+    {
+      "name": "legacy animal walk uses eight frames without changing NPC state",
+      "pass": true,
+      "details": {
+        "animals": 6,
+        "minimumDistinct": 5,
+        "unchanged": true
+      }
+    },
+    {
+      "name": "walk and dash frames follow distance, hold ground and stop when reduced motion is on",
+      "pass": true
+    },
+    {
+      "name": "real Shift movement selects dash; release returns to idle",
+      "pass": true,
+      "details": {
+        "during": "dash",
+        "after": "idle"
+      }
+    },
+    {
+      "name": "actual net action anchors its grip to the 2D hand for all four directions",
+      "pass": true,
+      "details": [
+        {
+          "dir": "down",
+          "pose": "net",
+          "error": 1.1443916996305594e-16
+        },
+        {
+          "dir": "left",
+          "pose": "net",
+          "error": 1.1443916996305594e-16
+        },
+        {
+          "dir": "right",
+          "pose": "net",
+          "error": 1.1443916996305594e-16
+        },
+        {
+          "dir": "up",
+          "pose": "net",
+          "error": 1.1443916996305594e-16
+        }
+      ]
+    },
+    {
+      "name": "controlled fishing phases keep rod and line on the sprite hand",
+      "pass": true,
+      "details": {
+        "cases": 16,
+        "note": "Controlled visual states; fishing gameplay is not completed by this test."
+      }
+    },
+    {
+      "name": "actual watering button increments once and shows watering pose after closing dialog",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

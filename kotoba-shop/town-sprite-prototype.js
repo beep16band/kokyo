@@ -1,0 +1,7 @@
+// Comparison controls are confined to the isolated prototype entry.
+const TownSpritePrototype=TownSprites;
+function setTownSpritePrototype(enabled){TownSpritePrototype.enabled=!!enabled;Town3D.area='';Town3D.frameArea='';TownInterior.key='';TownInterior.frame='';spriteCompare.textContent='キャラ：'+(enabled?'2D':'3D')+'（比較）';}
+const spriteNotice=document.createElement('div');spriteNotice.id='spritePrototypeNotice';spriteNotice.textContent='表示試作：3Dの町・室内＋2Dキャラ ／ 本編のセーブとは別です。';
+const spriteCompare=document.createElement('button');spriteCompare.id='spriteCompare';spriteCompare.textContent='キャラ：2D（比較）';spriteCompare.onclick=()=>setTownSpritePrototype(!TownSpritePrototype.enabled);spriteNotice.append(spriteCompare);document.body.prepend(spriteNotice);
+const spriteStyle=document.createElement('style');spriteStyle.textContent='#spritePrototypeNotice{width:min(1180px,100%);padding:8px 12px;margin:0 0 6px;background:#f3dfb7;color:#364a46;border-radius:12px;font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:8px}#spritePrototypeNotice button{min-height:40px;white-space:nowrap}#worldFrame{width:min(1180px,100%,calc((100vh - 180px)*1.6667))}@media(max-width:800px),(pointer:coarse){#spritePrototypeNotice{font-size:11px;padding:5px}#spritePrototypeNotice button{font-size:11px;min-height:40px;padding:4px}#worldFrame{width:min(1180px,100%,calc((100vh - 210px)*1.3333))}}';document.head.append(spriteStyle);
+Town3D.area='';Town3D.frameArea='';

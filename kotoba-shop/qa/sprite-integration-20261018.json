@@ -1,0 +1,56 @@
+{
+  "passed": 7,
+  "total": 7,
+  "checks": [
+    {
+      "name": "legacy entry save to standard sprites: easy town",
+      "pass": true,
+      "details": {
+        "difficulty": "easy",
+        "scene": "town",
+        "coins": 873,
+        "herbs": 2
+      }
+    },
+    {
+      "name": "legacy entry save to standard sprites: normal home",
+      "pass": true,
+      "details": {
+        "difficulty": "normal",
+        "scene": "home",
+        "coins": 873,
+        "herbs": 2
+      }
+    },
+    {
+      "name": "legacy entry save to standard sprites: hard facility",
+      "pass": true,
+      "details": {
+        "difficulty": "hard",
+        "scene": "facility",
+        "coins": 873,
+        "herbs": 2
+      }
+    },
+    {
+      "name": "offline standard sprites in 12 outdoor areas without network",
+      "pass": true,
+      "details": {
+        "areas": 12
+      }
+    },
+    {
+      "name": "offline standard sprites in eight interiors",
+      "pass": true
+    },
+    {
+      "name": "offline quest reward persists once across reload",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

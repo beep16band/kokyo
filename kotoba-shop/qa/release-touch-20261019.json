@@ -1,0 +1,97 @@
+{
+  "passed": 10,
+  "total": 10,
+  "checks": [
+    {
+      "name": "touch starts lightweight and fits 390px width",
+      "pass": true
+    },
+    {
+      "name": "actual touch movement in lightweight 2D",
+      "pass": true,
+      "details": {
+        "before": [
+          24,
+          18
+        ],
+        "after": [
+          24,
+          19
+        ]
+      }
+    },
+    {
+      "name": "actual settings tap enables 3D on touch",
+      "pass": true
+    },
+    {
+      "name": "touch movement in 3D town",
+      "pass": true,
+      "details": {
+        "before": [
+          24,
+          19
+        ],
+        "after": [
+          24,
+          20
+        ]
+      }
+    },
+    {
+      "name": "touch net action uses sprite pose and releases input",
+      "pass": true
+    },
+    {
+      "name": "touch movement in 3D home",
+      "pass": true,
+      "details": {
+        "before": [
+          10,
+          9
+        ],
+        "after": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "name": "real WebGL context loss keeps home playable in 2D",
+      "pass": true,
+      "details": {
+        "before": [
+          9,
+          9
+        ],
+        "after": [
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "name": "actual settings tap saves lightweight mode after context loss",
+      "pass": true,
+      "details": {
+        "before": [
+          8,
+          9
+        ],
+        "after": [
+          7,
+          9
+        ]
+      }
+    },
+    {
+      "name": "initial WebGL creation failure falls back without breaking movement",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,175 @@
+{
+  "checks": [
+    {
+      "name": "resume chapter 2 and start chapter 3",
+      "pass": true
+    },
+    {
+      "name": "plant inherited carrot seed through actual farm menu",
+      "pass": true
+    },
+    {
+      "name": "water once through learning answer and reject same-day repeat",
+      "pass": true
+    },
+    {
+      "name": "buy salt at actual kuan counter for 10G",
+      "pass": true
+    },
+    {
+      "name": "cook soup at cafe kitchen and consume exact ingredients",
+      "pass": true
+    },
+    {
+      "name": "deliver soup at haruka counter and reject empty duplicate delivery",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "trace": [
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 8,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 7,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 8,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 7,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 9,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 8,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 7,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 7,
+      "y": 5,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 7,
+      "y": 4,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 6,
+      "y": 4,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 5,
+      "y": 4,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 4,
+      "y": 4,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 3,
+      "y": 4,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 4,
+      "y": 4,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 5,
+      "y": 4,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 6,
+      "y": 4,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 7,
+      "y": 4,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 7,
+      "y": 5,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 7,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 8,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 9,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 6,
+      "step": 6
+    }
+  ]
+}

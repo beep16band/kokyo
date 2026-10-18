@@ -1,0 +1,155 @@
+{
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "name": "outdoor forest",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 1,
+        "valid": true,
+        "managed": 2
+      }
+    },
+    {
+      "name": "outdoor hill",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 3,
+        "valid": true,
+        "managed": 4
+      }
+    },
+    {
+      "name": "outdoor ruins",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 0,
+        "valid": true,
+        "managed": 1
+      }
+    },
+    {
+      "name": "outdoor market",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 2,
+        "valid": true,
+        "managed": 3
+      }
+    },
+    {
+      "name": "outdoor town",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 6,
+        "valid": true,
+        "managed": 7
+      }
+    },
+    {
+      "name": "outdoor homes",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 2,
+        "valid": true,
+        "managed": 3
+      }
+    },
+    {
+      "name": "outdoor farm",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 1,
+        "valid": true,
+        "managed": 2
+      }
+    },
+    {
+      "name": "outdoor river",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 1,
+        "valid": true,
+        "managed": 2
+      }
+    },
+    {
+      "name": "outdoor lake",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 1,
+        "valid": true,
+        "managed": 2
+      }
+    },
+    {
+      "name": "outdoor sea",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 0,
+        "valid": true,
+        "managed": 1
+      }
+    },
+    {
+      "name": "outdoor mountain",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 0,
+        "valid": true,
+        "managed": 1
+      }
+    },
+    {
+      "name": "outdoor cave",
+      "pass": true,
+      "details": {
+        "player": true,
+        "actors": 0,
+        "valid": true,
+        "managed": 1
+      }
+    },
+    {
+      "name": "real fishing start and cancel river",
+      "pass": true,
+      "details": {
+        "position": [
+          26,
+          1
+        ]
+      }
+    },
+    {
+      "name": "real fishing start and cancel lake",
+      "pass": true,
+      "details": {
+        "position": [
+          27,
+          2
+        ]
+      }
+    },
+    {
+      "name": "return to town releases old sprite textures",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,76 @@
+{
+  "passed": 8,
+  "total": 8,
+  "checks": [
+    {
+      "name": "3D map with 2D player and every town resident",
+      "pass": true,
+      "details": {
+        "ready": true,
+        "orthographic": true,
+        "above": true,
+        "count": 7,
+        "valid": true
+      }
+    },
+    {
+      "name": "four directions use distinct artwork and fixed ground anchor",
+      "pass": true
+    },
+    {
+      "name": "real arrow input moves existing player",
+      "pass": true,
+      "details": {
+        "before": [
+          24,
+          18
+        ],
+        "after": [
+          24,
+          19
+        ]
+      }
+    },
+    {
+      "name": "comparison toggle rebuilds without changing money, inventory or quests",
+      "pass": true
+    },
+    {
+      "name": "sprite depth test and transparent background respect opaque scenery",
+      "pass": true,
+      "details": {
+        "front": [
+          255,
+          0,
+          0,
+          255
+        ],
+        "behind": [
+          218,
+          146,
+          96,
+          255
+        ],
+        "transparent": [
+          255,
+          0,
+          0,
+          255
+        ]
+      }
+    },
+    {
+      "name": "prototype save reload is isolated from production data",
+      "pass": true
+    },
+    {
+      "name": "standard entry point loads sprites without prototype controls",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

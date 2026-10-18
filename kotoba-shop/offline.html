@@ -853,7 +853,7 @@ const miniCanvas=document.getElementById('miniMapCanvas'),miniCtx=miniCanvas.get
 function toggleMiniMap(){state.settings.miniMapHidden=!state.settings.miniMapHidden;syncMiniMapToggle();save(false)}
 function syncMiniMapToggle(){const off=!!state.settings.miniMapHidden;miniMapBox.classList.toggle('folded',off);const b=document.getElementById('miniMapToggle');b.textContent=(off?'地図をひらく':'地図をしまう')+'（Nキー）';b.setAttribute('aria-expanded',String(!off))}
 document.getElementById('miniMapToggle').onclick=toggleMiniMap;syncMiniMapToggle();
-function miniMapDestinations(){if(state.scene!=='town')return;const area=state.area,m=maps[area];tell('【地図の目印】北は上です。行き先を選ぶと、地図に★が付きます。赤い●が自分、黄色い四角が建物です。目印まで自由に歩いてみよう。');renderChoices([...m.buildings.map(b=>[b.name,()=>setMiniMapGoal(area,b.door.x,b.door.y+1,b.name)]),...m.pois.filter(p=>!['sign','discover','cache','well'].includes(p.type)).map(p=>[p.name,()=>setMiniMapGoal(area,p.x,p.y,p.name)]),...m.portals.map(p=>[AREAS[p.to].name+'への出口',()=>setMiniMapGoal(area,p.x,p.y,AREAS[p.to].name+'への出口')]),['9地区の地図を見る',showWorldMap],['目印を消す',()=>{delete state.mapGoal;save(false);closeChoices()}],['閉じる',closeChoices]])}
+function miniMapDestinations(){if(state.scene!=='town')return;const area=state.area,m=maps[area];tell('【地図の目印】北は上です。行き先を選ぶと、地図に★が付きます。赤い●が自分、黄色い四角が建物です。目印まで自由に歩いてみよう。');renderChoices([...m.buildings.map(b=>[b.name,()=>setMiniMapGoal(area,b.door.x,b.door.y+1,b.name)]),...m.pois.filter(p=>!['sign','discover','cache','well'].includes(p.type)).map(p=>[p.name,()=>setMiniMapGoal(area,p.x,p.y,p.name)]),...m.portals.map(p=>[AREAS[p.to].name+'への出口',()=>setMiniMapGoal(area,p.x,p.y,AREAS[p.to].name+'への出口')]),['まちの地図を見る',showWorldMap],['目印を消す',()=>{delete state.mapGoal;save(false);closeChoices()}],['閉じる',closeChoices]])}
 function setMiniMapGoal(area,x,y,name){state.mapGoal={area,x,y,name};save(false);closeChoices();tell(name+'に★の目印を付けました。地図の道と出入口を確かめて進もう。')}
 document.getElementById('miniMapOpen').onclick=miniMapDestinations;
 function drawMiniMap(){const hidden=state.scene!=='town'||setupOpen||menuOpen||editorOpen||!!choices.children.length||!!mini;miniMapBox.classList.toggle('obscured',hidden);if(hidden||state.settings.miniMapHidden)return;const m=maps[state.area],g=miniCtx,s=6;g.clearRect(0,0,288,192);for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){g.fillStyle=['#679563','#ead599','#d6d5b4','#527fbd','#ac8453','#e9c186','#989b8a'][m.tiles[y][x]]||'#679563';g.fillRect(x*s,y*s,s,s)}g.fillStyle='#345b3d';for(const t of m.trees)g.fillRect(t.x*s,t.y*s,s,s);g.fillStyle='#565b53';for(const r of m.rocks)g.fillRect(r.x*s,r.y*s,s,s);for(const b of m.buildings){g.fillStyle='#ffe098';g.fillRect(b.x*s,b.y*s,b.w*s,b.h*s);g.strokeStyle='#6c4931';g.lineWidth=2;g.strokeRect(b.x*s,b.y*s,b.w*s,b.h*s)}for(const p of m.pois){if(p.type==='discover'&&state.explore.found[p.id])continue;g.fillStyle='#f4edcc';g.fillRect(p.x*s+1,p.y*s+1,4,4)}for(const p of m.portals){g.fillStyle='#fff';g.fillRect(p.x*s-2,p.y*s-2,10,10);g.fillStyle='#1e5142';g.font='bold 11px sans-serif';g.textAlign='center';g.fillText({left:'←',right:'→',up:'↑',down:'↓'}[p.edge],p.x*s+3,p.y*s+7)}const goal=state.mapGoal;if(goal?.area===state.area){g.fillStyle='#ffe76b';g.strokeStyle='#453816';g.lineWidth=3;g.font='bold 22px sans-serif';g.textAlign='center';g.strokeText('★',goal.x*s+3,goal.y*s+9);g.fillText('★',goal.x*s+3,goal.y*s+9)}g.beginPath();g.arc(visualX*s+3,visualY*s+3,5,0,Math.PI*2);g.fillStyle='#e7463f';g.fill();g.lineWidth=2;g.strokeStyle='#fff';g.stroke();const text=goal?(goal.area===state.area?'★ '+goal.name+(Math.abs(state.x-goal.x)+Math.abs(state.y-goal.y)<=1?'：到着！':''):'★ '+goal.name+'（'+AREAS[goal.area]?.name+'）'):'目印は地図から選べます';document.getElementById('miniMapTarget').textContent=text;miniCanvas.setAttribute('aria-label',AREAS[state.area].name+'、北が上。現在地 '+state.x+'、'+state.y+'。'+text)}
@@ -886,7 +886,7 @@ function tutorialPaint(){const active=tutorial.status==='active';tutorialGuide.h
 function tutorialOrderText(){const o=orders[state.ordersDone];return o?o.items.map(z=>goods[z.item].name+' '+z.qty+goods[z.item].unit).join('・'):'今日の注文は終わっています。次の日に試すか、この練習を省けます。'}
 function tutorialAdvance(){tutorial.step++;save(false);tutorialPaint()}
 function tutorialHelp(){closeWorldMenu();if(tutorial.status!=='active'){tell('【はじめての暮らし】歩く・地図・お店・商品棚・接客・休む、を練習できます。今のお金や持ち物はそのままです。');renderChoices([['練習を始める・続ける',tutorialStart],['戻る',closeChoices]]);return}const [title,text]=tutorialSteps[tutorial.step];tell('【'+(tutorial.step+1)+'/7 '+title+'】\n'+text+(tutorial.step===4?'\n最初の注文：'+tutorialOrderText()+'\n初めから倉庫にパン・ジュース・りんごがあります。倉庫から棚へ並べると売れます。':'')+(tutorial.step===5?'\nレジは室内の中央。カウンターの一つ下で決定します。間違えても読み直せます。':'')+'\n選択肢はタップか、末尾のキーで選べます。');renderChoices([['練習に戻る',()=>{closeChoices();document.getElementById('panel').classList.add('quiet')}],...(tutorial.step===3||tutorial.step===4?[['在庫・陳列を開く',()=>{if(state.scene==='shop')inventory();else{tell('お店の中で在庫を開こう。町の★は自分のお店です。');renderChoices([['練習に戻る',closeChoices]])}}]]:[]),['この練習を省く',()=>{closeChoices();if(tutorial.step<6)tutorialAdvance();else tutorialComplete()}],['中断して自由に遊ぶ',()=>{tutorial.status='paused';closeChoices();save(false);tutorialPaint()}]])}
-function tutorialComplete(){tutorial.status='done';save(false);tutorialPaint();tell('フクじい「もう、お店の一日を過ごせたね。ここからは、ハルの好きな暮らしを見つけよう。」\n次の目標は、評判60の「町の人気店」。畑・釣り・住民の依頼も楽しめます。続きは自動で保存されます。ファイルへの控えはメニュー → セーブから。');renderChoices([['自由に暮らす',closeChoices],['9地区の地図を見る',showWorldMap]])}
+function tutorialComplete(){tutorial.status='done';save(false);tutorialPaint();tell('フクじい「もう、お店の一日を過ごせたね。ここからは、ハルの好きな暮らしを見つけよう。」\n次の目標と相談相手は「今の物語・目標」で確認できます。畑・釣り・住民の依頼も楽しめます。続きは自動で保存されます。ファイルへの控えはメニュー → セーブから。');renderChoices([['今の物語・目標を見る',()=>townQuestMenu()],['自由に暮らす',closeChoices],['まちの地図を見る',showWorldMap]])}
 function tutorialTick(){if(tutorial.status==='pending'&&!setupOpen&&!menuOpen&&!choices.children.length&&!editorOpen&&!mini){tutorial.status='paused';save(false);tutorialWelcome();return}if(tutorial.status!=='active'){tutorialPaint();return}const now={scene:state.scene,area:state.area,x:state.x,y:state.y},last=tutorial.last;tutorial.last=now;if(tutorial.step===0&&last&&now.scene===last.scene&&now.area===last.area&&Math.abs(now.x-last.x)+Math.abs(now.y-last.y)===1){tutorial.moves=Math.min(3,tutorial.moves+1);save(false)}
  if(tutorial.step===0&&tutorial.moves>=3)tutorialAdvance();
  else if(tutorial.step===1&&state.mapGoal?.area==='town'&&state.mapGoal.name==='こもれびストア')tutorialAdvance();
@@ -988,8 +988,8 @@ const helpBeforeAction=worldHelpView;worldHelpView=function(){helpBeforeAction()
 function drawBugSprite(b,now){const x=b.x*T+16,y=b.y*T+14,flap=state.settings.reducedMotion?1:Math.sin(now/90+b.phase),g=ctx;g.save();g.translate(Math.round(x),Math.round(y));g.scale(2,2);if(b.key==='butterfly'||b.key==='moth'){g.fillStyle=b.key==='moth'?'#a3b4c7':'#fff5c7';g.fillRect(-6,-3,5,Math.max(2,5+Math.round(flap*2)));g.fillRect(2,-3,5,Math.max(2,5+Math.round(flap*2)));g.fillStyle='#405043';g.fillRect(-1,-4,3,9);g.fillRect(-2,-6,1,3);g.fillRect(2,-6,1,3)}else if(b.key==='dragonfly'){g.fillStyle='#c4f2e9';g.fillRect(-8,-3,16,2);g.fillRect(-7,1,14,2);g.fillStyle='#b65c36';g.fillRect(-1,-6,2,15);g.fillStyle='#293f37';g.fillRect(-3,-6,6,3)}else{g.fillStyle=b.key==='beetle'?'#6a412b':'#ea6652';g.fillRect(-4,-3,8,8);g.fillStyle='#273b32';g.fillRect(-2,-5,4,3);g.fillRect(0,-2,1,7);for(const dy of [-2,1,4]){g.fillRect(-6,dy,2,1);g.fillRect(4,dy,2,1)}if(b.key==='beetle'){g.fillRect(-1,-9,2,5);g.fillRect(-3,-9,6,1)}else{g.fillRect(-3,-1,2,2);g.fillRect(2,2,2,2)}}g.restore()}
 function drawFishSprite(key,x,y,size=1){ctx.save();ctx.translate(x,y);ctx.scale(size,size);ctx.fillStyle={medaka:'#d9e5c9',koi:'#efad79',ayu:'#88c3c0',wakasagi:'#c2d8eb',bluegill:'#839cbe'}[key]||'#bdd8dd';ctx.beginPath();ctx.ellipse(0,0,13,6,0,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.moveTo(-10,0);ctx.lineTo(-19,-7);ctx.lineTo(-19,7);ctx.closePath();ctx.fill();ctx.fillStyle='#293d3b';ctx.fillRect(7,-2,2,2);ctx.restore()}
 const outsideBeforeActions=drawOutdoor;drawOutdoor=function(now,dt){outsideBeforeActions(now,dt);ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.translate(-Math.round(camera.x),-Math.round(camera.y));for(const b of fieldWorld.bugs)drawBugSprite(b,now);for(const [key,s]of Object.entries(TRAVEL_SITES))if(s.area===state.area){ctx.fillStyle=state.travelSites[key]?'#f5dfa0':'#d7ead0';ctx.fillRect(s.x*T+5,s.y*T+15,3,15);ctx.fillStyle=state.travelSites[key]?'#e7bd58':'#edf5db';ctx.beginPath();ctx.moveTo(s.x*T+8,s.y*T+10);ctx.lineTo(s.x*T+24,s.y*T+15);ctx.lineTo(s.x*T+8,s.y*T+20);ctx.fill()}
- if(netSwing){const s=netSwing,p=Math.min(1,(now-s.start)/380),angle={right:0,down:Math.PI/2,left:Math.PI,up:-Math.PI/2}[s.face]+(p-.5)*1.8,x=s.x*T+16,y=s.y*T+12,nx=x+Math.cos(angle)*43,ny=y+Math.sin(angle)*43;ctx.strokeStyle='#be915b';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(nx,ny);ctx.stroke();ctx.strokeStyle='#f8f1cc';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(nx,ny,18,15,angle,0,Math.PI*2);ctx.stroke();ctx.lineWidth=1;for(let i=-10;i<=10;i+=5){ctx.beginPath();ctx.moveTo(nx+i,ny-10);ctx.lineTo(nx+i,ny+10);ctx.stroke();ctx.beginPath();ctx.moveTo(nx-13,ny+i);ctx.lineTo(nx+13,ny+i);ctx.stroke()}}
- if(mini?.action){const m=mini,px=m.origin.x*T+16,py=m.origin.y*T+10,tx=m.target.x*T+16,ty=m.target.y*T+16,t=Math.min(1,(now-m.phaseAt)/450),cast=m.phase==='cast'?t:1;const fx=px+(tx-px)*cast,fy=py+(ty-py)*cast-(m.phase==='cast'?Math.sin(t*Math.PI)*50:0);ctx.strokeStyle='#9d7147';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(px+19,py-40);ctx.stroke();ctx.strokeStyle='#f9e9c7';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(px+19,py-40);ctx.quadraticCurveTo((px+fx)/2,py-55,fx,fy);ctx.stroke();if(m.phase!=='land'){const wave=state.settings.reducedMotion?12:12+(now%900)/70;ctx.strokeStyle=m.phase==='bite'?'#fff2a5':'#c9f2e0aa';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(fx,fy+5,wave,wave*.4,0,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#f7edd0';ctx.fillRect(fx-3,fy-10,6,10);ctx.fillStyle='#e96642';ctx.fillRect(fx-3,fy-(m.phase==='bite'?1:6),6,6);if(m.phase==='bite'){ctx.font='bold 48px KotobaSans,sans-serif';ctx.textAlign='center';ctx.strokeStyle='#274e47';ctx.lineWidth=6;ctx.strokeText('！',fx,fy-24);ctx.fillStyle='#fff3a0';ctx.fillText('！',fx,fy-24)}}else{const p=Math.min(1,(now-m.phaseAt)/1000);drawFishSprite(m.key,state.settings.reducedMotion?px:tx+(px-tx)*p,state.settings.reducedMotion?py-15:ty+(py-ty)*p-Math.sin(p*Math.PI)*75,1.6)}}
+ if(netSwing){const s=netSwing,p=Math.min(1,(now-s.start)/380),angle={right:0,down:Math.PI/2,left:Math.PI,up:-Math.PI/2}[s.face]+(state.settings.reducedMotion?0:(p-.5)*1.8),hand=typeof townCharacterFieldGrip==='function'?townCharacterFieldGrip(s.x,s.y,s.face,'net',now):{x:s.x*T+16,y:s.y*T+12},x=hand.x,y=hand.y,nx=x+Math.cos(angle)*43,ny=y+Math.sin(angle)*43;ctx.strokeStyle='#be915b';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(nx,ny);ctx.stroke();ctx.strokeStyle='#f8f1cc';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(nx,ny,18,15,angle,0,Math.PI*2);ctx.stroke();ctx.lineWidth=1;for(let i=-10;i<=10;i+=5){ctx.beginPath();ctx.moveTo(nx+i,ny-10);ctx.lineTo(nx+i,ny+10);ctx.stroke();ctx.beginPath();ctx.moveTo(nx-13,ny+i);ctx.lineTo(nx+13,ny+i);ctx.stroke()}}
+ if(mini?.action){const m=mini,pose=m.phase==='land'?'joy':m.phase==='bite'?'surprise':'fish',hand=typeof townCharacterFieldGrip==='function'?townCharacterFieldGrip(m.origin.x,m.origin.y,facing,pose,now):{x:m.origin.x*T+16,y:m.origin.y*T+10},px=hand.x,py=hand.y,rodX=px+(['left','up'].includes(facing)?-19:19),rodY=py-40,tx=m.target.x*T+16,ty=m.target.y*T+16,t=Math.min(1,(now-m.phaseAt)/450),cast=m.phase==='cast'?t:1;const fx=px+(tx-px)*cast,fy=py+(ty-py)*cast-(m.phase==='cast'?Math.sin(t*Math.PI)*50:0);if(m.phase!=='land'){ctx.strokeStyle='#9d7147';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(rodX,rodY);ctx.stroke();ctx.strokeStyle='#f9e9c7';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(rodX,rodY);ctx.quadraticCurveTo((rodX+fx)/2,py-55,fx,fy);ctx.stroke();}if(m.phase!=='land'){const wave=state.settings.reducedMotion?12:12+(now%900)/70;ctx.strokeStyle=m.phase==='bite'?'#fff2a5':'#c9f2e0aa';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(fx,fy+5,wave,wave*.4,0,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#f7edd0';ctx.fillRect(fx-3,fy-10,6,10);ctx.fillStyle='#e96642';ctx.fillRect(fx-3,fy-(m.phase==='bite'?1:6),6,6);if(m.phase==='bite'){ctx.font='bold 48px KotobaSans,sans-serif';ctx.textAlign='center';ctx.strokeStyle='#274e47';ctx.lineWidth=6;ctx.strokeText('！',fx,fy-24);ctx.fillStyle='#fff3a0';ctx.fillText('！',fx,fy-24)}}else{const p=Math.min(1,(now-m.phaseAt)/1000);drawFishSprite(m.key,state.settings.reducedMotion?px:tx+(px-tx)*p,state.settings.reducedMotion?py-15:ty+(py-ty)*p-Math.sin(p*Math.PI)*75,1.6)}}
  for(const e of fieldEffects){const p=(now-e.start)/750;ctx.fillStyle=e.color;ctx.fillRect((e.x+.5)*T+e.dx*p*45,(e.y+.3)*T+e.dy*p*40-p*14,4,4)}ctx.restore()};
 function drawActionOverlay(now){ctx.save();ctx.setTransform(1,0,0,1,0,0);if(mini?.action){const m=mini,w=Math.min(440,c.width-28),x=(c.width-w)/2,y=78;ctx.fillStyle='#173e38ee';ctx.fillRect(x,y,w,93);ctx.strokeStyle='#e7d7a0';ctx.strokeRect(x,y,w,93);ctx.font='bold 19px KotobaSans,sans-serif';ctx.fillStyle='#fff2c7';ctx.textAlign='center';const label={cast:'竿をふっています',wait:'浮きを見て待とう…',bite:'浮きが沈んだ！ 決定で合わせよう',land:CREATURES[m.key].name+'を釣り上げた！',miss:'逃げた… 何度でも試せるよ'}[m.phase];ctx.fillText(label,c.width/2,y+30,w-16);ctx.font='14px KotobaSans,sans-serif';ctx.fillText('Space・Enter ／ 画面の「合わせる」',c.width/2,y+55,w-16);ctx.fillStyle='#718a77';ctx.fillRect(x+20,y+69,w-40,12);if(m.phase==='bite'){ctx.fillStyle='#ffe58b';ctx.fillRect(x+20,y+69,(w-40)*Math.max(0,(m.until-now)/m.window),12)}else if(m.phase==='wait'){ctx.fillStyle='#a6d2c2';ctx.fillRect(x+20,y+69,(w-40)*Math.min(1,(now-m.phaseAt)/m.waitMs),12)}}if(fieldToast&&now<fieldToast.until){ctx.font='bold 16px KotobaSans,sans-serif';ctx.textAlign='center';const w=Math.min(c.width-24,ctx.measureText(fieldToast.text).width+24),y=c.height-90;ctx.fillStyle='#1c4036ee';ctx.fillRect((c.width-w)/2,y,w,36);ctx.fillStyle='#fff0be';ctx.fillText(fieldToast.text,c.width/2,y+24,w-12)}ctx.restore()}
 const drawBeforeField=draw;draw=function(now=performance.now()){const dt=Math.max(0,Math.min(.06,(now-fieldLast)/1000));fieldLast=now;updateBugs(now,dt);resolveNet(now);updateFishing(now);visitTravelSites();fieldEffects=fieldEffects.filter(e=>now-e.start<750);drawBeforeField(now);drawActionOverlay(now);syncFieldTools()};
@@ -1185,6 +1185,7 @@ function town3DDraw(now,dt) {
   V.tool.visible=!!netSwing||!!mini?.action&&mini.phase!=='land';
   V.netRing.visible=!!netSwing;
   if(V.tool.visible){const a={right:Math.PI/2,left:-Math.PI/2,up:Math.PI,down:0}[facing];V.tool.position.set(visualX+.5+Math.sin(a)*.35,1,visualY+.5+Math.cos(a)*.35);V.tool.rotation.set(.8,a,netSwing?Math.sin((now-netSwing.start)/100)*.6:0);}
+  if(typeof town3DActorToolPose==='function')town3DActorToolPose(V,now);
   V.bobber.visible=!!mini?.action&&mini.phase!=='land';if(V.bobber.visible)V.bobber.position.set(mini.target.x+.5,mini.phase==='bite'?-.05:.1,mini.target.y+.5);
   V.fishingLine.visible=!!mini?.action&&mini.phase!=='land';
   if(V.fishingLine.visible){V.tool.updateMatrixWorld(true);const tip=V.tool.localToWorld(new THREE.Vector3(0,1,0)),positions=V.fishingLine.geometry.attributes.position;positions.setXYZ(0,tip.x,tip.y,tip.z);positions.setXYZ(1,V.bobber.position.x,V.bobber.position.y,V.bobber.position.z);positions.needsUpdate=true;}
@@ -1668,21 +1669,39 @@ town3DAnimate=function(actor,x,z,dir,moving,now,mode='idle'){
  u.head.rotation.x=pose==='surprise'?-.15:0;u.head.rotation.z=state.settings.reducedMotion?0:Math.sin(now/1600)*.018;
  u.pose=pose;
 };
-function townCharacterStamp(id,dir='down',frame=0,pose='idle'){
+// Shared screen-space hands keep body poses and attached tools in agreement.
+function townCharacterHands(p,dir,frame,pose){
+ const width=p?.body==='muscle'?38:p?.body==='round'?32:26;
+ const stride=['walk','dash'].includes(pose)?[0,pose==='dash'?4:2,0,pose==='dash'?-4:-2][frame%4]:0;
+ const offset=[0,3,6,3][frame%4];
+ const arms={fish:[42,35],net:[48,30+offset],tool:[48,39+offset],joy:[31,31],surprise:[35,35]}[pose]||[49-stride*.5,49+stride*.5];
+ const mirrored=dir==='left'||dir==='up';
+ return {left:{x:32-width/2-2,y:arms[mirrored?1:0]},right:{x:32+width/2+2,y:arms[mirrored?0:1]},tool:{x:32+(mirrored?-1:1)*(width/2+2),y:arms[1]}};
+}
+// Convert the same painted hand into the lightweight field canvas coordinates.
+function townCharacterFieldGrip(x,y,dir,pose,now){
+ const p=TOWN_CHARACTER_PROFILES[state.avatar.kind]||TOWN_CHARACTER_PROFILES.boy;
+ const duration=dashHeld||state.settings.dashMode?DASH_MS:WALK_MS;
+ const frame=state.settings.reducedMotion?0:Math.floor(now/(pose==='idle'?450:pose==='joy'?170:duration/2))%4;
+ const hand=townCharacterHands(p,dir,frame,pose).tool;
+ return {x:x*T-16+hand.x,y:y*T-45+hand.y};
+}
+function townCharacterStamp(id,dir='down',frame=0,pose='idle',topPadding=0){
  const p=TOWN_CHARACTER_PROFILES[id],back=dir==='up',side=dir==='left'?-1:dir==='right'?1:0;
- return cozyStamp('town-portrait-v1-'+id+'-'+dir+'-'+frame+'-'+pose,64,80,g=>{
+ return cozyStamp('town-portrait-v2-'+id+'-'+dir+'-'+frame+'-'+pose+'-pad'+topPadding,64,80+topPadding,g=>{
+  if(topPadding)g.translate(0,topPadding);
   const skin='#edc5a3',moving=pose==='walk'||pose==='dash',stride=moving?[0,pose==='dash'?4:2,0,pose==='dash'?-4:-2][frame%4]:0;
   const joy=pose==='joy'?[0,-2,-4,-2][frame%4]:0;g.translate(0,joy);
   const muscle=p.body==='muscle',round=p.body==='round',w=muscle?38:round?32:26;
   for(const [i,x] of [24,35].entries()){
-   const lift=Math.max(0,i===0?stride:-stride);cozyRound(g,x,56,6,16-lift,3,p.outfit==='overalls'?p.accent:'#637c85');
-   cozyOval(g,x+3+side,74-lift,5,2.5,'#826d57');
+   const swing=i===0?stride:-stride,lift=Math.max(0,swing),stepX=side*swing;
+   cozyPoly(g,[[x,56],[x+6,56],[x+6+stepX,72-lift],[x+stepX,72-lift]],p.outfit==='overalls'?p.accent:'#637c85');
+   cozyOval(g,x+3+side+stepX,74-lift,5,2.5,'#826d57');
   }
   g.save();if(pose==='idle')g.translate(0,[0,-.3,-.5,-.3][frame%4]);
   cozyRound(g,32-w/2,36,w,26,9,cozyGrad(g,0,36,26,p.shirt,p.shirt));
-  const raised=['fish','net','tool','surprise','joy'].includes(pose),offset=[0,3,6,3][frame%4];
-  const arms={fish:[42,35],net:[48,30+offset],tool:[48,39+offset],joy:[31,31],surprise:[35,35]}[pose]||[49-stride*.5,49+stride*.5];
-  cozyOval(g,32-w/2-2,arms[0],muscle?6:4,raised?7:10,skin);cozyOval(g,32+w/2+2,arms[1],muscle?6:4,raised?7:10,skin);
+  const raised=['fish','net','tool','surprise','joy'].includes(pose),hands=townCharacterHands(p,dir,frame,pose);
+  cozyOval(g,hands.left.x,hands.left.y,muscle?6:4,raised?7:10,skin);cozyOval(g,hands.right.x,hands.right.y,muscle?6:4,raised?7:10,skin);
   if(p.outfit==='dress')cozyPoly(g,[[23,45],[41,45],[47,65],[17,65]],p.shirt);
   if(['overalls','apron'].includes(p.outfit)){
    for(const x of [25,36])cozyRound(g,x,36,3,15,1,p.accent);
@@ -2239,5 +2258,80 @@ const facilityResume=state.facilityVisit;
 function townFacilityResumeMatches(v){try{const raw=JSON.parse(townBootRaw),p=raw.worldPosition,b=v.outside;return raw.scene==='town'&&p&&b&&p.area===b.area&&p.x===b.x&&p.y===b.y;}catch{return false;}}
 if(state.scene==='town'&&facilityResume?.version===1&&Object.hasOwn(TOWN_FACILITY_ROOMS,facilityResume.id)&&townFacilityResumeMatches(facilityResume))townFacilityEnter(facilityResume.id,facilityResume);
 else if(state.scene!=='facility')delete state.facilityVisit;
+
+</script><script>
+// 2D character sprites in the existing 3D outdoor and indoor scenes.
+// Display-only state: saved characters, inventory, quests and gameplay stay unchanged.
+const TownSprites={version:5,enabled:true,height:2.037,width:1.552,topPadding:4,footY:.07,actors:new Set()};
+// Render existing animal artwork with explicit frames; do not draw into the game
+// canvas or borrow/mutate the live NPC step while warming a texture.
+function townSpriteLegacyStamp(name,dir,frame,moving){
+ const row=worldNpcConfig[name]?.row||1,fr=moving?frame%8:0,step=moving;
+ return cozyStamp('sprite-legacy-'+row+'-'+dir+'-'+fr+'-'+Number(moving),56,68,g=>{const walk=step?Math.sin(fr/8*Math.PI*2):0,bob=step?Math.abs(walk)*1:0;const fur=['#f1cfab','#b98a64','#f3e3cc','#b3b59a','#dba36e','#b4cad0','#dec499'][row],shirt=['#6f9da4','#b67e68','#c99caa','#7f9a87','#839eae','#c5a172','#a19ab9'][row],back=dir==='up',side=dir==='left'?-1:dir==='right'?1:0;g.translate(0,-bob);cozyOval(g,21,59+walk*2,5,3,'#766654');cozyOval(g,34,59-walk*2,5,3,'#766654');cozyRound(g,18,41,8,16+walk*2,4,'#71837c');cozyRound(g,29,41,8,16-walk*2,4,'#71837c');cozyRound(g,15,30,26,21,10,cozyGrad(g,15,30,23,shirt,'#688981'));cozyOval(g,13+walk,41,4,7,fur);cozyOval(g,42-walk,41,4,7,fur);cozyPoly(g,[[20,31],[28,36],[35,31]],'#f6ebd2');cozyOval(g,28,43,1.3,1.3,'#f3d59a');if(row===2){cozyOval(g,18,10,4,12,fur);cozyOval(g,37,10,4,12,fur);cozyOval(g,18,9,1.5,8,'#dbb6ad');cozyOval(g,37,9,1.5,8,'#dbb6ad')}else if(row===4||row===6){cozyPoly(g,[[11,18],[13,3],[25,16]],fur);cozyPoly(g,[[31,15],[43,3],[46,19]],fur);cozyPoly(g,[[15,15],[15,8],[21,16]],'#ba8d74')}else if(row>0){cozyOval(g,14,15,6,6,fur);cozyOval(g,42,15,6,6,fur);cozyOval(g,14,15,3,3,'#cfae8a');cozyOval(g,42,15,3,3,'#cfae8a')}cozyOval(g,28,24,18,16,cozyGrad(g,0,8,32,fur,row===0?'#e9b990':fur));if(row===0){cozyOval(g,27,13,17,9,'#75634f');cozyOval(g,12,23,4,8,'#75634f');cozyPoly(g,[[11,18],[18,8],[35,8],[44,21],[33,16],[30,23],[23,16],[19,22]],'#75634f');cozyOval(g,24,10,9,2,'#927b5d');if(back)cozyOval(g,28,23,17,14,'#75634f')}if(!back){if(row>0)cozyOval(g,28+side*3,29,11,7,row===3?'#e5e3c7':'#f5e5c8');if(row===3){cozyOval(g,20,23,7,7,'#f3ecd4');cozyOval(g,36,23,7,7,'#f3ecd4')}const blink=false;for(const xx of (side===-1?[19,29]:side===1?[27,37]:[20,36])){cozyOval(g,xx,24,1.8,blink?.6:2.5,'#4e564c');if(!blink)cozyOval(g,xx-.4,23.2,.55,.7,'#fff5dd')}cozyOval(g,16+side*2,29,3,1.6,'#dfaa9788');cozyOval(g,40+side*2,29,3,1.6,'#dfaa9788');cozyOval(g,28+side*3,30,row===3?2.5:1.5,1.2,row===3?'#c3a065':'#946b59');g.strokeStyle='#956e5a';g.lineWidth=.8;g.beginPath();g.arc(28+side*3,32,2,0,Math.PI);g.stroke()}});
+}
+function townSpriteMotionFrame(actor,x,z,moving,pose,now){
+ const u=actor.userData,previous=u.lastGround;
+ if(previous&&moving){const distance=Math.hypot(x-previous.x,z-previous.z);if(distance<1.5)u.stride=(u.stride||0)+distance;}
+ u.lastGround={x,z};
+ if(state.settings.reducedMotion)return 0;
+ if(moving)return Math.floor((u.stride||0)*2+1e-6)%4;
+ return Math.floor(now/(pose==='idle'?450:170))%4;
+}
+function townSpriteHand(actor,dir,pose,frame){
+ const hand=townCharacterHands(actor.userData.profile,dir,frame,pose).tool;
+ return {x:hand.x,y:hand.y+TownSprites.topPadding};
+}
+function town3DActorToolPose(V,now){
+ if(!V.player?.userData.prototype2D||!V.tool.visible)return;
+ const u=V.player.userData,hand=townSpriteHand(V.player,u.direction,u.pose,u.frame);
+ const right=new THREE.Vector3(1,0,0).applyQuaternion(V.camera.quaternion),up=new THREE.Vector3(0,1,0).applyQuaternion(V.camera.quaternion);
+ const towardCamera=new THREE.Vector3(0,0,1).applyQuaternion(V.camera.quaternion);
+ V.tool.position.copy(V.player.position).addScaledVector(right,(hand.x/64-.5)*TownSprites.width).addScaledVector(up,(1-u.sprite.center.y-hand.y/u.canvas.height)*TownSprites.height).addScaledVector(towardCamera,.015);
+ // Reduced motion keeps the net pose and its grip still, while catching rules run normally.
+ if(state.settings.reducedMotion)V.tool.rotation.z=0;
+ V.tool.updateMatrixWorld(true);u.toolHand={...hand,world:V.tool.position.toArray()};
+}
+function townSpriteWateringCan(g,hand){
+ g.save();if(hand.x<32){g.translate(64,0);g.scale(-1,1);hand={x:64-hand.x,y:hand.y};}g.strokeStyle='#729b9d';g.lineWidth=2;g.beginPath();g.arc(hand.x+1,hand.y+3,4,Math.PI,Math.PI*2);g.stroke();
+ cozyRound(g,hand.x-4,hand.y+3,13,10,3,'#83b5cf');cozyPoly(g,[[hand.x+7,hand.y+6],[61,hand.y],[63,hand.y+2],[hand.x+8,hand.y+10]],'#83b5cf');
+ cozyOval(g,61,hand.y+1,2,1.5,'#fff2ce');g.restore();
+}
+const townCharacterBeforeSpritePrototype=town3DCharacter;
+town3DCharacter=function(kind,color,name){
+ if(!TownSprites.enabled)return townCharacterBeforeSpritePrototype(kind,color,name);
+ const profile=townCharacterProfile(kind,color,name),canvas=document.createElement('canvas');canvas.width=64;canvas.height=84;
+ const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;texture.generateMipmaps=false;texture.minFilter=THREE.LinearFilter;texture.magFilter=THREE.LinearFilter;
+ const material=new THREE.SpriteMaterial({map:texture,transparent:true,alphaTest:.12,depthTest:true,depthWrite:true,toneMapped:false});
+ const sprite=new THREE.Sprite(material);sprite.center.set(.5,4/84);sprite.scale.set(TownSprites.width,TownSprites.height,1);
+ // Sprite geometry is shared by Three.js; preserve it during the existing world cleanup.
+ Town3D.shapes.set('prototype-sprite-geometry',sprite.geometry);
+ const group=new THREE.Group();group.add(sprite);town3DMesh(group,'cylinder','#8ba582',0,.005,0,.32,.005,.22);
+ group.userData={prototype2D:true,profile,sprite,canvas,texture,material,legacyName:name,frameKey:''};TownSprites.actors.add(group);return group;
+};
+const animateBeforeSpritePrototype=town3DAnimate;
+town3DAnimate=function(actor,x,z,dir,moving,now,mode='idle'){
+ const u=actor.userData;if(!u.prototype2D)return animateBeforeSpritePrototype(actor,x,z,dir,moving,now,mode);
+ const player=actor===Town3D.player||u.playerAvatar===true,pose=player?townCharacterPose(now):moving?'walk':'idle';
+ const frame=townSpriteMotionFrame(actor,x,z,moving,pose,now);
+ const legacyFrame=state.settings.reducedMotion?0:Math.floor((u.stride||0)*4+1e-6)%8;
+ const key=dir+'|'+pose+'|'+(u.profile?frame:legacyFrame);
+ if(u.frameKey!==key){const g=u.canvas.getContext('2d');g.clearRect(0,0,64,84);
+  const stamp=u.profile?townCharacterStamp(u.profile.id,dir,frame,pose,TownSprites.topPadding):townSpriteLegacyStamp(u.legacyName,dir,legacyFrame,moving&&!state.settings.reducedMotion);
+  if(stamp){if(u.profile)g.drawImage(stamp,0,0);else g.drawImage(stamp,4,18);}
+  if(player&&pose==='tool')townSpriteWateringCan(g,townSpriteHand(actor,dir,pose,frame));
+  u.texture.needsUpdate=true;u.frameKey=key;
+ }
+ actor.position.set(x+.5,TownSprites.footY,z+.5);actor.rotation.set(0,0,0);
+ u.pose=pose;u.direction=dir;u.frame=frame;
+};
+function townSpriteReleaseRoot(root){
+ if(!root)return;root.traverse(actor=>{if(!actor.userData.prototype2D)return;actor.userData.texture.dispose();actor.userData.material.dispose();TownSprites.actors.delete(actor);});
+}
+const releaseBeforeSpritePrototype=town3DReleaseWorld;
+town3DReleaseWorld=function(){townSpriteReleaseRoot(Town3D.world);releaseBeforeSpritePrototype();};
+const interiorReleaseBeforeSpritePrototype=townInteriorRelease;
+townInteriorRelease=function(){townSpriteReleaseRoot(TownInterior.root);interiorReleaseBeforeSpritePrototype();};
+
+Town3D.area='';Town3D.frameArea='';TownInterior.key='';TownInterior.frame='';
 
 </script></body></html>

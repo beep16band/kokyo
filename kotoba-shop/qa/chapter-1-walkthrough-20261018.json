@@ -1,0 +1,75 @@
+{
+  "passed": 6,
+  "total": 6,
+  "checks": [
+    {
+      "name": "resume saved prologue checkpoint",
+      "pass": true
+    },
+    {
+      "name": "chapter 1 start and complete product introduction using visible learning example",
+      "pass": true
+    },
+    {
+      "name": "chapter 1 meet third resident at cafe counter",
+      "pass": true
+    },
+    {
+      "name": "chapter 1 real 20G restock and sales reach three items",
+      "pass": true,
+      "details": {
+        "opening": 550,
+        "purchases": 20,
+        "revenue": 240
+      }
+    },
+    {
+      "name": "chapter 1 report, accounting and persisted next chapter",
+      "pass": true,
+      "details": {
+        "opening": 550,
+        "purchases": 20,
+        "revenue": 240,
+        "chapterReward": 60,
+        "closing": 830
+      }
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "trace": [
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 8,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 7,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "shop",
+      "x": 10,
+      "y": 8,
+      "step": 6
+    },
+    {
+      "scene": "shop",
+      "x": 10,
+      "y": 7,
+      "step": 6
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "passed": 7,
+  "total": 7,
+  "checks": [
+    {
+      "name": "resume chapter 3 checkpoint and start chapter 4",
+      "pass": true
+    },
+    {
+      "name": "walk into hobby shop and assemble three parts in free order",
+      "pass": true
+    },
+    {
+      "name": "outdoor display blocked without consuming model or advancing objective",
+      "pass": true
+    },
+    {
+      "name": "walk home display model once and inspect 3D display",
+      "pass": true
+    },
+    {
+      "name": "greet Galaxy teacher at counter without entering optional competition",
+      "pass": true
+    },
+    {
+      "name": "report chapter 4 once and keep reward model and greeting across reload",
+      "pass": true,
+      "details": {
+        "opening": 955,
+        "modelCost": 0,
+        "chapterReward": 70,
+        "closing": 1025
+      }
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "trace": [
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 8,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 7,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 6,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 8,
+      "step": 6
+    },
+    {
+      "scene": "facility",
+      "x": 10,
+      "y": 7,
+      "step": 6
+    }
+  ]
+}

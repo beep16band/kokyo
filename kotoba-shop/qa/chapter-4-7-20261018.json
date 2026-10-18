@@ -1,0 +1,106 @@
+{
+  "passed": 14,
+  "total": 14,
+  "checks": [
+    {
+      "name": "chapter 4 each missing requirement blocks report and reward",
+      "pass": true,
+      "details": {
+        "missingCases": [
+          "model",
+          "displayModel",
+          "galaxy"
+        ]
+      }
+    },
+    {
+      "name": "chapter 4 report rewards once and unlocks next or finishes story",
+      "pass": true,
+      "details": {
+        "reward": 70,
+        "next": "main5"
+      }
+    },
+    {
+      "name": "chapter 4 reload retains completion reward token and next state",
+      "pass": true
+    },
+    {
+      "name": "chapter 5 each missing requirement blocks report and reward",
+      "pass": true,
+      "details": {
+        "missingCases": [
+          "requestStudy",
+          "requests"
+        ]
+      }
+    },
+    {
+      "name": "chapter 5 report rewards once and unlocks next or finishes story",
+      "pass": true,
+      "details": {
+        "reward": 80,
+        "next": "main6"
+      }
+    },
+    {
+      "name": "chapter 5 reload retains completion reward token and next state",
+      "pass": true
+    },
+    {
+      "name": "chapter 6 each missing requirement blocks report and reward",
+      "pass": true,
+      "details": {
+        "missingCases": [
+          "preparations"
+        ]
+      }
+    },
+    {
+      "name": "chapter 6 report rewards once and unlocks next or finishes story",
+      "pass": true,
+      "details": {
+        "reward": 90,
+        "next": "main7"
+      }
+    },
+    {
+      "name": "chapter 6 reload retains completion reward token and next state",
+      "pass": true
+    },
+    {
+      "name": "chapter 7 each missing requirement blocks report and reward",
+      "pass": true,
+      "details": {
+        "missingCases": [
+          "festival",
+          "festivalTalk",
+          "memorialSale",
+          "farewell"
+        ]
+      }
+    },
+    {
+      "name": "chapter 7 report rewards once and unlocks next or finishes story",
+      "pass": true,
+      "details": {
+        "reward": 0,
+        "next": "free life"
+      }
+    },
+    {
+      "name": "chapter 7 reload retains completion reward token and next state",
+      "pass": true
+    },
+    {
+      "name": "festival preparation consumes each resource once and prevents duplicates",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "scope": "controlled requirement fixtures; not whole chapters played end to end"
+}
