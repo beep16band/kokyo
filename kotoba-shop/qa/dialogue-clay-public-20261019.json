@@ -1,0 +1,51 @@
+{
+  "passed": 11,
+  "total": 11,
+  "checks": [
+    {
+      "name": "conversation interrupts walking and holds speaker facing player in all four directions",
+      "pass": true
+    },
+    {
+      "name": "speech reveals gradually with stable complete text and ruby, tap reveals all",
+      "pass": true
+    },
+    {
+      "name": "Space reveals first without firing next choice; next press selects once",
+      "pass": true
+    },
+    {
+      "name": "new line cancels old animation, system text instant and reduced motion instant",
+      "pass": true
+    },
+    {
+      "name": "indoor teacher turns toward player in 3D",
+      "pass": true
+    },
+    {
+      "name": "clay gate rejects early late and off-target shots, one attempt per disc, inclusive boundaries",
+      "pass": true
+    },
+    {
+      "name": "keyboard outside frame records miss and cannot retry same disc; next disc succeeds",
+      "pass": true
+    },
+    {
+      "name": "timing button and direct canvas pointer outside frame both miss; finish records exact hits",
+      "pass": true
+    },
+    {
+      "name": "390px dialogue fits, touch reveals text, actual touch timing outside frame misses",
+      "pass": true
+    },
+    {
+      "name": "offline bundle includes speech reveal and miss gate without network",
+      "pass": true
+    },
+    {
+      "name": "no runtime errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
