@@ -44,3 +44,5 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/path/to/chromium node kotoba-shop/tools/spr
 F5-a: 屋外12地区へ適用済み。tools/sprite_outdoor_quality.cjsで再検証できる。川・湖の釣り開始・中断と地区切替時のテクスチャ解放を含む16項目が合格。釣り上げ・報酬、室内、タッチ3Dは次工程。
 
 F5-b: 室内8か所にも適用。tools/sprite_indoor_quality.cjsの13項目で表示・比較・施設内セーブ再開・root単位の画像解放を確認。全サービスと家具編集・タッチ3Dの回帰は未完了。
+
+F4/F7-a: tools/sprite_touch_quality.cjsでタッチ・描画設定切替・WebGL喪失時の復帰を再検証できる。結果はqa/sprite-touch-20261018.json（10/10）。390px幅のエミュレーションであり実機性能は未確認。
