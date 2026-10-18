@@ -1,0 +1,113 @@
+{
+  "passed": 13,
+  "total": 13,
+  "checks": [
+    {
+      "name": "indoor home",
+      "pass": true,
+      "details": {
+        "scene": "home",
+        "valid": true,
+        "art": true,
+        "failed": false
+      }
+    },
+    {
+      "name": "indoor shop",
+      "pass": true,
+      "details": {
+        "scene": "shop",
+        "valid": true,
+        "art": true,
+        "failed": false
+      }
+    },
+    {
+      "name": "indoor kuan",
+      "pass": true,
+      "details": {
+        "scene": "facility",
+        "venue": "kuan",
+        "valid": true,
+        "art": true,
+        "failed": false
+      }
+    },
+    {
+      "name": "indoor school",
+      "pass": true,
+      "details": {
+        "scene": "facility",
+        "venue": "school",
+        "valid": true,
+        "art": true,
+        "failed": false
+      }
+    },
+    {
+      "name": "indoor cafe",
+      "pass": true,
+      "details": {
+        "scene": "facility",
+        "venue": "cafe",
+        "valid": true,
+        "art": true,
+        "failed": false
+      }
+    },
+    {
+      "name": "indoor fishShop",
+      "pass": true,
+      "details": {
+        "scene": "facility",
+        "venue": "fishShop",
+        "valid": true,
+        "art": true,
+        "failed": false
+      }
+    },
+    {
+      "name": "indoor clay",
+      "pass": true,
+      "details": {
+        "scene": "facility",
+        "venue": "clay",
+        "valid": true,
+        "art": true,
+        "failed": false
+      }
+    },
+    {
+      "name": "indoor hobby",
+      "pass": true,
+      "details": {
+        "scene": "facility",
+        "venue": "hobby",
+        "valid": true,
+        "art": true,
+        "failed": false
+      }
+    },
+    {
+      "name": "indoor comparison rebuilds sprite and 3D models",
+      "pass": true
+    },
+    {
+      "name": "facility save reload keeps 2D actors and saved location",
+      "pass": true
+    },
+    {
+      "name": "outdoor world release preserves indoor sprite textures",
+      "pass": true
+    },
+    {
+      "name": "return outdoors disposes indoor textures and restores sprites",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
