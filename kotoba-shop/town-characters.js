@@ -109,9 +109,10 @@ town3DAnimate=function(actor,x,z,dir,moving,now,mode='idle'){
  u.head.rotation.x=pose==='surprise'?-.15:0;u.head.rotation.z=state.settings.reducedMotion?0:Math.sin(now/1600)*.018;
  u.pose=pose;
 };
-function townCharacterStamp(id,dir='down',frame=0,pose='idle'){
+function townCharacterStamp(id,dir='down',frame=0,pose='idle',topPadding=0){
  const p=TOWN_CHARACTER_PROFILES[id],back=dir==='up',side=dir==='left'?-1:dir==='right'?1:0;
- return cozyStamp('town-portrait-v1-'+id+'-'+dir+'-'+frame+'-'+pose,64,80,g=>{
+ return cozyStamp('town-portrait-v1-'+id+'-'+dir+'-'+frame+'-'+pose+'-pad'+topPadding,64,80+topPadding,g=>{
+  if(topPadding)g.translate(0,topPadding);
   const skin='#edc5a3',moving=pose==='walk'||pose==='dash',stride=moving?[0,pose==='dash'?4:2,0,pose==='dash'?-4:-2][frame%4]:0;
   const joy=pose==='joy'?[0,-2,-4,-2][frame%4]:0;g.translate(0,joy);
   const muscle=p.body==='muscle',round=p.body==='round',w=muscle?38:round?32:26;

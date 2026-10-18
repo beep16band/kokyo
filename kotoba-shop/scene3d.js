@@ -145,6 +145,7 @@ function town3DDraw(now,dt) {
   V.tool.visible=!!netSwing||!!mini?.action&&mini.phase!=='land';
   V.netRing.visible=!!netSwing;
   if(V.tool.visible){const a={right:Math.PI/2,left:-Math.PI/2,up:Math.PI,down:0}[facing];V.tool.position.set(visualX+.5+Math.sin(a)*.35,1,visualY+.5+Math.cos(a)*.35);V.tool.rotation.set(.8,a,netSwing?Math.sin((now-netSwing.start)/100)*.6:0);}
+  if(typeof town3DActorToolPose==='function')town3DActorToolPose(V,now);
   V.bobber.visible=!!mini?.action&&mini.phase!=='land';if(V.bobber.visible)V.bobber.position.set(mini.target.x+.5,mini.phase==='bite'?-.05:.1,mini.target.y+.5);
   V.fishingLine.visible=!!mini?.action&&mini.phase!=='land';
   if(V.fishingLine.visible){V.tool.updateMatrixWorld(true);const tip=V.tool.localToWorld(new THREE.Vector3(0,1,0)),positions=V.fishingLine.geometry.attributes.position;positions.setXYZ(0,tip.x,tip.y,tip.z);positions.setXYZ(1,V.bobber.position.x,V.bobber.position.y,V.bobber.position.z);positions.needsUpdate=true;}
