@@ -1,0 +1,43 @@
+{
+  "passed": 9,
+  "total": 9,
+  "checks": [
+    {
+      "name": "six labels and unknown fallback do not mutate saved state",
+      "pass": true
+    },
+    {
+      "name": "main quest renders all six labels without English IDs",
+      "pass": true
+    },
+    {
+      "name": "furigana covers status words and follows ON/OFF",
+      "pass": true
+    },
+    {
+      "name": "resident accept, cancel, accept again keep internal IDs and money",
+      "pass": true
+    },
+    {
+      "name": "ready report consumes one item and pays 40G once",
+      "pass": true
+    },
+    {
+      "name": "save reload preserves English identifiers, reward token and stock",
+      "pass": true
+    },
+    {
+      "name": "390px actual buttons, Japanese state and readable panel",
+      "pass": true
+    },
+    {
+      "name": "offline has same six labels and performs report without HTTP requests",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
