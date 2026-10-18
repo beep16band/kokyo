@@ -1,0 +1,157 @@
+{
+  "passed": 10,
+  "total": 10,
+  "checks": [
+    {
+      "name": "13 profiles, four directions, eight actions, four frames have visible uncropped art",
+      "pass": true,
+      "details": {
+        "count": 1664,
+        "missing": 0,
+        "topEdge": 0
+      }
+    },
+    {
+      "name": "legacy animal walk uses eight frames without changing NPC state",
+      "pass": true,
+      "details": {
+        "animals": 6,
+        "minimumDistinct": 5,
+        "unchanged": true
+      }
+    },
+    {
+      "name": "walk and dash frames follow distance, hold ground and stop when reduced motion is on",
+      "pass": true
+    },
+    {
+      "name": "real Shift movement selects dash; release returns to idle",
+      "pass": true,
+      "details": {
+        "during": "dash",
+        "after": "idle"
+      }
+    },
+    {
+      "name": "directional grip follows the raised hand and watering spout faces that hand",
+      "pass": true,
+      "details": {
+        "cases": 832,
+        "all": true
+      }
+    },
+    {
+      "name": "side walking alternates horizontal foot placement without lifting both soles",
+      "pass": true,
+      "details": [
+        {
+          "dir": "left",
+          "pose": "walk",
+          "centers": [
+            25.86111111111111,
+            23.5,
+            25.86111111111111,
+            28.025641025641026
+          ],
+          "bottoms": [
+            79,
+            79,
+            79,
+            79
+          ]
+        },
+        {
+          "dir": "left",
+          "pose": "dash",
+          "centers": [
+            25.86111111111111,
+            21.5,
+            25.86111111111111,
+            29.441860465116278
+          ],
+          "bottoms": [
+            79,
+            79,
+            79,
+            79
+          ]
+        },
+        {
+          "dir": "right",
+          "pose": "walk",
+          "centers": [
+            27.5,
+            28.82758620689655,
+            27.5,
+            25.5
+          ],
+          "bottoms": [
+            79,
+            79,
+            79,
+            79
+          ]
+        },
+        {
+          "dir": "right",
+          "pose": "dash",
+          "centers": [
+            27.5,
+            29.82608695652174,
+            27.5,
+            23.5
+          ],
+          "bottoms": [
+            79,
+            79,
+            79,
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "name": "actual net action anchors its grip to the 2D hand for all four directions",
+      "pass": true,
+      "details": [
+        {
+          "dir": "down",
+          "pose": "net",
+          "error": 3.1031676915590914e-17
+        },
+        {
+          "dir": "left",
+          "pose": "net",
+          "error": 3.1031676915590914e-17
+        },
+        {
+          "dir": "right",
+          "pose": "net",
+          "error": 3.1031676915590914e-17
+        },
+        {
+          "dir": "up",
+          "pose": "net",
+          "error": 3.1031676915590914e-17
+        }
+      ]
+    },
+    {
+      "name": "controlled fishing phases keep rod and line on the sprite hand",
+      "pass": true,
+      "details": {
+        "cases": 16,
+        "note": "Controlled visual states; fishing gameplay is not completed by this test."
+      }
+    },
+    {
+      "name": "actual watering button increments once and shows watering pose after closing dialog",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

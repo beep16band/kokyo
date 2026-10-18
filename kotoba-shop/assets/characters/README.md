@@ -18,8 +18,13 @@ designs based on their existing game roles, not previously approved character sh
 To reproduce the atlases, run:
 
 ```sh
-EXPORT_TOWN_CHARACTERS=1 node tools/characters_quality.cjs
+EXPORT_TOWN_CHARACTERS=1 node tools/sprite_motion_quality.cjs
 ```
 
 Playwright and Chromium are required for the export/check command, not for playing.
 Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` when Chromium is installed separately.
+
+2026-10-19 revision: direction-aware tool hands and side-view foot stride.
+Character identity, palette, sheet dimensions and frame layout are preserved.
+The 3D sprite renderer shares hand coordinates with the artwork; the lightweight
+2D field tool overlay still uses its original grip and is a separate follow-up.

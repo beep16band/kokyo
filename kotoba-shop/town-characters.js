@@ -109,22 +109,31 @@ town3DAnimate=function(actor,x,z,dir,moving,now,mode='idle'){
  u.head.rotation.x=pose==='surprise'?-.15:0;u.head.rotation.z=state.settings.reducedMotion?0:Math.sin(now/1600)*.018;
  u.pose=pose;
 };
+// Shared screen-space hands keep body poses and attached tools in agreement.
+function townCharacterHands(p,dir,frame,pose){
+ const width=p?.body==='muscle'?38:p?.body==='round'?32:26;
+ const stride=['walk','dash'].includes(pose)?[0,pose==='dash'?4:2,0,pose==='dash'?-4:-2][frame%4]:0;
+ const offset=[0,3,6,3][frame%4];
+ const arms={fish:[42,35],net:[48,30+offset],tool:[48,39+offset],joy:[31,31],surprise:[35,35]}[pose]||[49-stride*.5,49+stride*.5];
+ const mirrored=dir==='left'||dir==='up';
+ return {left:{x:32-width/2-2,y:arms[mirrored?1:0]},right:{x:32+width/2+2,y:arms[mirrored?0:1]},tool:{x:32+(mirrored?-1:1)*(width/2+2),y:arms[1]}};
+}
 function townCharacterStamp(id,dir='down',frame=0,pose='idle',topPadding=0){
  const p=TOWN_CHARACTER_PROFILES[id],back=dir==='up',side=dir==='left'?-1:dir==='right'?1:0;
- return cozyStamp('town-portrait-v1-'+id+'-'+dir+'-'+frame+'-'+pose+'-pad'+topPadding,64,80+topPadding,g=>{
+ return cozyStamp('town-portrait-v2-'+id+'-'+dir+'-'+frame+'-'+pose+'-pad'+topPadding,64,80+topPadding,g=>{
   if(topPadding)g.translate(0,topPadding);
   const skin='#edc5a3',moving=pose==='walk'||pose==='dash',stride=moving?[0,pose==='dash'?4:2,0,pose==='dash'?-4:-2][frame%4]:0;
   const joy=pose==='joy'?[0,-2,-4,-2][frame%4]:0;g.translate(0,joy);
   const muscle=p.body==='muscle',round=p.body==='round',w=muscle?38:round?32:26;
   for(const [i,x] of [24,35].entries()){
-   const lift=Math.max(0,i===0?stride:-stride);cozyRound(g,x,56,6,16-lift,3,p.outfit==='overalls'?p.accent:'#637c85');
-   cozyOval(g,x+3+side,74-lift,5,2.5,'#826d57');
+   const swing=i===0?stride:-stride,lift=Math.max(0,swing),stepX=side*swing;
+   cozyPoly(g,[[x,56],[x+6,56],[x+6+stepX,72-lift],[x+stepX,72-lift]],p.outfit==='overalls'?p.accent:'#637c85');
+   cozyOval(g,x+3+side+stepX,74-lift,5,2.5,'#826d57');
   }
   g.save();if(pose==='idle')g.translate(0,[0,-.3,-.5,-.3][frame%4]);
   cozyRound(g,32-w/2,36,w,26,9,cozyGrad(g,0,36,26,p.shirt,p.shirt));
-  const raised=['fish','net','tool','surprise','joy'].includes(pose),offset=[0,3,6,3][frame%4];
-  const arms={fish:[42,35],net:[48,30+offset],tool:[48,39+offset],joy:[31,31],surprise:[35,35]}[pose]||[49-stride*.5,49+stride*.5];
-  cozyOval(g,32-w/2-2,arms[0],muscle?6:4,raised?7:10,skin);cozyOval(g,32+w/2+2,arms[1],muscle?6:4,raised?7:10,skin);
+  const raised=['fish','net','tool','surprise','joy'].includes(pose),hands=townCharacterHands(p,dir,frame,pose);
+  cozyOval(g,hands.left.x,hands.left.y,muscle?6:4,raised?7:10,skin);cozyOval(g,hands.right.x,hands.right.y,muscle?6:4,raised?7:10,skin);
   if(p.outfit==='dress')cozyPoly(g,[[23,45],[41,45],[47,65],[17,65]],p.shirt);
   if(['overalls','apron'].includes(p.outfit)){
    for(const x of [25,36])cozyRound(g,x,36,3,15,1,p.accent);

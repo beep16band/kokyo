@@ -1,6 +1,6 @@
 // 2D character sprites in the existing 3D outdoor and indoor scenes.
 // Display-only state: saved characters, inventory, quests and gameplay stay unchanged.
-const TownSprites={version:4,enabled:true,height:2.037,width:1.552,topPadding:4,footY:.07,actors:new Set()};
+const TownSprites={version:5,enabled:true,height:2.037,width:1.552,topPadding:4,footY:.07,actors:new Set()};
 // Render existing animal artwork with explicit frames; do not draw into the game
 // canvas or borrow/mutate the live NPC step while warming a texture.
 function townSpriteLegacyStamp(name,dir,frame,moving){
@@ -16,9 +16,8 @@ function townSpriteMotionFrame(actor,x,z,moving,pose,now){
  return Math.floor(now/(pose==='idle'?450:170))%4;
 }
 function townSpriteHand(actor,dir,pose,frame){
- const p=actor.userData.profile,bodyWidth=p?.body==='muscle'?38:p?.body==='round'?32:26;
- const offset=[0,3,6,3][frame%4],y={fish:35,net:30+offset,tool:39+offset,surprise:35,joy:31}[pose]??49;
- return {x:32+bodyWidth/2+2,y:y+TownSprites.topPadding};
+ const hand=townCharacterHands(actor.userData.profile,dir,frame,pose).tool;
+ return {x:hand.x,y:hand.y+TownSprites.topPadding};
 }
 function town3DActorToolPose(V,now){
  if(!V.player?.userData.prototype2D||!V.tool.visible)return;
@@ -31,7 +30,7 @@ function town3DActorToolPose(V,now){
  V.tool.updateMatrixWorld(true);u.toolHand={...hand,world:V.tool.position.toArray()};
 }
 function townSpriteWateringCan(g,hand){
- g.save();g.strokeStyle='#729b9d';g.lineWidth=2;g.beginPath();g.arc(hand.x+1,hand.y+3,4,Math.PI,Math.PI*2);g.stroke();
+ g.save();if(hand.x<32){g.translate(64,0);g.scale(-1,1);hand={x:64-hand.x,y:hand.y};}g.strokeStyle='#729b9d';g.lineWidth=2;g.beginPath();g.arc(hand.x+1,hand.y+3,4,Math.PI,Math.PI*2);g.stroke();
  cozyRound(g,hand.x-4,hand.y+3,13,10,3,'#83b5cf');cozyPoly(g,[[hand.x+7,hand.y+6],[61,hand.y],[63,hand.y+2],[hand.x+8,hand.y+10]],'#83b5cf');
  cozyOval(g,61,hand.y+1,2,1.5,'#fff2ce');g.restore();
 }
