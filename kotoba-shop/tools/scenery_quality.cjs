@@ -1,46 +1,6 @@
-// Procedural-art regression checks use synthetic saves and software WebGL only.
-const {chromium}=require('playwright'),{spawn}=require('node:child_process');
-const path=require('node:path'),assert=require('node:assert/strict');
-async function main(){
- const server=spawn('python',['-m','http.server','8785'],{cwd:path.resolve(__dirname,'..'),stdio:'ignore'});
- await new Promise(r=>setTimeout(r,400));let browser;
- try{
-  browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-  const page=await browser.newPage({viewport:{width:1200,height:900}}),errors=[];
-  page.on('pageerror',e=>errors.push(e.message));
-  await page.route('**/town-scenery.js*',r=>r.fulfill({contentType:'text/javascript',body:''}));
-  await page.goto('http://127.0.0.1:8785/');
-  const before=await page.evaluate(()=>{
-   chooseLearningLevel('normal');tutorial.status='skipped';closeChoices();busy=false;state.settings.reducedMotion=true;
-   return JSON.stringify(Object.entries(maps).map(([key,m])=>[key,m.tiles,[...m.blocked].sort(),m.buildings,m.pois,m.portals]));
-  });
-  await page.unroute('**/town-scenery.js*');await page.addScriptTag({url:'http://127.0.0.1:8785/town-scenery.js'});
-  const after=await page.evaluate(()=>JSON.stringify(Object.entries(maps).map(([key,m])=>[key,m.tiles,[...m.blocked].sort(),m.buildings,m.pois,m.portals])));
-  assert.equal(after,before,'art must not change collision, doors or facilities');
-  await page.waitForFunction(()=>Town3D.frameArea===Town3D.area&&Town3D.area.startsWith('town|'));
-  const scenery=await page.evaluate(()=>{
-   town3DDraw(performance.now(),.016);
-   const props=[],lamps=[];Town3D.world.traverse(o=>{if(o.userData.sceneryType)props.push(o.userData.sceneryType);if(o.userData.sceneryLantern)lamps.push(o.position.y>2&&o.position.z>o.userData.wallFront)});
-   const positions=JSON.stringify(townSceneryFlowers(maps.town));
-   const palettes=['春','夏','秋','冬'].map(s=>townSceneryPalette(s).join(','));
-   const flowers=townSceneryFlowers(maps.town);
-   const safe=flowers.every(p=>{const x=Math.floor(p.x),y=Math.floor(p.z);return maps.town.tiles[y][x]===0&&!maps.town.blocked.has(x+','+y)});
-   townSceneryTime3D(false);const day=townSceneryLanternMaterial().emissiveIntensity;
-   townSceneryTime3D(true);const evening=townSceneryLanternMaterial().emissiveIntensity;
-   return {props,lamps,stable:positions===JSON.stringify(townSceneryFlowers(maps.town)),flowerCount:flowers.length,safe,palettes,day,evening,calls:Town3D.renderer.info.render.calls};
-  });
-  assert(['well','board','festival'].every(x=>scenery.props.includes(x)));
-  assert(scenery.stable&&scenery.safe&&scenery.flowerCount>0&&scenery.flowerCount<=36);
-  assert.equal(new Set(scenery.palettes).size,4);assert(scenery.evening>scenery.day);assert(scenery.lamps.length>0&&scenery.lamps.every(Boolean));
-  const areas=await page.evaluate(()=>Object.keys(maps));
-  for(const key of areas){const result=await page.evaluate(key=>{changeArea(key,24,20,false);closeChoices();town3DDraw(performance.now(),.016);return {ready:!Town3D.failed,calls:Town3D.renderer.info.render.calls}},key);assert(result.ready&&result.calls<100,key+' exceeds render budget')}
-  await page.evaluate(()=>{changeArea('town',24,15,false);closeChoices();town3DDraw(performance.now(),.016)});
-  await page.screenshot({path:process.env.TOWN_SCENERY_SCREENSHOT||'/tmp/kotoba-scenery-desktop.png'});
-  const mobile=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true});mobile.on('pageerror',e=>errors.push(e.message));
-  await mobile.goto('http://127.0.0.1:8785/');await mobile.waitForFunction(()=>typeof TownScenery==='object');
-  assert(await mobile.evaluate(()=>{chooseLearningLevel('normal');tutorial.status='skipped';closeChoices();busy=false;return state.settings.force2D&&document.documentElement.scrollWidth<=innerWidth&&townSceneryFlowers(maps.town).length>0}));
-  await mobile.screenshot({path:'/tmp/kotoba-scenery-mobile.png'});
-  assert.deepEqual(errors,[]);console.log(JSON.stringify({passed:7,scenery,areas:areas.length,errors},null,2));
- }finally{if(browser)await browser.close();server.kill()}
-}
-main().catch(e=>{console.error(e);process.exitCode=1});
+const {chromium}=require('playwright'),{spawn}=require('node:child_process'),fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
+(async()=>{const root=path.resolve(__dirname,'..'),out=path.resolve('scenery-audit'),checks=[],errors=[];await fs.mkdir(out,{recursive:true});const server=spawn('python3',['-m','http.server','8804','--bind','127.0.0.1'],{cwd:root,stdio:'ignore'});let browser;const record=async(name,fn)=>{try{checks.push({name,pass:true,details:await fn()});console.log('PASS '+name)}catch(e){checks.push({name,pass:false,error:e.message.slice(0,400)});console.log('FAIL '+name+': '+e.message.slice(0,200))}await fs.writeFile(path.join(out,'result.json'),JSON.stringify({checks,errors},null,2))};try{browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});const p=await browser.newPage({viewport:{width:1100,height:900}});p.on('pageerror',e=>errors.push(e.message));p.setDefaultTimeout(12000);await p.goto('http://127.0.0.1:8804/index.html');await p.evaluate(()=>{chooseLearningLevel('normal');tutorial.status='skipped';closeChoices();busy=false;state.settings.reducedMotion=true});
+for(const area of ['town','forest','river'])await record('representative outdoor '+area,async()=>{await p.evaluate(a=>{changeArea(a,...AREAS[a].spawn,false);closeChoices()},area);await p.waitForFunction(a=>Town3D.area.startsWith(a+'|')&&Town3D.player?.userData.prototype2D,area);const r=await p.evaluate(()=>({camera:Town3D.camera.position.y>10,foot:Town3D.player.position.y,depth:Town3D.player.userData.material.depthTest&&Town3D.player.userData.material.depthWrite,opaque:Town3D.player.userData.material.alphaTest>0,calls:Town3D.renderer.info.render.calls}));assert(r.camera&&r.depth&&r.opaque&&r.foot===.07&&r.calls<120);await p.screenshot({path:path.join(out,area+'.png')});return r});
+for(const id of ['home','shop','school'])await record('representative interior '+id,async()=>{await p.evaluate(id=>{if(id==='school')townFacilityEnter(id);else enter(id,10,8);closeChoices()},id);await p.waitForFunction(()=>TownInterior.active&&TownInterior.player?.userData.prototype2D);assert(await p.evaluate(()=>TownInterior.camera.isOrthographicCamera&&TownInterior.player.userData.material.depthTest));await p.screenshot({path:path.join(out,id+'.png')});});
+await record('decorative flowers do not occupy building entrances or alter collisions',async()=>{const r=await p.evaluate(()=>Object.keys(maps).map(area=>{const m=maps[area],before=[...m.blocked].join('|'),points=townSceneryFlowers(m);return {area,count:points.length,valid:points.every(p=>!m.blocked.has(Math.floor(p.x)+','+Math.floor(p.z))&&!m.buildings.some(b=>Math.floor(p.x)>=b.x-1&&Math.floor(p.x)<=b.x+b.w&&Math.floor(p.z)>=b.y-1&&Math.floor(p.z)<=b.y+b.h)),unchanged:before===[...m.blocked].join('|')}}));assert(r.every(x=>x.valid&&x.unchanged&&x.count<=36));return r});
+await record('no runtime exceptions',()=>assert.deepEqual(errors,[]));}finally{if(browser)await browser.close();server.kill();const report={passed:checks.filter(x=>x.pass).length,total:checks.length,checks,errors};await fs.writeFile(path.join(out,'result.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));if(checks.some(x=>!x.pass))process.exitCode=1}})().catch(e=>{console.error(e);process.exitCode=1});

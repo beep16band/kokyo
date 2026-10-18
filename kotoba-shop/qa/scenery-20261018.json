@@ -1,0 +1,132 @@
+{
+  "checks": [
+    {
+      "name": "representative outdoor town",
+      "pass": true,
+      "details": {
+        "camera": true,
+        "foot": 0.07,
+        "depth": true,
+        "opaque": true,
+        "calls": 59
+      }
+    },
+    {
+      "name": "representative outdoor forest",
+      "pass": true,
+      "details": {
+        "camera": true,
+        "foot": 0.07,
+        "depth": true,
+        "opaque": true,
+        "calls": 20
+      }
+    },
+    {
+      "name": "representative outdoor river",
+      "pass": true,
+      "details": {
+        "camera": true,
+        "foot": 0.07,
+        "depth": true,
+        "opaque": true,
+        "calls": 38
+      }
+    },
+    {
+      "name": "representative interior home",
+      "pass": true
+    },
+    {
+      "name": "representative interior shop",
+      "pass": true
+    },
+    {
+      "name": "representative interior school",
+      "pass": true
+    },
+    {
+      "name": "decorative flowers do not occupy building entrances or alter collisions",
+      "pass": true,
+      "details": [
+        {
+          "area": "forest",
+          "count": 33,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "hill",
+          "count": 27,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "ruins",
+          "count": 25,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "market",
+          "count": 22,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "town",
+          "count": 22,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "homes",
+          "count": 30,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "farm",
+          "count": 25,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "river",
+          "count": 21,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "lake",
+          "count": 29,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "sea",
+          "count": 24,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "mountain",
+          "count": 31,
+          "valid": true,
+          "unchanged": true
+        },
+        {
+          "area": "cave",
+          "count": 35,
+          "valid": true,
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
