@@ -1,0 +1,43 @@
+{
+  "passed": 9,
+  "total": 9,
+  "checks": [
+    {
+      "name": "new game actual level and guide buttons",
+      "pass": true
+    },
+    {
+      "name": "three actual steps advance to map lesson",
+      "pass": true
+    },
+    {
+      "name": "pause reload and resume preserve guide progress and coins",
+      "pass": true
+    },
+    {
+      "name": "completion fixture links to current story and removes obsolete advice",
+      "pass": true
+    },
+    {
+      "name": "story start leads to first resident with existing key reward",
+      "pass": true
+    },
+    {
+      "name": "completed guide does not automatically restart after reload",
+      "pass": true
+    },
+    {
+      "name": "mobile completion buttons fit and story opens by tap",
+      "pass": true
+    },
+    {
+      "name": "offline completion opens story without HTTP requests",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
