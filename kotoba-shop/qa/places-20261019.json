@@ -1,0 +1,55 @@
+{
+  "passed": 12,
+  "total": 12,
+  "checks": [
+    {
+      "name": "farm journal contains only goals and place guides, no remote activities",
+      "pass": true
+    },
+    {
+      "name": "building and resident guides mark destinations without moving or changing economic progress",
+      "pass": true
+    },
+    {
+      "name": "all remote business menus and transactions refuse without consuming or rewarding anything",
+      "pass": true
+    },
+    {
+      "name": "walk through real Kuan door to shelf, purchase is enabled only inside",
+      "pass": true
+    },
+    {
+      "name": "cafe kitchen permits cooking with exact material consumption",
+      "pass": true
+    },
+    {
+      "name": "hobby workbench builds three parts, home only displays completed model",
+      "pass": true
+    },
+    {
+      "name": "clay reception enables game inside and retains out-of-frame miss judgement",
+      "pass": true
+    },
+    {
+      "name": "fish shop counter sells only there and repeated outside sale is blocked",
+      "pass": true
+    },
+    {
+      "name": "farm work requires adjacent plot; old bulk list gives walking instructions",
+      "pass": true
+    },
+    {
+      "name": "mobile journal touch navigation fits and cannot launch remote activities",
+      "pass": true
+    },
+    {
+      "name": "offline bundle enforces the same places without network",
+      "pass": true
+    },
+    {
+      "name": "no runtime errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}
