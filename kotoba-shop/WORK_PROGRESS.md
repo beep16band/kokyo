@@ -809,3 +809,14 @@ node kotoba-shop/tools/life_rooms_quality.cjs
 検証: places_quality.cjs 12/12、boot_quality.cjs 9/9、title_quality.cjs 7/7、dialogue_clay_quality.cjs 11/11、計39/39合格、例外0。実際の扉への上キー入力と室内の通れる経路を使い、棚/台所/作業台/受付/売却カウンターで決定。正しい場所での購入/材料消費/組立/展示/射撃ハズレ/売却、間違った場所での無変更、移動しない案内、390pxタッチ、オフラインを確認。画像を遅延/失敗させる起動確認も維持。
 結果: qa/places-20261019.json、qa/places-boot-regression-20261019.json、qa/places-title-regression-20261019.json、qa/places-dialogue-regression-20261019.json。
 次: 保存・本番反映し、公開版で新しい場所の制限と旧画面の起動抑止を再確認。実機スマホ/Chromebookでの検証は未実施。
+
+
+## F9-b 施設利用制限・起動ちらつきの公開確認完了（2026-10-19）
+
+- 本番コミット4ecfa30a6bfcb6c7b0efe7307deee7ab2dbe3d7b。GitHub Pages run 39189617484の成功を確認。
+- 公開URL: https://beep16band.github.io/kokyo/kotoba-shop/?v=30-places23
+- 公開版places_quality.cjs 12/12合格。メニュー4項目、歩くための目印（座標/経済進行を変更しない）、外からの操作で材料/Gが変わらないこと、扉からの入室と棚/台所/作業台/受付/売却、家での展示、畑の隣条件、スマホ幅タッチ、オフライン版の同じ制限を確認。
+- 公開版boot_quality.cjs 9/9合格。PC/390pxでスクリプトとキャラ画像を遅延し、旧UIを隠すこと、現行13枚で表示すること、再開時の保存1025G/第5章/主人公の保持、新規確定後の再読込でカバー内に現行世界を先に描くこと、画像失敗時の再読込ボタンと保存保持を確認。例外0。
+- 公開結果: qa/places-public-20261019.json、qa/boot-public-20261019.json。ローカル39項目＋公開21項目が全合格。
+- 「全部ここでできる」と「旧データが一瞬表示される」の両件について実装・保存・公開・公開動作確認を完了。承認待ちなし。
+- 検証はChromiumのPC/スマホ相当。実機スマホ/Chromebook・後半章の通しプレイは従来の継続課題として保持。
