@@ -1,0 +1,71 @@
+{
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "name": "three teachers exist indoors only, guides lead to their buildings",
+      "pass": true
+    },
+    {
+      "name": "Sakamoto counter dialogue offers only shopping and goodbye",
+      "pass": true
+    },
+    {
+      "name": "all six facilities plus home and shop leave only after stepping onto exit threshold",
+      "pass": true
+    },
+    {
+      "name": "all building footprints and window-side clearance are solid, front-door corridors stay free",
+      "pass": true
+    },
+    {
+      "name": "walking into a window is refused, while north into the real entrance enters school",
+      "pass": true
+    },
+    {
+      "name": "school renders three floors and shops have their own physical signs",
+      "pass": true
+    },
+    {
+      "name": "bugs spawn in forest only and are larger in 3D",
+      "pass": true
+    },
+    {
+      "name": "fishing turns toward water, uses a short window unaffected by old assist, and has no gauges",
+      "pass": true
+    },
+    {
+      "name": "early Space and wrong E key fail without giving a fish",
+      "pass": true
+    },
+    {
+      "name": "timing boundaries reject early and late; valid Space gives exactly one fish",
+      "pass": true
+    },
+    {
+      "name": "net stays attached and full hoop faces camera throughout four-direction swing",
+      "pass": true
+    },
+    {
+      "name": "rod tip points toward bobber and fishing line begins at actual rod endpoint",
+      "pass": true
+    },
+    {
+      "name": "system notices live beneath field, speech remains in a character dialogue box",
+      "pass": true
+    },
+    {
+      "name": "mobile 2D school and notice dock fit, touch fishing uses same strict rule",
+      "pass": true
+    },
+    {
+      "name": "offline includes staff, school, tight timing and dock without network",
+      "pass": true
+    },
+    {
+      "name": "no runtime errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

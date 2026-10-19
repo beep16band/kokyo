@@ -840,3 +840,13 @@ node kotoba-shop/tools/life_rooms_quality.cjs
 検証: feedback1_quality.cjs 16/16、places 12/12、boot 9/9、title 7/7、dialogue/clay 11/11、計55/55合格、実行時例外0。6施設＋自宅/自店の出口、全建物の壁/窓/入口、先生の屋外不在/案内/店の会話、3階校舎/店舗看板、森のみの虫、投げる方向/実際の竿先と糸、早押し/別キー/開始前/0/299/300/301ms/二重報酬なし、網の4方向×4時点、案内の配置、390pxタッチ/軽量2D、ネットワークなしオフラインを確認。PCとスマホ画面を目視し、竿に重なる説明を画面下へ修正。
 結果: qa/feedback1-20261019.json、qa/feedback1-places-regression-20261019.json、qa/feedback1-boot-regression-20261019.json、qa/feedback1-title-regression-20261019.json、qa/feedback1-dialogue-regression-20261019.json。
 次: GitHubへ保存・本番へ反映し、公開版で同じ16項目を再実行。端末はChromiumのPC/スマホ相当で、実機スマホ/Chromebookは未確認。
+
+
+## F10-b 「改善①」10項目の公開確認完了（2026-10-19）
+
+- 本番コミットb73e9e695809dca41f4069ea34160d5066a9a707。GitHub Pages run 39193220718成功。
+- 公開URL: https://beep16band.github.io/kokyo/kotoba-shop/?v=30-feedback24
+- 公開版feedback1_quality.cjs 16/16合格、実行時例外0。先生3人の屋外不在と建物の案内、阪本先生の会話2項目、6施設/自宅/自店の出口、全建物の壁/窓/入口、実際の窓での停止/正面から入室、3階校舎/店舗看板、森だけの虫、実際の釣りの向き/竿先/糸、ゲージなし、早押し/別キー/時間前後/1回だけの報酬、網4方向×30/200/410/590ms、画面下の案内、390px軽量2D/タッチ、オフラインの通信0を確認。
+- 公開結果: qa/feedback1-public-20261019.json。ローカル55項目と公開16項目が全合格。PC/スマホ幅の画面を確認済み。
+- 添付の10項目の改修・保存・公開・公開確認を完了。保存形式は維持。旧位置が新しい壁の余裕部分と重なる場合だけ安全な隣へ補正。
+- 実機スマホ/Chromebook、全章通しの実プレイは従来の継続課題。承認待ちなし。
