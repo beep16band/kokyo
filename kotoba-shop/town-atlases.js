@@ -6,7 +6,7 @@ const TOWN_DRAWN_ART={"boy":{"src":"assets/characters/drawn/boy.png?v=1","grips"
 const atlasFallbackStamp=townCharacterStamp,atlasFallbackHands=townCharacterHands;
 function townAtlasFrame(dir,frame,pose){
  const row=Math.max(0,TownCharacters.directions.indexOf(dir));
- const col=pose==='walk'||pose==='dash'?frame%4:pose==='net'?frame%4:1;
+ const col=pose==='walk'||pose==='dash'?frame%4:pose==='net'?1:1;
  return {row,col,index:row*4+col};
 }
 for(const[id,info]of Object.entries(TOWN_DRAWN_ART)){

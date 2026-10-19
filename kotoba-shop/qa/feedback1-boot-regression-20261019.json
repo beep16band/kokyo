@@ -1,0 +1,43 @@
+{
+  "passed": 9,
+  "total": 9,
+  "checks": [
+    {
+      "name": "desktop hides legacy UI while scripts load",
+      "pass": true
+    },
+    {
+      "name": "desktop holds title and fallback art behind loading cover",
+      "pass": true
+    },
+    {
+      "name": "desktop shows current art only then continues without touching saved progress",
+      "pass": true
+    },
+    {
+      "name": "mobile hides legacy UI while scripts load",
+      "pass": true
+    },
+    {
+      "name": "mobile holds title and fallback art behind loading cover",
+      "pass": true
+    },
+    {
+      "name": "mobile shows current art only then continues without touching saved progress",
+      "pass": true
+    },
+    {
+      "name": "confirmed new-game reload renders current world behind cover before revealing it",
+      "pass": true
+    },
+    {
+      "name": "failed artwork keeps old graphics hidden and offers reload without deleting saved data",
+      "pass": true
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

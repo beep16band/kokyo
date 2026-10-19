@@ -39,14 +39,15 @@ function town3DCharacter(kind='boy',color='#79a4ae') {
   group.userData={leftLeg,rightLeg,leftArm,rightArm,head,shoes,shadow}; return group;
 }
 function town3DBuilding(b,parent) {
+  if(b.type==='school'&&typeof townSchool3D==='function')return townSchool3D(b,parent);
   const group=new THREE.Group();group.position.set(b.x,0,b.y);parent.add(group);const w=b.w,h=b.h,blue=b.color==='blue';
   town3DMesh(group,'box','#dfd0b0',w/2,.12,h/2,w,.24,h);
   town3DMesh(group,'box',b.type==='school'?'#eee6cc':'#f3dfb7',w/2,1.45,h/2,w-.14,2.7,h-.14);
   for(const sign of [-1,1]){const roof=town3DMesh(group,'box',blue?'#82aaa6':'#c78f78',w/2,3.06,h/2+sign*h/4,w+.5,.2,h*.61);roof.rotation.x=sign*.42;}
-  for(const xx of [.8,w-.8]){town3DMesh(group,'box','#a2c6c3',xx,1.5,h+.018,.75,.85,.045);town3DMesh(group,'box','#fff2ce',xx,1.5,h+.05,.045,.85,.05);town3DMesh(group,'box','#fff2ce',xx,1.5,h+.05,.75,.045,.05);town3DMesh(group,'box','#bf9973',xx,.95,h+.12,.95,.22,.3);for(const dx of [-.22,0,.22])town3DMesh(group,'sphere','#e9b1a0',xx+dx,1.14,h+.12,.13,.12,.13);}
-  const doorX=Math.floor(w/2)+.5;town3DMesh(group,'box','#ae987a',doorX,.95,h+.03,.86,1.9,.06);town3DMesh(group,'box',blue?'#6c9690':'#ba8c69',doorX,.94,h+.07,.68,1.7,.05);town3DMesh(group,'sphere','#eed394',doorX+.24,.9,h+.13,.045,.045,.025);
+  for(const xx of [.8,w-.8]){town3DMesh(group,'box','#a2c6c3',xx,1.5,h-.12,.75,.85,.045);town3DMesh(group,'box','#fff2ce',xx,1.5,h-.08,.045,.85,.05);town3DMesh(group,'box','#fff2ce',xx,1.5,h-.08,.75,.045,.05);town3DMesh(group,'box','#bf9973',xx,.95,h-.22,.95,.22,.3);for(const dx of [-.22,0,.22])town3DMesh(group,'sphere','#e9b1a0',xx+dx,1.14,h-.22,.13,.12,.13);}
+  const doorX=Math.floor(w/2)+.5;town3DMesh(group,'box','#ae987a',doorX,.95,h-.1,.86,1.9,.06);town3DMesh(group,'box',blue?'#6c9690':'#ba8c69',doorX,.94,h-.06,.68,1.7,.05);town3DMesh(group,'sphere','#eed394',doorX+.24,.9,h-.02,.045,.045,.025);
   if(['ownShop','kuan','cafe','fishShop','hobby'].includes(b.type)){for(let i=0;i<6;i++)town3DMesh(group,'box',i%2?'#fff1ca':blue?'#89b3a5':'#d7a189',doorX-.85+i*.34,2.05,h+.3,.34,.16,.7);}
-  if(typeof townSceneryBuilding3D==='function')townSceneryBuilding3D(b,group);
+  if(typeof townSceneryBuilding3D==='function')townSceneryBuilding3D(b,group);if(typeof townShopDetails3D==='function')townShopDetails3D(b,group);
   Town3D.labels.push({text:b.name,x:b.x+w/2,y:3.8,z:b.y+h/2});
 }
 function town3DInstances(type,color,transforms,parent) {
@@ -58,7 +59,7 @@ function town3DInstances(type,color,transforms,parent) {
 function town3DBatch(root,dynamic=false) {
   const groups=new Map(),shared=new Set(Town3D.shapes.values());root.updateMatrixWorld(true);
   root.traverse(mesh=>{
-    if(!mesh.isMesh||mesh.isInstancedMesh||!mesh.visible||!shared.has(mesh.geometry))return;
+    if(mesh.userData.noBatch||!mesh.isMesh||mesh.isInstancedMesh||!mesh.visible||!shared.has(mesh.geometry))return;
     const key=mesh.geometry.uuid+'|'+mesh.material.uuid;
     if(!groups.has(key))groups.set(key,[]);groups.get(key).push(mesh);
   });
@@ -76,7 +77,7 @@ function town3DBatch(root,dynamic=false) {
 function town3DReleaseWorld() {
   const V=Town3D;if(!V.world)return;
   const shared=new Set(V.shapes.values()),unique=new Set();
-  V.world.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry&&!shared.has(o.geometry))unique.add(o.geometry)});
+  V.world.traverse(o=>{if(o.userData.noBatch)o.material?.dispose();if(o.isInstancedMesh)o.dispose();if(o.geometry&&!shared.has(o.geometry))unique.add(o.geometry)});
   unique.forEach(g=>g.dispose());V.scene.remove(V.world);
 }
 function town3DRebuild() {
@@ -104,11 +105,11 @@ function town3DRebuild() {
   }
   const player=town3DCharacter(state.avatar.kind,state.avatar.kind==='girl'?'#dc9d8e':'#7fa6b5');V.world.add(player);V.player=player;
   for(const n of npcs){if(worldNpcConfig[n.name]?.area!==state.area)continue;const k=n.design||'animal',actor=town3DCharacter(k,n.color,n.name);V.world.add(actor);V.actors.set(n.name,actor);}
-  V.bugs=[];for(let i=0;i<8;i++){const group=new THREE.Group();town3DMesh(group,'sphere','#c99a75',0,0,0,.1,.13,.12);for(const x of [-.1,.1])town3DMesh(group,'sphere','#f0dba0',x,0,0,.15,.04,.15);V.world.add(group);V.bugs.push(group);}
-  V.tool=new THREE.Group();town3DMesh(V.tool,'cylinder','#a68a68',0,.5,0,.025,1,.025);const ring=new THREE.Mesh(new THREE.TorusGeometry(.25,.025,4,16),town3DMaterial('#eee4c7'));ring.position.y=1;V.tool.add(ring);V.netRing=ring;V.world.add(V.tool);
+  V.bugs=[];for(let i=0;i<8;i++){const group=new THREE.Group();group.scale.setScalar(1.9);town3DMesh(group,'sphere','#d96f43',0,0,0,.1,.13,.12);for(const x of [-.1,.1])town3DMesh(group,'sphere','#fff6bf',x,0,0,.15,.04,.15);V.world.add(group);V.bugs.push(group);}
+  V.tool=new THREE.Group();town3DMesh(V.tool,'cylinder','#856046',0,.5,0,.04,1,.04);const ring=new THREE.Mesh(new THREE.TorusGeometry(.3,.04,6,20),town3DMaterial('#eee4c7'));ring.position.y=1;V.tool.add(ring);V.netRing=ring;V.world.add(V.tool);V.tool.traverse(o=>{if(o.isMesh){o.userData.noBatch=true;o.material=o.material.clone();o.material.depthTest=false;o.material.depthWrite=false;o.material.transparent=true;o.renderOrder=40;o.frustumCulled=false;}});
   if(!V.materials.has('fishing-line'))V.materials.set('fishing-line',new THREE.LineBasicMaterial({color:'#fff2ce'}));
   V.fishingLine=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]),V.materials.get('fishing-line'));V.fishingLine.frustumCulled=false;V.world.add(V.fishingLine);
-  V.bobber=town3DMesh(V.world,'sphere','#ebad8b',0,0,0,.08,.08,.08);
+  V.bobber=new THREE.Group();town3DMesh(V.bobber,'sphere','#fff7df',0,0,0,.12,.17,.12);town3DMesh(V.bobber,'sphere','#df6247',0,.12,0,.12,.065,.12);V.world.add(V.bobber);
   V.crops=[];if(state.area==='farm')for(let i=0;i<FARM_PLOTS.length;i++){const p=FARM_PLOTS[i];town3DMesh(V.world,'box','#aa8b64',p.x+.5,.1,p.y+.5,.9,.1,.9);const plant=town3DMesh(V.world,'sphere','#7f9e63',p.x+.5,.35,p.y+.5,.25,.3,.25);V.crops.push(plant);}
   if(state.area==='mountain'||state.area==='cave')for(let i=0;i<4;i++)town3DMesh(V.world,'cone',i%2?'#a1ae99':'#b8c0a9',9+i*10,1.5,-2,5,6,4);
   if(state.area==='town'){const decorations=Object.keys(state.expansion?.preparations||{}),colors={cooking:'#d7a98b',flowers:'#e6b0c5',model:'#9fbcc8',language:'#ddc284',sports:'#98b089',shopping:'#b7a5c2'};decorations.forEach((key,i)=>{const x=20+i*1.5,z=18;town3DMesh(V.world,'cylinder','#b49c75',x,.8,z,.035,1.6,.035);town3DMesh(V.world,key==='flowers'?'sphere':'box',colors[key],x+.18,1.4,z,key==='model'?.55:.42,key==='language'?.6:.3,key==='flowers'?.24:.04);});}
@@ -142,6 +143,7 @@ function town3DDraw(now,dt) {
   for(const n of npcs){const actor=V.actors.get(n.name);if(!actor)continue;town3DAnimate(actor,n.vx,n.vy,n.face,!!worldNpcState[n.name]?.step,now);}
   if(V.leaves)V.leaves.position.x=state.settings.reducedMotion?0:Math.sin(now/3000)*.025;if(V.ripples)V.ripples.position.y=state.settings.reducedMotion?0:Math.sin(now/1100)*.012;
   for(let i=0;i<V.bugs.length;i++){const bug=fieldWorld.bugs[i],obj=V.bugs[i];obj.visible=!!bug;if(bug){obj.position.set(bug.x+.5,.5+(state.settings.reducedMotion?0:Math.sin(now/150+bug.phase)*.08),bug.y+.5);obj.rotation.y=state.settings.reducedMotion?0:now/700;}}
+  if(typeof townBugAppearance3D==='function')townBugAppearance3D(V);
   V.tool.visible=!!netSwing||!!mini?.action&&mini.phase!=='land';
   V.netRing.visible=!!netSwing;
   if(V.tool.visible){const a={right:Math.PI/2,left:-Math.PI/2,up:Math.PI,down:0}[facing];V.tool.position.set(visualX+.5+Math.sin(a)*.35,1,visualY+.5+Math.cos(a)*.35);V.tool.rotation.set(.8,a,netSwing?Math.sin((now-netSwing.start)/100)*.6:0);}

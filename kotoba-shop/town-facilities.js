@@ -39,7 +39,7 @@ const TOWN_FACILITY_ROOMS={
 };
 function townFacilityRoom(){return state.scene==='facility'?TOWN_FACILITY_ROOMS[state.facilityVisit?.id]:null;}
 function townFacilityBlocks(room){return [...room.stations,...(room.spot?[{...room.spot,w:1,h:1}]:[])];}
-function townFacilityFree(room,x,y){return Number.isInteger(x)&&Number.isInteger(y)&&x>=1&&x<=18&&y>=2&&y<=10&&!townFacilityBlocks(room).some(r=>within(r,x,y));}
+function townFacilityFree(room,x,y){return Number.isInteger(x)&&Number.isInteger(y)&&x>=1&&x<=18&&y>=2&&y<=10&&(y!==10||x===10)&&!townFacilityBlocks(room).some(r=>within(r,x,y));}
 function townFacilityOutside(id){const f=TOWN_DATA.facilities.find(f=>f.id===id);return {area:f.area,x:f.x+Math.floor(f.w/2),y:f.y+f.h};}
 function townFacilityEnter(id,resume=null){
  const room=TOWN_FACILITY_ROOMS[id];if(!room)return false;

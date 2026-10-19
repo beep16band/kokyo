@@ -24,7 +24,7 @@ function finishDialogueTyping(){
 function presentDialogue(){
  const d=TownDialogue;cancelAnimationFrame(d.frame);d.typing=false;d.units=[];d.shown=0;dialogueReveal.hidden=true;dialog.removeAttribute('aria-busy');
  const text=dialog.dataset.plain||dialog.textContent,match=text.match(/(?:^|[\n\s】])([^「」【】\n\s]{1,24})「/),name=match?.[1];
- dialogueName.textContent=name||'こもれびだより';dialoguePanel.classList.toggle('hasSpeaker',!!name);
+ dialogueName.textContent=name||'おしらせ';dialoguePanel.classList.toggle('hasSpeaker',!!name);if(typeof townDockDialogue==='function')townDockDialogue(!!name);
  d.speaker=null;d.origin=null;if(name)faceDialogueSpeaker(name);
  dialog.setAttribute('aria-live','off');dialog.setAttribute('aria-label',text);dialogueStatus.textContent='';
  // System instructions and learning worksheets remain immediately readable.
