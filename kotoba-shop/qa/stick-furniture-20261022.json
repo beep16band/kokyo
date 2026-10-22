@@ -1,0 +1,59 @@
+{
+  "passed": 13,
+  "total": 13,
+  "checks": [
+    {
+      "name": "all eight steps move to correct tile with equal travel speed",
+      "pass": true
+    },
+    {
+      "name": "diagonals cannot cut furniture, walls or water corners; wall sliding remains safe",
+      "pass": true
+    },
+    {
+      "name": "arrow keys and WASD combine into diagonals and stop after release",
+      "pass": true
+    },
+    {
+      "name": "desktop stick is visible, has no overflow and moves through pointer capture outside its bounds",
+      "pass": true
+    },
+    {
+      "name": "stick dead zone, pointer cancellation, focus loss and menus clear held movement",
+      "pass": true
+    },
+    {
+      "name": "purchase guidance and home menu lead to actual furniture placement and saving",
+      "pass": true
+    },
+    {
+      "name": "furniture move, undo, put away and cancel conserve items",
+      "pass": true
+    },
+    {
+      "name": "furniture remains in its original room after switching rooms and reloading",
+      "pass": true
+    },
+    {
+      "name": "mobile real touch drag moves diagonally and release stops; save survives",
+      "pass": true
+    },
+    {
+      "name": "mobile furniture has touch-sized cells and places, saves and reloads",
+      "pass": true
+    },
+    {
+      "name": "dash toggle, game action and indoor exits still use the shared movement path",
+      "pass": true
+    },
+    {
+      "name": "offline includes eight-way stick and furnishing without network",
+      "pass": true
+    },
+    {
+      "name": "no runtime errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

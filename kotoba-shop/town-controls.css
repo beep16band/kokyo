@@ -1,0 +1,19 @@
+#townControlDock{display:flex;align-items:center;justify-content:center;gap:24px;box-sizing:border-box;max-width:100%;padding:12px 18px;margin-top:8px;border:2px solid #b6c7a4;border-radius:22px;background:#f6efde;color:#425b48;font-family:KotobaSans,system-ui,sans-serif}
+.stickWrap{display:flex;flex-direction:column;align-items:center;gap:5px;flex:none}.stickWrap small{color:#57725b;font-size:11px}
+#townStick{position:relative;width:112px;height:112px;border-radius:50%;border:3px solid #a5b99a;background:radial-gradient(circle,#e5edda 0 38%,#d7e3cc 39% 65%,#c4d4b8 66%);box-shadow:inset 0 3px 9px #617d512b,0 3px #a8b99d;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;flex:none}
+#townStick.engaged{cursor:grabbing;border-color:#6c936e}#townStick:focus-visible{outline:3px solid #b47b93;outline-offset:3px}
+.stickCross:before,.stickCross:after{content:'';position:absolute;background:#94af8a66;left:50%;top:14%;width:2px;height:72%;transform:translateX(-50%)}.stickCross:after{transform:translateX(-50%) rotate(90deg)}
+#townStickKnob{position:absolute;left:calc(50% - 24px);top:calc(50% - 24px);width:48px;height:48px;background:radial-gradient(circle at 35% 30%,#fff9df,#e7c29b);border:2px solid #b69976;box-sizing:border-box;border-radius:50%;box-shadow:0 3px 7px #625e3d38;pointer-events:none}
+.stickActions{display:flex;flex-direction:column;gap:7px}.stickActions strong{font-size:15px}.stickActions small{font-size:12px;color:#60745f;line-height:1.7}.stickActions>div{display:flex;flex-wrap:wrap;gap:6px}.stickActions button{margin:0;min-height:44px;background:#e0ebd4;border:1px solid #a7bd9b;border-radius:14px;color:#415a45;padding:8px 12px}.stickActions button[aria-pressed=true]{background:#f4d79d}.controlsPaused #townStick{opacity:.5;cursor:default}.stickActions button:disabled{opacity:.5}
+@media(max-width:600px){#townControlDock{gap:15px;padding:10px;margin-top:6px}.stickActions strong{font-size:13px}.stickActions small{font-size:11px}.stickActions button{font-size:12px;padding:7px 9px}}
+#editor.open{align-items:flex-start;overflow-y:auto;padding:max(12px,env(safe-area-inset-top)) 10px 24px}
+#editor #editorPanel{margin:auto;max-width:830px;max-height:none;background:#fff8e8;color:#425a48;border:3px solid #d8b393;border-radius:24px;font-family:KotobaSans,system-ui,sans-serif}
+#editorPanel h2{margin:4px 0 10px;font-size:23px}#editorPanel p{line-height:1.7}#editStep{padding:10px;background:#e3efdc;border-radius:12px;font-weight:bold}
+#editTools{align-items:center}#editTools strong{width:100%}#editTools button{min-height:44px;border:2px solid transparent;background:#eedec3}#editTools button.active{border-color:#487a56;background:#cce7bf}
+#editGridScroll{width:100%;overflow-x:auto;overscroll-behavior:contain;border:2px solid #bcab8e;border-radius:10px}
+#editGrid{grid-template-columns:repeat(16,minmax(40px,1fr));min-width:672px;gap:2px;background:#bdaa89;touch-action:auto}
+#editor #editGrid button{min-height:40px;font:700 12px KotobaSans,system-ui,sans-serif;color:#4e5847;background:#f5e6c9;cursor:pointer}
+#editor #editGrid button.available{background:#c4e5af;color:#326d3e;font-size:24px}#editor #editGrid button.fixed{background:#c9aa8b;color:#fff}#editor #editGrid button.wall{background:#e1dbcc;color:#74786b}#editor #editGrid button.used{background:#f4cb9a}#editor #editGrid button.selected{outline:3px solid #bb6c94}
+#editorPanel .editLegend{font-size:13px}#editStatus{font-weight:bold;color:#70504d}#editDone{background:#487756;color:white;min-height:48px}#editUndo,#editCancel{min-height:44px}#editorPanel button:disabled{opacity:.45}
+@media(max-width:600px){#editorPanel{padding:12px}#editorPanel h2{font-size:20px}#editorPanel p{font-size:14px}}
+@media print{#townControlDock{display:none!important}}
