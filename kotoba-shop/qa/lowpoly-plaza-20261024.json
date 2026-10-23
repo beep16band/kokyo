@@ -1,7 +1,7 @@
 {
   "testEnvironment": "Node + real Three.js geometries; renderer and DOM simulated. Browser WebGL disabled; no GPU/Chromebook measurement.",
-  "passed": 19,
-  "total": 19,
+  "passed": 24,
+  "total": 24,
   "checks": [
     {
       "name": "four reference heroes and owl are real mesh characters; no billboard character planes",
@@ -76,12 +76,32 @@
       "pass": true
     },
     {
+      "name": "all heroes use smooth surfaces and their knees bend while walking",
+      "pass": true
+    },
+    {
+      "name": "ground tapping walks to the same 3D destination in all three projections",
+      "pass": true
+    },
+    {
+      "name": "quick character selection and clicking a 3D model both select the controllable person",
+      "pass": true
+    },
+    {
+      "name": "background geometry, materials and construction code are byte-identical to the previous version",
+      "pass": true
+    },
+    {
+      "name": "single-file playable build contains all three scripts with no external script or stylesheet",
+      "pass": true
+    },
+    {
       "name": "bounded geometry and batched static scenery",
       "pass": true
     }
   ],
   "geometry": {
-    "meshes": 233,
-    "triangles": 51640
+    "meshes": 251,
+    "triangles": 176752
   }
 }
