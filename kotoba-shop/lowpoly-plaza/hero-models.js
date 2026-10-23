@@ -8,17 +8,17 @@ const profiles={
  tsuki:{name:'つき',hair:'#b7a0c4',hairLight:'#d2bbd8',iris:'#9a68ad',jacket:'#3e3549',trim:'#bd8eb0',bottom:'#6d536c',shoe:'#403745',bag:'#393241',female:true,style:'bob',beret:true},
  green:{name:'男の子②',hair:'#b17a45',hairLight:'#c99758',iris:'#997140',jacket:'#71834d',trim:'#e3d0a0',bottom:'#373e39',shoe:'#718459',bag:'#36443b',female:false,style:'short',hood:true,shorts:true,joy:true}
 };
-function make(T){
+function make(T,{compatible=false}={}){
 const skin='#ffe0c2',cheek='#efb3a9',textures=new Map(),materials=new Map();
-const sphere=new T.SphereGeometry(1,24,16),smallSphere=new T.SphereGeometry(1,12,8);
+const sphere=new T.SphereGeometry(1,compatible?12:24,compatible?8:16),smallSphere=new T.SphereGeometry(1,12,8);
 // Rounded cuboid with actual curved edge topology for clothing, soles and bags.
-const boxG=new T.BoxGeometry(1,1,1,4,4,4);{const a=boxG.attributes.position,n=new T.Vector3(),q=new T.Vector3();for(let i=0;i<a.count;i++){n.fromBufferAttribute(a,i);q.copy(n).clampScalar(-.38,.38);n.sub(q).normalize().multiplyScalar(.12).add(q);a.setXYZ(i,n.x,n.y,n.z);}boxG.computeVertexNormals();}
+const boxG=new T.BoxGeometry(1,1,1,compatible?2:4,compatible?2:4,compatible?2:4);{const a=boxG.attributes.position,n=new T.Vector3(),q=new T.Vector3();for(let i=0;i<a.count;i++){n.fromBufferAttribute(a,i);q.copy(n).clampScalar(-.38,.38);n.sub(q).normalize().multiplyScalar(.12).add(q);a.setXYZ(i,n.x,n.y,n.z);}boxG.computeVertexNormals();}
 function material(color,smooth=true){const key=color+smooth;if(!materials.has(key))materials.set(key,new T.MeshPhongMaterial({color,specular:'#303038',shininess:12,flatShading:false}));return materials.get(key);}
 function part(p,g,c,x,y,z,sx=1,sy=sx,sz=sx){const m=new T.Mesh(g,typeof c==='string'?material(c):c);m.position.set(x,y,z);m.scale.set(sx,sy,sz);p.add(m);return m;}
 const orb=(p,c,x,y,z,sx,sy=sx,sz=sx)=>part(p,sx<.065?smallSphere:sphere,c,x,y,z,sx,sy,sz),box=(p,c,x,y,z,w,h,d)=>part(p,boxG,c,x,y,z,w,h,d);
 function curve(p,c,points,r=.012){return part(p,new T.TubeGeometry(new T.CatmullRomCurve3(points.map(v=>new T.Vector3(...v))),12,r,8,false),c,0,0,0);}
 // Smooth swept hair with a transported frame; no abrupt twist where a strand turns downward.
-function lock(p,c,points,width=.12,depth=.045,endWidth=.02){const line=new T.CatmullRomCurve3(points.map(v=>new T.Vector3(...v))),v=[],uv=[],indices=[],steps=16,sides=10;let previousTangent=null,right=null;
+function lock(p,c,points,width=.12,depth=.045,endWidth=.02){const line=new T.CatmullRomCurve3(points.map(v=>new T.Vector3(...v))),v=[],uv=[],indices=[],steps=compatible?7:16,sides=compatible?6:10;let previousTangent=null,right=null;
  for(let i=0;i<=steps;i++){const t=i/steps,pos=line.getPoint(t),tangent=line.getTangent(t).normalize();
  if(!right){right=new T.Vector3().crossVectors(tangent,new T.Vector3(0,0,1));if(right.lengthSq()<.001)right.set(1,0,0);right.normalize();}else{right.applyQuaternion(new T.Quaternion().setFromUnitVectors(previousTangent,tangent)).normalize();}
  previousTangent=tangent.clone();const normal=new T.Vector3().crossVectors(right,tangent).normalize(),r=i===steps?endWidth:(.80+.2*Math.sin(t*Math.PI))*Math.pow(1-t,.48);
@@ -39,18 +39,18 @@ function eyeTexture(p,expression,right=false){return tex('eye-'+p.iris+'-'+expre
  g.fillStyle='#fffdf4';g.beginPath();g.ellipse(48,43,12,15,-.2,0,Math.PI*2);g.fill();g.beginPath();g.ellipse(86,91,6,7,0,0,Math.PI*2);g.fill();
  if(p.female){g.save();if(right){g.translate(128,0);g.scale(-1,1);}g.strokeStyle='#56434b';g.lineWidth=5;g.beginPath();g.moveTo(22,37);g.lineTo(12,27);g.moveTo(34,26);g.lineTo(28,18);g.stroke();g.restore();}
  });}
-function mouthTexture(expression,joy){return tex('mouth-'+expression+'-'+joy,g=>{g.clearRect(0,0,128,128);g.lineCap='round';if(expression==='surprise'||expression==='smile'||joy){g.fillStyle='#a95b5b';g.beginPath();if(expression==='surprise')g.ellipse(64,68,22,30,0,0,Math.PI*2);else{g.moveTo(20,40);g.quadraticCurveTo(64,51,108,40);g.quadraticCurveTo(103,107,64,108);g.quadraticCurveTo(25,106,20,40);}g.fill();g.fillStyle='#ed9e96';g.beginPath();g.ellipse(64,96,29,13,0,Math.PI*2);g.fill();if(expression!=='surprise'){g.fillStyle='#fff5e7';g.beginPath();g.moveTo(27,42);g.quadraticCurveTo(64,53,101,42);g.lineTo(95,54);g.quadraticCurveTo(64,60,33,54);g.fill();}}else{g.strokeStyle='#a3796d';g.lineWidth=6;g.beginPath();g.moveTo(36,69);g.quadraticCurveTo(64,83,92,69);g.stroke();}});}
+function mouthTexture(expression,joy){return tex('mouth-'+expression+'-'+joy,g=>{g.clearRect(0,0,128,128);g.lineCap='round';if(expression==='surprise'||expression==='smile'||joy){g.fillStyle='#a95b5b';g.beginPath();if(expression==='surprise')g.ellipse(64,68,22,30,0,0,Math.PI*2);else{g.moveTo(20,40);g.quadraticCurveTo(64,51,108,40);g.quadraticCurveTo(103,107,64,108);g.quadraticCurveTo(25,106,20,40);}g.fill();g.fillStyle='#ed9e96';g.beginPath();g.ellipse(64,96,29,13,0,0,Math.PI*2);g.fill();if(expression!=='surprise'){g.fillStyle='#fff5e7';g.beginPath();g.moveTo(27,42);g.quadraticCurveTo(64,53,101,42);g.lineTo(95,54);g.quadraticCurveTo(64,60,33,54);g.fill();}}else{g.strokeStyle='#a3796d';g.lineWidth=6;g.beginPath();g.moveTo(36,69);g.quadraticCurveTo(64,83,92,69);g.stroke();}});}
 // A curved decal follows the facial volume. Geometry is fixed to the head and turns with it.
 function decal(parent,cx,cy,width,height,texture){const v=[],uv=[],ix=[],n=10;
  for(let y=0;y<=n;y++)for(let x=0;x<=n;x++){const px=cx+(x/n-.5)*width,py=cy+(y/n-.5)*height,z=.012+.445*Math.sqrt(Math.max(.08,1-(px/.57)**2-(py/.51)**2));v.push(px,py,z);uv.push(x/n,y/n);if(x<n&&y<n){const k=y*(n+1)+x;ix.push(k,k+1,k+n+1,k+1,k+n+2,k+n+1);}}
  const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(ix);g.computeVertexNormals();const m=new T.MeshLambertMaterial({map:texture,transparent:true,alphaTest:.08,depthWrite:false,side:T.DoubleSide});const obj=part(parent,g,m,0,0,.008);obj.renderOrder=2;return obj;}
 function build(kind,api){const p=profiles[kind];if(!p)throw Error('Unknown character '+kind);const root=new T.Group(),body=new T.Group(),head=new T.Group(),limbs=[],knees=[[],[]],outfits=[],armOutfits=[[],[]],legOutfits=[[],[]];root.add(body);head.position.y=1.78;head.rotation.x=-.07;body.add(head);
  // Shared skin volumes, ears and subtle cheeks.
- const faceShape=new T.SphereGeometry(1,32,24);{const a=faceShape.attributes.position;for(let i=0;i<a.count;i++){const y=a.getY(i),t=Math.max(0,(-y-.25)/.75);a.setX(i,a.getX(i)*(1-.14*t*t));}faceShape.computeVertexNormals();}part(head,faceShape,skin,0,0,0,.57,.51,.445);
+ const faceShape=new T.SphereGeometry(1,compatible?16:32,compatible?12:24);{const a=faceShape.attributes.position;for(let i=0;i<a.count;i++){const y=a.getY(i),t=Math.max(0,(-y-.25)/.75);a.setX(i,a.getX(i)*(1-.14*t*t));}faceShape.computeVertexNormals();}part(head,faceShape,skin,0,0,0,.57,.51,.445);
  for(const x of [-.565,.565]){orb(head,skin,x,-.045,-.015,.075,.105,.074);orb(head,'#eab79e',x,-.045,.047,.028,.05,.014);}
  for(const side of [-1,1]){orb(head,cheek,side*.365,-.185,.30,.085,.029,.013);curve(head,p.style==='bob'?'#94829c':'#a07c6a',[[side*.17,.13,.421],[side*.235,.155,.41],[side*.29,.135,.388]],.008);}
  // Skull cap and back shell, with a clear opening for the expression.
- part(head,new T.SphereGeometry(1,32,16,0,Math.PI*2,0,Math.PI*.46),p.hair,0,.025,-.028,.587,.54,.47);
+ part(head,new T.SphereGeometry(1,compatible?16:32,compatible?8:16,0,Math.PI*2,0,Math.PI*.46),p.hair,0,.025,-.028,.587,.54,.47);
  const back=new T.Group();head.add(back);
  const backCount=p.style==='bob'?13:p.female?9:10;
  for(let i=0;i<backCount;i++){const a=.78+i/(backCount-1)*(Math.PI*2-1.56),x=Math.sin(a)*.51,z=Math.cos(a)*.36;

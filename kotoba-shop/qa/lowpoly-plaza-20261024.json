@@ -1,7 +1,7 @@
 {
   "testEnvironment": "Node + real Three.js geometries; renderer and DOM simulated. Browser WebGL disabled; no GPU/Chromebook measurement.",
-  "passed": 24,
-  "total": 24,
+  "passed": 26,
+  "total": 26,
   "checks": [
     {
       "name": "four reference heroes and owl are real mesh characters; no billboard character planes",
@@ -92,7 +92,15 @@
       "pass": true
     },
     {
-      "name": "single-file playable build contains all three scripts with no external script or stylesheet",
+      "name": "single-file playable build contains all scripts with no external script or stylesheet",
+      "pass": true
+    },
+    {
+      "name": "native Canvas ellipse arity is enforced and every character expression initializes",
+      "pass": true
+    },
+    {
+      "name": "software compatibility mode projects real meshes and produces nonempty pixels without WebGL",
       "pass": true
     },
     {

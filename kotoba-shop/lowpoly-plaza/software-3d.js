@@ -1,0 +1,29 @@
+/* Compatibility renderer for the same Three.js scene graph: real projection,
+   triangle rasterization, interpolated UVs and a per-pixel depth buffer. No sprites. */
+'use strict';
+window.PlazaSoftware3D=class {
+ constructor({canvas}){this.domElement=canvas;this.context=canvas.getContext('2d',{alpha:false});if(!this.context)throw Error('互換3D画面を作成できませんでした');this.isSoftwareRenderer=true;this.info={render:{calls:0,triangles:0}};this.geometry=new WeakMap();this.textures=new WeakMap();this.background=new window.THREE.Color('#c8d8c8');this.width=0;this.height=0;this.frames=0;}
+ setPixelRatio(){}setClearColor(color){this.background.set(color);}
+ setSize(w,h){const factor=Math.min(1,540/w,400/h);w=Math.max(1,Math.round(w*factor));h=Math.max(1,Math.round(h*factor));if(w===this.width&&h===this.height)return;this.width=w;this.height=h;this.domElement.width=w;this.domElement.height=h;this.image=this.context.createImageData(w,h);this.depth=new Float32Array(w*h);}
+ texture(t){if(!t)return null;if(!this.textures.has(t)){const im=t.image;if(!im?.width)return null;const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const g=c.getContext('2d');g.drawImage(im,0,0);this.textures.set(t,{pixels:g.getImageData(0,0,c.width,c.height).data,width:c.width,height:c.height});}return this.textures.get(t);}
+ geometryData(g){if(!this.geometry.has(g)){const p=g.attributes.position,n=g.attributes.normal,uv=g.attributes.uv;this.geometry.set(g,{p:p.array,n:n?.array,uv:uv?.array,index:g.index?.array,screen:new Float32Array(p.count*4),normals:new Float32Array(p.count*3)});}return this.geometry.get(g);}
+ render(scene,camera){const T=window.THREE,w=this.width,h=this.height;if(!w||!h)return;scene.updateMatrixWorld(true);camera.updateMatrixWorld();const view=new T.Matrix4().multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse),vp=new T.Matrix4(),norm=new T.Matrix3(),pixels=this.image.data,zbuf=this.depth;zbuf.fill(Infinity);const sky=this.background.clone().convertLinearToSRGB(),br=sky.r*255,bg=sky.g*255,bb=sky.b*255;for(let i=0;i<pixels.length;i+=4){pixels[i]=br;pixels[i+1]=bg;pixels[i+2]=bb;pixels[i+3]=255;}
+ const opaque=[],alpha=[];scene.traverseVisible(o=>{if(o.isMesh&&o.geometry?.attributes.position&&o.material)(o.material.transparent?alpha:opaque).push(o);});this.info.render.calls=opaque.length+alpha.length;this.info.render.triangles=0;
+ // Render solids first, then fixed face decals and translucent contact shadows.
+ for(const o of [...opaque,...alpha]){const m=o.material,d=this.geometryData(o.geometry),p=d.p,s=d.screen,ns=d.normals,count=p.length/3;vp.multiplyMatrices(view,o.matrixWorld);const a=vp.elements;norm.getNormalMatrix(o.matrixWorld);const ne=norm.elements;
+ for(let i=0;i<count;i++){const j=i*3,k=i*4,x=p[j],y=p[j+1],z=p[j+2],q=a[3]*x+a[7]*y+a[11]*z+a[15],inv=1/q;s[k]=(a[0]*x+a[4]*y+a[8]*z+a[12])*inv*w*.5+w*.5;s[k+1]=h*.5-(a[1]*x+a[5]*y+a[9]*z+a[13])*inv*h*.5;s[k+2]=(a[2]*x+a[6]*y+a[10]*z+a[14])*inv;s[k+3]=inv;if(d.n){const nx=d.n[j],ny=d.n[j+1],nz=d.n[j+2];let xx=ne[0]*nx+ne[3]*ny+ne[6]*nz,yy=ne[1]*nx+ne[4]*ny+ne[7]*nz,zz=ne[2]*nx+ne[5]*ny+ne[8]*nz,len=Math.hypot(xx,yy,zz)||1;ns[j]=xx/len;ns[j+1]=yy/len;ns[j+2]=zz/len;}}
+ const indexes=d.index,triangles=indexes?indexes.length:count,texture=this.texture(m.map),uv=d.uv,color=m.color||new T.Color('#fff'),c=color.clone().convertLinearToSRGB(),red=c.r*255,green=c.g*255,blue=c.b*255;this.info.render.triangles+=triangles/3;
+ for(let i=0;i<triangles;i+=3){const ia=indexes?indexes[i]:i,ib=indexes?indexes[i+1]:i+1,ic=indexes?indexes[i+2]:i+2,A=ia*4,B=ib*4,C=ic*4,ax=s[A],ay=s[A+1],az=s[A+2],bx=s[B],by=s[B+1],bz=s[B+2],cx=s[C],cy=s[C+1],cz=s[C+2];if(az< -1||bz< -1||cz< -1||az>1||bz>1||cz>1)continue;const den=(by-cy)*(ax-cx)+(cx-bx)*(ay-cy);if(!Number.isFinite(den)||Math.abs(den)<.001||(den>=0&&m.side!==T.DoubleSide))continue;
+ const minX=Math.max(0,Math.floor(Math.min(ax,bx,cx))),maxX=Math.min(w-1,Math.ceil(Math.max(ax,bx,cx))),minY=Math.max(0,Math.floor(Math.min(ay,by,cy))),maxY=Math.min(h-1,Math.ceil(Math.max(ay,by,cy)));if(minX>maxX||minY>maxY)continue;
+ const dux=(by-cy)/den,duy=(cx-bx)/den,dvx=(cy-ay)/den,dvy=(ax-cx)/den,flat=m.flatShading||m.isMeshBasicMaterial;let light=m.isMeshBasicMaterial?1:.69+.31*Math.max(0,(ns[ia*3]*-.43+ns[ia*3+1]*.79+ns[ia*3+2]*.44));
+ for(let y=minY;y<=maxY;y++){let u=((by-cy)*(minX+.5-cx)+(cx-bx)*(y+.5-cy))/den,v=((cy-ay)*(minX+.5-cx)+(ax-cx)*(y+.5-cy))/den;
+ for(let x=minX;x<=maxX;x++,u+=dux,v+=dvx){const t=1-u-v;if(u<-.00001||v<-.00001||t<-.00001)continue;const z=az*u+bz*v+cz*t,k=y*w+x;if(z>zbuf[k]+.000001)continue;let r=red,g=green,b=blue,opacity=m.opacity??1;
+ if(texture&&uv){const q=u*s[A+3]+v*s[B+3]+t*s[C+3],uu=(uv[ia*2]*u*s[A+3]+uv[ib*2]*v*s[B+3]+uv[ic*2]*t*s[C+3])/q,vv=(uv[ia*2+1]*u*s[A+3]+uv[ib*2+1]*v*s[B+3]+uv[ic*2+1]*t*s[C+3])/q,rx=uu*(m.map.repeat?.x||1),ry=(1-vv)*(m.map.repeat?.y||1),tx=m.map.wrapS===T.RepeatWrapping?((rx%1)+1)%1:Math.max(0,Math.min(.999999,rx)),ty=m.map.wrapT===T.RepeatWrapping?((ry%1)+1)%1:Math.max(0,Math.min(.999999,ry)),j=(Math.floor(ty*texture.height)*texture.width+Math.floor(tx*texture.width))*4,pix=texture.pixels;opacity*=pix[j+3]/255;if(opacity<(m.alphaTest||.01))continue;r*=pix[j]/255;g*=pix[j+1]/255;b*=pix[j+2]/255;}
+ if(!flat){const j=ia*3,kb=ib*3,kc=ic*3;let nx=ns[j]*u+ns[kb]*v+ns[kc]*t,ny=ns[j+1]*u+ns[kb+1]*v+ns[kc+1]*t,nz=ns[j+2]*u+ns[kb+2]*v+ns[kc+2]*t;const len=Math.hypot(nx,ny,nz)||1;light=.69+.31*Math.max(0,(-.43*nx+.79*ny+.44*nz)/len);}
+ const k4=k*4;if(opacity<.99){pixels[k4]=pixels[k4]*(1-opacity)+r*light*opacity;pixels[k4+1]=pixels[k4+1]*(1-opacity)+g*light*opacity;pixels[k4+2]=pixels[k4+2]*(1-opacity)+b*light*opacity;}else{pixels[k4]=r*light;pixels[k4+1]=g*light;pixels[k4+2]=b*light;}if(m.depthWrite!==false)zbuf[k]=z;
+ }}
+ }
+ }
+ this.context.putImageData(this.image,0,0);this.frames++;
+ }
+};

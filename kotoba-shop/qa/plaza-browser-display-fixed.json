@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-24",
+  "browser": "Cloud Chrome via CUA",
+  "renderer": "software-3d (automatic fallback from disabled WebGL)",
+  "observed_error_before_fix": "TypeError: Failed to execute ellipse on CanvasRenderingContext2D: 7 arguments required, but only 6 present.",
+  "cause": "Six-argument ellipse in mouthTexture halted character initialization before the animation loop.",
+  "verified": [
+    "Real browser starts and draws four heroes and owl",
+    "Ground click moves Sora and following camera",
+    "Quick selector changes to Hiyori",
+    "Surprise expression renders",
+    "Casual outfit renders",
+    "Portrait framing renders"
+  ],
+  "screenshot": "plaza-browser-display-fixed.jpg",
+  "limitations": [
+    "WebGL rendering not testable in cloud browser",
+    "Chromebook hardware performance not verified",
+    "Compatibility rendering uses lower internal resolution and may be slower"
+  ]
+}
