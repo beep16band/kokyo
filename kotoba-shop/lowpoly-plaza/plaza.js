@@ -56,14 +56,55 @@ const humanSkin='#efc79e',hair='#6d5848',cream='#fff2ce',ink='#3d4840';
 function character(kind){const root=new T.Group();scene.add(root);const body=new T.Group(),head=new T.Group();root.add(body);head.position.y=1.55;body.add(head);const limbs=[];
 function limb(x,leg,color){const pivot=new T.Group();pivot.position.set(x,leg?.64:1.22,0);body.add(pivot);if(leg){box(pivot,color,0,-.23,0,.23,.46,.27);orb(pivot,'#7a6654',0,-.5,.09,.15,.105,.22);}else{orb(pivot,color,0,-.22,0,.14,.28,.14);orb(pivot,kind==='owl'?'#ae9b80':humanSkin,0,-.45,0,.115);}limbs.push(pivot);return pivot;}
 if(kind!=='owl'){
-const girl=kind==='girl',shirt=girl?'#dc9d8e':cream,accent=girl?cream:'#7fa6b5';
-orb(body,shirt,0,.98,0,.39,.46,.29);if(girl){mesh(body,new T.CylinderGeometry(.3,.46,.55,10),shirt,0,.7,0);box(body,accent,0,.95,.28,.57,.075,.035);}else{box(body,accent,0,.83,.24,.45,.42,.12);for(const x of [-.18,.18]){box(body,accent,x,1.09,.25,.08,.3,.08);orb(body,'#e7d09a',x,1.16,.31,.035);}}
-limb(-.17,true,girl?'#efc79e':'#7c999b');limb(.17,true,girl?'#efc79e':'#7c999b');limb(-.44,false,shirt);limb(.44,false,shirt);
-orb(head,humanSkin,0,.02,0,.45,.44,.41);orb(head,hair,0,.2,-.08,.465,.32,.38);for(const [x,y,z,s]of [[-.31,.18,.3,.16],[-.13,.27,.35,.17],[.08,.29,.35,.16],[.26,.23,.32,.15]])orb(head,hair,x,y,z,s,s*.8,s*.55);
-for(const x of [-.46,.46])orb(head,humanSkin,x,-.02,0,.09,.13,.1);
-if(girl){for(const side of [-1,1]){orb(head,hair,side*.43,-.18,-.14,.17,.3,.18);orb(head,'#d79cb1',side*.44,-.01,-.1,.12,.075,.11);}}
-for(const x of [-.15,.15]){orb(head,ink,x,.015,.385,.035,.055,.023);orb(head,'#fff3dd',x-.009,.038,.405,.01);orb(head,'#db9c8a',x*1.65,-.12,.35,.065,.025,.015);}orb(head,'#bd8a70',0,-.14,.416,.055,.018,.012);
-cyl(head,'#d9bd7b',0,.39,-.02,.62,.065);orb(head,'#dfc788',0,.46,-.04,.43,.24,.4);cyl(head,girl?'#d79cb1':'#83b5cf',0,.46,-.04,.436,.08);
+// Rounder, shorter child proportions; use actual curved surfaces, not face sprites.
+const girl=kind==='girl',shirt=girl?'#e9a6a0':'#fff0d0',accent=girl?'#fff1d5':'#89b4c1';
+head.position.y=1.40;head.rotation.x=-.12;
+orb(body,shirt,0,.88,0,.345,.34,.28);
+if(girl){
+ mesh(body,new T.CylinderGeometry(.27,.42,.44,10),shirt,0,.68,0);
+ box(body,accent,0,.86,.277,.55,.065,.04);
+ for(const x of [-.1,.1]){const collar=orb(body,accent,x,1.125,.24,.13,.09,.055);collar.rotation.z=x<0?-.25:.25;}
+ orb(body,'#c27c80',0,.9,.316,.035);
+}else{
+ orb(body,accent,0,.71,.04,.32,.25,.27);
+ box(body,accent,0,.87,.25,.40,.29,.075);
+ for(const x of [-.17,.17]){box(body,accent,x,1.005,.245,.075,.27,.06);orb(body,'#f0d48e',x,1.08,.283,.035);}
+ box(body,'#a9cad1',0,.87,.298,.19,.12,.018);
+}
+limb(-.17,true,girl?'#f5d6b9':'#89b4c1');limb(.17,true,girl?'#f5d6b9':'#89b4c1');limb(-.39,false,shirt);limb(.39,false,shirt);
+for(let i=0;i<4;i++){const p=limbs[i];if(i<2){p.position.y=.52;p.scale.set(1,.76,1.08);}else{p.position.y=1.08;p.scale.set(.95,.76,.95);}}
+for(const c of ['#f5d6b9','#725447','#ecb1a5','#e9b6a2'])mat(c).flatShading=false;
+// A full, softly lit cheek silhouette. The larger head reads from the distant camera.
+orb(head,'#f5d6b9',0,.015,.015,.555,.505,.475);
+orb(head,'#725447',0,.22,-.10,.565,.38,.43);
+// Side-swept fringe follows the skull; it no longer covers the eyes.
+for(const [x,y,z,s,tilt]of [[-.39,.16,.30,.145,-.35],[-.28,.30,.36,.17,-.4],[-.08,.35,.4,.17,-.25],[.13,.33,.39,.18,.2],[.34,.23,.32,.16,.35]]){const f=orb(head,'#725447',x,y,z,s,s*.86,s*.52);f.rotation.z=tilt;}
+for(const x of [-.545,.545]){orb(head,'#f5d6b9',x,-.02,.015,.09,.12,.10);orb(head,'#e9b6a2',x,-.025,.095,.04,.065,.025);}
+if(girl){
+ for(const side of [-1,1]){
+  const tail=orb(head,'#725447',side*.535,-.10,-.12,.19,.25,.18);tail.rotation.z=side*.32;
+  for(const dx of [-.065,.065]){const bow=orb(head,'#db9caf',side*.54+dx,.045,.015,.085,.065,.04);bow.rotation.z=dx<0?-.3:.3;}
+  orb(head,'#f9d5d7',side*.54,.045,.055,.035);
+ }
+}
+// Wide-set espresso eyes, tiny glints, peach cheeks, and a curved little smile.
+for(const side of [-1,1]){
+ const x=side*.185;
+ orb(head,'#493d36',x,.045,.46,.055,.080,.026);
+ orb(head,'#fff8e6',x-.015,.073,.485,.018,.022,.008);
+ orb(head,'#bd8f6f',x+.014,.014,.485,.010,.015,.006);
+ const brow=orb(head,'#947665',x,.177,.442,.063,.015,.018);brow.rotation.z=side*-.09;
+ orb(head,'#ecb1a5',side*.335,-.10,.382,.091,.045,.025);
+ if(girl){const lash=orb(head,'#725447',x+side*.038,.095,.467,.035,.012,.014);lash.rotation.z=side*.4;}
+}
+const smileCurve=new T.QuadraticBezierCurve3(new T.Vector3(-.055,-.158,.458),new T.Vector3(0,-.205,.481),new T.Vector3(.055,-.158,.458));
+mesh(head,new T.TubeGeometry(smileCurve,6,.012,4,false),'#b07964',0,0,0);
+// A smaller brim, raised at the front, keeps the expression visible from above.
+const hat=new T.Group();hat.position.set(0,.48,-.075);hat.rotation.x=-.18;head.add(hat);
+cyl(hat,'#e7cd91',0,0,0,.585,.045);orb(hat,'#ebd59e',0,.095,-.015,.405,.215,.38);
+// Fitted ribbon follows the crown instead of a flat coloured disk on top.
+mesh(hat,new T.CylinderGeometry(.35,.405,.085,12,1,true),girl?'#d9a0af':'#8db8c7',0,.074,-.015);
+orb(hat,girl?'#e4b0bd':'#a3cad2',.39,.07,.03,.09,.055,.045);
 }else{
 orb(body,'#a99d83',0,.96,0,.45,.47,.32);box(body,cream,0,1.04,.3,.19,.64,.035);for(const x of [-.2,.2])box(body,'#9d917a',x,1.01,.29,.1,.55,.07);for(const y of [.85,1.03])orb(body,'#d9cfac',.035,y,.335,.03);
 limb(-.19,true,'#7b8376');limb(.19,true,'#7b8376');limb(-.47,false,'#ae9b80');limb(.47,false,'#ae9b80');
