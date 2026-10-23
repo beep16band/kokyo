@@ -7,3 +7,5 @@
 .downloadGame{color:#506b55;text-underline-offset:3px;white-space:nowrap;font-size:10px}@media(max-width:700px){footer b{display:none}.downloadGame{font-size:9px}}
 
 #bootStatus{display:inline-block;font-size:9px;margin-top:8px;margin-right:6px;color:#53684b}#compatibleMode{font-size:10px;padding:9px}#compatibleMode:disabled{opacity:.65}@media(max-width:700px){header{padding:0 12px;gap:7px}.brand{font-size:11px}.brand small{font-size:14px}.quickHeroLabel select{width:82px}header>button{padding:7px;font-size:9px}#compatibleMode{padding:7px;font-size:9px}#bootStatus{font-size:8px}}
+
+#startupOverlay{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;background:#f4f0e4;color:#4d674f;z-index:7;text-align:center;padding:24px}#startupOverlay strong{font-size:20px}#startupOverlay p{line-height:1.8;font-size:13px}#startupOverlay small{font-size:10px;color:#87947c}

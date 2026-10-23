@@ -1,0 +1,17 @@
+{
+  "version": "plaza-6-boot-recovery",
+  "entry": "self-contained HTML root",
+  "browser": "cloud Chrome; WebGL disabled",
+  "mode": "software compatibility 3D",
+  "verified": [
+    "first frame drawn",
+    "startup overlay hidden",
+    "v6 visible",
+    "ground/shop/three trees/four heroes/owl visible",
+    "select Hiyori and camera follows"
+  ],
+  "limits": [
+    "GPU and Chromebook performance not measured",
+    "user device root cause not reproduced"
+  ]
+}
