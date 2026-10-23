@@ -1,10 +1,10 @@
 {
   "testEnvironment": "Node + real Three.js geometries; renderer and DOM simulated. Browser WebGL disabled; no GPU/Chromebook measurement.",
-  "passed": 16,
-  "total": 16,
+  "passed": 19,
+  "total": 19,
   "checks": [
     {
-      "name": "three real mesh characters; no billboard character planes",
+      "name": "four reference heroes and owl are real mesh characters; no billboard character planes",
       "pass": true
     },
     {
@@ -64,12 +64,24 @@
       "pass": true
     },
     {
+      "name": "all four reference characters switch, walk independently and retain their looks",
+      "pass": true
+    },
+    {
+      "name": "face textures stay on curved depth-tested head geometry and include visible light glints",
+      "pass": true
+    },
+    {
+      "name": "wardrobe and expressions change visible geometry/maps without relocating a character",
+      "pass": true
+    },
+    {
       "name": "bounded geometry and batched static scenery",
       "pass": true
     }
   ],
   "geometry": {
-    "meshes": 124,
-    "triangles": 28448
+    "meshes": 233,
+    "triangles": 51640
   }
 }

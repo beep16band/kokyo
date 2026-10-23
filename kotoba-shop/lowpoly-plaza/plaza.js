@@ -55,78 +55,29 @@ for(const t of trees)t.snow.userData.noBatch=true;batchStatic(environment);
 const humanSkin='#efc79e',hair='#6d5848',cream='#fff2ce',ink='#3d4840';
 function character(kind){const root=new T.Group();scene.add(root);const body=new T.Group(),head=new T.Group();root.add(body);head.position.y=1.55;body.add(head);const limbs=[];
 function limb(x,leg,color){const pivot=new T.Group();pivot.position.set(x,leg?.64:1.22,0);body.add(pivot);if(leg){box(pivot,color,0,-.23,0,.23,.46,.27);orb(pivot,'#7a6654',0,-.5,.09,.15,.105,.22);}else{orb(pivot,color,0,-.22,0,.14,.28,.14);orb(pivot,kind==='owl'?'#ae9b80':humanSkin,0,-.45,0,.115);}limbs.push(pivot);return pivot;}
-if(kind!=='owl'){
-// Rounder, shorter child proportions; use actual curved surfaces, not face sprites.
-const girl=kind==='girl',shirt=girl?'#e9a6a0':'#fff0d0',accent=girl?'#fff1d5':'#89b4c1';
-head.position.y=1.40;head.rotation.x=-.12;
-orb(body,shirt,0,.88,0,.345,.34,.28);
-if(girl){
- mesh(body,new T.CylinderGeometry(.27,.42,.44,10),shirt,0,.68,0);
- box(body,accent,0,.86,.277,.55,.065,.04);
- for(const x of [-.1,.1]){const collar=orb(body,accent,x,1.125,.24,.13,.09,.055);collar.rotation.z=x<0?-.25:.25;}
- orb(body,'#c27c80',0,.9,.316,.035);
-}else{
- orb(body,accent,0,.71,.04,.32,.25,.27);
- box(body,accent,0,.87,.25,.40,.29,.075);
- for(const x of [-.17,.17]){box(body,accent,x,1.005,.245,.075,.27,.06);orb(body,'#f0d48e',x,1.08,.283,.035);}
- box(body,'#a9cad1',0,.87,.298,.19,.12,.018);
-}
-limb(-.17,true,girl?'#f5d6b9':'#89b4c1');limb(.17,true,girl?'#f5d6b9':'#89b4c1');limb(-.39,false,shirt);limb(.39,false,shirt);
-for(let i=0;i<4;i++){const p=limbs[i];if(i<2){p.position.y=.52;p.scale.set(1,.76,1.08);}else{p.position.y=1.08;p.scale.set(.95,.76,.95);}}
-for(const c of ['#f5d6b9','#725447','#ecb1a5','#e9b6a2'])mat(c).flatShading=false;
-// A full, softly lit cheek silhouette. The larger head reads from the distant camera.
-orb(head,'#f5d6b9',0,.015,.015,.555,.505,.475);
-orb(head,'#725447',0,.22,-.10,.565,.38,.43);
-// Side-swept fringe follows the skull; it no longer covers the eyes.
-for(const [x,y,z,s,tilt]of [[-.39,.16,.30,.145,-.35],[-.28,.30,.36,.17,-.4],[-.08,.35,.4,.17,-.25],[.13,.33,.39,.18,.2],[.34,.23,.32,.16,.35]]){const f=orb(head,'#725447',x,y,z,s,s*.86,s*.52);f.rotation.z=tilt;}
-for(const x of [-.545,.545]){orb(head,'#f5d6b9',x,-.02,.015,.09,.12,.10);orb(head,'#e9b6a2',x,-.025,.095,.04,.065,.025);}
-if(girl){
- for(const side of [-1,1]){
-  const tail=orb(head,'#725447',side*.535,-.10,-.12,.19,.25,.18);tail.rotation.z=side*.32;
-  for(const dx of [-.065,.065]){const bow=orb(head,'#db9caf',side*.54+dx,.045,.015,.085,.065,.04);bow.rotation.z=dx<0?-.3:.3;}
-  orb(head,'#f9d5d7',side*.54,.045,.055,.035);
- }
-}
-// Wide-set espresso eyes, tiny glints, peach cheeks, and a curved little smile.
-for(const side of [-1,1]){
- const x=side*.185;
- orb(head,'#493d36',x,.045,.46,.055,.080,.026);
- orb(head,'#fff8e6',x-.015,.073,.485,.018,.022,.008);
- orb(head,'#bd8f6f',x+.014,.014,.485,.010,.015,.006);
- const brow=orb(head,'#947665',x,.177,.442,.063,.015,.018);brow.rotation.z=side*-.09;
- orb(head,'#ecb1a5',side*.335,-.10,.382,.091,.045,.025);
- if(girl){const lash=orb(head,'#725447',x+side*.038,.095,.467,.035,.012,.014);lash.rotation.z=side*.4;}
-}
-const smileCurve=new T.QuadraticBezierCurve3(new T.Vector3(-.055,-.158,.458),new T.Vector3(0,-.205,.481),new T.Vector3(.055,-.158,.458));
-mesh(head,new T.TubeGeometry(smileCurve,6,.012,4,false),'#b07964',0,0,0);
-// A smaller brim, raised at the front, keeps the expression visible from above.
-const hat=new T.Group();hat.position.set(0,.48,-.075);hat.rotation.x=-.18;head.add(hat);
-cyl(hat,'#e7cd91',0,0,0,.585,.045);orb(hat,'#ebd59e',0,.095,-.015,.405,.215,.38);
-// Fitted ribbon follows the crown instead of a flat coloured disk on top.
-mesh(hat,new T.CylinderGeometry(.35,.405,.085,12,1,true),girl?'#d9a0af':'#8db8c7',0,.074,-.015);
-orb(hat,girl?'#e4b0bd':'#a3cad2',.39,.07,.03,.09,.055,.045);
-}else{
 orb(body,'#a99d83',0,.96,0,.45,.47,.32);box(body,cream,0,1.04,.3,.19,.64,.035);for(const x of [-.2,.2])box(body,'#9d917a',x,1.01,.29,.1,.55,.07);for(const y of [.85,1.03])orb(body,'#d9cfac',.035,y,.335,.03);
 limb(-.19,true,'#7b8376');limb(.19,true,'#7b8376');limb(-.47,false,'#ae9b80');limb(.47,false,'#ae9b80');
 orb(head,'#ae9b80',0,.03,0,.53,.47,.39);for(const x of [-.23,.23]){mesh(head,geo.cone,'#ae9b80',x,.49,-.05,.15,.32,.16);orb(head,'#ead7af',x,.035,.32,.265,.32,.105);orb(head,ink,x,.05,.421,.047,.07,.026);orb(head,cream,x-.012,.075,.443,.012);const ring=new T.Mesh(new T.TorusGeometry(.178,.019,5,12),mat('#536864'));ring.position.set(x,.045,.454);head.add(ring);}box(head,'#536864',0,.05,.46,.12,.025,.025);const beak=mesh(head,geo.cone,'#d4a35e',0,-.145,.46,.085,.2,.1);beak.rotation.x=Math.PI;for(const x of [-.14,0,.14])orb(head,'#bfaf8d',x,-.3,.31,.035,.07,.02);
-}
 // Head and torso surfaces are real depth-tested meshes, batched independently.
 batchStatic(head);const s=shadow(0,0,.52,.35);root.userData={kind,body,head,limbs,shadow:s,phase:0,moving:0};root.rotation.y=0;return root;}
-const boy=character('boy'),girl=character('girl'),owl=character('owl');const heroes={boy,girl};boy.position.set(0,0,4.2);girl.position.set(2.4,0,1.4);owl.position.set(-1.8,0,-1.15);owl.rotation.y=.35;
+const heroFactory=window.PlazaHeroModels.make(T);
+const heroStarts={boy:[0,4.2],girl:[2.4,1.4],tsuki:[4.3,.25],green:[-5.3,5.8]};
+const heroes=Object.fromEntries(Object.keys(heroStarts).map(kind=>{const c=heroFactory.build(kind,{batch:batchStatic,shadow});scene.add(c);c.position.set(heroStarts[kind][0],0,heroStarts[kind][1]);return [kind,c];}));
+const {boy,girl}=heroes,owl=character('owl');owl.position.set(-1.8,0,-1.15);owl.rotation.y=.35;
 let selected='boy',active=boy;let hour=14,season='spring',yaw=.24,pitch=45,projection='ortho',quality='standard',cap=30,framing='wide';
 const seasons={spring:{name:'春',ground:'#acc18c',leaf:'#b6c794',tip:'#cbd5a4',flower:'#efc1c6',roof:'#bd8c70'},summer:{name:'夏',ground:'#94b881',leaf:'#70a979',tip:'#95bd83',flower:'#f2dfa6',roof:'#b98969'},autumn:{name:'秋',ground:'#c5bd83',leaf:'#c79b65',tip:'#dfb877',flower:'#c69278',roof:'#b38467'},winter:{name:'冬',ground:'#d5e0d3',leaf:'#8fa996',tip:'#b6c9b8',flower:'#e8ded1',roof:'#d8d8ca'}};
 function appearance(){const s=seasons[season];groundMat.color.set(s.ground);leafMat.color.set(s.leaf);tipMat.color.set(s.tip);flowerMat.color.set(s.flower);roofMat.color.set(s.roof);for(const t of trees)t.snow.visible=season==='winter';const daylight=Math.max(0,Math.sin((hour-6)/12*Math.PI)),dusk=Math.max(0,1-Math.abs(hour-18)/2)*(hour>15?1:0);const bg=new T.Color('#23394d').lerp(new T.Color('#c8d8c8'),daylight);bg.lerp(new T.Color('#e2bda1'),dusk*.6);renderer.setClearColor(bg);scene.fog.color.copy(bg);hemi.intensity=.7+daylight*1.2;sun.intensity=.08+daylight*2.1;sun.color.set(dusk>.2?'#ffc596':'#fff0ce');sun.position.set(Math.cos(hour/24*Math.PI*2)*12,4+daylight*11,8);fill.intensity=.25;shadowMat.opacity=.1+daylight*.1;for(const l of lanterns){l.material.emissive.set(hour<6||hour>=18?'#e8b96c':'#000000');l.material.emissiveIntensity=.65;}$('timeValue').value=String(Math.floor(hour)).padStart(2,'0')+':'+String(Math.floor(hour%1*60)).padStart(2,'0');$('weather').textContent=s.name+'の'+(hour<5?'夜':hour<11?'朝':hour<17?'午後':hour<19?'夕暮れ':'夜')+' · '+$('timeValue').value;}
 const ortho=new T.OrthographicCamera(-10,10,7,-7,.1,100),persp=new T.PerspectiveCamera(40,1,.1,100);let camera=ortho;
-const follow=new T.Vector3(0,.9,2.5),offset=new T.Vector3();function resize(){const r=canvas.getBoundingClientRect(),max=quality==='low'?640:960,scale=Math.min(1,max/r.width,720/r.height);renderer.setSize(Math.round(r.width*scale),Math.round(r.height*scale),false);const a=r.width/r.height,half=(a<.8?9.7:9.0)*(framing==='close'?.65:1);ortho.left=-half*a;ortho.right=half*a;ortho.top=half;ortho.bottom=-half;ortho.updateProjectionMatrix();persp.aspect=a;persp.updateProjectionMatrix();}
-new ResizeObserver(resize).observe(canvas);function positionCamera(dt=1){follow.lerp(new T.Vector3(active.position.x,.9,active.position.z-(framing==='close'?.5:3.2)),1-Math.exp(-dt*5));const a=pitch*Math.PI/180,half=ortho.top;let dist=projection==='ortho'?19:half/Math.tan(Number(projection)*Math.PI/360);offset.set(Math.sin(yaw)*Math.cos(a)*dist,Math.sin(a)*dist,Math.cos(yaw)*Math.cos(a)*dist);camera.position.copy(follow).add(offset);camera.lookAt(follow);camera.updateMatrixWorld();}
+const follow=new T.Vector3(0,.9,2.5),offset=new T.Vector3();function resize(){const r=canvas.getBoundingClientRect(),max=quality==='low'?640:960,scale=Math.min(1,max/r.width,720/r.height);renderer.setSize(Math.round(r.width*scale),Math.round(r.height*scale),false);const a=r.width/r.height,half=(a<.8?9.7:9.0)*(framing==='portrait'?.20:framing==='close'?.65:1);ortho.left=-half*a;ortho.right=half*a;ortho.top=half;ortho.bottom=-half;ortho.updateProjectionMatrix();persp.aspect=a;persp.updateProjectionMatrix();}
+new ResizeObserver(resize).observe(canvas);function positionCamera(dt=1){follow.lerp(new T.Vector3(active.position.x,framing==='portrait'?1.3:.9,active.position.z-(framing==='portrait'?0:framing==='close'?.5:3.2)),1-Math.exp(-dt*5));const a=(framing==='portrait'?18:pitch)*Math.PI/180,half=ortho.top;let dist=projection==='ortho'?19:half/Math.tan(Number(projection)*Math.PI/360);offset.set(Math.sin(yaw)*Math.cos(a)*dist,Math.sin(a)*dist,Math.cos(yaw)*Math.cos(a)*dist);camera.position.copy(follow).add(offset);camera.lookAt(follow);camera.updateMatrixWorld();}
 function project(){camera=projection==='ortho'?ortho:persp;if(camera===persp){persp.fov=Number(projection);persp.updateProjectionMatrix();}positionCamera();}
 // Camera-relative continuous eight-direction/analog movement with swept collision.
 const keys=new Set();let stick={x:0,y:0},stickPointer=null,runPointer=null,running=false,dialog=false,blocked=0,bench=null,lastBenchmark=null;
 const radius=.29,bounds={x:11.65,z:9.15};
 function clearInput(){keys.clear();stick.x=stick.y=0;running=false;stickPointer=runPointer=null;$('knob').style.transform='';}
-function occupied(x,z){if(Math.abs(x)>bounds.x||Math.abs(z)>bounds.z)return true;const circles=[...obstacles,{x:owl.position.x,z:owl.position.z,r:.4,name:'owl'},{x:heroes[selected==='boy'?'girl':'boy'].position.x,z:heroes[selected==='boy'?'girl':'boy'].position.z,r:.32,name:'companion'}];return circles.some(o=>{if(o.hx!==undefined){const dx=Math.max(Math.abs(x-o.x)-o.hx,0),dz=Math.max(Math.abs(z-o.z)-o.hz,0);return dx*dx+dz*dz<radius*radius;}return Math.hypot(x-o.x,z-o.z)<radius+o.r;});}
+function occupied(x,z){if(Math.abs(x)>bounds.x||Math.abs(z)>bounds.z)return true;const circles=[...obstacles,{x:owl.position.x,z:owl.position.z,r:.4,name:'owl'},...Object.entries(heroes).filter(([k])=>k!==selected).map(([k,c])=>({x:c.position.x,z:c.position.z,r:.32,name:k}))];return circles.some(o=>{if(o.hx!==undefined){const dx=Math.max(Math.abs(x-o.x)-o.hx,0),dz=Math.max(Math.abs(z-o.z)-o.hz,0);return dx*dx+dz*dz<radius*radius;}return Math.hypot(x-o.x,z-o.z)<radius+o.r;});}
 function move(dx,dz){const count=Math.max(1,Math.ceil(Math.hypot(dx,dz)/.07));let moved=0;for(let i=0;i<count;i++){const sx=dx/count,sz=dz/count,x=active.position.x,z=active.position.z;if(!occupied(x+sx,z+sz)){active.position.x+=sx;active.position.z+=sz;moved+=Math.hypot(sx,sz);}else{blocked++;if(!occupied(x+sx,z)){active.position.x+=sx;moved+=Math.abs(sx);}if(!occupied(active.position.x,z+sz)){active.position.z+=sz;moved+=Math.abs(sz);}}}return moved;}
-function nearest(){const targets=[{p:owl.position,range:1.9,name:'阪口先生',text:'木のかたちも、道の曲がり方も、少しずつ違いますね。ここで覚えたことばを、いつか島の人たちと分け合えたら、すてきですね。'},{p:heroes[selected==='boy'?'girl':'boy'].position,range:1.6,name:'広場のともだち',text:'木もれ日が気持ちいいね。画面の設定で主人公を選ぶと、わたしとも交代して歩けるよ。'},{p:new T.Vector3(-4.35,0,-1.65),range:1.7,name:'ことのは商店',text:'小さなお店は開店準備中。今回は建物の大きさや入口までの歩きやすさを試せます。本編のお買い物と持ち物は、そのまま大切に残っています。'}];return targets.filter(t=>t.p.distanceTo(active.position)<t.range).sort((a,b)=>a.p.distanceTo(active.position)-b.p.distanceTo(active.position))[0];}
+function nearest(){const targets=[{p:owl.position,range:1.9,name:'阪口先生',text:'木のかたちも、道の曲がり方も、少しずつ違いますね。ここで覚えたことばを、いつか島の人たちと分け合えたら、すてきですね。'},...Object.entries(heroes).filter(([k])=>k!==selected).map(([k,c])=>({p:c.position,range:1.6,name:c.userData.name,text:({girl:'ひよりだよ！ みんなで島を歩こう。好きな服でお出かけできると、うれしいね。',boy:'そらです。この広場、落ち着くね。向きを変えると髪やバッグの形もよく見えるよ。',tsuki:'つきです。ベレー帽と、このリボンがお気に入り。今日はどの服にしようかな。',green:'ここの景色、気持ちいいね！ スニーカーを履いて、島を探検しようよ。'})[k]})),{p:new T.Vector3(-4.35,0,-1.65),range:1.7,name:'ことのは商店',text:'小さなお店は開店準備中。今回は建物の大きさや入口までの歩きやすさを試せます。本編のお買い物と持ち物は、そのまま大切に残っています。'}];return targets.filter(t=>t.p.distanceTo(active.position)<t.range).sort((a,b)=>a.p.distanceTo(active.position)-b.p.distanceTo(active.position))[0];}
 function talk(){if(bench)return;if(dialog){closeDialog();return;}const n=nearest();if(!n){$('hint').textContent='先生・ともだち・お店の入口に近づいてみましょう';return;}dialog=true;clearInput();$('speaker').textContent=n.name;$('speech').textContent=n.text;$('dialog').hidden=false;$('closeDialog').focus();}
 function closeDialog(){dialog=false;$('dialog').hidden=true;canvas.focus();clearInput();}
 window.addEventListener('keydown',e=>{if(['INPUT','SELECT'].includes(e.target.tagName))return;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' ','w','a','s','d','W','A','S','D','Shift','e','E'].includes(e.key)){if(e.key===' '&&e.target.tagName==='BUTTON')return;e.preventDefault();if((e.key==='e'||e.key==='E'||e.key===' ')&&!e.repeat)talk();else keys.add(e.key.toLowerCase());}if(e.key==='Escape'){closeDialog();toggleSettings(false);}});window.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
@@ -137,13 +88,15 @@ $('run').addEventListener('pointerdown',e=>{e.preventDefault();runPointer=e.poin
 $('interact').onclick=talk;$('closeDialog').onclick=closeDialog;
 function toggleSettings(show){$('settings').hidden=!show;$('settingsToggle').setAttribute('aria-expanded',String(show));clearInput();}$('settingsToggle').onclick=()=>toggleSettings($('settings').hidden);$('settingsClose').onclick=()=>toggleSettings(false);
 function pressed(selector,key){document.querySelectorAll(selector).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[key]===({hero:selected,season})[key])));}
-for(const b of document.querySelectorAll('[data-hero]'))b.onclick=()=>{if(bench)cancelBenchmark('主人公を変更したため計測を中止しました。');selected=b.dataset.hero;active=heroes[selected];pressed('[data-hero]','hero');clearInput();};
+for(const b of document.querySelectorAll('[data-hero]'))b.onclick=()=>{if(bench)cancelBenchmark('主人公を変更したため計測を中止しました。');selected=b.dataset.hero;active=heroes[selected];pressed('[data-hero]','hero');syncHeroControls();clearInput();};
+function syncHeroControls(){const d=active.userData;$('outfit').value=d.look;$('hat').value=d.hat;$('expression').value=d.expression;$('heroName').textContent=d.name+' · '+({reference:'参考画像の服',casual:'カジュアル',outdoor:'アウトドア'})[d.look];}
+for(const id of ['outfit','hat','expression'])$(id).onchange=()=>{active.userData.updateLook({look:$('outfit').value,hat:$('hat').value,expression:$('expression').value});syncHeroControls();};
 for(const b of document.querySelectorAll('[data-season]'))b.onclick=()=>{season=b.dataset.season;pressed('[data-season]','season');appearance();};
 $('time').oninput=()=>{hour=Number($('time').value);appearance();};$('projection').onchange=()=>{projection=$('projection').value;project();};$('framing').onchange=()=>{framing=$('framing').value;resize();positionCamera();};$('pitch').onchange=()=>{pitch=Number($('pitch').value);positionCamera();};$('quality').onchange=()=>{quality=$('quality').value;resize();};$('cap').onchange=()=>{cap=Number($('cap').value);};$('rotateLeft').onclick=()=>{yaw-=Math.PI/4;};$('rotateRight').onclick=()=>{yaw+=Math.PI/4;};
-$('reset').onclick=()=>{if(bench)cancelBenchmark('入口に戻ったため計測を中止しました。');closeDialog();boy.position.set(0,0,4.2);girl.position.set(2.4,0,1.4);active=heroes[selected];follow.set(active.position.x,.9,active.position.z-(framing==='close'?.5:3.2));positionCamera();};
+$('reset').onclick=()=>{if(bench)cancelBenchmark('入口に戻ったため計測を中止しました。');closeDialog();for(const [k,c]of Object.entries(heroes)){c.position.set(heroStarts[k][0],0,heroStarts[k][1]);c.rotation.set(0,0,0);}active=heroes[selected];follow.set(active.position.x,framing==='portrait'?1.3:.9,active.position.z-(framing==='portrait'?0:framing==='close'?.5:3.2));positionCamera();};
 let fpsFrames=0,fpsStart=performance.now(),measuredFPS=0,frameCosts=[],intervals=[],lastDraw=0,frameCount=0;
 function percentile(a,p){if(!a.length)return 0;const b=[...a].sort((x,y)=>x-y);return b[Math.min(b.length-1,Math.floor(b.length*p))];}
-function report(){return {version:'lowpoly-plaza-1',time:new Date().toISOString(),userAgent:navigator.userAgent,viewport:{width:canvas.clientWidth,height:canvas.clientHeight},drawingBuffer:{width:canvas.width,height:canvas.height},fps:measuredFPS,cap,quality,projection,pitch,season,hour,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,frameCPU_p95_ms:percentile(frameCosts,.95),frameInterval_p95_ms:percentile(intervals,.95),collisions:blocked,benchmark:lastBenchmark,limitations:'実行端末の測定値です。Chromebook実機での30FPS保証ではありません。'};}
+function report(){return {version:'lowpoly-plaza-3-reference-four',time:new Date().toISOString(),userAgent:navigator.userAgent,viewport:{width:canvas.clientWidth,height:canvas.clientHeight},drawingBuffer:{width:canvas.width,height:canvas.height},fps:measuredFPS,cap,quality,projection,pitch,season,hour,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,frameCPU_p95_ms:percentile(frameCosts,.95),frameInterval_p95_ms:percentile(intervals,.95),collisions:blocked,benchmark:lastBenchmark,limitations:'実行端末の測定値です。Chromebook実機での30FPS保証ではありません。'};}
 $('report').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(report(),null,2)],{type:'application/json'}));a.download='kotoba-plaza-performance.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
 $('statsToggle').onclick=()=>{$('stats').hidden=!$('stats').hidden;$('statsToggle').setAttribute('aria-expanded',String(!$('stats').hidden));};
 function cancelBenchmark(msg){bench=null;$('benchmark').textContent='20秒の歩行計測';$('benchResult').textContent=msg;}
@@ -151,7 +104,7 @@ $('benchmark').onclick=()=>{if(bench){cancelBenchmark('計測を中止しまし�
 function animateCharacter(c,dt,speed,t){const d=c.userData;d.phase+=dt*(speed>0?Math.max(5,speed*4.5):1);const stride=speed>0?Math.sin(d.phase)*Math.min(.67,speed*.2):0;d.body.position.y=speed>0?Math.abs(Math.sin(d.phase))*.045:Math.sin(t*.0015)*.012;d.limbs[0].rotation.x=stride;d.limbs[1].rotation.x=-stride;d.limbs[2].rotation.x=-stride*.7;d.limbs[3].rotation.x=stride*.7;d.head.rotation.z=speed>0?Math.sin(d.phase)*.018:Math.sin(t*.0008)*.025;d.shadow.position.x=c.position.x;d.shadow.position.z=c.position.z;}
 function draw(t){requestAnimationFrame(draw);if(document.hidden){lastDraw=0;return;}const interval=1000/cap;if(lastDraw&&t-lastDraw<interval-.7)return;const elapsed=lastDraw?t-lastDraw:interval,dt=Math.min(.05,elapsed/1000),start=performance.now();lastDraw=t;frameCount++;
 let ix=0,iy=0;if(!dialog&&!bench){ix=Number(keys.has('arrowright')||keys.has('d'))-Number(keys.has('arrowleft')||keys.has('a'));iy=Number(keys.has('arrowdown')||keys.has('s'))-Number(keys.has('arrowup')||keys.has('w'));if(!ix&&!iy){ix=stick.x;iy=stick.y;}}if(bench){const n=(t-bench.start)/1000;iy=n%8<4?-1:1;ix=n<2?-.22:n<4?.22:0;}
-const magnitude=Math.hypot(ix,iy);if(magnitude>1){ix/=magnitude;iy/=magnitude;}const speed=running||keys.has('shift')?3.7:2.15,dx=(ix*Math.cos(yaw)+iy*Math.sin(yaw))*speed*dt,dz=(-ix*Math.sin(yaw)+iy*Math.cos(yaw))*speed*dt;const distance=move(dx,dz);if(distance>.0001){const desired=Math.atan2(dx,dz),angle=Math.atan2(Math.sin(desired-active.rotation.y),Math.cos(desired-active.rotation.y));active.rotation.y+=angle*Math.min(1,dt*14);}for(const c of [boy,girl,owl])animateCharacter(c,dt,c===active?distance/dt:0,t);positionCamera(dt);
+const magnitude=Math.hypot(ix,iy);if(magnitude>1){ix/=magnitude;iy/=magnitude;}const speed=running||keys.has('shift')?3.7:2.15,dx=(ix*Math.cos(yaw)+iy*Math.sin(yaw))*speed*dt,dz=(-ix*Math.sin(yaw)+iy*Math.cos(yaw))*speed*dt;const distance=move(dx,dz);if(distance>.0001){const desired=Math.atan2(dx,dz),angle=Math.atan2(Math.sin(desired-active.rotation.y),Math.cos(desired-active.rotation.y));active.rotation.y+=angle*Math.min(1,dt*14);}for(const c of [...Object.values(heroes),owl])animateCharacter(c,dt,c===active?distance/dt:0,t);positionCamera(dt);
 if($('cycle').checked){hour=(hour+dt*.12)%24;$('time').value=String(hour);appearance();}if(!dialog&&frameCount%12===0){const n=nearest();$('hint').textContent=bench?'歩行計測中 · '+Math.min(20,Math.floor((t-bench.start)/1000))+' / 20秒':n?n.name+' · E / 話す・調べる':'矢印キー / WASD / スティックで移動';}
 renderer.render(scene,camera);const cost=performance.now()-start;frameCosts.push(cost);intervals.push(elapsed);if(frameCosts.length>300)frameCosts.shift();if(intervals.length>300)intervals.shift();fpsFrames++;
 if(bench){bench.frames++;bench.costs.push(cost);if(bench.last)bench.intervals.push(t-bench.last);bench.last=t;const seconds=(t-bench.start)/1000;if(seconds>=20){lastBenchmark={...bench.settings,seconds,frames:bench.frames,fps:bench.frames/seconds,frameCPU_p95_ms:percentile(bench.costs,.95),frameInterval_p95_ms:percentile(bench.intervals,.95),drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles};cancelBenchmark(`平均 ${lastBenchmark.fps.toFixed(1)} FPS / CPU p95 ${lastBenchmark.frameCPU_p95_ms.toFixed(1)} ms。実機・他の投影方式でも比較できます。`);}}
@@ -159,6 +112,6 @@ if(t-fpsStart>=1000){measuredFPS=fpsFrames*1000/(t-fpsStart);fpsFrames=0;fpsStar
 }
 canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();clearInput();$('error').hidden=false;$('error').textContent='3D描画が中断しました。ページを再読み込みしてください。本編のセーブへの影響はありません。';});
 // Read-only diagnostic surface for reproducible audits; no save or economy mutation.
-window.PlazaStudy=Object.freeze({report,inspect:()=>({selected,positions:{boy:boy.position.toArray(),girl:girl.position.toArray(),owl:owl.position.toArray()},rotation:active.rotation.y,phase:active.userData.phase,legs:active.userData.limbs.slice(0,2).map(l=>l.rotation.x),camera:camera.position.toArray(),target:follow.toArray(),projection,pitch,season,hour,blocked,stick:{...stick},dialog,obstacles:obstacles.map(o=>({...o})),meshCharacters:[boy,girl,owl].map(c=>({kind:c.userData.kind,meshes:(()=>{let n=0;c.traverse(o=>{if(o.isMesh)n++;});return n;})()}))})});
-appearance();resize();positionCamera();requestAnimationFrame(draw);
+window.PlazaStudy=Object.freeze({report,inspect:()=>({selected,positions:Object.fromEntries([...Object.entries(heroes),['owl',owl]].map(([k,c])=>[k,c.position.toArray()])),rotation:active.rotation.y,phase:active.userData.phase,legs:active.userData.limbs.slice(0,2).map(l=>l.rotation.x),camera:camera.position.toArray(),target:follow.toArray(),projection,pitch,season,hour,blocked,stick:{...stick},dialog,obstacles:obstacles.map(o=>({...o})),meshCharacters:[...Object.values(heroes),owl].map(c=>({kind:c.userData.kind,name:c.userData.name,look:c.userData.look,hat:c.userData.hat,expression:c.userData.expression,meshes:(()=>{let n=0;c.traverse(o=>{if(o.isMesh)n++;});return n;})()}))})});
+syncHeroControls();appearance();resize();positionCamera();requestAnimationFrame(draw);
 })();
