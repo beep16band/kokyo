@@ -1,0 +1,75 @@
+{
+  "testEnvironment": "Node + real Three.js geometries; renderer and DOM simulated. Browser WebGL disabled; no GPU/Chromebook measurement.",
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "name": "three real mesh characters; no billboard character planes",
+      "pass": true
+    },
+    {
+      "name": "cardinal movement and diagonal speed match",
+      "pass": true
+    },
+    {
+      "name": "walking animates articulated legs and camera follows",
+      "pass": true
+    },
+    {
+      "name": "dash increases distance and bounds never tunnel",
+      "pass": true
+    },
+    {
+      "name": "three trunks block continuous analog movement",
+      "pass": true
+    },
+    {
+      "name": "shop walls block without clipping",
+      "pass": true
+    },
+    {
+      "name": "teacher collision and contextual conversation pause movement",
+      "pass": true
+    },
+    {
+      "name": "both protagonists can be controlled independently",
+      "pass": true
+    },
+    {
+      "name": "analog magnitude and dead zone are preserved",
+      "pass": true
+    },
+    {
+      "name": "release blur and lost pointer capture prevent stuck movement",
+      "pass": true
+    },
+    {
+      "name": "orthographic and 40/55 degree perspective preserve world positions",
+      "pass": true
+    },
+    {
+      "name": "four seasons and dawn/day/dusk/night alter real scene materials and light",
+      "pass": true
+    },
+    {
+      "name": "quality caps drawing resolution and fits narrow screen",
+      "pass": true
+    },
+    {
+      "name": "benchmark completes and records settings with no claim of hardware certification",
+      "pass": true
+    },
+    {
+      "name": "main game and storage completely isolated",
+      "pass": true
+    },
+    {
+      "name": "bounded geometry and batched static scenery",
+      "pass": true
+    }
+  ],
+  "geometry": {
+    "meshes": 109,
+    "triangles": 25492
+  }
+}
