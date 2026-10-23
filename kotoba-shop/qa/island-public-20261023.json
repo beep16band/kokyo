@@ -1,0 +1,123 @@
+{
+  "passed": 29,
+  "total": 29,
+  "checks": [
+    {
+      "name": "fresh title selects character; new island prologue begins in a tent with 500G and no kitchen",
+      "pass": true
+    },
+    {
+      "name": "legacy migration preserves wallet, house, inventory, story and learning progress",
+      "pass": true
+    },
+    {
+      "name": "clock shows weekday and game time, pauses in menu and advances only game days",
+      "pass": true
+    },
+    {
+      "name": "red turnips can only be bought adjacent to the Sunday vendor, exact costs and counts",
+      "pass": true
+    },
+    {
+      "name": "new five facilities have walkable physical entrances and working counters",
+      "pass": true
+    },
+    {
+      "name": "projects require location, funds and materials, consume exact amounts once",
+      "pass": true
+    },
+    {
+      "name": "sleep produces visitors once, promotions increase arrivals and tourism pays local income",
+      "pass": true
+    },
+    {
+      "name": "housing starts at tent, retains fixed prices, blocks insufficient funds and double kitchen purchase",
+      "pass": true
+    },
+    {
+      "name": "clothes purchase changes shared 2D and 3D sprite, survives reload, rejects a second charge",
+      "pass": true
+    },
+    {
+      "name": "all residents and teachers render animal bodies, with preserved glasses, elegance and muscular grin",
+      "pass": true
+    },
+    {
+      "name": "diving suit is progression and price gated, sea is solid until equipped, river stays solid",
+      "pass": true
+    },
+    {
+      "name": "diving action has a search cue, collects a sea specimen only once and keeps its catalog after eating",
+      "pass": true
+    },
+    {
+      "name": "fruit harvest and chopping consume daily resources, trees regrow after two days",
+      "pass": true
+    },
+    {
+      "name": "eating fruit vegetables and fish restores energy once, never loses food when full",
+      "pass": true
+    },
+    {
+      "name": "recipes require visitor progress and learning; cooking only works in owned home kitchen",
+      "pass": true
+    },
+    {
+      "name": "three catalog tabs retain discoveries without exposing a remote sale action",
+      "pass": true
+    },
+    {
+      "name": "bugs sell only to the specialist, not fish counter, remote menu or shop listing",
+      "pass": true
+    },
+    {
+      "name": "fossil dig is daily and physical; free identification and art purchase supply museum items",
+      "pass": true
+    },
+    {
+      "name": "donations remove one item only, persist and physically display bug fish sea fossil and art",
+      "pass": true
+    },
+    {
+      "name": "personal exhibit requires five donations and appears in the museum",
+      "pass": true
+    },
+    {
+      "name": "festival cannot bypass development tourists stage donation categories or personal exhibit",
+      "pass": true
+    },
+    {
+      "name": "festival final sequence opens once and keeps continued island play after the revelation",
+      "pass": true
+    },
+    {
+      "name": "guide menus handle all animal specialists without invalid indoor area references",
+      "pass": true
+    },
+    {
+      "name": "mobile status, stick, tent, clothes and museum menus fit the viewport",
+      "pass": true
+    },
+    {
+      "name": "mobile touch diving button uses the same one-catch transaction and keeps save",
+      "pass": true
+    },
+    {
+      "name": "offline includes island data animal sprites tent museum and water gating without network",
+      "pass": true
+    },
+    {
+      "name": "weekly turnip stock prevents unlimited buy-sell loops and resets next Sunday",
+      "pass": true
+    },
+    {
+      "name": "built projects visibly change terrain and add named 3D landmarks",
+      "pass": true
+    },
+    {
+      "name": "no runtime errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

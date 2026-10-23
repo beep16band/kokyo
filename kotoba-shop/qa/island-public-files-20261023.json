@@ -1,0 +1,87 @@
+[
+  {
+    "path": "kotoba-shop/ISLAND_RELEASE.md",
+    "match": true,
+    "bytes": 5514
+  },
+  {
+    "path": "kotoba-shop/WORK_PROGRESS.md",
+    "match": true,
+    "bytes": 102210
+  },
+  {
+    "path": "kotoba-shop/assets/town-jp.woff",
+    "match": true,
+    "bytes": 386780
+  },
+  {
+    "path": "kotoba-shop/index.html",
+    "match": true,
+    "bytes": 5778
+  },
+  {
+    "path": "kotoba-shop/island-art.js",
+    "match": true,
+    "bytes": 21031
+  },
+  {
+    "path": "kotoba-shop/island-data.js",
+    "match": true,
+    "bytes": 5157
+  },
+  {
+    "path": "kotoba-shop/island-life.js",
+    "match": true,
+    "bytes": 41809
+  },
+  {
+    "path": "kotoba-shop/island-sea.js",
+    "match": true,
+    "bytes": 6142
+  },
+  {
+    "path": "kotoba-shop/island.css",
+    "match": true,
+    "bytes": 1118
+  },
+  {
+    "path": "kotoba-shop/offline.html",
+    "match": true,
+    "bytes": 6598923
+  },
+  {
+    "path": "kotoba-shop/qa/island-20261023.json",
+    "match": true,
+    "bytes": 3858
+  },
+  {
+    "path": "kotoba-shop/qa/island-feedback-regression-20261023.json",
+    "match": true,
+    "bytes": 1968
+  },
+  {
+    "path": "kotoba-shop/qa/island-stick-regression-20261023.json",
+    "match": true,
+    "bytes": 1600
+  },
+  {
+    "path": "kotoba-shop/sprite-prototype.html",
+    "match": true,
+    "bytes": 5934
+  },
+  {
+    "path": "kotoba-shop/tools/island_quality.cjs",
+    "match": true,
+    "bytes": 22895
+  },
+  {
+    "path": "kotoba-shop/town-quests.js",
+    "match": true,
+    "bytes": 18539
+  },
+  {
+    "path": "kotoba-shop/town-title.js",
+    "match": true,
+    "bytes": 11492
+  }
+]
