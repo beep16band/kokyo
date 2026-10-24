@@ -1,0 +1,18 @@
+{
+  "phase": 2,
+  "status": "verified in local browser",
+  "hero": "boy",
+  "renderer": "software-3d",
+  "checks": [
+    "selected Sora mesh appears on deck with wolf captain",
+    "subdivided sea remains filled in front of boat",
+    "island approaches from far to near over timed sequence",
+    "arrival control is disabled during travel, then enabled"
+  ],
+  "approachProgressObserved": [
+    0,
+    1
+  ],
+  "errors": [],
+  "physicalDevices": "unverified"
+}
