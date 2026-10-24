@@ -1,0 +1,40 @@
+/* Same original 3D rigs in GPU and CPU modes. No save access or external CDN. */
+(function(){
+'use strict';const $=id=>document.getElementById(id),version='hiyori-v8',report={version,errors:[]};let canvas=$('stage'),renderer,software=false,scene,camera,models={},model,angle=0,rotating=false,walking=false,dash=false,phase=0,last=performance.now(),elapsed=0,frames=0,lastFps=0,first=true,target=null;const keys=new Set(),axis={x:0,y:0},url=new URL(location.href);
+function status(text){$('status').textContent='v8 · '+text;}function fail(e){report.errors.push(String(e.message||e));$('loading').hidden=false;$('loading').textContent='3Dの準備で止まりました。\n'+(e.message||e)+'\n再読み込み、または「互換3Dで表示」をお試しください。';status('起動エラー');}
+window.addEventListener('error',e=>fail(e.error||e));window.addEventListener('unhandledrejection',e=>fail(e.reason));
+function recover(){const u=new URL(location.href);u.searchParams.set('display','compatible');if(url.searchParams.get('display')!=='compatible')location.replace(u.href);else fail(Error('互換3Dの描画に失敗しました。'));}
+$('compatible').onclick=recover;
+try{
+ if(!window.THREE||!window.PlazaHeroModels||!window.PlazaSoftware3D)throw Error('必要な3Dファイルが読み込めていません');
+ const T=THREE;software=url.searchParams.get('display')==='compatible';
+ if(!software){try{renderer=new T.WebGLRenderer({canvas,antialias:true,powerPreference:'low-power'});renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));}catch(e){report.webgl=e.message;software=true;const fresh=canvas.cloneNode();canvas.replaceWith(fresh);canvas=fresh;}}
+ if(software)renderer=new PlazaSoftware3D({canvas});
+ renderer.setClearColor('#e1e8df');scene=new T.Scene();scene.background=new T.Color('#e1e8df');camera=new T.PerspectiveCamera(33,1,.1,80);camera.position.set(0,1.65,5.7);camera.lookAt(0,1.13,0);
+ scene.add(new T.HemisphereLight('#fffaf2','#a1b1a4',2));const sun=new T.DirectionalLight('#fff4e4',2);sun.position.set(-3,5,6);scene.add(sun);
+ const floor=new T.Mesh(new T.CylinderGeometry(1.38,1.43,.08,48),new T.MeshPhongMaterial({color:'#f4eee1'}));floor.position.y=-.10;scene.add(floor);
+ const rim=new T.Mesh(new T.TorusGeometry(1.34,.008,6,64),new T.MeshBasicMaterial({color:'#d4b488'}));rim.rotation.x=Math.PI/2;rim.position.y=-.052;scene.add(rim);
+ const factory=PlazaHeroModels.make(T,{compatible:software});const api={batch(){},shadow(){const o=new T.Mesh(new T.CircleGeometry(.38,20),new T.MeshBasicMaterial({color:'#a9afa1',transparent:true,opacity:.22,depthWrite:false}));o.rotation.x=-Math.PI/2;o.position.y=.002;return o;}};
+ function select(kind){if(!models[kind]){status('人物を制作中');models[kind]=factory.build(kind,api);scene.add(models[kind]);}for(const [key,o]of Object.entries(models))o.visible=key===kind;model=models[kind];model.position.set(0,0,0);target=null;angle=0;rotating=false;model.userData.updateLook({look:$('look').value,hat:$('hat').value,expression:$('expression').value});for(const b of document.querySelectorAll('[data-kind]'))b.setAttribute('aria-pressed',String(b.dataset.kind===kind));$('nameBadge').textContent=factory.profiles[kind].name;$('rotate').setAttribute('aria-pressed','false');status(software?'互換3Dで表示しました':'3Dを表示しました');}
+ select('girl');document.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>select(b.dataset.kind));
+ for(const id of ['look','hat','expression'])$(id).onchange=()=>model.userData.updateLook({look:$('look').value,hat:$('hat').value,expression:$('expression').value});
+ document.querySelectorAll('[data-angle]').forEach(b=>b.onclick=()=>{angle=Number(b.dataset.angle);rotating=false;target=null;walking=false;$('rotate').setAttribute('aria-pressed','false');$('walk').setAttribute('aria-pressed','false');});
+ $('rotate').onclick=e=>{rotating=!rotating;e.currentTarget.setAttribute('aria-pressed',String(rotating));};$('walk').onclick=e=>{walking=!walking;e.currentTarget.setAttribute('aria-pressed',String(walking));};$('dash').onclick=e=>{dash=!dash;e.currentTarget.setAttribute('aria-pressed',String(dash));};$('home').onclick=()=>{model.position.set(0,0,0);target=null;};
+ const stick=$('stick');let pointer=null;function stickMove(e){const r=stick.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2,l=Math.hypot(x,y),k=Math.min(32,l)/(l||1);axis.x=x*k/32;axis.y=y*k/32;if(l<7)axis.x=axis.y=0;$('knob').style.transform=`translate(${axis.x*32}px,${axis.y*32}px)`;target=null;}
+ const release=()=>{axis.x=axis.y=0;pointer=null;$('knob').style.transform='';keys.clear();};stick.onpointerdown=e=>{pointer=e.pointerId;stick.setPointerCapture(pointer);stickMove(e);e.preventDefault();};stick.onpointermove=e=>{if(e.pointerId===pointer)stickMove(e);};stick.onpointerup=stick.onpointercancel=stick.onlostpointercapture=release;window.addEventListener('blur',release);document.addEventListener('visibilitychange',()=>{if(document.hidden)release();});
+ window.addEventListener('keydown',e=>{if(e.target.matches('select,input,textarea,button')||!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d','Shift'].includes(e.key))return;e.preventDefault();keys.add(e.key);target=null;});window.addEventListener('keyup',e=>keys.delete(e.key));
+ const ray=new T.Raycaster(),plane=new T.Plane(new T.Vector3(0,1,0),0),point=new T.Vector3();canvas.onpointerdown=e=>{canvas.focus({preventScroll:true});const r=canvas.getBoundingClientRect();ray.setFromCamera(new T.Vector2((e.clientX-r.left)/r.width*2-1,1-(e.clientY-r.top)/r.height*2),camera);if(ray.ray.intersectPlane(plane,point)){target={x:Math.max(-1,Math.min(1,point.x)),z:Math.max(-.65,Math.min(.65,point.z))};}};
+ $('mode').textContent=software?'互換3D':'WebGL 3D';$('compatible').disabled=software;if(software)$('compatible').textContent='互換3Dで表示中';canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();recover();});if(renderer.debug)renderer.debug.onShaderError=recover;
+ let width=0,height=0;
+ function frame(now){try{const dt=Math.min((now-last)/1000,.12);last=now;elapsed+=dt;const w=canvas.clientWidth,h=canvas.clientHeight;if(w!==width||h!==height){width=w;height=h;renderer.setSize(w,h,false);camera.aspect=w/h;camera.position.z=camera.aspect<.8?7.5:5.7;camera.updateProjectionMatrix();}
+ let x=axis.x+(keys.has('ArrowRight')||keys.has('d')?1:0)-(keys.has('ArrowLeft')||keys.has('a')?1:0),z=axis.y+(keys.has('ArrowDown')||keys.has('s')?1:0)-(keys.has('ArrowUp')||keys.has('w')?1:0);if(target){x=target.x-model.position.x;z=target.z-model.position.z;if(Math.hypot(x,z)<.035){target=null;x=z=0;}else{const l=Math.hypot(x,z);x/=l;z/=l;}}
+ const l=Math.hypot(x,z),moving=l>.08,isDash=dash||keys.has('Shift');if(moving){if(l>1){x/=l;z/=l;}model.position.x=Math.max(-1,Math.min(1,model.position.x+x*dt*(isDash?1.7:.85)));model.position.z=Math.max(-.65,Math.min(.65,model.position.z+z*dt*(isDash?1.7:.85)));angle=Math.atan2(x,z);rotating=false;}
+ if(rotating)angle+=dt*.65;const diff=Math.atan2(Math.sin(angle-model.rotation.y),Math.cos(angle-model.rotation.y));model.rotation.y+=diff*Math.min(1,dt*12);
+ PlazaHeroModels.animate(model,{time:now,dt,moving:moving||walking,dash:isDash});renderer.render(scene,camera);
+ if(first){first=false;if(!software){const gl=renderer.getContext();if(gl.isContextLost()){recover();return;}}$('loading').hidden=true;status(software?'互換3Dで表示しました':'3Dを表示しました');}
+ frames++;if(now-lastFps>1500){report.fps=Math.round(frames*1000/(now-lastFps));lastFps=now;frames=0;}
+ Object.assign(report,{mode:software?'software-3d':'webgl',character:model.userData.name,position:{x:+model.position.x.toFixed(3),z:+model.position.z.toFixed(3)},angle:+model.rotation.y.toFixed(3),moving:moving||walking,dash:isDash,look:model.userData.look,hat:model.userData.hat,expression:model.userData.expression,legs:model.userData.limbs.slice(0,2).map(o=>+o.rotation.x.toFixed(3)),knees:model.userData.knees.map(a=>+a[0].rotation.x.toFixed(3)),triangles:renderer.info.render.triangles,viewport:{width,height}});$('diagnostics').textContent=JSON.stringify(report,null,2);
+ requestAnimationFrame(frame);}catch(e){fail(e);}}
+ requestAnimationFrame(frame);
+}catch(e){fail(e);}
+})();

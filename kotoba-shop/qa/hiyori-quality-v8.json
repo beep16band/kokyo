@@ -1,0 +1,47 @@
+{
+  "environment": "Node: real Three geometry / native Canvas / CPU rasterization; DOM inputs simulated. Separate actual browser observations recorded in hiyori-browser-v8.json.",
+  "passed": 10,
+  "total": 10,
+  "checks": [
+    {
+      "name": "WebGL-free startup draws genuine depth-buffered 3D and dismisses loading",
+      "pass": true
+    },
+    {
+      "name": "all four heroes instantiate and all expressions/clothes/hats keep rendering",
+      "pass": true
+    },
+    {
+      "name": "front side and back turn the actual model through four distinct angles",
+      "pass": true
+    },
+    {
+      "name": "walk alternates independent legs and flexes knees",
+      "pass": true
+    },
+    {
+      "name": "dash accelerates travel; diagonal remains normalized",
+      "pass": true
+    },
+    {
+      "name": "analog cancellation and blur stop movement",
+      "pass": true
+    },
+    {
+      "name": "face textures attached to curved head surfaces; no sprites",
+      "pass": true
+    },
+    {
+      "name": "compatibility renderer draws instanced geometry and respects hidden source layers",
+      "pass": true
+    },
+    {
+      "name": "existing economy, learning, input, saves and background builders stay byte-identical",
+      "pass": true
+    },
+    {
+      "name": "all local HTML dependencies exist and no CDN is required",
+      "pass": true
+    }
+  ]
+}
