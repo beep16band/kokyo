@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-24",
+  "revision": "Visible comparison v18",
+  "commit": "9736e686410d7d5c3bec8d25f5f42c77f303b149",
+  "pagesRun": 40085294878,
+  "deployment": "success",
+  "url": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview-v18.html",
+  "publicFiles": {
+    "http200": 8,
+    "matchedTestedSource": 8
+  },
+  "comparison": {
+    "baseline": "Frozen real v17 rig",
+    "after": "Current real v18 rig",
+    "sameCameraAndScale": true,
+    "sameOutfitAndPose": true,
+    "publicFrontComparisonVisible": true,
+    "localSideAnd45ComparisonVisible": true,
+    "local390pxComparisonVisible": true
+  },
+  "changes": {
+    "headWidthReductionVs17": 0.179487,
+    "headHeightReductionVs17": 0.159091,
+    "headDepthRetained": true,
+    "legGeometryAndTransformsUnchanged": true,
+    "worldLightingUpdatesOnRotation": true,
+    "lightingNoAccumulatedDarkening": true
+  },
+  "browser": "Cloud Chrome / actual CPU 3D fallback",
+  "checks": "17/17 plus JS syntax",
+  "remaining": [
+    "Physical smartphone and Chromebook tests",
+    "GPU speed/30 FPS verification"
+  ]
+}
