@@ -1,0 +1,75 @@
+{
+  "releaseCommit": "ff18057e73611ffd48073a1889682b1fac948e28",
+  "pagesRun": 40059520462,
+  "deployment": "success",
+  "codeChecks": "13/13",
+  "reference": "user-supplied style image; no third-party game assets included",
+  "actualBrowser": [
+    "all four new SD designs visually inspected on the public viewer",
+    "public Hiyori side walking: independent opposite leg rotations and knee flex, errors array empty",
+    "new-model front/back and actual original 3D UI portrait atlases inspected locally",
+    "public main existing-save continuation; Hiyori rendered and keyboard movement changed position from [25,10] to [19,10]"
+  ],
+  "fileIntegrity": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "town-heroes.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "town-title.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "prototypes/hero-models.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "prototypes/software-3d.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "prototypes/hiyori-viewer.js",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "prototypes/hiyori-preview.html",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "prototypes/portraits/girl.png",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "prototypes/portraits/boy.png",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "prototypes/portraits/tsuki.png",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "prototypes/portraits/green.png",
+      "status": 200,
+      "matches": true
+    }
+  ],
+  "limits": [
+    "cloud Chrome compatibility 3D only; WebGL disabled in this browser",
+    "physical smartphone and Chromebook performance not measured",
+    "subjective style approval remains with the user"
+  ]
+}
