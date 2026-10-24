@@ -1,0 +1,74 @@
+{
+  "commit": "7e5108b16a689cb0c542e7a8d793e9b29050197c",
+  "pagesRun": 40106367111,
+  "pagesJobs": "build/deploy/report success",
+  "publicURL": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview-v22.html",
+  "publicFiles": [
+    {
+      "path": "kotoba-shop/index.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/town-heroes.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hiyori-preview-v22.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hiyori-preview.css",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hero-models.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hero-models-before-v21.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hiyori-viewer.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/portraits/girl.png",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/portraits/boy.png",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/portraits/tsuki.png",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/portraits/green.png",
+      "status": 200,
+      "matchesTestedSource": true
+    }
+  ],
+  "changes": [
+    "refined original Sora Tsuki and Haruto based on v21 Hiyori",
+    "rounded cranial volumes, gentle colored eyes, fitted clothing and short legs",
+    "individual short, long and swept hair with surface-conforming bangs",
+    "same-camera four-rig front, both profiles, back and 45-degree comparison",
+    "per-character v21/v22 comparison and updated 3D-derived portraits"
+  ],
+  "browser": "Public v22 rendered four genuine CPU-compatible 3D rigs side by side. Locally checked front, both profiles, back, 45 degrees and three-character walking with alternating legs and no errors. Physical phone/Chromebook and GPU unavailable; optional local 390px wrapper returned 404 this turn, so no new mobile-layout claim.",
+  "automated": "24/24 passed",
+  "preserved": "Hiyori portrait byte-identical to v21; original character palettes and hairstyles; existing game/save/background sources. Concurrent Kobun Academy v5.4 main update retained.",
+  "screenshot": "hiyori-four-heroes-public-v22.jpg"
+}
