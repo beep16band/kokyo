@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-24",
+  "revision": "garden-sculpt-v11",
+  "mainCommit": "0bb6454df84aaf318b89d3abb6182238b8e3fbb9",
+  "pagesRun": 40063488932,
+  "deployment": "success",
+  "publicFiles": {
+    "http200": 10,
+    "matchTestedSources": 10
+  },
+  "browser": "Cloud Chrome, WebGL unavailable, actual same-scene CPU 3D fallback",
+  "viewer": {
+    "url": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview.html",
+    "versionBadge": "11 · GARDEN SD",
+    "modelVisible": true,
+    "walk": {
+      "angle": 1.571,
+      "legs": [
+        -0.104,
+        0.104
+      ],
+      "knees": [
+        0.088,
+        0
+      ]
+    },
+    "errors": []
+  },
+  "main": {
+    "url": "https://beep16band.github.io/kokyo/kotoba-shop/",
+    "hero": "ひより",
+    "display": "compatible-3d",
+    "before": [
+      24,
+      15
+    ],
+    "after": [
+      19,
+      15
+    ],
+    "backgroundVisible": true,
+    "learningSetupAndStoryAdvance": true
+  },
+  "localBrowser": {
+    "allFourModelsVisible": true,
+    "hiyoriFrontSideRear": true,
+    "dash": {
+      "legs": [
+        -0.56,
+        0.56
+      ],
+      "knees": [
+        0.476,
+        0
+      ]
+    },
+    "oldSaveSoraLoaded": true,
+    "movementBefore": [
+      24,
+      15
+    ],
+    "movementAfter": [
+      19,
+      15
+    ]
+  },
+  "automatedChecks": "13/13, hiyori-quality-v11.json",
+  "limits": [
+    "Physical smartphone and Chromebook untested",
+    "WebGL GPU and 30 FPS unverified"
+  ]
+}
