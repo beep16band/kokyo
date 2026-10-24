@@ -109,6 +109,7 @@ function build(kind,api){const p=profiles[kind];if(!p)throw Error('Unknown chara
  head.position.y=1.735;head.scale.set(1.12,1.08,1.12);
  for(const outfit of outfits)outfit.scale.set(.94,.84,.96);
  for(let i=0;i<limbs.length;i++){const limb=limbs[i];limb.position.x*=.96;limb.position.y*=i<2?.80:.84;limb.scale.set(1.04,.80,1.04);}
+ const neck=orb(body,skin,0,1.19,0,.115,.13,.105);neck.userData.part='neck';
  // Batch the common limbs without mixing wardrobe variants.
  const shadow=api.shadow(0,0,.49,.34);root.add(shadow);
  root.userData={kind,body,head,limbs,knees,shadow,phase:0,moving:0,name:p.name,model:'two-head-3d',proportions:'2-head',look:'reference',hat:'base',expression:'normal',updateLook};
