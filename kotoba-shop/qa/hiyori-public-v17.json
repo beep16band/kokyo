@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-24",
+  "revision": "Balanced volume v17",
+  "commit": "f9b51cf243e6107f37c93bd28011b70374b53296",
+  "pagesRun": 40084317549,
+  "deployment": "success",
+  "url": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview.html",
+  "publicFiles": {
+    "http200": 6,
+    "matchedTestedSource": 6
+  },
+  "changes": {
+    "headScaleBefore": [
+      0.88,
+      1,
+      1.08
+    ],
+    "headScaleAfter": [
+      0.78,
+      0.88,
+      1.16
+    ],
+    "rearCranialDepthBefore": 0.33,
+    "rearCranialDepthAfter": 0.41,
+    "rearBobDepthBefore": 0.374,
+    "rearBobDepthAfter": 0.43,
+    "torsoDepthMultiplier": 1.25,
+    "shortLegsUnchanged": "verified vertices and world transforms against v16"
+  },
+  "browser": "Cloud Chrome / actual CPU 3D fallback",
+  "publicFiveViews": [
+    "front",
+    "left",
+    "right",
+    "back",
+    "45 degrees"
+  ],
+  "localWalkInspected": true,
+  "checks": "16/16 plus JS syntax",
+  "remaining": [
+    "Physical smartphone and Chromebook tests",
+    "GPU speed/30 FPS verification"
+  ]
+}
