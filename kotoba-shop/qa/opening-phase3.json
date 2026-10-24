@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-25",
+  "phase": 3,
+  "browser": "cloud Chrome",
+  "renderer": "software-3d",
+  "hero": "girl",
+  "verified": [
+    "sky to boat to approaching island to dock",
+    "welcome dialogue steps 7 through 15",
+    "island development, tourism, festival and museum goals",
+    "last button exits to preview selector",
+    "opening diagnostics errors empty"
+  ],
+  "notVerified": [
+    "main game integration",
+    "390px viewport",
+    "physical mobile and Chromebook",
+    "GPU",
+    "public deployment"
+  ]
+}
