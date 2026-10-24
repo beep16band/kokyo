@@ -1,0 +1,71 @@
+{
+  "environment": "Node: real Three geometry / native Canvas / CPU rasterization; DOM inputs simulated. Hiyori smaller head and deeper cranial/body volumes v17; actual browser observations are noted in prototypes/README.md.",
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "name": "WebGL-free startup draws genuine depth-buffered 3D and dismisses loading",
+      "pass": true
+    },
+    {
+      "name": "all four heroes instantiate and all expressions/clothes/hats keep rendering",
+      "pass": true
+    },
+    {
+      "name": "front side and back turn the actual model through four distinct angles",
+      "pass": true
+    },
+    {
+      "name": "walk alternates independent legs and flexes knees",
+      "pass": true
+    },
+    {
+      "name": "dash accelerates travel; diagonal remains normalized",
+      "pass": true
+    },
+    {
+      "name": "analog cancellation and blur stop movement",
+      "pass": true
+    },
+    {
+      "name": "face textures attached to curved head surfaces; no sprites",
+      "pass": true
+    },
+    {
+      "name": "compatibility renderer draws instanced geometry and respects hidden source layers",
+      "pass": true
+    },
+    {
+      "name": "CPU compatibility renderer preserves the new cel vertex shading",
+      "pass": true
+    },
+    {
+      "name": "existing economy, learning, input, saves and background builders stay byte-identical",
+      "pass": true
+    },
+    {
+      "name": "four heroes have an approximately two-head anatomical silhouette",
+      "pass": true
+    },
+    {
+      "name": "Hiyori head is smaller and deeper, torso is thicker, while the short legs stay unchanged",
+      "pass": true
+    },
+    {
+      "name": "Hiyori bob has balanced side depth and face maps conform closely to the cranial mesh",
+      "pass": true
+    },
+    {
+      "name": "foot contact shadows follow animated soles, stay flat and fade when lifted in every outfit",
+      "pass": true
+    },
+    {
+      "name": "title portraits come from the new 3D rigs in four-pose transparent PNG atlases",
+      "pass": true
+    },
+    {
+      "name": "all local HTML dependencies exist and no CDN is required",
+      "pass": true
+    }
+  ]
+}

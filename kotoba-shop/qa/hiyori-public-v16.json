@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-24",
+  "revision": "Hiyori soft body v16",
+  "commit": "c14884c547153f819342c196242283a5a814d846",
+  "pagesRun": 40083726657,
+  "deployment": "success",
+  "url": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview.html",
+  "publicFiles": {
+    "http200": 6,
+    "matchedTestedSource": 6
+  },
+  "browser": "Cloud Chrome real CPU 3D fallback",
+  "changes": [
+    "rounded torso and sleeves",
+    "neck/armpit occlusion",
+    "fitted seam and ribbon",
+    "animated flat foot-contact shadows",
+    "viewer ground/pedestal aligned"
+  ],
+  "publicWalk": {
+    "angle": 0.785,
+    "legs": [
+      0.324,
+      -0.324
+    ],
+    "knees": [
+      0,
+      0.276
+    ],
+    "modelErrors": []
+  },
+  "localFiveViewComparisonInspected": true,
+  "localDashInspected": true,
+  "checks": "16/16 plus JS syntax",
+  "remaining": [
+    "Physical smartphone and Chromebook tests",
+    "GPU speed/30 FPS verification"
+  ]
+}

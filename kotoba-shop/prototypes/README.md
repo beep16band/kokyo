@@ -1,3 +1,15 @@
+# Balanced head and side volume / revision 17
+
+User correction: head too large; head and torso appear flat from the side.
+
+Hiyori head width/height reduced about 11–12%. Rear cranial and bob depth increased and front/back scale adjusted to give a rounded side silhouette. The head is lowered slightly so the smaller head still meets the neck. Torso depth increased 25%, with a thicker neck and slightly deeper arms. Short legs, narrow shoulders, outfit palette and all lower-body geometry/ground contact are unchanged.
+
+Regression comparison against published revision 16 verifies smaller head width/height, increased cranial/torso depth and identical leg vertices/world transforms. The general model-height check now allows 1.9–2.8 rather than 2.0–2.8 because the head is intentionally smaller. Face-map attachment, walking, shadows, save/background checks remain enabled. Physical-device/GPU speed is unverified.
+
+Cache/badge: `17-volume` / `17 · BALANCED VOLUME`.
+
+Previous release notes follow.
+
 # Rounded body and contact shading / revision 16
 
 Hiyori refinement only: rounded jacket and sleeve cross-sections replace the coarse loft rings. Narrow shoulders and short legs retain their positions/length. The jacket has a softly rounded abdomen and the seam/ribbon follow its depth instead of hovering ahead of the chest. Subtle vertex occlusion under the chin and armpits preserves the existing palette.
