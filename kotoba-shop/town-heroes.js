@@ -52,3 +52,6 @@ Town3D.area='';TownInterior.key='';
 function townReleaseHeroTextures(root){if(root)root.traverse(o=>o.userData.releaseHero?.());}
 const releaseBeforeMeshHeroes=town3DReleaseWorld;town3DReleaseWorld=function(){townReleaseHeroTextures(Town3D.world);releaseBeforeMeshHeroes();};
 const interiorReleaseBeforeMeshHeroes=townInteriorRelease;townInteriorRelease=function(){townReleaseHeroTextures(TownInterior.root);interiorReleaseBeforeMeshHeroes();};
+
+// UI-only portraits are rendered from these same original 3D models.
+const TownHeroPortraits=Object.fromEntries(['girl','boy','tsuki','green'].map(kind=>{const image=new Image();image.src='./prototypes/portraits/'+kind+'.png?v=10-sd-reset';return [kind,image];}));
