@@ -1,0 +1,49 @@
+{
+  "commit": "36c9f08a14569948648e804735f92010e52ac816",
+  "pagesRun": 40086541780,
+  "pagesJobs": "build/deploy/report success",
+  "publicURL": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview-v19.html",
+  "publicFiles": [
+    {
+      "path": "kotoba-shop/index.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/town-heroes.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hiyori-preview-v19.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hero-models.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hero-models-before-v18.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hiyori-viewer.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/portraits/girl.png",
+      "status": 200,
+      "matchesTestedSource": true
+    }
+  ],
+  "browser": "Public v19 rendered genuine CPU-compatible 3D and before/after front/side comparison; local five angles, walking and 390px iframe checked. Physical phone/Chromebook and GPU unavailable.",
+  "automated": "18/18 passed",
+  "screenshots": [
+    "hiyori-fringe-public-v19.jpg",
+    "hiyori-face-public-v19.jpg"
+  ]
+}
