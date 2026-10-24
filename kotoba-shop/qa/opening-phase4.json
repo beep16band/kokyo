@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-25",
+  "browser": "Cloud Chrome",
+  "renderer": "software-3d",
+  "nativeChecks": "9/9",
+  "verified": [
+    "fresh title start launches chosen Hiyori sky",
+    "skip returns to playable game",
+    "reload continue retains Hiyori day1 500G and bypasses opening",
+    "journal replay through all scenes and normal finish",
+    "replay preserves 06:15 energy99 500G",
+    "native Enter advance and Tab Enter skip",
+    "390x844 iframe all scenes, final text, goal and buttons fit, completion returns"
+  ],
+  "limitations": [
+    "not physical mobile or Chromebook",
+    "GPU not available in cloud"
+  ],
+  "publication": "pending"
+}
