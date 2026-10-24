@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-24",
+  "revision": "Hiyori sculpt v15",
+  "commit": "834e0aad0e03dfe971afba4956bdb603051c537f",
+  "pagesRun": 40082953296,
+  "deployment": "success",
+  "url": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview.html",
+  "publicFiles": {
+    "http200": 8,
+    "matchedTestedSource": 8
+  },
+  "browser": "Cloud Chrome / real CPU 3D fallback",
+  "publicFiveViews": [
+    "front",
+    "left",
+    "right",
+    "back",
+    "45 degrees"
+  ],
+  "comparisonButtonWorks": true,
+  "local390pxIframe": {
+    "canvasWidth": 345,
+    "canvasHeight": 504,
+    "modelErrors": []
+  },
+  "localWalk": {
+    "angle": 0.785,
+    "legs": [
+      0.365,
+      -0.365
+    ],
+    "knees": [
+      0,
+      0.31
+    ],
+    "modelErrors": []
+  },
+  "checks": "15/15 plus JS syntax",
+  "remaining": [
+    "Physical smartphone and Chromebook tests",
+    "GPU speed/30 FPS verification"
+  ]
+}

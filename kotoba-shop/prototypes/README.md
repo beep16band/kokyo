@@ -1,3 +1,15 @@
+# Rounded body and contact shading / revision 16
+
+Hiyori refinement only: rounded jacket and sleeve cross-sections replace the coarse loft rings. Narrow shoulders and short legs retain their positions/length. The jacket has a softly rounded abdomen and the seam/ribbon follow its depth instead of hovering ahead of the chest. Subtle vertex occlusion under the chin and armpits preserves the existing palette.
+
+Two lightweight flat foot-contact shadows follow the animated sole probes and fade as feet lift. They stay on the ground plane during walking/dashing and work with all three outfits, without adding textures, sprites or GPU shadow maps. The existing overall shadow remains.
+
+Validation: syntax checks; existing model/render/input/save/background regressions plus a sole-shadow test for tracking, flatness and lift fading in every outfit. Five-view browser comparison inspected with the CPU renderer. Physical smartphone/Chromebook/GPU performance remains unverified. Main game, learning and save logic are unchanged.
+
+Version/cache: `16-soft-body` / `16 · SOFT BODY`.
+
+Previous release notes follow.
+
 # Hiyori cranial and bob reconstruction / revision 15
 
 - Hiyori only: rebuilt rounded cranial mesh with shallower rear cranium and continuous cheek/jaw; facial maps now conform within 0.014 world units of the face (raycast regression check). Rounded skull surface also positions nose, mouth and brows.
