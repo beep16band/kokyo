@@ -1,0 +1,55 @@
+{
+  "commit": "4dfbac9941dc0f442c89dfecf1015870deeba385",
+  "pagesRun": 40103409965,
+  "pagesJobs": "build/deploy/report success",
+  "publicURL": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview-v21.html",
+  "publicFiles": [
+    {
+      "path": "kotoba-shop/index.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/town-heroes.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hiyori-preview-v21.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hero-models.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hero-models-before-v20.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hiyori-viewer.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/portraits/girl.png",
+      "status": 200,
+      "matchesTestedSource": true
+    }
+  ],
+  "changes": [
+    "independent chest, back, abdomen and waist profiles",
+    "narrow sloping shoulders and overlapping curved sleeve caps",
+    "open annular cuffs, connected wrists and hands",
+    "fitted chest-surface collar, ribbon and placket",
+    "slightly flared thick jacket hem",
+    "waist-to-hem skirt flare, gradual pleats and controlled thick hem"
+  ],
+  "browser": "Public v21 rendered genuine CPU-compatible 3D and v20/v21 same-scale side comparison. Local front, both profiles, back, 45 degrees and walking checked. Physical phone/Chromebook and GPU unavailable.",
+  "automated": "21/21 passed",
+  "preserved": "v20 head, short legs, approximately two-head silhouette, original outfit colors; existing game/save/background source unchanged",
+  "screenshot": "hiyori-tailored-public-v21.jpg"
+}
