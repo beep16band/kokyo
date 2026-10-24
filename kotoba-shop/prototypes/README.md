@@ -6,7 +6,7 @@ Two lightweight flat foot-contact shadows follow the animated sole probes and fa
 
 Validation: syntax checks; existing model/render/input/save/background regressions plus a sole-shadow test for tracking, flatness and lift fading in every outfit. Five-view browser comparison inspected with the CPU renderer. Physical smartphone/Chromebook/GPU performance remains unverified. Main game, learning and save logic are unchanged.
 
-Version/cache: `16-soft-body` / `16 · SOFT BODY`.
+Viewer pedestal top is now at y=0, aligned with the ground shadows (previous top was -0.06). Version/cache: `16-soft-body-2` / `16 · SOFT BODY`.
 
 Previous release notes follow.
 

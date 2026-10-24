@@ -12,8 +12,8 @@ try{
  if(software)renderer=new PlazaSoftware3D({canvas});
  renderer.setClearColor('#e1e8df');scene=new T.Scene();scene.background=new T.Color('#e1e8df');camera=new T.PerspectiveCamera(33,1,.1,80);camera.position.set(0,1.65,5.7);camera.lookAt(0,1.13,0);
  scene.add(new T.HemisphereLight('#fffaf2','#a1b1a4',2));const sun=new T.DirectionalLight('#fff4e4',2);sun.position.set(-3,5,6);scene.add(sun);
- const floor=new T.Mesh(new T.CylinderGeometry(1.38,1.43,.08,48),new T.MeshPhongMaterial({color:'#f4eee1'}));floor.position.y=-.10;scene.add(floor);
- const rim=new T.Mesh(new T.TorusGeometry(1.34,.008,6,64),new T.MeshBasicMaterial({color:'#d4b488'}));rim.rotation.x=Math.PI/2;rim.position.y=-.052;scene.add(rim);
+ const floor=new T.Mesh(new T.CylinderGeometry(1.38,1.43,.08,48),new T.MeshPhongMaterial({color:'#f4eee1'}));floor.position.y=-.04;scene.add(floor);
+ const rim=new T.Mesh(new T.TorusGeometry(1.34,.008,6,64),new T.MeshBasicMaterial({color:'#d4b488'}));rim.rotation.x=Math.PI/2;rim.position.y=.008;scene.add(rim);
  const factory=PlazaHeroModels.make(T,{compatible:software});const api={batch(){},shadow(){const o=new T.Mesh(new T.CircleGeometry(.38,20),new T.MeshBasicMaterial({color:'#a9afa1',transparent:true,opacity:.22,depthWrite:false}));o.rotation.x=-Math.PI/2;o.position.y=.002;return o;}};
  function select(kind){if(!models[kind]){status('人物を制作中');models[kind]=factory.build(kind,api);scene.add(models[kind]);}for(const [key,o]of Object.entries(models))o.visible=key===kind;model=models[kind];model.position.set(0,0,0);target=null;angle=0;rotating=false;model.userData.updateLook({look:$('look').value,hat:$('hat').value,expression:$('expression').value});for(const b of document.querySelectorAll('[data-kind]'))b.setAttribute('aria-pressed',String(b.dataset.kind===kind));$('nameBadge').textContent=factory.profiles[kind].name;$('rotate').setAttribute('aria-pressed','false');status(software?'互換3Dで表示しました':'3Dを表示しました');}
  select('girl');document.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>select(b.dataset.kind));
