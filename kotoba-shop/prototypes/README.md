@@ -1,3 +1,25 @@
+# Garden SD / revision 11
+
+New sculpted protagonist geometry created from scratch following the latest garden SD reference. No character assets were imported or copied. Previous generators are retained only in git history; the public API, names and save IDs are stable.
+
+## Changes
+
+- `hero-models.js`: new continuous cheek/jaw face, almond eyes with painted white reflections, small dimensional nose, curved solid forelocks and continuous hair cap, tiny articulated body, layered collar, cuffs and pleated hems. Rounded sections taper into pointed hair tips; front, side and rear are actual geometry.
+- Four original palettes/silhouettes: Hiyori rose bob, Sora navy short hair, Tsuki sage long hair, Haruto honey swept hair. No default hats/backpacks. Optional clothes/hats and expressions retained.
+- Smooth baked vertex lighting works with both renderer paths. No 2D character fallback. Existing background builders, learning, saves, economy and controls were not changed.
+- New UI portrait atlases rendered from the same rigs. Main entry, viewer and portrait cache keys updated to `11-garden`.
+
+## Verification
+
+`node kotoba-shop/tools/render_sd_portraits.cjs`
+`node kotoba-shop/tools/hiyori_quality.cjs`
+
+13/13 automated checks passed: genuine CPU 3D startup, four characters and wardrobe states, four rotations, alternating legs/bending knees, dash/diagonals, stick release, curved face maps, vertex shading, geometry instancing, unchanged game/background code, two-head proportions/connected neck, UI atlases, local dependencies.
+
+Cloud Chrome local QA: all four models visible, Hiyori front/side/rear inspected, Haruto walk shows opposite leg rotations and bending knee; no model errors. Existing main save loaded with Sora, background and protagonist visible. The environment has no WebGL context, so this verifies the real CPU 3D fallback only. Physical smartphones, Chromebook GPU behavior and 30 FPS remain unverified; no device performance claim.
+
+Earlier release notes follow for history only.
+
 # 3Dキャラクター改修 — 現行v10（2026-10-24）
 
 

@@ -1,0 +1,59 @@
+{
+  "environment": "Node: real Three geometry / native Canvas / CPU rasterization; DOM inputs simulated. New garden sculpt v11; actual browser observations are noted in prototypes/README.md.",
+  "passed": 13,
+  "total": 13,
+  "checks": [
+    {
+      "name": "WebGL-free startup draws genuine depth-buffered 3D and dismisses loading",
+      "pass": true
+    },
+    {
+      "name": "all four heroes instantiate and all expressions/clothes/hats keep rendering",
+      "pass": true
+    },
+    {
+      "name": "front side and back turn the actual model through four distinct angles",
+      "pass": true
+    },
+    {
+      "name": "walk alternates independent legs and flexes knees",
+      "pass": true
+    },
+    {
+      "name": "dash accelerates travel; diagonal remains normalized",
+      "pass": true
+    },
+    {
+      "name": "analog cancellation and blur stop movement",
+      "pass": true
+    },
+    {
+      "name": "face textures attached to curved head surfaces; no sprites",
+      "pass": true
+    },
+    {
+      "name": "compatibility renderer draws instanced geometry and respects hidden source layers",
+      "pass": true
+    },
+    {
+      "name": "CPU compatibility renderer preserves the new cel vertex shading",
+      "pass": true
+    },
+    {
+      "name": "existing economy, learning, input, saves and background builders stay byte-identical",
+      "pass": true
+    },
+    {
+      "name": "four heroes have an approximately two-head anatomical silhouette",
+      "pass": true
+    },
+    {
+      "name": "title portraits come from the new 3D rigs in four-pose transparent PNG atlases",
+      "pass": true
+    },
+    {
+      "name": "all local HTML dependencies exist and no CDN is required",
+      "pass": true
+    }
+  ]
+}
