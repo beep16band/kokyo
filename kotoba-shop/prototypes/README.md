@@ -1,3 +1,15 @@
+# Hiyori cranial and bob reconstruction / revision 15
+
+- Hiyori only: rebuilt rounded cranial mesh with shallower rear cranium and continuous cheek/jaw; facial maps now conform within 0.014 world units of the face (raycast regression check). Rounded skull surface also positions nose, mouth and brows.
+- New continuous scalp-hugging bob shell, reduced rear depth, inward tucked hem, finer rounded solid forelocks; removed the old raised rear hair plates. Dedicated named hair group retains future replacement structure.
+- Hiyori torso has 16% more front/back depth. Rounded shoe upper, flat sole and instep strap preserve the short legs, ground plane, outfit and palette. Shared character vertex lighting has stronger soft shading; existing backgrounds and game logic unchanged.
+- Viewer: 45-degree control, one-click five-direction comparison using the same 3D scene, optional 390px iframe QA page `hiyori-phone.html`.
+- 15/15 automated checks passed. JS syntax checks passed. Cloud Chrome visually checked front/left/right/back/45-degree comparison and 390px layout. No model errors; real CPU 3D renderer used because GPU WebGL is unavailable. Physical phone/Chromebook/GPU performance is unverified.
+
+Changed source: `hero-models.js`, viewer HTML/CSS/JS, entry/cache integration and 3D portrait atlases. Save/learning/background builders remain unchanged. Public release badge: `15 · HIYORI SCULPT`.
+
+Previous release notes follow.
+
 # Short legs and full lower cheeks / revision 14
 
 User correction: shorten the legs and make the lower cheeks fuller.

@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-24",
+  "revision": "garden-sculpt-v14",
+  "mainCommit": "81ae02812a3485f581d6d2370564b2bf00ff29c6",
+  "pagesRun": 40067315209,
+  "deployment": "success",
+  "publicFiles": {
+    "http200": 9,
+    "matchTestedSource": 9
+  },
+  "changes": {
+    "hipToSoleBefore": 0.618,
+    "hipToSoleAfter": 0.506,
+    "shoeShapePreserved": true,
+    "soleHeightUnchangedAllOutfits": true,
+    "fullerLowerCheeks": "continuous face geometry, checked against revision 13",
+    "headWidthAndHeightPreserved": true
+  },
+  "browser": "Cloud Chrome actual CPU 3D fallback",
+  "publicViewer": {
+    "url": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview.html",
+    "badge": "14 · SOFT CHEEKS",
+    "frontVisible": true,
+    "sideWalk": {
+      "angle": 1.571,
+      "legs": [
+        0.363,
+        -0.363
+      ],
+      "knees": [
+        0,
+        0.308
+      ]
+    },
+    "errors": []
+  },
+  "localMain": {
+    "oldSaveSoraVisibleWithBackground": true,
+    "positionBefore": [
+      22,
+      15
+    ],
+    "positionAfter": [
+      24.464,
+      15
+    ]
+  },
+  "localDash": {
+    "legs": [
+      -0.399,
+      0.399
+    ],
+    "knees": [
+      0.339,
+      0
+    ]
+  },
+  "automated": "14/14",
+  "limits": [
+    "Physical smartphone / Chromebook and GPU 30 FPS unverified"
+  ]
+}
