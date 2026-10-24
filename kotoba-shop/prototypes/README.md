@@ -1,3 +1,16 @@
+# Round face / revision 13
+
+User correction: narrow the broad face, give it fuller cheeks, do not lengthen the legs.
+
+- Head/hair horizontal scale 0.88, depth 1.08, height unchanged. Eye maps, eyebrows, ears and hats follow the same 3D head transform.
+- Reduced lower-jaw taper from 0.20 to 0.11 for a softer, rounder cheek-to-chin transition. The same surface function positions facial decals, avoiding disconnected painted features.
+- All body, arm, leg and clothing geometry/transforms remain exactly identical to published revision 12. No leg length or waist/sole changes.
+- UI portrait atlases regenerated from the updated 3D rigs; entry and viewer caches use `13-round-face` / `13 · ROUND FACE`.
+
+Validation: existing 13 checks plus a direct geometry comparison against published revision 12. The new check verifies a narrower/deeper face with unchanged height and byte-identical non-head mesh vertices/world transforms for all four characters, including legs and all outfits. Cloud Chrome front and side inspected; actual CPU 3D fallback. GPU/physical phone/Chromebook performance remains unverified.
+
+Previous release notes follow.
+
 # Petite SD / revision 12
 
 User correction: shorten the torso and soften the broad square shoulders.
