@@ -1,7 +1,7 @@
 /* Same original 3D rigs in GPU and CPU modes. No save access or external CDN. */
 (function(){
-'use strict';const $=id=>document.getElementById(id),version='garden-sculpt-v11',report={version,errors:[]};let canvas=$('stage'),renderer,software=false,scene,camera,models={},model,angle=0,rotating=false,walking=false,dash=false,phase=0,last=performance.now(),elapsed=0,frames=0,lastFps=0,first=true,target=null;const keys=new Set(),axis={x:0,y:0},url=new URL(location.href);
-function status(text){$('status').textContent='v11 · '+text;}function fail(e){report.errors.push(String(e.message||e));$('loading').hidden=false;$('loading').textContent='3Dの準備で止まりました。\n'+(e.message||e)+'\n再読み込み、または「互換3Dで表示」をお試しください。';status('起動エラー');}
+'use strict';const $=id=>document.getElementById(id),version='garden-sculpt-v12',report={version,errors:[]};let canvas=$('stage'),renderer,software=false,scene,camera,models={},model,angle=0,rotating=false,walking=false,dash=false,phase=0,last=performance.now(),elapsed=0,frames=0,lastFps=0,first=true,target=null;const keys=new Set(),axis={x:0,y:0},url=new URL(location.href);
+function status(text){$('status').textContent='v12 · '+text;}function fail(e){report.errors.push(String(e.message||e));$('loading').hidden=false;$('loading').textContent='3Dの準備で止まりました。\n'+(e.message||e)+'\n再読み込み、または「互換3Dで表示」をお試しください。';status('起動エラー');}
 window.addEventListener('error',e=>fail(e.error||e));window.addEventListener('unhandledrejection',e=>fail(e.reason));
 function recover(){const u=new URL(location.href);u.searchParams.set('display','compatible');if(url.searchParams.get('display')!=='compatible')location.replace(u.href);else fail(Error('互換3Dの描画に失敗しました。'));}
 $('compatible').onclick=recover;

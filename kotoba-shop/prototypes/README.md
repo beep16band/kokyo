@@ -1,3 +1,16 @@
+# Petite SD / revision 12
+
+User correction: shorten the torso and soften the broad square shoulders.
+
+- Upper garment height reduced from 0.63 to 0.47 model units (25.4%); head/neck lowered by 0.08 and waist raised by 0.08. Face and hair geometry are unchanged. This intentionally gives approximately 1.9 anatomical heads, within the requested roughly two-head silhouette. The proportion check now accepts 1.88–2.10 heads instead of 1.95–2.10.
+- Arm pivots moved inward from ±0.279 to ±0.225, raised sleeve corners replaced with a rounded tapered shoulder cap, upper shirt rings narrowed, sleeves and hands shortened to match. Arm animation uses the same narrower resting angle.
+- Skirt/shorts waist and hip adjusted together. Knee world height and soles remain unchanged, preserving ground contact. All three clothing variants use the new proportions; portrait atlases regenerated for all four heroes.
+- Cache keys are `12-petite`; viewer header `12 · PETITE SD`.
+
+Validation: 13/13 existing geometry/render/input/integration checks pass. Local Cloud Chrome: Hiyori front and side walk visible with opposite leg rotations and no model errors. GPU/physical smartphone/Chromebook performance remains unverified (browser uses actual CPU 3D compatibility renderer).
+
+Previous release notes follow.
+
 # Garden SD / revision 11
 
 New sculpted protagonist geometry created from scratch following the latest garden SD reference. No character assets were imported or copied. Previous generators are retained only in git history; the public API, names and save IDs are stable.
