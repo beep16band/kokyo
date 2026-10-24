@@ -1,6 +1,6 @@
 /* Display adapter. Existing kind, progress, money and save keys remain valid. */
 TownSprites.enabled=false;
-const TownHeroes={version:17,names:{girl:'ひより',boy:'そら',tsuki:'つき',green:'はると'}};
+const TownHeroes={version:18,names:{girl:'ひより',boy:'そら',tsuki:'つき',green:'はると'}};
 state.avatar.hero=Object.hasOwn(TownHeroes.names,state.avatar.hero)?state.avatar.hero:state.avatar.kind;
 const characterBeforeMeshHeroes=town3DCharacter,animateBeforeMeshHeroes=town3DAnimate;
 town3DCharacter=function(kind,color,name){
@@ -54,4 +54,4 @@ const releaseBeforeMeshHeroes=town3DReleaseWorld;town3DReleaseWorld=function(){t
 const interiorReleaseBeforeMeshHeroes=townInteriorRelease;townInteriorRelease=function(){townReleaseHeroTextures(TownInterior.root);interiorReleaseBeforeMeshHeroes();};
 
 // UI-only portraits are rendered from these same original 3D models.
-const TownHeroPortraits=Object.fromEntries(['girl','boy','tsuki','green'].map(kind=>{const image=new Image();image.src='./prototypes/portraits/'+kind+'.png?v=17-volume';return [kind,image];}));
+const TownHeroPortraits=Object.fromEntries(['girl','boy','tsuki','green'].map(kind=>{const image=new Image();image.src='./prototypes/portraits/'+kind+'.png?v=18-visible-compare';return [kind,image];}));

@@ -1,3 +1,15 @@
+# Visible comparison and world lighting / revision 18
+
+The previous changes were too subtle when viewed separately. A frozen real v17 rig is now rendered beside v18 with the same camera, world scale, outfit and pose; front/right/45-degree/back controls redraw both views. This is a comparison of genuine 3D geometry, not edited images. A new `hiyori-preview-v18.html` URL avoids reopening an old cached HTML tab.
+
+Hiyori head width reduced 18% and height 16% relative to v17; depth retained, so the head is smaller and rounder rather than flattened. Lowered head maintains neck contact. Body and short leg geometry are unchanged.
+
+Found an additional cause of flat appearance: previously baked light rotated with the character. Hiyori now recomputes smooth vertex lighting from a fixed world direction, with separate warm skin fill and retained contact occlusion, identically usable in GPU and CPU renderers. Other characters retain their prior shading. Five-direction previews also update the world lighting for every angle.
+
+Regression checks cover smaller head/unchanged legs, rotation-dependent lighting, no cumulative darkening, face-map attachment, input and existing learning/save/background code. Physical smartphone/Chromebook/GPU speed remains unverified. New badge/cache: `18 · BEFORE / AFTER` / `18-visible-compare`.
+
+Previous release notes follow.
+
 # Balanced head and side volume / revision 17
 
 User correction: head too large; head and torso appear flat from the side.
