@@ -1,3 +1,10 @@
+## v19 — 額に沿う前髪と優しい表情（2026-10-24）
+- 頭部・身体の大きさは v18 を維持。ひよりの前髪7束を顔面曲率へ投影し、毛先の浮きと側面の張り出しを削減。後頭部・背景・ゲーム機能は変更しない。
+- ひより専用の丸い目蓋、暖色の虹彩、広い瞳孔、柔らかい眉・口線。ほかのキャラクターの顔は維持。
+- v18 の実モデルを凍結し、同じカメラで v19 と比較可能。専用URL `hiyori-preview-v19.html`。
+- ブラウザで正面・左右・背面・45度と v18/v19 側面比較を確認。歩行中のモデル描画・交互の脚とエラーなしを確認（CPU互換3D）。
+- 自動検証18/18は `qa/hiyori-quality-v19.json`。実機のスマートフォン・Chromebook性能は未検証。
+
 # Visible comparison and world lighting / revision 18
 
 The previous changes were too subtle when viewed separately. A frozen real v17 rig is now rendered beside v18 with the same camera, world scale, outfit and pose; front/right/45-degree/back controls redraw both views. This is a comparison of genuine 3D geometry, not edited images. A new `hiyori-preview-v18.html` URL avoids reopening an old cached HTML tab.
