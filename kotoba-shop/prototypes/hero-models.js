@@ -51,7 +51,7 @@ function decal(parent,cx,cy,width,height,texture){const v=[],uv=[],ix=[],n=10;
  const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(ix);g.computeVertexNormals();const m=new T.MeshLambertMaterial({map:texture,transparent:true,alphaTest:.08,depthWrite:false,side:T.DoubleSide});const obj=part(parent,g,m,0,0,.008);obj.renderOrder=2;return obj;}
 function build(kind,api){const p=profiles[kind];if(!p)throw Error('Unknown character '+kind);const root=new T.Group(),body=new T.Group(),head=new T.Group(),limbs=[],knees=[[],[]],outfits=[],armOutfits=[[],[]],legOutfits=[[],[]];root.add(body);head.position.y=1.78;head.rotation.x=-.07;body.add(head);
  // Shared skin volumes, ears and subtle cheeks.
- const faceShape=new T.SphereGeometry(1,compatible?16:32,compatible?12:24);{const a=faceShape.attributes.position;for(let i=0;i<a.count;i++){const y=a.getY(i),t=Math.max(0,(-y-.25)/.75);a.setX(i,a.getX(i)*(1-.14*t*t));}faceShape.computeVertexNormals();}part(head,faceShape,skin,0,0,0,.57,.51,.445);
+ const faceShape=new T.SphereGeometry(1,compatible?16:32,compatible?12:24);{const a=faceShape.attributes.position;for(let i=0;i<a.count;i++){const y=a.getY(i),t=Math.max(0,(-y-.25)/.75);a.setX(i,a.getX(i)*(1-.14*t*t));}faceShape.computeVertexNormals();}const faceMesh=part(head,faceShape,skin,0,0,0,.57,.51,.445);faceMesh.userData.part='face-volume';
  for(const x of [-.565,.565]){orb(head,skin,x,-.045,-.015,.075,.105,.074);orb(head,'#eab79e',x,-.045,.047,.028,.05,.014);}
  for(const side of [-1,1]){orb(head,cheek,side*.365,-.185,.30,.085,.029,.013);curve(head,p.style==='bob'?'#94829c':'#a07c6a',[[side*.17,.13,.421],[side*.235,.155,.41],[side*.29,.135,.388]],.008);}
  // Skull cap and back shell, with a clear opening for the expression.
@@ -104,9 +104,14 @@ function build(kind,api){const p=profiles[kind];if(!p)throw Error('Unknown chara
  lower.removeFromParent();api.batch(lower);api.batch(leg);leg.add(lower);}
  api.batch(torso);
  }
+ // Two-head silhouette: keep facial features intact and shorten the rig below them.
+ // Hat/tuft height is excluded from the anatomical head-to-height measurement.
+ head.position.y=1.735;head.scale.set(1.12,1.08,1.12);
+ for(const outfit of outfits)outfit.scale.set(.94,.84,.96);
+ for(let i=0;i<limbs.length;i++){const limb=limbs[i];limb.position.x*=.96;limb.position.y*=i<2?.80:.84;limb.scale.set(1.04,.80,1.04);}
  // Batch the common limbs without mixing wardrobe variants.
  const shadow=api.shadow(0,0,.49,.34);root.add(shadow);
- root.userData={kind,body,head,limbs,knees,shadow,phase:0,moving:0,name:p.name,model:'smooth-3d',look:'reference',hat:'base',expression:'normal',updateLook};
+ root.userData={kind,body,head,limbs,knees,shadow,phase:0,moving:0,name:p.name,model:'two-head-3d',proportions:'2-head',look:'reference',hat:'base',expression:'normal',updateLook};
  function updateLook({look=root.userData.look,hat=root.userData.hat,expression=root.userData.expression}={}){const index=looks.indexOf(look);outfits.forEach((o,i)=>o.visible=i===index);for(const a of [...armOutfits,...legOutfits])a.forEach((o,i)=>o.visible=i===index);Object.entries(hats).forEach(([key,o])=>o.visible=key===hat);for(const [i,eye]of eyes.entries()){eye.material.map=eyeTexture(p,expression==='smile'?'smile':'normal',i===1);eye.material.needsUpdate=true;}mouth.material.map=mouthTexture(expression,p.joy);mouth.material.needsUpdate=true;Object.assign(root.userData,{look,hat,expression});}
 let wasClosed=false;root.userData.animateFace=(t)=>{const closed=(t+Object.keys(profiles).indexOf(kind)*937)%4300>4140;if(closed===wasClosed||root.userData.expression==='smile')return;wasClosed=closed;for(const [i,eye]of eyes.entries()){eye.material.map=eyeTexture(p,closed?'smile':'normal',i===1);}};
  updateLook();return root;

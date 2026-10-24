@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-24",
+  "releaseCommit": "7821a1ef616604a6fd0850dd7af376c8b47897f1",
+  "pagesRun": 40056664626,
+  "deployment": "success",
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "scene3d.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "town-heroes.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "prototypes/hiyori-preview.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "prototypes/hiyori-preview.css",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "prototypes/hiyori-viewer.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "prototypes/hero-models.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "prototypes/software-3d.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "prototypes/hiyori-lowpoly.js",
+      "status": 200,
+      "matchesTestedSource": true
+    }
+  ],
+  "actualBrowser": [
+    "public viewer booted v8 in compatibility 3D with Hiyori visible",
+    "public viewer walk and dash yielded opposite leg rotations and knee bend; errors array empty",
+    "public main booted, girl selected, normal learning level chosen, island intro completed",
+    "public main Hiyori moved from [24,15] to [24,10] with keyboard; pointer stick input changed position to [25,10]",
+    "public main and viewer screenshots saved"
+  ],
+  "remaining": [
+    "physical smartphone/Chromebook and WebGL GPU rendering not verified",
+    "no 30FPS claim",
+    "all gameplay transactions not re-exercised"
+  ]
+}
