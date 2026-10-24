@@ -1,0 +1,52 @@
+{
+  "commit": "434413e0c7c3e50d7ce0a113f056f6935a74a1fa",
+  "pagesRun": 40087300465,
+  "pagesJobs": "build/deploy/report success",
+  "publicURL": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview-v20.html",
+  "publicFiles": [
+    {
+      "path": "kotoba-shop/index.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/town-heroes.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hiyori-preview-v20.html",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hero-models.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hero-models-before-v19.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/hiyori-viewer.js",
+      "status": 200,
+      "matchesTestedSource": true
+    },
+    {
+      "path": "kotoba-shop/prototypes/portraits/girl.png",
+      "status": 200,
+      "matchesTestedSource": true
+    }
+  ],
+  "changes": {
+    "torsoHeightRatio": 0.84,
+    "legHeightRatio": 0.8,
+    "headDepthRatio": 0.8965517241379312,
+    "soleHeight": 0.02
+  },
+  "browser": "Public v20 rendered genuine CPU-compatible 3D and v19/v20 same-scale side comparison. Local front/side comparison, five angles and walking checked. Physical phone/Chromebook and GPU unavailable.",
+  "automated": "18/18 passed",
+  "screenshot": "hiyori-compact-public-v20.jpg"
+}
