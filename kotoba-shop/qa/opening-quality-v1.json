@@ -1,0 +1,39 @@
+{
+  "environment": "Native Three geometry and CPU Canvas with simulated DOM/clock; browser checks are separate.",
+  "passed": 8,
+  "total": 8,
+  "checks": [
+    {
+      "name": "script starts with a silent blue-sky shot and follows sky, boat, approach, dock and welcome",
+      "pass": true
+    },
+    {
+      "name": "all four chosen heroes are real 3D rigs on a boat, with islanders, pier and independently disposable scenery",
+      "pass": true
+    },
+    {
+      "name": "blue sky automatically leads to the first monologue, which waits for the reader",
+      "pass": true
+    },
+    {
+      "name": "text reveal is immediate and does not accidentally skip the current line",
+      "pass": true
+    },
+    {
+      "name": "travel animation gates progress and completion runs exactly once after every dialogue",
+      "pass": true
+    },
+    {
+      "name": "the game bridge freezes saves and clocks, then completes introduction before difficulty selection",
+      "pass": true
+    },
+    {
+      "name": "replaying the story leaves existing progress, money, energy and save count untouched",
+      "pass": true
+    },
+    {
+      "name": "title start and resume retain all four hero IDs and load cinematic before the title script",
+      "pass": true
+    }
+  ]
+}
