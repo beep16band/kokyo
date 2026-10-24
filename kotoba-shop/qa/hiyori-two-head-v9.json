@@ -1,0 +1,16 @@
+{
+  "releaseCommit": "756aa5f8ed3225d689d4a59e259ba73d9ed1c5fb",
+  "pagesRun": 40057727572,
+  "deployment": "success",
+  "browser": "Chrome compatibility 3D",
+  "verified": [
+    "public viewer header 09 / two-head and v9 status",
+    "final neck revision script URL loaded",
+    "Hiyori visible; walk legs opposite and knees bend; error array empty",
+    "local side view and dash",
+    "11 code checks passed including four-character head ratio and neck connection"
+  ],
+  "limits": [
+    "GPU/physical Chromebook/smartphone not tested"
+  ]
+}
