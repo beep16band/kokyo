@@ -1,7 +1,7 @@
 {
   "environment": "Native Three geometry and CPU Canvas with simulated DOM/clock; browser checks are separate.",
-  "passed": 8,
-  "total": 8,
+  "passed": 9,
+  "total": 9,
   "checks": [
     {
       "name": "script starts with a silent blue-sky shot and follows sky, boat, approach, dock and welcome",
@@ -17,6 +17,10 @@
     },
     {
       "name": "text reveal is immediate and does not accidentally skip the current line",
+      "pass": true
+    },
+    {
+      "name": "keyboard activation respects the focused skip button and initial Enter advances",
       "pass": true
     },
     {
