@@ -1,5 +1,5 @@
 /* Original procedural low-poly artwork. World coordinates and collisions remain in world.js.
- * Three.js is vendored locally. Failed/lost WebGL falls back to the existing Canvas renderer. */
+ * Three.js is vendored locally. Failed/lost WebGL renders the same 3D scene through the CPU compatibility renderer. */
 const Town3D = { ready: false, failed: false, area: '', shapes: new Map(), materials: new Map(), actors: new Map(), labels: [], target: null };
 state.avatar = state.avatar && ['boy','girl'].includes(state.avatar.kind) ? state.avatar : { kind: 'boy', selected: false };
 function selectAvatar(kind) {
@@ -159,34 +159,40 @@ function town3DDraw(now,dt) {
       let visible=true;for(let p=mesh.parent;p&&p!==V.world;p=p.parent)if(!p.visible)visible=false;
       if(visible&&mesh.visible)batch.setMatrixAt(i,mesh.matrixWorld);else batch.setMatrixAt(i,V.hiddenMatrix);
     });batch.instanceMatrix.needsUpdate=true;}
-    V.renderer.render(V.scene,V.camera);V.frameArea=V.area;
+    if(!V.renderer.isSoftwareRenderer||!V.lastPaint||now-V.lastPaint>65){try{V.renderer.render(V.scene,V.camera);V.lastPaint=now;V.frameArea=V.area;}catch(error){if(!V.renderer.isSoftwareRenderer){townUseCompatible3D(error.message);}else{V.reason=error.message;throw error;}}}
   }
   ctx.save();ctx.font='bold 12px KotobaSans,sans-serif';ctx.textAlign='center';
   const labels=[...V.labels,...npcs.filter(n=>V.actors.has(n.name)).map(n=>({text:n.name,x:n.vx+.5,y:2.1,z:n.vy+.5,near:true}))];
   for(const l of labels){if(l.near&&Math.hypot(l.x-visualX,l.z-visualY)>5)continue;const p=new THREE.Vector3(l.x,l.y,l.z).project(V.camera);if(Math.abs(p.x)>1||Math.abs(p.y)>1)continue;const x=(p.x+1)*c.width/2,y=(1-p.y)*c.height/2;ctx.lineWidth=3;ctx.strokeStyle='#fff3d5';ctx.strokeText(l.text,x,y);ctx.fillStyle='#546b58';ctx.fillText(l.text,x,y);}
   ctx.restore();return true;
 }
+function townUseCompatible3D(reason){
+ const V=Town3D;if(V.renderer?.isSoftwareRenderer)return;
+ const old=V.renderer?.domElement,newCanvas=document.createElement('canvas');newCanvas.id='town3D';newCanvas.setAttribute('aria-hidden','true');
+ V.renderer?.dispose();V.renderer=new PlazaSoftware3D({canvas:newCanvas});if(old)old.replaceWith(newCanvas);else c.before(newCanvas);
+ V.ready=true;V.failed=false;V.width=0;V.height=0;V.frameArea=null;V.reason=reason;V.area='';if(typeof TownInterior!=='undefined')TownInterior.key='';
+}
 function initTown3D() {
   try {
     if(typeof THREE==='undefined')throw Error('3D library unavailable');
-    const V=Town3D;V.hiddenMatrix=new THREE.Matrix4().makeScale(0,0,0);V.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});V.renderer.setPixelRatio(1);V.renderer.outputColorSpace=THREE.SRGBColorSpace;V.renderer.setClearColor('#e3ebd7');
+    const V=Town3D;V.hiddenMatrix=new THREE.Matrix4().makeScale(0,0,0);try{if(state.settings.compatible3D)throw Error('互換3D指定');V.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});}catch(error){V.renderer=new PlazaSoftware3D({canvas:document.createElement('canvas')});V.reason=error.message;}if(V.renderer.debug)V.renderer.debug.onShaderError=()=>setTimeout(()=>townUseCompatible3D('シェーダー初期化失敗'),0);V.renderer.setPixelRatio(1);V.renderer.outputColorSpace=THREE.SRGBColorSpace;V.renderer.setClearColor('#e3ebd7');
     const el=V.renderer.domElement;el.id='town3D';el.setAttribute('aria-hidden','true');c.before(el);
     V.scene=new THREE.Scene();V.scene.background=new THREE.Color('#e3ebd7');V.camera=new THREE.OrthographicCamera(-15,15,9,-9,.1,100);
     V.scene.add(new THREE.HemisphereLight('#fff9e1','#9aa890',1.7));V.sun=new THREE.DirectionalLight('#fff1d3',1.6);V.sun.position.set(-12,25,12);V.scene.add(V.sun);
-    el.addEventListener('webglcontextlost',e=>{e.preventDefault();V.failed=true;el.hidden=true;c.style.background='#a5c985';});V.ready=true;
+    el.addEventListener('webglcontextlost',e=>{e.preventDefault();townUseCompatible3D('描画接続が失われたため');});V.ready=true;
   }catch(e){Town3D.failed=true;Town3D.reason=e.message;}
 }
 const town3DStyle=document.createElement('style');town3DStyle.textContent='#town3D{position:absolute;top:0;left:0;width:100%;height:auto!important;max-height:none;aspect-ratio:5/3;border:0;border-radius:0;box-shadow:none;pointer-events:none;z-index:0}canvas#game{position:relative;z-index:1;background:transparent!important}#worldHud{z-index:4}@media(max-width:800px),(pointer:coarse){#town3D{aspect-ratio:4/3}}';document.head.append(town3DStyle);
-// Touch-first devices start in the proven lightweight renderer. 3D remains selectable.
-if(typeof state.settings.force2D!=='boolean'&&matchMedia('(pointer:coarse)').matches)state.settings.force2D=true;
-if(!state.settings.force2D)initTown3D();else Town3D.failed=true;
+// Retire automatic 2D fallback: both renderers use the same three-dimensional world.
+state.settings.force2D=false;
+initTown3D();
 const drawOutdoorBefore3D=drawOutdoor;drawOutdoor=function(now,dt){if(!town3DDraw(now,dt))drawOutdoorBefore3D(now,dt)};
 const drawBefore3D=draw;draw=function(now){if(Town3D.renderer)Town3D.renderer.domElement.hidden=state.scene!=='town'||Town3D.failed;drawBefore3D(now)};
 // WASD translates to the existing direction path, including key-up and touch behavior.
 const townWASD={w:'ArrowUp',a:'ArrowLeft',s:'ArrowDown',d:'ArrowRight'};
 window.addEventListener('keydown',e=>{const key=townWASD[e.key.toLowerCase()];if(!key||e.ctrlKey||e.metaKey||e.altKey||e.target.matches('input,textarea,select,[contenteditable="true"]')||setupOpen||menuOpen||editorOpen||choices.children.length||mini)return;e.preventDefault();e.stopImmediatePropagation();dashHeld=e.shiftKey;if(!walkHeld.has(key)){walkHeld.add(key);if(!walkStep)attemptInputStep()}},true);
 window.addEventListener('keyup',e=>{if(townWASD[e.key.toLowerCase()])walkHeld.delete(townWASD[e.key.toLowerCase()])},true);
-const settingsBefore3D=settingsCategory;settingsCategory=function(){settingsBefore3D();const box=document.getElementById('menuContent');box.insertBefore(menuItem('主人公を選ぶ','♧',avatarMenu),box.lastElementChild);box.insertBefore(menuItem('描画：'+(state.settings.force2D?'2D':'3D優先'),'◇',()=>{state.settings.force2D=!state.settings.force2D;save(false);location.reload()}),box.lastElementChild);};
+const settingsBefore3D=settingsCategory;settingsCategory=function(){settingsBefore3D();const box=document.getElementById('menuContent');box.insertBefore(menuItem('主人公を選ぶ','♧',avatarMenu),box.lastElementChild);box.insertBefore(menuItem('描画：'+(Town3D.renderer?.isSoftwareRenderer?'互換3D':'WebGL 3D'),'◇',()=>{state.settings.compatible3D=!state.settings.compatible3D;save(false);location.reload()}),box.lastElementChild);};
 if(state.settings.force2D){Town3D.failed=true;if(Town3D.renderer)Town3D.renderer.domElement.hidden=true;}
 // Matching lightweight character artwork for touch devices and WebGL recovery.
 const characterBeforeTownAvatars=character;

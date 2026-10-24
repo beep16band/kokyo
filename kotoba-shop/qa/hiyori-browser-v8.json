@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-24",
+  "initialPublicPage": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview.html",
+  "reproduced": "Three.js loaded; WebGL context creation failed (cloud GL_VENDOR/GL_RENDERER Disabled). Original viewer stopped in catch.",
+  "localVerification": [
+    "same Three meshes rendered with CPU projection/depth buffer; no sprites",
+    "Hiyori front/right/back, four character selections, casual outfit and cap",
+    "walking diagnostic legs opposite; knees articulate; dash button",
+    "production existing save continue; learning normal selection; intro completed",
+    "select Hiyori in main menu, reload retains selection",
+    "keyboard movement from sea through river to town, obstacles respected",
+    "enter tent; interior renders Hiyori with same CPU renderer"
+  ],
+  "codeChecks": "10/10 passed in hiyori-quality-v8.json",
+  "limits": [
+    "GPU rendering not available in this browser",
+    "physical Chromebook and smartphone performance not tested",
+    "no claim of 30 FPS certification",
+    "user device original error not directly observed"
+  ]
+}
