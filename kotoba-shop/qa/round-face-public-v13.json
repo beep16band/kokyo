@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-24",
+  "revision": "garden-sculpt-v13",
+  "mainCommit": "8fe41d9d339ff1a1c43bd99a6588d5e800d05929",
+  "pagesRun": 40065662588,
+  "deployment": "success",
+  "publicFiles": {
+    "http200": 9,
+    "matchTestedSource": 9
+  },
+  "changes": {
+    "headWidthMultiplier": 0.88,
+    "headDepthMultiplier": 1.08,
+    "jawTaperBefore": 0.2,
+    "jawTaperAfter": 0.11,
+    "headHeightUnchanged": true,
+    "bodyArmsLegsAllOutfitsGeometryAndWorldTransformsUnchanged": "verified against published v12 for all four heroes"
+  },
+  "browser": "Cloud Chrome actual CPU 3D fallback",
+  "publicViewer": {
+    "url": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/hiyori-preview.html",
+    "badge": "13 · ROUND FACE",
+    "frontVisible": true,
+    "sideWalk": {
+      "angle": 1.571,
+      "legs": [
+        -0.007,
+        0.007
+      ],
+      "knees": [
+        0.006,
+        0
+      ]
+    },
+    "errors": []
+  },
+  "automated": "14/14",
+  "limits": [
+    "Physical smartphone / Chromebook and GPU 30 FPS unverified"
+  ]
+}

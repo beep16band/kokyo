@@ -1,3 +1,16 @@
+# Short legs and full lower cheeks / revision 14
+
+User correction: shorten the legs and make the lower cheeks fuller.
+
+- Hip-to-sole height reduced from 0.618 to 0.506 model units (about 18%). Upper leg joint distance 0.31 → 0.24; lower leg/ankle offsets shortened too. Shoe shape/size preserved. Hip and upper body lowered by 0.112, preserving the original ground plane instead of floating above it.
+- Torso garment dimensions, narrow shoulders and head width remain the same. All clothing variants use the shorter legs. The silhouette is now about 1.8 anatomical heads per the requested shorter body; the silhouette test accepts 1.75–2.10 instead of 1.88–2.10, and full-height bounds accept 2.0–2.8 instead of 2.2–2.8.
+- Lower cheeks gain continuous width/depth around the lower half of the face; the upper face remains narrow. Facial texture patches use the same cheek surface equations, with no separate cheek balls.
+- All four 3D UI portrait atlases regenerated. Cache/version `14-soft-cheeks` / `14 · SOFT CHEEKS`.
+
+Validation: 14/14 checks passed, including comparison against published revision 13 for shorter legs, equal sole height in every outfit, increased lower-cheek volume and unchanged overall face width/height. Cloud Chrome local front and side dash inspected: opposite leg swing and bending knees, no model errors. CPU compatibility 3D only; physical smartphone/Chromebook/GPU 30 FPS unverified.
+
+Previous release notes follow.
+
 # Round face / revision 13
 
 User correction: narrow the broad face, give it fuller cheeks, do not lengthen the legs.
