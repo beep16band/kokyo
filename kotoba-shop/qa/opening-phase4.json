@@ -10,11 +10,28 @@
     "journal replay through all scenes and normal finish",
     "replay preserves 06:15 energy99 500G",
     "native Enter advance and Tab Enter skip",
-    "390x844 iframe all scenes, final text, goal and buttons fit, completion returns"
+    "390x844 iframe all scenes, final text, goal and buttons fit, completion returns",
+    "existing save new-game confirm retains selected Tsuki across reload",
+    "difficulty chooser after first introduction then easy and playable game",
+    "public main title start and selected Hiyori boat rendering",
+    "public fullscreen canvas fix confirmed and five files byte-identical"
   ],
   "limitations": [
     "not physical mobile or Chromebook",
     "GPU not available in cloud"
   ],
-  "publication": "pending"
+  "publication": {
+    "commit": "9c5448c9f0b58b49fd4921b67dc409dac698605a",
+    "pagesRun": 40136586302,
+    "status": "success",
+    "mainURL": "https://beep16band.github.io/kokyo/kotoba-shop/",
+    "previewURL": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/opening-preview.html",
+    "finalCanvas": {
+      "width": 1363,
+      "height": 936,
+      "rootHeight": 936,
+      "border": "0",
+      "maxHeight": "none"
+    }
+  }
 }
