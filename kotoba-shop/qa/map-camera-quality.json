@@ -1,0 +1,35 @@
+{
+  "environment": "Native Three camera projection and follow math; browser checks recorded separately",
+  "passed": 7,
+  "total": 7,
+  "checks": [
+    {
+      "name": "perspective camera shows nearby objects larger than distant objects",
+      "pass": true
+    },
+    {
+      "name": "eye is about 34 degrees above ground and north remains screen-up",
+      "pass": true
+    },
+    {
+      "name": "whole player remains visible on desktop and phone world aspect ratios, including map edges",
+      "pass": true
+    },
+    {
+      "name": "player fills roughly a fifth of the frame at the closer follow distance",
+      "pass": true
+    },
+    {
+      "name": "walking follow is monotonic and settles without overshooting",
+      "pass": true
+    },
+    {
+      "name": "reduced motion follows immediately and a new area resets the camera target",
+      "pass": true
+    },
+    {
+      "name": "camera update leaves map and gameplay data untouched and loads before scene setup",
+      "pass": true
+    }
+  ]
+}

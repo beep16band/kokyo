@@ -11,7 +11,15 @@
     "normal completion returns to preview form"
   ],
   "font": "self-hosted subset of Zen Maru Gothic Medium, OFL included",
-  "publication": "pending",
+  "publication": {
+    "commit": "245a8b315f2015501e04600dea40955d44ac185a",
+    "pagesRun": 40152968266,
+    "status": "success",
+    "main": "https://beep16band.github.io/kokyo/kotoba-shop/",
+    "preview": "https://beep16band.github.io/kokyo/kotoba-shop/prototypes/opening-preview.html",
+    "sourceMatch": "six files HTTP200 byte-identical",
+    "browser": "public main start to boat, ten seats and luggage, wood frame, TownRounded, fullscreen 936px"
+  },
   "limits": [
     "no physical mobile or Chromebook test",
     "GPU not available"
