@@ -11,7 +11,17 @@
     "journal dialogue UI opens and closes",
     "Hiyori, 500G and difficulty retained"
   ],
-  "publication": "pending",
+  "publication": {
+    "commit": "0ecbdaf58853854f069436f9c9b4e0bbe2b05814",
+    "pagesRun": 40195560149,
+    "status": "success",
+    "url": "https://beep16band.github.io/kokyo/kotoba-shop/",
+    "publicChecks": [
+      "Hiyori at [9,3], port office faded, count1, player visible",
+      "walked to [4,3], count0, roof and walls returned opaque",
+      "three files HTTP200 byte-identical"
+    ]
+  },
   "limits": [
     "physical mobile and Chromebook not tested",
     "GPU not available"

@@ -1,7 +1,7 @@
 {
   "environment": "Native Three camera projection and follow math; browser checks recorded separately",
-  "passed": 7,
-  "total": 7,
+  "passed": 10,
+  "total": 10,
   "checks": [
     {
       "name": "perspective camera shows nearby objects larger than distant objects",
@@ -29,6 +29,18 @@
     },
     {
       "name": "camera update leaves map and gameplay data untouched and loads before scene setup",
+      "pass": true
+    },
+    {
+      "name": "conversation eases closer around both participants and returns to walking camera",
+      "pass": true
+    },
+    {
+      "name": "conversation keeps both full characters above the dialogue panel at three aspect ratios",
+      "pass": true
+    },
+    {
+      "name": "reduced motion changes conversation framing immediately without mutating participants",
       "pass": true
     }
   ]

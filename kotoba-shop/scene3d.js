@@ -133,15 +133,28 @@ function town3DDraw(now,dt) {
   const V=Town3D;if(V.failed||!V.ready)return false;
   if(V.area!==state.area+'|'+season()+'|'+state.avatar.kind)town3DRebuild();
   V.renderer.domElement.hidden=false;ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,c.width,c.height);
-  TownMapCamera.update(V,maps[state.area],visualX,visualY,dt,c.width,c.height,state.settings.reducedMotion);
+  const conversation=typeof TownDialogue!=='undefined'?TownDialogue.mapFocus?.():null;
+  document.getElementById('worldFrame').classList.toggle('townConversation',!!conversation);
+  const oldCamera=V.camera.position.clone();
+  TownMapCamera.update(V,maps[state.area],visualX,visualY,dt,c.width,c.height,state.settings.reducedMotion,conversation);
+  const focusKey=conversation?.name||'';
+  if(oldCamera.distanceToSquared(V.camera.position)>1e-10||V.conversationKey!==focusKey)V.conversationPaint=true;
+  V.conversationKey=focusKey;
   const cameraCanvas=V.renderer.domElement;
   cameraCanvas.dataset.camera='perspective-follow';cameraCanvas.dataset.cameraTarget=JSON.stringify([+V.target.x.toFixed(3),+V.target.z.toFixed(3)]);
   cameraCanvas.dataset.cameraFov=String(V.camera.fov);
+  cameraCanvas.dataset.conversation=focusKey;cameraCanvas.dataset.cameraZoom=V.conversationZoom.toFixed(3);
   const evening=timePhase()==='夕方';V.scene.background.set(evening?'#e7cfb2':'#dfebdd');V.sun.color.set(evening?'#ffdbac':'#fff3d6');
   if(typeof townSceneryTime3D==='function')townSceneryTime3D(evening);
   town3DAnimate(V.player,visualX,visualY,facing,!!walkStep,now,mini?.action?(mini.phase==='land'?'joy':mini.phase==='bite'?'surprise':'fish'):netSwing?'tool':'idle');
   for(let i=0;i<(V.crops||[]).length;i++){const plant=V.crops[i],p=state.farm[i];plant.visible=!!p;if(p){const size=plotReady(p)?.34:.18;plant.scale.set(size,size*1.25,size);}}
   for(const n of npcs){const actor=V.actors.get(n.name);if(!actor)continue;town3DAnimate(actor,n.vx,n.vy,n.face,!!worldNpcState[n.name]?.step,now);}
+  if(conversation){
+    V.player.rotation.y=Math.atan2(conversation.x-visualX,conversation.z-visualY);
+    const speakerActor=V.actors.get(conversation.name);
+    if(speakerActor)speakerActor.rotation.y=Math.atan2(visualX-conversation.x,visualY-conversation.z);
+    cameraCanvas.dataset.conversationFacing=JSON.stringify([+V.player.rotation.y.toFixed(3),speakerActor?+speakerActor.rotation.y.toFixed(3):null]);
+  }else delete cameraCanvas.dataset.conversationFacing;
   if(V.leaves)V.leaves.position.x=state.settings.reducedMotion?0:Math.sin(now/3000)*.025;if(V.ripples)V.ripples.position.y=state.settings.reducedMotion?0:Math.sin(now/1100)*.012;
   for(let i=0;i<V.bugs.length;i++){const bug=fieldWorld.bugs[i],obj=V.bugs[i];obj.visible=!!bug;if(bug){obj.position.set(bug.x+.5,.5+(state.settings.reducedMotion?0:Math.sin(now/150+bug.phase)*.08),bug.y+.5);obj.rotation.y=state.settings.reducedMotion?0:now/700;}}
   if(typeof townBugAppearance3D==='function')townBugAppearance3D(V);
@@ -153,7 +166,7 @@ function town3DDraw(now,dt) {
   V.fishingLine.visible=!!mini?.action&&mini.phase!=='land';
   if(V.fishingLine.visible){V.tool.updateMatrixWorld(true);const tip=V.tool.localToWorld(new THREE.Vector3(0,1,0)),positions=V.fishingLine.geometry.attributes.position;positions.setXYZ(0,tip.x,tip.y,tip.z);positions.setXYZ(1,V.bobber.position.x,V.bobber.position.y,V.bobber.position.z);positions.needsUpdate=true;}
   if(V.width!==c.width||V.height!==c.height){V.width=c.width;V.height=c.height;V.renderer.setSize(c.width,c.height,false);V.camera.aspect=c.width/c.height;V.camera.updateProjectionMatrix();}
-  if(!(V.frameArea===V.area&&(menuOpen||setupOpen||choices.children.length))){
+  if(V.conversationPaint||!(V.frameArea===V.area&&(menuOpen||setupOpen||choices.children.length))){
     V.world.updateMatrixWorld(true);
     TownOcclusion.update(V,now,dt,state.settings.reducedMotion);
     for(const {batch,meshes} of V.batches){meshes.forEach((mesh,i)=>{
@@ -161,7 +174,7 @@ function town3DDraw(now,dt) {
       let visible=true;for(let p=mesh.parent;p&&p!==V.world;p=p.parent)if(!p.visible)visible=false;
       if(visible&&mesh.visible&&!mesh.userData.occlusionHidden)batch.setMatrixAt(i,mesh.matrixWorld);else batch.setMatrixAt(i,V.hiddenMatrix);
     });batch.instanceMatrix.needsUpdate=true;}
-    if(!V.renderer.isSoftwareRenderer||!V.lastPaint||now-V.lastPaint>65){try{V.renderer.render(V.scene,V.camera);V.lastPaint=now;V.frameArea=V.area;}catch(error){if(!V.renderer.isSoftwareRenderer){townUseCompatible3D(error.message);}else{V.reason=error.message;throw error;}}}
+    if(!V.renderer.isSoftwareRenderer||!V.lastPaint||now-V.lastPaint>65){try{V.renderer.render(V.scene,V.camera);V.lastPaint=now;V.frameArea=V.area;V.conversationPaint=false;}catch(error){if(!V.renderer.isSoftwareRenderer){townUseCompatible3D(error.message);}else{V.reason=error.message;throw error;}}}
   }
   ctx.save();ctx.font='bold 12px KotobaSans,sans-serif';ctx.textAlign='center';
   const labels=[...V.labels,...npcs.filter(n=>V.actors.has(n.name)).map(n=>({text:n.name,x:n.vx+.5,y:2.1,z:n.vy+.5,near:true}))];

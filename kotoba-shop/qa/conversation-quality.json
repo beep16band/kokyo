@@ -1,0 +1,23 @@
+{
+  "environment": "Production dialogue focus and choice lifecycle in Node VM",
+  "passed": 4,
+  "total": 4,
+  "checks": [
+    {
+      "name": "nearby active speaker supplies camera focus without changing gameplay data",
+      "pass": true
+    },
+    {
+      "name": "menus, movement, indoor scenes and a changed origin disable conversation framing",
+      "pass": true
+    },
+    {
+      "name": "distant or off-area residents never trigger close framing",
+      "pass": true
+    },
+    {
+      "name": "choice changes retain focus, close or Escape removes the focus",
+      "pass": true
+    }
+  ]
+}

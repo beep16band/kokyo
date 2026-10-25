@@ -26,6 +26,7 @@ function presentDialogue(){
  const text=dialog.dataset.plain||dialog.textContent,match=text.match(/(?:^|[\n\s】])([^「」【】\n\s]{1,24})「/),name=match?.[1];
  dialogueName.textContent=name||'おしらせ';dialoguePanel.classList.toggle('hasSpeaker',!!name);if(typeof townDockDialogue==='function')townDockDialogue(!!name);
  d.speaker=null;d.origin=null;if(name)faceDialogueSpeaker(name);
+ if(state.scene!=='town')document.getElementById('worldFrame').classList.remove('townConversation');
  dialog.setAttribute('aria-live','off');dialog.setAttribute('aria-label',text);dialogueStatus.textContent='';
  // System instructions and learning worksheets remain immediately readable.
  if(!name||state.settings.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches){dialogueStatus.textContent=text;return;}
@@ -67,4 +68,17 @@ const characterBeforeDialogue=character;character=function(x,y,color,ears=false,
 const animateBeforeDialogue=town3DAnimate;town3DAnimate=function(actor,x,z,dir,moving,now,mode='idle'){
  if(actor===TownInterior.customer&&TownDialogue.speaker===dialogueIndoorSpeaker()){dir=dialogueDirection(x,z,dir);if(actor.userData.direction!==dir)TownInterior.frame='';}
  return animateBeforeDialogue(actor,x,z,dir,moving,now,mode);
+};
+
+// A presentation focus only: never change saved player positions or movement direction.
+TownDialogue.mapFocus=function(){
+ const d=TownDialogue,o=d.origin;
+ if(!d.speaker||!o||state.scene!=='town'||state.scene!==o[0]||state.area!==o[1]||state.x!==o[2]||state.y!==o[3]||walkStep||menuOpen||setupOpen||editorOpen||mini||dialoguePanel.classList.contains('quiet'))return null;
+ const n=npcs.find(n=>n.name===d.speaker&&worldNpcConfig[n.name]?.area===state.area);
+ return n&&Math.hypot(n.vx-visualX,n.vy-visualY)<=4?{name:n.name,x:n.vx,z:n.vy}:null;
+};
+const choicesBeforeConversation=renderChoices;renderChoices=function(items){
+ const wasOpen=choices.children.length>0;
+ choicesBeforeConversation(items);
+ if(wasOpen&&!items.length){TownDialogue.speaker=null;TownDialogue.origin=null;}
 };
