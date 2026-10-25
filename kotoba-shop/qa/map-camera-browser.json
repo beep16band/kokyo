@@ -16,7 +16,14 @@
     "playerFrameHeight": "about 20 percent"
   },
   "native": "7/7",
-  "publication": "pending",
+  "publication": {
+    "cameraCommit": "d93ddc5da843abe5e98eddc5700c6da13f9be815",
+    "deployedMain": "845727694248a59446ace59580849e2cf96abd50",
+    "pagesRun": 40181728559,
+    "status": "success",
+    "url": "https://beep16band.github.io/kokyo/kotoba-shop/",
+    "publicChecks": "Hiyori walked from beach through river to plaza; perspective-follow, fov38; three source files HTTP200 byte-identical"
+  },
   "limits": [
     "physical phone and Chromebook not tested",
     "GPU not available"
