@@ -1,7 +1,7 @@
 {
   "environment": "Native Three geometry and CPU Canvas with simulated DOM/clock; browser checks are separate.",
-  "passed": 9,
-  "total": 9,
+  "passed": 10,
+  "total": 10,
   "checks": [
     {
       "name": "script starts with a silent blue-sky shot and follows sky, boat, approach, dock and welcome",
@@ -9,6 +9,10 @@
     },
     {
       "name": "all four chosen heroes are real 3D rigs on a boat, with islanders, pier and independently disposable scenery",
+      "pass": true
+    },
+    {
+      "name": "ten-seat launch includes luggage and clouds drift continuously with reduced-motion support",
       "pass": true
     },
     {

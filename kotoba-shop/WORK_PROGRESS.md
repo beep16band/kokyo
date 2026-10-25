@@ -6,6 +6,18 @@
 再開の起点: main の 6caea19afe08a73d732e5d8a25386cb8fd79647c
 起点の内容: Add walkable clay venue, accessible timing controls and persistent best trophies
 
+## オープニング演出調整（2026-10-25・追加依頼）
+
+- 工程⑤: 雲の移動、10席の小型船、スーツケース、木製調会話枠、丸く読みやすい文字。実装・ローカル検証完了、公開待ち。
+- 変更: `town-opening.js/css`、`index.html`、`prototypes/opening-preview.html`、`assets/zen-maru-medium.woff`・OFL、`tools/opening_quality.cjs`、`qa/opening-quality-v1.json`・`qa/opening-voyage.json`。
+- 内容: 9組の雲が異なる速度で横に流れて循環。動きを減らす設定では静止。船体を拡大し操舵室・10席・通路・救命浮輪を造形。荷物は船上の主人公の前、到着後は主人公の横に移動。船を桟橋の横へ接岸。会話枠は木目と明るい紙色、文字は濃い色・中太の丸ゴシック。
+- フォント: Google FontsのZen Maru Gothic Mediumを必要文字にサブセットし同梱（64,468バイト）。SIL OFL同梱。任意の名前など未収録文字はシステムフォントへフォールバック。
+- 検証: Node 10/10成功（雲の変位・循環・動きを減らす設定、客席10席・荷物を含む）。ブラウザの診断cloudXが-7.206→-3.696→-0.232と変化。横画面で木枠・丸文字・船と荷物を確認。390×844で最終会話まで通し再生し、最後の目標・ボタン・荷物・島民の表示と終了を確認。診断エラー0。
+- 未完了: GitHub Pages反映と公開画面の確認。実機スマートフォン・Chromebook・GPU性能は未検証。
+- 次: 開発ブランチへ保存後、本番へ反映して公開URLを確認する。
+- 既知の不具合: なし。既存のゲームデータ構造、学習・経営・背景は変更なし。
+- 承認待ち: なし。継続の改修・公開依頼に基づいて進める。
+
 ## オープニング改修（2026-10-25）
 
 | 工程 | 内容 | 状態 |

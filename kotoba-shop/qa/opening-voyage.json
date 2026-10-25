@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-25",
+  "nativeChecks": "10/10",
+  "renderer": "software-3d",
+  "browserChecks": [
+    "cloudX changed -7.206 to -3.696 to -0.232",
+    "ten-seat boat with cabin, hero and suitcase visible",
+    "wood-grain frame and rounded type visible",
+    "390x844 full voyage and welcome through step15, final goals and button fit",
+    "suitcase moves to dock beside player",
+    "normal completion returns to preview form"
+  ],
+  "font": "self-hosted subset of Zen Maru Gothic Medium, OFL included",
+  "publication": "pending",
+  "limits": [
+    "no physical mobile or Chromebook test",
+    "GPU not available"
+  ]
+}
