@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-25",
+  "coverage": "兵庫県2024〜2026年度の本検査・大阪府2026年度の一般選抜A/B/C問題に限った初期登録。全国・全年度を網羅していません。",
+  "records": [
+    {
+      "id": "hyogo-2024-main-3",
+      "prefecture": "兵庫県",
+      "year": 2024,
+      "exam": "公立高等学校入学者選抜・学力検査",
+      "variant": "本検査",
+      "section": "国語・大問三",
+      "name": "古本説話集",
+      "kana": "こほんせつわしゅう",
+      "workId": null,
+      "level": "report",
+      "confirmed": "公式の実施結果資料で、古文の出典名と小問の分類を確認。本文・個別の設問文はこの資料には収録されていません。",
+      "topics": [
+        "言語文化の基礎知識",
+        "語句の理解",
+        "内容の理解"
+      ],
+      "questionSummary": "公表された小問分類を掲載しています。章段・登場人物・設問の細部は未登録です。",
+      "advice": "語注を使って一文ずつ意味を確かめ、誰の行動か、何が起きたかを整理しよう。解答の根拠は作品名ではなく本文に求めよう。",
+      "unit": 2,
+      "sources": [
+        {
+          "label": "兵庫県教育委員会・令和6年度 実施結果（詳細）",
+          "url": "https://www2.hyogo-c.ed.jp/hpe/uploads/sites/10/2024/05/R6gakuryokukensasyousai.pdf",
+          "page": 5,
+          "locator": "PDFの5ページ目／印刷ページ4「国語」大問三",
+          "role": "出典名と小問分類"
+        }
+      ],
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "id": "hyogo-2025-main-3",
+      "prefecture": "兵庫県",
+      "year": 2025,
+      "exam": "公立高等学校入学者選抜・学力検査",
+      "variant": "本検査",
+      "section": "国語・大問三",
+      "name": "身の鏡",
+      "kana": "みのかがみ",
+      "workId": null,
+      "level": "report",
+      "confirmed": "公式の実施結果資料で、古文の出典名と小問の分類を確認。本文・個別の設問文はこの資料には収録されていません。",
+      "topics": [
+        "言語文化の基礎知識",
+        "内容の理解"
+      ],
+      "questionSummary": "公表された小問分類を掲載しています。章段・登場人物・設問の細部は未登録です。",
+      "advice": "語注を使って一文ずつ意味を確かめ、誰の行動か、何が起きたかを整理しよう。解答の根拠は作品名ではなく本文に求めよう。",
+      "unit": 2,
+      "sources": [
+        {
+          "label": "兵庫県教育委員会・令和7年度 実施結果（詳細）",
+          "url": "https://www2.hyogo-c.ed.jp/hpe/uploads/sites/10/2025/05/R7syousai.pdf",
+          "page": 5,
+          "locator": "PDFの5ページ目／印刷ページ4「国語」大問三",
+          "role": "出典名と小問分類"
+        }
+      ],
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "id": "hyogo-2026-main-3",
+      "prefecture": "兵庫県",
+      "year": 2026,
+      "exam": "公立高等学校入学者選抜・学力検査",
+      "variant": "本検査",
+      "section": "国語・大問三",
+      "name": "徒然草",
+      "kana": "つれづれぐさ",
+      "workId": "tsurezure",
+      "level": "report",
+      "confirmed": "公式の実施結果資料で、古文の出典名と小問の分類を確認。本文・個別の設問文はこの資料には収録されていません。",
+      "topics": [
+        "言語文化の基礎知識",
+        "語句の理解",
+        "内容の理解"
+      ],
+      "questionSummary": "公表された小問分類を掲載しています。章段・登場人物・設問の細部は未登録です。",
+      "advice": "語注を使って一文ずつ意味を確かめ、誰の行動か、何が起きたかを整理しよう。解答の根拠は作品名ではなく本文に求めよう。",
+      "unit": 2,
+      "sources": [
+        {
+          "label": "兵庫県教育委員会・令和8年度 実施結果（詳細）",
+          "url": "https://www2.hyogo-c.ed.jp/hpe/uploads/sites/10/2026/05/R8%E8%A9%B3%E7%B4%B0-1.pdf",
+          "page": 5,
+          "locator": "PDFの5ページ目／印刷ページ4「国語」大問三",
+          "role": "出典名と小問分類"
+        }
+      ],
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "id": "osaka-2026-a-三",
+      "prefecture": "大阪府",
+      "year": 2026,
+      "exam": "公立高等学校一般入学者選抜",
+      "variant": "A問題",
+      "section": "国語・大問三",
+      "name": "醒睡笑",
+      "kana": "せいすいしょう",
+      "workId": null,
+      "level": "source",
+      "confirmed": "公式の出典一覧で作品・問題種別・大問を確認。今回は本文・設問の分析は未登録です。",
+      "topics": [],
+      "questionSummary": "出典一覧で確認した記録です。小問の内容や難度は推測で補っていません。",
+      "advice": "作品名を見たら、本文と注から人物・行動・出来事を整理しよう。過去の出典と次の入試の出典は同じとは限りません。",
+      "unit": 2,
+      "sources": [
+        {
+          "label": "大阪府・令和8年度 一般選抜 出典一覧",
+          "url": "https://www.pref.osaka.lg.jp/documents/129362/r08ippan-syuttenichiran.pdf",
+          "page": 1,
+          "locator": "PDFの1ページ目「国語〔A問題〕」大問三",
+          "role": "出典名・問題種別・大問番号"
+        }
+      ],
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "id": "osaka-2026-b-二",
+      "prefecture": "大阪府",
+      "year": 2026,
+      "exam": "公立高等学校一般入学者選抜",
+      "variant": "B問題",
+      "section": "国語・大問二",
+      "name": "古今著聞集",
+      "kana": "ここんちょもんじゅう",
+      "workId": "kokon",
+      "level": "source",
+      "confirmed": "公式の出典一覧で作品・問題種別・大問を確認。今回は本文・設問の分析は未登録です。",
+      "topics": [],
+      "questionSummary": "出典一覧で確認した記録です。小問の内容や難度は推測で補っていません。",
+      "advice": "作品名を見たら、本文と注から人物・行動・出来事を整理しよう。過去の出典と次の入試の出典は同じとは限りません。",
+      "unit": 2,
+      "sources": [
+        {
+          "label": "大阪府・令和8年度 一般選抜 出典一覧",
+          "url": "https://www.pref.osaka.lg.jp/documents/129362/r08ippan-syuttenichiran.pdf",
+          "page": 1,
+          "locator": "PDFの1ページ目「国語〔B問題〕」大問二",
+          "role": "出典名・問題種別・大問番号"
+        }
+      ],
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "id": "osaka-2026-c-二",
+      "prefecture": "大阪府",
+      "year": 2026,
+      "exam": "公立高等学校一般入学者選抜",
+      "variant": "C問題",
+      "section": "国語・大問二",
+      "name": "今物語",
+      "kana": "いまものがたり",
+      "workId": null,
+      "level": "questions",
+      "confirmed": "公式の出典一覧で作品・問題種別・大問を確認。公式問題の設問1〜3も確認しています。",
+      "topics": [
+        "動作の主語",
+        "指示内容",
+        "理由の記述"
+      ],
+      "questionSummary": "設問1は動作をした人物、設問2は指示表現の内容を選ぶ問題。設問3は二人の行動を踏まえた理由を、現代の言葉で20字以上30字以内にまとめる問題です。",
+      "advice": "人物の呼び名を対応させ、誰が尋ね、誰が答えたかを追おう。二人の返答を比べ、共通することを本文から説明しよう。",
+      "unit": 8,
+      "sources": [
+        {
+          "label": "大阪府・令和8年度 一般選抜 出典一覧",
+          "url": "https://www.pref.osaka.lg.jp/documents/129362/r08ippan-syuttenichiran.pdf",
+          "page": 1,
+          "locator": "PDFの1ページ目「国語〔C問題〕」大問二",
+          "role": "出典名・問題種別・大問番号"
+        },
+        {
+          "label": "大阪府・国語C問題（公式PDF）",
+          "url": "https://www.pref.osaka.lg.jp/documents/129362/r08ippan-103kokugo-c-mondai.pdf",
+          "page": 1,
+          "locator": "PDFの1ページ目（A面）大問二／設問1〜3",
+          "role": "実際の設問内容"
+        }
+      ],
+      "checkedAt": "2026-10-25"
+    }
+  ]
+}

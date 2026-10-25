@@ -1,0 +1,35 @@
+{
+  "environment": "Native Three geometry, instancing, and CPU rasterizer; browser checks separate",
+  "passed": 7,
+  "total": 7,
+  "checks": [
+    {
+      "name": "only blockers between camera and player fade, without changing shared material",
+      "pass": true
+    },
+    {
+      "name": "scenery behind player and low ground do not fade",
+      "pass": true
+    },
+    {
+      "name": "leaving an obstruction restores layers and visibility after the short anti-flicker hold",
+      "pass": true
+    },
+    {
+      "name": "individual tree instances fade and restore, while neighbouring trees stay intact",
+      "pass": true
+    },
+    {
+      "name": "fade eases and reduced motion switches instantly",
+      "pass": true
+    },
+    {
+      "name": "CPU renderer actually reveals player pixels through the transparent wall",
+      "pass": true
+    },
+    {
+      "name": "cleanup disposes owned materials only and restores original source meshes",
+      "pass": true
+    }
+  ]
+}

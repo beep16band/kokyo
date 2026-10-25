@@ -75,14 +75,14 @@ function town3DBatch(root,dynamic=false) {
   return dynamic?batches:[];
 }
 function town3DReleaseWorld() {
-  const V=Town3D;if(!V.world)return;
+  const V=Town3D;if(!V.world)return;TownOcclusion.dispose(V);
   const shared=new Set(V.shapes.values()),unique=new Set();
   V.world.traverse(o=>{if(o.userData.noBatch)o.material?.dispose();if(o.isInstancedMesh)o.dispose();if(o.geometry&&!shared.has(o.geometry))unique.add(o.geometry)});
   unique.forEach(g=>g.dispose());V.scene.remove(V.world);
 }
 function town3DRebuild() {
   const V=Town3D,m=maps[state.area];town3DReleaseWorld();
-  V.world=new THREE.Group();V.scene.add(V.world);V.labels=[];V.actors.clear();
+  V.world=new THREE.Group();V.scene.add(V.world);V.labels=[];V.actors.clear();TownOcclusion.init(V);
   const groups=Array.from({length:7},()=>[]),seasonName=season();
   const colors=[seasonName==='冬'?'#dde4d2':seasonName==='秋'?'#bac58a':seasonName==='夏'?'#90b47f':'#aac68a','#e6cfa8','#e2ddc0','#83bfca','#a78960','#c9a675','#b1baa9'];
   for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){const id=m.tiles[y][x];groups[id].push([x+.5,id===3?-.1:0,y+.5,1,.12,1]);}
@@ -90,10 +90,10 @@ function town3DRebuild() {
   V.ripples=town3DInstances('cylinder','#b9d9d2',groups[3].filter((_,i)=>i%4===0).map(t=>[t[0],.005,t[2],.17,.01,.04]),V.world);
   const trunks=[],leaves=[],fruit=[],rocks=[];
   for(const t of m.trees){trunks.push([t.x+.5,.65,t.y+.5,.16,1.3,.16]);for(const [dx,dy,dz,r]of[[-.3,1.75,.05,.7],[.3,1.8,.05,.7],[0,2.2,0,.65]])leaves.push([t.x+.5+dx,dy,t.y+.5+dz,r,r*.86,r]);if(t.tile===18)fruit.push([t.x+.75,1.85,t.y+1,.12,.13,.12]);}
-  town3DInstances('cylinder','#a98766',trunks,V.world);V.leaves=town3DInstances('sphere',seasonName==='冬'?'#c7d4b9':seasonName==='秋'?'#c9b47b':'#8db183',leaves,V.world);town3DInstances('sphere','#e5b09a',fruit,V.world);
+  const trunkMesh=town3DInstances('cylinder','#a98766',trunks,V.world);V.leaves=town3DInstances('sphere',seasonName==='冬'?'#c7d4b9':seasonName==='秋'?'#c9b47b':'#8db183',leaves,V.world);const fruitMesh=town3DInstances('sphere','#e5b09a',fruit,V.world);let fruitIndex=0;for(let i=0;i<m.trees.length;i++){const t=m.trees[i];TownOcclusion.tree(V,i,trunkMesh,V.leaves,fruitMesh,t.tile===18?fruitIndex++:-1);}
   town3DInstances('cylinder','#91ac7d',m.trees.map(t=>[t.x+.65,.065,t.y+.7,.75,.01,.5]),V.world);
   for(const r of m.rocks)rocks.push([r.x+.5,.22,r.y+.5,.45,.35,.36]);town3DInstances('sphere','#a8b2a3',rocks,V.world);
-  for(const b of m.buildings)town3DBuilding(b,V.world);
+  for(const b of m.buildings){const start=V.world.children.length;town3DBuilding(b,V.world);for(const root of V.world.children.slice(start))TownOcclusion.group(V,root,b.name);}
   for(const f of m.fences||[]){town3DMesh(V.world,'box','#d2b28b',f.x+.5,.55,f.y+.5,f.vertical?.12:1,.12,f.vertical?1:.12);town3DMesh(V.world,'box','#ead1a1',f.x+.5,.35,f.y+.5,.13,.8,.13);}
   for(const p of m.pois){if(p.type==='discover'&&state.explore.found[p.id])continue;
     if(typeof townSceneryPoi3D==='function'&&townSceneryPoi3D(p,V.world)){}
@@ -155,10 +155,11 @@ function town3DDraw(now,dt) {
   if(V.width!==c.width||V.height!==c.height){V.width=c.width;V.height=c.height;V.renderer.setSize(c.width,c.height,false);V.camera.aspect=c.width/c.height;V.camera.updateProjectionMatrix();}
   if(!(V.frameArea===V.area&&(menuOpen||setupOpen||choices.children.length))){
     V.world.updateMatrixWorld(true);
+    TownOcclusion.update(V,now,dt,state.settings.reducedMotion);
     for(const {batch,meshes} of V.batches){meshes.forEach((mesh,i)=>{
       // Hidden plants/bugs/tools retain their animation hierarchy; hide the corresponding instance too.
       let visible=true;for(let p=mesh.parent;p&&p!==V.world;p=p.parent)if(!p.visible)visible=false;
-      if(visible&&mesh.visible)batch.setMatrixAt(i,mesh.matrixWorld);else batch.setMatrixAt(i,V.hiddenMatrix);
+      if(visible&&mesh.visible&&!mesh.userData.occlusionHidden)batch.setMatrixAt(i,mesh.matrixWorld);else batch.setMatrixAt(i,V.hiddenMatrix);
     });batch.instanceMatrix.needsUpdate=true;}
     if(!V.renderer.isSoftwareRenderer||!V.lastPaint||now-V.lastPaint>65){try{V.renderer.render(V.scene,V.camera);V.lastPaint=now;V.frameArea=V.area;}catch(error){if(!V.renderer.isSoftwareRenderer){townUseCompatible3D(error.message);}else{V.reason=error.message;throw error;}}}
   }
