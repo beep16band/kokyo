@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-26",
+  "environment": "Cloud browser, actual main game with CPU-compatible Three 3D; 390x844 iframe, not physical phone",
+  "local": {
+    "desktop": {
+      "speaker": "みお",
+      "position": [
+        18,
+        17
+      ],
+      "facing": [
+        3.142,
+        0
+      ],
+      "zoom": 0.84,
+      "wholePlayerAbovePanel": true,
+      "closeReturnsZoom": 1.0,
+      "journalDoesNotZoom": true
+    },
+    "phone": {
+      "width": 390,
+      "height": 844,
+      "speaker": "みお",
+      "panelBelowScene": true,
+      "tapConversation": true,
+      "resumeHero": "ひより",
+      "coins": 500,
+      "walkAfterClose": [
+        18,
+        18
+      ]
+    }
+  },
+  "public": {
+    "status": "pending"
+  },
+  "limits": [
+    "Physical smartphone not tested",
+    "Chromebook and GPU performance not tested"
+  ]
+}
