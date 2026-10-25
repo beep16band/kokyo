@@ -1,23 +1,23 @@
 {
-  "commit": "3d309483bb0aa6eca18f42b0978792033d308275",
+  "commit": "9c5448c9f0b58b49fd4921b67dc409dac698605a",
   "files": [
     {
       "path": "index.html",
       "status": 200,
       "matchesLocal": true,
-      "sha256": "a821f5fa1a665ed3a61c0baa377590135c06e16aee44eb0ae2aee5c7b24103f7"
+      "sha256": "f98eb2ae32e366a9b10b07b0dbd3216ccd60235fea80b42615da5db671127dd2"
+    },
+    {
+      "path": "town-opening.css",
+      "status": 200,
+      "matchesLocal": true,
+      "sha256": "f265b4755ba1db1d05da2a8fed1ca680e00e6e2f430d0eb335ae0a5a5dc50d09"
     },
     {
       "path": "town-opening.js",
       "status": 200,
       "matchesLocal": true,
       "sha256": "c3b98f2c561e396fd1443cbe0ce4eb762437a4f846a43c3bb8e27fca963e2eea"
-    },
-    {
-      "path": "town-opening.css",
-      "status": 200,
-      "matchesLocal": true,
-      "sha256": "ac1d6704c5457243b31db5a642ad6410d1c9ca05af0110aaa31364edbff2874a"
     },
     {
       "path": "town-title.js",
@@ -29,7 +29,7 @@
       "path": "prototypes/opening-preview.html",
       "status": 200,
       "matchesLocal": true,
-      "sha256": "3dcf8a375819dcb0164a73a0fe8939800b33b8c149e8a98c01158f8e5a7bc3ac"
+      "sha256": "505ddc066c1dcff9bf535ce8265bc4069884a0119554385430c28dc4ad5113e5"
     }
   ]
 }
