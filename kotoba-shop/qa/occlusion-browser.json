@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-25",
+  "renderer": "CPU compatible 3D",
+  "native": "7/7",
+  "verified": [
+    "ordinary walking and school entry/exit",
+    "tree-14 fades without other trees changing",
+    "at [12,3], tree-6 and store fade, player visible",
+    "after walking to [3,3], store no longer in faded names; tree-12 fades",
+    "390x844 continue, player visible through tree, virtual stick changes blockers",
+    "journal dialogue UI opens and closes",
+    "Hiyori, 500G and difficulty retained"
+  ],
+  "publication": "pending",
+  "limits": [
+    "physical mobile and Chromebook not tested",
+    "GPU not available"
+  ]
+}
