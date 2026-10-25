@@ -133,9 +133,10 @@ function town3DDraw(now,dt) {
   const V=Town3D;if(V.failed||!V.ready)return false;
   if(V.area!==state.area+'|'+season()+'|'+state.avatar.kind)town3DRebuild();
   V.renderer.domElement.hidden=false;ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,c.width,c.height);
-  const m=maps[state.area],tx=Math.max(9,Math.min(m.w-9,visualX+.5)),tz=Math.max(6,Math.min(m.h-6,visualY+.5));
-  if(!V.target)V.target=new THREE.Vector3(tx,0,tz);else V.target.lerp(new THREE.Vector3(tx,0,tz),state.settings.reducedMotion?1:1-Math.exp(-dt*8));
-  V.camera.position.set(V.target.x,19,V.target.z+15);V.camera.lookAt(V.target.x,0,V.target.z);
+  TownMapCamera.update(V,maps[state.area],visualX,visualY,dt,c.width,c.height,state.settings.reducedMotion);
+  const cameraCanvas=V.renderer.domElement;
+  cameraCanvas.dataset.camera='perspective-follow';cameraCanvas.dataset.cameraTarget=JSON.stringify([+V.target.x.toFixed(3),+V.target.z.toFixed(3)]);
+  cameraCanvas.dataset.cameraFov=String(V.camera.fov);
   const evening=timePhase()==='夕方';V.scene.background.set(evening?'#e7cfb2':'#dfebdd');V.sun.color.set(evening?'#ffdbac':'#fff3d6');
   if(typeof townSceneryTime3D==='function')townSceneryTime3D(evening);
   town3DAnimate(V.player,visualX,visualY,facing,!!walkStep,now,mini?.action?(mini.phase==='land'?'joy':mini.phase==='bite'?'surprise':'fish'):netSwing?'tool':'idle');
@@ -151,7 +152,7 @@ function town3DDraw(now,dt) {
   V.bobber.visible=!!mini?.action&&mini.phase!=='land';if(V.bobber.visible)V.bobber.position.set(mini.target.x+.5,mini.phase==='bite'?-.05:.1,mini.target.y+.5);
   V.fishingLine.visible=!!mini?.action&&mini.phase!=='land';
   if(V.fishingLine.visible){V.tool.updateMatrixWorld(true);const tip=V.tool.localToWorld(new THREE.Vector3(0,1,0)),positions=V.fishingLine.geometry.attributes.position;positions.setXYZ(0,tip.x,tip.y,tip.z);positions.setXYZ(1,V.bobber.position.x,V.bobber.position.y,V.bobber.position.z);positions.needsUpdate=true;}
-  if(V.width!==c.width||V.height!==c.height){V.width=c.width;V.height=c.height;V.renderer.setSize(c.width,c.height,false);const h=innerWidth<500?15:18,w=h*c.width/c.height;Object.assign(V.camera,{left:-w/2,right:w/2,top:h/2,bottom:-h/2});V.camera.updateProjectionMatrix();}
+  if(V.width!==c.width||V.height!==c.height){V.width=c.width;V.height=c.height;V.renderer.setSize(c.width,c.height,false);V.camera.aspect=c.width/c.height;V.camera.updateProjectionMatrix();}
   if(!(V.frameArea===V.area&&(menuOpen||setupOpen||choices.children.length))){
     V.world.updateMatrixWorld(true);
     for(const {batch,meshes} of V.batches){meshes.forEach((mesh,i)=>{
@@ -177,7 +178,7 @@ function initTown3D() {
     if(typeof THREE==='undefined')throw Error('3D library unavailable');
     const V=Town3D;V.hiddenMatrix=new THREE.Matrix4().makeScale(0,0,0);try{if(state.settings.compatible3D)throw Error('互換3D指定');V.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});}catch(error){V.renderer=new PlazaSoftware3D({canvas:document.createElement('canvas')});V.reason=error.message;}if(V.renderer.debug)V.renderer.debug.onShaderError=()=>setTimeout(()=>townUseCompatible3D('シェーダー初期化失敗'),0);V.renderer.setPixelRatio(1);V.renderer.outputColorSpace=THREE.SRGBColorSpace;V.renderer.setClearColor('#e3ebd7');
     const el=V.renderer.domElement;el.id='town3D';el.setAttribute('aria-hidden','true');c.before(el);
-    V.scene=new THREE.Scene();V.scene.background=new THREE.Color('#e3ebd7');V.camera=new THREE.OrthographicCamera(-15,15,9,-9,.1,100);
+    V.scene=new THREE.Scene();V.scene.background=new THREE.Color('#e3ebd7');V.camera=TownMapCamera.create(THREE);
     V.scene.add(new THREE.HemisphereLight('#fff9e1','#9aa890',1.7));V.sun=new THREE.DirectionalLight('#fff1d3',1.6);V.sun.position.set(-12,25,12);V.scene.add(V.sun);
     el.addEventListener('webglcontextlost',e=>{e.preventDefault();townUseCompatible3D('描画接続が失われたため');});V.ready=true;
   }catch(e){Town3D.failed=true;Town3D.reason=e.message;}

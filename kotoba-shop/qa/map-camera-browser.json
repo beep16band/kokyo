@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-25",
+  "renderer": "CPU compatible 3D",
+  "checks": [
+    "desktop start/continue retains saved hero and 500G",
+    "walk beach to river to town plaza, camera follows and resets at area boundaries",
+    "whole player and existing residents/buildings visible at closer perspective",
+    "390x844 iframe continue and player visible",
+    "virtual stick diagonal drag moves player from [24,22] to [37,13] with following camera"
+  ],
+  "camera": {
+    "fov": 38,
+    "pitchDegrees": 34.4,
+    "offsetHeight": 6.2,
+    "offsetDepth": 9.05,
+    "playerFrameHeight": "about 20 percent"
+  },
+  "native": "7/7",
+  "publication": "pending",
+  "limits": [
+    "physical phone and Chromebook not tested",
+    "GPU not available"
+  ]
+}
