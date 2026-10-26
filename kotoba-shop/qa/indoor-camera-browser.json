@@ -21,7 +21,26 @@
     "coins": 500
   },
   "public": {
-    "status": "pending"
+    "status": "verified",
+    "commit": "8e98d3eb93409282de8dc99317456cc9e38f1661",
+    "pagesRun": 40247969137,
+    "conclusion": "success",
+    "room": "port",
+    "camera": "interior-perspective-follow",
+    "fov": 38,
+    "target": [
+      10.5,
+      8
+    ],
+    "position": [
+      10,
+      9
+    ],
+    "sourceMatches": [
+      "index.html",
+      "town-interiors.js"
+    ],
+    "actualDoorEntryAfterReload": true
   },
   "limits": [
     "No physical phone/Chromebook/GPU test",
