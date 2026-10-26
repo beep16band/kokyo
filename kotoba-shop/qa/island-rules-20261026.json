@@ -1,0 +1,51 @@
+{
+  "environment": "Production island rules and new guidance in Node VM, not full browser playthrough",
+  "passed": 11,
+  "total": 11,
+  "checks": [
+    {
+      "name": "Sunday-only turnips enforce location, quantity, price and weekly cap",
+      "pass": true
+    },
+    {
+      "name": "construction consumes exact funds and wood once and drives next-day visitors without double credit",
+      "pass": true
+    },
+    {
+      "name": "suit is gated by development and changes equipped outfit only after purchase",
+      "pass": true
+    },
+    {
+      "name": "bug specialist pays correct amount and catalog remains after sale",
+      "pass": true
+    },
+    {
+      "name": "animal definitions retain owl glasses, muscular smiling bear and elegant cat",
+      "pass": true
+    },
+    {
+      "name": "tent to home to kitchen has fixed prices and rejects duplicate kitchen",
+      "pass": true
+    },
+    {
+      "name": "fruit, crops and fish restore energy and learned recipes require home and kitchen",
+      "pass": true
+    },
+    {
+      "name": "museum accepts bugs fish fossils art once, removes inventory and retains catalog",
+      "pass": true
+    },
+    {
+      "name": "guide follows visitor, housing and museum milestones and has no save side effects",
+      "pass": true
+    },
+    {
+      "name": "eight-feature checklist exposes all eight entries and marks Sunday stall",
+      "pass": true
+    },
+    {
+      "name": "diving instructions Back actually opens clothes shop or journal",
+      "pass": true
+    }
+  ]
+}

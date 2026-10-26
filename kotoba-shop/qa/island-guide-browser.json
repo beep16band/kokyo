@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-26",
+  "local": {
+    "renderer": "CPU-compatible 3D",
+    "hero": "そら",
+    "coins": 500,
+    "housing": "tent",
+    "journalToRoadmap": true,
+    "roadmapToChecklist": true,
+    "eightItemsVisible": true,
+    "phoneIframe": [
+      390,
+      844
+    ],
+    "phoneReloadContinue": true,
+    "sundayStallWaypoint": true
+  },
+  "public": {
+    "status": "pending"
+  },
+  "limits": [
+    "11 production-rule tests are Node VM, not full browser playthrough",
+    "No physical phone/Chromebook/GPU verification",
+    "Existing 8 systems audited; no new character models in this change"
+  ]
+}
