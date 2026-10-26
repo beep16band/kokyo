@@ -32,7 +32,29 @@
     }
   },
   "public": {
-    "status": "pending"
+    "status": "verified",
+    "commit": "12e83906dd3cd9ad7827524854663034ec4b4bbd",
+    "pagesRun": 40239915063,
+    "pagesConclusion": "success",
+    "sourceFilesMatch": [
+      "index.html",
+      "town-camera.js",
+      "town-dialogue.js",
+      "town-dialogue.css",
+      "scene3d.js"
+    ],
+    "speaker": "モク",
+    "position": [
+      19,
+      16
+    ],
+    "facing": [
+      -1.571,
+      1.571
+    ],
+    "zoomDuringConversation": 0.84,
+    "closeClearsFocus": true,
+    "restoresNormalCamera": true
   },
   "limits": [
     "Physical smartphone not tested",
