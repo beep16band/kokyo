@@ -1,0 +1,19 @@
+{
+  "environment": "Native Three projection, room movement and production renderer integration",
+  "passed": 3,
+  "total": 3,
+  "checks": [
+    {
+      "name": "indoor player has the same close scale as outdoors, including room edges",
+      "pass": true
+    },
+    {
+      "name": "walking through the room follows smoothly and reduced motion is immediate",
+      "pass": true
+    },
+    {
+      "name": "interior renderer uses close follow camera and redraws camera movement during menus",
+      "pass": true
+    }
+  ]
+}

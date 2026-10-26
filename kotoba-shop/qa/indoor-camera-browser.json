@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-26",
+  "local": {
+    "renderer": "CPU compatible Three 3D",
+    "room": "port",
+    "camera": "interior-perspective-follow",
+    "fov": 38,
+    "position": [
+      10,
+      9
+    ],
+    "playerAndExitVisible": true,
+    "leftRightFollow": true,
+    "exitToOutdoors": true,
+    "phoneIframe": [
+      390,
+      844
+    ],
+    "phoneRoomEntryAndFullPlayer": true,
+    "hero": "ひより",
+    "coins": 500
+  },
+  "public": {
+    "status": "pending"
+  },
+  "limits": [
+    "No physical phone/Chromebook/GPU test",
+    "Home and shop share renderer but were not separately visited"
+  ]
+}
