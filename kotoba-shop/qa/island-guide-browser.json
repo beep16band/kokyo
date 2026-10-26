@@ -16,7 +16,18 @@
     "sundayStallWaypoint": true
   },
   "public": {
-    "status": "pending"
+    "status": "verified",
+    "commit": "e7b0cfad52c65687072f8eee2d84d92ee001ee17",
+    "pagesRun": 40320528237,
+    "conclusion": "success",
+    "filesMatch": [
+      "index.html",
+      "island-life.js",
+      "island-guide.js"
+    ],
+    "hero": "ひより",
+    "coins": 500,
+    "journalRoadmapChecklistAndSundayWaypoint": true
   },
   "limits": [
     "11 production-rule tests are Node VM, not full browser playthrough",
