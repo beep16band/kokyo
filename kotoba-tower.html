@@ -492,7 +492,9 @@ const api={recover,create,createTitleShortcut};if(typeof module!=='undefined')mo
 </script><script>/* Classroom play restrictions v1. Same-origin only; this is not authentication. */
 (function(root){'use strict';
 const MINUTE=60000,JST=9*60*MINUTE;
-function schedule(ms){const d=new Date(ms+JST),h=d.getUTCHours(),m=d.getUTCMinutes();return{date:d.toISOString().slice(0,10),night:h>=21||h<8,warning:h===20&&m>=55};}
+// Teacher request: disable automatic night stopping and its five-minute warning.
+const NIGHT_RESTRICTION_ENABLED=false;
+function schedule(ms){const d=new Date(ms+JST),h=d.getUTCHours(),m=d.getUTCMinutes();return{date:d.toISOString().slice(0,10),night:NIGHT_RESTRICTION_ENABLED&&(h>=21||h<8),warning:NIGHT_RESTRICTION_ENABLED&&h===20&&m>=55};}
 function verifiedWrite(storage,key,text){const before=storage.getItem(key);storage.setItem(key,text);if(storage.getItem(key)!==text){try{if(before===null)storage.removeItem(key);else storage.setItem(key,before);}catch(_){}throw Error('保存内容を確認できませんでした。');}}
 function create(o){
  const doc=o.document||root.document,wall=o.wall||(()=>Date.now()),mono=o.mono||(()=>performance.now()),fetcher=o.fetch||(root.fetch?root.fetch.bind(root):async()=>{throw Error('通信機能が使えません');});
