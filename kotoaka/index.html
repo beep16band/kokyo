@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11152a">
+  <meta name="description" content="学園生活とカード対戦で、中学国語3年間を総復習。">
+  <title>僕のコトバアカデミア｜コトアカ</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./cards.js"></script>
+  <script defer src="./questions.js"></script>
+  <script defer src="./story.js"></script>
+  <script defer src="./engine.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">本文へ</a>
+  <header class="topbar">
+    <div class="topinner">
+      <button class="brand" data-view="campus"><span class="crest" aria-hidden="true">文</span><span>コトアカ<small> KOTOBA ACADEMIA</small></span></button>
+      <nav aria-label="ゲームメニュー">
+        <button data-view="campus">学園</button><button data-view="study">学習</button><button data-view="battle">対戦</button><button data-view="cards">カード</button><button data-view="save">記録</button>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <footer><span>僕のコトバアカデミア</span><span>第1章 · 初期版</span></footer>
+  <div id="notice" role="status" aria-live="polite"></div>
+  <input id="import-file" type="file" accept=".json,application/json" hidden>
+  <noscript>プレイするにはJavaScriptを有効にしてください。</noscript>
+</body>
+</html>
