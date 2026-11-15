@@ -3,28 +3,185 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#10223a">
+<meta name="theme-color" content="#101415">
 <meta name="description" content="ことばのゲートを選び、青い冒険者の仲間を集める国語ゲーム。全8ステージ。">
 <title>コトバ軍団！</title>
 <style>
-:root{color-scheme:light;--ink:#112a40;--muted:#4b6573;--paper:#fbf9f2;--background:#f0eee5;--gold:#ffd36b;--line:#d8ddd6;--dark:#10243a;--teal:#156953;--blue:#245889;font-family:system-ui,"Noto Sans JP",sans-serif;font-synthesis:none}
-*{box-sizing:border-box}body{margin:0;background:var(--background);color:var(--ink);line-height:1.55}button,select,input{font:inherit}button,select{cursor:pointer;color:inherit}button{border:0}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #147ee3;outline-offset:3px}button:disabled{cursor:default;opacity:.48}button:active:not(:disabled){translate:0 1px}[hidden]{display:none!important}h1,h2,h3,p{margin:0}rt{font-size:.55em;font-weight:650}ruby{ruby-align:center} .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.top{background:var(--dark);color:#fff}.top-inner{max-width:1240px;margin:auto;min-height:65px;padding:8px 28px;display:flex;justify-content:space-between;align-items:center;gap:12px}.mark,.top-buttons{display:flex;align-items:center;gap:10px}.mark{color:#fff;background:none;font-size:1.18rem;font-weight:900;padding:3px 0;white-space:nowrap}.mark::before{content:"✦";border:1px solid #ffffff52;color:#ffda74;background:#253f58;border-radius:10px;width:34px;height:34px;display:grid;place-items:center}.top-buttons button{padding:7px 12px;background:#283e55;border:1px solid #486074;border-radius:9px;color:white;font-size:.87rem;font-weight:750;min-height:40px}.shell{max-width:1240px;margin:auto;padding:24px 28px 38px}
-.hero{min-height:376px;position:relative;overflow:hidden;border-radius:24px;isolation:isolate;display:flex;align-items:center;background:#245453;color:#fff;box-shadow:0 12px 30px #17363922}.hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2}.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0d253ef5 1%,#0d253ed9 27%,#0d253e74 51%,#0d253e00 77%)}.hero-copy{padding:33px 34px;max-width:555px}.eyebrow{color:#ffdf89;font-size:.85rem;font-weight:850;letter-spacing:.14em}.hero h1{font-size:clamp(2.4rem,6vw,4.5rem);font-weight:950;line-height:1.18;letter-spacing:-.065em;margin:8px 0 13px;text-shadow:0 4px 15px #132c3859}.hero p:not(.eyebrow){font-size:1rem;color:#fff;font-weight:650;max-width:24em}.hero-actions{margin-top:23px;display:flex;flex-wrap:wrap;gap:9px}.primary,.secondary,.subtle{min-height:44px;border-radius:10px;padding:9px 16px;font-weight:850}.primary{background:var(--gold);color:#312705;box-shadow:0 3px 0 #c58a31}.primary:hover{background:#ffe196}.secondary{background:#fffef8;color:var(--ink);border:1px solid var(--line)}.secondary:hover{background:#eef5ef}.subtle{background:#e4efe8;color:#18543f}.hero .secondary{background:#163549de;color:white;border-color:#aec5c466}.hero .secondary:hover{background:#244c65}
-.menu-head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:26px 0 11px}.menu-head h2{font-size:1.34rem;font-weight:950}.menu-head p{color:var(--muted);font-size:.86rem;font-weight:700}.stage-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stage-card{--tint:#41654c;display:flex;position:relative;align-items:center;min-height:83px;gap:10px;text-align:left;padding:11px;background:var(--paper);border:1px solid var(--line);border-radius:13px;transition:border-color .15s,background .15s}.stage-card:hover{border-color:var(--tint);background:#fff}.stage-icon{width:43px;height:43px;flex:0 0 43px;border-radius:10px;background:var(--tint);color:#fff;display:grid;place-items:center;font-size:1.45rem;font-weight:900}.stage-card strong,.stage-card small{display:block}.stage-card strong{font-size:.94rem;line-height:1.3;padding:2px 0}.stage-card small{color:var(--muted);font-size:.73rem;line-height:1.28}.stage-num{color:var(--tint);font-size:.69rem;letter-spacing:.12em;font-weight:900}.cleared{margin-left:auto;color:var(--teal);font-weight:900;align-self:start}
-.game-shell{padding-top:13px}.game-hud{display:grid;grid-template-columns:1.3fr 1fr auto;align-items:center;gap:13px;margin-bottom:9px}.game-hud h1{font-size:clamp(1rem,2.65vw,1.35rem);line-height:1.25}.hud-caption{font-size:.78rem;font-weight:750;color:#455e6c}.hud-count{border-radius:10px;background:#dcece2;color:#174b37;padding:5px 12px;white-space:nowrap;font-weight:850}.hud-count strong{font-size:1.35rem}.progress-area{display:flex;align-items:center;gap:8px;color:#345361;font-weight:850;font-size:.81rem}.progress-track{height:8px;flex:1;background:#d5dfd6;border-radius:8px;overflow:hidden}.progress-fill{height:100%;background:#238468;display:block;transition:width .22s}
-.game-world{position:relative;isolation:isolate;background:#87becc;border-radius:17px;overflow:hidden;height:clamp(265px,48dvh,560px);box-shadow:0 6px 18px #17363924}.game-world canvas{width:100%;height:100%;display:block;touch-action:pan-y}.world-label,.boss-hud{position:absolute;top:10px;left:50%;transform:translateX(-50%);text-align:center;background:#10283de9;color:#fff;border:1px solid #fff5;border-radius:10px;padding:6px 14px;font-size:.83rem;font-weight:850;pointer-events:none;max-width:96%;width:max-content}.boss-hud{width:min(390px,93%);padding:6px 12px 9px}.hp-track{display:block;height:9px;margin-top:4px;border-radius:10px;background:#2e4455;overflow:hidden}.hp-fill{display:block;height:100%;background:#ffc36a;transition:width .18s}.gain{position:absolute;bottom:17%;left:50%;transform:translateX(-50%);border:2px solid #ffda82;box-shadow:0 3px 12px #10253657;background:#154b3e;color:#fff3a8;font-size:clamp(1.12rem,4vw,1.7rem);font-weight:950;padding:4px 18px;border-radius:999px;pointer-events:none;white-space:nowrap}
-.game-panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:13px 16px;margin-top:9px;min-height:121px}.prompt-top,.feedback,.result-actions,.row-buttons{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.prompt-top{justify-content:space-between;margin-bottom:1px}.turn{font-weight:850;color:#285a48;font-size:.84rem;min-height:1.28em}.read-controls{display:flex;gap:6px;align-items:center}.read-controls button{font-size:.8rem;padding:5px 9px;min-height:36px}.question{font-size:clamp(1.18rem,3.15vw,1.68rem);font-weight:900;line-height:1.55;overflow-wrap:anywhere}.passage{padding:4px 10px;border-left:3px solid #528274;background:#edf2e9;white-space:pre-line;font-size:clamp(.96rem,2.2vw,1.15rem);font-weight:720;margin:3px 0}.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.choice{min-height:53px;display:flex;gap:8px;align-items:center;justify-content:flex-start;text-align:left;border:2px solid #9ec9e5;border-radius:11px;background:#e4f2fc;padding:6px 10px;font-weight:900;font-size:clamp(1rem,3vw,1.36rem);line-height:1.45;overflow-wrap:anywhere}.choice:nth-child(2){border-color:#c6b1e5;background:#f1e9fc}.choice:hover:not(:disabled){border-color:#205faa}.choice:nth-child(2):hover:not(:disabled){border-color:#7744af}.choice .arrow{font-size:.82rem;padding:4px 7px;color:white;background:#286498;border-radius:7px;flex:none}.choice:nth-child(2) .arrow{background:#6749a0}.game-panel[data-phase="approach"] .choice{opacity:.75}.feedback{justify-content:space-between;gap:7px}.feedback h2,.result-title{font-size:clamp(1.19rem,3vw,1.48rem);line-height:1.4}.feedback p{font-size:clamp(.96rem,2vw,1.13rem);font-weight:700}.feedback.ok h2{color:#136249}.feedback.miss h2{color:#634d23}.hint{font-size:.79rem;color:#49616d;margin-top:5px;font-weight:650}.result-actions{margin-top:10px}.result-score{font-weight:850;margin-top:5px}
-dialog{max-width:min(560px,calc(100% - 24px));width:100%;max-height:calc(100% - 24px);border:1px solid #cbd7cb;border-radius:17px;background:var(--paper);color:var(--ink);padding:19px;box-shadow:0 22px 55px #10243a64}dialog::backdrop{background:#0b2339b9}dialog h2{font-size:1.38rem}dialog p{margin:5px 0 9px}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:7px}.close{min-width:43px;min-height:43px;border-radius:9px;background:#e9ede6;font-weight:800}.fields{display:grid;gap:10px;margin:12px 0}.fields label{font-weight:780;display:flex;gap:10px;align-items:center;justify-content:space-between}.fields select{padding:7px;border:1px solid #91adab;border-radius:8px;background:#fff;max-width:61%;min-height:42px}.fields input[type="range"]{accent-color:#1d785c;width:min(45%,220px)}.fields input[type="checkbox"]{width:22px;height:22px;accent-color:#1d785c}.toast{padding:7px 10px;border:1px solid #d2b370;border-radius:8px;background:#fdf1cf;margin-bottom:8px;font-size:.85rem}.records{display:grid;gap:8px;margin-top:12px}.record{padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:white;font-size:.89rem}.record summary{cursor:pointer;font-weight:800}.record ul{margin:5px 0;padding-left:21px}.record li+li{margin-top:5px}.muted{color:var(--muted);font-size:.87rem}.history-dialog{max-width:min(720px,calc(100% - 24px))}
-@media(max-width:880px){.stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:580px){.top-inner{min-height:55px;padding:5px 11px}.mark{gap:6px;font-size:1rem}.mark::before{width:28px;height:29px}.top-buttons{gap:4px}.top-buttons button{padding:5px 7px;font-size:.73rem;min-height:40px}.shell{padding:12px 10px 20px}.hero{min-height:322px;border-radius:15px;align-items:end}.hero::after{background:linear-gradient(90deg,#0d253eea,#0d253e9d 51%,#0d253e23 100%)}.hero-copy{padding:19px 15px;max-width:360px}.hero p:not(.eyebrow){font-size:.9rem;max-width:17em}.hero-actions{margin-top:16px}.menu-head{margin-top:17px}.menu-head h2{font-size:1.14rem}.menu-head p{font-size:.72rem}.stage-grid{gap:6px}.stage-card{padding:6px;gap:6px;min-height:74px}.stage-icon{width:32px;height:34px;flex-basis:32px;font-size:1.12rem}.stage-card strong{font-size:.83rem}.stage-card small{font-size:.66rem}.game-shell{padding-top:8px}.game-hud{grid-template-columns:1fr auto;gap:4px 8px;margin-bottom:6px}.progress-area{grid-row:2;grid-column:1/-1}.hud-count{padding:3px 7px;font-size:.81rem}.hud-count strong{font-size:1.1rem}.game-world{height:clamp(204px,36dvh,350px);border-radius:11px}.game-panel{padding:8px;margin-top:6px;border-radius:11px}.choice{gap:5px;padding:5px;min-height:55px}.choice .arrow{font-size:.7rem;padding:4px 5px}.prompt-top .turn{font-size:.76rem}.feedback .primary{min-height:43px}.gain{bottom:11%}}
-@media(max-height:550px) and (orientation:landscape){.game-world{height:clamp(150px,42dvh,235px)}.game-hud{margin-bottom:5px}.game-shell{padding-top:6px}.game-panel{min-height:0}.top-inner{min-height:48px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+:root {
+  color-scheme: dark;
+  --bg:#101415;
+  --surface:#181d1f;
+  --line:#343d3f;
+  --ink:#f5f4ec;
+  --muted:#b9c3c3;
+  --lime:#e6fb91;
+  --left:#9ee9f4;
+  --right:#dfc6fb;
+  --hit:#ffba91;
+  font-family:system-ui,"Noto Sans JP",sans-serif;
+  font-synthesis:none;
+}
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--ink); line-height:1.5 }
+button, select, input { font:inherit; color:inherit }
+button { cursor:pointer; border:0 }
+button:disabled { cursor:default }
+button:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible {
+  outline:3px solid var(--lime);
+  outline-offset:3px;
+}
+[hidden] { display:none!important }
+h1, h2, h3, p { margin:0 }
+rt { font-size:.55em; font-weight:630 }
+ruby { ruby-align:center }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap }
+.top { position:relative; z-index:1; border-bottom:1px solid var(--line); background:#101415 }
+.top-inner { max-width:1420px; margin:auto; padding:0 3%; min-height:58px; display:flex; align-items:center; justify-content:space-between; gap:10px }
+.mark { display:flex; align-items:center; gap:9px; padding:0; font-size:.9rem; font-weight:850; background:none; white-space:nowrap }
+.mark-sign { display:grid; place-items:center; width:24px; height:24px; background:var(--lime); color:#151d16; font-size:.82rem; font-weight:900; font-style:normal; clip-path:polygon(0 0,100% 0,100% 77%,77% 100%,0 100%) }
+.top-buttons { display:flex; align-items:center; gap:4px }
+.top-buttons button { padding:0 11px; min-height:44px; background:none; color:var(--muted); font-size:.84rem; font-weight:730; white-space:nowrap }
+.top-buttons button:hover, .mark:hover { color:var(--lime) }
+.shell { max-width:1420px; margin:auto }
+.hero { position:relative; isolation:isolate; overflow:hidden; min-height:clamp(330px,48dvh,520px); display:flex; align-items:center; background:#293c36 }
+.hero canvas { position:absolute; inset:0; width:100%; height:100%; z-index:-2 }
+.hero::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,#101917f5 2%,#142220e8 22%,#12211c4d 54%,transparent 82%),linear-gradient(0deg,#10141577,transparent 22%) }
+.hero-copy { padding:30px 5%; max-width:64%; }
+.hero h1 { font-size:clamp(2.75rem,7.6vw,6.75rem); font-weight:950; line-height:1.07; letter-spacing:-.085em; text-wrap:balance; text-shadow:0 2px 18px #10221c70 }
+.hero-actions { margin-top:26px; display:flex; flex-wrap:wrap; gap:9px }
+.primary, .secondary, .subtle { min-height:44px; border-radius:5px; padding:9px 16px; font-weight:770 }
+.primary { color:#152013; background:var(--lime) }
+.primary:hover { background:#f1ffc1 }
+.secondary { background:#282f30; border:1px solid #455251 }
+.secondary:hover { background:#333e3f }
+.subtle { background:transparent; color:var(--muted); border:1px solid var(--line) }
+.subtle:hover { color:var(--ink); background:#282f30 }
+.hero .secondary { background:#142220cc; border-color:#ffffff57 }
+.stage-menu { padding:22px 3% 30px }
+.menu-head { display:flex; align-items:baseline; margin-bottom:11px }
+.menu-head h2 { font-size:1.04rem; font-weight:850; letter-spacing:.04em }
+.stage-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line) }
+.stage-card { --tint:#658e78; position:relative; display:flex; align-items:center; gap:11px; min-width:0; min-height:75px; padding:10px 12px; text-align:left; background:var(--surface); border-bottom:1px solid var(--line); border-right:1px solid var(--line) }
+.stage-card::before { content:""; position:absolute; left:-1px; width:2px; height:53%; background:var(--tint) }
+.stage-card:hover { background:#272f31 }
+.stage-num { flex:none; color:var(--tint); filter:brightness(1.42) saturate(.85); font-size:.8rem; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:.06em }
+.stage-card strong { font-size:.96rem; font-weight:750; line-height:1.3; overflow-wrap:anywhere }
+.cleared { color:var(--lime); margin-left:auto; font-size:.83rem; font-weight:800 }
+
+.game-shell { --inset:clamp(10px,2.65vw,34px) }
+.game-hud { padding:10px var(--inset); background:#171c1e; min-height:60px; display:grid; grid-template-columns:minmax(0,1.35fr) minmax(90px,1fr) auto; align-items:center; gap:13px }
+.game-hud h1 { font-size:clamp(.98rem,2.2vw,1.16rem); line-height:1.23; font-weight:800; text-wrap:balance }
+.hud-caption, .progress-area { color:var(--muted); font-size:.77rem; font-weight:670 }
+.hud-count { display:flex; align-items:baseline; gap:5px; padding-left:12px; color:var(--lime); border-left:1px solid var(--line); white-space:nowrap; font-size:.83rem; font-weight:780 }
+.hud-count strong { font-size:1.86rem; font-variant-numeric:tabular-nums; line-height:1 }
+.progress-area { display:flex; align-items:center; gap:10px; white-space:nowrap }
+.progress-track { height:3px; flex:1; background:#424a4a; overflow:hidden }
+.progress-fill { height:100%; background:var(--lime); display:block; transition:width .22s ease-out }
+.game-world { position:relative; isolation:isolate; background:#7db4b6; overflow:hidden; height:clamp(240px,49dvh,620px) }
+.game-world canvas { width:100%; height:100%; display:block; touch-action:pan-y }
+.boss-hud { position:absolute; top:13px; left:50%; transform:translateX(-50%); color:#fff; background:#10191cea; width:min(360px,90%); padding:7px 13px 9px; font-size:.81rem; font-weight:750; pointer-events:none }
+.hp-track { display:block; height:5px; margin-top:5px; background:#425052; overflow:hidden }
+.hp-fill { display:block; height:100%; background:#ffbf91; transition:width .2s ease-out }
+.gain { position:absolute; left:50%; bottom:11%; transform:translateX(-50%); color:#172018; background:var(--lime); font-size:clamp(1.08rem,3vw,1.65rem); font-weight:900; line-height:1; padding:8px 13px; border-radius:5px; font-variant-numeric:tabular-nums; pointer-events:none; white-space:nowrap }
+.gain[data-kind="hit"] { color:#3b2018; background:var(--hit) }
+
+.game-panel { position:relative; background:#171c1e; padding:9px var(--inset) 15px; min-height:154px; border-bottom:1px solid var(--line) }
+.prompt-top, .feedback, .result-actions, .row-buttons { display:flex; align-items:center; gap:8px; flex-wrap:wrap }
+.prompt-top { justify-content:space-between; min-height:44px; margin-bottom:1px }
+.turn { font-size:.84rem; color:#e0eca9; font-weight:770 }
+.read-controls { display:flex; align-items:center; margin-left:auto }
+.read-controls button { display:flex; align-items:center; gap:6px; padding:3px 6px; min-height:44px; font-size:.82rem; color:#d0d9d7; background:none; border:0 }
+.read-controls button:hover { color:var(--lime) }
+.sound-mark { position:relative; width:18px; height:18px }
+.sound-mark::before { content:""; position:absolute; inset:2px 7px 2px 0; background:currentColor; clip-path:polygon(0 33%,35% 33%,100% 0,100% 100%,35% 67%,0 67%) }
+.sound-mark::after { content:""; position:absolute; right:0; inset-block:3px; width:6px; border-right:2px solid currentColor; border-radius:50% }
+.question { font-size:clamp(1.16rem,2.5vw,1.77rem); font-weight:850; line-height:1.46; overflow-wrap:anywhere }
+.passage { padding:3px 0 4px 10px; border-left:2px solid #7c8f85; font-size:clamp(.93rem,2.1vw,1.16rem); font-weight:620; line-height:1.57; margin:0 0 6px; white-space:pre-line }
+.choices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:10px }
+.choice { --option:var(--left); display:flex; align-items:center; gap:10px; min-height:55px; text-align:left; padding:8px 12px; color:#0f2228; background:var(--option); border-radius:5px; font-size:clamp(1rem,2.5vw,1.32rem); font-weight:830; line-height:1.4; overflow-wrap:anywhere }
+.choice:nth-child(2) { --option:var(--right) }
+.choice:hover:not(:disabled) { filter:brightness(1.1) }
+.choice:disabled { opacity:.55 }
+.choice[aria-pressed="true"] { opacity:1; box-shadow:inset 0 0 0 3px #203b41 }
+.choice .arrow { flex:none; min-width:27px; font-size:1.12em; font-weight:700; line-height:1; text-align:center }
+.feedback { justify-content:space-between; min-height:79px }
+.feedback h2, .result-title { font-size:clamp(1.17rem,2.7vw,1.5rem); line-height:1.35; font-weight:850 }
+.feedback.ok h2 { color:var(--lime) }
+.feedback.miss h2 { color:#ffd2bb }
+.feedback p { margin-top:3px; font-size:.96rem; font-weight:700 }
+.feedback .row-buttons { margin-left:auto }
+.explanation { padding:9px 0 0; color:#e0e5df; font-size:.99rem }
+.hint { color:var(--muted); margin-top:5px; font-size:.82rem }
+.result-score { font-weight:750; margin-top:7px }
+.result-actions { margin-top:12px }
+
+dialog { max-width:min(530px,calc(100% - 20px)); width:100%; max-height:calc(100% - 20px); border:1px solid var(--line); border-radius:9px; padding:18px; background:#1e2526; color:var(--ink); box-shadow:0 18px 50px #0008 }
+dialog::backdrop { background:#0b1215b8 }
+dialog h2 { font-size:1.3rem; font-weight:840 }
+.dialog-head { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:7px }
+.close { min-width:44px; min-height:44px; border-radius:5px; background:#2d3738; font-size:1.25rem; font-weight:700 }
+.close:hover { background:#384849 }
+.fields { display:grid; gap:9px; margin:12px 0 }
+.fields label { display:flex; justify-content:space-between; align-items:center; gap:9px; font-weight:740 }
+.fields select { max-width:62%; min-height:44px; padding:6px 8px; background:#2d3738; border:1px solid #526260; border-radius:5px }
+.fields input { accent-color:var(--lime) }
+.fields input[type="range"] { width:min(45%,220px) }
+.fields input[type="checkbox"] { width:23px; height:23px }
+.toast { padding:8px 10px; margin:0 0 9px; background:#3f2b22; color:#ffe2c8; font-size:.84rem }
+.muted { color:var(--muted); font-size:.86rem }
+.setup-detail, #voice-note, #history-summary { margin:8px 0 }
+.history-dialog { max-width:min(720px,calc(100% - 20px)) }
+.records { display:grid; gap:8px; margin-top:10px }
+.record { padding:8px 10px; border:1px solid var(--line); font-size:.89rem }
+.record summary { cursor:pointer; font-weight:790 }
+.record p, .record ul { margin-top:6px }
+.record ul { padding-left:22px }
+.record li+li { margin-top:6px }
+@media (max-width:780px) {
+  .stage-grid { grid-template-columns:repeat(2,minmax(0,1fr)) }
+  .hero-copy { max-width:78% }
+}
+@media (max-width:560px) {
+  .top-inner { min-height:49px; padding:0 10px }
+  .mark { gap:4px; font-size:.77rem }
+  .mark-sign { width:21px; height:21px }
+  .top-buttons { gap:0 }
+  .top-buttons button { padding:0 5px; font-size:.71rem }
+  .hero { min-height:clamp(300px,52dvh,400px); align-items:end }
+  .hero::after { background:linear-gradient(0deg,#101815f5,#12211ca0 37%,#12211c12 77%) }
+  .hero-copy { max-width:none; padding:20px 12px }
+  .hero h1 { font-size:clamp(2.6rem,10vw,4.1rem) }
+  .hero-actions { margin-top:15px }
+  .stage-menu { padding:13px 10px 23px }
+  .stage-card { min-height:57px; padding:8px; gap:6px }
+  .stage-card strong { font-size:.79rem }
+  .stage-num { font-size:.70rem }
+  .game-hud { padding:7px var(--inset) 6px; grid-template-columns:minmax(0,1fr) auto; gap:4px 8px }
+  .game-hud h1 { text-wrap:wrap }
+  .hud-count { padding-left:8px }
+  .hud-count strong { font-size:1.56rem }
+  .progress-area { grid-row:2; grid-column:1/-1 }
+  .game-world { height:clamp(179px,38dvh,350px) }
+  .game-panel { padding:5px var(--inset) 11px; min-height:137px }
+  .prompt-top { margin-bottom:0 }
+  .choice { gap:5px; padding:6px; min-height:53px }
+  .choice .arrow { min-width:19px }
+}
+@media (max-height:520px) and (orientation:landscape) {
+  .top-inner { min-height:44px }
+  .game-world { height:clamp(125px,35dvh,240px) }
+  .game-hud { min-height:43px; padding-block:5px }
+  .game-panel { min-height:0; padding-block:3px 8px }
+  .prompt-top, .read-controls button { min-height:38px }
+}
+@media (prefers-reduced-motion:reduce) {
+  *, *::before, *::after { transition:none!important; scroll-behavior:auto!important }
+}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-inner">
-<button class="mark" id="home" type="button">コトバ軍団！</button>
+<button class="mark" id="home" type="button"><i class="mark-sign" aria-hidden="true">コ</i>コトバ軍団！</button>
 <nav class="top-buttons" aria-label="ゲームの操作"><button id="pause" type="button" hidden>一時停止</button><button id="settings" type="button">設定</button><button id="history" type="button">学習履歴</button></nav>
 </div></header>
 <main>
@@ -33,14 +190,14 @@ dialog{max-width:min(560px,calc(100% - 24px));width:100%;max-height:calc(100% - 
  <div class="hero">
   <canvas id="cover" aria-hidden="true"></canvas>
   <div class="hero-copy">
-   <p class="eyebrow">ことばで進む、8つの冒険</p>
    <h1>コトバ軍団！</h1>
-   <p>左右のゲートから正しいことばを選ぼう。青い冒険者を集めて、最後のボスにみんなで挑もう！</p>
-   <div class="hero-actions"><button class="primary" id="quick-start" type="button">第1ステージへ　›</button><button class="secondary" id="resume" type="button" hidden>つづきから</button></div>
+   <div class="hero-actions"><button class="primary" id="quick-start" type="button">はじめる　→</button><button class="secondary" id="resume" type="button" hidden>つづきから</button></div>
   </div>
  </div>
- <div class="menu-head"><h2 id="stage-list-label">ステージをえらぶ</h2><p>1回 3〜5分目安・時間制限なし</p></div>
- <div class="stage-grid" id="stages" aria-labelledby="stage-list-label"></div>
+ <div class="stage-menu">
+  <div class="menu-head"><h2 id="stage-list-label">ステージ</h2></div>
+  <div class="stage-grid" id="stages" aria-labelledby="stage-list-label"></div>
+ </div>
 </section>
 <section class="shell game-shell" id="play" hidden aria-labelledby="game-title">
  <div class="game-hud">
@@ -50,7 +207,6 @@ dialog{max-width:min(560px,calc(100% - 24px));width:100%;max-height:calc(100% - 
  </div>
  <div class="game-world">
   <canvas id="world" aria-hidden="true"></canvas>
-  <div id="world-label" class="world-label"></div>
   <div id="boss-hud" class="boss-hud" hidden><span id="boss-label"></span><span class="hp-track" aria-hidden="true"><span id="hp" class="hp-fill"></span></span></div>
   <div id="gain" class="gain" aria-hidden="true" hidden></div>
  </div>
@@ -66,9 +222,9 @@ dialog{max-width:min(560px,calc(100% - 24px));width:100%;max-height:calc(100% - 
    <label for="difficulty">むずかしさ <select id="difficulty"><option value="0">やさしい</option><option value="1">ふつう</option><option value="2">むずかしい</option></select></label>
    <label for="players">あそびかた <select id="players"><option value="1">ひとり</option><option value="2">きょうりょく・2人</option><option value="3">きょうりょく・3人</option><option value="4">きょうりょく・4人</option><option value="5">きょうりょく・5人</option><option value="6">きょうりょく・6人</option><option value="7">きょうりょく・7人</option><option value="8">きょうりょく・8人</option></select></label>
   </div>
-  <p class="muted" id="setup-detail"></p>
+  <p class="muted setup-detail" id="setup-detail"></p>
   <p class="toast" id="replace-note" hidden>あたらしく始めると、途中の冒険の保存が入れ替わります。</p>
-  <button class="primary" type="submit">冒険をはじめる　›</button>
+  <button class="primary" type="submit">スタート　→</button>
  </form>
 </dialog>
 <dialog id="settings-dialog" aria-labelledby="settings-title">
@@ -85,12 +241,10 @@ dialog{max-width:min(560px,calc(100% - 24px));width:100%;max-height:calc(100% - 
 </dialog>
 <dialog id="pause-dialog" aria-labelledby="pause-title">
  <div class="dialog-head"><h2 id="pause-title">ひとやすみ</h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
- <p>つづきは、この端末のブラウザに保存されます。</p>
  <div class="row-buttons"><button class="primary" type="button" data-close>冒険にもどる</button><button class="secondary" id="exit-game" type="button">ステージ選択へ</button></div>
 </dialog>
 <dialog id="history-dialog" class="history-dialog" aria-labelledby="history-title">
  <div class="dialog-head"><h2 id="history-title">学習履歴</h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
- <p class="muted">記録はこのブラウザ内に保存します。直近100回まで、名前の入力はありません。</p>
  <div class="row-buttons"><button class="secondary" id="csv" type="button">CSVを書き出す</button></div>
  <div id="history-summary" class="muted"></div><div id="records" class="records"></div>
 </dialog>
@@ -101,14 +255,14 @@ const levels = ["やさしい", "ふつう", "むずかしい"];
 const rewards = [5, 10, 20];
 const questionCounts = [12, 12, 8];
 const stages = [
-  {name:"ひらがなの草原", topic:"ひらがな・基本語彙", icon:"✿", tint:"#35744e", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"], need:[36,56,65]},
-  {name:"ことばの森", topic:"反対語・仲間の言葉", icon:"❧", tint:"#315c43", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"], need:[37,59,69]},
-  {name:"かんじの竹林", topic:"漢字の読み・選択", icon:"竹", tint:"#4c7453", boss:"漢字の鬼", theme:["#a5d4bb","#f4f1bf","#9bc188","#659575","#e1c895","#aa9163","#396849"], need:[40,62,73]},
-  {name:"かぞえかたの港", topic:"助数詞・物の数え方", icon:"⚓", tint:"#285f7d", boss:"巨大タコ", theme:["#72c7e3","#f4f0cb","#6dbdc5","#408da6","#dcb788","#a87c55","#266b89"], need:[41,64,77]},
-  {name:"ぶんしょうの町", topic:"助詞・語順・文づくり", icon:"✦", tint:"#87523f", boss:"からくりロボ", theme:["#f0b38e","#ffe1b7","#dcae82","#b97576","#edc299","#b08774","#a26655"], need:[43,66,79]},
-  {name:"ものがたりの図書館", topic:"短文読解", icon:"▤", tint:"#714a74", boss:"本の魔物", theme:["#927fa8","#f6cca0","#ac84a4","#725b83","#dabea5","#a37f78","#644c75"], need:[44,69,82]},
-  {name:"ことばの雪山", topic:"既習事項の復習", icon:"❄", tint:"#41668e", boss:"氷の巨人", theme:["#84bfe0","#edf9fb","#d1e9ed","#83b1cb","#e9edf4","#9aafcc","#4f82ab"], need:[46,71,86]},
-  {name:"コトバ魔王城", topic:"全範囲の総復習", icon:"♜", tint:"#674874", boss:"コトバ魔王", theme:["#706d9e","#f2b49b","#a17ea1","#655278","#c0a7bb","#8c7099","#503d70"], need:[47,73,90]}
+  {name:"ひらがなの草原", topic:"ひらがな・基本語彙", tint:"#35744e", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"], need:[36,56,65]},
+  {name:"ことばの森", topic:"反対語・仲間の言葉", tint:"#315c43", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"], need:[37,59,69]},
+  {name:"かんじの竹林", topic:"漢字の読み・選択", tint:"#4c7453", boss:"漢字の鬼", theme:["#a5d4bb","#f4f1bf","#9bc188","#659575","#e1c895","#aa9163","#396849"], need:[40,62,73]},
+  {name:"かぞえかたの港", topic:"助数詞・物の数え方", tint:"#285f7d", boss:"巨大タコ", theme:["#72c7e3","#f4f0cb","#6dbdc5","#408da6","#dcb788","#a87c55","#266b89"], need:[41,64,77]},
+  {name:"ぶんしょうの町", topic:"助詞・語順・文づくり", tint:"#87523f", boss:"からくりロボ", theme:["#f0b38e","#ffe1b7","#dcae82","#b97576","#edc299","#b08774","#a26655"], need:[43,66,79]},
+  {name:"ものがたりの図書館", topic:"短文読解", tint:"#714a74", boss:"本の魔物", theme:["#927fa8","#f6cca0","#ac84a4","#725b83","#dabea5","#a37f78","#644c75"], need:[44,69,82]},
+  {name:"ことばの雪山", topic:"既習事項の復習", tint:"#41668e", boss:"氷の巨人", theme:["#84bfe0","#edf9fb","#d1e9ed","#83b1cb","#e9edf4","#9aafcc","#4f82ab"], need:[46,71,86]},
+  {name:"コトバ魔王城", topic:"全範囲の総復習", tint:"#674874", boss:"コトバ魔王", theme:["#706d9e","#f2b49b","#a17ea1","#655278","#c0a7bb","#8c7099","#503d70"], need:[47,73,90]}
 ];
 const categories = ["ひらがな・語彙","反対語・分類","漢字","助数詞","助詞・語順","短文読解"];
 const poolText = [
@@ -426,6 +580,7 @@ function seed(n) {
 }
 const trims = ["#f4ce75","#79e1b3","#ff9f9c","#c8a9ff","#87dfff","#fbb97b","#dbea91","#e7a5cb"];
 const sprites = new Map();
+const runnerFrames = 20;
 function runnerSprite(frame, back, team) {
   const key = frame + "/" + back + "/" + team;
   if (sprites.has(key)) return sprites.get(key);
@@ -433,9 +588,9 @@ function runnerSprite(frame, back, team) {
   canvas.width = 92; canvas.height = 106;
   const c = canvas.getContext("2d");
   c.translate(45,90);
-  const phase = frame / 10 * TAU;
-  const stride = frame === 10 ? 0 : Math.sin(phase);
-  const bob = frame === 10 ? 0 : -Math.abs(Math.cos(phase)) * 4;
+  const phase = frame / runnerFrames * TAU;
+  const stride = frame === runnerFrames ? 0 : Math.sin(phase);
+  const bob = frame === runnerFrames ? 0 : -Math.abs(Math.cos(phase)) * 4;
   c.translate(0,bob);
   const trim = trims[team];
   for (const side of [-1,1]) {
@@ -494,6 +649,9 @@ class Scene {
     this.c = canvas.getContext("2d", {alpha:false});
     this.w = 0;
     this.h = 0;
+    this.backdrop = document.createElement("canvas");
+    this.backdropKey = "";
+    this.previousTime=0;
   }
   resize() {
     const bounds = this.canvas.getBoundingClientRect();
@@ -519,28 +677,16 @@ class Scene {
   draw(data) {
     if (!this.resize()) return;
     const {w,h,c} = this;
-    const {stage,cover,distance,t,phase,lane,units,players,labels,gateZ,battle,reduced} = data;
+    const {stage,cover,distance,t,phase,lane,units,players,labels,gateZ,battle,reduced,hazard,impact} = data;
+    const frameDelta=clamp(t-this.previousTime,0,.5);
+    this.previousTime=t;
     const theme = stages[stage].theme;
     this.center = w*(cover ? .735 : .51);
     this.yaw = -(Math.min(w,h*2.35)*.006 + lane*.6);
     this.horizon = h*(cover ? .23 : .22);
     this.unit = Math.min(w*.043,h*.092);
-    const [sky,haze,ground,hill,road,edge,deep] = theme;
-    c.fillStyle = gradient(c,0,h*.61,sky,haze); c.fillRect(0,0,w,h);
-    if (stage !== 5) {
-      const sun = Math.min(w,h)*.087;
-      oval(c,"#fff8d743",w*(cover?.88:.78),h*.16,sun*1.42,sun*1.42);
-      oval(c,"#fff6c8da",w*(cover?.88:.78),h*.16,sun,sun);
-      for (let i=0;i<7;i++) {
-        const x = w*(i/6+seed(i+2)*.12-.07);
-        const y = h*(.07+seed(i+5)*.14);
-        const r = Math.min(w,h)*(.055+seed(i+10)*.028);
-        oval(c,"#f8fff27a",x,y,r,r*.23);
-        oval(c,"#ffffff65",x+r*.2,y-r*.13,r*.53,r*.27);
-      }
-    }
-    if (stage === 5) this.library(haze, deep);
-    else this.landscape(stage,ground,hill,deep);
+    this.drawBackdrop(stage,cover,theme);
+    const [,,,,road,edge] = theme;
     this.road(road,edge,distance,stage);
     for (let i=28;i>=0;i--) {
       const spacing = 5.5;
@@ -557,7 +703,84 @@ class Scene {
     if (gateZ && labels) this.gates(gateZ,labels);
     if (battle) this.boss(stage,battle,reduced ? 0 : t);
     if (cover) this.boss(0,{time:0,hit:0,win:false,cover:true},t);
-    this.army(units, {lane,phase,players,t,cover,battle,reduced});
+    const hitAge=impact ? t-impact.at : Infinity;
+    if (hazard!=null) this.foe(hazard,t,reduced);
+    if (!reduced && hitAge<.57) this.foe(1,t,false,hitAge/.57);
+    const recoil=!reduced && hitAge<.38 ? Math.sin(Math.PI*hitAge/.38)*1.15 : 0;
+    this.army(units, {lane,phase,players,t,cover,battle,reduced,frameDelta,recoil});
+    if (!reduced && hitAge<.74) this.collision(impact,hitAge,players);
+  }
+  drawBackdrop(stage,cover,theme) {
+    const key=`${stage}/${this.w}/${this.h}/${!!cover}`;
+    if(key!==this.backdropKey) {
+      this.backdrop.width=this.w;
+      this.backdrop.height=this.h;
+      const worldContext=this.c;
+      this.c=this.backdrop.getContext("2d",{alpha:false});
+      this.drawScenery(this.c,stage,cover,theme);
+      this.c=worldContext;
+      this.backdropKey=key;
+    }
+    this.c.drawImage(this.backdrop,0,0);
+  }
+  drawScenery(c,stage,cover,theme) {
+    const {w,h} = this;
+    const [sky,haze,ground,hill,,,deep] = theme;
+    c.fillStyle = gradient(c,0,h*.61,sky,haze); c.fillRect(0,0,w,h);
+    if (stage !== 5) {
+      const sun = Math.min(w,h)*.087;
+      oval(c,"#fff8d743",w*(cover?.88:.78),h*.16,sun*1.42,sun*1.42);
+      oval(c,"#fff6c8da",w*(cover?.88:.78),h*.16,sun,sun);
+      for (let i=0;i<7;i++) {
+        const x = w*(i/6+seed(i+2)*.12-.07);
+        const y = h*(.07+seed(i+5)*.14);
+        const r = Math.min(w,h)*(.055+seed(i+10)*.028);
+        oval(c,"#f8fff27a",x,y,r,r*.23);
+        oval(c,"#ffffff65",x+r*.2,y-r*.13,r*.53,r*.27);
+      }
+    }
+    if (stage === 5) this.library(haze, deep);
+    else this.landscape(stage,ground,hill,deep);
+  }
+  foe(progress,t,reduced,retreat=-1) {
+    const {c} = this;
+    const fleeing=retreat>=0;
+    const p=this.project(fleeing?retreat*1.7:0,mix(72,15.35,progress)+(fleeing?retreat*4.2:0));
+    const hop=reduced?.06:.15+Math.abs(Math.sin(t*8))*.24;
+    c.save();c.translate(p.x,p.y);c.scale(p.s,p.s);
+    if(fleeing) c.globalAlpha=1-retreat;
+    oval(c,"#351a2240",0,0,1.22,.31);
+    c.translate(0,-hop);
+    shape(c,"#402431",[[-.85,-.98],[-1.15,-2.06],[-.35,-1.66],[.33,-1.61],[1.02,-2.09],[.90,-.97]]);
+    oval(c,"#492934",0,-.88,1.02,.9);
+    oval(c,"#88434a",-.15,-1.03,.81,.63,-.15);
+    oval(c,"#ffc078",-.38,-1.16,.17,.10,.18);
+    oval(c,"#ffc078",.38,-1.16,.17,.10,-.18);
+    stroke(c,"#442730",.10,[[-.26,-.71],[0,-.79],[.26,-.71]]);
+    c.restore();
+  }
+  collision(impact,age,players) {
+    const {c,h} = this;
+    const f=age/.74;
+    for(const unit of impact.units) {
+      const side=unit.team%2===0 ? -1 : 1;
+      const p=this.project((unit.x??impact.lane*4.15)+side*2.1*f,(unit.z??15.3)-.65*f);
+      const size=clamp(p.s*2.74,10,h*.36);
+      const width=size*92/106;
+      c.globalAlpha=(1-f)*.72;
+      c.drawImage(runnerSprite(runnerFrames,true,players===1?0:unit.team),
+        p.x-width*.49,p.y-size*(.85+Math.sin(f*Math.PI)*.18),width,size);
+    }
+    const p=this.project(0,15.35);
+    for(let i=0;i<7;i++){
+      const angle=i*TAU/7;
+      const x=p.x+Math.cos(angle)*p.s*(.48+f*2.7);
+      const y=p.y-p.s*.7+Math.sin(angle)*p.s*(.25+f*.91);
+      const spark=Math.max(1,p.s*.13*(1-f));
+      c.globalAlpha=1-f;
+      shape(c,"#ffd0a0",[[x-spark,y],[x,y-spark],[x+spark,y],[x,y+spark]]);
+    }
+    c.globalAlpha=1;
   }
   landscape(stage,ground,hill,deep) {
     const {w,h,c} = this;
@@ -763,29 +986,36 @@ class Scene {
   }
   army(count,info) {
     const {c,w,h} = this;
-    const {lane,t,phase,players,cover,battle,reduced} = info;
+    const {lane,t,phase,players,cover,battle,reduced,frameDelta,recoil} = info;
     const size = count.length;
     const cols = Math.min(size,Math.max(3,Math.ceil(Math.sqrt(size)*1.05)),14);
-    const rows = Math.ceil(size/cols);
+    const spread = Math.min(1.33,12.3/Math.max(1,cols-1));
+    const settle=1-Math.exp(-frameDelta*15);
+    const marching=cover || phase==="question" || phase==="cross" || phase==="feedback" || phase==="battle";
+    const gait=t*1.58*runnerFrames;
+    const wave=battle?.time>.82 && !battle.done ? (battle.time-.82)%battle.interval / battle.interval : null;
+    const turn=wave===null ? -1 : clamp(Math.floor((battle.time-.82)/battle.interval),0,players-1);
+    const force=wave===null ? 0 : Math.sin(clamp(wave*1.15,0,1)*Math.PI);
     for (let i=size-1;i>=0;i--) {
       const unit = count[i];
       if (unit.born > t) continue;
       const row = Math.floor(i/cols), col = i%cols;
       const rowCols = Math.min(cols,size-row*cols);
-      const spread = Math.min(1.33,12.3/Math.max(1,cols-1));
-      let x = (col - (rowCols-1)/2)*spread + lane*4.15+(seed(i+31)-.5)*.28;
-      let z = (cover ? 12.8 : 14.6)+row*(cover?1.48:1.41)+(seed(i+52)-.5)*.83;
-      const marching = cover || phase==="approach" || phase==="cross" || !!battle;
+      unit.driftX ??= (seed(i+31)-.5)*.28;
+      unit.driftZ ??= (seed(i+52)-.5)*.83;
+      const formationX=(col-(rowCols-1)/2)*spread+lane*4.15+unit.driftX;
+      const formationZ=(cover?12.8:14.6)+row*(cover?1.48:1.41)+unit.driftZ;
+      unit.x=reduced || unit.x===undefined ? formationX : mix(unit.x,formationX,settle);
+      unit.z=reduced || unit.z===undefined ? formationZ : mix(unit.z,formationZ,settle);
+      let x=unit.x, z=unit.z-recoil*(row<2?1:.28);
       const join = clamp((t-unit.born)/.48,0,1);
       if(!reduced) {
         x+=(i%2?1:-1)*(1-join)*3.3;
         z+=(1-join)*4.6;
       }
       let impact = false;
-      if(battle && battle.time>.82 && !battle.done) {
-        const turn=clamp(Math.floor((battle.time-.82)/battle.interval),0,players-1);
-        const wave=(battle.time-.82)%battle.interval / battle.interval;
-        const push=players===1 || unit.team===turn || (turn>=size && i===turn%size) ? Math.sin(clamp(wave*1.15,0,1)*Math.PI) : 0;
+      if(force) {
+        const push=players===1||unit.team===turn||(turn>=size&&i===turn%size)?force:0;
         const impactDepth=34+(i%5)*1.1;
         z=mix(z,Math.max(z+2,impactDepth),push*.91);
         x=mix(x,x*.50,push);
@@ -795,7 +1025,7 @@ class Scene {
       const p = this.project(x,z);
       const charH = clamp(p.s*(cover?3.86:2.74),10,h*.36);
       const charW = charH*92/106;
-      const stride = reduced || !marching ? 10 : Math.floor((t*13+i*.37)%10);
+      const stride = reduced || !marching ? runnerFrames : Math.floor((gait+i*.73)%runnerFrames);
       if(p.x+charW<0 || p.x-charW>w || p.y>h+charH*.15) continue;
       c.globalAlpha=.4+.6*join;
       oval(c,"#1733493a",p.x,p.y+.8,charW*.27,charH*.072);
@@ -1033,8 +1263,8 @@ function japaneseVoice() {
 }
 function updateVoiceNote() {
   byId("voice-note").textContent = japaneseVoice()
-    ? "端末の日本語音声を使います。漢字を問う問題では、答えに当たる箇所を省いて読みます。"
-    : "読み上げには、端末内の日本語音声が必要です。現在、このブラウザでは日本語音声を使えません。";
+    ? "日本語音声：利用できます"
+    : "日本語音声：利用できません";
 }
 speech?.addEventListener("voiceschanged",updateVoiceNote);
 updateVoiceNote();
@@ -1096,11 +1326,18 @@ function sound(kind) {
   if(kind==="correct") [72,76,81].forEach((note,i)=>tone(note,volume,i*.08,.22,"triangle"));
   if(kind==="miss") tone(62,volume,0,.29);
   if(kind==="impact") tone(52,volume*.73,0,.22,"triangle");
+  if(kind==="damage") tone(45,volume*.85,0,.28,"triangle");
   if(kind==="win") [65,69,72,77].forEach((note,i)=>tone(note,volume,i*.125,.35,"triangle"));
 }
 
 let session=null, selectedStage=0, phase="menu", distance=0, lane=0, clock=0;
-let elapsed=0, battle=null, result=null, units=[], outcome=null, lastFrame=0, nextDraw=0, repaint=true;
+let elapsed=0, battle=null, result=null, units=[], outcome=null, lastFrame=0, repaint=true;
+let velocity=12, gateZ=100, gateLabels=[], chase=null, impact=null, lastPaint=0, paintCost=0, signUntil=0;
+const contactCost = 2;
+const recoveryTime = 11;
+const leadTime = [20,17,18];
+const smoothstep = x => x*x*(3-2*x);
+const awaitingAnswer = () => phase==="question";
 const idFor = () => Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,10);
 function stageDifficulty() {
   return `${levels[session.level]} ・ ${session.players===1?"ひとり":`きょうりょく ${session.players}人`}`;
@@ -1111,8 +1348,11 @@ function currentQuestion() {
   const item = itemById.get(entry.id);
   return {...item,answer:entry.left?0:1,choices:entry.left?[item.correct,item.wrong]:[item.wrong,item.correct]};
 }
+function recruited(run) {
+  return 5 + run.answers.reduce((sum,row)=>sum+row.gain,0);
+}
 function countUnits() {
-  return 5 + session.answers.reduce((sum, row)=>sum+row.gain,0);
+  return recruited(session) - (session.damage ?? 0);
 }
 function stats() {
   return session.answers.reduce((value,answer) => {
@@ -1132,19 +1372,21 @@ function savedIsPlayable() {
   return saved && stages[saved.stage] && levels[saved.level] &&
     Number.isInteger(saved.players) && saved.players>=1 && saved.players<=8 &&
     Array.isArray(saved.order) && saved.order.length===questionCounts[saved.level] &&
-    saved.order.every(entry=>typeof entry.left==="boolean" && itemById.has(entry.id)) &&
+    saved.order.every(entry=>typeof entry?.left==="boolean" && itemById.has(entry.id)) &&
     Array.isArray(saved.answers) && saved.answers.length<=saved.order.length &&
-    saved.answers.every((row,index)=>row.id===saved.order[index].id && typeof row.ok==="boolean" &&
-      [0,1].includes(row.choice) && Number.isInteger(row.gain) && row.gain>=0 && row.gain<=30);
+    saved.answers.every((row,index)=>row?.id===saved.order[index].id && typeof row.ok==="boolean" &&
+      [0,1].includes(row.choice) && Number.isInteger(row.gain) && row.gain>=0 && row.gain<=30) &&
+    (saved.damage===undefined || (Number.isInteger(saved.damage) && saved.damage>=0 && saved.damage<recruited(saved)));
 }
 function openDialog(id) {
   speech?.cancel();
+  lastFrame=0;
   byId(id).showModal();
 }
 function openSetup(stage) {
   selectedStage = stage;
   byId("setup-title").textContent = stages[stage].name;
-  byId("setup-topic").textContent = `ステージ ${stage+1}　${stages[stage].topic} ／ ボス：${stages[stage].boss}`;
+  byId("setup-topic").textContent = stages[stage].topic;
   byId("difficulty").value = data.settings.difficulty;
   byId("players").value = data.settings.players;
   byId("replace-note").hidden = !savedIsPlayable();
@@ -1152,13 +1394,10 @@ function openSetup(stage) {
   openDialog("setup-dialog");
 }
 function describeSetup() {
-  const level=Number(byId("difficulty").value), players=Number(byId("players").value);
-  const grade = ["小学1年生くらい","小学2〜3年生くらい","小学3〜4年生くらい"][level];
-  const turns = players>1 ? ` 1問ずつ1〜${players}番の順に交代します。` : "";
-  byId("setup-detail").textContent = `${grade}・${questionCounts[level]}問。${turns}`;
+  const level=Number(byId("difficulty").value);
+  byId("setup-detail").textContent = `${questionCounts[level]}問`;
 }
 byId("difficulty").onchange = describeSetup;
-byId("players").onchange = describeSetup;
 byId("setup-form").onsubmit = event => {
   event.preventDefault();
   const level=Number(byId("difficulty").value), players=Number(byId("players").value);
@@ -1168,13 +1407,14 @@ byId("setup-form").onsubmit = event => {
 };
 function start(stage,level,players,retryOf) {
   unlockAudio();
-  session = {id:idFor(), stage, level, players, retryOf, order:buildOrder(stage,level), answers:[]};
+  session = {id:idFor(), stage, level, players, retryOf, order:buildOrder(stage,level), answers:[], damage:0};
   checkpoint();
   enterGame(false);
 }
 function enterGame(resuming) {
   units = Array.from({length:countUnits()},(_,i)=>({born:-1,team:i%session.players}));
   clock=0; musicTimer=0; battle=null; result=null; lane=0; outcome=null;
+  lastFrame=0; lastPaint=0; paintCost=0; velocity=12; impact=null; chase=null; signUntil=0;
   distance=session.answers.length*102;
   menu.hidden=true; play.hidden=false; byId("pause").hidden=false;
   byId("game-title").textContent = `${session.stage+1}　${stages[session.stage].name}`;
@@ -1182,12 +1422,8 @@ function enterGame(resuming) {
   byId("boss-hud").hidden=true;
   byId("gain").hidden=true;
   setHud();
-  if (session.answers.length===session.order.length) {
-    prepareBoss();
-  } else if (resuming) {
-    setPhase("question","左右のゲートを えらぼう");
-    drawQuestion(false);
-  } else advance();
+  if (session.answers.length===session.order.length) prepareBoss();
+  else openQuestion(resuming);
   scrollTo(0,0);
   byId("game-title").focus({preventScroll:true});
   repaint=true;
@@ -1203,11 +1439,9 @@ function showMenu() {
   const cards = stages.map((stage,index)=>{
     const card = button("", "stage-card", ()=>openSetup(index));
     card.style.setProperty("--tint",stage.tint);
-    const icon = element("span","stage-icon",stage.icon);
-    icon.setAttribute("aria-hidden","true");
-    const copy = element("span");
-    copy.append(element("span","stage-num",`ステージ ${index+1}`),element("strong","",stage.name),element("small","",stage.topic));
-    card.append(icon,copy);
+    const number = element("span","stage-num",String(index+1).padStart(2,"0"));
+    number.setAttribute("aria-hidden","true");
+    card.append(number,element("strong","",stage.name));
     if(data.records.some(record=>record.stage===index && record.won)) {
       const badge=element("span","cleared","✓");
       badge.setAttribute("aria-label","クリア済み");
@@ -1237,6 +1471,7 @@ byId("exit-game").onclick=()=>{
   showMenu();
 };
 document.querySelectorAll("[data-close]").forEach(node=>node.onclick=()=>node.closest("dialog").close());
+document.querySelectorAll("dialog").forEach(dialog=>dialog.addEventListener("close",()=>{lastFrame=0;}));
 
 function setHud() {
   const done=session.answers.length,total=session.order.length;
@@ -1244,121 +1479,151 @@ function setHud() {
   byId("progress").style.width=`${done/total*100}%`;
   byId("army").textContent=countUnits();
 }
-function setPhase(value,label) {
+function setPhase(value) {
   phase=value;
   panel.dataset.phase=value;
-  byId("world-label").textContent=label;
-  byId("world-label").hidden=!label;
   elapsed=0;
   repaint=true;
 }
+function showChange(amount) {
+  const sign=byId("gain");
+  sign.dataset.kind=amount<0?"hit":"gain";
+  sign.textContent=(amount<0?"−":"＋")+Math.abs(amount)+"人";
+  sign.hidden=false;
+  signUntil=clock+1.55;
+}
 function advance() {
   byId("gain").hidden=true;
-  if(session.answers.length===session.order.length) {
-    prepareBoss();
-    return;
-  }
-  setPhase("approach","ゲートへ むかっています");
-  drawQuestion(true);
-  byId("game-title").focus({preventScroll:true});
+  if(session.answers.length===session.order.length) prepareBoss();
+  else openQuestion();
 }
-function drawQuestion(waiting) {
+function openQuestion(resuming=false) {
+  const q=currentQuestion();
+  gateLabels=q.choices.map(choice=>{
+    const label=textOf(choice);
+    return label.length>11?label.slice(0,10)+"…":label;
+  });
+  setPhase("question");
+  if(resuming) elapsed=1.95;
+  gateZ=gateDistance(elapsed);
+  const readingTime=Math.ceil([...textOf(q.passage)].length/7);
+  chase={time:0,limit:leadTime[session.level]+readingTime};
+  drawQuestion();
+  byId("game-title").focus({preventScroll:true});
+  sayStatus(`第${session.answers.length+1}問。`);
+  if(data.settings.autoRead && japaneseVoice()) readQuestion();
+}
+function gateDistance(time) {
+  return mix(96,35,smoothstep(clamp(time/1.95,0,1)));
+}
+function tickChase(dt) {
+  chase.time+=dt;
+  if(chase.time<chase.limit) return;
+  chase.time=0;
+  chase.limit=recoveryTime;
+  const loss=Math.min(contactCost,units.length-1);
+  const separated=units.splice(1,loss);
+  impact={at:clock,lane,units:separated};
+  sound("damage");
+  if(loss) {
+    session.damage=(session.damage??0)+loss;
+    setHud();
+    checkpoint();
+    showChange(-loss);
+    sayStatus(`接触。仲間が${loss}人減りました。`);
+  } else sayStatus("接触。");
+}
+function drawQuestion() {
+  panel.hidden=false;
   const q=currentQuestion();
   const index=session.answers.length;
   const top=element("div","prompt-top");
-  const turn=session.players>1 ? `第${index+1}問 ・ ${index%session.players+1}ばんの ひと` : `第${index+1}問`;
-  top.append(element("span","turn",turn));
+  const turn=session.players>1 ? `${index%session.players+1}ばん` : "";
+  if(turn) top.append(element("span","turn",turn));
   const read=element("div","read-controls");
-  const speak=button("▶ よみあげ","subtle",readQuestion);
+  const speak=button("よみあげ","",readQuestion);
+  const symbol=element("span","sound-mark");
+  symbol.setAttribute("aria-hidden","true");
+  speak.prepend(symbol);
   read.append(speak);
   top.append(read);
-  const status=element("p","hint","この端末の日本語音声を設定すると、読み上げが使えます。");
+  const status=element("p","hint","日本語の音声が見つかりません。");
   status.hidden=true; status.id="read-status";
   const question=addText(element("h2","question"),q.question);
   question.id="question-title";
   const choices=element("div","choices");
   for(const side of [0,1]) {
     const choice=button("","choice",()=>selectGate(side));
-    choice.disabled=waiting;
-    const direction=element("span","arrow",side===0?"← 左":"右 →");
+    const direction=element("span","arrow",side===0?"←":"→");
+    choice.setAttribute("aria-keyshortcuts",side===0?"ArrowLeft":"ArrowRight");
     const label=addText(element("span"),q.choices[side]);
     choice.append(direction,label);
     choices.append(choice);
   }
-  const hint=element("p","hint","← → キー・左右のボタン・コースを左右にスワイプ");
   panel.replaceChildren(top);
   if(q.passage) panel.append(addText(element("p","passage"),q.passage));
-  panel.append(question,status,choices,hint);
-}
-function readyQuestion() {
-  setPhase("question","左右のゲートを えらぼう");
-  panel.querySelectorAll(".choice").forEach(choice=>choice.disabled=false);
-  sayStatus(`第${session.answers.length+1}問。左右のゲートをえらんでください。`);
-  if(data.settings.autoRead && japaneseVoice()) readQuestion();
+  panel.append(question,status,choices);
 }
 function selectGate(side) {
-  if(phase!=="question" || document.querySelector("dialog[open]")) return;
+  if(!awaitingAnswer() || document.querySelector("dialog[open]")) return;
   unlockAudio();
   speech?.cancel();
   const q=currentQuestion();
   const ok=q.answer===side;
   const {streak}=stats();
   const bonus=ok && (streak+1)%3===0 ? 10 : 0;
-  outcome={q, answer:{id:q.id,choice:side,ok,gain:ok ? rewards[session.level]+bonus : 0},bonus};
-  setPhase("cross","ゲートを とおっています");
+  outcome={
+    q, answer:{id:q.id,choice:side,ok,gain:ok ? rewards[session.level]+bonus : 0},
+    gateFrom:gateZ, laneFrom:lane, duration:.62+(gateZ-35)*.009
+  };
+  chase=null;
+  setPhase("cross");
+  panel.querySelectorAll(".choice")[side].setAttribute("aria-pressed","true");
   panel.querySelectorAll("button").forEach(choice=>choice.disabled=true);
 }
 function applyAnswer() {
-  const {q,answer,bonus}=outcome;
+  const {q,answer}=outcome;
   session.answers.push(answer);
   const before=units.length;
   for(let i=0;i<answer.gain;i++) units.push({born:clock + (data.settings.reduced?0:i*.032),team:(before+i)%session.players});
   setHud();
   checkpoint();
-  setPhase("feedback","");
-  if(answer.gain) {
-    byId("gain").textContent=`＋${answer.gain}人`;
-    byId("gain").hidden=false;
-  }
+  setPhase("feedback");
+  if(answer.gain) showChange(answer.gain);
   sound(answer.ok?"correct":"miss");
   const content = element("div","feedback "+(answer.ok?"ok":"miss"));
-  const explanation = element("div");
-  const title = answer.ok ? `せいかい！ ＋${answer.gain}人` : "おしい！";
-  explanation.append(element("h2","",title));
-  if(!answer.ok) explanation.append(addText(element("p"),`こたえ　${q.correct}`));
-  explanation.append(addText(element("p"),q.explanation));
-  if(bonus) explanation.append(element("p","hint","3問 つづけて せいかい！ ボーナス ＋10人。"));
-  if(!answer.ok) explanation.append(element("p","hint","なかまは そのまま。つぎの ゲートに すすもう。"));
-  const next = button(session.answers.length===session.order.length?"ボスのところへ　›":"つぎの ゲートへ　›","primary",advance);
+  const resultCopy = element("div");
+  const title = answer.ok ? `せいかい　＋${answer.gain}人` : "こたえ";
+  resultCopy.append(element("h2","",title));
+  if(!answer.ok) resultCopy.append(addText(element("p"),q.correct));
+  const explanation=addText(element("p","explanation"),q.explanation);
+  explanation.hidden=true;
+  explanation.id="answer-explanation";
+  const showExplanation=button("解説","subtle",()=>{
+    explanation.hidden=!explanation.hidden;
+    showExplanation.setAttribute("aria-expanded",String(!explanation.hidden));
+  });
+  showExplanation.setAttribute("aria-controls",explanation.id);
+  showExplanation.setAttribute("aria-expanded","false");
+  const next = button(session.answers.length===session.order.length?"ボス戦　→":"次へ　→","primary",advance);
   next.id="next-feedback";
-  content.append(explanation,next);
-  panel.replaceChildren(content);
+  const actions=element("div","row-buttons");
+  actions.append(showExplanation,next);
+  content.append(resultCopy,actions);
+  panel.replaceChildren(content,explanation);
   next.focus({preventScroll:true});
   sayStatus(title);
 }
 function prepareBoss() {
-  lane=0;
-  const stage=stages[session.stage], people=session.players;
+  const people=session.players;
   battle={time:0, hit:0, hp:100, done:false, win:false, interval:people>=5?1.04:1.35,
     waves:people===1?4:people, landed:0};
-  setPhase("ready","");
+  setPhase("battle");
   setHp();
-  const intro = element("div","feedback");
-  const copy = element("div");
-  copy.append(element("h2","",stage.boss+"が あらわれた！"),
-    element("p","",people===1 ? "集めたなかまで、ボスに立ち向かおう。" : `${people}組のなかまの おうえんを 合わせて、ボスに立ち向かおう。`));
-  const go=button("ボスに ちょうせん！","primary",beginBattle);
-  intro.append(copy,go);
-  panel.replaceChildren(intro);
-  go.focus({preventScroll:true});
-}
-function beginBattle() {
-  if(phase!=="ready") return;
-  unlockAudio();
-  setPhase("battle","");
-  panel.replaceChildren(element("h2","result-title","なかまが ちからを あわせています"),element("p","hint","軍団は自動でボスに向かいます。"));
+  panel.replaceChildren();
+  panel.hidden=true;
   byId("game-title").focus({preventScroll:true});
-  sayStatus("ボス戦が始まりました。");
+  sayStatus("ボス戦。");
 }
 function setHp() {
   const stage=stages[session.stage];
@@ -1405,7 +1670,8 @@ function finish() {
   data.saved=null;
   persist();
   result=record;
-  setPhase("end","");
+  setPhase("end");
+  panel.hidden=false;
   byId("pause").hidden=true;
   if(record.won) sound("win");
   resultPanel();
@@ -1413,10 +1679,9 @@ function finish() {
 function resultPanel() {
   const heading=result.won?"ステージクリア！":"あと少し！";
   const summary = element("p","result-score",`せいかい ${result.score}／${result.total}問 ・ なかま ${result.army}人`);
-  const hint = element("p","hint",result.won ? "みんなの力で ボスに かったよ！" : "なかまは 最後まで たたかったよ。つぎの 冒険で また ちょうせんしよう。");
   const actions = element("div","result-actions");
   if (result.won && session.stage<stages.length-1) {
-    actions.append(button("つぎの ステージへ　›","primary",()=>{
+    actions.append(button("次のステージ　→","primary",()=>{
       const next=session.stage+1;
       showMenu();
       openSetup(next);
@@ -1428,7 +1693,7 @@ function resultPanel() {
   if(storageIssue) actions.append(element("p","toast",storageIssue));
   const title=element("h2","result-title",heading);
   title.tabIndex=-1;
-  panel.replaceChildren(title,summary,hint,actions);
+  panel.replaceChildren(title,summary,actions);
   title.focus({preventScroll:true});
   sayStatus(heading);
 }
@@ -1440,8 +1705,7 @@ for(const [key,parse] of Object.entries(settingsFields)) {
   const node=byId(key), setting=key==="auto-read"?"autoRead":key;
   const set=()=>{
     data.settings[setting]=parse(node.type==="checkbox"?node.checked:node.value);
-    if (key==="ruby" && phase==="question") drawQuestion(false);
-    if (key==="ruby" && phase==="approach") drawQuestion(true);
+    if (key==="ruby" && awaitingAnswer()) drawQuestion();
     persist();repaint=true;
   };
   node.addEventListener(node.type==="range"?"input":"change",set);
@@ -1519,7 +1783,7 @@ byId("csv").onclick=()=>{
 };
 let gesture=null;
 byId("world").addEventListener("pointerdown",event=>{
-  if(phase!=="question" || !event.isPrimary || event.button!==0) return;
+  if(!awaitingAnswer() || !event.isPrimary || event.button!==0) return;
   gesture={id:event.pointerId,x:event.clientX,y:event.clientY};
   event.currentTarget.setPointerCapture(event.pointerId);
 });
@@ -1538,46 +1802,64 @@ addEventListener("keydown",event=>{
     openDialog("pause-dialog");
     return;
   }
-  if(phase!=="question" || !["ArrowLeft","ArrowRight"].includes(event.key)) return;
+  if(!awaitingAnswer() || !["ArrowLeft","ArrowRight"].includes(event.key)) return;
   if(event.target.matches("input, select, textarea")) return;
   event.preventDefault();
   selectGate(event.key==="ArrowLeft"?0:1);
 });
 document.addEventListener("visibilitychange",()=>{
-  if(document.hidden) {
-    speech?.cancel();
-    lastFrame=0;
-  }
+  lastFrame=0;
+  if(document.hidden) speech?.cancel();
 });
 addEventListener("resize",()=>{repaint=true;});
 
 const coverUnits=Array.from({length:38},()=>({born:-1,team:0}));
+function tickRun(dt, delta) {
+  clock+=delta;
+  elapsed+=delta;
+  let targetSpeed=0;
+  if (awaitingAnswer()) {
+    gateZ=gateDistance(elapsed);
+    const approach=clamp(elapsed/1.95,0,1);
+    targetSpeed=mix(16,5.8,smoothstep(approach));
+    tickChase(dt);
+  } else if (phase==="cross") {
+    const progress=clamp(elapsed/outcome.duration,0,1);
+    const targetLane=outcome.answer.choice===0?-1:1;
+    lane=mix(outcome.laneFrom,targetLane,smoothstep(clamp(progress/.76,0,1)));
+    gateZ=mix(outcome.gateFrom,10,smoothstep(progress));
+    targetSpeed=23;
+    if(progress>=1) applyAnswer();
+  } else if (phase==="feedback") targetSpeed=9;
+  else if (phase==="battle") {
+    targetSpeed=battle.time<.82?8:0;
+    tickBattle(delta);
+  }
+  if (phase!=="cross") lane*=Math.exp(-delta*4.8);
+  if (impact && clock-impact.at<.36 && phase==="question") targetSpeed*=.10;
+  velocity=mix(velocity,targetSpeed,1-Math.exp(-delta*5.8));
+  if(phase!=="end") distance+=velocity*delta;
+  if(signUntil && clock>=signUntil) {
+    byId("gain").hidden=true;
+    signUntil=0;
+  }
+}
 function loop(timestamp) {
   requestAnimationFrame(loop);
-  // Keep turns close to wall time even on a browser that draws at a low frame rate.
-  const dt = lastFrame ? clamp((timestamp-lastFrame)/1000,0,.5) : 0;
+  const dt=lastFrame ? clamp((timestamp-lastFrame)/1000,0,.5) : 0;
   lastFrame=timestamp;
   if(document.hidden) return;
-  const paused = !!document.querySelector("dialog[open]");
-  const {speed,reduced,bgm} = data.settings;
+  const {speed,reduced,bgm}=data.settings;
   if(phase==="menu") {
     if(repaint) {
-      cover.draw({stage:0,cover:true,distance:15,t:2.31,phase:"approach",lane:0,units:coverUnits,players:1,reduced});
+      cover.draw({stage:0,cover:true,distance:15,t:2.31,phase:"cover",lane:0,units:coverUnits,players:1,reduced});
       repaint=false;
     }
     return;
   }
+  const paused=!!document.querySelector("dialog[open]");
   if(!paused) {
-    const delta=dt*speed;
-    clock+=delta;
-    elapsed+=delta;
-    if (phase==="approach") {
-      distance+=delta*21;
-      if(elapsed>=3.45) readyQuestion();
-    } else if(phase==="cross") {
-      distance+=delta*43;
-      if(elapsed>=.68) applyAnswer();
-    } else if(phase==="battle") tickBattle(delta);
+    tickRun(dt,dt*speed);
     if(phase!=="end" && bgm>0) {
       musicTimer-=dt;
       if(musicTimer<=0) {
@@ -1588,24 +1870,19 @@ function loop(timestamp) {
       }
     }
   }
-  const needsMotion = ["approach","cross","battle"].includes(phase) || (phase==="feedback" && elapsed<1.65)
-    || (!reduced && (phase==="ready" || (phase==="end" && battle.win)));
-  if(!repaint && (paused || !needsMotion || timestamp<nextDraw)) return;
-  nextDraw=timestamp+32;
+  const needsMotion=phase!=="end" || (!reduced && battle.win);
+  const interval=paintCost>12 ? 31 : 15;
+  if(!repaint && (paused || !needsMotion || timestamp-lastPaint<interval)) return;
+  lastPaint=timestamp;
   repaint=false;
-  const targetLane=phase==="cross"?(outcome.answer.choice===0?-1:1):0;
-  if(phase==="cross") lane=mix(0,targetLane,clamp(elapsed/.42,0,1));
-  else if(phase==="approach") lane=mix(lane,0,clamp(dt*8,0,1));
-  const question=currentQuestion();
-  let labels,gateZ;
-  if(question && ["approach","question","cross"].includes(phase)){
-    labels=question.choices.map(choice=>{
-      const full=textOf(choice);
-      return full.length>11?full.slice(0,10)+"…":full;
-    });
-    gateZ=phase==="question"?34:phase==="approach"?mix(100,34,clamp(elapsed/3.45,0,1)):mix(34,10,clamp(elapsed/.68,0,1));
-  }
-  world.draw({stage:session.stage,distance:reduced?17:distance,t:clock,phase,lane,units,players:session.players,labels,gateZ,battle,reduced});
+  const showGates=awaitingAnswer() || phase==="cross";
+  const hazard=chase ? clamp(chase.time/chase.limit,0,1) : null;
+  const startPaint=performance.now();
+  world.draw({
+    stage:session.stage,distance:reduced?17:distance,t:clock,phase,lane,units,players:session.players,
+    labels:showGates?gateLabels:undefined,gateZ:showGates?gateZ:0,battle,reduced,hazard,impact
+  });
+  paintCost=mix(paintCost,performance.now()-startPaint,.15);
 }
 showMenu();
 requestAnimationFrame(loop);
