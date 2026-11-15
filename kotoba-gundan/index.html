@@ -1,0 +1,1617 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10223a">
+<meta name="description" content="ことばのゲートを選び、青い冒険者の仲間を集める国語ゲーム。全8ステージ。">
+<title>コトバ軍団！</title>
+<style>
+:root{color-scheme:light;--ink:#112a40;--muted:#4b6573;--paper:#fbf9f2;--background:#f0eee5;--gold:#ffd36b;--line:#d8ddd6;--dark:#10243a;--teal:#156953;--blue:#245889;font-family:system-ui,"Noto Sans JP",sans-serif;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;background:var(--background);color:var(--ink);line-height:1.55}button,select,input{font:inherit}button,select{cursor:pointer;color:inherit}button{border:0}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #147ee3;outline-offset:3px}button:disabled{cursor:default;opacity:.48}button:active:not(:disabled){translate:0 1px}[hidden]{display:none!important}h1,h2,h3,p{margin:0}rt{font-size:.55em;font-weight:650}ruby{ruby-align:center} .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.top{background:var(--dark);color:#fff}.top-inner{max-width:1240px;margin:auto;min-height:65px;padding:8px 28px;display:flex;justify-content:space-between;align-items:center;gap:12px}.mark,.top-buttons{display:flex;align-items:center;gap:10px}.mark{color:#fff;background:none;font-size:1.18rem;font-weight:900;padding:3px 0;white-space:nowrap}.mark::before{content:"✦";border:1px solid #ffffff52;color:#ffda74;background:#253f58;border-radius:10px;width:34px;height:34px;display:grid;place-items:center}.top-buttons button{padding:7px 12px;background:#283e55;border:1px solid #486074;border-radius:9px;color:white;font-size:.87rem;font-weight:750;min-height:40px}.shell{max-width:1240px;margin:auto;padding:24px 28px 38px}
+.hero{min-height:376px;position:relative;overflow:hidden;border-radius:24px;isolation:isolate;display:flex;align-items:center;background:#245453;color:#fff;box-shadow:0 12px 30px #17363922}.hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2}.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0d253ef5 1%,#0d253ed9 27%,#0d253e74 51%,#0d253e00 77%)}.hero-copy{padding:33px 34px;max-width:555px}.eyebrow{color:#ffdf89;font-size:.85rem;font-weight:850;letter-spacing:.14em}.hero h1{font-size:clamp(2.4rem,6vw,4.5rem);font-weight:950;line-height:1.18;letter-spacing:-.065em;margin:8px 0 13px;text-shadow:0 4px 15px #132c3859}.hero p:not(.eyebrow){font-size:1rem;color:#fff;font-weight:650;max-width:24em}.hero-actions{margin-top:23px;display:flex;flex-wrap:wrap;gap:9px}.primary,.secondary,.subtle{min-height:44px;border-radius:10px;padding:9px 16px;font-weight:850}.primary{background:var(--gold);color:#312705;box-shadow:0 3px 0 #c58a31}.primary:hover{background:#ffe196}.secondary{background:#fffef8;color:var(--ink);border:1px solid var(--line)}.secondary:hover{background:#eef5ef}.subtle{background:#e4efe8;color:#18543f}.hero .secondary{background:#163549de;color:white;border-color:#aec5c466}.hero .secondary:hover{background:#244c65}
+.menu-head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:26px 0 11px}.menu-head h2{font-size:1.34rem;font-weight:950}.menu-head p{color:var(--muted);font-size:.86rem;font-weight:700}.stage-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stage-card{--tint:#41654c;display:flex;position:relative;align-items:center;min-height:83px;gap:10px;text-align:left;padding:11px;background:var(--paper);border:1px solid var(--line);border-radius:13px;transition:border-color .15s,background .15s}.stage-card:hover{border-color:var(--tint);background:#fff}.stage-icon{width:43px;height:43px;flex:0 0 43px;border-radius:10px;background:var(--tint);color:#fff;display:grid;place-items:center;font-size:1.45rem;font-weight:900}.stage-card strong,.stage-card small{display:block}.stage-card strong{font-size:.94rem;line-height:1.3;padding:2px 0}.stage-card small{color:var(--muted);font-size:.73rem;line-height:1.28}.stage-num{color:var(--tint);font-size:.69rem;letter-spacing:.12em;font-weight:900}.cleared{margin-left:auto;color:var(--teal);font-weight:900;align-self:start}
+.game-shell{padding-top:13px}.game-hud{display:grid;grid-template-columns:1.3fr 1fr auto;align-items:center;gap:13px;margin-bottom:9px}.game-hud h1{font-size:clamp(1rem,2.65vw,1.35rem);line-height:1.25}.hud-caption{font-size:.78rem;font-weight:750;color:#455e6c}.hud-count{border-radius:10px;background:#dcece2;color:#174b37;padding:5px 12px;white-space:nowrap;font-weight:850}.hud-count strong{font-size:1.35rem}.progress-area{display:flex;align-items:center;gap:8px;color:#345361;font-weight:850;font-size:.81rem}.progress-track{height:8px;flex:1;background:#d5dfd6;border-radius:8px;overflow:hidden}.progress-fill{height:100%;background:#238468;display:block;transition:width .22s}
+.game-world{position:relative;isolation:isolate;background:#87becc;border-radius:17px;overflow:hidden;height:clamp(265px,48dvh,560px);box-shadow:0 6px 18px #17363924}.game-world canvas{width:100%;height:100%;display:block;touch-action:pan-y}.world-label,.boss-hud{position:absolute;top:10px;left:50%;transform:translateX(-50%);text-align:center;background:#10283de9;color:#fff;border:1px solid #fff5;border-radius:10px;padding:6px 14px;font-size:.83rem;font-weight:850;pointer-events:none;max-width:96%;width:max-content}.boss-hud{width:min(390px,93%);padding:6px 12px 9px}.hp-track{display:block;height:9px;margin-top:4px;border-radius:10px;background:#2e4455;overflow:hidden}.hp-fill{display:block;height:100%;background:#ffc36a;transition:width .18s}.gain{position:absolute;bottom:17%;left:50%;transform:translateX(-50%);border:2px solid #ffda82;box-shadow:0 3px 12px #10253657;background:#154b3e;color:#fff3a8;font-size:clamp(1.12rem,4vw,1.7rem);font-weight:950;padding:4px 18px;border-radius:999px;pointer-events:none;white-space:nowrap}
+.game-panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:13px 16px;margin-top:9px;min-height:121px}.prompt-top,.feedback,.result-actions,.row-buttons{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.prompt-top{justify-content:space-between;margin-bottom:1px}.turn{font-weight:850;color:#285a48;font-size:.84rem;min-height:1.28em}.read-controls{display:flex;gap:6px;align-items:center}.read-controls button{font-size:.8rem;padding:5px 9px;min-height:36px}.question{font-size:clamp(1.18rem,3.15vw,1.68rem);font-weight:900;line-height:1.55;overflow-wrap:anywhere}.passage{padding:4px 10px;border-left:3px solid #528274;background:#edf2e9;white-space:pre-line;font-size:clamp(.96rem,2.2vw,1.15rem);font-weight:720;margin:3px 0}.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.choice{min-height:53px;display:flex;gap:8px;align-items:center;justify-content:flex-start;text-align:left;border:2px solid #9ec9e5;border-radius:11px;background:#e4f2fc;padding:6px 10px;font-weight:900;font-size:clamp(1rem,3vw,1.36rem);line-height:1.45;overflow-wrap:anywhere}.choice:nth-child(2){border-color:#c6b1e5;background:#f1e9fc}.choice:hover:not(:disabled){border-color:#205faa}.choice:nth-child(2):hover:not(:disabled){border-color:#7744af}.choice .arrow{font-size:.82rem;padding:4px 7px;color:white;background:#286498;border-radius:7px;flex:none}.choice:nth-child(2) .arrow{background:#6749a0}.game-panel[data-phase="approach"] .choice{opacity:.75}.feedback{justify-content:space-between;gap:7px}.feedback h2,.result-title{font-size:clamp(1.19rem,3vw,1.48rem);line-height:1.4}.feedback p{font-size:clamp(.96rem,2vw,1.13rem);font-weight:700}.feedback.ok h2{color:#136249}.feedback.miss h2{color:#634d23}.hint{font-size:.79rem;color:#49616d;margin-top:5px;font-weight:650}.result-actions{margin-top:10px}.result-score{font-weight:850;margin-top:5px}
+dialog{max-width:min(560px,calc(100% - 24px));width:100%;max-height:calc(100% - 24px);border:1px solid #cbd7cb;border-radius:17px;background:var(--paper);color:var(--ink);padding:19px;box-shadow:0 22px 55px #10243a64}dialog::backdrop{background:#0b2339b9}dialog h2{font-size:1.38rem}dialog p{margin:5px 0 9px}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:7px}.close{min-width:43px;min-height:43px;border-radius:9px;background:#e9ede6;font-weight:800}.fields{display:grid;gap:10px;margin:12px 0}.fields label{font-weight:780;display:flex;gap:10px;align-items:center;justify-content:space-between}.fields select{padding:7px;border:1px solid #91adab;border-radius:8px;background:#fff;max-width:61%;min-height:42px}.fields input[type="range"]{accent-color:#1d785c;width:min(45%,220px)}.fields input[type="checkbox"]{width:22px;height:22px;accent-color:#1d785c}.toast{padding:7px 10px;border:1px solid #d2b370;border-radius:8px;background:#fdf1cf;margin-bottom:8px;font-size:.85rem}.records{display:grid;gap:8px;margin-top:12px}.record{padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:white;font-size:.89rem}.record summary{cursor:pointer;font-weight:800}.record ul{margin:5px 0;padding-left:21px}.record li+li{margin-top:5px}.muted{color:var(--muted);font-size:.87rem}.history-dialog{max-width:min(720px,calc(100% - 24px))}
+@media(max-width:880px){.stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.top-inner{min-height:55px;padding:5px 11px}.mark{gap:6px;font-size:1rem}.mark::before{width:28px;height:29px}.top-buttons{gap:4px}.top-buttons button{padding:5px 7px;font-size:.73rem;min-height:40px}.shell{padding:12px 10px 20px}.hero{min-height:322px;border-radius:15px;align-items:end}.hero::after{background:linear-gradient(90deg,#0d253eea,#0d253e9d 51%,#0d253e23 100%)}.hero-copy{padding:19px 15px;max-width:360px}.hero p:not(.eyebrow){font-size:.9rem;max-width:17em}.hero-actions{margin-top:16px}.menu-head{margin-top:17px}.menu-head h2{font-size:1.14rem}.menu-head p{font-size:.72rem}.stage-grid{gap:6px}.stage-card{padding:6px;gap:6px;min-height:74px}.stage-icon{width:32px;height:34px;flex-basis:32px;font-size:1.12rem}.stage-card strong{font-size:.83rem}.stage-card small{font-size:.66rem}.game-shell{padding-top:8px}.game-hud{grid-template-columns:1fr auto;gap:4px 8px;margin-bottom:6px}.progress-area{grid-row:2;grid-column:1/-1}.hud-count{padding:3px 7px;font-size:.81rem}.hud-count strong{font-size:1.1rem}.game-world{height:clamp(204px,36dvh,350px);border-radius:11px}.game-panel{padding:8px;margin-top:6px;border-radius:11px}.choice{gap:5px;padding:5px;min-height:55px}.choice .arrow{font-size:.7rem;padding:4px 5px}.prompt-top .turn{font-size:.76rem}.feedback .primary{min-height:43px}.gain{bottom:11%}}
+@media(max-height:550px) and (orientation:landscape){.game-world{height:clamp(150px,42dvh,235px)}.game-hud{margin-bottom:5px}.game-shell{padding-top:6px}.game-panel{min-height:0}.top-inner{min-height:48px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner">
+<button class="mark" id="home" type="button">コトバ軍団！</button>
+<nav class="top-buttons" aria-label="ゲームの操作"><button id="pause" type="button" hidden>一時停止</button><button id="settings" type="button">設定</button><button id="history" type="button">学習履歴</button></nav>
+</div></header>
+<main>
+<section class="shell" id="menu">
+ <div id="storage-warning" class="toast" role="status" hidden></div>
+ <div class="hero">
+  <canvas id="cover" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+   <p class="eyebrow">ことばで進む、8つの冒険</p>
+   <h1>コトバ軍団！</h1>
+   <p>左右のゲートから正しいことばを選ぼう。青い冒険者を集めて、最後のボスにみんなで挑もう！</p>
+   <div class="hero-actions"><button class="primary" id="quick-start" type="button">第1ステージへ　›</button><button class="secondary" id="resume" type="button" hidden>つづきから</button></div>
+  </div>
+ </div>
+ <div class="menu-head"><h2 id="stage-list-label">ステージをえらぶ</h2><p>1回 3〜5分目安・時間制限なし</p></div>
+ <div class="stage-grid" id="stages" aria-labelledby="stage-list-label"></div>
+</section>
+<section class="shell game-shell" id="play" hidden aria-labelledby="game-title">
+ <div class="game-hud">
+  <div><h1 id="game-title" tabindex="-1"></h1><div id="game-meta" class="hud-caption"></div></div>
+  <div class="progress-area"><span id="question-count"></span><span class="progress-track" aria-hidden="true"><span id="progress" class="progress-fill"></span></span></div>
+  <div class="hud-count"><ruby>仲間<rt>なかま</rt></ruby> <strong id="army">5</strong> <ruby>人<rt>にん</rt></ruby></div>
+ </div>
+ <div class="game-world">
+  <canvas id="world" aria-hidden="true"></canvas>
+  <div id="world-label" class="world-label"></div>
+  <div id="boss-hud" class="boss-hud" hidden><span id="boss-label"></span><span class="hp-track" aria-hidden="true"><span id="hp" class="hp-fill"></span></span></div>
+  <div id="gain" class="gain" aria-hidden="true" hidden></div>
+ </div>
+ <div class="game-panel" id="game-panel"></div>
+ <div id="live" class="sr-only" role="status" aria-live="polite"></div>
+</section>
+</main>
+<dialog id="setup-dialog" aria-labelledby="setup-title">
+ <div class="dialog-head"><h2 id="setup-title"></h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
+ <p id="setup-topic"></p>
+ <form id="setup-form">
+  <div class="fields">
+   <label for="difficulty">むずかしさ <select id="difficulty"><option value="0">やさしい</option><option value="1">ふつう</option><option value="2">むずかしい</option></select></label>
+   <label for="players">あそびかた <select id="players"><option value="1">ひとり</option><option value="2">きょうりょく・2人</option><option value="3">きょうりょく・3人</option><option value="4">きょうりょく・4人</option><option value="5">きょうりょく・5人</option><option value="6">きょうりょく・6人</option><option value="7">きょうりょく・7人</option><option value="8">きょうりょく・8人</option></select></label>
+  </div>
+  <p class="muted" id="setup-detail"></p>
+  <p class="toast" id="replace-note" hidden>あたらしく始めると、途中の冒険の保存が入れ替わります。</p>
+  <button class="primary" type="submit">冒険をはじめる　›</button>
+ </form>
+</dialog>
+<dialog id="settings-dialog" aria-labelledby="settings-title">
+ <div class="dialog-head"><h2 id="settings-title">設定</h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
+ <div class="fields">
+  <label for="speed">演出の速さ <select id="speed"><option value="0.7">ゆっくり</option><option value="1">ふつう</option><option value="1.5">はやい</option></select></label>
+  <label for="reduced">動きを少なくする <input id="reduced" type="checkbox"></label>
+  <label for="ruby">ルビを表示 <input id="ruby" type="checkbox"></label>
+  <label for="auto-read">自動読み上げ <input id="auto-read" type="checkbox"></label>
+  <label for="sfx">効果音 <input id="sfx" type="range" min="0" max="100" step="5"></label>
+  <label for="bgm">BGM <input id="bgm" type="range" min="0" max="100" step="5"></label>
+ </div>
+ <p class="muted" id="voice-note"></p>
+</dialog>
+<dialog id="pause-dialog" aria-labelledby="pause-title">
+ <div class="dialog-head"><h2 id="pause-title">ひとやすみ</h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
+ <p>つづきは、この端末のブラウザに保存されます。</p>
+ <div class="row-buttons"><button class="primary" type="button" data-close>冒険にもどる</button><button class="secondary" id="exit-game" type="button">ステージ選択へ</button></div>
+</dialog>
+<dialog id="history-dialog" class="history-dialog" aria-labelledby="history-title">
+ <div class="dialog-head"><h2 id="history-title">学習履歴</h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
+ <p class="muted">記録はこのブラウザ内に保存します。直近100回まで、名前の入力はありません。</p>
+ <div class="row-buttons"><button class="secondary" id="csv" type="button">CSVを書き出す</button></div>
+ <div id="history-summary" class="muted"></div><div id="records" class="records"></div>
+</dialog>
+<script>
+"use strict";
+(() => {
+const levels = ["やさしい", "ふつう", "むずかしい"];
+const rewards = [5, 10, 20];
+const questionCounts = [12, 12, 8];
+const stages = [
+  {name:"ひらがなの草原", topic:"ひらがな・基本語彙", icon:"✿", tint:"#35744e", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"], need:[36,56,65]},
+  {name:"ことばの森", topic:"反対語・仲間の言葉", icon:"❧", tint:"#315c43", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"], need:[37,59,69]},
+  {name:"かんじの竹林", topic:"漢字の読み・選択", icon:"竹", tint:"#4c7453", boss:"漢字の鬼", theme:["#a5d4bb","#f4f1bf","#9bc188","#659575","#e1c895","#aa9163","#396849"], need:[40,62,73]},
+  {name:"かぞえかたの港", topic:"助数詞・物の数え方", icon:"⚓", tint:"#285f7d", boss:"巨大タコ", theme:["#72c7e3","#f4f0cb","#6dbdc5","#408da6","#dcb788","#a87c55","#266b89"], need:[41,64,77]},
+  {name:"ぶんしょうの町", topic:"助詞・語順・文づくり", icon:"✦", tint:"#87523f", boss:"からくりロボ", theme:["#f0b38e","#ffe1b7","#dcae82","#b97576","#edc299","#b08774","#a26655"], need:[43,66,79]},
+  {name:"ものがたりの図書館", topic:"短文読解", icon:"▤", tint:"#714a74", boss:"本の魔物", theme:["#927fa8","#f6cca0","#ac84a4","#725b83","#dabea5","#a37f78","#644c75"], need:[44,69,82]},
+  {name:"ことばの雪山", topic:"既習事項の復習", icon:"❄", tint:"#41668e", boss:"氷の巨人", theme:["#84bfe0","#edf9fb","#d1e9ed","#83b1cb","#e9edf4","#9aafcc","#4f82ab"], need:[46,71,86]},
+  {name:"コトバ魔王城", topic:"全範囲の総復習", icon:"♜", tint:"#674874", boss:"コトバ魔王", theme:["#706d9e","#f2b49b","#a17ea1","#655278","#c0a7bb","#8c7099","#503d70"], need:[47,73,90]}
+];
+const categories = ["ひらがな・語彙","反対語・分類","漢字","助数詞","助詞・語順","短文読解"];
+const poolText = [
+[
+`「いぬ」の さいしょの もじは？|い|ぬ|「いぬ」の はじめは「い」です。
+「みかん」の さいごの もじは？|ん|み|「みかん」の おわりは「ん」です。
+「すいか」の まんなかの もじは？|い|す|す・い・か の まんなかは「い」です。
+「くるま」の「く」を「だ」に かえると？|だるま|くまだ|はじめを「だ」に すると「だるま」です。
+うみに すむ いきものは？|たこ|ねこ|たこは うみに すみます。
+そらを とぶ いきものは？|つばめ|きつね|つばめは とりです。
+あめの ひに さす ものは？|かさ|くつ|あめを ふせぐ ために かさを さします。
+「き＿ね」に はいる もじは？|つ|す|き・つ・ね で「きつね」です。
+「しっぽ」の ちいさい もじは？|っ|つ|しっぽの「っ」は ちいさく かきます。
+つくえを ふく ときに つかう ものは？|ぞうきん|ふでばこ|ぞうきんで よごれを ふきとります。
+「あさ」の「さ」を「め」に かえると？|あめ|めあ|「あ」は そのままで「あめ」です。
+「おにぎり」の ひらがなは いくつ？|4もじ|3もじ|お・に・ぎ・り の 4もじです。
+「とけい」は なにを しらべる もの？|じかん|おもさ|とけいを みると じかんが わかります。
+「てがみ」の「が」に ついている しるしは？|゛|゜|「か」に ゛を つけると「が」に なります。`,
+`小さい「ゃ」を 使う ことばは？|おちゃ|おちや|「ちゃ」は「ち」と 小さい「ゃ」で 書きます。
+小さい「っ」が 入る ことばは？|きって|きて|手紙にはるのは「きって」です。
+「べんり」に 近い 意味は？|使いやすい|こわれやすい|「べんり」は、使うときに 都合が よいことです。
+「じゅんび」に 近い 意味は？|先に 用意する|あとで 片づける|使う前に そろえておくのが「じゅんび」です。
+「まぶしい」と 感じるのは？|強い 光を 見たとき|冷たい 水に さわったとき|光が 強すぎて 見づらいときに 使います。
+「リレーで走る順番を 決める。」の「順番」は？|どの順に 走るか|どこまで 走るか|順番は 一番、二番と ならぶ順のことです。
+「ざあざあ」を 使うのは？|雨が強くふる|ドアが一度しまる|「ざあざあ」は 強い雨などの音を表します。
+「ふわふわ」の ものは？|わた|石|「ふわふわ」は、やわらかく軽い様子です。
+「おじゃまします」を 言うのは？|人の家に 入るとき|食事を 始めるとき|人の家に 入るときの あいさつです。
+道で 人と ぶつかりそうに なったときは？|すみません|おめでとう|相手に あやまるときは「すみません」と 言います。
+「えらぶ」と 同じ 意味に 近いのは？|いくつかから 決める|すべてを 集める|いくつかの 中から 決めることです。
+「おおぜい」の 意味は？|たくさんの人|ひとりの人|「大ぜい」は 人数が 多いことです。
+「ぐんぐん 大きくなる」の「ぐんぐん」は？|いきおいよく|少しずつ止まりながら|すばやく進む様子を表します。
+「まよう」を 使うのは？|どっちにするか 決まらない|すぐに 答えを 決めた|どうするか決められないことを「まよう」と言います。`,
+`「静か」の「しずか」と 意味が近いのは？|物音が少ない|物音が大きい|「静か」は、声や物音が少ない様子です。
+「急いでいる」を 別の言い方にすると？|早くしようとしている|ゆっくり休んでいる|「急ぐ」は、早く行ったり済ませたりすることです。
+「見当をつける」の意味は？|だいたいの予想をする|物を元の場所に置く|「見当」は、およその見込みや目安のことです。
+「記録を残す」の「残す」に近いのは？|後からわかるように取っておく|すぐに消してしまう|記録を残すと、後から見直せます。
+「用心する」とは？|危ないことが起こらないよう注意する|気にせずそのまま進む|悪いことが起こらないように気をつけることです。
+「説明が具体的だ」とは？|例などがあって様子がわかる|言いたいことがぼんやりしている|「具体的」は、例や中身がはっきりしていることです。
+「材料を工夫する」とは？|うまくできる使い方を考える|理由を考えずそのまま使う|「工夫する」は、よい方法を考えることです。
+「目立つ」の意味は？|人の目にとまりやすい|よく見てもわかりにくい|まわりとちがって、すぐ目につくことです。
+「元気がもどる」の意味は？|また元気になる|元気をなくす|「もどる」は前の状態になることも表します。
+「話題がそれる」とは？|初めの話から別の話に移る|初めの話をくわしく話す|「それる」は、もとの方向から外れることです。`
+],
+[
+`「おおきい」の はんたいは？|ちいさい|ながい|おおきいと ちいさいは はんたいです。
+「あつい」の はんたいは？（おゆの はなし）|つめたい|やわらかい|おゆが あつい ときの はんたいは「つめたい」です。
+「まえ」の はんたいは？|うしろ|となり|まえと うしろは はんたいです。
+「まける」の はんたいは？|かつ|はしる|かつと まけるは はんたいです。
+「ひる」の はんたいは？|よる|あさごはん|ひると よるは はんたいです。
+「はいる」の はんたいは？|でる|みる|なかに はいる、そとに でる と いいます。
+「みじかい」の はんたいは？|ながい|ふとい|みじかいと ながいは はんたいです。
+くだものは どちら？|もも|はくさい|ももは くだものです。
+のりものは どちら？|でんしゃ|えんぴつ|でんしゃは のりものです。
+「はと」と おなじ とりの なかまは？|すずめ|かめ|はとも すずめも とりです。
+「つくえ」と おなじ かぐの なかまは？|いす|ぼうし|つくえも いすも かぐです。
+「ひまわり」と おなじ はなの なかまは？|たんぽぽ|ひこうき|たんぽぽも ひまわりも はなが さきます。
+「ちかい」の はんたいは？|とおい|おそい|ばしょが ちかい、ばしょが とおい と いいます。
+「あける」の はんたいは？（ドアの はなし）|しめる|おす|ドアを あける、ドアを しめる と いいます。`,
+`「かたい」の 反対は？（ねん土の かたさ）|やわらかい|あかるい|「かたい」の反対は「やわらかい」です。
+「深い」の 反対は？|浅い|強い|水の深さを表す「深い」と「浅い」は反対です。
+「入口」の 反対は？|出口|空気|入口で入り、出口から出ます。
+「買う」の 反対は？|売る|作る|お金を出して買い、お金を受け取って売ります。
+「始まる」の 反対は？|終わる|集まる|始まりと終わりは反対です。
+「明るい」の 反対は？（部屋の明るさ）|暗い|広い|光が少ない部屋は「暗い」と言います。
+「近道」の 反対は？|遠回り|まっすぐ|短い道を通るのが近道、回り道をするのが遠回りです。
+「楽器」の 仲間は？|たいこ|なわとび|たいこをたたくと音が出ます。
+「方角」を 表すことばは？|北|春|北・南・東・西は方角を表します。
+「校庭」と 同じく 学校の場所を表すことばは？|教室|黒板|校庭と教室は場所、黒板は道具です。
+「夏」と 同じ仲間は？|秋|朝|夏と秋は季節です。
+「水泳」と 同じく 運動の名前なのは？|体そう|図書室|水泳と体そうは運動、図書室は場所です。
+「安心」の 反対に近いのは？|心配|親切|心が落ち着くのが安心、気がかりなのが心配です。
+「欠席」の 反対は？|出席|早退|その場に出るのが出席、休むのが欠席です。`,
+`「成功」の 反対は？|失敗|挑戦|うまくいくことが成功、いかないことが失敗です。
+「反対」の 反対は？（意見の話）|賛成|発表|意見を支持することを賛成と言います。
+「集合」の 反対は？|解散|移動|集まることが集合、集まった人が別れることが解散です。
+「増加」の 反対は？|減少|変化|増えるのが増加、減るのが減少です。
+「順調」と 反対に近い様子は？|何度もつまずく|予定どおり進む|順調とは、物事がうまく進むことです。
+「高温」の 反対は？|低温|常温|温度が高いのが高温、低いのが低温です。
+「交通機関」に 含まれるのは？|地下鉄|道路標識|地下鉄は人を運ぶ乗り物です。
+「文房具」に 含まれるのは？|定規|体温計|線を引く定規は文房具です。
+「生物」のうち 植物は？|こけ|かたつむり|こけは植物、かたつむりは動物です。
+「気象」に 関係することばは？|気温|気持ち|気象は、天気や気温などの大気の現象です。`
+],
+[
+`「いぬ」を かんじで かくと？|[犬]|[大]|いぬの かんじは「{犬|いぬ}」です。
+「やま」を かんじで かくと？|[山]|[川]|やまの かんじは「{山|やま}」です。
+「ひと」を かんじで かくと？|[人]|[入]|ひとの かんじは「{人|ひと}」です。
+「くち」を かんじで かくと？|[口]|[日]|くちの かんじは「{口|くち}」です。
+「みず」を かんじで かくと？|[水]|[火]|みずの かんじは「{水|みず}」です。
+「き」を かんじで かくと？（はやしの なかに ある もの）|[木]|[本]|きの かんじは「{木|き}」です。
+「みる」の かんじは どちら？|[見]|[貝]|みるの かんじは「{見|み}る」です。
+「め」を かんじで かくと？（ものを みる ところ）|[目]|[日]|めの かんじは「{目|め}」です。
+「はな」を かんじで かくと？（さくらの はな）|[花]|[草]|さくらの はなは「{花|はな}」と かきます。
+「ちから」を かんじで かくと？|[力]|[刀]|ちからの かんじは「{力|ちから}」です。
+「に」を かんじで かくと？（かずの「2」）|[二]|[三]|にの かんじは「{二|に}」です。
+「おと」を かんじで かくと？|[音]|[立]|おとの かんじは「{音|おと}」です。
+「そら」を かんじで かくと？|[空]|[雨]|そらの かんじは「{空|そら}」です。
+「たけ」を かんじで かくと？（{植|しょく}{物|ぶつ}の たけ）|[竹]|[林]|たけの かんじは「{竹|たけ}」です。`,
+`「[道]」の 読み方は？|みち|いけ|{道|みち}を 歩きます。
+「[島]」の 読み方は？|しま|いわ|{島|しま}は 周りを 水に かこまれた 土地です。
+「[地図]」の 読み方は？|ちず|じず|{地図|ちず}で 場所を 確かめます。
+「[海岸]」の 読み方は？|かいがん|うみがん|{海岸|かいがん}は 海に そった 陸地です。
+「[工場]」の 読み方は？|こうじょう|こうばしょ|{工場|こうじょう}では ものを 作ります。
+「[教室]」の 読み方は？|きょうしつ|こうしつ|{教室|きょうしつ}で 勉強します。
+「[光]を あびる」の「[光]」の 読み方は？|ひかり|あかり|「{光|ひかり}を あびる」と 読みます。
+「[言葉]」の 読み方は？|ことば|ことは|思いを 伝える{言葉|ことば}です。
+「せんせい」を 漢字で 書くと？|[先生]|[先正]|「{先生|せんせい}」と 書きます。
+「しんぶん」を 漢字で 書くと？|[新聞]|[親分]|「{新聞|しんぶん}」と 書きます。
+「おやこ」を 漢字で 書くと？|[親子]|[新子]|親と子で「{親子|おやこ}」です。
+「としょかん」を 漢字で 書くと？|[図書館]|[図書間]|本を 読んだり 借りたりする「{図書館|としょかん}」です。
+「[電池]」の 読み方は？|でんち|てんち|「{電池|でんち}」と 読みます。
+「夕方に かえる」の「かえる」は？|[帰る]|[変える]|家に もどる ことは「{帰|かえ}る」と 書きます。`,
+`「[登山]」の読み方は？|とざん|とうざん|山に登ることは「{登山|とざん}」です。
+「[運動]」の読み方は？|うんどう|うんど|「{運動|うんどう}」と読みます。
+「紙を[折]る」の「[折]る」の読み方は？|おる|きる|紙を折り曲げることを「{折|お}る」と言います。
+「あたたかい コート」の「あたたかい」は？|[暖かい]|[温かい]|着ていて寒くない場合は「{暖|あたた}かい」を使います。
+「スープが あたたかい」の「あたたかい」は？|[温かい]|[暖かい]|飲み物や食べ物の温度には「{温|あたた}かい」を使います。
+「先生に はくしゅを送る」の「はくしゅ」は？|[拍手]|[白手]|手をたたくことは「{拍手|はくしゅ}」です。
+「風が つよい」の「つよい」は？|[強い]|[弱い]|勢いの大きな風は「{強|つよ}い風」と書きます。
+「[観察]」の読み方は？|かんさつ|けんさつ|よく見て調べることは「{観察|かんさつ}」です。
+「公園の いりぐち」の「いりぐち」は？|[入口]|[人口]|中へ入るところは「{入口|いりぐち}」です。
+「[清流]」の読み方は？|せいりゅう|せいながれ|きれいな水の流れは「{清流|せいりゅう}」です。`
+],
+[
+`えんぴつを かぞえる ことばは？|ほん|まい|ながい えんぴつは「ほん」で かぞえます。
+かみを かぞえる ことばは？|まい|ひき|うすくて ひらたい かみは「まい」です。
+うさぎが 2＿＿ います。|ひき|さつ|この ぶん では「2ひき」と かぞえます。
+ほんを かぞえる ことばは？|さつ|だい|ほんは いっさつ、にさつ と かぞえます。
+くるまを かぞえる ことばは？|だい|まい|くるまは いちだい、にだい と かぞえます。
+ジュースを コップ 2＿＿ のみました。|はい|ほん|コップに いれた りょうは「はい」です。
+くつの みぎと ひだりを あわせて 1＿＿。|そく|さつ|1くみの くつは「1そく」です。
+りんごが 2＿＿ あります。|こ|ひき|りんごは「こ」で かぞえられます。
+ひとが 2にん。べつの いいかたは？|ふたり|にひき|ひとが 2人の とき「ふたり」と いいます。
+ちいさな とりが 2＿＿ います。|わ|だい|とりは「わ」で かぞえます。
+シャツを 2＿＿ たたみました。|まい|ほん|シャツは「まい」で かぞえられます。
+じてんしゃが 3＿＿ あります。|だい|そく|じてんしゃは 1だい、2だい、3だい です。
+いぬが 2＿＿ います。|ひき|さつ|いぬを かぞえる ときは「ひき」です。
+ビーだまを 3＿＿ ひろいました。|こ|だい|ビーだまは「こ」で かぞえられます。`,
+`細長い えだを 3＿＿ 集めました。|本|枚|細長い えだは「本」で 数えます。
+切手を 5＿＿ 買いました。|枚|冊|うすくて平たい 切手は「枚」です。
+金魚が 2＿＿ 泳いでいます。|匹|羽|金魚は「匹」で 数えます。
+本を 4＿＿ 借りました。|冊|枚|とじられた 本は「冊」で 数えます。
+バスが 2＿＿ 来ました。|台|隻|バスなどの 車は「台」で 数えます。
+飛行機を 2＿＿ 見ました。|機|隻|飛行機は「機」で 数えます。
+大きな 船が 2＿＿ とまっています。|隻|機|大きな船は「{隻|せき}」で 数えます。
+手紙を 2＿＿ 出しました。|通|羽|手紙や メールは「{通|つう}」で 数えます。
+りょう足分の くつ下を 3＿＿ 買いました。|足|本|くつ下は 左右1組を「1{足|そく}」と 数えます。
+すずめが 3＿＿ いました。|羽|冊|鳥は「{羽|わ}」で 数えます。
+水を 2[杯]のんだ。「[杯]」の 読みは？|はい|ぱい|「二杯」は「にはい」と 読みます。
+えんぴつを [1本] 買った。「[1本]」の 読みは？|いっぽん|いちほん|「一本」は「いっぽん」と 読みます。
+「[3匹]」の 読みは？|さんびき|さんひき|「三匹」は「さんびき」と 読みます。
+「[6枚]」の 読みは？|ろくまい|ろっまい|「六枚」は「ろくまい」と 読みます。`,
+`マンションと一戸建てを合わせて、建物が3＿＿。|棟|軒目|建物の数は「{棟|とう}」で数えます。
+駅前にパン屋が2＿＿ あります。|軒|枚|お店は「{軒|けん}」で数えます。
+大人のゾウが3＿＿ 歩いています。|頭|羽|大きな動物には「{頭|とう}」を使います。
+連載小説の 第1＿＿ を読みました。|話|羽|まとまったエピソードを「話」で数えます。
+作家の本が 全8＿＿ そろいました。|巻|台|シリーズの順に付く単位に「{巻|かん}」があります。
+仕事の依頼が 3＿＿ ありました。|件|匹|依頼や問い合わせなどは「{件|けん}」で数えます。
+「[6本]」の 読みは？|ろっぽん|ろくほん|「六本」は「ろっぽん」と 読みます。
+「[1隻]」の 読みは？|いっせき|いちせき|「一隻」は「いっせき」と 読みます。
+コピーで同じ資料を 会議のために10＿＿ 作りました。|部|頭|配る資料は、まとまりを「{部|ぶ}」で数えます。
+校庭を 3＿＿ 走りました。|周|着|一回りを「1{周|しゅう}」と 数えます。`
+],
+[
+`わたし ＿ ほんを よむ。|は|を|はじめの「わたしは」で だれの はなしか わかります。
+ねこ ＿ みずを のむ。|が|に|「ねこが」で のんでいる いきものが わかります。
+パン ＿ たべる。|を|で|たべる ものの あとに「を」を つけます。
+いす ＿ すわる。|に|を|すわる ところの あとに「に」を つけます。
+えんぴつ ＿ なまえを かく。|で|と|「で」は つかう どうぐを あらわします。
+ともだち ＿ あそぶ。|と|を|「と」は いっしょに あそぶ ひとを あらわします。
+「だれが」の つぎに つづく ことばは？|はしった|うみ|「だれが はしった」と つなぎます。
+やさいを ＿＿。|たべる|はしる|やさいは たべる ものです。
+くつを ＿＿。|はく|かぶる|くつは あしに はきます。
+ぼうしを ＿＿。|かぶる|はく|ぼうしは あたまに かぶります。
+どちらが しぜんな ぶん？|さかなが およぐ。|さかなを およぐ。|およぐのは さかななので「が」です。
+どちらが しぜんな ぶん？|まどを あける。|まどが あける。|あける ものを「を」で つなぎます。
+「わたしは」に つづく ことばは？|みずを のむ。|みずが のむ。|「わたしは みずを のむ。」に なります。
+「かさを」に つづく ことばは？|さす|およぐ|あめが ふった ときに「かさを さす」と いいます。`,
+`ともだち ＿ おり紙を もらう。|から|まで|「から」は もらった 相手を 表します。
+朝の八時 ＿ 学校に つく。|に|を|「に」は 時こくを 表します。
+川 ＿ 橋を わたる。|に かかった|を かかった|橋が かかっている 場所は「川に」と 表します。
+「何で 書いたか」が わかる文は？|ペンで 名前を 書いた。|ノートに 名前を 書いた。|「ペンで」は 道具を 表します。
+「どこで 遊んだか」が わかる文は？|公園で 遊んだ。|十分間 遊んだ。|「公園で」は 場所を 表します。
+「兄と 妹が 歩いた。」歩いたのは？|兄と 妹|妹だけ|「と」は、二人を つないでいます。
+「雨が ふった。＿、かさを さした。」|だから|けれども|雨が かさを さした 理由です。
+「寒かった。＿、外で 遊んだ。」|それでも|だから|寒いのに 外へ 出たので「それでも」です。
+「おもしろい」が くわしく 説明するのは？「おもしろい 本を 読む。」|本|読む|「おもしろい 本」と つながります。
+「ゆっくり」が くわしく 説明するのは？「ゆっくり 川を わたる。」|わたる|川|「ゆっくり」は わたり方を 表します。
+「花が さきました。」の 主語は？|花が|さきました|「何が」に 当たるのが 主語です。
+「妹が 歌います。」の 述語は？|歌います|妹が|「どうする」に 当たるのが 述語です。
+「きのうの 夜、月を 見た。」いつ 見た？|きのうの 夜|月を|「きのうの 夜」は 時を 表します。
+「空に 白い 雲が うかぶ。」白いのは？|雲|空|「白い」は「雲」を くわしくしています。`,
+`「休み時間に、友だちと図書室で本を読んだ。」場所を表すのは？|図書室で|休み時間に|「どこで」に答えるのは「図書室で」です。
+「細い道をあわてずに進んだ。」進み方を表すのは？|あわてずに|細い|「あわてずに」は「進んだ」の様子を表します。
+「雨が止んだ。＿、試合が始まった。」|そのあと|たとえば|時間の順につなぐ「そのあと」が合います。
+「弟が使えるように、道具を片づけておいた。」目的を表すのは？|弟が使えるように|道具を|「〜ように」は何のためかを表せます。
+「庭に小さな白い花がさいた。」主語と述語の組は？|花が・さいた|庭に・小さな|「何が」と「どうした」の組です。
+「練習を重ねた。＿、できる技が増えた。」|その結果|たとえば|技が増えたことは、練習の結果です。
+「猫を抱いた妹が帰ってきた。」帰ったのは？|妹|猫を抱いた兄|「猫を抱いた」は「妹」の様子を表します。
+「昨日は静かだったが、今日はにぎやかだ。」二つの文の関係は？|対比|理由と結果|昨日と今日の様子を比べています。
+「広い場所」についての一文になるのは？|広い場所で友だちと待ち合わせた。|場所を広くする友だちに会った。|一つ目は「広い」がその時の場所を説明しています。
+「明日の朝に出かける。」時を変えて「今夜」にすると？|今夜出かける。|明日の朝に今夜出かける。|「明日の朝に」を「今夜」に置き換えます。`
+],
+[
+`だれが はなを つんだ？~あきが はなを つんだ。そらが かごを もった。|あき|そら|「あきが はなを つんだ」と あります。
+さいしょに した ことは？~ゆきは てを あらった。それから ごはんを たべた。|てを あらった|ごはんを たべた|「それから」の まえが さいしょです。
+みおは どこへ いった？~みおは こうえんへ いった。かずは うちに いた。|こうえん|うち|「みおは こうえんへ いった」と あります。
+なにいろの ぼうし？~そらは あおい ぼうしと、あかい かばんを もっていた。|あお|あか|あおいのは ぼうしです。
+けんは なにを のんだ？~けんは パンを たべた。ぎゅうにゅうを のんだ。|ぎゅうにゅう|パン|のんだのは ぎゅうにゅうです。
+ねこは どこで ねた？~ねこは いすの うえで ねた。いぬは つくえの したで ねた。|いすの うえ|つくえの した|ねこが ねた ところは いすの うえです。
+かさを もった わけは？~あめが ふって きたので、はなは かさを もった。|あめが ふって きたから|かぜが やんだから|「あめが ふって きたので」が わけです。
+あとで えを かくのは だれ？~まこは いま えを かいている。りくは あとで えを かく。|りく|まこ|「りくは あとで」と あります。
+いつ みずを やった？~なおは あさ はなに みずを やった。ひるに ほんを よんだ。|あさ|ひる|みずを やったのは あさです。
+ぬれた ものは どちら？~みちは あめで ぬれた。かばんは うちに あった。|みち|かばん|「みちは あめで ぬれた」と あります。
+だれが まどを しめた？~れんが まどを あけた。まいが まどを しめた。|まい|れん|「まいが まどを しめた」と あります。
+さいごに かごに いれた ものは？~はじめに りんごを いれた。つぎに みかんを いれた。|みかん|りんご|「つぎに」と あるので さいごは みかんです。
+なにを さがしている？~たけるは えんぴつを なくした。つくえの したを さがしている。|えんぴつ|つくえ|なくした えんぴつを さがしています。
+なんじに あつまる？~あしたは あさ 9じに みんなで あつまる。10じに あるきはじめる。|9じ|10じ|あつまるのは 9じです。`,
+`はるが 立ち止まったのは なぜ？~はるは バスに のる前、ポケットに さいふが ないことに 気づき、立ち止まりました。|さいふが ないと 気づいたから|バスが こわれていたから|立ち止まる前に、さいふがないことに 気づきました。
+二人で さいごに したことは？~二人は 切った 紙を はりました。でき上がった 絵に、名前を 書きました。|名前を 書いた|紙を 切った|紙をはった あとで 名前を 書きました。
+主人公が 持ち帰ったのは？~いとは 図書室で 地図を 見ました。帰りに、星の本を 借りました。|星の本|地図|「借りました」と あるのは 星の本です。
+「それ」が 指すものは？~みらいは、青い 手ぶくろを 見つけました。それを 先生に とどけました。|青い 手ぶくろ|先生|「それ」は、見つけた 手ぶくろです。
+たくみの 気もちに 近いのは？~わからなかった 問題が やっと とけ、たくみは にっこりしました。|うれしい|くやしい|「にっこりしました」から、うれしさが わかります。
+いつ 駅前に つきましたか？~六時に 家を 出ました。三十分 歩いて、駅前に つきました。|六時半|七時半|六時から 三十分あとの 六時半です。
+店で 買ったものは？~りさは 牛にゅうを 買いたかったけれど、売り切れでした。そこで パンを 買いました。|パン|牛にゅう|牛にゅうは 売り切れで、パンを 買いました。
+音を 小さくしたのは なぜ？~妹が となりの 部屋で ねていました。兄は テレビの 音を 小さくしました。|妹を 起こさないため|テレビを もっと 聞くため|妹が ねているので 音を 小さくしました。
+朝 先に 来たのは だれ？~七時に ゆかが 来ました。ゆかの 十分後に、りおが 来ました。|ゆか|りお|「ゆかの 十分後」と あります。
+どの くだものを みんなで 食べましたか？~りんごは 明日のために しまいました。バナナは みんなで 食べました。|バナナ|りんご|みんなで 食べたのは バナナです。
+友だちに 返したのは いつ？~月曜日に えんぴつを 借りました。火曜日に 返しました。|火曜日|月曜日|月曜日に 借り、火曜日に 返しました。
+最後に 電気を 消したのは だれ？~つばさは 先に 教室を 出ました。そらが 最後に 電気を 消しました。|そら|つばさ|「そらが 最後に 電気を 消しました」と あります。
+あやが 残した ものは？~おにぎりは 食べましたが、おなかが いっぱいで、みかんは 残しました。|みかん|おにぎり|「みかんは 残しました」と あります。
+さきが 選んだ 道は？~左の 道は 工事中でした。そのため さきは 右の 道を 通りました。|右の 道|左の 道|左が 工事中なので、右を 通りました。`,
+`「その工夫」が 指すのは？~苗のまわりに わらをしきました。その工夫で、土が かわきにくくなりました。|苗のまわりに わらをしくこと|かわいた 土を運ぶこと|直前の「わらをしきました」を 受けています。
+この文からわかることは？~二人は 同じ日に 種をまいた。明るい場所に置いた鉢だけ、三日目に芽が出た。|三日目に 芽が出たのは一方だけ|三日目に 両方とも芽が出た|「鉢だけ」で、一方に 限られることがわかります。
+箱を取りに もどったのは なぜ？~集合場所に着いて、れんは 道具箱を 教室に置いたままだと 気づいた。足早に 引き返した。|道具箱を 教室に忘れたから|集合場所が 変わったから|気づいたのは 道具箱の 置き忘れです。
+発表の前と後の 気持ちは？~前に立つと 手がふるえた。友だちが うなずくのが見えると、落ち着いて 話せた。|不安から 落ち着きへ|落ち着きから 不安へ|手のふるえから、落ち着いて話せる状態に 変化しています。
+ねこの特徴を 表す 根拠は？~しっぽの短いねこが 玄関にいた。近づくと、するりと 物置へかくれた。|しっぽが 短い|物置が 小さい|本文の「しっぽの短いねこ」が 根拠です。
+最後に その場所で 調べたものは？~図書室では 昔の地図を調べた。その後、校庭で 今の地面の様子を見た。|今の地面の様子|昔の地図|最後は 校庭で 今の様子を見ました。
+にぎやかに なった理由は？~一人で読み聞かせを始めると、音に気づいた三年生が集まってきた。教室は急ににぎやかになった。|三年生が集まってきたから|読み聞かせをやめたから|三年生が集まった後、にぎやかになっています。
+姉が まずしたことは？~姉は会場を見わたし、空いている二つのいすを見つけた。それから弟を呼んだ。|会場を見わたした|弟を呼んだ|弟を呼んだのは、いすを見つけた後です。
+筆者が 次にしたいことは？~今日は遠くから鳥の声を録音した。次は種類がわかるよう、聞こえた方角も記録したい。|聞こえた方角も記録する|録音をやめて家に帰る|「次は」に続く「方角も記録したい」が答えです。
+この文に合う見出しは？~雨の後だけ道に水がたまる。晴れた日に調べると、その場所だけ地面がくぼんでいた。|水たまりができる場所のひみつ|晴れた日の遊び方|地面のくぼみと水たまりの関係を調べています。`
+]
+];
+
+const pools = poolText.map((tiers, stage) => tiers.map((text, level) =>
+  text.trim().split("\n").map((line, index) => {
+    const [prompt, correct, wrong, explanation] = line.split("|").reduce((fields, fragment) => {
+      // Ruby uses the same separator within braces. Keep those fragments together.
+      const last = fields.length - 1;
+      if (last >= 0 && fields[last].lastIndexOf("{") > fields[last].lastIndexOf("}")) {
+        fields[last] += "|" + fragment;
+      } else {
+        fields.push(fragment);
+      }
+      return fields;
+    }, []);
+    const [question, passage = ""] = prompt.split("~");
+    return {id:`${stage}-${level}-${index}`, category:stage, question, passage, correct, wrong, explanation};
+  })));
+
+const itemById = new Map(pools.flat(2).map(item => [item.id, item]));
+function shuffle(items) {
+  const output = [...items];
+  for (let i = output.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [output[i], output[j]] = [output[j], output[i]];
+  }
+  return output;
+}
+function buildOrder(stage, level) {
+  const count = questionCounts[level];
+  const review = stage === 6 ? [0, 1, 2, 3, 4] : [0, 1, 2, 3, 4, 5];
+  const items = stage < 6 ? shuffle(pools[stage][level]).slice(0, count) : shuffle(review).flatMap((category, index) =>
+    shuffle(pools[category][level]).slice(0, Math.floor(count / review.length) + (index < count % review.length ? 1 : 0)));
+  return shuffle(items).map(item => ({id:item.id, left:Math.random() < .5}));
+}
+// Canvas artwork drawn with original paths. The runners use cached animation frames.
+const TAU = Math.PI * 2;
+const clamp = (number, min, max) => Math.max(min, Math.min(max, number));
+const mix = (start, end, amount) => start + (end - start) * amount;
+function shape(c, fill, points) {
+  c.fillStyle = fill;
+  c.beginPath();
+  points.forEach(([x,y], index) => index ? c.lineTo(x,y) : c.moveTo(x,y));
+  c.closePath();
+  c.fill();
+}
+function oval(c, fill, x, y, rx, ry, rotation = 0) {
+  c.fillStyle = fill;
+  c.beginPath();
+  c.ellipse(x,y,rx,ry,rotation,0,TAU);
+  c.fill();
+}
+function rect(c, fill, x, y, width, height, radius = 0) {
+  c.fillStyle = fill;
+  c.beginPath();
+  c.roundRect(x,y,width,height,radius);
+  c.fill();
+}
+function stroke(c, color, width, points) {
+  c.strokeStyle = color; c.lineWidth = width; c.lineJoin = "round"; c.lineCap = "round";
+  c.beginPath();
+  points.forEach(([x,y], index) => index ? c.lineTo(x,y) : c.moveTo(x,y));
+  c.stroke();
+}
+function gradient(c, y0, y1, top, bottom) {
+  const g = c.createLinearGradient(0,y0,0,y1);
+  g.addColorStop(0,top); g.addColorStop(1,bottom);
+  return g;
+}
+function seed(n) {
+  const value = Math.sin(n * 147.354 + 81.04) * 45172.327;
+  return value - Math.floor(value);
+}
+const trims = ["#f4ce75","#79e1b3","#ff9f9c","#c8a9ff","#87dfff","#fbb97b","#dbea91","#e7a5cb"];
+const sprites = new Map();
+function runnerSprite(frame, back, team) {
+  const key = frame + "/" + back + "/" + team;
+  if (sprites.has(key)) return sprites.get(key);
+  const canvas = document.createElement("canvas");
+  canvas.width = 92; canvas.height = 106;
+  const c = canvas.getContext("2d");
+  c.translate(45,90);
+  const phase = frame / 10 * TAU;
+  const stride = frame === 10 ? 0 : Math.sin(phase);
+  const bob = frame === 10 ? 0 : -Math.abs(Math.cos(phase)) * 4;
+  c.translate(0,bob);
+  const trim = trims[team];
+  for (const side of [-1,1]) {
+    const leg = stride * side;
+    const x = side * 8 + leg * 3;
+    const y = -2 - Math.max(0,leg) * 12;
+    stroke(c,"#213b5d",9,[[side*7,-20],[x - leg*4,y-7],[x,y]]);
+    oval(c, leg > 0 ? "#253c5a" : "#354865",x-1,y,6,4,.14);
+    oval(c,"#617391",x+1,y-1,3.3,1.6);
+  }
+  for (const side of [-1,1]) {
+    const swing = stride*side*6;
+    stroke(c,side < 0 ? "#1b568c" : "#377fbd",8,[[side*12,-39],[side*16+swing*.4,-30],[side*16+swing*.75,-25+swing*.8]]);
+    oval(c,"#c98761",side*16+swing*.75,-25+swing*.8,4.1,3.8);
+    oval(c,"#f1be8c",side*16+swing*.75+.7,-26+swing*.8,3,2.4);
+  }
+  rect(c,"#224d7a",-13,-43,26,27,7);
+  rect(c,gradient(c,-42,-17,"#5bb3ed","#2868a7"),-12,-42,22,24,6);
+  if (back) {
+    const flap = stride * 5;
+    shape(c,"#124775",[[-12,-42],[9,-44],[14+flap,-15],[3+flap,-11],[-15+flap,-14]]);
+    shape(c,gradient(c,-41,-12,"#4999d6","#2367a9"),[[-11,-40],[5,-42],[9+flap,-17],[3+flap,-13],[-12+flap,-16]]);
+    stroke(c,trim,1.5,[[-12+flap,-16],[3+flap,-13],[9+flap,-17]]);
+    shape(c,trim,[[-2,-33],[2,-29],[-2,-25],[-6,-29]]);
+  } else {
+    shape(c,trim,[[-4,-42],[5,-43],[3,-33],[0,-30]]);
+    stroke(c,"#203a59",4,[[-11,-23],[10,-23]]);
+    rect(c,trim,-2,-25,6,5,1);
+  }
+  oval(c,"#784630",0,-53,15.6,15.3);
+  if (back) {
+    oval(c,"#ad6741",-12,-51,4.5,5);
+    oval(c,"#e6a977",12,-51,4.8,5.2);
+    shape(c,"#ae7552",[[-12,-54],[-4,-58],[11,-56],[12,-49],[8,-46],[3,-45],[3,-48],[-3,-46],[-5,-49],[-10,-47]]);
+    stroke(c,"#d39a6a",1.3,[[-7,-52],[-4,-49],[-2,-52]]);
+  } else {
+    oval(c,"#f3bc8b",1,-51,13.6,12.6);
+    oval(c,"#234157",-4,-52,1.35,2.3);
+    oval(c,"#234157",5,-52,1.35,2.3);
+    oval(c,"#e79379",8,-47,2.4,1.2);
+    stroke(c,"#a55344",1.1,[[0,-46],[2,-45],[4,-46]]);
+  }
+  oval(c,"#163c67",0,-59,19,5.8,-.07);
+  oval(c,"#397eb0",-1,-61,18.6,4.3,-.07);
+  shape(c,"#1b4b7e",[[-12,-62],[-8,-75],[2,-81],[13,-78],[13,-74],[9,-70],[13,-61]]);
+  shape(c,gradient(c,-81,-61,"#66b7e8","#3a7fbd"),[[-12,-62],[-7,-74],[2,-79],[11,-77],[7,-73],[8,-63]]);
+  stroke(c,trim,2,[[-11,-62],[-2,-61],[10,-63]]);
+  if (!back) shape(c,trim,[[3,-67],[5,-64],[3,-61],[1,-64]]);
+  sprites.set(key,canvas);
+  return canvas;
+}
+
+class Scene {
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.c = canvas.getContext("2d", {alpha:false});
+    this.w = 0;
+    this.h = 0;
+  }
+  resize() {
+    const bounds = this.canvas.getBoundingClientRect();
+    const w = Math.round(bounds.width), h = Math.round(bounds.height);
+    if (!w || !h) return false;
+    const dpr = Math.min(devicePixelRatio || 1,1.45,Math.sqrt(1500000/(w*h)));
+    if (w !== this.w || h !== this.h || dpr !== this.dpr) {
+      this.w = w; this.h = h; this.dpr = dpr;
+      this.canvas.width = Math.round(w*dpr); this.canvas.height = Math.round(h*dpr);
+      this.c.setTransform(dpr,0,0,dpr,0,0);
+      this.c.imageSmoothingQuality = "medium";
+    }
+    return true;
+  }
+  project(x,z) {
+    const p = 14/z;
+    return {
+      x: this.center + (x * this.unit + this.yaw*(z-14)) * p,
+      y: this.horizon + this.h*.64*p,
+      s: this.unit*p
+    };
+  }
+  draw(data) {
+    if (!this.resize()) return;
+    const {w,h,c} = this;
+    const {stage,cover,distance,t,phase,lane,units,players,labels,gateZ,battle,reduced} = data;
+    const theme = stages[stage].theme;
+    this.center = w*(cover ? .735 : .51);
+    this.yaw = -(Math.min(w,h*2.35)*.006 + lane*.6);
+    this.horizon = h*(cover ? .23 : .22);
+    this.unit = Math.min(w*.043,h*.092);
+    const [sky,haze,ground,hill,road,edge,deep] = theme;
+    c.fillStyle = gradient(c,0,h*.61,sky,haze); c.fillRect(0,0,w,h);
+    if (stage !== 5) {
+      const sun = Math.min(w,h)*.087;
+      oval(c,"#fff8d743",w*(cover?.88:.78),h*.16,sun*1.42,sun*1.42);
+      oval(c,"#fff6c8da",w*(cover?.88:.78),h*.16,sun,sun);
+      for (let i=0;i<7;i++) {
+        const x = w*(i/6+seed(i+2)*.12-.07);
+        const y = h*(.07+seed(i+5)*.14);
+        const r = Math.min(w,h)*(.055+seed(i+10)*.028);
+        oval(c,"#f8fff27a",x,y,r,r*.23);
+        oval(c,"#ffffff65",x+r*.2,y-r*.13,r*.53,r*.27);
+      }
+    }
+    if (stage === 5) this.library(haze, deep);
+    else this.landscape(stage,ground,hill,deep);
+    this.road(road,edge,distance,stage);
+    for (let i=28;i>=0;i--) {
+      const spacing = 5.5;
+      const z = 7+i*spacing-(distance%spacing);
+      if (z<8.7) continue;
+      const tile = Math.floor(distance/spacing)+i;
+      for (const side of [-1,1]) {
+        const outer = 10.4 + seed(tile*2+side) * 5.7;
+        const p = this.project(outer*side,z);
+        if (p.x < -p.s*5 || p.x > w+p.s*5 || p.y > h+p.s) continue;
+        this.prop(stage,p,seed(tile*7+side),theme);
+      }
+    }
+    if (gateZ && labels) this.gates(gateZ,labels);
+    if (battle) this.boss(stage,battle,reduced ? 0 : t);
+    if (cover) this.boss(0,{time:0,hit:0,win:false,cover:true},t);
+    this.army(units, {lane,phase,players,t,cover,battle,reduced});
+  }
+  landscape(stage,ground,hill,deep) {
+    const {w,h,c} = this;
+    const base = this.horizon + h*.15;
+    c.fillStyle = gradient(c,this.horizon,h,ground,hill);
+    c.fillRect(0,base,w,h-base);
+    for (let layer=0;layer<3;layer++) {
+      c.fillStyle = [hill,ground,hill][layer];
+      c.globalAlpha = [.49,.88,1][layer];
+      c.beginPath(); c.moveTo(0,h);
+      for (let i=0;i<=18;i++) {
+        const peak = (stage===6 ? .20 : .11)*seed(i*2.3+layer*14.1);
+        const y = base + h*(layer*.037-peak);
+        c.lineTo(i*w/18,y);
+      }
+      c.lineTo(w,h); c.closePath(); c.fill();
+    }
+    c.globalAlpha = 1;
+    if (stage === 3) {
+      c.fillStyle = gradient(c,base,h,"#9fe0d9","#419db6");
+      c.fillRect(0,base+h*.02,w,h*.62);
+      for(let i=0;i<37;i++) {
+        const x=seed(i*3)*w,y=base+seed(i*3+9)*h*.59;
+        stroke(c,"#defff482",1.2,[[x,y],[x+w*.013+seed(i)*w*.08,y]]);
+      }
+    }
+    if (stage === 7) {
+      const size = h*.64, x = w*.46, y = base+h*.15;
+      rect(c,deep,x-size*.53,y-size*.38,size*1.06,size*.4,1);
+      for (const side of [-1,1]) {
+        rect(c,deep,x+size*side*.36-size*.12,y-size*.63,size*.24,size*.67,2);
+        shape(c,"#3d3459",[[x+size*side*.36-size*.16,y-size*.63],[x+size*side*.36,y-size*.94],[x+size*side*.36+size*.16,y-size*.63]]);
+        rect(c,"#f5bc85",x+size*side*.36-size*.024,y-size*.46,size*.048,size*.094,3);
+      }
+      rect(c,"#362e50",x-size*.16,y-size*.25,size*.32,size*.31,size*.12);
+    }
+  }
+  library(haze,deep) {
+    const {w,h,c} = this;
+    c.fillStyle = gradient(c,0,h,"#443952","#a98a90"); c.fillRect(0,0,w,h);
+    const cx = this.center, horizon = this.horizon;
+    oval(c,haze,cx,horizon*.92,h*.19,h*.18);
+    rect(c,"#674e66",cx-h*.105,horizon*.19,h*.21,h*.42,h*.095);
+    rect(c,"#d9a875",cx-h*.086,horizon*.25,h*.172,h*.37,h*.08);
+    stroke(c,deep,4,[[cx,horizon*.31],[cx,horizon+h*.27]]);
+    for(const side of [-1,1]) {
+      shape(c,"#61516e",[[cx+side*35,horizon],[cx+side*w*.9,-h*.04],[cx+side*w*.9,h],[cx+side*35,horizon+h*.11]]);
+      for(let z=115;z>15;z-=12) {
+        const p = this.project(side*11,z);
+        stroke(c,"#d0a590",Math.max(1,p.s*.16),[[p.x,p.y],[p.x,p.y-p.s*7]]);
+      }
+    }
+  }
+  road(light,edge,distance,stage) {
+    const {c,w,h} = this;
+    const polygon = (a,b,z0,z1,color) => {
+      shape(c,color,[this.project(a,z0),this.project(b,z0),this.project(b,z1),this.project(a,z1)].map(p=>[p.x,p.y]));
+    };
+    polygon(-10,10,9,180,edge);
+    polygon(-9.1,9.1,9,180,gradient(c,this.horizon,h,light,edge));
+    polygon(-8.72,8.72,9,180,gradient(c,this.horizon,h,light,stage===3?"#c79761":light));
+    for(let i=22;i>=0;i--) {
+      const z=10+i*7-(distance%7);
+      if(z<8.5) continue;
+      if(stage===3 || stage===4 || stage===5 || stage===7) {
+        polygon(-8.65,8.65,z,z+.19,stage===3?"#82583a46":"#614c6422");
+        if(stage!==3) polygon(i%2===0?-4.6:3.8,i%2===0?-4.48:3.92,z,z+6.8,"#61526022");
+      } else {
+        const x=(seed(i+Math.floor(distance/7))*2-1)*7;
+        polygon(x,x+.68,z,z+.37,"#97744c45");
+      }
+      polygon(-.13,.13,z,z+.9,"#fff5c291");
+    }
+    const vignette=c.createLinearGradient(0,0,w,0);
+    vignette.addColorStop(0,"#162c4b29");
+    vignette.addColorStop(.19,"#162c4b00");
+    vignette.addColorStop(.81,"#162c4b00");
+    vignette.addColorStop(1,"#162c4b26");
+    c.fillStyle=vignette;c.fillRect(0,0,w,h);
+  }
+  prop(stage,p,r,theme) {
+    const {c} = this;
+    c.save();c.translate(p.x,p.y);c.scale(p.s,p.s);
+    oval(c,"#123c4928",0,.06,1.44,.32);
+    const hill=theme[3], dark=theme[6];
+    if(stage===0 && r<.34) {
+      for(let i=0;i<4;i++) {
+        const x=(i-1.5)*.43,y=-.2-seed(i+r)*.42;
+        stroke(c,dark,.055,[[x+.1,0],[x,y]]);
+        oval(c,i%2?"#fff2b7":"#f1b6ad",x,y,.13,.105);
+        oval(c,"#e8a852",x,y,.05,.045);
+      }
+    } else if(stage===0 || stage===1) {
+      const scale=stage===1?1.33:.84+r*.36;
+      c.scale(scale,scale);
+      stroke(c,"#664e39",.27,[[.09,0],[.04,-1.7],[-.2,-2.6]]);
+      stroke(c,"#94684a",.096,[[.1,-.1],[.15,-1.9],[.5,-2.4]]);
+      oval(c,dark,.05,-2.38,1.05,1.1);
+      oval(c,hill,-.44,-2.72,.69,.88,-.16);
+      oval(c,hill,.5,-2.5,.61,.83,.29);
+      oval(c,stage===0?"#9cca72":"#6caf73",-.2,-3.24,.63,.56,-.23);
+      if(r>.77) for(let i=0;i<3;i++) oval(c,"#e4bb79",-.56+i*.48,-2.78+seed(i)*.3,.08,.09);
+    } else if(stage===2) {
+      for(let i=0;i<3;i++) {
+        const x=(i-1)*.46,y=-2.7-seed(r+i)*1.45;
+        stroke(c,dark,.15,[[x,0],[x+.13,y]]);
+        stroke(c,"#aacc82",.041,[[x+.05,-.06],[x+.18,y]]);
+        for(let j=1;j<5;j++) {
+          const offset=y*j/5;
+          stroke(c,"#c9d996",.04,[[x-.04,offset],[x+.18,offset]]);
+          shape(c,hill,[[x+.1,offset],[x+(.65*(j%2?1:-1)),offset-.32],[x+.12,offset-.11]]);
+        }
+      }
+    } else if(stage===3) {
+      if(r<.60) {
+        rect(c,"#704d39",-.18,-1.22,.37,1.32,.07);
+        rect(c,"#ab7952",-.14,-1.21,.25,1.19,.04);
+        oval(c,"#dfba7d",-.015,-1.23,.15,.065);
+        stroke(c,"#dbc397",.12,[[-.2,-.84],[.2,-.83]]);
+      } else {
+        shape(c,"#5c6156",[[-.92,-.35],[.84,-.35],[.51,.08],[-.52,.08]]);
+        stroke(c,"#614b4f",.11,[[0,-.39],[0,-1.85]]);
+        shape(c,"#f9e4b7",[[.08,-1.77],[.84,-.56],[.08,-.59]]);
+        shape(c,"#d7896e",[[-.10,-1.57],[-.72,-.57],[-.1,-.58]]);
+      }
+    } else if(stage===4) {
+      if(r<.72) {
+        rect(c,"#f6d3a3",-1.11,-2.35,1.9,2.42,.045);
+        shape(c,"#bd665b",[[-1.45,-2.25],[-.18,-3.41],[1.11,-2.25]]);
+        rect(c,"#775754",-.38,-1.09,.62,1.09,.14);
+        rect(c,"#528097",-.8,-1.9,.49,.46,.045);
+        rect(c,"#528097",.22,-1.9,.35,.46,.045);
+        stroke(c,"#ffdc9a",.043,[[-.53,-1.9],[-.53,-1.46]]);
+      } else this.lantern(c,-.7,-2.1);
+    } else if(stage===5) {
+      rect(c,"#5b465b",-1.27,-3.8,2.42,3.81,.08);
+      for(let row=0;row<4;row++) {
+        const y=-.82-row*.87;
+        rect(c,"#a67a6d",-1.18,y,2.3,.10,.02);
+        for(let j=0;j<7;j++) {
+          const height=.39+seed(row*8+j+r)*.32;
+          rect(c,["#b97276","#6f9d9b","#d9ac77","#a893ba"][j%4],-1.1+j*.3,y-height,.21,height,.02);
+        }
+      }
+    } else if(stage===6) {
+      if(r<.66) {
+        for(let i=0;i<3;i++) {
+          const y=-i*.59;
+          shape(c,dark,[[-1.04+i*.16,y],[.06,y-1.86],[1.17-i*.13,y]]);
+          shape(c,"#dceff2",[[-.49,y-.96],[.06,y-1.87],[.58,y-1.0],[.15,y-1.12],[-.09,y-.92]]);
+        }
+      } else {
+        shape(c,"#799bbf",[[-1.09,0],[-.77,-.71],[-.18,-1.1],[.71,-.54],[.94,0]]);
+        shape(c,"#e4f4f7",[[-.76,-.7],[-.18,-1.1],[.71,-.54],[-.11,-.49],[-.42,-.58]]);
+      }
+    } else {
+      if(r>.36) this.lantern(c,-.7,-2.1);
+      else {
+        rect(c,"#675075",-.9,-1.4,1.76,1.49,.11);
+        for(let i=0;i<3;i++) rect(c,"#82658e",-.88+i*.64,-1.75,.46,.48,.04);
+        stroke(c,"#b187ae",.075,[[-.84,-.46],[.79,-.45]]);
+      }
+    }
+    c.restore();
+  }
+  lantern(c,x,y) {
+    stroke(c,"#4e4260",.13,[[0,0],[0,y],[x+.1,y],[x+.1,y+.18]]);
+    oval(c,"#ffe59e3f",x+.11,y+.44,.48,.48);
+    rect(c,"#f4bf77",x-.05,y+.18,.33,.45,.045);
+    stroke(c,"#5e4357",.11,[[x-.12,y+.22],[x+.12,y+.09],[x+.34,y+.22]]);
+    stroke(c,"#5e4357",.07,[[x-.06,y+.62],[x+.29,y+.62]]);
+  }
+  gates(z,labels) {
+    const {c} = this;
+    for (const side of [-1,1]) {
+      const p=this.project(side*4.42,z);
+      c.save();c.translate(p.x,p.y);c.scale(p.s,p.s);
+      const blue=side<0;
+      const rim=blue?"#2676a4":"#7655ab", lit=blue?"#b6f2fc":"#f0d9ff";
+      const gate=gradient(c,-4.4,0,blue?"#2c6a99":"#644d93",blue?"#9fe6ed50":"#e8c4f265");
+      oval(c,"#24374737",0,0,3.25,.45);
+      rect(c,gate,-2.91,-4.43,5.82,4.43,.67);
+      c.strokeStyle=rim;c.lineWidth=.27;c.stroke();
+      rect(c,lit,-3.13,-4.49,.25,4.49,.09);
+      rect(c,lit,2.88,-4.49,.25,4.49,.09);
+      shape(c,rim,[[-3.2,-4.21],[-3.0,-4.91],[3.0,-4.91],[3.2,-4.21]]);
+      shape(c,lit,[[0,-5.13],[.42,-4.78],[0,-4.40],[-.42,-4.78]]);
+      stroke(c,lit,.08,[[-2.71,-4.04],[2.71,-4.04]]);
+      shape(c,lit,[[-.35,-.68],[.35,-.68],[0,-.26]]);
+      c.restore();
+      const label=labels[blue?0:1];
+      if(p.s>=6) {
+        const fontSize=Math.max(9,Math.min(p.s*1.10,p.s*5/Math.max(4,[...label].length),26));
+        const labelY=p.y-p.s*2.22;
+        rect(c,blue?"#1e567de8":"#543a78e8",p.x-p.s*2.56,labelY-fontSize*.78,p.s*5.12,fontSize*1.56,5);
+        c.fillStyle="#fff";
+        c.textAlign="center";
+        c.textBaseline="middle";
+        c.font=`850 ${fontSize}px system-ui, sans-serif`;
+        c.fillText(label,p.x,labelY,p.s*4.86);
+      }
+    }
+  }
+  army(count,info) {
+    const {c,w,h} = this;
+    const {lane,t,phase,players,cover,battle,reduced} = info;
+    const size = count.length;
+    const cols = Math.min(size,Math.max(3,Math.ceil(Math.sqrt(size)*1.05)),14);
+    const rows = Math.ceil(size/cols);
+    for (let i=size-1;i>=0;i--) {
+      const unit = count[i];
+      if (unit.born > t) continue;
+      const row = Math.floor(i/cols), col = i%cols;
+      const rowCols = Math.min(cols,size-row*cols);
+      const spread = Math.min(1.33,12.3/Math.max(1,cols-1));
+      let x = (col - (rowCols-1)/2)*spread + lane*4.15+(seed(i+31)-.5)*.28;
+      let z = (cover ? 12.8 : 14.6)+row*(cover?1.48:1.41)+(seed(i+52)-.5)*.83;
+      const marching = cover || phase==="approach" || phase==="cross" || !!battle;
+      const join = clamp((t-unit.born)/.48,0,1);
+      if(!reduced) {
+        x+=(i%2?1:-1)*(1-join)*3.3;
+        z+=(1-join)*4.6;
+      }
+      let impact = false;
+      if(battle && battle.time>.82 && !battle.done) {
+        const turn=clamp(Math.floor((battle.time-.82)/battle.interval),0,players-1);
+        const wave=(battle.time-.82)%battle.interval / battle.interval;
+        const push=players===1 || unit.team===turn || (turn>=size && i===turn%size) ? Math.sin(clamp(wave*1.15,0,1)*Math.PI) : 0;
+        const impactDepth=34+(i%5)*1.1;
+        z=mix(z,Math.max(z+2,impactDepth),push*.91);
+        x=mix(x,x*.50,push);
+        impact=push>.78;
+      }
+      if(battle?.done && battle.win) z+=Math.sin(t*2.5+i*.24)*.2;
+      const p = this.project(x,z);
+      const charH = clamp(p.s*(cover?3.86:2.74),10,h*.36);
+      const charW = charH*92/106;
+      const stride = reduced || !marching ? 10 : Math.floor((t*13+i*.37)%10);
+      if(p.x+charW<0 || p.x-charW>w || p.y>h+charH*.15) continue;
+      c.globalAlpha=.4+.6*join;
+      oval(c,"#1733493a",p.x,p.y+.8,charW*.27,charH*.072);
+      c.drawImage(runnerSprite(stride,!cover,players===1?0:unit.team),p.x-charW*.49,p.y-charH*.85,charW,charH);
+      if(!reduced && ((join<.78 && i%2===0) || (impact && i%9===0))) {
+        const sy = p.y-charH*(.64+(1-join)*.13), sx=p.x+charW*.31;
+        shape(c,"#fff0a6",[[sx-4,sy],[sx,sy-5],[sx+4,sy],[sx,sy+5]]);
+      }
+      c.globalAlpha=1;
+    }
+  }
+  boss(stage,battle,t) {
+    const {c,h} = this;
+    const p = this.project(battle.cover?1.55:0,battle.cover?31:42);
+    const s = Math.min(p.s*(battle.cover?2.3:2.6),h*(battle.cover?.21:.20)/2.8);
+    c.save();c.translate(p.x,p.y);c.scale(s,s);
+    const jump = Math.sin(t*2.4)*.10;
+    const hit = battle.hit || 0;
+    const faded = battle.done && battle.win;
+    if(faded) c.globalAlpha=.40;
+    oval(c,"#27304546",0,0,2.7,.53);
+    c.translate((hit?Math.sin(hit*95)*hit*.34:0),jump);
+    c.scale(1+hit*.2,1-hit*.29);
+    const shades = [
+      ["#8fe8a6","#39ac88","#226760"],["#a8bd8d","#657e5e","#42564f"],["#f1a77c","#bd645c","#773e52"],
+      ["#e6a0a1","#ac6997","#684b77"],["#e4c188","#a77658","#64494b"],["#e9bda3","#9d6a9e","#5a4c75"],
+      ["#d5f6fa","#82b9da","#466d9c"],["#e49eb1","#91689e","#583e77"]
+    ][stage];
+    const [light,middle,deep]=shades;
+    const coat=gradient(c,-5,.1,light,middle);
+    if (stage===0) {
+      c.fillStyle=coat;c.beginPath();c.moveTo(-2.65,-.5);
+      c.bezierCurveTo(-2.77,-1.42,-1.52,-3.92,-.28,-3.96);
+      c.bezierCurveTo(1.1,-4.02,1.19,-2.34,2.40,-1.12);
+      c.bezierCurveTo(3.05,.26,-1.99,.45,-2.65,-.5);c.fill();
+      oval(c,"#eaffcba8",-.93,-2.67,.35,.71,.58);
+      oval(c,"#fffbd486",-.41,-3.23,.2,.23);
+      oval(c,"#f9b69a85",-1.19,-1.23,.37,.16);
+      oval(c,"#f9b69a85",1.14,-1.23,.37,.16);
+    } else if(stage===1 || stage===4 || stage===6) {
+      for(const side of [-1,1]) {
+        const angle=side*(.21+Math.sin(t*2)*.045);
+        c.save();c.translate(side*1.61,-2.36);c.rotate(angle);
+        rect(c,deep,-.53,-.38,1.1,1.76,.3);
+        rect(c,middle,-.51,.64,1.04,.83,.18);
+        c.restore();
+        rect(c,deep,side*1.0-.43,-1.25,.86,1.39,.21);
+        rect(c,middle,side*1.0-.55,-.34,1.07,.49,.12);
+      }
+      rect(c,coat,-1.59,-3.49,3.18,2.59,stage===4?.24:.58);
+      rect(c,middle,-1.10,-4.45,2.2,1.5,.27);
+      rect(c,light,-.98,-4.40,1.95,1.04,.22);
+      shape(c,stage===6?"#f8ffff":stage===4?"#fff3a3":"#b5e78e",[[0,-2.83],[.44,-2.38],[0,-1.88],[-.44,-2.38]]);
+      if(stage===4) {
+        stroke(c,deep,.13,[[0,-4.39],[0,-5.03]]);
+        oval(c,"#ef9d69",0,-5.06,.19,.19);
+        rect(c,"#5d5659",-.84,-4.10,1.68,.59,.16);
+      } else if(stage===6) {
+        shape(c,"#f8ffff",[[.49,-4.22],[.95,-5.14],[1.3,-4.3]]);
+        shape(c,"#c8eaf5",[[-.85,-4.18],[-.53,-4.96],[-.10,-4.29]]);
+      } else {
+        for(let i=0;i<5;i++) oval(c,i%2?"#738f5f":"#a1ae75",-1.23+i*.54,-4.40+seed(i)*.21,.35,.22);
+      }
+    } else if(stage===3) {
+      for(let i=0;i<8;i++) {
+        const side=i<4?-1:1, row=i%4;
+        const x=side*(1.3+row*.39);
+        stroke(c,deep,.41,[[side*.92,-1.45],[x,-.48],[x+side*.41,-.35],[x+side*.71,-.72+Math.sin(t*2+i)*.17]]);
+        stroke(c,middle,.29,[[side*.97,-1.45],[x,-.50],[x+side*.41,-.35],[x+side*.71,-.72+Math.sin(t*2+i)*.17]]);
+      }
+      oval(c,coat,0,-1.85,1.78,2.01);
+      oval(c,"#fdd5cb91",-.66,-2.91,.32,.49,.61);
+    } else if(stage===5) {
+      for(const side of [-1,1]) {
+        shape(c,deep,[[0,-.28],[side*2.44,-.56],[side*2.56,-3.67],[0,-3.36]]);
+        shape(c,side<0?"#eed3ae":"#f8e8c7",[[0,-.37],[side*2.28,-.71],[side*2.33,-3.81],[0,-3.46]]);
+        shape(c,light,[[side*.19,-.44],[side*2.11,-.86],[side*2.22,-3.61],[side*.19,-3.29]]);
+        for(let i=0;i<4;i++) stroke(c,"#976e81",.07,[[side*.99,-1.11-i*.17],[side*1.91,-1.24-i*.17]]);
+      }
+      shape(c,middle,[[-.2,-3.43],[.25,-3.45],[.17,-.25],[-.15,-.25]]);
+      shape(c,"#e99468",[[.19,-3.43],[.58,-3.48],[.53,-4.28],[.34,-4.06],[.18,-4.22]]);
+    } else {
+      for(const side of [-1,1]) {
+        shape(c,deep,[[side*.62,-2.8],[side*2.86,-2.42],[side*2.35,-.19],[side*.68,-.38]]);
+        shape(c,stage===7?"#6d477e":"#9d555a",[[side*.84,-3.39],[side*1.06,-4.99],[side*1.71,-5.21],[side*1.51,-4.65],[side*1.56,-3.46]]);
+        shape(c,light,[[side*1.13,-4.18],[side*1.16,-4.91],[side*1.66,-5.12],[side*1.42,-4.64]]);
+      }
+      oval(c,coat,0,-1.4,1.83,1.45);
+      rect(c,coat,-1.48,-4.01,2.96,2.62,.83);
+      oval(c,deep,0,-.56,.84,.3);
+      shape(c,"#ffe18a",[[0,-1.32],[.33,-.94],[0,-.58],[-.33,-.94]]);
+      if(stage===7) shape(c,"#ffc575",[[-.69,-4.2],[-.72,-4.87],[-.30,-4.56],[0,-5.03],[.33,-4.57],[.68,-4.86],[.65,-4.2]]);
+    }
+    const faceY = [-1.65,-3.84,-2.97,-2.31,-3.84,-2.21,-3.84,-2.98][stage];
+    for(const side of [-1,1]) {
+      oval(c,stage===4?"#fbe599":"#fff3d8",side*.60,faceY,.27,.26);
+      oval(c,deep,side*.58,faceY+.038,.118,.155);
+      oval(c,"#ffffff",side*.58-.04,faceY-.04,.043,.053);
+    }
+    if(stage!==4 && stage!==1 && stage!==6) {
+      stroke(c,deep,.12,[[-.24,faceY+.49],[0,faceY+.56],[.24,faceY+.49]]);
+    }
+    if(hit>.03) {
+      const ray = 1.04 + (1-hit)*.95;
+      c.globalAlpha=.84;
+      for(let i=0;i<6;i++) {
+        const a=i*TAU/6+.34;
+        const x=Math.cos(a)*ray,y=-1.7+Math.sin(a)*ray*.86;
+        stroke(c,"#ffe9ac",.11,[[x,y],[x+Math.cos(a)*.36,y+Math.sin(a)*.36]]);
+      }
+    }
+    if(faded && !battle.cover) {
+      c.globalAlpha=.9;
+      for(let i=0;i<10;i++) {
+        const a=i*TAU/10+t*.30;
+        const x=Math.cos(a)*(1.7+seed(i)*1.4),y=-2+Math.sin(a)*2.5;
+        shape(c,"#fff0ad",[[x-.15,y],[x,y-.22],[x+.15,y],[x,y+.22]]);
+      }
+    }
+    c.restore();
+  }
+}
+const byId = id => document.getElementById(id);
+const panel = byId("game-panel");
+const world = new Scene(byId("world"));
+const cover = new Scene(byId("cover"));
+const menu = byId("menu");
+const play = byId("play");
+const storageKey = "kotoba-gundan-v1";
+const defaultSettings = {
+  difficulty:0, players:1, speed:1,
+  reduced:matchMedia("(prefers-reduced-motion: reduce)").matches,
+  ruby:true, autoRead:false, sfx:35, bgm:15
+};
+let storageIssue = "";
+let data = {settings:{...defaultSettings}, saved:null, records:[]};
+try {
+  const raw = localStorage.getItem(storageKey);
+  if (raw) {
+    const saved = JSON.parse(raw);
+    if (saved && Array.isArray(saved.records)) {
+      data = {...data, ...saved, settings:{...defaultSettings,...saved.settings}};
+    }
+  }
+} catch {
+  storageIssue = "このブラウザでは保存できません。冒険は遊べます。履歴が必要な場合は、画面を閉じる前にCSVを書き出してください。";
+}
+function persist() {
+  try {
+    localStorage.setItem(storageKey,JSON.stringify(data));
+  } catch {
+    storageIssue = "このブラウザでは保存できません。履歴が必要な場合は、画面を閉じる前にCSVを書き出してください。";
+  }
+  byId("storage-warning").hidden = !storageIssue;
+  byId("storage-warning").textContent = storageIssue;
+}
+
+function textOf(value, speech = false) {
+  return value.replace(/\{([^{}|]+)\|([^{}|]+)\}/g,(_,base,reading)=>speech?reading:base)
+    .replace(/\[([^\[\]]+)\]/g,(_,word)=>speech?"ここで示された漢字":word);
+}
+const readingEntries = new Map([
+  ["順番","じゅんばん"],["準備","じゅんび"],["静か","しずか"],["都合","つごう"],["意味","いみ"],
+  ["記録","きろく"],["用心","ようじん"],["注意","ちゅうい"],["具体的","ぐたいてき"],["材料","ざいりょう"],
+  ["工夫","くふう"],["状態","じょうたい"],["話題","わだい"],["反対","はんたい"],["賛成","さんせい"],
+  ["方角","ほうがく"],["校庭","こうてい"],["黒板","こくばん"],["水泳","すいえい"],["季節","きせつ"],
+  ["心配","しんぱい"],["親切","しんせつ"],["欠席","けっせき"],["出席","しゅっせき"],["早退","そうたい"],
+  ["成功","せいこう"],["失敗","しっぱい"],["挑戦","ちょうせん"],["発表","はっぴょう"],["集合","しゅうごう"],
+  ["解散","かいさん"],["移動","いどう"],["増加","ぞうか"],["減少","げんしょう"],["変化","へんか"],
+  ["順調","じゅんちょう"],["高温","こうおん"],["低温","ていおん"],["常温","じょうおん"],["温度","おんど"],
+  ["交通機関","こうつうきかん"],["地下鉄","ちかてつ"],["道路標識","どうろひょうしき"],["文房具","ぶんぼうぐ"],
+  ["定規","じょうぎ"],["体温計","たいおんけい"],["生物","せいぶつ"],["植物","しょくぶつ"],["気象","きしょう"],
+  ["気温","きおん"],["現象","げんしょう"],["観察","かんさつ"],["切手","きって"],["金魚","きんぎょ"],
+  ["飛行機","ひこうき"],["建物","たてもの"],["連載小説","れんさいしょうせつ"],["依頼","いらい"],
+  ["会議","かいぎ"],["資料","しりょう"],["主語","しゅご"],["述語","じゅつご"],["目的","もくてき"],
+  ["対比","たいひ"],["理由","りゆう"],["結果","けっか"],["休み時間","やすみじかん"],["図書室","としょしつ"],
+  ["主人公","しゅじんこう"],["手ぶくろ","てぶくろ"],["工事中","こうじちゅう"],["集合場所","しゅうごうばしょ"],
+  ["道具箱","どうぐばこ"],["玄関","げんかん"],["物置","ものおき"],["録音","ろくおん"],["筆者","ひっしゃ"],
+  ["根拠","こんきょ"],["苗","なえ"],["鉢","はち"],["芽","め"],["不安","ふあん"],["地面","じめん"],
+  ["読み方","よみかた"],["漢字","かんじ"],["選択","せんたく"],["巨大","きょだい"]
+]);
+const readingWords = new RegExp([...readingEntries.keys()].sort((a,b)=>b.length-a.length).join("|"),"gu");
+function appendRuby(element, base, reading) {
+  const ruby = document.createElement("ruby");
+  const rt = document.createElement("rt");
+  rt.textContent = reading;
+  ruby.append(base, rt);
+  element.append(ruby);
+}
+function appendWords(element, words, enabled) {
+  if (!enabled) {
+    element.append(words);
+    return;
+  }
+  let offset = 0;
+  for (const match of words.matchAll(readingWords)) {
+    element.append(words.slice(offset,match.index));
+    appendRuby(element,match[0],readingEntries.get(match[0]));
+    offset = match.index+match[0].length;
+  }
+  element.append(words.slice(offset));
+}
+function addText(element, value, showRuby = data.settings.ruby) {
+  const token = /\{([^{}|]+)\|([^{}|]+)\}|\[([^\[\]]+)\]/g;
+  let offset = 0;
+  for (const match of value.matchAll(token)) {
+    appendWords(element,value.slice(offset,match.index),showRuby);
+    if (match[3]) element.append(match[3]);
+    else if (showRuby) appendRuby(element,match[1],match[2]);
+    else element.append(match[1]);
+    offset = match.index + match[0].length;
+  }
+  appendWords(element,value.slice(offset),showRuby);
+  return element;
+}
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text) node.textContent = text;
+  return node;
+}
+function button(text, className, callback) {
+  const node = element("button",className,text);
+  node.type = "button";
+  node.onclick = callback;
+  return node;
+}
+function sayStatus(text) {
+  byId("live").textContent = text;
+}
+
+const speech = window.speechSynthesis;
+function japaneseVoice() {
+  return speech?.getVoices().find(voice=>voice.localService && /^ja(?:-|_|$)/i.test(voice.lang));
+}
+function updateVoiceNote() {
+  byId("voice-note").textContent = japaneseVoice()
+    ? "端末の日本語音声を使います。漢字を問う問題では、答えに当たる箇所を省いて読みます。"
+    : "読み上げには、端末内の日本語音声が必要です。現在、このブラウザでは日本語音声を使えません。";
+}
+speech?.addEventListener("voiceschanged",updateVoiceNote);
+updateVoiceNote();
+function readQuestion() {
+  const question = currentQuestion();
+  if (!question) return;
+  const voice = japaneseVoice();
+  if (!voice) {
+    byId("read-status").hidden = false;
+    sayStatus("端末の日本語音声がありません。");
+    return;
+  }
+  speech.cancel();
+  const choices = question.choices.some(choice=>choice.includes("["))
+    ? "漢字の選択肢は画面を見てください。"
+    : `左、${textOf(question.choices[0],true)}。右、${textOf(question.choices[1],true)}。`;
+  const script = [question.passage,question.question].filter(Boolean).map(line=>textOf(line,true)).join("。");
+  const utterance = new SpeechSynthesisUtterance(script+"。"+choices);
+  utterance.lang = voice.lang;
+  utterance.voice = voice;
+  utterance.rate = .84;
+  utterance.onerror = event => {
+    if (!["interrupted","canceled"].includes(event.error) && byId("read-status")) {
+      byId("read-status").hidden = false;
+      byId("read-status").textContent = "音声を再生できませんでした。";
+    }
+  };
+  speech.speak(utterance);
+}
+
+let audio, musicTimer=0, musicIndex=0;
+const melody = [62,69,74,76,74,69,67,69,60,67,72,74,72,67,64,67,59,66,71,74,71,66,62,66,57,64,69,72,69,64,62,64];
+function unlockAudio() {
+  const Audio = window.AudioContext || window.webkitAudioContext;
+  if (!Audio) return;
+  try {
+    audio ||= new Audio();
+    if (audio.state==="suspended") audio.resume().catch(()=>{});
+  } catch {
+    audio = undefined;
+  }
+}
+function tone(note, volume, offset = 0, duration = .16, wave = "sine") {
+  if (!audio || audio.state!=="running" || !volume) return;
+  const oscillator = audio.createOscillator(), envelope = audio.createGain();
+  const start = audio.currentTime+offset;
+  oscillator.type = wave;
+  oscillator.frequency.value = 440 * 2**((note-69)/12);
+  envelope.gain.setValueAtTime(.0001,start);
+  envelope.gain.linearRampToValueAtTime(volume,start+.026);
+  envelope.gain.exponentialRampToValueAtTime(.0001,start+duration);
+  oscillator.connect(envelope).connect(audio.destination);
+  oscillator.start(start);
+  oscillator.stop(start+duration+.01);
+  oscillator.onended = () => { oscillator.disconnect(); envelope.disconnect(); };
+}
+function sound(kind) {
+  const volume = data.settings.sfx/100*.105;
+  if(kind==="correct") [72,76,81].forEach((note,i)=>tone(note,volume,i*.08,.22,"triangle"));
+  if(kind==="miss") tone(62,volume,0,.29);
+  if(kind==="impact") tone(52,volume*.73,0,.22,"triangle");
+  if(kind==="win") [65,69,72,77].forEach((note,i)=>tone(note,volume,i*.125,.35,"triangle"));
+}
+
+let session=null, selectedStage=0, phase="menu", distance=0, lane=0, clock=0;
+let elapsed=0, battle=null, result=null, units=[], outcome=null, lastFrame=0, nextDraw=0, repaint=true;
+const idFor = () => Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,10);
+function stageDifficulty() {
+  return `${levels[session.level]} ・ ${session.players===1?"ひとり":`きょうりょく ${session.players}人`}`;
+}
+function currentQuestion() {
+  const entry = session?.order[session.answers.length];
+  if (!entry) return null;
+  const item = itemById.get(entry.id);
+  return {...item,answer:entry.left?0:1,choices:entry.left?[item.correct,item.wrong]:[item.wrong,item.correct]};
+}
+function countUnits() {
+  return 5 + session.answers.reduce((sum, row)=>sum+row.gain,0);
+}
+function stats() {
+  return session.answers.reduce((value,answer) => {
+    if (answer.ok) {
+      value.score++;
+      value.streak++;
+    } else value.streak=0;
+    return value;
+  },{score:0,streak:0});
+}
+function checkpoint() {
+  data.saved = session;
+  persist();
+}
+function savedIsPlayable() {
+  const saved = data.saved;
+  return saved && stages[saved.stage] && levels[saved.level] &&
+    Number.isInteger(saved.players) && saved.players>=1 && saved.players<=8 &&
+    Array.isArray(saved.order) && saved.order.length===questionCounts[saved.level] &&
+    saved.order.every(entry=>typeof entry.left==="boolean" && itemById.has(entry.id)) &&
+    Array.isArray(saved.answers) && saved.answers.length<=saved.order.length &&
+    saved.answers.every((row,index)=>row.id===saved.order[index].id && typeof row.ok==="boolean" &&
+      [0,1].includes(row.choice) && Number.isInteger(row.gain) && row.gain>=0 && row.gain<=30);
+}
+function openDialog(id) {
+  speech?.cancel();
+  byId(id).showModal();
+}
+function openSetup(stage) {
+  selectedStage = stage;
+  byId("setup-title").textContent = stages[stage].name;
+  byId("setup-topic").textContent = `ステージ ${stage+1}　${stages[stage].topic} ／ ボス：${stages[stage].boss}`;
+  byId("difficulty").value = data.settings.difficulty;
+  byId("players").value = data.settings.players;
+  byId("replace-note").hidden = !savedIsPlayable();
+  describeSetup();
+  openDialog("setup-dialog");
+}
+function describeSetup() {
+  const level=Number(byId("difficulty").value), players=Number(byId("players").value);
+  const grade = ["小学1年生くらい","小学2〜3年生くらい","小学3〜4年生くらい"][level];
+  const turns = players>1 ? ` 1問ずつ1〜${players}番の順に交代します。` : "";
+  byId("setup-detail").textContent = `${grade}・${questionCounts[level]}問。${turns}`;
+}
+byId("difficulty").onchange = describeSetup;
+byId("players").onchange = describeSetup;
+byId("setup-form").onsubmit = event => {
+  event.preventDefault();
+  const level=Number(byId("difficulty").value), players=Number(byId("players").value);
+  data.settings.difficulty=level; data.settings.players=players;
+  byId("setup-dialog").close();
+  start(selectedStage,level,players,null);
+};
+function start(stage,level,players,retryOf) {
+  unlockAudio();
+  session = {id:idFor(), stage, level, players, retryOf, order:buildOrder(stage,level), answers:[]};
+  checkpoint();
+  enterGame(false);
+}
+function enterGame(resuming) {
+  units = Array.from({length:countUnits()},(_,i)=>({born:-1,team:i%session.players}));
+  clock=0; musicTimer=0; battle=null; result=null; lane=0; outcome=null;
+  distance=session.answers.length*102;
+  menu.hidden=true; play.hidden=false; byId("pause").hidden=false;
+  byId("game-title").textContent = `${session.stage+1}　${stages[session.stage].name}`;
+  byId("game-meta").textContent = stageDifficulty();
+  byId("boss-hud").hidden=true;
+  byId("gain").hidden=true;
+  setHud();
+  if (session.answers.length===session.order.length) {
+    prepareBoss();
+  } else if (resuming) {
+    setPhase("question","左右のゲートを えらぼう");
+    drawQuestion(false);
+  } else advance();
+  scrollTo(0,0);
+  byId("game-title").focus({preventScroll:true});
+  repaint=true;
+}
+function showMenu() {
+  speech?.cancel();
+  phase="menu";
+  session=null;
+  play.hidden=true; menu.hidden=false; byId("pause").hidden=true;
+  byId("resume").hidden = !savedIsPlayable();
+  byId("storage-warning").hidden = !storageIssue;
+  byId("storage-warning").textContent = storageIssue;
+  const cards = stages.map((stage,index)=>{
+    const card = button("", "stage-card", ()=>openSetup(index));
+    card.style.setProperty("--tint",stage.tint);
+    const icon = element("span","stage-icon",stage.icon);
+    icon.setAttribute("aria-hidden","true");
+    const copy = element("span");
+    copy.append(element("span","stage-num",`ステージ ${index+1}`),element("strong","",stage.name),element("small","",stage.topic));
+    card.append(icon,copy);
+    if(data.records.some(record=>record.stage===index && record.won)) {
+      const badge=element("span","cleared","✓");
+      badge.setAttribute("aria-label","クリア済み");
+      card.append(badge);
+    }
+    return card;
+  });
+  byId("stages").replaceChildren(...cards);
+  scrollTo(0,0);
+  repaint=true;
+}
+byId("resume").onclick=()=>{
+  if (!savedIsPlayable()) return;
+  unlockAudio();
+  session = data.saved;
+  enterGame(true);
+};
+byId("quick-start").onclick=()=>openSetup(0);
+byId("home").onclick=()=>{
+  if(play.hidden) return;
+  if(phase==="end") showMenu();
+  else openDialog("pause-dialog");
+};
+byId("pause").onclick=()=>openDialog("pause-dialog");
+byId("exit-game").onclick=()=>{
+  byId("pause-dialog").close();
+  showMenu();
+};
+document.querySelectorAll("[data-close]").forEach(node=>node.onclick=()=>node.closest("dialog").close());
+
+function setHud() {
+  const done=session.answers.length,total=session.order.length;
+  byId("question-count").textContent=`${done} / ${total} 問`;
+  byId("progress").style.width=`${done/total*100}%`;
+  byId("army").textContent=countUnits();
+}
+function setPhase(value,label) {
+  phase=value;
+  panel.dataset.phase=value;
+  byId("world-label").textContent=label;
+  byId("world-label").hidden=!label;
+  elapsed=0;
+  repaint=true;
+}
+function advance() {
+  byId("gain").hidden=true;
+  if(session.answers.length===session.order.length) {
+    prepareBoss();
+    return;
+  }
+  setPhase("approach","ゲートへ むかっています");
+  drawQuestion(true);
+  byId("game-title").focus({preventScroll:true});
+}
+function drawQuestion(waiting) {
+  const q=currentQuestion();
+  const index=session.answers.length;
+  const top=element("div","prompt-top");
+  const turn=session.players>1 ? `第${index+1}問 ・ ${index%session.players+1}ばんの ひと` : `第${index+1}問`;
+  top.append(element("span","turn",turn));
+  const read=element("div","read-controls");
+  const speak=button("▶ よみあげ","subtle",readQuestion);
+  read.append(speak);
+  top.append(read);
+  const status=element("p","hint","この端末の日本語音声を設定すると、読み上げが使えます。");
+  status.hidden=true; status.id="read-status";
+  const question=addText(element("h2","question"),q.question);
+  question.id="question-title";
+  const choices=element("div","choices");
+  for(const side of [0,1]) {
+    const choice=button("","choice",()=>selectGate(side));
+    choice.disabled=waiting;
+    const direction=element("span","arrow",side===0?"← 左":"右 →");
+    const label=addText(element("span"),q.choices[side]);
+    choice.append(direction,label);
+    choices.append(choice);
+  }
+  const hint=element("p","hint","← → キー・左右のボタン・コースを左右にスワイプ");
+  panel.replaceChildren(top);
+  if(q.passage) panel.append(addText(element("p","passage"),q.passage));
+  panel.append(question,status,choices,hint);
+}
+function readyQuestion() {
+  setPhase("question","左右のゲートを えらぼう");
+  panel.querySelectorAll(".choice").forEach(choice=>choice.disabled=false);
+  sayStatus(`第${session.answers.length+1}問。左右のゲートをえらんでください。`);
+  if(data.settings.autoRead && japaneseVoice()) readQuestion();
+}
+function selectGate(side) {
+  if(phase!=="question" || document.querySelector("dialog[open]")) return;
+  unlockAudio();
+  speech?.cancel();
+  const q=currentQuestion();
+  const ok=q.answer===side;
+  const {streak}=stats();
+  const bonus=ok && (streak+1)%3===0 ? 10 : 0;
+  outcome={q, answer:{id:q.id,choice:side,ok,gain:ok ? rewards[session.level]+bonus : 0},bonus};
+  setPhase("cross","ゲートを とおっています");
+  panel.querySelectorAll("button").forEach(choice=>choice.disabled=true);
+}
+function applyAnswer() {
+  const {q,answer,bonus}=outcome;
+  session.answers.push(answer);
+  const before=units.length;
+  for(let i=0;i<answer.gain;i++) units.push({born:clock + (data.settings.reduced?0:i*.032),team:(before+i)%session.players});
+  setHud();
+  checkpoint();
+  setPhase("feedback","");
+  if(answer.gain) {
+    byId("gain").textContent=`＋${answer.gain}人`;
+    byId("gain").hidden=false;
+  }
+  sound(answer.ok?"correct":"miss");
+  const content = element("div","feedback "+(answer.ok?"ok":"miss"));
+  const explanation = element("div");
+  const title = answer.ok ? `せいかい！ ＋${answer.gain}人` : "おしい！";
+  explanation.append(element("h2","",title));
+  if(!answer.ok) explanation.append(addText(element("p"),`こたえ　${q.correct}`));
+  explanation.append(addText(element("p"),q.explanation));
+  if(bonus) explanation.append(element("p","hint","3問 つづけて せいかい！ ボーナス ＋10人。"));
+  if(!answer.ok) explanation.append(element("p","hint","なかまは そのまま。つぎの ゲートに すすもう。"));
+  const next = button(session.answers.length===session.order.length?"ボスのところへ　›":"つぎの ゲートへ　›","primary",advance);
+  next.id="next-feedback";
+  content.append(explanation,next);
+  panel.replaceChildren(content);
+  next.focus({preventScroll:true});
+  sayStatus(title);
+}
+function prepareBoss() {
+  lane=0;
+  const stage=stages[session.stage], people=session.players;
+  battle={time:0, hit:0, hp:100, done:false, win:false, interval:people>=5?1.04:1.35,
+    waves:people===1?4:people, landed:0};
+  setPhase("ready","");
+  setHp();
+  const intro = element("div","feedback");
+  const copy = element("div");
+  copy.append(element("h2","",stage.boss+"が あらわれた！"),
+    element("p","",people===1 ? "集めたなかまで、ボスに立ち向かおう。" : `${people}組のなかまの おうえんを 合わせて、ボスに立ち向かおう。`));
+  const go=button("ボスに ちょうせん！","primary",beginBattle);
+  intro.append(copy,go);
+  panel.replaceChildren(intro);
+  go.focus({preventScroll:true});
+}
+function beginBattle() {
+  if(phase!=="ready") return;
+  unlockAudio();
+  setPhase("battle","");
+  panel.replaceChildren(element("h2","result-title","なかまが ちからを あわせています"),element("p","hint","軍団は自動でボスに向かいます。"));
+  byId("game-title").focus({preventScroll:true});
+  sayStatus("ボス戦が始まりました。");
+}
+function setHp() {
+  const stage=stages[session.stage];
+  byId("boss-hud").hidden=false;
+  const teamLabel=phase==="battle" && session.players>1 && battle.hit>.01
+    ? ` ・ ${Math.min(session.players,battle.landed)}ばんの 力` : "";
+  byId("boss-label").textContent = `${stage.boss}　たいりょく ${Math.ceil(battle.hp)}%${teamLabel}`;
+  byId("hp").style.width=`${battle.hp}%`;
+}
+function tickBattle(delta) {
+  battle.time+=delta;
+  if(battle.hit>0) {
+    battle.hit=Math.max(0,battle.hit-delta*2.7);
+    if(!battle.hit && session.players>1) setHp();
+  }
+  const impact = .82 + battle.interval*(battle.landed+.46);
+  if(battle.landed<battle.waves && battle.time>=impact) {
+    battle.landed++;
+    const target=stages[session.stage].need[session.level]*(session.players>1?.88:1);
+    const damage=100*countUnits()/target;
+    battle.hp=Math.max(0,100-damage*battle.landed/battle.waves);
+    battle.hit=1;
+    setHp();sound("impact");
+  }
+  if(battle.time>.82+battle.interval*battle.waves+.58) finish();
+}
+function finish() {
+  const {score}=stats();
+  battle.done=true;
+  battle.win=battle.hp<=0;
+  const army=countUnits();
+  const record={
+    id:session.id, retryOf:session.retryOf, stage:session.stage, level:session.level, players:session.players,
+    date:new Date().toISOString(), score, total:session.order.length, army, won:battle.win,
+    wrong:session.answers.flatMap((answer,index)=>{
+      if(answer.ok) return [];
+      const q=itemById.get(answer.id);
+      return [{id:q.id,category:q.category,question:textOf(q.question),passage:textOf(q.passage),
+        answer:textOf(q.wrong),correct:textOf(q.correct),explanation:textOf(q.explanation),
+        turn:index%session.players+1}];
+    })
+  };
+  data.records=[record,...data.records.filter(row=>row.id!==record.id)].slice(0,100);
+  data.saved=null;
+  persist();
+  result=record;
+  setPhase("end","");
+  byId("pause").hidden=true;
+  if(record.won) sound("win");
+  resultPanel();
+}
+function resultPanel() {
+  const heading=result.won?"ステージクリア！":"あと少し！";
+  const summary = element("p","result-score",`せいかい ${result.score}／${result.total}問 ・ なかま ${result.army}人`);
+  const hint = element("p","hint",result.won ? "みんなの力で ボスに かったよ！" : "なかまは 最後まで たたかったよ。つぎの 冒険で また ちょうせんしよう。");
+  const actions = element("div","result-actions");
+  if (result.won && session.stage<stages.length-1) {
+    actions.append(button("つぎの ステージへ　›","primary",()=>{
+      const next=session.stage+1;
+      showMenu();
+      openSetup(next);
+    }));
+  }
+  actions.append(button("もういちど","secondary",()=>start(session.stage,session.level,session.players,result.id)),
+    button("ステージ選択","secondary",showMenu));
+  if(result.wrong.length) actions.append(button("まちがえた もんだい","subtle",()=>showHistory(result.id)));
+  if(storageIssue) actions.append(element("p","toast",storageIssue));
+  const title=element("h2","result-title",heading);
+  title.tabIndex=-1;
+  panel.replaceChildren(title,summary,hint,actions);
+  title.focus({preventScroll:true});
+  sayStatus(heading);
+}
+
+const settingsFields = {
+  speed:Number, reduced:Boolean, ruby:Boolean, "auto-read":Boolean, sfx:Number, bgm:Number
+};
+for(const [key,parse] of Object.entries(settingsFields)) {
+  const node=byId(key), setting=key==="auto-read"?"autoRead":key;
+  const set=()=>{
+    data.settings[setting]=parse(node.type==="checkbox"?node.checked:node.value);
+    if (key==="ruby" && phase==="question") drawQuestion(false);
+    if (key==="ruby" && phase==="approach") drawQuestion(true);
+    persist();repaint=true;
+  };
+  node.addEventListener(node.type==="range"?"input":"change",set);
+  if(node.type==="range") node.addEventListener("change",()=>{
+    unlockAudio();
+    if(key==="sfx") tone(72,data.settings.sfx/100*.1);
+  });
+}
+byId("settings").onclick=()=>{
+  const settings=data.settings;
+  for(const key of Object.keys(settingsFields)) {
+    const node=byId(key), value=settings[key==="auto-read"?"autoRead":key];
+    if(node.type==="checkbox") node.checked=value;
+    else node.value=value;
+  }
+  updateVoiceNote();
+  openDialog("settings-dialog");
+};
+
+const dateFormat=new Intl.DateTimeFormat("ja-JP",{dateStyle:"short",timeStyle:"short"});
+const percent = row => Math.round(row.score/row.total*100);
+function weaknesses(records) {
+  const totals=new Map();
+  for(const record of records) for(const question of record.wrong) {
+    totals.set(question.category,(totals.get(question.category)||0)+1);
+  }
+  return [...totals].sort((a,b)=>b[1]-a[1]||a[0]-b[0]).map(([key,count])=>`${categories[key]} ${count}問`);
+}
+function showHistory(expanded) {
+  const records=data.records;
+  const weak=weaknesses(records);
+  byId("history-summary").textContent = records.length
+    ? (weak.length?"まちがいの多い分野　"+weak.join(" ／ "):"保存された記録には、まちがいがありません。")
+    : "プレイを終えると、ここに結果が表示されます。";
+  const nodes=records.map(row=>{
+    const record=element("details","record");
+    record.open=row.id===expanded;
+    const score=`${row.score}/${row.total}問（${percent(row)}%）`;
+    record.append(element("summary","",`${dateFormat.format(new Date(row.date))}　${stages[row.stage].name}　${score}　${row.won?"クリア":"再挑戦へ"}`));
+    const prev=records.find(item=>item.id===row.retryOf);
+    const retry=row.retryOf ? (prev?` ／ 再挑戦 ${prev.score}/${prev.total}問 → ${score}`:" ／ 再挑戦") : "";
+    record.append(element("p","muted",`${levels[row.level]} ／ ${row.players>1?`協力${row.players}人`:"ひとり"} ／ 仲間${row.army}人${retry}`));
+    if(row.wrong.length) {
+      const list=element("ul");
+      for(const miss of row.wrong) {
+        const li=element("li");
+        li.append(element("strong","",`[${categories[miss.category]}] ${miss.question}`));
+        if(miss.passage) li.append(element("div","",miss.passage));
+        li.append(element("div","",`選択 ${miss.answer} ／ 正解 ${miss.correct}${row.players>1?`（${miss.turn}番）`:""}`));
+        li.append(element("div","muted",miss.explanation));
+        list.append(li);
+      }
+      record.append(list);
+    }
+    return record;
+  });
+  byId("records").replaceChildren(...nodes);
+  byId("csv").disabled=!records.length;
+  openDialog("history-dialog");
+}
+byId("history").onclick=()=>showHistory();
+byId("csv").onclick=()=>{
+  const fields=["日時","記録ID","再挑戦元ID","ステージ","難易度","プレイ人数","正解数","出題数","正答率","仲間","ボス戦","まちがいの分野","まちがえた問題","本文","選んだ答え","正解","協力の順番"];
+  const quote=value=>'"'+String(value??"").replaceAll('"','""')+'"';
+  const table=[fields,...data.records.flatMap(row=>(row.wrong.length?row.wrong:[null]).map(miss=>[
+    dateFormat.format(new Date(row.date)),row.id,row.retryOf,stages[row.stage].name,levels[row.level],row.players,
+    row.score,row.total,percent(row)+"%",row.army,row.won?"クリア":"再挑戦へ",miss?categories[miss.category]:"",
+    miss?.question,miss?.passage,miss?.answer,miss?.correct,row.players>1?miss?.turn:""
+  ]))];
+  const csv="\uFEFF"+table.map(row=>row.map(quote).join(",")).join("\r\n");
+  const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+  const link=element("a");
+  link.href=url;link.download="kotoba-gundan-history.csv";link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),10000);
+};
+let gesture=null;
+byId("world").addEventListener("pointerdown",event=>{
+  if(phase!=="question" || !event.isPrimary || event.button!==0) return;
+  gesture={id:event.pointerId,x:event.clientX,y:event.clientY};
+  event.currentTarget.setPointerCapture(event.pointerId);
+});
+function swipe(event) {
+  if(gesture?.id!==event.pointerId) return;
+  const dx=event.clientX-gesture.x,dy=event.clientY-gesture.y;
+  gesture=null;
+  if(event.type==="pointerup" && Math.abs(dx)>29 && Math.abs(dx)>Math.abs(dy)*1.3) selectGate(dx<0?0:1);
+}
+byId("world").addEventListener("pointerup",swipe);
+byId("world").addEventListener("pointercancel",swipe);
+addEventListener("keydown",event=>{
+  if(event.repeat || event.altKey || event.ctrlKey || event.metaKey || play.hidden ||
+    document.querySelector("dialog[open]")) return;
+  if(event.key==="Escape" && phase!=="end") {
+    openDialog("pause-dialog");
+    return;
+  }
+  if(phase!=="question" || !["ArrowLeft","ArrowRight"].includes(event.key)) return;
+  if(event.target.matches("input, select, textarea")) return;
+  event.preventDefault();
+  selectGate(event.key==="ArrowLeft"?0:1);
+});
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden) {
+    speech?.cancel();
+    lastFrame=0;
+  }
+});
+addEventListener("resize",()=>{repaint=true;});
+
+const coverUnits=Array.from({length:38},()=>({born:-1,team:0}));
+function loop(timestamp) {
+  requestAnimationFrame(loop);
+  const dt = lastFrame ? Math.min(.06,(timestamp-lastFrame)/1000) : 0;
+  lastFrame=timestamp;
+  if(document.hidden) return;
+  const paused = !!document.querySelector("dialog[open]");
+  const {speed,reduced,bgm} = data.settings;
+  if(phase==="menu") {
+    if(repaint) {
+      cover.draw({stage:0,cover:true,distance:15,t:2.31,phase:"approach",lane:0,units:coverUnits,players:1,reduced});
+      repaint=false;
+    }
+    return;
+  }
+  if(!paused) {
+    const delta=dt*speed;
+    clock+=delta;
+    elapsed+=delta;
+    if (phase==="approach") {
+      distance+=delta*21;
+      if(elapsed>=3.45) readyQuestion();
+    } else if(phase==="cross") {
+      distance+=delta*43;
+      if(elapsed>=.68) applyAnswer();
+    } else if(phase==="battle") tickBattle(delta);
+    if(phase!=="end" && bgm>0) {
+      musicTimer-=dt;
+      if(musicTimer<=0) {
+        const index=musicIndex++;
+        tone(melody[index%melody.length],bgm/100*.039,0,.37,"triangle");
+        if(index%4===0) tone(melody[index%melody.length]-12,bgm/100*.043,0,.72);
+        musicTimer=.365;
+      }
+    }
+  }
+  const needsMotion = ["approach","cross","battle"].includes(phase) || (phase==="feedback" && elapsed<1.65)
+    || (!reduced && (phase==="ready" || (phase==="end" && battle.win)));
+  if(!repaint && (paused || !needsMotion || timestamp<nextDraw)) return;
+  nextDraw=timestamp+32;
+  repaint=false;
+  const targetLane=phase==="cross"?(outcome.answer.choice===0?-1:1):0;
+  if(phase==="cross") lane=mix(0,targetLane,clamp(elapsed/.42,0,1));
+  else if(phase==="approach") lane=mix(lane,0,clamp(dt*8,0,1));
+  const question=currentQuestion();
+  let labels,gateZ;
+  if(question && ["approach","question","cross"].includes(phase)){
+    labels=question.choices.map(choice=>{
+      const full=textOf(choice);
+      return full.length>11?full.slice(0,10)+"…":full;
+    });
+    gateZ=phase==="question"?34:phase==="approach"?mix(100,34,clamp(elapsed/3.45,0,1)):mix(34,10,clamp(elapsed/.68,0,1));
+  }
+  world.draw({stage:session.stage,distance:reduced?17:distance,t:clock,phase,lane,units,players:session.players,labels,gateZ,battle,reduced});
+}
+showMenu();
+requestAnimationFrame(loop);
+if (isSecureContext && /^https?:$/.test(location.protocol) && "serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js").catch(()=>{});
+}
+})();
+</script>
+</body>
+</html>
