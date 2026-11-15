@@ -1554,7 +1554,8 @@ addEventListener("resize",()=>{repaint=true;});
 const coverUnits=Array.from({length:38},()=>({born:-1,team:0}));
 function loop(timestamp) {
   requestAnimationFrame(loop);
-  const dt = lastFrame ? Math.min(.06,(timestamp-lastFrame)/1000) : 0;
+  // Keep turns close to wall time even on a browser that draws at a low frame rate.
+  const dt = lastFrame ? clamp((timestamp-lastFrame)/1000,0,.5) : 0;
   lastFrame=timestamp;
   if(document.hidden) return;
   const paused = !!document.querySelector("dialog[open]");
