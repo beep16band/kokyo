@@ -255,14 +255,14 @@ const levels = ["やさしい", "ふつう", "むずかしい"];
 const rewards = [5, 10, 20];
 const questionCounts = [12, 12, 8];
 const stages = [
-  {name:"ひらがなの草原", topic:"ひらがな・基本語彙", tint:"#35744e", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"], need:[36,56,65]},
-  {name:"ことばの森", topic:"反対語・仲間の言葉", tint:"#315c43", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"], need:[37,59,69]},
-  {name:"かんじの竹林", topic:"漢字の読み・選択", tint:"#4c7453", boss:"漢字の鬼", theme:["#a5d4bb","#f4f1bf","#9bc188","#659575","#e1c895","#aa9163","#396849"], need:[40,62,73]},
-  {name:"かぞえかたの港", topic:"助数詞・物の数え方", tint:"#285f7d", boss:"巨大タコ", theme:["#72c7e3","#f4f0cb","#6dbdc5","#408da6","#dcb788","#a87c55","#266b89"], need:[41,64,77]},
-  {name:"ぶんしょうの町", topic:"助詞・語順・文づくり", tint:"#87523f", boss:"からくりロボ", theme:["#f0b38e","#ffe1b7","#dcae82","#b97576","#edc299","#b08774","#a26655"], need:[43,66,79]},
-  {name:"ものがたりの図書館", topic:"短文読解", tint:"#714a74", boss:"本の魔物", theme:["#927fa8","#f6cca0","#ac84a4","#725b83","#dabea5","#a37f78","#644c75"], need:[44,69,82]},
-  {name:"ことばの雪山", topic:"既習事項の復習", tint:"#41668e", boss:"氷の巨人", theme:["#84bfe0","#edf9fb","#d1e9ed","#83b1cb","#e9edf4","#9aafcc","#4f82ab"], need:[46,71,86]},
-  {name:"コトバ魔王城", topic:"全範囲の総復習", tint:"#674874", boss:"コトバ魔王", theme:["#706d9e","#f2b49b","#a17ea1","#655278","#c0a7bb","#8c7099","#503d70"], need:[47,73,90]}
+  {name:"ひらがなの草原", topic:"ひらがな・基本語彙", tint:"#35744e", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"], need:[40,63,74]},
+  {name:"ことばの森", topic:"反対語・仲間の言葉", tint:"#315c43", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"], need:[41,66,78]},
+  {name:"かんじの竹林", topic:"漢字の読み・選択", tint:"#4c7453", boss:"漢字の鬼", theme:["#a5d4bb","#f4f1bf","#9bc188","#659575","#e1c895","#aa9163","#396849"], need:[44,69,83]},
+  {name:"かぞえかたの港", topic:"助数詞・物の数え方", tint:"#285f7d", boss:"巨大タコ", theme:["#72c7e3","#f4f0cb","#6dbdc5","#408da6","#dcb788","#a87c55","#266b89"], need:[46,72,87]},
+  {name:"ぶんしょうの町", topic:"助詞・語順・文づくり", tint:"#87523f", boss:"からくりロボ", theme:["#f0b38e","#ffe1b7","#dcae82","#b97576","#edc299","#b08774","#a26655"], need:[48,74,89]},
+  {name:"ものがたりの図書館", topic:"短文読解", tint:"#714a74", boss:"本の魔物", theme:["#927fa8","#f6cca0","#ac84a4","#725b83","#dabea5","#a37f78","#644c75"], need:[49,77,93]},
+  {name:"ことばの雪山", topic:"既習事項の復習", tint:"#41668e", boss:"氷の巨人", theme:["#84bfe0","#edf9fb","#d1e9ed","#83b1cb","#e9edf4","#9aafcc","#4f82ab"], need:[51,80,97]},
+  {name:"コトバ魔王城", topic:"全範囲の総復習", tint:"#674874", boss:"コトバ魔王", theme:["#706d9e","#f2b49b","#a17ea1","#655278","#c0a7bb","#8c7099","#503d70"], need:[52,82,102]}
 ];
 const categories = ["ひらがな・語彙","反対語・分類","漢字","助数詞","助詞・語順","短文読解"];
 const poolText = [
@@ -1443,8 +1443,8 @@ const gateExit=9.3;
 const attackLead=.82;
 const attackHit=.56;
 const contactCost = 2;
-const recoveryTime = 11;
-const leadTime = [20,17,18];
+const recoveryTime = 10;
+const leadTime = [19,16,17];
 const smoothstep = x => x*x*(3-2*x);
 const awaitingAnswer = () => phase==="question";
 const idFor = () => Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,10);
@@ -1727,7 +1727,9 @@ function applyAnswer() {
 }
 function prepareBoss() {
   const people=session.players;
-  battle={time:0, hit:0, hp:100, done:false, win:false, interval:people>=5?1.04:1.35,
+  const target=stages[session.stage].need[session.level]*(people>1?.88:1);
+  const totalDamage=Math.min(100,100*countUnits()/target);
+  battle={time:0, hit:0, hp:100, totalDamage, done:false, win:false, interval:people>=5?1.04:1.35,
     waves:people===1?4:people, cued:0, landed:0};
   setPhase("battle");
   setHp();
@@ -1765,9 +1767,7 @@ function tickBattle(delta) {
   }
   while(battle.landed<battle.waves && battle.time>=attackLead+battle.interval*(battle.landed+attackHit)) {
     battle.landed++;
-    const target=stages[session.stage].need[session.level]*(session.players>1?.88:1);
-    const damage=100*countUnits()/target;
-    battle.hp=Math.max(0,100-damage*battle.landed/battle.waves);
+    battle.hp=100-battle.totalDamage*(battle.landed/battle.waves);
     battle.hit=1;
     setHp();sound("impact");
   }

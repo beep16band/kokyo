@@ -1,6 +1,6 @@
 "use strict";
 
-const cacheName = "kotoba-gundan-offline-v3";
+const cacheName = "kotoba-gundan-offline-v4";
 const entry = new URL("./index.html", self.location.href).href;
 
 self.addEventListener("install", event => {
