@@ -1,6 +1,6 @@
 "use strict";
 
-const cacheName = "kotoba-gundan-offline-v8";
+const cacheName = "kotoba-gundan-offline-v9";
 const scope = self.registration.scope;
 const entry = new URL("index.html", scope).href;
 const monsters = new Set([

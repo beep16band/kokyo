@@ -72,6 +72,8 @@ ruby { ruby-align:center }
 .game-hud { padding:10px var(--inset); background:#171c1e; min-height:60px; display:grid; grid-template-columns:minmax(0,1.35fr) minmax(90px,1fr); align-items:center; gap:13px }
 .game-hud h1 { font-size:clamp(.98rem,2.2vw,1.16rem); line-height:1.23; font-weight:800; text-wrap:balance }
 .hud-caption, .progress-area { color:var(--muted); font-size:.77rem; font-weight:670 }
+.hud-powers { display:flex; flex-wrap:wrap; align-items:center; gap:2px 9px; margin-top:2px; font-size:.76rem; font-weight:800; white-space:nowrap }
+.hud-powers [data-powered="true"], .power-gain { color:#ffdb9c }
 .hud-count { position:absolute; left:0; top:0; display:flex; align-items:baseline; gap:3px; transform:translate(50vw,30vh) translate(-50%,-100%); padding:4px 9px; color:var(--lime); background:#142321eb; border:1px solid #e6fb9180; border-radius:6px; box-shadow:0 2px 7px #101c2550; white-space:nowrap; font-size:.68rem; font-weight:780; pointer-events:none }
 .hud-count::after { content:""; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#142321eb }
 .hud-count strong { font-size:clamp(1rem,2.3vw,1.54rem); font-variant-numeric:tabular-nums; line-height:1 }
@@ -81,6 +83,8 @@ ruby { ruby-align:center }
 .game-world { position:relative; isolation:isolate; background:#7db4b6; overflow:hidden; height:clamp(240px,49dvh,620px) }
 .game-world canvas { width:100%; height:100%; display:block; touch-action:pan-y }
 .boss-hud { position:absolute; top:13px; left:50%; transform:translateX(-50%); color:#fff; background:#10191cea; width:min(360px,90%); padding:7px 13px 9px; font-size:.81rem; font-weight:750; pointer-events:none }
+.boss-line { display:flex; align-items:baseline; flex-wrap:wrap; justify-content:space-between; gap:1px 7px }
+.boss-move { font-size:.75rem; color:#ffd090 }
 .hp-track { display:block; height:5px; margin-top:5px; background:#425052; overflow:hidden }
 .hp-fill { display:block; height:100%; background:#ffbf91; transition:width .2s ease-out }
 .gain { position:absolute; left:50%; bottom:11%; transform:translateX(-50%); color:#172018; background:var(--lime); font-size:clamp(1.08rem,3vw,1.65rem); font-weight:900; line-height:1; padding:8px 13px; border-radius:5px; font-variant-numeric:tabular-nums; pointer-events:none; white-space:nowrap }
@@ -203,13 +207,14 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
 </section>
 <section class="shell game-shell" id="play" hidden aria-labelledby="game-title">
  <div class="game-hud">
-  <div><h1 id="game-title" tabindex="-1"></h1><div id="game-meta" class="hud-caption"></div></div>
+  <div><h1 id="game-title" tabindex="-1"></h1><div id="game-meta" class="hud-caption"></div>
+  <div class="hud-powers"><span id="weapon-level" title="3・6・9問連続正解で強化"></span><span id="fusion-status" title="30・65・110人で合体" data-powered="true" hidden></span></div></div>
   <div class="progress-area"><span id="question-count"></span><span class="progress-track" aria-hidden="true"><span id="progress" class="progress-fill"></span></span></div>
  </div>
  <div class="game-world">
   <canvas id="world" aria-hidden="true"></canvas>
   <div id="army-tag" class="hud-count"><span class="sr-only">仲間</span><strong id="army">5</strong><span>人</span></div>
-  <div id="boss-hud" class="boss-hud" hidden><span id="boss-label"></span><span class="hp-track" aria-hidden="true"><span id="hp" class="hp-fill"></span></span></div>
+  <div id="boss-hud" class="boss-hud" hidden><div class="boss-line"><span id="boss-label"></span><span id="boss-move" class="boss-move" hidden></span></div><span class="hp-track" aria-hidden="true"><span id="hp" class="hp-fill"></span></span></div>
   <div id="gain" class="gain" aria-hidden="true" hidden></div>
  </div>
  <div class="game-panel" id="game-panel"></div>
@@ -259,18 +264,18 @@ const questionCounts = [18, 18, 14];
 const priorQuestionCounts = [12, 12, 8];
 const savedQuestionCounts = [questionCounts,[16,16,12],priorQuestionCounts];
 const stages = [
-  {name:"ひらがなの草原", topic:"ひらがな・基本語彙", tint:"#35744e", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"], need:[40,63,74]},
-  {name:"ことばの森", topic:"反対語・仲間の言葉", tint:"#315c43", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"], need:[41,66,78]},
-  {name:"かんじの竹林", topic:"漢字の読み・選択", tint:"#4c7453", boss:"漢字の鬼", theme:["#a5d4bb","#f4f1bf","#9bc188","#659575","#e1c895","#aa9163","#396849"], need:[44,69,83]},
-  {name:"かぞえかたの港", topic:"助数詞・物の数え方", tint:"#285f7d", boss:"巨大タコ", theme:["#72c7e3","#f4f0cb","#6dbdc5","#408da6","#dcb788","#a87c55","#266b89"], need:[46,72,87]},
-  {name:"ぶんしょうの町", topic:"助詞・語順・文づくり", tint:"#87523f", boss:"からくりロボ", theme:["#f0b38e","#ffe1b7","#dcae82","#b97576","#edc299","#b08774","#a26655"], need:[48,74,89]},
-  {name:"ものがたりの図書館", topic:"短文読解", tint:"#714a74", boss:"本の魔物", theme:["#927fa8","#f6cca0","#ac84a4","#725b83","#dabea5","#a37f78","#644c75"], need:[49,77,93]},
-  {name:"ことばの雪山", topic:"既習事項の復習", tint:"#41668e", boss:"氷の巨人", theme:["#84bfe0","#edf9fb","#d1e9ed","#83b1cb","#e9edf4","#9aafcc","#4f82ab"], need:[51,80,97]},
-  {name:"コトバ魔王城", topic:"全範囲の総復習", tint:"#674874", boss:"コトバ魔王", theme:["#706d9e","#f2b49b","#a17ea1","#655278","#c0a7bb","#8c7099","#503d70"], need:[52,82,102]},
-  {name:"表現の工房", topic:"場面に合うことば・慣用句", tint:"#97563c", boss:"ことばの炉番", theme:["#e6a084","#ffdfa4","#bf8a69","#a15c59","#e0b587","#966359","#633f49"], need:[54,84,105]},
-  {name:"手紙の郵便局", topic:"手紙・お知らせの読み取り", tint:"#357483", boss:"ふうとう鳥", theme:["#8bcadd","#f3edc5","#9dd2bc","#4b9d94","#e4c7a6","#999daf","#476f80"], need:[56,87,109]},
-  {name:"資料の博物館", topic:"表・予定・記録の読み取り", tint:"#6a6da1", boss:"記録の石像", theme:["#716d99","#f0c58a","#9c91b1","#78638f","#c7bfcd","#8b819e","#433b60"], need:[57,89,112]},
-  {name:"ことばの天空城", topic:"ことばと読解の総仕上げ", tint:"#5773ad", boss:"ことばの竜", theme:["#8dbdf2","#f2dded","#d8e2f5","#a0acd7","#e4e8f7","#8f99c5","#54598d"], need:[59,92,116]}
+  {name:"ひらがなの草原", topic:"ひらがな・基本語彙", tint:"#35744e", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"]},
+  {name:"ことばの森", topic:"反対語・仲間の言葉", tint:"#315c43", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"]},
+  {name:"かんじの竹林", topic:"漢字の読み・選択", tint:"#4c7453", boss:"漢字の鬼", theme:["#a5d4bb","#f4f1bf","#9bc188","#659575","#e1c895","#aa9163","#396849"]},
+  {name:"かぞえかたの港", topic:"助数詞・物の数え方", tint:"#285f7d", boss:"巨大タコ", theme:["#72c7e3","#f4f0cb","#6dbdc5","#408da6","#dcb788","#a87c55","#266b89"]},
+  {name:"ぶんしょうの町", topic:"助詞・語順・文づくり", tint:"#87523f", boss:"からくりロボ", theme:["#f0b38e","#ffe1b7","#dcae82","#b97576","#edc299","#b08774","#a26655"]},
+  {name:"ものがたりの図書館", topic:"短文読解", tint:"#714a74", boss:"本の魔物", theme:["#927fa8","#f6cca0","#ac84a4","#725b83","#dabea5","#a37f78","#644c75"]},
+  {name:"ことばの雪山", topic:"既習事項の復習", tint:"#41668e", boss:"氷の巨人", theme:["#84bfe0","#edf9fb","#d1e9ed","#83b1cb","#e9edf4","#9aafcc","#4f82ab"]},
+  {name:"コトバ魔王城", topic:"全範囲の総復習", tint:"#674874", boss:"コトバ魔王", theme:["#706d9e","#f2b49b","#a17ea1","#655278","#c0a7bb","#8c7099","#503d70"]},
+  {name:"表現の工房", topic:"場面に合うことば・慣用句", tint:"#97563c", boss:"ことばの炉番", theme:["#e6a084","#ffdfa4","#bf8a69","#a15c59","#e0b587","#966359","#633f49"]},
+  {name:"手紙の郵便局", topic:"手紙・お知らせの読み取り", tint:"#357483", boss:"ふうとう鳥", theme:["#8bcadd","#f3edc5","#9dd2bc","#4b9d94","#e4c7a6","#999daf","#476f80"]},
+  {name:"資料の博物館", topic:"表・予定・記録の読み取り", tint:"#6a6da1", boss:"記録の石像", theme:["#716d99","#f0c58a","#9c91b1","#78638f","#c7bfcd","#8b819e","#433b60"]},
+  {name:"ことばの天空城", topic:"ことばと読解の総仕上げ", tint:"#5773ad", boss:"ことばの竜", theme:["#8dbdf2","#f2dded","#d8e2f5","#a0acd7","#e4e8f7","#8f99c5","#54598d"]}
 ];
 const categories = ["ひらがな・語彙","反対語・分類","漢字","助数詞","助詞・語順","短文読解",
   "既習事項の復習","全範囲の総復習","場面に合うことば","手紙・連絡文","資料の読み取り","総合問題"];
@@ -294,6 +299,30 @@ const bossArt = [
   {height:4.72,aim:2.46,motion:"heavy"},
   {height:4.68,aim:2.50,motion:"hover"}
 ];
+const bossMoves = [
+  {name:"ねばねば弾", form:"orb", color:"#8fe96b", dark:"#317d55", light:"#e8ffc1"},
+  {name:"岩の衝撃波", form:"wave", color:"#dcc477", dark:"#775b3c", light:"#fff1b6"},
+  {name:"鬼火の連弾", form:"shards", color:"#ff825f", dark:"#9d394e", light:"#ffe0a8"},
+  {name:"大波", form:"wave", color:"#66d9f6", dark:"#2b649d", light:"#e2faff"},
+  {name:"からくり砲", form:"orb", color:"#ffbf63", dark:"#855539", light:"#fff2c7"},
+  {name:"ことばの羽", form:"shards", color:"#e6a9ef", dark:"#8051a1", light:"#fff0df"},
+  {name:"氷柱の雨", form:"shards", color:"#a4defe", dark:"#446bb5", light:"#f3fbff"},
+  {name:"魔王の波動", form:"wave", color:"#da89ea", dark:"#663a9e", light:"#ffe0fa"},
+  {name:"溶岩弾", form:"orb", color:"#ff9b51", dark:"#ab4639", light:"#fff0b0"},
+  {name:"風切り羽", form:"shards", color:"#80e4c9", dark:"#348a85", light:"#dffcee"},
+  {name:"石板の衝撃波", form:"wave", color:"#e5bbf4", dark:"#745696", light:"#faf1ff"},
+  {name:"竜のブレス", form:"breath", color:"#ab9fff", dark:"#514ba0", light:"#f3eaff"}
+];
+const weaponTiers = [
+  {streak:0, power:1, color:"#67bede", glow:"#a9deee", core:"#e5fbff"},
+  {streak:3, power:1.12, color:"#56cfab", glow:"#83efd0", core:"#e5fff0"},
+  {streak:6, power:1.26, color:"#eab05e", glow:"#ffcf7f", core:"#fff3c3"},
+  {streak:9, power:1.42, color:"#e79df0", glow:"#ffe19d", core:"#fff5e3"}
+];
+const fusionMilestones = [30,65,110];
+const fusedMembers = [0,6,14,24];
+const fusionRank = members => fusionMilestones.filter(minimum=>members>=minimum).length;
+const weaponTier = streak => weaponTiers.findLastIndex(tier=>streak>=tier.streak);
 const artImages = new Map();
 const bossArtName = stage => String(stage+1);
 const monsterArtPath = name => `./monsters/${name}.webp`;
@@ -1009,8 +1038,8 @@ function seed(n) {
 const trims = ["#f4ce75","#79e1b3","#ff9f9c","#c8a9ff","#87dfff","#fbb97b","#dbea91","#e7a5cb"];
 const sprites = new Map();
 const runnerFrames = 20;
-function runnerSprite(frame, back, team) {
-  const key = frame + "/" + back + "/" + team;
+function runnerSprite(frame, back, team, guardian=false) {
+  const key = frame + "/" + back + "/" + (guardian?"guardian":team);
   if (sprites.has(key)) return sprites.get(key);
   const canvas = document.createElement("canvas");
   canvas.width = 92; canvas.height = 106;
@@ -1067,6 +1096,27 @@ function runnerSprite(frame, back, team) {
   shape(c,gradient(c,-81,-61,"#66b7e8","#3a7fbd"),[[-12,-62],[-7,-74],[2,-79],[11,-77],[7,-73],[8,-63]]);
   stroke(c,trim,2,[[-11,-62],[-2,-61],[10,-63]]);
   if (!back) shape(c,trim,[[3,-67],[5,-64],[3,-61],[1,-64]]);
+  if(guardian) {
+    const silver=gradient(c,-63,-12,"#e3f4fd","#506e94");
+    const gold=gradient(c,-88,-8,"#fff1a7","#b68042");
+    shape(c,"#284267",[[-17,-43],[-7,-48],[10,-48],[18,-41],[18,-16],[.5,-8],[-18,-16]]);
+    shape(c,gradient(c,-45,-8,"#476fb6","#202f64"),[[-15,-43],[13,-44],[15,-17],[0,-11],[-15,-17]]);
+    stroke(c,gold,2,[[-14,-41],[-13,-19],[0,-13],[13,-19],[14,-41]]);
+    shape(c,gold,[[0,-39],[8,-32],[0,-22],[-8,-32]]);
+    shape(c,"#9ddde9",[[0,-37],[5,-32],[0,-25],[-5,-32]]);
+    for(const side of [-1,1]) {
+      shape(c,"#2e4774",[[side*12,-49],[side*25,-48],[side*30,-36],[side*24,-29],[side*13,-36]]);
+      shape(c,silver,[[side*13,-46],[side*23,-46],[side*28,-36],[side*24,-32],[side*14,-38]]);
+      stroke(c,gold,2,[[side*14,-45],[side*22,-44],[side*26,-37],[side*24,-34]]);
+    }
+    shape(c,"#2c4365",[[-18,-58],[-17,-74],[-12,-81],[13,-81],[19,-71],[17,-55],[4,-50],[-12,-52]]);
+    shape(c,silver,[[-15,-58],[-14,-73],[-9,-79],[12,-78],[16,-70],[14,-57],[3,-53],[-11,-55]]);
+    stroke(c,gold,2.6,[[-15,-62],[-14,-73],[0,-81],[13,-76],[16,-63]]);
+    shape(c,"#254c7d",[[-4,-75],[-3,-84],[8,-84],[10,-87],[15,-82],[14,-75],[2,-71]]);
+    stroke(c,"#87def5",2.2,[[-1,-77],[.8,-82],[9,-82],[11,-85]]);
+    rect(c,"#344e76",-9,-65,18,6,2);
+    stroke(c,"#8fe4ff",1.8,[[-7,-62],[7,-62]]);
+  }
   sprites.set(key,canvas);
   return canvas;
 }
@@ -1105,7 +1155,7 @@ class Scene {
   draw(data) {
     if (!this.resize()) return;
     const {w,h,c} = this;
-    const {stage,cover,distance,t,phase,lane,units,players,gatePairs=[],battle,reduced,hazard,impact} = data;
+    const {stage,cover,distance,t,phase,lane,units,players,gatePairs=[],battle,reduced,hazard,impact,armory,powerCue} = data;
     const frameDelta=clamp(t-this.previousTime,0,.5);
     if(t<this.previousTime) this.tagPose=null;
     this.previousTime=t;
@@ -1138,12 +1188,18 @@ class Scene {
     const hitAge=impact ? t-impact.at : Infinity;
     if (hazard!=null) this.foe(hazard,t,reduced);
     if (!reduced && hitAge<.57 && impact.source!=="boss") this.foe(1,t,false,hitAge/.57);
-    const recoil=!reduced && hitAge<.38 ? Math.sin(Math.PI*hitAge/.38)*1.15 : 0;
+    const recoil=!reduced && hitAge<.38
+      ? Math.sin(Math.PI*hitAge/.38)*(impact.source==="boss"?1.85:1.15) : 0;
     const aim=action ? this.bossAim(stage) : null;
     const attack=action?.kind==="counter"?null:action;
-    const origins=this.army(units,{lane,phase,players,t,cover,battle,reduced,frameDelta,recoil,attack,aim});
-    if(attack) this.attackEffects(attack,aim,origins,reduced);
-    if(action?.kind==="counter") this.counterEffects(action,aim,lane,reduced);
+    const counter=action?.kind==="counter"?action:null;
+    const target=counter ? this.project(lane*4.15,17.8) : null;
+    if(counter && counter.progress<counterHit) this.counterGround(counter,target);
+    const weapon=weaponTiers[armory?.tier??0];
+    const origins=this.army(units,{lane,phase,players,t,cover,battle,reduced,frameDelta,recoil,attack,aim,
+      fusions:armory?.fusions??0,powerCue,weapon});
+    if(attack) this.attackEffects(attack,aim,origins,reduced,weapon);
+    if(counter) this.counterEffects(counter,aim,target,lane,reduced);
     if (!reduced && hitAge<.74) this.collision(impact,hitAge,players);
     for(const gate of gatePairs) {
       if(gate.z<gatePass) this.gates(gate.z,gate.labels);
@@ -1211,7 +1267,7 @@ class Scene {
   collision(impact,age,players) {
     const {c,h} = this;
     const f=age/.74;
-    for(const unit of impact.units) {
+    for(const unit of impact.units.slice(0,18)) {
       const side=unit.team%2===0 ? -1 : 1;
       const p=this.project((unit.x??impact.lane*4.15)+side*2.1*f,(unit.z??15.3)-.65*f);
       const size=clamp(p.s*2.74,10,h*.36);
@@ -1227,7 +1283,7 @@ class Scene {
       const y=p.y-p.s*.7+Math.sin(angle)*p.s*(.25+f*.91);
       const spark=Math.max(1,p.s*.13*(1-f));
       c.globalAlpha=1-f;
-      shape(c,impact.source==="boss"?"#ffb6d4":"#ffd0a0",[[x-spark,y],[x,y-spark],[x+spark,y],[x,y+spark]]);
+      shape(c,impact.color??"#ffd0a0",[[x-spark,y],[x,y-spark],[x+spark,y],[x,y+spark]]);
     }
     c.globalAlpha=1;
   }
@@ -1543,29 +1599,37 @@ class Scene {
   }
   army(count,info) {
     const {c,w,h} = this;
-    const {lane,t,phase,players,cover,battle,reduced,frameDelta,recoil,attack,aim} = info;
-    const size = count.length;
+    const {lane,t,phase,players,cover,battle,reduced,frameDelta,recoil,attack,aim,fusions,powerCue,weapon} = info;
+    const merged=fusedMembers[fusions];
+    const size = count.length-merged;
     const cols = Math.min(size,Math.max(3,Math.ceil(Math.sqrt(size)*1.05)),16);
     const spread = Math.min(1.33,13.3/Math.max(1,cols-1));
     const rows=Math.ceil(size/cols);
     const rowStep=cover?1.48:Math.min(1.41,20/Math.max(1,rows-1));
+    const guardianDepth=clamp(16.5+rows*rowStep*.55,19,28);
+    const guardianAt=Math.min(rows-1,Math.round((guardianDepth-14.6)/rowStep))*cols;
     const settle=1-Math.exp(-frameDelta*15);
     const marching=cover || phase==="question" || phase==="cross" || phase==="feedback" || phase==="missed" || phase==="battle";
     const gait=t*1.58*runnerFrames;
     const origins=[];
     const progress=attack?.progress??0;
+    const upgrade=powerCue ? clamp((t-powerCue.at)/1.08,0,1) : 1;
     const charge=attack?.kind==="slash" && !reduced
       ? smoothstep(clamp(progress/.51,0,1))*(1-smoothstep(clamp((progress-.62)/.38,0,1)))
       : 0;
-    for (let i=size-1;i>=0;i--) {
-      const unit = count[i];
+    for (let rank=size+fusions-1;rank>=0;rank--) {
+      const slot=rank-guardianAt;
+      const guardian=slot>=0 && slot<fusions;
+      const i=rank>=guardianAt+fusions?rank-fusions:rank;
+      const unit = count[guardian?slot:i+merged];
       if (unit.born > t) continue;
       const row = Math.floor(i/cols), col = i%cols;
       const rowCols = Math.min(cols,size-row*cols);
       unit.driftX ??= (seed(i+31)-.5)*.28;
       unit.driftZ ??= (seed(i+52)-.5)*.83;
-      const formationX=(col-(rowCols-1)/2)*spread+lane*4.15+unit.driftX;
-      const formationZ=(cover?12.8:14.6)+row*rowStep+unit.driftZ;
+      const guardianX=fusions===1?-3.0:(slot-(fusions-1)/2)*(fusions===2?8.7:5.5);
+      const formationX=(guardian?guardianX:(col-(rowCols-1)/2)*spread)+lane*4.15+unit.driftX;
+      const formationZ=guardian?guardianDepth:((cover?12.8:14.6)+row*rowStep+unit.driftZ);
       unit.x=reduced || unit.x===undefined ? formationX : mix(unit.x,formationX,settle);
       unit.z=reduced || unit.z===undefined ? formationZ : mix(unit.z,formationZ,settle);
       let x=unit.x, z=unit.z-recoil*(row<2?1:.28);
@@ -1574,23 +1638,36 @@ class Scene {
         x+=(i%2?1:-1)*(1-join)*3.3;
         z+=(1-join)*4.6;
       }
-      const active=attack && (players===1 || unit.team===attack.team || i===attack.team%size);
-      if(active && charge && i<24) {
+      const active=attack && (guardian || players===1 || unit.team===attack.team || i===attack.team%size);
+      if(active && charge && (guardian || i<24)) {
         const frontRow=38.2+(i%4)*.54;
         z=mix(z,Math.max(z+1,frontRow),charge*.98);
         x=mix(x,x*.5,charge);
       }
       if(battle?.done && battle.win) z+=Math.sin(t*2.5+i*.24)*.2;
       const p = this.project(x,z);
-      const charH = clamp(p.s*(cover?3.86:2.74),10,h*.36);
+      const rising=guardian && !reduced && powerCue && slot>=powerCue.firstFusion && upgrade<1;
+      const height=guardian?6.12*(rising?mix(.58,1,smoothstep(upgrade)):1):(cover?3.86:2.74);
+      const charH = clamp(p.s*height,10,h*.36);
       const charW = charH*92/106;
       const stride = reduced || !marching ? runnerFrames : Math.floor((gait+i*.73)%runnerFrames);
       if(p.x+charW<0 || p.x-charW>w || p.y>h+charH*.15) continue;
       c.globalAlpha=.4+.6*join;
       oval(c,"#1733493a",p.x,p.y+.8,charW*.27,charH*.072);
-      c.drawImage(runnerSprite(stride,!cover,players===1?0:unit.team),p.x-charW*.49,p.y-charH*.85,charW,charH);
-      if(active && (i===attack.team%size || (i<10 && i%2===0))) {
-        origins.push(this.heldWeapon(attack.kind,p,charH,aim,progress));
+      c.drawImage(runnerSprite(stride,!cover,players===1?0:unit.team,guardian),p.x-charW*.49,p.y-charH*.85,charW,charH);
+      if(active && (guardian || i===attack.team%size || (i<10 && i%2===0))) {
+        origins.push(this.heldWeapon(attack.kind,p,charH,aim,progress,weapon));
+      }
+      if(!reduced && upgrade<1 && (rising || powerCue?.newWeapon && i<4)) {
+        const originY=p.y-charH*.38;
+        const spread=charW*mix(.57,.16,upgrade);
+        c.globalAlpha=1-upgrade;
+        for(let spark=0;spark<5;spark++) {
+          const angle=spark*TAU/5+upgrade*2.4;
+          const sx=p.x+Math.cos(angle)*spread, sy=originY+Math.sin(angle)*spread*.74;
+          const length=Math.max(1.5,p.s*.085);
+          shape(c,"#ffefaa",[[sx-length,sy],[sx,sy-length*1.5],[sx+length,sy],[sx,sy+length*1.5]]);
+        }
       }
       if(!reduced && join<.78 && i%2===0) {
         const sy = p.y-charH*(.64+(1-join)*.13), sx=p.x+charW*.31;
@@ -1609,31 +1686,31 @@ class Scene {
     }
     return origins;
   }
-  heldWeapon(kind,p,height,aim,progress) {
+  heldWeapon(kind,p,height,aim,progress,weapon) {
     const {c}=this;
     const x=p.x+height*.13;
     const y=p.y-height*.32;
     if(kind==="shot") {
       const dx=aim.x-x, dy=aim.y-y;
       const length=Math.max(1,Math.hypot(dx,dy));
-      const barrel=height*.21;
+      const barrel=height*(.21+(weapon.power-1)*.17);
       const tip={x:x+dx/length*barrel,y:y+dy/length*barrel};
       stroke(c,"#243646",Math.max(2.8,height*.075),[[x,y],[tip.x,tip.y]]);
-      stroke(c,"#8ae4f0",Math.max(1,height*.026),[[mix(x,tip.x,.55),mix(y,tip.y,.55)],[tip.x,tip.y]]);
+      stroke(c,weapon.glow,Math.max(1,height*.031),[[mix(x,tip.x,.39),mix(y,tip.y,.39)],[tip.x,tip.y]]);
       return tip;
     }
     const angle=mix(-1.28,.36,smoothstep(clamp((progress-.28)/.33,0,1)));
-    const size=height*.37;
+    const size=height*(.37+(weapon.power-1)*.30);
     const tip={x:x+Math.cos(angle)*size,y:y+Math.sin(angle)*size};
     stroke(c,"#283b54",Math.max(2.2,height*.06),[[x,y],[tip.x,tip.y]]);
-    stroke(c,"#f5f9ff",Math.max(1.4,height*.03),[[mix(x,tip.x,.23),mix(y,tip.y,.23)],[tip.x,tip.y]]);
+    stroke(c,weapon.core,Math.max(1.4,height*.03),[[mix(x,tip.x,.23),mix(y,tip.y,.23)],[tip.x,tip.y]]);
     stroke(c,"#e1b769",Math.max(1.3,height*.035),[[x-height*.044,y-height*.025],[x+height*.052,y+height*.032]]);
     return tip;
   }
-  attackEffects(attack,aim,origins,reduced) {
+  attackEffects(attack,aim,origins,reduced,weapon) {
     const {c}=this;
     const {progress,kind}=attack;
-    const scale=aim.s;
+    const scale=aim.s*(.8+weapon.power*.20);
     if(kind==="shot") {
       const visibleOrigins=reduced?origins.slice(-2):origins;
       visibleOrigins.forEach((origin,i)=>{
@@ -1645,9 +1722,9 @@ class Scene {
         const y=mix(origin.y,aim.y+offset*.28,fly);
         const tail=Math.max(0,fly-.19);
         const streak=[[mix(origin.x,aim.x+offset,tail),mix(origin.y,aim.y+offset*.28,tail)],[x,y]];
-        stroke(c,"#39a5c489",Math.max(4,scale*.21),streak);
-        stroke(c,"#e5fbff",Math.max(2,scale*.082),streak);
-        oval(c,"#c9f3ff",x,y,Math.max(2,scale*.095),Math.max(2,scale*.095));
+        stroke(c,weapon.color+"a0",Math.max(4,scale*.25),streak);
+        stroke(c,weapon.core,Math.max(2,scale*.087),streak);
+        oval(c,weapon.glow,x,y,Math.max(2,scale*.11),Math.max(2,scale*.11));
         if(fly<.24) {
           const radius=Math.max(3,scale*.22)*(1-fly*2.2);
           shape(c,"#f3fdde",[[origin.x-radius,origin.y],[origin.x,origin.y-radius],[origin.x+radius,origin.y],[origin.x,origin.y+radius]]);
@@ -1657,15 +1734,15 @@ class Scene {
       const sweep=clamp((progress-.41)/.17,0,1);
       c.save();c.translate(aim.x,aim.y);c.rotate(-.52);
       c.globalAlpha=progress<attackHit ? .86 : clamp((.81-progress)/.25,0,1);
-      const bands=reduced?1:2;
+      const bands=reduced?1:weapon.power>=1.26?3:2;
       for(let band=0;band<bands;band++) {
         const radius=scale*(2.13-band*.33);
         const end=mix(-2.40,.60,sweep);
         c.beginPath();c.arc(band*scale*.36,scale*(.22-band*.45),radius,end-1.10,end);
         c.lineCap="round";
-        c.strokeStyle=band?"#91d9f7":"#67bede";
-        c.lineWidth=Math.max(4,scale*(.27-band*.085));c.stroke();
-        c.strokeStyle="#f1fcff";
+        c.strokeStyle=band?weapon.glow:weapon.color;
+        c.lineWidth=Math.max(4,scale*(.30-band*.073));c.stroke();
+        c.strokeStyle=weapon.core;
         c.lineWidth=Math.max(1.8,scale*.08);c.stroke();
       }
       c.restore();
@@ -1677,7 +1754,7 @@ class Scene {
       for(let i=0;i<(reduced?3:6);i++) {
         const angle=i*TAU/6+.2;
         const radial=[Math.cos(angle),Math.sin(angle)];
-        stroke(c,kind==="shot"?"#e6fbff":"#fff3b9",Math.max(2,scale*.09),[
+        stroke(c,kind==="shot"?weapon.core:weapon.glow,Math.max(2,scale*.09),[
           [aim.x+radial[0]*size*.61,aim.y+radial[1]*size*.61],
           [aim.x+radial[0]*size,aim.y+radial[1]*size]
         ]);
@@ -1685,37 +1762,129 @@ class Scene {
       c.restore();
     }
   }
-  counterEffects(action,aim,lane,reduced) {
+  counterGround(action,target) {
     const {c}=this;
-    const {progress}=action;
-    const target=this.project(lane*4.15,17.8);
-    const s=aim.s;
+    const {progress,move}=action;
+    const build=clamp(progress/counterLaunch,0,1);
+    const width=target.s*4.35, depth=target.s*.78;
+    c.save();
+    oval(c,move.dark+"49",target.x,target.y,width,depth);
+    c.strokeStyle=move.color;
+    c.lineWidth=Math.max(1.5,target.s*.075);
+    c.beginPath();c.ellipse(target.x,target.y,width,depth,0,0,TAU);c.stroke();
+    c.strokeStyle=move.light;
+    c.lineWidth=Math.max(1.5,target.s*.081);
+    c.beginPath();c.ellipse(target.x,target.y,width*.88,depth*.79,0,0,TAU*build);c.stroke();
+    c.restore();
+  }
+  counterWave(move,front,flight,reduced) {
+    const {c}=this;
+    const s=front.s, width=s*(3.35+flight*2.35);
+    c.save();c.translate(front.x,front.y);
+    c.beginPath();
+    c.moveTo(-width,0);
+    c.bezierCurveTo(-width*.79,-s*.47,-width*.33,-s*.64,0,-s*1.22);
+    c.bezierCurveTo(width*.33,-s*.64,width*.79,-s*.47,width,0);
+    c.bezierCurveTo(width*.60,s*.61,-width*.58,s*.63,-width,0);
+    c.fillStyle=gradient(c,-s*1.22,s*.50,move.color+"dc",move.dark+"4c");
+    c.fill();
+    c.beginPath();
+    c.moveTo(-width,0);
+    c.bezierCurveTo(-width*.62,s*.62,width*.61,s*.59,width,0);
+    c.strokeStyle=move.dark+"c4";c.lineWidth=Math.max(4,s*.27);c.stroke();
+    c.strokeStyle=move.light;c.lineWidth=Math.max(1.5,s*.10);c.stroke();
+    if(!reduced) for(let i=0;i<7;i++) {
+      const x=(i-3)*width*.27;
+      const y=-s*(.24+seed(i+60)*.91);
+      stroke(c,move.light+"aa",Math.max(1,s*.057),[[x,y],[x+s*.12,y-s*.18]]);
+    }
+    c.restore();
+  }
+  counterEffects(action,aim,target,lane,reduced) {
+    const {c}=this;
+    const {progress,move,force}=action;
+    const {form,color,dark,light}=move;
+    const s=aim.s*(.90+force*.10);
+    c.save();
     if(progress<counterLaunch) {
       const charge=progress/counterLaunch;
-      const radius=Math.max(3,s*(.19+charge*.48));
-      oval(c,"#b747745e",aim.x,aim.y,radius*1.5,radius*1.5);
-      oval(c,"#f495bb",aim.x,aim.y,radius,radius);
-      oval(c,"#ffe4ec",aim.x,aim.y,radius*.52,radius*.52);
-      return;
-    }
-    if(progress<counterHit) {
-      const progressToHit=(progress-counterLaunch)/(counterHit-counterLaunch);
-      const x=mix(aim.x,target.x,progressToHit);
-      const y=mix(aim.y,target.y,progressToHit);
-      const size=Math.max(5,s*(.47+progressToHit*.21));
-      if(!reduced) {
-        const tail=Math.max(0,progressToHit-.24);
-        stroke(c,"#f28bb982",size*.88,[[mix(aim.x,target.x,tail),mix(aim.y,target.y,tail)],[x,y]]);
+      const size=s*(.20+charge*.59);
+      oval(c,dark+"7c",aim.x,aim.y,size*1.93,size*1.79);
+      c.strokeStyle=color+"b7";
+      c.lineWidth=Math.max(1,s*.06);
+      c.beginPath();c.ellipse(aim.x,aim.y,size*1.69,size*1.48,0,0,TAU*charge);c.stroke();
+      oval(c,color,aim.x,aim.y,size,size*.83);
+      oval(c,light,aim.x-s*.08,aim.y-s*.05,size*.48,size*.44);
+      for(let i=0;i<(reduced?0:5);i++) {
+        const angle=i*TAU/5+charge*1.47;
+        const x=aim.x+Math.cos(angle)*size*(2.5-charge*.67);
+        const y=aim.y+Math.sin(angle)*size*(1.6-charge*.32);
+        stroke(c,light,Math.max(1,s*.055),[[x,y],[mix(x,aim.x,.29),mix(y,aim.y,.29)]]);
       }
-      oval(c,"#e478a6",x,y,size,size);
-      oval(c,"#ffe4ec",x,y,size*.57,size*.57);
-      return;
+    } else if(progress<counterHit) {
+      const flight=(progress-counterLaunch)/(counterHit-counterLaunch);
+      if(form==="wave") {
+        const front=this.project(lane*4.15,mix(38,17.8,flight));
+        this.counterWave(move,front,flight,reduced);
+      } else if(form==="shards") {
+        const num=reduced?3:7;
+        for(let i=0;i<num;i++){
+          const spread=(i/(num-1)-.5)*target.s*8.2;
+          const height=Math.sin(flight*Math.PI)*s*(1.2+seed(17+i)*2.0);
+          const x=mix(aim.x,target.x+spread,flight);
+          const y=mix(aim.y,target.y,flight)-height;
+          const tip=s*(.24+flight*.24);
+          if(!reduced) stroke(c,color+"80",Math.max(2,s*.14),[
+            [x-(target.x+spread-aim.x)*.15,y-(target.y-aim.y)*.15-s*.46],[x,y]
+          ]);
+          shape(c,dark,[[x,y+tip],[x-tip*.48,y-tip*.35],[x-tip*.13,y-tip],[x+tip*.52,y-tip*.37]]);
+          shape(c,light,[[x,y+tip*.80],[x-tip*.27,y-tip*.30],[x-tip*.11,y-tip*.87],[x+tip*.18,y-tip*.20]]);
+        }
+      } else if(form==="breath") {
+        const x=mix(aim.x,target.x,flight);
+        const y=mix(aim.y,target.y,flight);
+        const cut=reduced?.54:.26;
+        const start=[mix(aim.x,x,cut),mix(aim.y,y,cut)];
+        stroke(c,dark+"56",s*(.80+flight*1.1),[start,[x,y]]);
+        stroke(c,dark+"b0",s*(.52+flight*.78),[start,[x,y]]);
+        stroke(c,color,s*(.32+flight*.56),[start,[x,y]]);
+        stroke(c,light,s*.17,[[mix(aim.x,x,.41),mix(aim.y,y,.41)],[x,y]]);
+        if(!reduced) for(const side of [-1,1]) {
+          const drift=side*s*(.20+flight*.63);
+          stroke(c,color+"9f",s*.11,[[aim.x,aim.y],[mix(aim.x,x,.65)+drift,mix(aim.y,y,.65)],[x+drift*.36,y]]);
+        }
+      } else if(form==="orb") {
+        const x=mix(aim.x,target.x,flight);
+        const y=mix(aim.y,target.y,flight)-Math.sin(flight*Math.PI)*s*.55;
+        const radius=Math.max(4,s*(.53+flight*.44));
+        if(!reduced) {
+          const tail=Math.max(0,flight-.38);
+          stroke(c,dark+"98",radius*1.17,[[mix(aim.x,target.x,tail),mix(aim.y,target.y,tail)],[x,y]]);
+          stroke(c,color+"be",radius*.67,[[mix(aim.x,x,.69),mix(aim.y,y,.69)],[x,y]]);
+        }
+        oval(c,dark,x,y,radius*1.11,radius*.99,-.24);
+        oval(c,color,x,y,radius,radius*.79,-.24);
+        oval(c,light,x+radius*.12,y-radius*.16,radius*.44,radius*.26,-.24);
+      }
+    } else {
+      const fade=(progress-counterHit)/(1-counterHit);
+      c.globalAlpha=(1-fade)*.88;
+      for(let i=0;i<(reduced?1:2);i++) {
+        const growth=1.05-i*.52+fade*(reduced?2.7:5.4);
+        c.beginPath();
+        c.ellipse(target.x,target.y-target.s*.28,target.s*growth,target.s*growth*.22,0,0,TAU);
+        c.strokeStyle=i?dark:light;
+        c.lineWidth=Math.max(1.5,s*(i?.13:.20)*(1-fade*.65));c.stroke();
+      }
+      const spread=target.s*(1.1+fade*6.2);
+      for(let i=0;i<(reduced?0:11);i++) {
+        const direction=seed(i+66)*2-1;
+        const x=target.x+spread*direction;
+        const y=target.y-Math.sin(Math.PI*fade)*s*(.37+seed(i+80)*1.85);
+        const grain=Math.max(1,s*(.19+seed(i+90)*.20)*(1-fade));
+        shape(c,i%3===0?dark:i%2?color:light,[[x-grain,y+grain*.40],[x,y-grain],[x+grain,y],[x,y+grain*.76]]);
+      }
     }
-    const fade=(progress-counterHit)/(1-counterHit);
-    c.save();c.globalAlpha=(1-fade)*.86;
-    c.beginPath();
-    c.ellipse(target.x,target.y,target.s*(.7+fade*(reduced?2.3:4.2)),target.s*(.25+fade*.79),0,0,TAU);
-    c.strokeStyle="#ffa1c6";c.lineWidth=Math.max(3,target.s*.14);c.stroke();
     c.restore();
   }
   bossPose(cover=false) {
@@ -2093,7 +2262,10 @@ function sound(kind) {
   if(kind==="impact") tone(52,volume*.73,0,.22,"triangle");
   if(kind==="damage") tone(45,volume*.85,0,.28,"triangle");
   if(kind==="shot") [81,74,67].forEach((note,i)=>tone(note,volume*.34,i*.041,.10,"triangle"));
-  if(kind==="counter") [59,53,48].forEach((note,i)=>tone(note,volume*.43,i*.064,.16,"triangle"));
+  if(kind==="orb" || kind==="breath") [57,52,43].forEach((note,i)=>tone(note,volume*.43,i*.072,.23,"triangle"));
+  if(kind==="wave") [45,40,38].forEach((note,i)=>tone(note,volume*.54,i*.079,.24,"triangle"));
+  if(kind==="shards") [63,69,60,54].forEach((note,i)=>tone(note,volume*.38,i*.051,.14,"triangle"));
+  if(kind==="upgrade") [74,81,86].forEach((note,i)=>tone(note,volume*.58,i*.082,.23,"triangle"));
   if(kind==="slash") [65,77].forEach((note,i)=>tone(note,volume*.39,i*.055,.15));
   if(kind==="win") [65,69,72,77].forEach((note,i)=>tone(note,volume,i*.125,.35,"triangle"));
 }
@@ -2102,6 +2274,7 @@ let session=null, selectedStage=0, phase="menu", distance=0, lane=0, clock=0;
 let elapsed=0, battle=null, result=null, units=[], outcome=null, lastFrame=0, repaint=true;
 let velocity=12, gateZ=96, gateLabels=[], gateSpeed=0, departingGate=null, chase=null, impact=null;
 let lastPaint=0, paintCost=0, signUntil=0;
+let armory={tier:0,fusions:0}, powerCue=null;
 const gateStart=96;
 const gateTime=[15,13,15];
 const skipFeedbackTime=.95;
@@ -2109,8 +2282,8 @@ const gatePass=15.2;
 const gateExit=9.3;
 const attackLead=.82;
 const attackHit=.56;
-const counterHit=.63;
-const counterLaunch=.28;
+const counterHit=.67;
+const counterLaunch=.34;
 const contactCost = 2;
 const recoveryTime = 10;
 const leadTime = [19,16,17];
@@ -2139,9 +2312,10 @@ function stats() {
     if (answer.ok) {
       value.score++;
       value.streak++;
+      value.best=Math.max(value.best,value.streak);
     } else value.streak=0;
     return value;
-  },{score:0,streak:0});
+  },{score:0,streak:0,best:0});
 }
 function checkpoint() {
   data.saved = session;
@@ -2207,12 +2381,14 @@ function enterGame() {
   units = Array.from({length:recruited(session)-(session.damage??0)},(_,i)=>({born:-1,team:i%session.players}));
   clock=0; musicTimer=0; battle=null; result=null; lane=0; outcome=null;
   lastFrame=0; lastPaint=0; paintCost=0; velocity=12; impact=null; chase=null; signUntil=0;
+  powerCue=null;
   departingGate=null;
   distance=session.answers.length*102;
   menu.hidden=true; play.hidden=false; byId("pause").hidden=false;
   byId("game-title").textContent = `${session.stage+1}　${stages[session.stage].name}`;
   byId("game-meta").textContent = stageDifficulty();
   byId("boss-hud").hidden=true;
+  byId("boss-move").hidden=true;
   byId("gain").hidden=true;
   setHud();
   if (session.answers.length===session.order.length) prepareBoss();
@@ -2271,6 +2447,14 @@ function setHud() {
   byId("question-count").textContent=`${done} / ${total} 問`;
   byId("progress").style.width=`${done/total*100}%`;
   byId("army").textContent=countUnits();
+  const {best}=stats();
+  armory={tier:weaponTier(best),fusions:fusionRank(countUnits())};
+  const weapon=byId("weapon-level");
+  weapon.textContent=`武器 Lv.${armory.tier+1}`;
+  weapon.dataset.powered=String(armory.tier>0);
+  const fusion=byId("fusion-status");
+  fusion.textContent=`合体 ×${armory.fusions}`;
+  fusion.hidden=armory.fusions===0;
 }
 function setPhase(value) {
   phase=value;
@@ -2397,18 +2581,24 @@ function selectGate(side) {
 }
 function applyAnswer() {
   const {q,answer}=outcome;
+  const previous=armory;
   session.answers.push(answer);
   const before=units.length;
   for(let i=0;i<answer.gain;i++) units.push({born:clock + (data.settings.reduced?0:i*.032),team:(before+i)%session.players});
   setHud();
+  const upgrades=[];
+  if(armory.tier>previous.tier) upgrades.push(`武器 Lv.${armory.tier+1}`);
+  if(armory.fusions>previous.fusions) upgrades.push(`合体 ×${armory.fusions}`);
+  if(upgrades.length) powerCue={at:clock,firstFusion:previous.fusions,newWeapon:armory.tier>previous.tier};
   checkpoint();
   setPhase("feedback");
   if(answer.gain) showChange(answer.gain);
-  sound(answer.ok?"correct":"miss");
+  sound(upgrades.length?"upgrade":answer.ok?"correct":"miss");
   const content = element("div","feedback "+(answer.ok?"ok":"miss"));
   const resultCopy = element("div");
   const title = answer.ok ? `せいかい　＋${answer.gain}人` : "こたえ";
   resultCopy.append(element("h2","",title));
+  if(upgrades.length) resultCopy.append(element("p","power-gain",upgrades.join("　")));
   if(!answer.ok) resultCopy.append(addText(element("p"),q.correct));
   const explanation=addText(element("p","explanation"),q.explanation);
   explanation.hidden=true;
@@ -2426,26 +2616,34 @@ function applyAnswer() {
   content.append(resultCopy,actions);
   panel.replaceChildren(content,explanation);
   next.focus({preventScroll:true});
-  sayStatus(title);
+  sayStatus([title,...upgrades].join("。"));
 }
 function prepareBoss() {
-  const people=session.players;
-  const waves=people===1?4:people;
+  const {players:people,stage,level,order}=session;
+  const waves=people<=2?4:people;
   const interval=people>=5?1.04:1.35;
   const actions=[];
+  const counters=Math.min(waves-1,stage>=7?3:2);
+  const counterRounds=new Set(Array.from({length:counters},(_,i)=>Math.round((i+1)*waves/(counters+1))));
+  const move=bossMoves[stage];
+  let counterNumber=0;
   let start=attackLead;
   for(let wave=0;wave<waves;wave++) {
     actions.push({kind:wave%2===0?"shot":"slash",team:wave%people,start,duration:interval,atHit:attackHit});
     start+=interval;
     const waveNumber=wave+1;
-    if(waveNumber<waves && (waveNumber===1 || (session.stage>=4 && waveNumber===Math.ceil(waves/2)))) {
-      const duration=1.18;
-      actions.push({kind:"counter",start,duration,atHit:counterHit});
+    if(counterRounds.has(waveNumber)) {
+      const duration=1.71;
+      const isLastCounter=counterNumber===counters-1;
+      const force=1+counterNumber*.13+(stage>=7 && isLastCounter?.10:0);
+      counterNumber++;
+      actions.push({kind:"counter",start,duration,atHit:counterHit,move,force});
       start+=duration;
     }
   }
-  const base=stages[session.stage].need[session.level]*(people>1?.88:1);
-  const target=base*session.order.length/priorQuestionCounts[session.level];
+  // Target scales with the question count, including older saves with shorter stages.
+  const progression=1+stage*.02+Math.max(0,stage-6)*.014;
+  const target=[7.9,13.6,22.5][level]*order.length*progression*(people>1?.94:1);
   battle={time:0,hit:0,hp:100,done:false,win:false,actions,next:0,ends:start,waves,target,landed:0};
   setPhase("battle");
   setHp();
@@ -2458,7 +2656,7 @@ function setHp() {
   const stage=stages[session.stage];
   byId("boss-hud").hidden=false;
   const teamLabel=phase==="battle" && session.players>1 && battle.hit>.01
-    ? ` ・ ${Math.min(session.players,battle.landed)}ばんの 力` : "";
+    ? ` ・ ${(battle.landed-1)%session.players+1}ばん` : "";
   byId("boss-label").textContent = `${stage.boss}　たいりょく ${Math.ceil(battle.hp)}%${teamLabel}`;
   byId("hp").style.width=`${battle.hp}%`;
 }
@@ -2467,13 +2665,22 @@ function battleAttack(fight) {
   if(!action || fight.done || fight.time<action.start) return null;
   return {...action,progress:clamp((fight.time-action.start)/action.duration,0,1)};
 }
-function resolveBossHit() {
-  const separated=loseMembers(3+Math.floor(session.stage/2)+session.level*2);
+function resolveBossHit(action) {
+  const {stage,level}=session;
+  const fixed=5+stage*.52+level*2;
+  const bySize=countUnits()*(.052+stage*.002+level*.006);
+  const cost=Math.ceil((fixed+bySize)*action.force*(1-armory.fusions*.13));
+  const separated=loseMembers(cost);
   const loss=separated.length;
-  impact={source:"boss",at:clock,lane,units:separated};
+  impact={source:"boss",color:action.move.light,at:clock,lane,units:separated};
   setHud();
   sound("damage");
-  sayStatus(loss?`ボスの攻撃。仲間が${loss}人減りました。`:"ボスの攻撃。");
+  sayStatus(loss?`${action.move.name}。仲間が${loss}人減りました。`:action.move.name);
+}
+function allyDamage() {
+  const power=countUnits()*weaponTiers[armory.tier].power*(1+armory.fusions*.08);
+  // The last allied turn still matters, including in a large co-op group.
+  return 100/battle.waves*Math.min(1+.65/(battle.waves-1),power/battle.target);
 }
 function tickBattle(delta) {
   battle.time+=delta;
@@ -2484,23 +2691,29 @@ function tickBattle(delta) {
   let action=battleAttack(battle);
   while(action) {
     const current=battle.actions[battle.next];
+    if(action.kind==="counter" && !current.shown) {
+      const cue=byId("boss-move");
+      cue.textContent=action.move.name;
+      cue.hidden=false;
+      current.shown=true;
+    }
     if(!current.cued && action.progress>=(action.kind==="counter"?counterLaunch:.24)) {
-      sound(action.kind);
+      sound(action.move?.form??action.kind);
       current.cued=true;
     }
     if(!current.landed && action.progress>=action.atHit) {
       current.landed=true;
-      if(action.kind==="counter") resolveBossHit();
+      if(action.kind==="counter") resolveBossHit(action);
       else {
         battle.landed++;
-        const damage=100*Math.min(1,countUnits()/battle.target)/battle.waves;
-        battle.hp=Math.max(0,battle.hp-damage);
+        battle.hp=Math.max(0,battle.hp-allyDamage());
         if(battle.hp<1e-7) battle.hp=0;
         battle.hit=1;
         setHp();sound("impact");
       }
     }
     if(action.progress<1) break;
+    if(action.kind==="counter") byId("boss-move").hidden=true;
     battle.next++;
     action=battleAttack(battle);
   }
@@ -2533,8 +2746,9 @@ function finish() {
   resultPanel();
 }
 function resultPanel() {
-  const heading=result.won?"ステージクリア！":"あと少し！";
+  const heading=result.won?"ステージクリア！":battle.hp<22?"あと少し！":"もう一度チャレンジ";
   const summary = element("p","result-score",`せいかい ${result.score}／${result.total}問 ・ なかま ${result.army}人`);
+  if(!result.won) summary.append(element("span","",` ・ ボスの のこり ${Math.ceil(battle.hp)}%`));
   const actions = element("div","result-actions");
   if (result.won && session.stage<stages.length-1) {
     actions.append(button("次のステージ　→","primary",()=>{
@@ -2745,7 +2959,7 @@ function loop(timestamp) {
   const startPaint=performance.now();
   const tag=world.draw({
     stage:session.stage,distance:reduced?17:distance,t:clock,phase,lane,units,players:session.players,
-    gatePairs,battle,reduced,hazard,impact
+    gatePairs,battle,reduced,hazard,impact,armory,powerCue
   });
   if(tag) {
     const count=byId("army-tag");
