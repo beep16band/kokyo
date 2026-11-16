@@ -43,12 +43,39 @@ ruby { ruby-align:center }
 .top-buttons button { padding:0 11px; min-height:44px; background:none; color:var(--muted); font-size:.84rem; font-weight:730; white-space:nowrap }
 .top-buttons button:hover, .mark:hover { color:var(--lime) }
 .shell { max-width:1420px; margin:auto }
-.hero { position:relative; isolation:isolate; overflow:hidden; min-height:clamp(330px,48dvh,520px); display:flex; align-items:center; background:#293c36 }
-.hero canvas { position:absolute; inset:0; width:100%; height:100%; z-index:-2 }
-.hero::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,#101917f5 2%,#142220e8 22%,#12211c4d 54%,transparent 82%),linear-gradient(0deg,#10141577,transparent 22%) }
-.hero-copy { padding:30px 5%; max-width:64%; }
-.hero h1 { font-size:clamp(2.75rem,7.6vw,6.75rem); font-weight:950; line-height:1.07; letter-spacing:-.085em; text-wrap:balance; text-shadow:0 2px 18px #10221c70 }
-.hero-actions { margin-top:26px; display:flex; flex-wrap:wrap; gap:9px }
+.hero { position:relative; display:grid; align-content:center; isolation:isolate; overflow:hidden; min-height:clamp(500px,80dvh,820px); background:#213540 }
+.hero canvas { position:absolute; inset:0; width:100%; height:100%; z-index:-3 }
+.hero::before, .hero::after { content:""; position:absolute; inset:0; z-index:-2; pointer-events:none }
+.hero::before { background:linear-gradient(105deg,#101b28f7 1%,#111b2bdf 25%,#16283e55 61%,#14283e13 95%); }
+.hero::after { background:linear-gradient(0deg,#0b1320c2,transparent 38%); }
+.hero[data-mode="opening"]::before { background:linear-gradient(107deg,#0e192ae8,#14223698 31%,transparent 73%); }
+.hero[data-mode="opening"]::after { background:linear-gradient(0deg,#0b1320a9,transparent 43%); }
+.hero-copy { width:min(620px,55%); padding:35px 0 53px clamp(30px,6.5vw,95px); }
+.hero-logo { display:inline-grid; justify-items:start; position:relative; padding-inline:.10em; transform:rotate(-5deg); font-size:clamp(5rem,9.6vw,9.4rem); font-weight:1000; line-height:.90; letter-spacing:-.105em; user-select:none }
+.hero-logo::after { content:""; position:absolute; inset:auto 4% -13% 7%; height:.045em; background:#ffe296; clip-path:polygon(0 0,100% 0,95% 100%,4% 100%); }
+.hero-logo span { display:block; paint-order:stroke fill; -webkit-text-stroke:.031em #132337; }
+.logo-first { margin-left:.055em; font-size:.59em; color:#dff7ff; text-shadow:0 .05em #70c4de,0 .1em #265580,0 .15em #122a4b,0 .18em .14em #0e162e; }
+.logo-second { color:#fff1b3; text-shadow:0 .042em #e6b965,0 .080em #a85e2e,0 .12em #182a49,0 .17em .075em #000a; }
+.hero-logo[data-reveal="true"] { animation:logo-reveal .88s cubic-bezier(.21,.82,.2,1) both; }
+@keyframes logo-reveal {
+  0% { opacity:0; transform:rotate(-9deg) translateY(-.18em) scale(1.14); }
+  42% { opacity:1; transform:rotate(-4deg) translateY(.025em) scale(.973); }
+  100% { opacity:1; transform:rotate(-5deg); }
+}
+.hero-actions { margin-top:clamp(50px,7.4vw,87px); display:flex; align-items:center; gap:9px; flex-wrap:wrap }
+.hero-actions .opening-replay { padding:7px 4px; font-size:.83rem; line-height:1.3; background:none; text-shadow:0 2px 5px #000; }
+.hero-actions .opening-replay:hover { color:var(--lime) }
+.intro-copy { padding:0 7%; color:#fff0bc; pointer-events:none; }
+.intro-word { display:block; color:inherit; font-size:clamp(4.8rem,12.5vw,11.4rem); line-height:1; font-weight:1000; letter-spacing:-.11em; paint-order:stroke fill; -webkit-text-stroke:.026em #111f31; text-shadow:.035em .047em #344764,.045em .068em .11em #0b1826de; }
+.intro-copy[data-scene="0"] { color:#ddf8ff }
+.intro-copy[data-scene="1"] { color:#f8e9a7 }
+.intro-copy[data-scene="2"] { color:#ffd8a6 }
+.intro-count { display:inline-flex; padding:.13em .52em; margin:4px .24em 0; font-size:clamp(1.05rem,4.7vw,2.7rem); font-weight:850; font-variant-numeric:tabular-nums; letter-spacing:.04em; color:#fff0a5; border-left:4px solid #f2cb7d; background:#12233dde; }
+.intro-controls { position:absolute; top:clamp(12px,3vw,34px); right:clamp(12px,3vw,34px); display:flex; gap:7px; }
+.intro-controls button { min-height:44px; padding:7px 12px; font-size:.86rem; color:#fff8e6; border:1px solid #c9d8ea71; background:#132236db; border-radius:4px; font-weight:770; }
+.intro-controls button:hover { background:#2b425a; }
+.intro-controls button[aria-pressed="true"] { border-color:#e4bc77; color:#ffe096; }
+.hero[data-reduced="true"] .hero-logo { animation:none; }
 .primary, .secondary, .subtle { min-height:44px; border-radius:5px; padding:9px 16px; font-weight:770 }
 .primary { color:#152013; background:var(--lime) }
 .primary:hover { background:#f1ffc1 }
@@ -56,17 +83,9 @@ ruby { ruby-align:center }
 .secondary:hover { background:#333e3f }
 .subtle { background:transparent; color:var(--muted); border:1px solid var(--line) }
 .subtle:hover { color:var(--ink); background:#282f30 }
-.hero .secondary { background:#142220cc; border-color:#ffffff57 }
-.stage-menu { padding:22px 3% 30px }
-.menu-head { display:flex; align-items:baseline; margin-bottom:11px }
-.menu-head h2 { font-size:1.04rem; font-weight:850; letter-spacing:.04em }
-.stage-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line) }
-.stage-card { --tint:#658e78; position:relative; display:flex; align-items:center; gap:11px; min-width:0; min-height:75px; padding:10px 12px; text-align:left; background:var(--surface); border-bottom:1px solid var(--line); border-right:1px solid var(--line) }
-.stage-card::before { content:""; position:absolute; left:-1px; width:2px; height:53%; background:var(--tint) }
-.stage-card:hover { background:#272f31 }
-.stage-num { flex:none; color:var(--tint); filter:brightness(1.42) saturate(.85); font-size:.8rem; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:.06em }
-.stage-card strong { font-size:.96rem; font-weight:750; line-height:1.3; overflow-wrap:anywhere }
-.cleared { color:var(--lime); margin-left:auto; font-size:.83rem; font-weight:800 }
+.hero .secondary { background:#16263ae8; border-color:#6b91a2ba }
+.hero-actions .primary, .campaign-detail .primary { background:#f3d585; color:#202218; }
+.hero-actions .primary:hover, .campaign-detail .primary:hover { background:#ffe9a8 }
 
 .game-shell { --inset:clamp(10px,2.65vw,34px) }
 .game-hud { padding:10px var(--inset); background:#171c1e; min-height:60px; display:grid; grid-template-columns:minmax(0,1.35fr) minmax(90px,1fr); align-items:center; gap:13px }
@@ -144,9 +163,64 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
 .record p, .record ul { margin-top:6px }
 .record ul { padding-left:22px }
 .record li+li { margin-top:6px }
+.campaign-dialog { --map-gold:#f6d387; --map-edge:#3d5063; max-width:min(1290px,calc(100% - 22px)); padding:clamp(10px,2vw,22px); color:#e9eef4; background:#141f2c; border-color:#3b5064; }
+.campaign-dialog::backdrop { background:#070e19db; }
+.campaign-dialog .dialog-head { align-items:center; margin-bottom:10px; }
+.campaign-title h2 { font-size:clamp(1.22rem,3vw,1.78rem); line-height:1.26; color:#fff4d4; }
+.campaign-total { margin-top:2px; color:var(--map-gold); font-size:.84rem; font-weight:800; font-variant-numeric:tabular-nums; }
+.campaign-body { display:grid; grid-template-columns:minmax(0,1fr) minmax(194px,24%); gap:12px; align-items:stretch; }
+.campaign-board { position:relative; isolation:isolate; width:100%; aspect-ratio:3/2; background:radial-gradient(ellipse at 55% 48%,#244d5e,#122433 70%); border:1px solid var(--map-edge); overflow:hidden; }
+.campaign-art, .campaign-routes, .map-nodes { position:absolute; inset:0; width:100%; height:100%; }
+.campaign-art { display:block; object-fit:fill; opacity:.94; pointer-events:none; }
+.campaign-board::after { content:""; position:absolute; inset:0; pointer-events:none; border:1px solid #f5da9a44; box-shadow:inset 0 0 34px #09132276; }
+.campaign-routes { pointer-events:none; }
+.map-nodes { z-index:1; }
+.map-node { position:absolute; left:var(--x); top:var(--y); display:grid; place-items:center; width:44px; height:44px; transform:translate(-50%,-50%); background:transparent; color:#eff5ff; font-variant-numeric:tabular-nums; font-size:.81rem; font-weight:900; padding:0; }
+.map-node-core { position:relative; display:grid; place-items:center; width:35px; height:35px; background:#172b42f5; border:2px solid #bdcdde; border-radius:50%; box-shadow:0 3px 9px #07101bbf; transition:scale .16s ease, box-shadow .16s ease; }
+.map-node:hover .map-node-core { scale:1.13; }
+.map-node[data-occupied="true"] .map-node-core { background:#233e33; border-color:#f6d387; color:#fff0b6; }
+.map-node[data-occupied="true"] .map-node-core::after { content:"✓"; position:absolute; top:-6px; right:-8px; width:16px; height:16px; border-radius:50%; background:#f6d387; color:#23342b; text-align:center; line-height:16px; font-size:.69rem; }
+.map-node[aria-pressed="true"] .map-node-core { box-shadow:0 0 0 4px #f5d78b,0 0 0 7px #152235ab,0 0 22px #f7d37788; }
+.map-node:focus-visible { outline-offset:2px; border-radius:50%; }
+.campaign-detail { display:flex; min-width:0; flex-direction:column; gap:11px; align-items:start; padding:clamp(12px,2vw,23px); border-top:2px solid var(--map-gold); background:linear-gradient(155deg,#25354b,#182637 60%); }
+.campaign-status { color:#ceddea; font-weight:800; font-size:.84rem; }
+.campaign-status[data-occupied="true"] { color:var(--map-gold); }
+.campaign-detail h3 { font-size:clamp(1.04rem,2.35vw,1.54rem); line-height:1.3; }
+.campaign-boss-art { align-self:center; width:min(86%,180px); aspect-ratio:1; object-fit:contain; filter:drop-shadow(0 4px 7px #030910bd); }
+.campaign-boss-name { font-size:.87rem; color:#d9e2ed; }
+.campaign-detail .primary { margin-top:auto; width:100%; }
+.campaign-legend { padding-top:8px; color:#ccdae6; display:flex; align-items:center; gap:16px; font-size:.77rem; }
+.campaign-legend span { display:flex; align-items:center; gap:5px; }
+.campaign-legend i { display:inline-grid; place-items:center; width:15px; height:15px; background:#172b42; border:1.5px solid #aabad0; border-radius:50%; font-style:normal; }
+.campaign-legend i.occupied { color:#203830; background:#f6d387; border-color:#f6d387; font-size:.63rem; font-weight:900; }
 @media (max-width:780px) {
-  .stage-grid { grid-template-columns:repeat(2,minmax(0,1fr)) }
-  .hero-copy { max-width:78% }
+  .hero-copy { width:min(590px,68%); }
+  .campaign-body { grid-template-columns:1fr; gap:8px; }
+  .campaign-detail { display:grid; grid-template-columns:minmax(0,1fr) minmax(58px,19%); align-items:center; gap:3px 10px; padding:9px 11px; }
+  .campaign-boss-art { grid-column:2; grid-row:1/4; width:min(100%,84px); justify-self:center; }
+  .campaign-detail .primary { grid-column:1/-1; margin-top:5px; }
+}
+@media (max-width:560px) {
+  .hero { min-height:clamp(420px,81dvh,650px); align-content:end; }
+  .hero::before, .hero[data-mode="opening"]::before { background:linear-gradient(0deg,#0d1826fa,#102038c3 30%,#13243c0f 69%); }
+  .hero::after { background:linear-gradient(0deg,#0b132099,transparent 28%); }
+  .hero-copy { width:100%; padding:15px 18px 25px; }
+  .hero-logo { font-size:clamp(4.5rem,17vw,7rem); }
+  .hero-actions { gap:7px; margin-top:40px; }
+  .hero-actions button { padding-inline:10px; }
+  .hero-actions .opening-replay { font-size:.75rem; }
+  .intro-copy { padding:0 6% 22px; }
+  .intro-word { font-size:clamp(4.2rem,18vw,6.4rem); }
+  .intro-controls button { padding-inline:9px; }
+  .map-node-core { width:29px; height:29px; font-size:.72rem; }
+  .campaign-dialog .dialog-head { margin-bottom:7px; }
+  .campaign-legend { padding-top:6px; }
+}
+@media (max-height:490px) and (orientation:landscape) {
+  .hero { min-height:calc(100dvh - 44px); }
+  .hero-copy { padding-top:17px; padding-bottom:19px; }
+  .hero-logo { font-size:clamp(3.4rem,18dvh,5.8rem); }
+  .hero-actions { margin-top:31px; }
 }
 @media (max-width:560px) {
   .top-inner { min-height:49px; padding:0 10px }
@@ -154,15 +228,6 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
   .mark-sign { width:21px; height:21px }
   .top-buttons { gap:0 }
   .top-buttons button { padding:0 5px; font-size:.71rem }
-  .hero { min-height:clamp(300px,52dvh,400px); align-items:end }
-  .hero::after { background:linear-gradient(0deg,#101815f5,#12211ca0 37%,#12211c12 77%) }
-  .hero-copy { max-width:none; padding:20px 12px }
-  .hero h1 { font-size:clamp(2.6rem,10vw,4.1rem) }
-  .hero-actions { margin-top:15px }
-  .stage-menu { padding:13px 10px 23px }
-  .stage-card { min-height:57px; padding:8px; gap:6px }
-  .stage-card strong { font-size:.79rem }
-  .stage-num { font-size:.70rem }
   .game-hud { padding:7px var(--inset) 6px; grid-template-columns:minmax(0,1fr) auto; gap:4px 8px }
   .game-hud h1 { text-wrap:wrap }
   .hud-count { padding:3px 6px }
@@ -188,21 +253,28 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
 <body>
 <header class="top"><div class="top-inner">
 <button class="mark" id="home" type="button"><i class="mark-sign" aria-hidden="true">コ</i>コトバ軍団！</button>
-<nav class="top-buttons" aria-label="ゲームの操作"><button id="pause" type="button" hidden>一時停止</button><button id="settings" type="button">設定</button><button id="history" type="button">学習履歴</button></nav>
+<nav class="top-buttons" aria-label="ゲームの操作"><button id="game-map" type="button" hidden>作戦マップ</button><button id="pause" type="button" hidden>一時停止</button><button id="settings" type="button">設定</button><button id="history" type="button">学習履歴</button></nav>
 </div></header>
 <main>
 <section class="shell" id="menu">
  <div id="storage-warning" class="toast" role="status" hidden></div>
- <div class="hero">
+ <div class="hero" id="hero">
   <canvas id="cover" aria-hidden="true"></canvas>
-  <div class="hero-copy">
-   <h1>コトバ軍団！</h1>
-   <div class="hero-actions"><button class="primary" id="quick-start" type="button">はじめる　→</button><button class="secondary" id="resume" type="button" hidden>つづきから</button></div>
+  <div class="intro-copy" id="intro-copy" aria-hidden="true" hidden>
+   <span class="intro-word" id="intro-word"></span><span class="intro-count" id="intro-count" hidden></span>
   </div>
- </div>
- <div class="stage-menu">
-  <div class="menu-head"><h2 id="stage-list-label">ステージ</h2></div>
-  <div class="stage-grid" id="stages" aria-labelledby="stage-list-label"></div>
+  <div class="intro-controls" id="intro-controls" hidden>
+   <button id="intro-audio" type="button" aria-pressed="false">音を出す</button><button id="intro-skip" type="button">スキップ</button>
+  </div>
+  <div class="hero-copy" id="title-copy">
+   <h1 class="hero-logo" id="hero-logo" aria-label="コトバ軍団！" tabindex="-1"><span class="logo-first" aria-hidden="true">コトバ</span><span class="logo-second" aria-hidden="true">軍団！</span></h1>
+   <div class="hero-actions" id="hero-actions">
+    <button class="primary" id="quick-start" type="button">はじめる　→</button>
+    <button class="secondary" id="title-map" type="button">作戦マップ</button>
+    <button class="secondary" id="resume" type="button" hidden>つづきから</button>
+    <button class="opening-replay" id="intro-replay" type="button">↻ オープニング</button>
+   </div>
+  </div>
  </div>
 </section>
 <section class="shell game-shell" id="play" hidden aria-labelledby="game-title">
@@ -221,13 +293,33 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
  <div id="live" class="sr-only" role="status" aria-live="polite"></div>
 </section>
 </main>
+<dialog id="campaign-dialog" class="campaign-dialog" aria-labelledby="campaign-title">
+ <div class="dialog-head">
+  <div class="campaign-title"><h2 id="campaign-title">作戦マップ</h2><p id="campaign-total" class="campaign-total"></p></div>
+  <button class="close" type="button" data-close aria-label="作戦マップを閉じる">×</button>
+ </div>
+ <div class="campaign-body">
+  <div class="campaign-board">
+   <img class="campaign-art" id="campaign-art" alt="" decoding="async">
+   <canvas class="campaign-routes" id="campaign-routes" aria-hidden="true"></canvas>
+   <div class="map-nodes" id="stages" role="group" aria-label="ステージ"></div>
+  </div>
+  <div class="campaign-detail">
+   <p id="campaign-status" class="campaign-status" aria-live="polite"></p>
+   <h3 id="campaign-stage"></h3>
+   <img class="campaign-boss-art" id="campaign-boss-art" alt="" decoding="async" hidden>
+   <p class="campaign-boss-name" id="campaign-boss-name"></p>
+   <button class="primary" id="campaign-deploy" type="button">出撃　→</button>
+  </div>
+ </div>
+ <div class="campaign-legend"><span><i class="occupied" aria-hidden="true">✓</i>占拠済み</span><span><i aria-hidden="true"></i>未占拠</span></div>
+</dialog>
 <dialog id="setup-dialog" aria-labelledby="setup-title">
  <div class="dialog-head"><h2 id="setup-title"></h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
  <div class="setup-intro"><p id="setup-topic"></p><img id="setup-monster" class="setup-monster" alt="" hidden></div>
  <form id="setup-form">
   <div class="fields">
    <label for="difficulty">むずかしさ <select id="difficulty"><option value="0">やさしい</option><option value="1">ふつう</option><option value="2">むずかしい（中1）</option></select></label>
-   <label for="players">あそびかた <select id="players"><option value="1">ひとり</option><option value="2">きょうりょく・2人</option><option value="3">きょうりょく・3人</option><option value="4">きょうりょく・4人</option><option value="5">きょうりょく・5人</option><option value="6">きょうりょく・6人</option><option value="7">きょうりょく・7人</option><option value="8">きょうりょく・8人</option></select></label>
   </div>
   <p class="muted setup-detail" id="setup-detail"></p>
   <p class="toast" id="replace-note" hidden>あたらしく始めると、途中の冒険の保存が入れ替わります。</p>
@@ -248,7 +340,7 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
 </dialog>
 <dialog id="pause-dialog" aria-labelledby="pause-title">
  <div class="dialog-head"><h2 id="pause-title">ひとやすみ</h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
- <div class="row-buttons"><button class="primary" type="button" data-close>冒険にもどる</button><button class="secondary" id="exit-game" type="button">ステージ選択へ</button></div>
+ <div class="row-buttons"><button class="primary" type="button" data-close>冒険にもどる</button><button class="secondary" id="exit-game" type="button">タイトルへ</button></div>
 </dialog>
 <dialog id="history-dialog" class="history-dialog" aria-labelledby="history-title">
  <div class="dialog-head"><h2 id="history-title">学習履歴</h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
@@ -264,18 +356,18 @@ const questionCounts = [18, 18, 14];
 const priorQuestionCounts = [12, 12, 8];
 const savedQuestionCounts = [questionCounts,[16,16,12],priorQuestionCounts];
 const stages = [
-  {name:"ひらがなの草原", topic:"ひらがな・基本語彙", tint:"#35744e", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"]},
-  {name:"ことばの森", topic:"反対語・仲間の言葉", tint:"#315c43", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"]},
-  {name:"かんじの竹林", topic:"漢字の読み・選択", tint:"#4c7453", boss:"漢字の鬼", theme:["#a5d4bb","#f4f1bf","#9bc188","#659575","#e1c895","#aa9163","#396849"]},
-  {name:"かぞえかたの港", topic:"助数詞・物の数え方", tint:"#285f7d", boss:"巨大タコ", theme:["#72c7e3","#f4f0cb","#6dbdc5","#408da6","#dcb788","#a87c55","#266b89"]},
-  {name:"ぶんしょうの町", topic:"助詞・語順・文づくり", tint:"#87523f", boss:"からくりロボ", theme:["#f0b38e","#ffe1b7","#dcae82","#b97576","#edc299","#b08774","#a26655"]},
-  {name:"ものがたりの図書館", topic:"短文読解", tint:"#714a74", boss:"本の魔物", theme:["#927fa8","#f6cca0","#ac84a4","#725b83","#dabea5","#a37f78","#644c75"]},
-  {name:"ことばの雪山", topic:"既習事項の復習", tint:"#41668e", boss:"氷の巨人", theme:["#84bfe0","#edf9fb","#d1e9ed","#83b1cb","#e9edf4","#9aafcc","#4f82ab"]},
-  {name:"コトバ魔王城", topic:"全範囲の総復習", tint:"#674874", boss:"コトバ魔王", theme:["#706d9e","#f2b49b","#a17ea1","#655278","#c0a7bb","#8c7099","#503d70"]},
-  {name:"表現の工房", topic:"場面に合うことば・慣用句", tint:"#97563c", boss:"ことばの炉番", theme:["#e6a084","#ffdfa4","#bf8a69","#a15c59","#e0b587","#966359","#633f49"]},
-  {name:"手紙の郵便局", topic:"手紙・お知らせの読み取り", tint:"#357483", boss:"ふうとう鳥", theme:["#8bcadd","#f3edc5","#9dd2bc","#4b9d94","#e4c7a6","#999daf","#476f80"]},
-  {name:"資料の博物館", topic:"表・予定・記録の読み取り", tint:"#6a6da1", boss:"記録の石像", theme:["#716d99","#f0c58a","#9c91b1","#78638f","#c7bfcd","#8b819e","#433b60"]},
-  {name:"ことばの天空城", topic:"ことばと読解の総仕上げ", tint:"#5773ad", boss:"ことばの竜", theme:["#8dbdf2","#f2dded","#d8e2f5","#a0acd7","#e4e8f7","#8f99c5","#54598d"]}
+  {name:"ひらがなの草原", topic:"ひらがな・基本語彙", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"]},
+  {name:"ことばの森", topic:"反対語・仲間の言葉", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"]},
+  {name:"かんじの竹林", topic:"漢字の読み・選択", boss:"漢字の鬼", theme:["#a5d4bb","#f4f1bf","#9bc188","#659575","#e1c895","#aa9163","#396849"]},
+  {name:"かぞえかたの港", topic:"助数詞・物の数え方", boss:"巨大タコ", theme:["#72c7e3","#f4f0cb","#6dbdc5","#408da6","#dcb788","#a87c55","#266b89"]},
+  {name:"ぶんしょうの町", topic:"助詞・語順・文づくり", boss:"からくりロボ", theme:["#f0b38e","#ffe1b7","#dcae82","#b97576","#edc299","#b08774","#a26655"]},
+  {name:"ものがたりの図書館", topic:"短文読解", boss:"本の魔物", theme:["#927fa8","#f6cca0","#ac84a4","#725b83","#dabea5","#a37f78","#644c75"]},
+  {name:"ことばの雪山", topic:"既習事項の復習", boss:"氷の巨人", theme:["#84bfe0","#edf9fb","#d1e9ed","#83b1cb","#e9edf4","#9aafcc","#4f82ab"]},
+  {name:"コトバ魔王城", topic:"全範囲の総復習", boss:"コトバ魔王", theme:["#706d9e","#f2b49b","#a17ea1","#655278","#c0a7bb","#8c7099","#503d70"]},
+  {name:"表現の工房", topic:"場面に合うことば・慣用句", boss:"ことばの炉番", theme:["#e6a084","#ffdfa4","#bf8a69","#a15c59","#e0b587","#966359","#633f49"]},
+  {name:"手紙の郵便局", topic:"手紙・お知らせの読み取り", boss:"ふうとう鳥", theme:["#8bcadd","#f3edc5","#9dd2bc","#4b9d94","#e4c7a6","#999daf","#476f80"]},
+  {name:"資料の博物館", topic:"表・予定・記録の読み取り", boss:"記録の石像", theme:["#716d99","#f0c58a","#9c91b1","#78638f","#c7bfcd","#8b819e","#433b60"]},
+  {name:"ことばの天空城", topic:"ことばと読解の総仕上げ", boss:"ことばの竜", theme:["#8dbdf2","#f2dded","#d8e2f5","#a0acd7","#e4e8f7","#8f99c5","#54598d"]}
 ];
 const categories = ["ひらがな・語彙","反対語・分類","漢字","助数詞","助詞・語順","短文読解",
   "既習事項の復習","全範囲の総復習","場面に合うことば","手紙・連絡文","資料の読み取り","総合問題"];
@@ -1155,15 +1247,15 @@ class Scene {
   draw(data) {
     if (!this.resize()) return;
     const {w,h,c} = this;
-    const {stage,cover,distance,t,phase,lane,units,players,gatePairs=[],battle,reduced,hazard,impact,armory,powerCue} = data;
+    const {stage,cover,distance,t,phase,lane,units,players,gatePairs=[],battle,reduced,hazard,impact,armory,powerCue,camera} = data;
     const frameDelta=clamp(t-this.previousTime,0,.5);
     if(t<this.previousTime) this.tagPose=null;
     this.previousTime=t;
     const theme = stages[stage].theme;
-    this.center = w*(cover ? .735 : .51);
+    this.center = w*(camera?.center??(cover ? .735 : .51));
     this.yaw = -(Math.min(w,h*2.35)*.006 + lane*.6);
-    this.horizon = h*(cover ? .23 : .22);
-    this.unit = Math.min(w*.043,h*.092);
+    this.horizon = h*(camera?.horizon??(cover ? .23 : .22));
+    this.unit = Math.min(w*.043,h*.092)*(camera?.zoom??1);
     this.drawBackdrop(stage,cover,theme);
     const [,,,,road,edge] = theme;
     this.road(road,edge,distance,stage);
@@ -1180,7 +1272,7 @@ class Scene {
       }
     }
     for(const gate of gatePairs) {
-      if(gate.z>=gatePass) this.gates(gate.z,gate.labels);
+      if(gate.z>=gatePass) this.gates(gate.z,gate.labels,gate.selected);
     }
     const action=battleAttack(battle);
     if (battle) this.boss(stage,battle,t,reduced,action);
@@ -1202,7 +1294,7 @@ class Scene {
     if(counter) this.counterEffects(counter,aim,target,lane,reduced);
     if (!reduced && hitAge<.74) this.collision(impact,hitAge,players);
     for(const gate of gatePairs) {
-      if(gate.z<gatePass) this.gates(gate.z,gate.labels);
+      if(gate.z<gatePass) this.gates(gate.z,gate.labels,gate.selected);
     }
     return this.tagPose;
   }
@@ -1562,7 +1654,7 @@ class Scene {
     stroke(c,"#5e4357",.11,[[x-.12,y+.22],[x+.12,y+.09],[x+.34,y+.22]]);
     stroke(c,"#5e4357",.07,[[x-.06,y+.62],[x+.29,y+.62]]);
   }
-  gates(z,labels) {
+  gates(z,labels,selected=0) {
     if(z<=gateExit || z>=134) return;
     const {c} = this;
     c.save();
@@ -1571,8 +1663,10 @@ class Scene {
       const p=this.project(side*4.42,z);
       c.save();c.translate(p.x,p.y);c.scale(p.s,p.s);
       const blue=side<0;
-      const rim=blue?"#2676a4":"#7655ab", lit=blue?"#b6f2fc":"#f0d9ff";
-      const gate=gradient(c,-4.4,0,blue?"#2c6a99":"#644d93",blue?"#9fe6ed50":"#e8c4f265");
+      const chosen=side===selected;
+      const rim=chosen?"#a98243":blue?"#2676a4":"#7655ab";
+      const lit=chosen?"#ffe8a3":blue?"#b6f2fc":"#f0d9ff";
+      const gate=gradient(c,-4.4,0,chosen?"#796834":blue?"#2c6a99":"#644d93",chosen?"#ffe8a362":blue?"#9fe6ed50":"#e8c4f265");
       oval(c,"#24374737",0,0,3.25,.45);
       rect(c,gate,-2.91,-4.43,5.82,4.43,.67);
       c.strokeStyle=rim;c.lineWidth=.27;c.stroke();
@@ -2090,7 +2184,7 @@ const menu = byId("menu");
 const play = byId("play");
 const storageKey = "kotoba-gundan-v1";
 const defaultSettings = {
-  difficulty:0, players:1, speed:1,
+  difficulty:0, speed:1,
   reduced:matchMedia("(prefers-reduced-motion: reduce)").matches,
   ruby:true, autoRead:false, sfx:35, bgm:15
 };
@@ -2107,6 +2201,17 @@ try {
 } catch {
   storageIssue = "このブラウザでは保存できません。冒険は遊べます。履歴が必要な場合は、画面を閉じる前にCSVを書き出してください。";
 }
+const campaignPoints = [
+  [14,73],[34,75],[58,73],[81,75],
+  [86,47],[62,46],[39,45],[16,45],
+  [16,21],[38,22],[63,21],[84,18]
+];
+const validStage = stage => Number.isInteger(stage) && stage>=0 && stage<stages.length;
+const occupied = new Set(Array.isArray(data.occupied)?data.occupied.filter(validStage):[]);
+for(const record of data.records) {
+  if(record?.won && validStage(record.stage)) occupied.add(record.stage);
+}
+data.occupied=[...occupied];
 function persist() {
   try {
     localStorage.setItem(storageKey,JSON.stringify(data));
@@ -2338,6 +2443,103 @@ function openDialog(id) {
   lastFrame=0;
   byId(id).showModal();
 }
+let campaignStage=0;
+let campaignNodes=[];
+function renderCampaign() {
+  byId("campaign-total").textContent=`占拠 ${occupied.size} / ${stages.length}`;
+  campaignNodes=stages.map((stage,index)=>{
+    const isOccupied=occupied.has(index);
+    const status=isOccupied?"占拠済み":"未占拠";
+    const node=button("","map-node",()=>selectCampaign(index));
+    const [x,y]=campaignPoints[index];
+    node.style.setProperty("--x",x+"%");
+    node.style.setProperty("--y",y+"%");
+    node.dataset.occupied=String(isOccupied);
+    node.setAttribute("aria-label",`第${index+1}ステージ ${stage.name} ${status}`);
+    node.title=`${stage.name} ・ ${status}`;
+    const badge=element("span","map-node-core",String(index+1).padStart(2,"0"));
+    badge.setAttribute("aria-hidden","true");
+    node.append(badge);
+    return node;
+  });
+  byId("stages").replaceChildren(...campaignNodes);
+}
+function drawCampaignRoutes() {
+  const canvas=byId("campaign-routes");
+  const {width,height}=canvas.getBoundingClientRect();
+  if(!width || !height) return;
+  const dpr=Math.min(1.6,devicePixelRatio||1);
+  canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+  const c=canvas.getContext("2d");
+  c.setTransform(dpr,0,0,dpr,0,0);
+  const points=campaignPoints.map(([x,y])=>[x*width/100,y*height/100]);
+  const unit=Math.min(width,height);
+  for(let i=1;i<points.length;i++) {
+    const [x0,y0]=points[i-1],[x1,y1]=points[i];
+    const claimed=occupied.has(i-1) && occupied.has(i);
+    c.beginPath();c.moveTo(x0,y0);
+    const depth=unit*(i%2===0?.045:-.041);
+    c.quadraticCurveTo((x0+x1)/2+(Math.abs(x0-x1)<width*.08?depth:0),(y0+y1)/2+depth,x1,y1);
+    c.strokeStyle="#081522ce";c.lineWidth=5.2;c.setLineDash([]);c.stroke();
+    c.strokeStyle=claimed?"#ffe090":"#e3eef3b9";c.lineWidth=claimed?2.6:1.7;
+    if(!claimed) c.setLineDash([4,5]);
+    c.stroke();
+  }
+  c.setLineDash([]);
+  points.forEach(([x,y],index)=>{
+    if(!occupied.has(index) && index!==campaignStage) return;
+    const radius=clamp(unit*.074,19,51);
+    const sector=Array.from({length:6},(_,i)=>{
+      const angle=(i+.5)*TAU/6;
+      return [x+Math.cos(angle)*radius,y+Math.sin(angle)*radius*.79];
+    });
+    shape(c,occupied.has(index)?"#f1ce702f":"#7dcef522",sector);
+    stroke(c,occupied.has(index)?"#f6d994bc":"#c5e8ffc0",1.25,[...sector,sector[0]]);
+  });
+  c.save();c.translate(width*.926,height*.897);
+  const needle=clamp(unit*.042,9,27);
+  c.beginPath();c.arc(0,0,needle,0,TAU);c.strokeStyle="#f4ddb79b";c.lineWidth=1;c.stroke();
+  shape(c,"#f4daa0",[[0,-needle*1.28],[needle*.26,0],[0,needle*.20],[-needle*.26,0]]);
+  shape(c,"#90b1cb",[[0,needle*1.08],[needle*.22,0],[0,-needle*.04],[-needle*.22,0]]);
+  stroke(c,"#e5d1aa96",1,[[-needle*.9,0],[needle*.9,0]]);
+  c.restore();
+}
+function selectCampaign(stage) {
+  campaignStage=stage;
+  const location=stages[stage], isOccupied=occupied.has(stage);
+  const status=byId("campaign-status");
+  status.textContent=isOccupied?"✓ 占拠済み":"未占拠";
+  status.dataset.occupied=String(isOccupied);
+  byId("campaign-stage").textContent=location.name;
+  byId("campaign-boss-name").textContent=location.boss;
+  const image=byId("campaign-boss-art");
+  const src=monsterArtPath(bossArtName(stage));
+  if(image.getAttribute("src")!==src) {
+    image.hidden=true;
+    image.onload=()=>{image.hidden=false;};
+    image.onerror=()=>{image.hidden=true;};
+    image.setAttribute("src",src);
+  }
+  campaignNodes.forEach((button,index)=>button.setAttribute("aria-pressed",String(index===stage)));
+  drawCampaignRoutes();
+}
+function openCampaign(preferred) {
+  if(byId("campaign-dialog").open) return;
+  const next=stages.findIndex((_,index)=>!occupied.has(index));
+  const current=savedIsPlayable()?data.saved.stage:Math.max(0,next);
+  const art=byId("campaign-art");
+  if(!art.getAttribute("src")) {
+    art.onerror=()=>{art.hidden=true;};
+    art.setAttribute("src","./campaign-map.webp");
+  }
+  renderCampaign();
+  openDialog("campaign-dialog");
+  selectCampaign(validStage(preferred)?preferred:current);
+}
+byId("title-map").onclick=()=>openCampaign();
+byId("game-map").onclick=()=>openCampaign(session?.stage);
+byId("campaign-deploy").onclick=()=>openSetup(campaignStage);
+
 function openSetup(stage) {
   selectedStage = stage;
   byId("setup-title").textContent = stages[stage].name;
@@ -2351,7 +2553,6 @@ function openSetup(stage) {
     preview.setAttribute("src",newSrc);
   }
   byId("difficulty").value = data.settings.difficulty;
-  byId("players").value = data.settings.players;
   byId("replace-note").hidden = !savedIsPlayable();
   describeSetup();
   openDialog("setup-dialog");
@@ -2364,10 +2565,11 @@ function describeSetup() {
 byId("difficulty").onchange = describeSetup;
 byId("setup-form").onsubmit = event => {
   event.preventDefault();
-  const level=Number(byId("difficulty").value), players=Number(byId("players").value);
-  data.settings.difficulty=level; data.settings.players=players;
+  const level=Number(byId("difficulty").value);
+  data.settings.difficulty=level;
   byId("setup-dialog").close();
-  start(selectedStage,level,players,null);
+  if(byId("campaign-dialog").open) byId("campaign-dialog").close();
+  start(selectedStage,level,1,null);
 };
 function start(stage,level,players,retryOf) {
   unlockAudio();
@@ -2376,6 +2578,7 @@ function start(stage,level,players,retryOf) {
   enterGame();
 }
 function enterGame() {
+  if(intro.active) finishOpening();
   monsterImage(bossArtName(session.stage));
   monsterImage("seed-imp");
   units = Array.from({length:recruited(session)-(session.damage??0)},(_,i)=>({born:-1,team:i%session.players}));
@@ -2385,6 +2588,7 @@ function enterGame() {
   departingGate=null;
   distance=session.answers.length*102;
   menu.hidden=true; play.hidden=false; byId("pause").hidden=false;
+  byId("game-map").hidden=false;
   byId("game-title").textContent = `${session.stage+1}　${stages[session.stage].name}`;
   byId("game-meta").textContent = stageDifficulty();
   byId("boss-hud").hidden=true;
@@ -2402,30 +2606,17 @@ function showMenu() {
   phase="menu";
   session=null;
   play.hidden=true; menu.hidden=false; byId("pause").hidden=true;
+  byId("game-map").hidden=true;
   byId("resume").hidden = !savedIsPlayable();
   byId("storage-warning").hidden = !storageIssue;
   byId("storage-warning").textContent = storageIssue;
-  const cards = stages.map((stage,index)=>{
-    const card = button("", "stage-card", ()=>openSetup(index));
-    card.style.setProperty("--tint",stage.tint);
-    const number = element("span","stage-num",String(index+1).padStart(2,"0"));
-    number.setAttribute("aria-hidden","true");
-    card.append(number,element("strong","",stage.name));
-    if(data.records.some(record=>record.stage===index && record.won)) {
-      const badge=element("span","cleared","✓");
-      badge.setAttribute("aria-label","クリア済み");
-      card.append(badge);
-    }
-    return card;
-  });
-  byId("stages").replaceChildren(...cards);
   scrollTo(0,0);
   repaint=true;
 }
 byId("resume").onclick=()=>{
   if (!savedIsPlayable()) return;
   unlockAudio();
-  session = data.saved;
+  session = {...data.saved,players:1};
   enterGame();
 };
 byId("quick-start").onclick=()=>openSetup(0);
@@ -2736,6 +2927,10 @@ function finish() {
     })
   };
   data.records=[record,...data.records.filter(row=>row.id!==record.id)].slice(0,100);
+  if(record.won) {
+    occupied.add(record.stage);
+    data.occupied=[...occupied];
+  }
   data.saved=null;
   persist();
   result=record;
@@ -2753,12 +2948,11 @@ function resultPanel() {
   if (result.won && session.stage<stages.length-1) {
     actions.append(button("次のステージ　→","primary",()=>{
       const next=session.stage+1;
-      showMenu();
-      openSetup(next);
+      openCampaign(next);
     }));
   }
-  actions.append(button("もういちど","secondary",()=>start(session.stage,session.level,session.players,result.id)),
-    button("ステージ選択","secondary",showMenu));
+  actions.append(button("もういちど","secondary",()=>start(session.stage,session.level,1,result.id)),
+    button("作戦マップ","secondary",()=>openCampaign(session.stage)));
   if(result.wrong.length) actions.append(button("まちがえた もんだい","subtle",()=>showHistory(result.id)));
   if(storageIssue) actions.append(element("p","toast",storageIssue));
   const title=element("h2","result-title",heading);
@@ -2866,6 +3060,10 @@ function swipe(event) {
 byId("world").addEventListener("pointerup",swipe);
 byId("world").addEventListener("pointercancel",swipe);
 addEventListener("keydown",event=>{
+  if(event.key==="Escape" && phase==="menu" && intro.active && !document.querySelector("dialog[open]")) {
+    byId("intro-skip").click();
+    return;
+  }
   if(event.repeat || event.altKey || event.ctrlKey || event.metaKey || play.hidden ||
     document.querySelector("dialog[open]")) return;
   if(event.key==="Escape" && phase!=="end") {
@@ -2881,9 +3079,179 @@ document.addEventListener("visibilitychange",()=>{
   lastFrame=0;
   if(document.hidden) speech?.cancel();
 });
-addEventListener("resize",()=>{repaint=true;});
+addEventListener("resize",()=>{
+  repaint=true;
+  if(byId("campaign-dialog").open) drawCampaignRoutes();
+});
 
-const coverUnits=Array.from({length:38},()=>({born:-1,team:0}));
+const introDuration=15;
+const introCuts=[0,3.55,7.20,11.86];
+const introWords=["選ぶ","増える","戦う"];
+const openingKey="kotoba-gundan-opening-v1";
+const intro={active:false,audible:false,time:0,beat:-1,paint:0,titleTime:0,count:0};
+const introFormation=(count,interval=0)=>Array.from({length:count},(_,index)=>({
+  born:interval && index>=5 ? .28+(index-5)*interval : -1, team:0
+}));
+const introGates=introFormation(11);
+const introGrowth=introFormation(128,.021);
+const introAttack=introFormation(128);
+const coverUnits=introFormation(48);
+const introBattle=[
+  {kind:"shot",start:0,duration:1.07,team:0},
+  {kind:"counter",start:1.1,duration:1.64,move:bossMoves[11],force:1.23},
+  {kind:"slash",start:2.77,duration:1.46,team:0}
+];
+const introHits=[
+  [38,[60,67],.03],
+  [42,[62,69,74],.04],
+  [36,[57,62,65,69],.05],
+  [31,[55,62,67,71,74],.099]
+];
+function introSound(beat) {
+  if(!intro.audible) return;
+  const volume=data.settings.sfx/100*.14;
+  const [bass,notes,spacing]=introHits[beat];
+  const title=beat===3;
+  tone(bass,volume*.80,0,title?.53:.32,"triangle");
+  if(title) tone(bass+7,volume*.63,.145,.55,"triangle");
+  notes.forEach((note,index)=>tone(note,volume*.45,index*spacing,title?.46:.26,"triangle"));
+}
+function syncIntroAudio() {
+  const audioToggle=byId("intro-audio");
+  audioToggle.setAttribute("aria-pressed",String(intro.audible));
+  audioToggle.textContent=intro.audible?"消音":"音を出す";
+}
+function setOpeningBeat(beat,reduced) {
+  intro.beat=beat;
+  const word=byId("intro-word");
+  const title=beat===introWords.length;
+  const focusedControl=byId("intro-controls").contains?.(document.activeElement);
+  const hero=byId("hero");
+  hero.dataset.mode=title?"title":"opening";
+  hero.dataset.reduced=String(reduced);
+  byId("title-copy").hidden=!title;
+  byId("hero-logo").dataset.reveal=String(title&&!reduced);
+  byId("intro-copy").hidden=title;
+  byId("intro-controls").hidden=title;
+  if(title) {
+    if(focusedControl) byId("hero-logo").focus({preventScroll:true});
+  } else {
+    byId("intro-copy").dataset.scene=String(beat);
+    word.textContent=introWords[beat];
+    byId("intro-count").hidden=beat!==1;
+    if(beat===1) byId("intro-count").textContent="5 人";
+    if(!reduced) {
+      word.getAnimations?.().forEach(animation=>animation.cancel());
+      word.animate?.([
+        {opacity:.12,transform:"translateY(14px) scale(1.13)"},
+        {opacity:1,transform:"translateY(-3px) scale(.986)",offset:.32},
+        {opacity:1,transform:"none"}
+      ],{duration:570,easing:"cubic-bezier(.16,.72,.28,1)"});
+    }
+  }
+  intro.paint=0;
+  repaint=true;
+  introSound(beat);
+}
+function startOpening(audible=false) {
+  intro.active=true;
+  intro.audible=audible;
+  intro.time=0;intro.titleTime=0;intro.count=0;
+  lastFrame=0;
+  try { sessionStorage.setItem(openingKey,"1"); } catch {}
+  if(audible) unlockAudio();
+  syncIntroAudio();
+  monsterImage(bossArtName(0));
+  monsterImage(bossArtName(11));
+  setOpeningBeat(0,data.settings.reduced);
+}
+function finishOpening(focus=false) {
+  if(intro.beat!==introWords.length) setOpeningBeat(introWords.length,data.settings.reduced);
+  intro.active=false;
+  if(focus) byId("hero-logo").focus({preventScroll:true});
+}
+byId("intro-audio").onclick=()=>{
+  intro.audible=!intro.audible;
+  syncIntroAudio();
+  if(intro.audible) {
+    unlockAudio();
+    if(intro.beat>=0) introSound(intro.beat);
+  }
+};
+byId("intro-skip").onclick=()=>{
+  intro.audible=false;
+  finishOpening(true);
+};
+byId("intro-replay").onclick=()=>{
+  startOpening(intro.audible);
+  byId("intro-skip").focus({preventScroll:true});
+};
+function drawOpening(reduced) {
+  const small=cover.w ? cover.w<570 : cover.canvas.getBoundingClientRect().width<570;
+  const time=intro.time-introCuts[intro.beat];
+  const cut=reduced?.8:time;
+  const center=small?.52:.66;
+  if(intro.beat===0) {
+    const turn=smoothstep(clamp((cut-1.28)/1.42,0,1));
+    const track=Math.min(1,cut/3.5);
+    cover.draw({stage:0,distance:cut*25,t:cut,phase:"cross",lane:-.87*turn,units:introGates,players:1,reduced,
+      gatePairs:[{z:mix(87,10,track),labels:["犬","大"],selected:turn>.52?-1:0}],
+      camera:{center,horizon:small?.13:.23,zoom:1.13}});
+  } else if(intro.beat===1) {
+    const arrived=clamp(Math.floor((time-.28)/.021)+1,0,123);
+    const people=5+arrived;
+    if(intro.count!==people) {
+      byId("intro-count").textContent=`${people} 人`;
+      intro.count=people;
+    }
+    cover.draw({stage:1,distance:30+cut*26,t:reduced?3.4:cut,phase:"feedback",lane:0,units:introGrowth.slice(0,people),players:1,reduced,
+      armory:{tier:2,fusions:fusionRank(people)},
+      powerCue:cut>=2.46?{at:2.46,firstFusion:2,newWeapon:true}:null,
+      camera:{center,horizon:small?.19:.24,zoom:mix(1.15,1.02,clamp(cut/2.5,0,1))}});
+  } else {
+    const at=reduced?1.70:Math.max(0,cut-.27);
+    const next=introBattle.findIndex(event=>at<event.start+event.duration);
+    const current=introBattle[next];
+    const local=current?(at-current.start)/current.duration:0;
+    const hit=current && current.kind!=="counter" && local>=attackHit?clamp(1-(local-attackHit)*2.8,0,1):0;
+    cover.draw({stage:11,distance:23+cut*6,t:8+cut,phase:"battle",lane:0,units:introAttack,players:1,reduced,
+      battle:{time:at,next,actions:introBattle,hit},armory:{tier:3,fusions:3},
+      camera:{center,horizon:small?.16:.22,zoom:1.13}});
+  }
+}
+function drawTitle(time,reduced) {
+  const small=cover.w ? cover.w<570 : cover.canvas.getBoundingClientRect().width<570;
+  const t=reduced?2.31:time+2.31;
+  cover.draw({stage:0,cover:true,distance:15+(reduced?0:time*3.5),t,phase:"cover",lane:0,units:coverUnits,players:1,reduced,
+    camera:{center:small?.64:.735,horizon:small?.13:.23,zoom:small?1.20:1.04}});
+}
+function tickOpening(timestamp,dt,reduced,paused) {
+  if(!paused) {
+    if(intro.active) {
+      intro.time=Math.min(introDuration,intro.time+dt);
+      const beat=introCuts.findLastIndex(cut=>intro.time>=cut);
+      if(beat!==intro.beat) setOpeningBeat(beat,reduced);
+      if(intro.time>=introDuration) finishOpening();
+    }
+    intro.titleTime+=dt;
+  }
+  const showingIntro=intro.active && intro.beat<introWords.length;
+  const interval=showingIntro?31:76;
+  if(!repaint && (paused || reduced&&!showingIntro || timestamp-intro.paint<interval)) return;
+  intro.paint=timestamp;
+  repaint=false;
+  if(showingIntro) drawOpening(reduced);
+  else drawTitle(intro.titleTime,reduced);
+}
+function playOpeningOnFirstVisit() {
+  if(data.settings.reduced) return false;
+  try {
+    return !sessionStorage.getItem(openingKey);
+  } catch {
+    return true;
+  }
+}
+
 function tickRun(dt, delta) {
   clock+=delta;
   elapsed+=delta;
@@ -2927,14 +3295,11 @@ function loop(timestamp) {
   lastFrame=timestamp;
   if(document.hidden) return;
   const {speed,reduced,bgm}=data.settings;
+  const paused=!!document.querySelector("dialog[open]");
   if(phase==="menu") {
-    if(repaint) {
-      cover.draw({stage:0,cover:true,distance:15,t:2.31,phase:"cover",lane:0,units:coverUnits,players:1,reduced});
-      repaint=false;
-    }
+    tickOpening(timestamp,dt,reduced,paused);
     return;
   }
-  const paused=!!document.querySelector("dialog[open]");
   if(!paused) {
     tickRun(dt,dt*speed);
     if(phase!=="end" && bgm>0) {
@@ -2969,6 +3334,7 @@ function loop(timestamp) {
   paintCost=mix(paintCost,performance.now()-startPaint,.15);
 }
 showMenu();
+if(playOpeningOnFirstVisit()) startOpening();
 requestAnimationFrame(loop);
 if (isSecureContext && /^https?:$/.test(location.protocol) && "serviceWorker" in navigator) {
   navigator.serviceWorker.register("./sw.js").catch(()=>{});

@@ -1,15 +1,16 @@
 "use strict";
 
-const cacheName = "kotoba-gundan-offline-v9";
+const cacheName = "kotoba-gundan-offline-v10";
 const scope = self.registration.scope;
 const entry = new URL("index.html", scope).href;
-const monsters = new Set([
+const artwork = new Set([
   ...Array.from({length:12}, (_, index) => `${index+1}.webp`),
   "seed-imp.webp"
 ].map(file => new URL(`monsters/${file}`, scope).href));
+artwork.add(new URL("campaign-map.webp", scope).href);
 
 self.addEventListener("install", event => {
-  const files = [entry, ...monsters].map(url => new Request(url, {cache:"reload"}));
+  const files = [entry, ...artwork].map(url => new Request(url, {cache:"reload"}));
   event.waitUntil(caches.open(cacheName).then(cache => cache.addAll(files)).then(() => self.skipWaiting()));
 });
 
@@ -20,7 +21,7 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-  if (monsters.has(event.request.url)) {
+  if (artwork.has(event.request.url)) {
     event.respondWith(caches.open(cacheName).then(cache => cache.match(event.request)).then(
       response => response || fetch(event.request), () => fetch(event.request)
     ));
