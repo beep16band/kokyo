@@ -69,11 +69,12 @@ ruby { ruby-align:center }
 .cleared { color:var(--lime); margin-left:auto; font-size:.83rem; font-weight:800 }
 
 .game-shell { --inset:clamp(10px,2.65vw,34px) }
-.game-hud { padding:10px var(--inset); background:#171c1e; min-height:60px; display:grid; grid-template-columns:minmax(0,1.35fr) minmax(90px,1fr) auto; align-items:center; gap:13px }
+.game-hud { padding:10px var(--inset); background:#171c1e; min-height:60px; display:grid; grid-template-columns:minmax(0,1.35fr) minmax(90px,1fr); align-items:center; gap:13px }
 .game-hud h1 { font-size:clamp(.98rem,2.2vw,1.16rem); line-height:1.23; font-weight:800; text-wrap:balance }
 .hud-caption, .progress-area { color:var(--muted); font-size:.77rem; font-weight:670 }
-.hud-count { display:flex; align-items:baseline; gap:5px; padding-left:12px; color:var(--lime); border-left:1px solid var(--line); white-space:nowrap; font-size:.83rem; font-weight:780 }
-.hud-count strong { font-size:1.86rem; font-variant-numeric:tabular-nums; line-height:1 }
+.hud-count { position:absolute; left:0; top:0; display:flex; align-items:baseline; gap:3px; transform:translate(50vw,30vh) translate(-50%,-100%); padding:4px 9px; color:var(--lime); background:#142321eb; border:1px solid #e6fb9180; border-radius:6px; box-shadow:0 2px 7px #101c2550; white-space:nowrap; font-size:.68rem; font-weight:780; pointer-events:none }
+.hud-count::after { content:""; position:absolute; left:50%; top:100%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#142321eb }
+.hud-count strong { font-size:clamp(1rem,2.3vw,1.54rem); font-variant-numeric:tabular-nums; line-height:1 }
 .progress-area { display:flex; align-items:center; gap:10px; white-space:nowrap }
 .progress-track { height:3px; flex:1; background:#424a4a; overflow:hidden }
 .progress-fill { height:100%; background:var(--lime); display:block; transition:width .22s ease-out }
@@ -158,8 +159,7 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
   .stage-num { font-size:.70rem }
   .game-hud { padding:7px var(--inset) 6px; grid-template-columns:minmax(0,1fr) auto; gap:4px 8px }
   .game-hud h1 { text-wrap:wrap }
-  .hud-count { padding-left:8px }
-  .hud-count strong { font-size:1.56rem }
+  .hud-count { padding:3px 6px }
   .progress-area { grid-row:2; grid-column:1/-1 }
   .game-world { height:clamp(179px,38dvh,350px) }
   .game-panel { padding:5px var(--inset) 11px; min-height:137px }
@@ -203,10 +203,10 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
  <div class="game-hud">
   <div><h1 id="game-title" tabindex="-1"></h1><div id="game-meta" class="hud-caption"></div></div>
   <div class="progress-area"><span id="question-count"></span><span class="progress-track" aria-hidden="true"><span id="progress" class="progress-fill"></span></span></div>
-  <div class="hud-count"><ruby>仲間<rt>なかま</rt></ruby> <strong id="army">5</strong> <ruby>人<rt>にん</rt></ruby></div>
  </div>
  <div class="game-world">
   <canvas id="world" aria-hidden="true"></canvas>
+  <div id="army-tag" class="hud-count"><span class="sr-only">仲間</span><strong id="army">5</strong><span>人</span></div>
   <div id="boss-hud" class="boss-hud" hidden><span id="boss-label"></span><span class="hp-track" aria-hidden="true"><span id="hp" class="hp-fill"></span></span></div>
   <div id="gain" class="gain" aria-hidden="true" hidden></div>
  </div>
@@ -253,7 +253,8 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
 (() => {
 const levels = ["やさしい", "ふつう", "むずかしい"];
 const rewards = [5, 10, 20];
-const questionCounts = [12, 12, 8];
+const questionCounts = [16, 16, 12];
+const priorQuestionCounts = [12, 12, 8];
 const stages = [
   {name:"ひらがなの草原", topic:"ひらがな・基本語彙", tint:"#35744e", boss:"巨大スライム", theme:["#79c6e7","#e9f4c0","#9bd693","#4b9f73","#ebce92","#b58e55","#286e53"], need:[40,63,74]},
   {name:"ことばの森", topic:"反対語・仲間の言葉", tint:"#315c43", boss:"森のゴーレム", theme:["#88c6c1","#c8e8a1","#76b378","#398361","#ccae7c","#9b7250","#205a42"], need:[41,66,78]},
@@ -571,6 +572,93 @@ const juniorPoolText = [
 「声が少し弾んだ」とある。由衣の気持ちは？~由衣は友人に貸した本の感想を聞いた。友人が「私もあの場面が好きだった」と言うと、「そこ、いいよね」と返した由衣の声が少し弾んだ。|好きな場面が同じでうれしくなった|感想を言われて腹を立てた|友人が同じ場面を好きだと言った直後に声が弾んだことが根拠です。`
 ];
 
+const extraPoolText = [
+[
+`「つくえ」の さいごの もじは？|え|く|つ・く・え の さいごは「え」です。
+「きゅうり」の ちいさい もじは？|ゅ|り|「きゅ」は「き」と ちいさい「ゅ」で かきます。
+やさいを きる どうぐは？|ほうちょう|ものさし|ほうちょうで やさいを きります。
+「た＿き」の まんなかに はいる もじは？|ぬ|ね|た・ぬ・き で「たぬき」です。`,
+`「あらかじめ 伝える」の「あらかじめ」は？|前もって|その場で|起こる前に知らせておくという意味です。
+「見守る」の 意味は？|様子に気を配りながら見る|目をそらして気にしない|「見守る」は、様子やなりゆきに気を配ることです。
+木の葉が 風で「ひらひら」とまう。「ひらひら」は 何を表す？|軽い物がゆれながら動く様子|かたい物が重い音を立てる様子|紙や葉が軽くゆれ動く様子を表します。
+「着く時刻が 近づく」の「近づく」は どんな意味？|着く時刻までの時間が短くなる|目的地までの道が必ず短くなる|この文では、場所ではなく時刻について述べています。`,
+`「話に花が咲く」の意味は？|会話が盛り上がる|会話の内容が急に変わる|人が楽しそうに話し続ける様子を「話に花が咲く」と表します。
+「異議を唱える」に近い意味は？|賛成できない点を示す|分かった点を繰り返す|「異議」は、ある意見や決定に対する反対の意見です。
+「細心の注意を払う」とは？|小さな点にもよく気を配る|大きな違いだけ確かめる|「細心」は、細かいところまで心を配ることです。
+「問題の糸口を見つける」の「糸口」は？|解決の手がかり|問題が解決した証拠|「糸口」は、物事を進めたり解決したりする手がかりを表します。`
+],
+[
+`「うえ」の はんたいは？|した|まえ|うえと したは、ばしょを あらわす はんたいの ことばです。
+「おもい」の はんたいは？（にもつの はなし）|かるい|おそい|おもいと かるいは、にもつの おもさを あらわします。
+「あか」と おなじ いろの なかまは？|みどり|まる|あかも みどりも いろの なまえです。
+「フライパン」と おなじ りょうりの どうぐは？|なべ|うわぐつ|りょうりには なべや フライパンを つかいます。`,
+`「広い」の 反対は？（部屋の広さ）|せまい|くらい|場所の広さを表す「広い」と「せまい」は反対です。
+「出発」の 反対に近いことばは？|到着|出入口|出かけるのが出発、目的の場所に着くのが到着です。
+「手ぶくろ」と同じように 身につけるものは？|マフラー|マグカップ|マフラーは首にまいて使います。
+「回数」を表すのは？|三回|三分間|「三回」は何度か、「三分間」はどれだけ時間がたったかを表します。`,
+`「消極的」と意味が対になるのは？|積極的|計画的|自分から進んで行動するのが積極的、進んで行動しようとしないのが消極的です。
+「一時的」と反対の意味に近いのは？|持続的|瞬間的|一時的は限られた短い間、持続的は状態が続くことを表します。
+観察結果をもとにした「推測」はどれ？|葉がしおれたのは、水が足りなかったためだろう。|朝八時の時点で、葉が二枚しおれていた。|「だろう」で、見た事実から考えた原因を述べています。
+「比較」に当たる文は？|AとBは同じ色だが、大きさが異なる。|Bの下に番号を書いた。|「同じ」「異なる」を使って、二つのものを比べています。`
+],
+[
+`「つち」を かんじで かくと？|[土]|[上]|つちの かんじは「{土|つち}」です。
+「6」を かんじで かくと？|[六]|[八]|6の かんじは「{六|ろく}」です。
+「みみ」を かんじで かくと？|[耳]|[目]|おとを きく ところは「{耳|みみ}」です。
+「しろ」を かんじで かくと？（いろの なまえ）|[白]|[日]|いろの しろは「{白|しろ}」です。`,
+`「[太陽]」の 読み方は？|たいよう|たいよ|「{太陽|たいよう}」と 読みます。
+「[羽]が ぬけた」の「[羽]」の 読み方は？|はね|わ|鳥の からだに 生えている「{羽|はね}」です。
+「こうえん」で遊ぶ。「こうえん」に 合う漢字は？|[公園]|[講演]|遊んだり休んだりする 場所は「{公園|こうえん}」です。
+「友だちと きょうりょく する」の 漢字は？|[協力]|[強力]|力を 合わせることは「{協力|きょうりょく}」です。`,
+`「[隔てる]」の読みは？|へだてる|さまたげる|「{隔|へだ}てる」は、間を離したり境を作ったりすることです。
+「内と外」を表すように、反対に近い意味の漢字を組み合わせた熟語は？|[内外]|[内幕]|「内外」は対になる「内」と「外」、「内幕」は物事の内情を指します。
+「小説を すいこう する」とは？|[推敲]|[推考]|文章を読み直して表現を練ることは「{推敲|すいこう}」です。「推考」は推し量って考えることです。
+「[生]」を訓読みしているのは？|[生き物（いきもの）]|[生活（せいかつ）]|「いきもの」の「い」は訓、「せいかつ」の「せい」は音です。`
+],
+[
+`えはがきを 2＿＿ かきました。|まい|ひき|えはがきは 1まい、2まい と かぞえます。
+けしごむを 3＿＿ かいました。|こ|さつ|けしごむは「こ」で かぞえられます。
+テーブルの うえに はしが 2＿＿。はしは ぜんぶで 4ほん。|ぜん|まい|はしは 2ほんを 1くみにして「1ぜん」と かぞえます。
+はやしの きが 3ぼん あります。「3ぼん」の よみかたは？|さんぼん|さんまい|きを 3つ かぞえる ときは「さんぼん」と いいます。`,
+`いとを通す はりが 5＿＿ あります。|本|羽|細長い はりは「本」で 数えます。
+黒板に 写真を 4＿＿ はりました。|枚|台|写真は うすく平らなので「枚」で 数えます。
+国語のノートを 2＿＿ 買いました。|冊|通|ノートの数は「冊」で 表します。
+「3羽」の 読み方は？|さんわ|さんまい|「三羽」は「さんわ」と 読みます。`,
+`一枚ずつ紙に書かれた俳句を、五つ読み比べた。俳句そのものの数は？|五句|五枚|紙を数えると「五枚」、俳句を数えると「五{句|く}」です。
+資料の要点を三＿＿に整理した。要点の数を表すには？|点|巻|複数の要点は「三{点|てん}」と表せます。「巻」は冊子などのまとまりの単位です。
+「第一章」は小説の何を表す？|一つの作品内の大きな区切り|その小説を印刷した部数|「{章|しょう}」は文章のまとまり、「{部|ぶ}」は印刷物の数量などに使います。
+「この提案を二項目に分ける」の「項目」は何を表す？|内容を整理した区分|書類を配る人数|「{項目|こうもく}」は、内容を整理するときの一つ一つの区分です。`
+],
+[
+`がっこう ＿ いく。|へ|を|「へ」は いく ほうを あらわします。
+ねこ ＿ いぬが いる。|と|を|「と」で ねこと いぬを つなぎます。
+かばん ＿ ほんを いれる。|に|で|ものを いれる ばしょは「に」で つなぎます。
+「えを」に つづく ことばは？|かく|のむ|「えを かく。」と いいます。`,
+`「宿題を すませてから、外に 出た。」先にしたことは？|宿題を すませた|外に 出た|「〜てから」の前が、先にしたことです。
+「手を あらうために、水道へ 行った。」何のため？|手を あらうため|水道を 見るため|したいことは「手を あらう」と書かれています。
+「畑に 新しい 土を 入れた。」新しいのは？|土|畑|「新しい」は、そばの「土」につながっています。
+「朝ごはんを 食べた。」に「どこで」を 加えるなら？|家で|八時に|「家で」は 場所、「八時に」は 時こくです。`,
+`「たしかに雨はやんだ。しかし、道はぬれている。」前後の関係は？|前の内容から予想されることに逆らう|後の内容が前の内容の原因を示す|前半から予想できることに対し、後半では別の状態を伝えています。
+「弟が庭で犬と遊ぶ。」を文節で区切ったものは？|弟が／庭で／犬と／遊ぶ|弟／が庭／で犬／と遊ぶ|「ね」を入れて自然に切れるところが、文節の目安です。
+「花がとても美しい。」で「美しい」と同じく、性質や状態を表すのは？|明るい|始まる|「美しい」「明るい」は状態を表す形容詞で、「始まる」は動作や変化を表す動詞です。
+「だから早く用意した。」の「だから」と同じく、前後を結び付ける語は？|そこで|たしかに|「そこで」は前後をつなぐ接続詞、「たしかに」は判断を補う副詞です。`
+],
+[
+`どちらを さきに した？~まいは かばんを あけた。それから ほんを だした。|かばんを あけた|ほんを だした|「それから」の まえが さきです。
+しろいのは どちら？~へやに しろい いすと、あおい つくえが ある。|いす|つくえ|「しろい いす」と あります。
+りょうが かりた ものは？~りょうは ともだちから えんぴつを かりた。ノートは じぶんの ものを つかった。|えんぴつ|ノート|ともだちから かりたのは えんぴつです。
+だれが あとから きた？~さきが さきに きた。けいは そのあとで きた。|けい|さき|けいは「そのあとで」きました。`,
+`ねこを さがしに 外へ出たのは だれ？~窓が 開いていた。ゆかは 部屋に ねこが いないことに 気づき、外へ 出た。|ゆか|となりの人|「ゆかは」と書いてあり、外へ出たのはゆかです。
+妹が てつだった ことは？~兄が くだものを まな板の 上に 置いた。妹は 皿を 出して、兄の となりに 置いた。|皿を 出した|くだものを 買った|妹は 皿を 出して となりに 置きました。
+あつまる 場所が 変わった 理由は？~はじめは 校庭に あつまる 予定だった。雨が ふったので、体育館に あつまった。|雨が ふったから|体育館の 時計が 止まったから|「雨が ふったので」が 理由を表しています。
+「その 実」が 指すのは？~りくは 赤い 実を 三つ 見つけた。その 実を、家に 持って 帰った。|見つけた 赤い 実|家に あった 青い 実|「その 実」は、前に出てきた 赤い実のことです。`,
+`この実験から言えることは？~同じ大きさの氷を二つ用意した。一つを金属の皿、もう一つを木の皿にのせた。十分後、金属の皿の氷のほうが小さくなっていた。|この条件では金属の皿の氷のほうが速くとけた|どんな条件でも木の皿の氷のほうが速くとける|氷が小さくなったことは、とけた量が多かったことを示します。
+「手を止めた」理由として最も自然なのは？~私は古いアルバムの写真を一枚ずつ外していた。裏を返すと、祖母の字で日付と短い言葉が書いてあった。私は手を止め、それをゆっくり読んだ。|写真の裏に祖母の言葉を見つけたから|アルバムを最初から空にしておいたから|手を止める直前に言葉を見つけ、直後にそれを読んでいます。
+後半の例が示す考えは？~町の便利さは、建物の数だけでは決められない。例えば図書館が近くにあっても、開館時間に行けない人にとっては使いにくい。|利用する人の事情も考えて便利さを判断する必要がある|図書館を近くに造れば、住む人全員にとって便利になる|開館時間の例を使い、近さだけでは判断できないことを説明しています。
+前の文に対する「たとえば」の役割は？~話す速さを変えると、言葉の受け取られ方が変わる。たとえば大切なところをゆっくり言うと、聞き手が気付きやすい。|前の考えを具体的な場面で説明する|前の考えと反対の結論を示す|ゆっくり言う場面が、速さの効果を示す一例になっています。`
+]
+];
+
 function parsePool(text,stage,idPrefix) {
   return text.trim().split("\n").map((line, index) => {
     const [prompt, correct, wrong, explanation] = line.split("|").reduce((fields, fragment) => {
@@ -590,9 +678,12 @@ function parsePool(text,stage,idPrefix) {
 const priorPools=poolText.map((tiers,stage)=>tiers.map((text,level)=>parsePool(text,stage,`${stage}-${level}`)));
 const juniorPools=juniorPoolText.map((text,stage)=>parsePool(text,stage,`j1-${stage}`));
 const juniorTopics=["文脈で読む語彙・慣用句","語の関係・事実と意見","漢字の読み・熟語","文脈に合う助数詞","文節・単語の働き","短文読解・意見と根拠","既習事項の復習","全範囲の総復習"];
-const pools=priorPools.map(([easy,normal],stage)=>[easy,normal,juniorPools[stage]]);
+const extraPools=extraPoolText.map((tiers,stage)=>tiers.map((text,level)=>
+  parsePool(text,stage,`extra-${level===2?"j1-":""}${stage}-${level}`)));
+const pools=priorPools.map(([easy,normal],stage)=>
+  [easy,normal,juniorPools[stage]].map((questions,level)=>[...questions,...extraPools[stage][level]]));
 // Saved runs can still refer to questions assigned before the junior-high update.
-const itemById=new Map([...priorPools.flat(2),...juniorPools.flat()].map(item=>[item.id,item]));
+const itemById=new Map([...priorPools.flat(2),...juniorPools.flat(),...extraPools.flat(2)].map(item=>[item.id,item]));
 function shuffle(items) {
   const output = [...items];
   for (let i = output.length - 1; i > 0; i--) {
@@ -747,6 +838,7 @@ class Scene {
     const {w,h,c} = this;
     const {stage,cover,distance,t,phase,lane,units,players,gatePairs=[],battle,reduced,hazard,impact} = data;
     const frameDelta=clamp(t-this.previousTime,0,.5);
+    if(t<this.previousTime) this.tagPose=null;
     this.previousTime=t;
     const theme = stages[stage].theme;
     this.center = w*(cover ? .735 : .51);
@@ -775,16 +867,19 @@ class Scene {
     if (cover) this.boss(0,{time:0,hit:0,win:false,cover:true},t);
     const hitAge=impact ? t-impact.at : Infinity;
     if (hazard!=null) this.foe(hazard,t,reduced);
-    if (!reduced && hitAge<.57) this.foe(1,t,false,hitAge/.57);
+    if (!reduced && hitAge<.57 && impact.source!=="boss") this.foe(1,t,false,hitAge/.57);
     const recoil=!reduced && hitAge<.38 ? Math.sin(Math.PI*hitAge/.38)*1.15 : 0;
-    const attack=battleAttack(battle,players);
-    const aim=attack ? this.bossAim(stage) : null;
+    const action=battleAttack(battle);
+    const aim=action ? this.bossAim(stage) : null;
+    const attack=action?.kind==="counter"?null:action;
     const origins=this.army(units,{lane,phase,players,t,cover,battle,reduced,frameDelta,recoil,attack,aim});
     if(attack) this.attackEffects(attack,aim,origins,reduced);
+    if(action?.kind==="counter") this.counterEffects(action,aim,lane,reduced);
     if (!reduced && hitAge<.74) this.collision(impact,hitAge,players);
     for(const gate of gatePairs) {
       if(gate.z<gatePass) this.gates(gate.z,gate.labels);
     }
+    return this.tagPose;
   }
   drawBackdrop(stage,cover,theme) {
     const key=`${stage}/${this.w}/${this.h}/${!!cover}`;
@@ -847,14 +942,14 @@ class Scene {
       c.drawImage(runnerSprite(runnerFrames,true,players===1?0:unit.team),
         p.x-width*.49,p.y-size*(.85+Math.sin(f*Math.PI)*.18),width,size);
     }
-    const p=this.project(0,15.35);
+    const p=this.project(impact.lane*4.15,impact.source==="boss"?17.8:15.35);
     for(let i=0;i<7;i++){
       const angle=i*TAU/7;
       const x=p.x+Math.cos(angle)*p.s*(.48+f*2.7);
       const y=p.y-p.s*.7+Math.sin(angle)*p.s*(.25+f*.91);
       const spark=Math.max(1,p.s*.13*(1-f));
       c.globalAlpha=1-f;
-      shape(c,"#ffd0a0",[[x-spark,y],[x,y-spark],[x+spark,y],[x,y+spark]]);
+      shape(c,impact.source==="boss"?"#ffb6d4":"#ffd0a0",[[x-spark,y],[x,y-spark],[x+spark,y],[x,y+spark]]);
     }
     c.globalAlpha=1;
   }
@@ -1068,8 +1163,10 @@ class Scene {
     const {c,w,h} = this;
     const {lane,t,phase,players,cover,battle,reduced,frameDelta,recoil,attack,aim} = info;
     const size = count.length;
-    const cols = Math.min(size,Math.max(3,Math.ceil(Math.sqrt(size)*1.05)),14);
-    const spread = Math.min(1.33,12.3/Math.max(1,cols-1));
+    const cols = Math.min(size,Math.max(3,Math.ceil(Math.sqrt(size)*1.05)),16);
+    const spread = Math.min(1.33,13.3/Math.max(1,cols-1));
+    const rows=Math.ceil(size/cols);
+    const rowStep=cover?1.48:Math.min(1.41,20/Math.max(1,rows-1));
     const settle=1-Math.exp(-frameDelta*15);
     const marching=cover || phase==="question" || phase==="cross" || phase==="feedback" || phase==="missed" || phase==="battle";
     const gait=t*1.58*runnerFrames;
@@ -1086,7 +1183,7 @@ class Scene {
       unit.driftX ??= (seed(i+31)-.5)*.28;
       unit.driftZ ??= (seed(i+52)-.5)*.83;
       const formationX=(col-(rowCols-1)/2)*spread+lane*4.15+unit.driftX;
-      const formationZ=(cover?12.8:14.6)+row*(cover?1.48:1.41)+unit.driftZ;
+      const formationZ=(cover?12.8:14.6)+row*rowStep+unit.driftZ;
       unit.x=reduced || unit.x===undefined ? formationX : mix(unit.x,formationX,settle);
       unit.z=reduced || unit.z===undefined ? formationZ : mix(unit.z,formationZ,settle);
       let x=unit.x, z=unit.z-recoil*(row<2?1:.28);
@@ -1118,6 +1215,15 @@ class Scene {
         shape(c,"#fff0a6",[[sx-4,sy],[sx,sy-5],[sx+4,sy],[sx,sy+5]]);
       }
       c.globalAlpha=1;
+    }
+    if(!cover) {
+      const center=this.project(lane*4.15,14.6+(rows-1)*rowStep);
+      const offset=battle && rows>=7?Math.min(w*.17,94):0;
+      const x=clamp(center.x+offset,36,w-36);
+      const y=clamp(center.y-clamp(center.s*2.74,10,h*.36)*.81-12,38,h-22);
+      const old=this.tagPose;
+      const follow=1-Math.exp(-frameDelta*12);
+      this.tagPose=old && !reduced?{x:mix(old.x,x,follow),y:mix(old.y,y,follow)}:{x,y};
     }
     return origins;
   }
@@ -1196,6 +1302,39 @@ class Scene {
       }
       c.restore();
     }
+  }
+  counterEffects(action,aim,lane,reduced) {
+    const {c}=this;
+    const {progress}=action;
+    const target=this.project(lane*4.15,17.8);
+    const s=aim.s;
+    if(progress<counterLaunch) {
+      const charge=progress/counterLaunch;
+      const radius=Math.max(3,s*(.19+charge*.48));
+      oval(c,"#b747745e",aim.x,aim.y,radius*1.5,radius*1.5);
+      oval(c,"#f495bb",aim.x,aim.y,radius,radius);
+      oval(c,"#ffe4ec",aim.x,aim.y,radius*.52,radius*.52);
+      return;
+    }
+    if(progress<counterHit) {
+      const progressToHit=(progress-counterLaunch)/(counterHit-counterLaunch);
+      const x=mix(aim.x,target.x,progressToHit);
+      const y=mix(aim.y,target.y,progressToHit);
+      const size=Math.max(5,s*(.47+progressToHit*.21));
+      if(!reduced) {
+        const tail=Math.max(0,progressToHit-.24);
+        stroke(c,"#f28bb982",size*.88,[[mix(aim.x,target.x,tail),mix(aim.y,target.y,tail)],[x,y]]);
+      }
+      oval(c,"#e478a6",x,y,size,size);
+      oval(c,"#ffe4ec",x,y,size*.57,size*.57);
+      return;
+    }
+    const fade=(progress-counterHit)/(1-counterHit);
+    c.save();c.globalAlpha=(1-fade)*.86;
+    c.beginPath();
+    c.ellipse(target.x,target.y,target.s*(.7+fade*(reduced?2.3:4.2)),target.s*(.25+fade*.79),0,0,TAU);
+    c.strokeStyle="#ffa1c6";c.lineWidth=Math.max(3,target.s*.14);c.stroke();
+    c.restore();
   }
   bossPose(cover=false) {
     const p=this.project(cover?1.55:0,cover?31:42);
@@ -1497,6 +1636,7 @@ function sound(kind) {
   if(kind==="impact") tone(52,volume*.73,0,.22,"triangle");
   if(kind==="damage") tone(45,volume*.85,0,.28,"triangle");
   if(kind==="shot") [81,74,67].forEach((note,i)=>tone(note,volume*.34,i*.041,.10,"triangle"));
+  if(kind==="counter") [59,53,48].forEach((note,i)=>tone(note,volume*.43,i*.064,.16,"triangle"));
   if(kind==="slash") [65,77].forEach((note,i)=>tone(note,volume*.39,i*.055,.15));
   if(kind==="win") [65,69,72,77].forEach((note,i)=>tone(note,volume,i*.125,.35,"triangle"));
 }
@@ -1512,6 +1652,8 @@ const gatePass=15.2;
 const gateExit=9.3;
 const attackLead=.82;
 const attackHit=.56;
+const counterHit=.63;
+const counterLaunch=.28;
 const contactCost = 2;
 const recoveryTime = 10;
 const leadTime = [19,16,17];
@@ -1519,7 +1661,7 @@ const smoothstep = x => x*x*(3-2*x);
 const awaitingAnswer = () => phase==="question";
 const idFor = () => Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,10);
 function stageDifficulty() {
-  const junior=session.level===2 && session.order.some(entry=>entry.id.startsWith("j1-"));
+  const junior=session.level===2 && session.order.some(entry=>/^(?:extra-)?j1-/.test(entry.id));
   const level=junior?"むずかしい（中1）":levels[session.level];
   return `${level} ・ ${session.players===1?"ひとり":`きょうりょく ${session.players}人`}`;
 }
@@ -1533,7 +1675,7 @@ function recruited(run) {
   return 5 + run.answers.reduce((sum,row)=>sum+row.gain,0);
 }
 function countUnits() {
-  return recruited(session) - (session.damage ?? 0);
+  return units.length;
 }
 function stats() {
   return session.answers.reduce((value,answer) => {
@@ -1552,7 +1694,7 @@ function savedIsPlayable() {
   const saved = data.saved;
   return saved && stages[saved.stage] && levels[saved.level] &&
     Number.isInteger(saved.players) && saved.players>=1 && saved.players<=8 &&
-    Array.isArray(saved.order) && saved.order.length===questionCounts[saved.level] &&
+    Array.isArray(saved.order) && [questionCounts[saved.level],priorQuestionCounts[saved.level]].includes(saved.order.length) &&
     saved.order.every(entry=>typeof entry?.left==="boolean" && itemById.has(entry.id)) &&
     Array.isArray(saved.answers) && saved.answers.length<=saved.order.length &&
     saved.answers.every((row,index)=>row?.id===saved.order[index].id && typeof row.ok==="boolean" &&
@@ -1594,7 +1736,7 @@ function start(stage,level,players,retryOf) {
   enterGame();
 }
 function enterGame() {
-  units = Array.from({length:countUnits()},(_,i)=>({born:-1,team:i%session.players}));
+  units = Array.from({length:recruited(session)-(session.damage??0)},(_,i)=>({born:-1,team:i%session.players}));
   clock=0; musicTimer=0; battle=null; result=null; lane=0; outcome=null;
   lastFrame=0; lastPaint=0; paintCost=0; velocity=12; impact=null; chase=null; signUntil=0;
   departingGate=null;
@@ -1713,11 +1855,11 @@ function tickChase(dt) {
     sayStatus(`接触。仲間が${loss}人減りました。`);
   } else sayStatus("接触。");
 }
-function loseMembers() {
-  const loss=Math.min(contactCost,units.length-1);
+function loseMembers(cost=contactCost) {
+  const loss=Math.min(cost,units.length-1);
   const separated=units.splice(1,loss);
   if(loss) {
-    session.damage=(session.damage??0)+loss;
+    if(phase!=="battle") session.damage=(session.damage??0)+loss;
     showChange(-loss);
   }
   return separated;
@@ -1820,10 +1962,23 @@ function applyAnswer() {
 }
 function prepareBoss() {
   const people=session.players;
-  const target=stages[session.stage].need[session.level]*(people>1?.88:1);
-  const totalDamage=Math.min(100,100*countUnits()/target);
-  battle={time:0, hit:0, hp:100, totalDamage, done:false, win:false, interval:people>=5?1.04:1.35,
-    waves:people===1?4:people, cued:0, landed:0};
+  const waves=people===1?4:people;
+  const interval=people>=5?1.04:1.35;
+  const actions=[];
+  let start=attackLead;
+  for(let wave=0;wave<waves;wave++) {
+    actions.push({kind:wave%2===0?"shot":"slash",team:wave%people,start,duration:interval,atHit:attackHit});
+    start+=interval;
+    const waveNumber=wave+1;
+    if(waveNumber<waves && (waveNumber===1 || (session.stage>=4 && waveNumber===Math.ceil(waves/2)))) {
+      const duration=1.18;
+      actions.push({kind:"counter",start,duration,atHit:counterHit});
+      start+=duration;
+    }
+  }
+  const base=stages[session.stage].need[session.level]*(people>1?.88:1);
+  const target=base*session.order.length/priorQuestionCounts[session.level];
+  battle={time:0,hit:0,hp:100,done:false,win:false,actions,next:0,ends:start,waves,target,landed:0};
   setPhase("battle");
   setHp();
   panel.replaceChildren();
@@ -1839,14 +1994,18 @@ function setHp() {
   byId("boss-label").textContent = `${stage.boss}　たいりょく ${Math.ceil(battle.hp)}%${teamLabel}`;
   byId("hp").style.width=`${battle.hp}%`;
 }
-function attackKind(wave) {
-  return wave%2===0?"shot":"slash";
+function battleAttack(fight) {
+  const action=fight?.actions?.[fight.next];
+  if(!action || fight.done || fight.time<action.start) return null;
+  return {...action,progress:clamp((fight.time-action.start)/action.duration,0,1)};
 }
-function battleAttack(battle,players) {
-  if(!battle || battle.done || battle.time<attackLead) return null;
-  const wave=(battle.time-attackLead)/battle.interval;
-  const index=Math.floor(wave);
-  return index<battle.waves ? {kind:attackKind(index),progress:wave-index,team:index%players} : null;
+function resolveBossHit() {
+  const separated=loseMembers(3+Math.floor(session.stage/2)+session.level*2);
+  const loss=separated.length;
+  impact={source:"boss",at:clock,lane,units:separated};
+  setHud();
+  sound("damage");
+  sayStatus(loss?`ボスの攻撃。仲間が${loss}人減りました。`:"ボスの攻撃。");
 }
 function tickBattle(delta) {
   battle.time+=delta;
@@ -1854,17 +2013,30 @@ function tickBattle(delta) {
     battle.hit=Math.max(0,battle.hit-delta*2.7);
     if(!battle.hit && session.players>1) setHp();
   }
-  while(battle.cued<battle.waves && battle.time>=attackLead+battle.interval*(battle.cued+.24)) {
-    sound(attackKind(battle.cued));
-    battle.cued++;
+  let action=battleAttack(battle);
+  while(action) {
+    const current=battle.actions[battle.next];
+    if(!current.cued && action.progress>=(action.kind==="counter"?counterLaunch:.24)) {
+      sound(action.kind);
+      current.cued=true;
+    }
+    if(!current.landed && action.progress>=action.atHit) {
+      current.landed=true;
+      if(action.kind==="counter") resolveBossHit();
+      else {
+        battle.landed++;
+        const damage=100*Math.min(1,countUnits()/battle.target)/battle.waves;
+        battle.hp=Math.max(0,battle.hp-damage);
+        if(battle.hp<1e-7) battle.hp=0;
+        battle.hit=1;
+        setHp();sound("impact");
+      }
+    }
+    if(action.progress<1) break;
+    battle.next++;
+    action=battleAttack(battle);
   }
-  while(battle.landed<battle.waves && battle.time>=attackLead+battle.interval*(battle.landed+attackHit)) {
-    battle.landed++;
-    battle.hp=100-battle.totalDamage*(battle.landed/battle.waves);
-    battle.hit=1;
-    setHp();sound("impact");
-  }
-  if(battle.time>attackLead+battle.interval*battle.waves+.58) finish();
+  if(battle.time>battle.ends+.58) finish();
 }
 function finish() {
   const {score}=stats();
@@ -2103,10 +2275,15 @@ function loop(timestamp) {
   if(departingGate) gatePairs.push(departingGate);
   const hazard=chase ? clamp(chase.time/chase.limit,0,1) : null;
   const startPaint=performance.now();
-  world.draw({
+  const tag=world.draw({
     stage:session.stage,distance:reduced?17:distance,t:clock,phase,lane,units,players:session.players,
     gatePairs,battle,reduced,hazard,impact
   });
+  if(tag) {
+    const count=byId("army-tag");
+    const transform=`translate3d(${Math.round(tag.x)}px, ${Math.round(tag.y)}px, 0px) translate(-50%, -100%)`;
+    if(count.style.transform!==transform) count.style.transform=transform;
+  }
   paintCost=mix(paintCost,performance.now()-startPaint,.15);
 }
 showMenu();
