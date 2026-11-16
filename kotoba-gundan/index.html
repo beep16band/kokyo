@@ -120,6 +120,8 @@ dialog { max-width:min(530px,calc(100% - 20px)); width:100%; max-height:calc(100
 dialog::backdrop { background:#0b1215b8 }
 dialog h2 { font-size:1.3rem; font-weight:840 }
 .dialog-head { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:7px }
+.setup-intro { display:flex; align-items:center; justify-content:space-between; gap:12px }
+.setup-monster { width:clamp(74px,23vw,112px); aspect-ratio:1; object-fit:contain; flex:none; filter:drop-shadow(0 5px 5px #0006) }
 .close { min-width:44px; min-height:44px; border-radius:5px; background:#2d3738; font-size:1.25rem; font-weight:700 }
 .close:hover { background:#384849 }
 .fields { display:grid; gap:9px; margin:12px 0 }
@@ -216,7 +218,7 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
 </main>
 <dialog id="setup-dialog" aria-labelledby="setup-title">
  <div class="dialog-head"><h2 id="setup-title"></h2><button class="close" type="button" data-close aria-label="閉じる">×</button></div>
- <p id="setup-topic"></p>
+ <div class="setup-intro"><p id="setup-topic"></p><img id="setup-monster" class="setup-monster" alt="" hidden></div>
  <form id="setup-form">
   <div class="fields">
    <label for="difficulty">むずかしさ <select id="difficulty"><option value="0">やさしい</option><option value="1">ふつう</option><option value="2">むずかしい（中1）</option></select></label>
@@ -272,6 +274,41 @@ const stages = [
 ];
 const categories = ["ひらがな・語彙","反対語・分類","漢字","助数詞","助詞・語順","短文読解",
   "既習事項の復習","全範囲の総復習","場面に合うことば","手紙・連絡文","資料の読み取り","総合問題"];
+const monsterMotion = {
+  bounce: {rate:3.4,lift:.06,bob:.16,sway:.019,flex:.045},
+  heavy: {rate:1.65,lift:0,bob:.026,sway:.033,flex:.008},
+  prowl: {rate:2.5,lift:.02,bob:.068,sway:.031,flex:.015},
+  hover: {rate:2.6,lift:.30,bob:.19,sway:.038,flex:.012}
+};
+const bossArt = [
+  {height:4.10,aim:1.89,motion:"bounce"},
+  {height:4.75,aim:2.45,motion:"heavy"},
+  {height:4.65,aim:2.38,motion:"prowl"},
+  {height:4.30,aim:2.28,motion:"bounce"},
+  {height:4.48,aim:2.38,motion:"heavy"},
+  {height:4.18,aim:2.42,motion:"hover"},
+  {height:4.80,aim:2.48,motion:"heavy"},
+  {height:4.58,aim:2.38,motion:"prowl"},
+  {height:4.58,aim:2.32,motion:"heavy"},
+  {height:4.46,aim:2.42,motion:"prowl"},
+  {height:4.72,aim:2.46,motion:"heavy"},
+  {height:4.68,aim:2.50,motion:"hover"}
+];
+const artImages = new Map();
+const bossArtName = stage => String(stage+1);
+const monsterArtPath = name => `./monsters/${name}.webp`;
+function monsterImage(name) {
+  if (typeof Image === "undefined") return null;
+  if (!artImages.has(name)) {
+    const image = new Image();
+    artImages.set(name,image);
+    image.decoding="async";
+    image.onload=()=>{repaint=true;};
+    image.src=monsterArtPath(name);
+  }
+  const image=artImages.get(name);
+  return image.complete && image.naturalWidth ? image : null;
+}
 const poolText = [
 [
 `「いぬ」の さいしょの もじは？|い|ぬ|「いぬ」の はじめは「い」です。
@@ -1095,13 +1132,13 @@ class Scene {
     for(const gate of gatePairs) {
       if(gate.z>=gatePass) this.gates(gate.z,gate.labels);
     }
-    if (battle) this.boss(stage,battle,reduced ? 0 : t);
-    if (cover) this.boss(0,{time:0,hit:0,win:false,cover:true},t);
+    const action=battleAttack(battle);
+    if (battle) this.boss(stage,battle,t,reduced,action);
+    if (cover) this.boss(0,{hit:0,cover:true},t,reduced);
     const hitAge=impact ? t-impact.at : Infinity;
     if (hazard!=null) this.foe(hazard,t,reduced);
     if (!reduced && hitAge<.57 && impact.source!=="boss") this.foe(1,t,false,hitAge/.57);
     const recoil=!reduced && hitAge<.38 ? Math.sin(Math.PI*hitAge/.38)*1.15 : 0;
-    const action=battleAttack(battle);
     const aim=action ? this.bossAim(stage) : null;
     const attack=action?.kind==="counter"?null:action;
     const origins=this.army(units,{lane,phase,players,t,cover,battle,reduced,frameDelta,recoil,attack,aim});
@@ -1155,6 +1192,14 @@ class Scene {
     if(fleeing) c.globalAlpha=1-retreat;
     oval(c,"#351a2240",0,0,1.22,.31);
     c.translate(0,-hop);
+    const image=monsterImage("seed-imp");
+    if(image) {
+      if(!reduced) c.rotate(fleeing?retreat*.5:Math.sin(t*8)*.095);
+      const height=2.18, width=height*image.naturalWidth/image.naturalHeight;
+      c.drawImage(image,-width/2,-height,width,height);
+      c.restore();
+      return;
+    }
     shape(c,"#402431",[[-.85,-.98],[-1.15,-2.06],[-.35,-1.66],[.33,-1.61],[1.02,-2.09],[.90,-.97]]);
     oval(c,"#492934",0,-.88,1.02,.9);
     oval(c,"#88434a",-.15,-1.03,.81,.63,-.15);
@@ -1679,21 +1724,56 @@ class Scene {
   }
   bossAim(stage) {
     const p=this.bossPose();
-    const height=[1.58,2.26,2.02,1.86,2.31,2.00,2.21,2.20,2.05,2.14,2.23,2.31][stage];
+    const height=bossArt[stage].aim;
     return {...p,y:p.y-p.s*height};
   }
-  boss(stage,battle,t) {
+  boss(stage,battle,t,reduced,action) {
     const {c}=this;
     const p=this.bossPose(battle.cover);
     const {s}=p;
+    const art=bossArt[stage];
+    const motion=monsterMotion[art.motion];
+    const idle=reduced?0:Math.sin(t*motion.rate);
+    const counter=action?.kind==="counter" && !reduced
+      ? Math.sin(Math.PI*clamp(action.progress/(counterLaunch*2),0,1)) : 0;
+    const hit=battle.hit || 0;
+    const faded=battle.done && battle.win;
+    const img=monsterImage(bossArtName(stage));
     c.save();c.translate(p.x,p.y);c.scale(s,s);
-    const jump = Math.sin(t*2.4)*.10;
-    const hit = battle.hit || 0;
-    const faded = battle.done && battle.win;
-    if(faded) c.globalAlpha=.40;
-    oval(c,"#27304546",0,0,2.7,.53);
-    c.translate((hit?Math.sin(hit*95)*hit*.34:0),jump);
-    c.scale(1+hit*.2,1-hit*.29);
+    const width=img?Math.min(5.85,art.height*img.naturalWidth/img.naturalHeight):5.4;
+    const height=img?width*img.naturalHeight/img.naturalWidth:art.height;
+    if(faded) c.globalAlpha=.43;
+    oval(c,"#27304540",0,0,width*.43-motion.lift*.48,.43);
+    oval(c,"#26303b37",0,-.04,width*.31,.25);
+    c.save();
+    c.translate(reduced?0:Math.sin(hit*95)*hit*.30,-motion.lift-idle*motion.bob+.10*counter);
+    c.rotate(idle*motion.sway-counter*.035);
+    const squash=idle*motion.flex+(reduced?0:hit*.19)+counter*.095;
+    c.scale(1+squash*.72,1-squash);
+    if(img) c.drawImage(img,-width/2,-height,width,height);
+    else this.fallbackBoss(stage,reduced?0:t);
+    c.restore();
+    if(hit>.03 && !reduced) {
+      const ray = 1.04 + (1-hit)*.95;
+      c.globalAlpha=.84;
+      for(let i=0;i<6;i++) {
+        const a=i*TAU/6+.34;
+        const x=Math.cos(a)*ray,y=-art.aim+Math.sin(a)*ray*.86;
+        stroke(c,"#ffe9ac",.11,[[x,y],[x+Math.cos(a)*.36,y+Math.sin(a)*.36]]);
+      }
+    }
+    if(faded) {
+      c.globalAlpha=.9;
+      for(let i=0;i<10;i++) {
+        const a=i*TAU/10+(reduced?0:t*.30);
+        const x=Math.cos(a)*(1.7+seed(i)*1.4),y=-2+Math.sin(a)*2.5;
+        shape(c,"#fff0ad",[[x-.15,y],[x,y-.22],[x+.15,y],[x,y+.22]]);
+      }
+    }
+    c.restore();
+  }
+  fallbackBoss(stage,t) {
+    const {c}=this;
     const shades = [
       ["#8fe8a6","#39ac88","#226760"],["#a8bd8d","#657e5e","#42564f"],["#f1a77c","#bd645c","#773e52"],
       ["#e6a0a1","#ac6997","#684b77"],["#e4c188","#a77658","#64494b"],["#e9bda3","#9d6a9e","#5a4c75"],
@@ -1776,24 +1856,6 @@ class Scene {
     if(stage!==4 && stage!==1 && stage!==6 && stage!==9) {
       stroke(c,deep,.12,[[-.24,faceY+.49],[0,faceY+.56],[.24,faceY+.49]]);
     }
-    if(hit>.03) {
-      const ray = 1.04 + (1-hit)*.95;
-      c.globalAlpha=.84;
-      for(let i=0;i<6;i++) {
-        const a=i*TAU/6+.34;
-        const x=Math.cos(a)*ray,y=-1.7+Math.sin(a)*ray*.86;
-        stroke(c,"#ffe9ac",.11,[[x,y],[x+Math.cos(a)*.36,y+Math.sin(a)*.36]]);
-      }
-    }
-    if(faded && !battle.cover) {
-      c.globalAlpha=.9;
-      for(let i=0;i<10;i++) {
-        const a=i*TAU/10+t*.30;
-        const x=Math.cos(a)*(1.7+seed(i)*1.4),y=-2+Math.sin(a)*2.5;
-        shape(c,"#fff0ad",[[x-.15,y],[x,y-.22],[x+.15,y],[x,y+.22]]);
-      }
-    }
-    c.restore();
   }
   expansionBoss(stage,coat,shades,t) {
     const {c}=this;
@@ -2105,6 +2167,15 @@ function openDialog(id) {
 function openSetup(stage) {
   selectedStage = stage;
   byId("setup-title").textContent = stages[stage].name;
+  const preview=byId("setup-monster");
+  preview.onload=()=>{preview.hidden=false;};
+  preview.onerror=()=>{preview.hidden=true;};
+  preview.alt=stages[stage].boss;
+  const newSrc=monsterArtPath(bossArtName(stage));
+  if(preview.getAttribute("src")!==newSrc) {
+    preview.hidden=true;
+    preview.setAttribute("src",newSrc);
+  }
   byId("difficulty").value = data.settings.difficulty;
   byId("players").value = data.settings.players;
   byId("replace-note").hidden = !savedIsPlayable();
@@ -2131,6 +2202,8 @@ function start(stage,level,players,retryOf) {
   enterGame();
 }
 function enterGame() {
+  monsterImage(bossArtName(session.stage));
+  monsterImage("seed-imp");
   units = Array.from({length:recruited(session)-(session.damage??0)},(_,i)=>({born:-1,team:i%session.players}));
   clock=0; musicTimer=0; battle=null; result=null; lane=0; outcome=null;
   lastFrame=0; lastPaint=0; paintCost=0; velocity=12; impact=null; chase=null; signUntil=0;

@@ -1,10 +1,16 @@
 "use strict";
 
-const cacheName = "kotoba-gundan-offline-v7";
-const entry = new URL("./index.html", self.location.href).href;
+const cacheName = "kotoba-gundan-offline-v8";
+const scope = self.registration.scope;
+const entry = new URL("index.html", scope).href;
+const monsters = new Set([
+  ...Array.from({length:12}, (_, index) => `${index+1}.webp`),
+  "seed-imp.webp"
+].map(file => new URL(`monsters/${file}`, scope).href));
 
 self.addEventListener("install", event => {
-  event.waitUntil(caches.open(cacheName).then(cache => cache.add(entry)).then(() => self.skipWaiting()));
+  const files = [entry, ...monsters].map(url => new Request(url, {cache:"reload"}));
+  event.waitUntil(caches.open(cacheName).then(cache => cache.addAll(files)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", event => {
@@ -14,7 +20,16 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-  if (event.request.mode !== "navigate" || !event.request.url.startsWith(self.registration.scope)) return;
+  if (monsters.has(event.request.url)) {
+    event.respondWith(caches.open(cacheName).then(cache => cache.match(event.request)).then(
+      response => response || fetch(event.request), () => fetch(event.request)
+    ));
+    return;
+  }
+  if (event.request.mode !== "navigate") return;
+  const url = new URL(event.request.url);
+  url.search = "";
+  if (url.href !== scope && url.href !== entry) return;
   event.respondWith(fetch(event.request).then(async response => {
     if (response.ok) {
       try {
