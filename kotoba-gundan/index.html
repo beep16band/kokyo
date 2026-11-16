@@ -219,7 +219,7 @@ dialog h2 { font-size:1.3rem; font-weight:840 }
  <p id="setup-topic"></p>
  <form id="setup-form">
   <div class="fields">
-   <label for="difficulty">むずかしさ <select id="difficulty"><option value="0">やさしい</option><option value="1">ふつう</option><option value="2">むずかしい</option></select></label>
+   <label for="difficulty">むずかしさ <select id="difficulty"><option value="0">やさしい</option><option value="1">ふつう</option><option value="2">むずかしい（中1）</option></select></label>
    <label for="players">あそびかた <select id="players"><option value="1">ひとり</option><option value="2">きょうりょく・2人</option><option value="3">きょうりょく・3人</option><option value="4">きょうりょく・4人</option><option value="5">きょうりょく・5人</option><option value="6">きょうりょく・6人</option><option value="7">きょうりょく・7人</option><option value="8">きょうりょく・8人</option></select></label>
   </div>
   <p class="muted setup-detail" id="setup-detail"></p>
@@ -508,8 +508,71 @@ const poolText = [
 ]
 ];
 
-const pools = poolText.map((tiers, stage) => tiers.map((text, level) =>
-  text.trim().split("\n").map((line, index) => {
+const juniorPoolText = [
+`「先生に疑問を投げかける」の「投げかける」の意味は？|答えを求めて問いを出す|相手の発言を取り消す|「疑問を投げかける」は、自分が気になったことを相手に問いとして示すことです。
+「言葉を選ぶ」の意味は？（相手に反対意見を伝える場面）|伝わり方を考えて表現を決める|相手の発言から都合のよい部分を取る|相手にどう伝わるかを考えて表現を決める、という意味です。
+「話の筋が通っている」とは？|理由と結論が無理なくつながっている|どの説明にもたくさんの例が挙げてある|「筋が通る」は、理由や結論に矛盾がなく、道理にかなっていることです。
+「手を打つ」の意味は？（問題が起きる前に手を打つ）|対策を取る|拍手を送る|ここでの「手」は手段の意味です。問題に備えて対策を取ることを指します。
+「耳を傾ける」の意味は？|注意して聞く|聞いたことを言いふらす|相手が伝えたいことに意識を向け、よく聞くことです。
+「目を通しておいて」と言われたら、何をする？|資料をひととおり読む|資料を一字一句覚える|「目を通す」は、書かれた内容をひととおり読むことです。
+「おおむね賛成」の「おおむね」の意味は？|全体としては|念のために|「おおむね」は細かい例外があっても、全体としてそうだという意味です。
+「たちまち広がった」の「たちまち」に近いのは？|ほんの短い間に|予想とは反対に|「たちまち」は、あることが短い時間のうちに起こる様子を表します。
+「言い切る」の意味は？（まだ調べていないので、正しいとは言い切れない）|疑いを残さず断定する|言おうとした文を最後まで読む|ここでは、確かだと断定することを指します。
+「説明に説得力がある」とは？|理由や根拠があり、聞き手が納得しやすい|話し手が大きな声で自信を持っている|「説得力」は、根拠などを示して相手を納得させる力です。`,
+`「賛成」と反対の立場は？|反対|保留|賛成は意見を支持する立場で、反対は意見を支持しない立場です。
+「増加」と反対の変化は？|減少|横ばい|増加は数や量が増えること、減少は数や量が減ることです。
+「公的」と反対の意味に近い語は？|私的|公式|公的は公共に関わること、私的は個人に関わることを表します。
+「原因」と対になる語は？|結果|理由|原因はあることを引き起こしたもの、結果はそれによって起こったことです。
+「義務」と対になる語は？|権利|責任|義務は果たすべきこと、権利は自分の意思で行ったり求めたりできることです。
+「慎重」と反対の意味に近い語は？|軽率|冷静|慎重はよく考えて注意深い様子、軽率は十分に考えず行動する様子です。
+「主張」と同じく、考えを伝える行為を表す語は？|提案|観察|主張も提案も自分の考えを他者に向けて示す行為です。
+観察した事実を述べているのは？|水面が昨日より2センチ低い。|水をもっと大切に使うべきだ。|測った値を比べた前者は事実の記述で、後者はどう行動すべきかという意見です。
+「冷静」と意味が近い様子は？|落ち着いて判断する|急いで結論を出す|「冷静」は感情に流されず落ち着いている様子です。
+実験報告のうち「結果」に当たるのは？|三日目に芽が出た。|鉢を明るい場所に置いた。|「鉢を置いた」は方法で、「芽が出た」は観察した結果です。`,
+`「[著しい]」の読みは？|いちじるしい|おびただしい|「{著|いちじる}しい」は、変化や程度がはっきり目立つ様子を表します。
+「[試みる]」の読みは？|こころみる|ためみる|「{試|こころ}みる」は、実際にやってみるという意味です。
+「[携える]」の読みは？|たずさえる|たくわえる|「{携|たずさ}える」は、手に持ったり身に付けたりして行くことです。
+「意見の こうかん」を漢字で書くと？|[交換]|[交歓]|互いに意見を出し合うことは「{交換|こうかん}」です。「交歓」は一緒に楽しみ親しむことです。
+「全校生徒を調査の たいしょう とする」の正しい表記は？|[対象]|[対照]|調べる相手や事柄は「{対象|たいしょう}」、「対照」は違いが分かるように比べることです。
+「[山]」を訓読みしているのは？|[山道（やまみち）]|[登山（とざん）]|「やま」は訓、「さん・ざん」は音です。
+「[心]」を音読みしているのは？|[安心（あんしん）]|[心細い（こころぼそい）]|「しん」は音、「こころ」は訓です。
+前の漢字が後ろの漢字の意味を詳しくする熟語は？|[高温]|[上下]|「高温」は「高い温度」です。「上下」は「上」と「下」を並べた熟語です。
+「ものごとを すいこう する」の「すいこう」は？（計画をやりとげる）|[遂行]|[推敲]|「{遂行|すいこう}」は物事をやり遂げること、「推敲」は文章を練り直すことです。
+「知識の きそ を身につける」の正しい表記は？|[基礎]|[起訴]|土台となる知識は「{基礎|きそ}」です。「起訴」は裁判を求める手続きの語です。`,
+`雑誌を40人に1冊ずつ配る。発注の数量を「40＿＿」と書くなら？|部|面|印刷物の発行数や配布数には「{部|ぶ}」を使います。「面」は新聞の紙面などを指します。
+「新聞の一＿＿に掲載された」というとき、ページを表す語は？|面|部|「一{面|めん}」は新聞の最初のページ、「一{部|ぶ}」は新聞一つ分の数量です。
+五・七・五・七・七の短歌を3つ選んだ。短歌の数え方は？|三首|三句|短歌は「{首|しゅ}」で数えます。「{句|く}」は俳句などの数え方です。
+全文を要約する前に、文章を「五＿＿に分けた」。文のまとまりを表すのは？|段落|編|「{段落|だんらく}」は一つの文章内の区切りです。「{編|へん}」は独立した文章を数えるときなどに使います。
+美術展で、異なる画家の絵を三＿＿展示した。展示作品を数えるなら？|点|巻|展示作品は「{点|てん}」で数えられます。「巻」は本の一冊分などを表します。
+新聞に載った記事のうち、同じテーマの記事を4＿＿集めた。|本|面分|ここでは個々の記事を4つ数えています。「4面分」なら紙面の広さを表します。
+五つの独立した短編小説を、一冊にまとめた。各作品の数え方は？|五編|五巻|まとまった文章や物語は「{編|へん}」で数えられます。「巻」は冊子のまとまりを表します。
+アンケートの回答が四十＿＿届いた。寄せられた回答の数は？|件|項目|「件」は届いた個々の回答を数えられます。「項目」は質問などの区分を表します。
+同じプリントを班の人数分印刷する。「一人二枚、全員で十枚」の「十枚」は何を数える？|紙の枚数|印刷した組の数|「枚」が数えるのは一枚ずつの紙です。ひとまとめの配布単位は「部」で数えられます。
+「図書室の本は、シリーズ全六＿＿のうち、＿＿まではそろっている」。空欄に合う組は？|巻・第四巻|部・第四部|シリーズの各冊の順を表す場合は「{巻|かん}」を使います。`,
+`「鳥が空を飛ぶ姿を見た。」で「飛ぶ」が直接詳しくしているのは？|姿|空|「飛ぶ姿」とつながり、何を見たかの「姿」を詳しくしています。
+「兄が玄関を開けた。すぐに靴を脱いだ。」後の文で省かれた主語は？|兄が|玄関が|前の文とつなげて読むと、開けた兄が靴を脱いだと分かります。
+「とても 静かな 教室だ。」で「とても」が直接詳しくしているのは？|静かな|教室だ|「とても静かな」とつながり、静かさの程度を表します。
+「しかし、」が果たす役割は？「雨だった。しかし、試合は続いた。」|前と後の内容を反対の向きでつなぐ|後の内容が前の内容の原因だと示す|「しかし」は、前の内容から予想されることと反対の内容をつなぎます。
+「私と 弟は 早く 帰った。」を文節に分けたとき、文節の数は？|四つ|六つ|「私と／弟は／早く／帰った」の四つに分けられます。
+「あっ、星が見えた。」で、ほかの文節から独立しているのは？|あっ|星が|「あっ」は気付きや驚きを表し、主語や述語と直接つながりません。
+「班の仕事は、資料を集めることだ。」で「何だ」に当たる述語の文節は？|ことだ|集める|「集める」は「こと」を詳しくし、「ことだ」が「仕事は」に対応します。
+「昨日、短い手紙を友人に送った。」で時間を示す単語は？|昨日|短い|「昨日」はいつ送ったか、「短い」は手紙の長さを表します。
+「ぼくは 本を 読む。」の「本」と同じく、ものの名前を表す単語は？|机|ゆっくり|「本」も「机」も、ものの名前を表す名詞です。
+「すぐ 帰る。」の「すぐ」は、何を説明する単語？|帰る時期や様子|帰る人の名前|「すぐ」は動作「帰る」の時期を詳しくする副詞です。`,
+`筆者の意見を支える根拠はどれ？~学校の掲示は、文字を大きくしたほうがよい。今の掲示は、廊下の反対側からだと行事の日付が読めなかったからだ。|廊下の反対側から日付が読めなかったこと|掲示の文字を大きくしたほうがよいこと|「からだ」の前にある、実際に日付が読めなかったことが根拠です。
+水の量が減った原因として本文で示されているのは？~朝はコップに線まで水があった。午後になると水面が下がっていた。風の通る窓辺に置いたため、水が蒸発したと考えられる。|窓辺で水が蒸発したこと|午後に水面が下がったこと|水面の変化は結果で、その原因として水の蒸発が示されています。
+「その工夫」が指す内容は？~班で案を集めたところ、声の大きい人の案だけが残った。次からは全員が一枚ずつ紙に書いて出した。その工夫で、意見が偏らなくなった。|全員が紙に案を書いて出したこと|声の大きい人が先に意見を言ったこと|「その工夫」は直前に示された、全員が紙に書いて出す方法を指します。
+太郎の心情を読み取る根拠になる描写は？~太郎は発表を始める前、机の下で原稿を何度も折り直した。発表が終わると、原稿を開いたまま笑って友人に見せた。|机の下で原稿を何度も折り直した|机の上には原稿が置かれていた|同じ動作を繰り返す描写が、発表前の落ち着かなさを伝えています。
+前半と後半の関係は？~昼の商店街は人通りが少なく、店の中にも静かな時間が流れている。しかし日が暮れ、照明がともると、通りは買い物客の声でにぎわう。|昼と夕方の違いを対比している|人通りが少ない原因を順に挙げている|「しかし」の前後で、昼の静けさと日暮れ後のにぎわいを比べています。
+筆者がこの例で伝えたいことは？~地図に駅からの距離だけを書いても、道の歩きやすさは分からない。例えば、同じ五百メートルでも、急な坂がある道と平らな道では感じ方が違う。|距離の数字だけでは歩きやすさは分からない|五百メートル歩くには急な坂を通る必要がある|急な坂と平らな道の例は、同じ距離でも歩きやすさが違うことを示します。
+主人公が最後に相手に声を掛けた理由として読み取れるのは？~係の仕事を一人で進めていた私は、友人が使いやすい道具をそっと並べてくれているのに気づいた。帰り際、私はその友人に「次は一緒にやろう」と声を掛けた。|友人の協力に気づき、次は一緒に進めたいと思った|友人が道具の片づけを忘れたので注意したいと思った|並べてくれた道具に気づいたことと、「一緒にやろう」という言葉が根拠です。
+筆者の考えを短く表したものは？~話し合いでは全員の意見を聞く時間が要る。結論を急いで少数の意見を省くと、後から大切な問題に気づくことがあるからだ。|結論を出す前に全員の意見を聞くことが大切だ|少数の意見は結論を出してから聞けばよい|第1文が考え、第2文がその根拠です。
+書き手が最後に「そこで」を使った理由は？~教室から校庭までの道が雨でぬれていた。そのままでは走ると滑りやすい。そこで係は、移動の前に歩くよう呼びかけた。|状況を受けて取った対応をつなぐため|前に書いた具体例をもう一つ加えるため|「そこで」は、滑りやすいという状況と、それを受けた呼びかけをつないでいます。
+「声が少し弾んだ」とある。由衣の気持ちは？~由衣は友人に貸した本の感想を聞いた。友人が「私もあの場面が好きだった」と言うと、「そこ、いいよね」と返した由衣の声が少し弾んだ。|好きな場面が同じでうれしくなった|感想を言われて腹を立てた|友人が同じ場面を好きだと言った直後に声が弾んだことが根拠です。`
+];
+
+function parsePool(text,stage,idPrefix) {
+  return text.trim().split("\n").map((line, index) => {
     const [prompt, correct, wrong, explanation] = line.split("|").reduce((fields, fragment) => {
       // Ruby uses the same separator within braces. Keep those fragments together.
       const last = fields.length - 1;
@@ -521,10 +584,15 @@ const pools = poolText.map((tiers, stage) => tiers.map((text, level) =>
       return fields;
     }, []);
     const [question, passage = ""] = prompt.split("~");
-    return {id:`${stage}-${level}-${index}`, category:stage, question, passage, correct, wrong, explanation};
-  })));
-
-const itemById = new Map(pools.flat(2).map(item => [item.id, item]));
+    return {id:`${idPrefix}-${index}`,category:stage,question,passage,correct,wrong,explanation};
+  });
+}
+const priorPools=poolText.map((tiers,stage)=>tiers.map((text,level)=>parsePool(text,stage,`${stage}-${level}`)));
+const juniorPools=juniorPoolText.map((text,stage)=>parsePool(text,stage,`j1-${stage}`));
+const juniorTopics=["文脈で読む語彙・慣用句","語の関係・事実と意見","漢字の読み・熟語","文脈に合う助数詞","文節・単語の働き","短文読解・意見と根拠","既習事項の復習","全範囲の総復習"];
+const pools=priorPools.map(([easy,normal],stage)=>[easy,normal,juniorPools[stage]]);
+// Saved runs can still refer to questions assigned before the junior-high update.
+const itemById=new Map([...priorPools.flat(2),...juniorPools.flat()].map(item=>[item.id,item]));
 function shuffle(items) {
   const output = [...items];
   for (let i = output.length - 1; i > 0; i--) {
@@ -1003,7 +1071,7 @@ class Scene {
     const cols = Math.min(size,Math.max(3,Math.ceil(Math.sqrt(size)*1.05)),14);
     const spread = Math.min(1.33,12.3/Math.max(1,cols-1));
     const settle=1-Math.exp(-frameDelta*15);
-    const marching=cover || phase==="question" || phase==="cross" || phase==="feedback" || phase==="battle";
+    const marching=cover || phase==="question" || phase==="cross" || phase==="feedback" || phase==="missed" || phase==="battle";
     const gait=t*1.58*runnerFrames;
     const origins=[];
     const progress=attack?.progress??0;
@@ -1435,9 +1503,11 @@ function sound(kind) {
 
 let session=null, selectedStage=0, phase="menu", distance=0, lane=0, clock=0;
 let elapsed=0, battle=null, result=null, units=[], outcome=null, lastFrame=0, repaint=true;
-let velocity=12, gateZ=96, gateLabels=[], departingGate=null, chase=null, impact=null;
+let velocity=12, gateZ=96, gateLabels=[], gateSpeed=0, departingGate=null, chase=null, impact=null;
 let lastPaint=0, paintCost=0, signUntil=0;
-const gateSpacing=98;
+const gateStart=96;
+const gateTime=[15,13,15];
+const skipFeedbackTime=.95;
 const gatePass=15.2;
 const gateExit=9.3;
 const attackLead=.82;
@@ -1449,7 +1519,9 @@ const smoothstep = x => x*x*(3-2*x);
 const awaitingAnswer = () => phase==="question";
 const idFor = () => Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,10);
 function stageDifficulty() {
-  return `${levels[session.level]} ・ ${session.players===1?"ひとり":`きょうりょく ${session.players}人`}`;
+  const junior=session.level===2 && session.order.some(entry=>entry.id.startsWith("j1-"));
+  const level=junior?"むずかしい（中1）":levels[session.level];
+  return `${level} ・ ${session.players===1?"ひとり":`きょうりょく ${session.players}人`}`;
 }
 function currentQuestion() {
   const entry = session?.order[session.answers.length];
@@ -1484,7 +1556,8 @@ function savedIsPlayable() {
     saved.order.every(entry=>typeof entry?.left==="boolean" && itemById.has(entry.id)) &&
     Array.isArray(saved.answers) && saved.answers.length<=saved.order.length &&
     saved.answers.every((row,index)=>row?.id===saved.order[index].id && typeof row.ok==="boolean" &&
-      [0,1].includes(row.choice) && Number.isInteger(row.gain) && row.gain>=0 && row.gain<=30) &&
+      ([0,1].includes(row.choice) || (row.choice===null && !row.ok && row.gain===0)) &&
+      Number.isInteger(row.gain) && row.gain>=0 && row.gain<=30) &&
     (saved.damage===undefined || (Number.isInteger(saved.damage) && saved.damage>=0 && saved.damage<recruited(saved)));
 }
 function openDialog(id) {
@@ -1495,7 +1568,6 @@ function openDialog(id) {
 function openSetup(stage) {
   selectedStage = stage;
   byId("setup-title").textContent = stages[stage].name;
-  byId("setup-topic").textContent = stages[stage].topic;
   byId("difficulty").value = data.settings.difficulty;
   byId("players").value = data.settings.players;
   byId("replace-note").hidden = !savedIsPlayable();
@@ -1504,6 +1576,7 @@ function openSetup(stage) {
 }
 function describeSetup() {
   const level=Number(byId("difficulty").value);
+  byId("setup-topic").textContent = level===2?juniorTopics[selectedStage]:stages[selectedStage].topic;
   byId("setup-detail").textContent = `${questionCounts[level]}問`;
 }
 byId("difficulty").onchange = describeSetup;
@@ -1518,9 +1591,9 @@ function start(stage,level,players,retryOf) {
   unlockAudio();
   session = {id:idFor(), stage, level, players, retryOf, order:buildOrder(stage,level), answers:[], damage:0};
   checkpoint();
-  enterGame(false);
+  enterGame();
 }
-function enterGame(resuming) {
+function enterGame() {
   units = Array.from({length:countUnits()},(_,i)=>({born:-1,team:i%session.players}));
   clock=0; musicTimer=0; battle=null; result=null; lane=0; outcome=null;
   lastFrame=0; lastPaint=0; paintCost=0; velocity=12; impact=null; chase=null; signUntil=0;
@@ -1533,7 +1606,7 @@ function enterGame(resuming) {
   byId("gain").hidden=true;
   setHud();
   if (session.answers.length===session.order.length) prepareBoss();
-  else openQuestion(resuming);
+  else openQuestion();
   scrollTo(0,0);
   byId("game-title").focus({preventScroll:true});
   repaint=true;
@@ -1567,7 +1640,7 @@ byId("resume").onclick=()=>{
   if (!savedIsPlayable()) return;
   unlockAudio();
   session = data.saved;
-  enterGame(true);
+  enterGame();
 };
 byId("quick-start").onclick=()=>openSetup(0);
 byId("home").onclick=()=>{
@@ -1607,16 +1680,19 @@ function advance() {
   if(session.answers.length===session.order.length) prepareBoss();
   else openQuestion();
 }
-function openQuestion(resuming=false) {
+function openQuestion() {
   const q=currentQuestion();
   gateLabels=q.choices.map(choice=>{
     const label=textOf(choice);
     return label.length>11?label.slice(0,10)+"…":label;
   });
   setPhase("question");
-  gateZ=resuming?74:96;
-  const readingTime=Math.ceil([...textOf(q.passage)].length/7);
-  chase={time:0,limit:leadTime[session.level]+readingTime};
+  gateZ=gateStart;
+  const passageLength=textOf(q.passage).length;
+  const promptLength=[q.question,...q.choices].reduce((sum,text)=>sum+textOf(text).length,0);
+  const extraReading=Math.ceil((passageLength+Math.max(0,promptLength-28))/7);
+  gateSpeed=(gateStart-gatePass)/(gateTime[session.level]+extraReading);
+  chase={time:0,limit:leadTime[session.level]+Math.ceil(passageLength/7)};
   drawQuestion();
   byId("game-title").focus({preventScroll:true});
   sayStatus(`第${session.answers.length+1}問。`);
@@ -1627,17 +1703,39 @@ function tickChase(dt) {
   if(chase.time<chase.limit) return;
   chase.time=0;
   chase.limit=recoveryTime;
-  const loss=Math.min(contactCost,units.length-1);
-  const separated=units.splice(1,loss);
+  const separated=loseMembers();
+  const loss=separated.length;
   impact={at:clock,lane,units:separated};
   sound("damage");
   if(loss) {
-    session.damage=(session.damage??0)+loss;
     setHud();
     checkpoint();
-    showChange(-loss);
     sayStatus(`接触。仲間が${loss}人減りました。`);
   } else sayStatus("接触。");
+}
+function loseMembers() {
+  const loss=Math.min(contactCost,units.length-1);
+  const separated=units.splice(1,loss);
+  if(loss) {
+    session.damage=(session.damage??0)+loss;
+    showChange(-loss);
+  }
+  return separated;
+}
+function skipGate() {
+  speech?.cancel();
+  const q=currentQuestion();
+  const loss=loseMembers().length;
+  chase=null;
+  session.answers.push({id:q.id,choice:null,ok:false,gain:0});
+  setHud();
+  checkpoint();
+  setPhase("missed");
+  sound("damage");
+  const content=element("div","feedback miss");
+  content.append(element("h2","","時間切れ"));
+  panel.replaceChildren(content);
+  sayStatus(loss ? `未回答。仲間が${loss}人減りました。` : "未回答。");
 }
 function drawQuestion() {
   panel.hidden=false;
@@ -1680,13 +1778,8 @@ function selectGate(side) {
   const bonus=ok && (streak+1)%3===0 ? 10 : 0;
   outcome={
     q, answer:{id:q.id,choice:side,ok,gain:ok ? rewards[session.level]+bonus : 0},
-    laneFrom:lane
+    laneFrom:lane, turnDuration:clamp((gateZ-gatePass)/34,.05,.34)
   };
-  // A late choice aims for the next pair so the current one can flow past the runners.
-  if(gateZ<gatePass+5) {
-    departingGate={z:gateZ,labels:gateLabels};
-    gateZ+=gateSpacing;
-  }
   chase=null;
   setPhase("cross");
   panel.querySelectorAll(".choice")[side].setAttribute("aria-pressed","true");
@@ -1785,7 +1878,7 @@ function finish() {
       if(answer.ok) return [];
       const q=itemById.get(answer.id);
       return [{id:q.id,category:q.category,question:textOf(q.question),passage:textOf(q.passage),
-        answer:textOf(q.wrong),correct:textOf(q.correct),explanation:textOf(q.explanation),
+        answer:answer.choice===null?"未回答（ゲート通過）":textOf(q.wrong),correct:textOf(q.correct),explanation:textOf(q.explanation),
         turn:index%session.players+1}];
     })
   };
@@ -1942,13 +2035,12 @@ function tickRun(dt, delta) {
   elapsed+=delta;
   let targetSpeed=0;
   if(awaitingAnswer()) {
-    targetSpeed=12.4;
-    tickChase(dt);
+    targetSpeed=gateSpeed/data.settings.speed;
   } else if(phase==="cross") {
     const targetLane=outcome.answer.choice===0?-1:1;
-    lane=mix(outcome.laneFrom,targetLane,smoothstep(clamp(elapsed/.34,0,1)));
+    lane=mix(outcome.laneFrom,targetLane,smoothstep(clamp(elapsed/outcome.turnDuration,0,1)));
     targetSpeed=34;
-  } else if(phase==="feedback") targetSpeed=10;
+  } else if(phase==="feedback" || phase==="missed") targetSpeed=10;
   else if(phase==="battle") {
     targetSpeed=battle.time<attackLead?8:0;
     tickBattle(delta);
@@ -1964,12 +2056,12 @@ function tickRun(dt, delta) {
   }
   if(awaitingAnswer() || phase==="cross") {
     gateZ-=travel;
-    if(awaitingAnswer() && gateZ<=gateExit) gateZ+=gateSpacing;
-    if(phase==="cross" && gateZ<=gatePass) {
+    if(gateZ<=gatePass) {
       departingGate=gateZ>gateExit?{z:gateZ,labels:gateLabels}:null;
-      applyAnswer();
-    }
-  }
+      if(awaitingAnswer()) skipGate();
+      else applyAnswer();
+    } else if(awaitingAnswer()) tickChase(dt);
+  } else if(phase==="missed" && elapsed>=skipFeedbackTime) advance();
   if(signUntil && clock>=signUntil) {
     byId("gain").hidden=true;
     signUntil=0;
@@ -2007,7 +2099,6 @@ function loop(timestamp) {
   lastPaint=timestamp;
   repaint=false;
   const gatePairs=[];
-  if(awaitingAnswer()) gatePairs.push({z:gateZ+gateSpacing,labels:gateLabels});
   if(awaitingAnswer() || phase==="cross") gatePairs.push({z:gateZ,labels:gateLabels});
   if(departingGate) gatePairs.push(departingGate);
   const hazard=chase ? clamp(chase.time/chase.limit,0,1) : null;
