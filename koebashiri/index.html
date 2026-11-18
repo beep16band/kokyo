@@ -344,7 +344,7 @@ dialog pre { white-space: pre-wrap; font-size: 11px; }
 <dialog id="about" aria-labelledby="about-title">
   <div class="dialog-head"><h2 id="about-title">底本・音声認識</h2><button data-close class="close" type="button" aria-label="閉じる">×</button></div>
   <p>松尾芭蕉『おくのほそ道』の冒頭三文を収録。<a href="https://www.aozora.gr.jp/cards/002240/card61619.html" target="_blank" rel="noopener">青空文庫の古典本文</a>を参照し、授業向けに漢字・送り仮名・読みを整えた試作表記です。</p>
-  <p>音声認識は日本語パックを備えた対応ブラウザの端末内で行います。認識した文章は画面に表示し、得点と設定だけを端末内に保存します。</p>
+  <p>音声認識はこの端末内で行います。スマホなどでは初回に約50 MBの日本語モデルを読み込みます。音声と認識した文章は外部に送信せず、得点と設定だけを端末内に保存します。</p>
   <p>フォントは Noto Serif CJK JP の一部を使用しています。<button id="license" class="text-button" type="button" aria-expanded="false">ライセンスを表示</button></p>
   <pre id="license-text" hidden></pre>
 </dialog>
@@ -632,6 +632,7 @@ const KoeEngine = (() => {
 })();
 
 </script>
+<script src="voice-local.js?v=1"></script>
 <script>
 'use strict';
 
@@ -654,7 +655,10 @@ const KoeEngine = (() => {
   let mode = 'read';
   let options = { tempo: true, motion: false, sound: false, ...readLocal(settingsKey, {}) };
   let capture = null;
-  let language = SpeechRecognition ? 'checking' : 'unsupported';
+  const localVoice = window.KoebashiriLocalVoice;
+  let localModel = null;
+  let provider = 'native';
+  let language = 'checking';
   let judgmentTimer = 0;
   let audio = null;
   let state;
@@ -763,44 +767,69 @@ const KoeEngine = (() => {
     return {
       checking: '端末内の日本語音声認識を確認しています。',
       available: 'マイクを許可し、表示されたところから読んでください。',
-      downloadable: '初回は「日本語パックを準備」を押してください。',
-      downloading: '日本語パックを準備中です。完了したら出発できます。',
-      failed: '日本語パックを準備できませんでした。接続や端末設定を確認して再試行できます。',
+      downloadable: provider === 'local'
+        ? '初回は「スマホ用音声認識を準備」を押してください。日本語モデルを約50 MB読み込みます。'
+        : '初回は「日本語パックを準備」を押してください。',
+      downloading: provider === 'local'
+        ? '日本語モデルを読み込み中です。完了するまでこの画面を開いてください。'
+        : '日本語パックを準備中です。完了したら出発できます。',
+      failed: '音声認識を準備できませんでした。通信状況や端末の空き容量を確認し、もう一度お試しください。',
       unavailable: 'この端末では日本語の端末内音声認識を使えません。マイクなしの体験を開けます。',
       unsupported: 'このブラウザは端末内音声認識に対応していません。マイクなしの体験を開けます。',
       blocked: 'このページで端末内音声認識を使えるか確認できません。HTTPS または localhost で開くと利用できる場合があります。'
     }[language];
   }
 
-  async function checkLanguage() {
-    if (!SpeechRecognition) return;
-    try {
-      const response = await SpeechRecognition.available(languageOptions);
-      language = ['available', 'downloadable', 'downloading'].includes(response) ? response : 'unavailable';
-      if (language === 'downloading') setTimeout(checkLanguage, 2500);
-    } catch {
-      language = 'blocked';
-    }
+  function updateLanguage(next) {
+    language = next;
     if (!state.demo) status(languageMessage());
     render();
   }
 
-  async function prepareLanguage() {
-    if (typeof SpeechRecognition.install !== 'function') {
-      language = 'unavailable';
+  function useLocalVoice(otherwise) {
+    if (localVoice?.supported()) {
+      provider = 'local';
+      updateLanguage(localModel ? 'available' : 'downloadable');
     } else {
-      language = 'downloading';
-      if (!state.demo) status(languageMessage());
-      render();
-      try {
-        language = await SpeechRecognition.install(languageOptions) &&
-          await SpeechRecognition.available(languageOptions) === 'available' ? 'available' : 'failed';
-      } catch {
-        language = 'failed';
-      }
+      updateLanguage(otherwise);
     }
-    if (!state.demo) status(languageMessage());
-    render();
+  }
+
+  async function checkLanguage() {
+    if (!SpeechRecognition) {
+      useLocalVoice('unsupported');
+      return;
+    }
+    try {
+      const response = await SpeechRecognition.available(languageOptions);
+      if (response === 'available' || typeof SpeechRecognition.install === 'function' &&
+        ['downloadable', 'downloading'].includes(response)) {
+        updateLanguage(response);
+        if (response === 'downloading') setTimeout(checkLanguage, 2500);
+      } else {
+        useLocalVoice('unavailable');
+      }
+    } catch {
+      useLocalVoice('blocked');
+    }
+  }
+
+  async function prepareLanguage() {
+    updateLanguage('downloading');
+    try {
+      if (provider === 'local') {
+        localModel = await localVoice.prepare();
+        updateLanguage('available');
+      } else if (await SpeechRecognition.install(languageOptions) &&
+        await SpeechRecognition.available(languageOptions) === 'available') {
+        updateLanguage('available');
+      } else {
+        useLocalVoice('failed');
+      }
+    } catch {
+      if (provider === 'local') updateLanguage('failed');
+      else useLocalVoice('failed');
+    }
   }
 
   function setTranscript(text, kind = 'idle') {
@@ -887,7 +916,8 @@ const KoeEngine = (() => {
     mic.disabled = language !== 'available' || phase === 'starting' || phase === 'draining';
     $('language').hidden = state.demo || !['downloadable', 'downloading', 'failed'].includes(language);
     $('language').disabled = language === 'downloading';
-    $('language').textContent = language === 'downloading' ? '日本語パック準備中' : '日本語パックを準備';
+    $('language').textContent = language === 'downloading' ? '音声認識を準備中' :
+      provider === 'local' ? 'スマホ用音声認識を準備' : '日本語パックを準備';
     $('mic-label').textContent = {
       starting: 'マイクを準備中',
       listening: '聞き取り中・止める',
@@ -1117,7 +1147,7 @@ const KoeEngine = (() => {
     if (capture !== session) return;
     pause(local ? messages[code] + ' ファイルで許可できない場合は localhost または HTTPS で開いてください。' :
       (messages[code] || '聞き取りが中断されました。マイクを再開できます。'));
-    if (code === 'language-not-supported') void checkLanguage();
+    if (provider === 'native' && code === 'language-not-supported') useLocalVoice('unavailable');
     if (session.timedOut) finish(false);
   }
 
@@ -1138,9 +1168,13 @@ const KoeEngine = (() => {
 
     let recognition;
     try {
-      recognition = new SpeechRecognition();
-      recognition.processLocally = true;
-      if (recognition.processLocally !== true) throw new Error('Local recognition unavailable');
+      if (provider === 'local') {
+        recognition = new localVoice.LocalRecognition(localModel);
+      } else {
+        recognition = new SpeechRecognition();
+        recognition.processLocally = true;
+        if (recognition.processLocally !== true) throw new Error('Local recognition unavailable');
+      }
     } catch {
       status('音声認識を初期化できません。マイクなしの体験を開けます。');
       state.active = state.passed > 0;
