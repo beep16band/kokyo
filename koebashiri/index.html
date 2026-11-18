@@ -345,6 +345,7 @@ dialog pre { white-space: pre-wrap; font-size: 11px; }
   <div class="dialog-head"><h2 id="about-title">底本・音声認識</h2><button data-close class="close" type="button" aria-label="閉じる">×</button></div>
   <p>松尾芭蕉『おくのほそ道』の冒頭三文を収録。<a href="https://www.aozora.gr.jp/cards/002240/card61619.html" target="_blank" rel="noopener">青空文庫の古典本文</a>を参照し、授業向けに漢字・送り仮名・読みを整えた試作表記です。</p>
   <p>音声認識はこの端末内で行います。スマホなどでは初回に約50 MBの日本語モデルを読み込みます。音声と認識した文章は外部に送信せず、得点と設定だけを端末内に保存します。</p>
+  <p><a href="?voice=mobile">スマホ用の音声認識で開く</a></p>
   <p>フォントは Noto Serif CJK JP の一部を使用しています。<button id="license" class="text-button" type="button" aria-expanded="false">ライセンスを表示</button></p>
   <pre id="license-text" hidden></pre>
 </dialog>
@@ -796,6 +797,10 @@ const KoeEngine = (() => {
   }
 
   async function checkLanguage() {
+    if (new URLSearchParams(location.search).get('voice') === 'mobile' && localVoice?.supported()) {
+      useLocalVoice('unsupported');
+      return;
+    }
     if (!SpeechRecognition) {
       useLocalVoice('unsupported');
       return;
